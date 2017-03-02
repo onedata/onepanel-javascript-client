@@ -57,12 +57,15 @@ var api = new Onepanel.OnepanelApi()
 
 var host = "host_example"; // {String} Hostname of a node to be removed from the cluster.
 
-api.deleteHostsHost(host).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.deleteHostsHost(host, callback);
 
 ```
 

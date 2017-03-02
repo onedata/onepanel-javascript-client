@@ -45,14 +45,21 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
+    /**
+     * Callback function to receive the result of the deleteHostsHost operation.
+     * @callback module:api/OnepanelApi~deleteHostsHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Remove cluster node
      * Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. It also removes the host from each service cluster it belonged to. 
      * @param {String} host Hostname of a node to be removed from the cluster.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnepanelApi~deleteHostsHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteHostsHost = function(host) {
+    this.deleteHostsHost = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -79,18 +86,25 @@
       return this.apiClient.callApi(
         '/hosts/{host}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the deleteUsersUsername operation.
+     * @callback module:api/OnepanelApi~deleteUsersUsernameCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Remove user
      * Removes the Onepanel user account.
      * @param {String} username The name of the user to be removed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnepanelApi~deleteUsersUsernameCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteUsersUsername = function(username) {
+    this.deleteUsersUsername = function(username, callback) {
       var postBody = null;
 
       // verify the required parameter 'username' is set
@@ -117,17 +131,25 @@
       return this.apiClient.callApi(
         '/users/{username}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getCookie operation.
+     * @callback module:api/OnepanelApi~getCookieCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get cluster cookie
      * Returns cookie of a cluster this host belongs to. The cookie is a character sequence that is common for all the cluster nodes. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link 'String'}
+     * @param {module:api/OnepanelApi~getCookieCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
-    this.getCookie = function() {
+    this.getCookie = function(callback) {
       var postBody = null;
 
 
@@ -148,19 +170,27 @@
       return this.apiClient.callApi(
         '/cookie', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getHosts operation.
+     * @callback module:api/OnepanelApi~getHostsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<'String'>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get cluster/discovered hosts
      * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast  advertisment.  In order to retrive discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed unauthorized as long as there are no admin users. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.discovered Defines whether return cluster or discovered hosts. (default to false)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<'String'>}
+     * @param {module:api/OnepanelApi~getHostsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<'String'>}
      */
-    this.getHosts = function(opts) {
+    this.getHosts = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -183,18 +213,26 @@
       return this.apiClient.callApi(
         '/hosts', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getTasksId operation.
+     * @callback module:api/OnepanelApi~getTasksIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/TaskStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get task result
      * Returns result of an asynchronous operation, e.g. database service configuration. 
      * @param {String} id The task ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskStatus}
+     * @param {module:api/OnepanelApi~getTasksIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskStatus}
      */
-    this.getTasksId = function(id) {
+    this.getTasksId = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -221,18 +259,26 @@
       return this.apiClient.callApi(
         '/tasks/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getUsersUsername operation.
+     * @callback module:api/OnepanelApi~getUsersUsernameCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/UserDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get user details
      * Returns the configuration information of the Onepanel user.
      * @param {String} username The name of a user whose details should be returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserDetails}
+     * @param {module:api/OnepanelApi~getUsersUsernameCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/UserDetails}
      */
-    this.getUsersUsername = function(username) {
+    this.getUsersUsername = function(username, callback) {
       var postBody = null;
 
       // verify the required parameter 'username' is set
@@ -259,19 +305,26 @@
       return this.apiClient.callApi(
         '/users/{username}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchUsersUsername operation.
+     * @callback module:api/OnepanelApi~patchUsersUsernameCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Modify user details
      * Modifies the Onepanel user password.
      * @param {String} username The user name.
      * @param {module:model/UserModifyRequest} userModifyRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnepanelApi~patchUsersUsernameCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchUsersUsername = function(username, userModifyRequest) {
+    this.patchUsersUsername = function(username, userModifyRequest, callback) {
       var postBody = userModifyRequest;
 
       // verify the required parameter 'username' is set
@@ -303,10 +356,17 @@
       return this.apiClient.callApi(
         '/users/{username}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the postHosts operation.
+     * @callback module:api/OnepanelApi~postHostsCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Create or join cluster
@@ -314,9 +374,9 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.clusterHost Hostname of an existing cluster node.
      * @param {module:model/Cookie} opts.cookie 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnepanelApi~postHostsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.postHosts = function(opts) {
+    this.postHosts = function(opts, callback) {
       opts = opts || {};
       var postBody = opts['cookie'];
 
@@ -339,18 +399,25 @@
       return this.apiClient.callApi(
         '/hosts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the postUsers operation.
+     * @callback module:api/OnepanelApi~postUsersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Create user
      * Creates a Onepanel user account.
      * @param {module:model/UserCreateRequest} userCreateRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnepanelApi~postUsersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.postUsers = function(userCreateRequest) {
+    this.postUsers = function(userCreateRequest, callback) {
       var postBody = userCreateRequest;
 
       // verify the required parameter 'userCreateRequest' is set
@@ -376,7 +443,7 @@
       return this.apiClient.callApi(
         '/users', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
   };

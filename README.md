@@ -8,15 +8,19 @@ repository.
 The clients for different Onepanel versions are located on respective
 branches of this repository.
 
-The latest stable branch is available on branch:
+The latest stable version is available on branch:
 
-* [3.0.0-rc12](/onedata/onepanel-javascript-client/tree/release/3.0.0-rc12)
+* [3.0.0-rc12](https://github.com/onedata/onepanel-javascript-client/tree/release/3.0.0-rc11)
+
+The latest development version is available under:
+
+* [develop](https://github.com/onedata/onepanel-javascript-client/tree/develop)
 
 Previous releases are available under specific branches:
 
-* [3.0.0-rc11](/onedata/onepanel-javascript-client/tree/release/3.0.0-rc11)
-* [3.0.0-rc10](/onedata/onepanel-javascript-client/tree/release/3.0.0-rc10)
-* [3.0.0-rc9](/onedata/onepanel-javascript-client/tree/release/3.0.0-rc9)
+* [3.0.0-rc11](https://github.com/onedata/onepanel-javascript-client/tree/release/3.0.0-rc11)
+* [3.0.0-rc10](https://github.com/onedata/onepanel-javascript-client/tree/release/3.0.0-rc10)
+* [3.0.0-rc9](https://github.com/onedata/onepanel-javascript-client/tree/release/3.0.0-rc9)
 
 ## LICENSE
 This software is licensed under the Apache 2 license, quoted below.

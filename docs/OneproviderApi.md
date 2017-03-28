@@ -52,12 +52,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var providerRegisterRequest = new Onepanel.ProviderRegisterRequest(); // ProviderRegisterRequest | The new provider details.
 
-apiInstance.addProvider(providerRegisterRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addProvider(providerRegisterRequest, callback);
 ```
 
 ### Parameters
@@ -95,12 +98,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var serviceHosts = new Onepanel.ServiceDatabases(); // ServiceDatabases | The service hosts configuration where databases should be deployed. 
 
-apiInstance.addProviderDatabases(serviceHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addProviderDatabases(serviceHosts, callback);
 ```
 
 ### Parameters
@@ -138,12 +144,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var managerHosts = new Onepanel.ManagerHosts(); // ManagerHosts | The cluster manager service hosts configuration.
 
-apiInstance.addProviderManagers(managerHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addProviderManagers(managerHosts, callback);
 ```
 
 ### Parameters
@@ -181,12 +190,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The service hosts configuration where workers should be deployed. 
 
-apiInstance.addProviderWorkers(serviceHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addProviderWorkers(serviceHosts, callback);
 ```
 
 ### Parameters
@@ -224,12 +236,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var clusterStoragesList = new Onepanel.ClusterStoragesList(); // ClusterStoragesList | The list of configuration details of storages to be added to the provider deployment. 
 
-apiInstance.addStorage(clusterStoragesList).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addStorage(clusterStoragesList, callback);
 ```
 
 ### Parameters
@@ -267,12 +282,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var providerConfiguration = new Onepanel.ProviderConfiguration(); // ProviderConfiguration | The provider configuration description.
 
-apiInstance.configureProvider(providerConfiguration).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.configureProvider(providerConfiguration, callback);
 ```
 
 ### Parameters
@@ -307,12 +325,15 @@ Returns the basic configuration information of the provider.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProvider().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProvider(callback);
 ```
 
 ### Parameters
@@ -344,12 +365,15 @@ Returns the provider cluster configuration.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderConfiguration().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderConfiguration(callback);
 ```
 
 ### Parameters
@@ -384,12 +408,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var host = "host_example"; // String | The name of a host for which database service status should be returned. 
 
-apiInstance.getProviderDatabaseStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderDatabaseStatus(host, callback);
 ```
 
 ### Parameters
@@ -424,12 +451,15 @@ Returns status of database service on each host where it has been deployed.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderDatabasesStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderDatabasesStatus(callback);
 ```
 
 ### Parameters
@@ -464,12 +494,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be returned. 
 
-apiInstance.getProviderManagerStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderManagerStatus(host, callback);
 ```
 
 ### Parameters
@@ -504,12 +537,15 @@ Returns status of cluster manager service on each host where it has been deploye
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderManagersStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderManagersStatus(callback);
 ```
 
 ### Parameters
@@ -541,12 +577,15 @@ Returns the provider nagios report.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderNagiosReport().then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getProviderNagiosReport(callback);
 ```
 
 ### Parameters
@@ -578,12 +617,15 @@ Returns the list of spaces supported by the provider.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderSpaces().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaces(callback);
 ```
 
 ### Parameters
@@ -618,12 +660,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var host = "host_example"; // String | The name of a host for which cluster worker service status should be returned. 
 
-apiInstance.getProviderWorkerStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderWorkerStatus(host, callback);
 ```
 
 ### Parameters
@@ -658,12 +703,15 @@ Returns status of cluster worker service on each host where it has been deployed
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getProviderWorkersStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderWorkersStatus(callback);
 ```
 
 ### Parameters
@@ -698,12 +746,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The ID of a space which details should be returned.
 
-apiInstance.getSpaceDetails(id).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getSpaceDetails(id, callback);
 ```
 
 ### Parameters
@@ -741,12 +792,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var name = "name_example"; // String | The name of a storage resource, which details should be returned. 
 
-apiInstance.getStorageDetails(name).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getStorageDetails(name, callback);
 ```
 
 ### Parameters
@@ -781,12 +835,15 @@ Returns the list of provider storage resources and their details.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.getStorages().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getStorages(callback);
 ```
 
 ### Parameters
@@ -821,12 +878,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var providerModifyRequest = new Onepanel.ProviderModifyRequest(); // ProviderModifyRequest | New values for provider configuration parameters which should be changed. 
 
-apiInstance.modifyProvider(providerModifyRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyProvider(providerModifyRequest, callback);
 ```
 
 ### Parameters
@@ -866,12 +926,15 @@ var name = "name_example"; // String | The name of a storage resource, which det
 
 var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
 
-apiInstance.modifyStorage(name, storageModifyRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyStorage(name, storageModifyRequest, callback);
 ```
 
 ### Parameters
@@ -907,12 +970,15 @@ Unregisters provider from the zone.
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OneproviderApi();
-apiInstance.removeProvider().then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.removeProvider(callback);
 ```
 
 ### Parameters
@@ -947,12 +1013,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The ID of a space to be removed.
 
-apiInstance.revokeSpaceSupport(id).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.revokeSpaceSupport(id, callback);
 ```
 
 ### Parameters
@@ -993,12 +1062,15 @@ var host = "host_example"; // String | The name of a host for which database ser
 var opts = { 
   'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderDatabase(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderDatabase(host, opts, callback);
 ```
 
 ### Parameters
@@ -1038,12 +1110,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderDatabases(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderDatabases(opts, callback);
 ```
 
 ### Parameters
@@ -1084,12 +1159,15 @@ var host = "host_example"; // String | The name of a host for which cluster mana
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderManager(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderManager(host, opts, callback);
 ```
 
 ### Parameters
@@ -1129,12 +1207,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderManagers(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderManagers(opts, callback);
 ```
 
 ### Parameters
@@ -1175,12 +1256,15 @@ var host = "host_example"; // String | The name of a host for which cluster work
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderWorker(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderWorker(host, opts, callback);
 ```
 
 ### Parameters
@@ -1220,12 +1304,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopProviderWorkers(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderWorkers(opts, callback);
 ```
 
 ### Parameters
@@ -1263,12 +1350,15 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var spaceSupportRequest = new Onepanel.SpaceSupportRequest(); // SpaceSupportRequest | Specification of the space support request including name of the space, size and support token. 
 
-apiInstance.supportSpace(spaceSupportRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.supportSpace(spaceSupportRequest, callback);
 ```
 
 ### Parameters

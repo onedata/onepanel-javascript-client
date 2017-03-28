@@ -45,14 +45,21 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
+    /**
+     * Callback function to receive the result of the addZoneDatabases operation.
+     * @callback module:api/OnezoneApi~addZoneDatabasesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Add zone databases
      * Deploys a database service on provided hosts.
      * @param {module:model/ServiceDatabases} serviceHosts The service hosts configuration where databases should be deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~addZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addZoneDatabases = function(serviceHosts) {
+    this.addZoneDatabases = function(serviceHosts, callback) {
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
@@ -78,18 +85,25 @@
       return this.apiClient.callApi(
         '/zone/databases', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the addZoneManagers operation.
+     * @callback module:api/OnezoneApi~addZoneManagersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Add zone cluster managers
      * Deploys a cluster manager service on provided hosts.
      * @param {module:model/ManagerHosts} managerHosts The hosts specification where cluster managers should be deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~addZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addZoneManagers = function(managerHosts) {
+    this.addZoneManagers = function(managerHosts, callback) {
       var postBody = managerHosts;
 
       // verify the required parameter 'managerHosts' is set
@@ -115,18 +129,25 @@
       return this.apiClient.callApi(
         '/zone/managers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the addZoneWorkers operation.
+     * @callback module:api/OnezoneApi~addZoneWorkersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Add zone cluster workers
      * Deploys a cluster worker service on provided hosts.
      * @param {module:model/ServiceHosts} serviceHosts The hosts specification where the workers should be deployed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~addZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addZoneWorkers = function(serviceHosts) {
+    this.addZoneWorkers = function(serviceHosts, callback) {
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
@@ -152,18 +173,25 @@
       return this.apiClient.callApi(
         '/zone/workers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the configureZone operation.
+     * @callback module:api/OnezoneApi~configureZoneCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Configure zone deployment
      * Configures and starts zone services, such as database, cluster manager and cluster worker. This request can be executed by unauthorized usersas long as there are no admin users in the system. 
      * @param {module:model/ZoneConfiguration} zoneConfiguration The zone configuration description.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~configureZoneCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.configureZone = function(zoneConfiguration) {
+    this.configureZone = function(zoneConfiguration, callback) {
       var postBody = zoneConfiguration;
 
       // verify the required parameter 'zoneConfiguration' is set
@@ -189,17 +217,25 @@
       return this.apiClient.callApi(
         '/zone/configuration', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneConfiguration operation.
+     * @callback module:api/OnezoneApi~getZoneConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ZoneConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone cluster configuration
      * Returns the zone cluster configuration.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ZoneConfiguration}
+     * @param {module:api/OnezoneApi~getZoneConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ZoneConfiguration}
      */
-    this.getZoneConfiguration = function() {
+    this.getZoneConfiguration = function(callback) {
       var postBody = null;
 
 
@@ -220,18 +256,26 @@
       return this.apiClient.callApi(
         '/zone/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneDatabaseStatus operation.
+     * @callback module:api/OnezoneApi~getZoneDatabaseStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone database status
      * Returns status of database service on the selected host.
      * @param {String} host The name of a host for which database service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OnezoneApi~getZoneDatabaseStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getZoneDatabaseStatus = function(host) {
+    this.getZoneDatabaseStatus = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -258,17 +302,25 @@
       return this.apiClient.callApi(
         '/zone/databases/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneDatabasesStatus operation.
+     * @callback module:api/OnezoneApi~getZoneDatabasesStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone databases status
      * Returns status of database service on each host where it has been deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OnezoneApi~getZoneDatabasesStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getZoneDatabasesStatus = function() {
+    this.getZoneDatabasesStatus = function(callback) {
       var postBody = null;
 
 
@@ -289,18 +341,26 @@
       return this.apiClient.callApi(
         '/zone/databases', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneManagerStatus operation.
+     * @callback module:api/OnezoneApi~getZoneManagerStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone cluster manager status
      * Returns status of cluster manager service on the selected host.
      * @param {String} host The name of a host for which cluster manager service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OnezoneApi~getZoneManagerStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getZoneManagerStatus = function(host) {
+    this.getZoneManagerStatus = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -327,17 +387,25 @@
       return this.apiClient.callApi(
         '/zone/managers/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneManagersStatus operation.
+     * @callback module:api/OnezoneApi~getZoneManagersStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone cluster managers status
      * Returns status of cluster manager service on each host where it has been eployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OnezoneApi~getZoneManagersStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getZoneManagersStatus = function() {
+    this.getZoneManagersStatus = function(callback) {
       var postBody = null;
 
 
@@ -358,17 +426,24 @@
       return this.apiClient.callApi(
         '/zone/managers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneNagiosReport operation.
+     * @callback module:api/OnezoneApi~getZoneNagiosReportCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone nagios report
      * Returns the zone nagios report.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~getZoneNagiosReportCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.getZoneNagiosReport = function() {
+    this.getZoneNagiosReport = function(callback) {
       var postBody = null;
 
 
@@ -389,18 +464,26 @@
       return this.apiClient.callApi(
         '/zone/nagios', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneWorkerStatus operation.
+     * @callback module:api/OnezoneApi~getZoneWorkerStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone cluster worker status
      * Returns status of cluster worker service on the selected host.
      * @param {String} host The name of a host for which cluster worker service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OnezoneApi~getZoneWorkerStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getZoneWorkerStatus = function(host) {
+    this.getZoneWorkerStatus = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -427,17 +510,25 @@
       return this.apiClient.callApi(
         '/zone/workers/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getZoneWorkersStatus operation.
+     * @callback module:api/OnezoneApi~getZoneWorkersStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get zone cluster workers status
      * Returns status of cluster worker service on each host where it has been deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OnezoneApi~getZoneWorkersStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getZoneWorkersStatus = function() {
+    this.getZoneWorkersStatus = function(callback) {
       var postBody = null;
 
 
@@ -458,19 +549,26 @@
       return this.apiClient.callApi(
         '/zone/workers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneDatabases operation.
+     * @callback module:api/OnezoneApi~startStopZoneDatabasesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone databases
      * Starts or stops database service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneDatabases = function(opts) {
+    this.startStopZoneDatabases = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -493,10 +591,17 @@
       return this.apiClient.callApi(
         '/zone/databases', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneDatabasesHost operation.
+     * @callback module:api/OnezoneApi~startStopZoneDatabasesHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone database
@@ -504,9 +609,9 @@
      * @param {String} host The name of a host for which database service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneDatabasesHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneDatabasesHost = function(host, opts) {
+    this.startStopZoneDatabasesHost = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -535,10 +640,17 @@
       return this.apiClient.callApi(
         '/zone/databases/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneManager operation.
+     * @callback module:api/OnezoneApi~startStopZoneManagerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone cluster manager
@@ -546,9 +658,9 @@
      * @param {String} host The name of a host for which cluster manager service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneManagerCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneManager = function(host, opts) {
+    this.startStopZoneManager = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -577,19 +689,26 @@
       return this.apiClient.callApi(
         '/zone/managers/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneManagers operation.
+     * @callback module:api/OnezoneApi~startStopZoneManagersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone cluster managers
      * Starts or stops cluster manager service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneManagers = function(opts) {
+    this.startStopZoneManagers = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -612,10 +731,17 @@
       return this.apiClient.callApi(
         '/zone/managers', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneWorker operation.
+     * @callback module:api/OnezoneApi~startStopZoneWorkerCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone cluster worker
@@ -623,9 +749,9 @@
      * @param {String} host The name of a host for which cluster worker service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneWorkerCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneWorker = function(host, opts) {
+    this.startStopZoneWorker = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -654,19 +780,26 @@
       return this.apiClient.callApi(
         '/zone/workers/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the startStopZoneWorkers operation.
+     * @callback module:api/OnezoneApi~startStopZoneWorkersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop zone cluster workers
      * Starts or stops cluster worker service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OnezoneApi~startStopZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.startStopZoneWorkers = function(opts) {
+    this.startStopZoneWorkers = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -689,7 +822,7 @@
       return this.apiClient.callApi(
         '/zone/workers', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
   };

@@ -26,26 +26,17 @@ Creates a new Onepanel user account.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var userCreateRequest = new Onepanel.UserCreateRequest(); // UserCreateRequest | The user configuration details.
 
+apiInstance.addUser(userCreateRequest).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.addUser(userCreateRequest, callback);
 ```
 
 ### Parameters
@@ -60,7 +51,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -78,12 +69,6 @@ Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has b
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
@@ -91,15 +76,12 @@ var opts = {
   'clusterHost': "clusterHost_example", // String | Hostname of an existing cluster node.
   'cookie': new Onepanel.Cookie() // Cookie | The cookie used for cluster authentication.
 };
+apiInstance.createCluster(opts).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.createCluster(opts, callback);
 ```
 
 ### Parameters
@@ -115,7 +97,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -133,23 +115,14 @@ Returns cookie of a cluster this host belongs to. The cookie is a character sequ
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
+apiInstance.getClusterCookie().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getClusterCookie(callback);
 ```
 
 ### Parameters
@@ -161,7 +134,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -179,27 +152,18 @@ Returns the list of administrative cluster hosts. It is also possible to return 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var opts = { 
   'discovered': false // Boolean | Defines whether to return cluster or discovered hosts.
 };
+apiInstance.getClusterHosts(opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getClusterHosts(opts, callback);
 ```
 
 ### Parameters
@@ -214,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -232,26 +196,17 @@ Returns result of an asynchronous operation, e.g. database service configuration
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var id = "id_example"; // String | The requested task Id.
 
+apiInstance.getTaskStatus(id).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getTaskStatus(id, callback);
 ```
 
 ### Parameters
@@ -266,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -284,26 +239,17 @@ Returns the configuration information of the Onepanel user.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var username = "username_example"; // String | The name of the user whose details should be returned.
 
+apiInstance.getUser(username).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUser(username, callback);
 ```
 
 ### Parameters
@@ -318,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -336,12 +282,6 @@ Modifies the Onepanel user password.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
@@ -349,15 +289,12 @@ var username = "username_example"; // String | The user name.
 
 var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
 
+apiInstance.modifyUser(username, userModifyRequest).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyUser(username, userModifyRequest, callback);
 ```
 
 ### Parameters
@@ -373,7 +310,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -391,26 +328,17 @@ Removes a node from the administrative cluster. This operation removes all user 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var host = "host_example"; // String | Hostname of a node to be removed from the cluster.
 
+apiInstance.removeClusterHost(host).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeClusterHost(host, callback);
 ```
 
 ### Parameters
@@ -425,7 +353,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -443,26 +371,17 @@ Removes the Onepanel user account.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
 var username = "username_example"; // String | The name of the user to be removed.
 
+apiInstance.removeUser(username).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeUser(username, callback);
 ```
 
 ### Parameters
@@ -477,7 +396,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 

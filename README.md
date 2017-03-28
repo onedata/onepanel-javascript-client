@@ -53,26 +53,16 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var Onepanel = require('onepanel');
 
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME'
-basic.password = 'YOUR PASSWORD'
-
 var api = new Onepanel.OnepanelApi()
 
 var userCreateRequest = new Onepanel.UserCreateRequest(); // {UserCreateRequest} The user configuration details.
 
+api.addUser(userCreateRequest).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-api.addUser(userCreateRequest, callback);
 
 ```
 

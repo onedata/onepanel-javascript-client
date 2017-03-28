@@ -31,12 +31,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 
 var host = "host_example"; // String | Hostname of a node to be removed from the cluster.
 
-apiInstance.deleteHostsHost(host).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.deleteHostsHost(host, callback);
 ```
 
 ### Parameters
@@ -74,12 +77,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 
 var username = "username_example"; // String | The name of the user to be removed.
 
-apiInstance.deleteUsersUsername(username).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.deleteUsersUsername(username, callback);
 ```
 
 ### Parameters
@@ -114,12 +120,15 @@ Returns cookie of a cluster this host belongs to. The cookie is a character sequ
 var Onepanel = require('onepanel');
 
 var apiInstance = new Onepanel.OnepanelApi();
-apiInstance.getCookie().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCookie(callback);
 ```
 
 ### Parameters
@@ -155,12 +164,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 var opts = { 
   'discovered': false // Boolean | Defines whether return cluster or discovered hosts.
 };
-apiInstance.getHosts(opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getHosts(opts, callback);
 ```
 
 ### Parameters
@@ -198,12 +210,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 
 var id = "id_example"; // String | The task ID.
 
-apiInstance.getTasksId(id).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getTasksId(id, callback);
 ```
 
 ### Parameters
@@ -241,12 +256,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 
 var username = "username_example"; // String | The name of a user whose details should be returned.
 
-apiInstance.getUsersUsername(username).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getUsersUsername(username, callback);
 ```
 
 ### Parameters
@@ -286,12 +304,15 @@ var username = "username_example"; // String | The user name.
 
 var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
 
-apiInstance.patchUsersUsername(username, userModifyRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.patchUsersUsername(username, userModifyRequest, callback);
 ```
 
 ### Parameters
@@ -332,12 +353,15 @@ var opts = {
   'clusterHost': "clusterHost_example", // String | Hostname of an existing cluster node.
   'cookie': new Onepanel.Cookie() // Cookie | 
 };
-apiInstance.postHosts(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.postHosts(opts, callback);
 ```
 
 ### Parameters
@@ -376,12 +400,15 @@ var apiInstance = new Onepanel.OnepanelApi();
 
 var userCreateRequest = new Onepanel.UserCreateRequest(); // UserCreateRequest | 
 
-apiInstance.postUsers(userCreateRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.postUsers(userCreateRequest, callback);
 ```
 
 ### Parameters

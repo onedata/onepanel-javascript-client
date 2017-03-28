@@ -45,13 +45,20 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
+    /**
+     * Callback function to receive the result of the deleteProvider operation.
+     * @callback module:api/OneproviderApi~deleteProviderCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Unregister provider
      * Unregisters provider from the zone.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~deleteProviderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteProvider = function() {
+    this.deleteProvider = function(callback) {
       var postBody = null;
 
 
@@ -72,18 +79,25 @@
       return this.apiClient.callApi(
         '/provider', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the deleteProviderSpacesId operation.
+     * @callback module:api/OneproviderApi~deleteProviderSpacesIdCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Revoke space support
      * Revokes support for a space.
      * @param {String} id The ID of a space to be removed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~deleteProviderSpacesIdCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteProviderSpacesId = function(id) {
+    this.deleteProviderSpacesId = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -110,17 +124,25 @@
       return this.apiClient.callApi(
         '/provider/spaces/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProvider operation.
+     * @callback module:api/OneproviderApi~getProviderCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ProviderDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider details
      * Returns the basic configuration information of the provider.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProviderDetails}
+     * @param {module:api/OneproviderApi~getProviderCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ProviderDetails}
      */
-    this.getProvider = function() {
+    this.getProvider = function(callback) {
       var postBody = null;
 
 
@@ -141,17 +163,25 @@
       return this.apiClient.callApi(
         '/provider', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderConfiguration operation.
+     * @callback module:api/OneproviderApi~getProviderConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ProviderConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider cluster configuration
      * Returns the provider cluster configuration.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProviderConfiguration}
+     * @param {module:api/OneproviderApi~getProviderConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ProviderConfiguration}
      */
-    this.getProviderConfiguration = function() {
+    this.getProviderConfiguration = function(callback) {
       var postBody = null;
 
 
@@ -172,17 +202,25 @@
       return this.apiClient.callApi(
         '/provider/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderDatabases operation.
+     * @callback module:api/OneproviderApi~getProviderDatabasesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider databases status
      * Returns status of database service on each host where it has been deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OneproviderApi~getProviderDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getProviderDatabases = function() {
+    this.getProviderDatabases = function(callback) {
       var postBody = null;
 
 
@@ -203,18 +241,26 @@
       return this.apiClient.callApi(
         '/provider/databases', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderDatabasesHost operation.
+     * @callback module:api/OneproviderApi~getProviderDatabasesHostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider database status
      * Returns status of database service on the selected host.
      * @param {String} host The name of a host for which database service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OneproviderApi~getProviderDatabasesHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getProviderDatabasesHost = function(host) {
+    this.getProviderDatabasesHost = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -241,17 +287,25 @@
       return this.apiClient.callApi(
         '/provider/databases/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderManagers operation.
+     * @callback module:api/OneproviderApi~getProviderManagersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider cluster managers status
      * Returns status of cluster manager service on each host where it has been deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OneproviderApi~getProviderManagersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getProviderManagers = function() {
+    this.getProviderManagers = function(callback) {
       var postBody = null;
 
 
@@ -272,18 +326,26 @@
       return this.apiClient.callApi(
         '/provider/managers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderManagersHost operation.
+     * @callback module:api/OneproviderApi~getProviderManagersHostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider cluster manager status
      * Returns status of cluster manager service on the selected host.
      * @param {String} host The name of a host for which cluster manager service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OneproviderApi~getProviderManagersHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getProviderManagersHost = function(host) {
+    this.getProviderManagersHost = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -310,17 +372,25 @@
       return this.apiClient.callApi(
         '/provider/managers/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderSpaces operation.
+     * @callback module:api/OneproviderApi~getProviderSpacesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ProviderSpaces} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider spaces
      * Returns the collection of spaces supported by a provider.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProviderSpaces}
+     * @param {module:api/OneproviderApi~getProviderSpacesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ProviderSpaces}
      */
-    this.getProviderSpaces = function() {
+    this.getProviderSpaces = function(callback) {
       var postBody = null;
 
 
@@ -341,18 +411,26 @@
       return this.apiClient.callApi(
         '/provider/spaces', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderSpacesId operation.
+     * @callback module:api/OneproviderApi~getProviderSpacesIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SpaceDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get space details
      * Returns space details.
      * @param {String} id The ID of a space which details should be returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SpaceDetails}
+     * @param {module:api/OneproviderApi~getProviderSpacesIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceDetails}
      */
-    this.getProviderSpacesId = function(id) {
+    this.getProviderSpacesId = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -379,17 +457,25 @@
       return this.apiClient.callApi(
         '/provider/spaces/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderStorages operation.
+     * @callback module:api/OneproviderApi~getProviderStoragesCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ClusterStorages>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get storages
      * Returns the list of provider storage resources and their details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ClusterStorages>}
+     * @param {module:api/OneproviderApi~getProviderStoragesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ClusterStorages>}
      */
-    this.getProviderStorages = function() {
+    this.getProviderStorages = function(callback) {
       var postBody = null;
 
 
@@ -410,18 +496,26 @@
       return this.apiClient.callApi(
         '/provider/storages', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderStoragesName operation.
+     * @callback module:api/OneproviderApi~getProviderStoragesNameCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterStorages} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get storage details
      * Returns the details of the selected storage.
      * @param {String} name The name of a storage resource, which details should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ClusterStorages}
+     * @param {module:api/OneproviderApi~getProviderStoragesNameCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterStorages}
      */
-    this.getProviderStoragesName = function(name) {
+    this.getProviderStoragesName = function(name, callback) {
       var postBody = null;
 
       // verify the required parameter 'name' is set
@@ -448,17 +542,25 @@
       return this.apiClient.callApi(
         '/provider/storages/{name}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderWorkers operation.
+     * @callback module:api/OneproviderApi~getProviderWorkersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider cluster workers status
      * Returns status of cluster worker service on each host where it has been deployed. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatus}
+     * @param {module:api/OneproviderApi~getProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
      */
-    this.getProviderWorkers = function() {
+    this.getProviderWorkers = function(callback) {
       var postBody = null;
 
 
@@ -479,18 +581,26 @@
       return this.apiClient.callApi(
         '/provider/workers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the getProviderWorkersHost operation.
+     * @callback module:api/OneproviderApi~getProviderWorkersHostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Get provider cluster worker status
      * Returns status of cluster worker service on the selected host.
      * @param {String} host The name of a host for which cluster worker service status should be returned. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceStatusHost}
+     * @param {module:api/OneproviderApi~getProviderWorkersHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
      */
-    this.getProviderWorkersHost = function(host) {
+    this.getProviderWorkersHost = function(host, callback) {
       var postBody = null;
 
       // verify the required parameter 'host' is set
@@ -517,18 +627,25 @@
       return this.apiClient.callApi(
         '/provider/workers/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProvider operation.
+     * @callback module:api/OneproviderApi~patchProviderCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Modify provider details
      * Modifies basic provider details in the zone.
      * @param {module:model/ProviderModifyRequest} providerModifyRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProvider = function(providerModifyRequest) {
+    this.patchProvider = function(providerModifyRequest, callback) {
       var postBody = providerModifyRequest;
 
       // verify the required parameter 'providerModifyRequest' is set
@@ -554,19 +671,26 @@
       return this.apiClient.callApi(
         '/provider', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderDatabases operation.
+     * @callback module:api/OneproviderApi~patchProviderDatabasesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider databases
      * Starts or stops database service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderDatabases = function(opts) {
+    this.patchProviderDatabases = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -589,10 +713,17 @@
       return this.apiClient.callApi(
         '/provider/databases', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderDatabasesHost operation.
+     * @callback module:api/OneproviderApi~patchProviderDatabasesHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider database
@@ -600,9 +731,9 @@
      * @param {String} host The name of a host for which database service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderDatabasesHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderDatabasesHost = function(host, opts) {
+    this.patchProviderDatabasesHost = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -631,19 +762,26 @@
       return this.apiClient.callApi(
         '/provider/databases/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderManagers operation.
+     * @callback module:api/OneproviderApi~patchProviderManagersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider cluster managers
      * Starts or stops cluster manager service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderManagers = function(opts) {
+    this.patchProviderManagers = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -666,10 +804,17 @@
       return this.apiClient.callApi(
         '/provider/managers', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderManagersHost operation.
+     * @callback module:api/OneproviderApi~patchProviderManagersHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider cluster manager
@@ -677,9 +822,9 @@
      * @param {String} host The name of a host for which cluster manager service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderManagersHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderManagersHost = function(host, opts) {
+    this.patchProviderManagersHost = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -708,19 +853,26 @@
       return this.apiClient.callApi(
         '/provider/managers/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderWorkers operation.
+     * @callback module:api/OneproviderApi~patchProviderWorkersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider cluster workers
      * Starts or stops cluster worker service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderWorkers = function(opts) {
+    this.patchProviderWorkers = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -743,10 +895,17 @@
       return this.apiClient.callApi(
         '/provider/workers', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the patchProviderWorkersHost operation.
+     * @callback module:api/OneproviderApi~patchProviderWorkersHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Start/stop provider cluster worker
@@ -754,9 +913,9 @@
      * @param {String} host The name of a host for which cluster worker service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~patchProviderWorkersHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.patchProviderWorkersHost = function(host, opts) {
+    this.patchProviderWorkersHost = function(host, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -785,18 +944,25 @@
       return this.apiClient.callApi(
         '/provider/workers/{host}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProvider operation.
+     * @callback module:api/OneproviderApi~putProviderCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Register provider
      * Registers provider in the zone.
      * @param {module:model/ProviderRegisterRequest} providerRegisterRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProvider = function(providerRegisterRequest) {
+    this.putProvider = function(providerRegisterRequest, callback) {
       var postBody = providerRegisterRequest;
 
       // verify the required parameter 'providerRegisterRequest' is set
@@ -822,18 +988,25 @@
       return this.apiClient.callApi(
         '/provider', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderConfiguration operation.
+     * @callback module:api/OneproviderApi~putProviderConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Configure provider deployment
      * Configures and starts provider services, such as database, cluster manager and cluster worker. Depending on the configuration, sets up provider storage and registers in the zone.  This request can be executed unauthorized as long as there are no admin users. 
      * @param {module:model/ProviderConfiguration} providerConfiguration 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderConfiguration = function(providerConfiguration) {
+    this.putProviderConfiguration = function(providerConfiguration, callback) {
       var postBody = providerConfiguration;
 
       // verify the required parameter 'providerConfiguration' is set
@@ -859,18 +1032,25 @@
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderDatabases operation.
+     * @callback module:api/OneproviderApi~putProviderDatabasesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Deploy provider databases
      * Deploys a database service on provided hosts.
      * @param {module:model/ServiceDatabases} serviceHosts 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderDatabases = function(serviceHosts) {
+    this.putProviderDatabases = function(serviceHosts, callback) {
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
@@ -896,18 +1076,25 @@
       return this.apiClient.callApi(
         '/provider/databases', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderManagers operation.
+     * @callback module:api/OneproviderApi~putProviderManagersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Deploy provider cluster managers
      * Deploys a cluster manager service on provided hosts.
      * @param {module:model/ManagerHosts} managerHosts 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderManagers = function(managerHosts) {
+    this.putProviderManagers = function(managerHosts, callback) {
       var postBody = managerHosts;
 
       // verify the required parameter 'managerHosts' is set
@@ -933,18 +1120,25 @@
       return this.apiClient.callApi(
         '/provider/managers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderSpaces operation.
+     * @callback module:api/OneproviderApi~putProviderSpacesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Create or support space
      * Supports an existing space or creates a new space and automatically supports it. 
      * @param {module:model/SpaceSupportRequest} spaceSupportRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderSpacesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderSpaces = function(spaceSupportRequest) {
+    this.putProviderSpaces = function(spaceSupportRequest, callback) {
       var postBody = spaceSupportRequest;
 
       // verify the required parameter 'spaceSupportRequest' is set
@@ -970,18 +1164,25 @@
       return this.apiClient.callApi(
         '/provider/spaces', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderStorages operation.
+     * @callback module:api/OneproviderApi~putProviderStoragesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Configure storage
      * Adds a storage to the provider deployment.
      * @param {module:model/ClusterStoragesList} clusterStoragesList The list of configuration details of storages to be added to the provider deployment. 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderStoragesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderStorages = function(clusterStoragesList) {
+    this.putProviderStorages = function(clusterStoragesList, callback) {
       var postBody = clusterStoragesList;
 
       // verify the required parameter 'clusterStoragesList' is set
@@ -1007,18 +1208,25 @@
       return this.apiClient.callApi(
         '/provider/storages', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
 
+    /**
+     * Callback function to receive the result of the putProviderWorkers operation.
+     * @callback module:api/OneproviderApi~putProviderWorkersCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
 
     /**
      * Deploy provider cluster workers
      * Deploys a cluster worker service on provided hosts.
      * @param {module:model/ServiceHosts} serviceHosts 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @param {module:api/OneproviderApi~putProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.putProviderWorkers = function(serviceHosts) {
+    this.putProviderWorkers = function(serviceHosts, callback) {
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
@@ -1044,7 +1252,7 @@
       return this.apiClient.callApi(
         '/provider/workers', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
+        authNames, contentTypes, accepts, returnType, callback
       );
     }
   };

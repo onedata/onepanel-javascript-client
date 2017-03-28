@@ -64,12 +64,15 @@ var api = new Onepanel.OnepanelApi()
 
 var userCreateRequest = new Onepanel.UserCreateRequest(); // {UserCreateRequest} The user configuration details.
 
-api.addUser(userCreateRequest).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.addUser(userCreateRequest, callback);
 
 ```
 

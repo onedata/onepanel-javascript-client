@@ -46,12 +46,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var serviceHosts = new Onepanel.ServiceDatabases(); // ServiceDatabases | The service hosts configuration where databases should be deployed. 
 
-apiInstance.addZoneDatabases(serviceHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addZoneDatabases(serviceHosts, callback);
 ```
 
 ### Parameters
@@ -95,12 +98,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var managerHosts = new Onepanel.ManagerHosts(); // ManagerHosts | The hosts specification where cluster managers should be deployed. 
 
-apiInstance.addZoneManagers(managerHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addZoneManagers(managerHosts, callback);
 ```
 
 ### Parameters
@@ -144,12 +150,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The hosts specification where the workers should be deployed.
 
-apiInstance.addZoneWorkers(serviceHosts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addZoneWorkers(serviceHosts, callback);
 ```
 
 ### Parameters
@@ -193,12 +202,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var zoneConfiguration = new Onepanel.ZoneConfiguration(); // ZoneConfiguration | The zone configuration description.
 
-apiInstance.configureZone(zoneConfiguration).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.configureZone(zoneConfiguration, callback);
 ```
 
 ### Parameters
@@ -239,12 +251,15 @@ basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
-apiInstance.getZoneConfiguration().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneConfiguration(callback);
 ```
 
 ### Parameters
@@ -285,12 +300,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var host = "host_example"; // String | The name of a host for which database service status should be returned. 
 
-apiInstance.getZoneDatabaseStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneDatabaseStatus(host, callback);
 ```
 
 ### Parameters
@@ -331,12 +349,15 @@ basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
-apiInstance.getZoneDatabasesStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneDatabasesStatus(callback);
 ```
 
 ### Parameters
@@ -377,12 +398,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be  returned. 
 
-apiInstance.getZoneManagerStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneManagerStatus(host, callback);
 ```
 
 ### Parameters
@@ -423,12 +447,15 @@ basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
-apiInstance.getZoneManagersStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneManagersStatus(callback);
 ```
 
 ### Parameters
@@ -466,12 +493,15 @@ basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
-apiInstance.getZoneNagiosReport().then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getZoneNagiosReport(callback);
 ```
 
 ### Parameters
@@ -512,12 +542,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 
 var host = "host_example"; // String | The name of a host for which cluster worker service status should be returned. 
 
-apiInstance.getZoneWorkerStatus(host).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneWorkerStatus(host, callback);
 ```
 
 ### Parameters
@@ -558,12 +591,15 @@ basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
-apiInstance.getZoneWorkersStatus().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneWorkersStatus(callback);
 ```
 
 ### Parameters
@@ -605,12 +641,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneDatabases(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneDatabases(opts, callback);
 ```
 
 ### Parameters
@@ -657,12 +696,15 @@ var host = "host_example"; // String | The name of a host for which database ser
 var opts = { 
   'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneDatabasesHost(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneDatabasesHost(host, opts, callback);
 ```
 
 ### Parameters
@@ -710,12 +752,15 @@ var host = "host_example"; // String | The name of a host for which cluster mana
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneManager(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneManager(host, opts, callback);
 ```
 
 ### Parameters
@@ -761,12 +806,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneManagers(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneManagers(opts, callback);
 ```
 
 ### Parameters
@@ -813,12 +861,15 @@ var host = "host_example"; // String | The name of a host for which cluster work
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneWorker(host, opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneWorker(host, opts, callback);
 ```
 
 ### Parameters
@@ -864,12 +915,15 @@ var apiInstance = new Onepanel.OnezoneApi();
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state. 
 };
-apiInstance.startStopZoneWorkers(opts).then(function() {
-  console.log('API called successfully.');
-}, function(error) {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopZoneWorkers(opts, callback);
 ```
 
 ### Parameters

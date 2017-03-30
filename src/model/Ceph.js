@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterStorages'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterStorages'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterStorages);
+    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, ClusterStorages) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
@@ -42,8 +42,8 @@
    * The Ceph storage configuration.
    * @alias module:model/Ceph
    * @class
-   * @extends module:model/ClusterStorages
-   * @param type {module:model/ClusterStorages.TypeEnum} The type of storage.
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor host name.
@@ -52,7 +52,7 @@
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
-    ClusterStorages.call(_this, type);
+    StorageDetails.call(_this, type);
     _this['username'] = username;
     _this['key'] = key;
     _this['monitorHostname'] = monitorHostname;
@@ -73,7 +73,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ClusterStorages.constructFromObject(data, obj);
+      StorageDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('username')) {
         obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
@@ -102,7 +102,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(ClusterStorages.prototype);
+  exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

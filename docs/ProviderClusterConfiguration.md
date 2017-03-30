@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **databases** | [**ClusterDatabases**](ClusterDatabases.md) |  | 
 **managers** | [**ClusterManagers**](ClusterManagers.md) |  | 
 **workers** | [**ClusterWorkers**](ClusterWorkers.md) |  | 
-**storages** | [**{String: ClusterStorages}**](ClusterStorages.md) | The cluster storage configuration. | [optional] 
+**storages** | [**StorageCreateRequest**](StorageCreateRequest.md) |  | [optional] 
 
 

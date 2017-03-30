@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
+*Onepanel.OnepanelApi* | [**login**](docs/OnepanelApi.md#login) | **POST** /login | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
@@ -95,7 +96,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
-*Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage.
+*Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -108,12 +109,12 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderApi* | [**getProviderWorkersStatus**](docs/OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 *Onepanel.OneproviderApi* | [**getSpaceDetails**](docs/OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
-*Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{name} | Get storage details
+*Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
-*Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{name} | Modify storage details
+*Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
-*Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space.
+*Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 *Onepanel.OneproviderApi* | [**startStopProviderDatabases**](docs/OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 *Onepanel.OneproviderApi* | [**startStopProviderManager**](docs/OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -146,8 +147,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.ClusterDatabases](docs/ClusterDatabases.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
- - [Onepanel.ClusterStorages](docs/ClusterStorages.md)
- - [Onepanel.ClusterStoragesList](docs/ClusterStoragesList.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.Error](docs/Error.md)
@@ -163,14 +162,18 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderModifyRequest](docs/ProviderModifyRequest.md)
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
+ - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
  - [Onepanel.S3](docs/S3.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)
  - [Onepanel.ServiceStatus](docs/ServiceStatus.md)
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
+ - [Onepanel.SessionDetails](docs/SessionDetails.md)
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
+ - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
+ - [Onepanel.StorageDetails](docs/StorageDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
  - [Onepanel.Swift](docs/Swift.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)

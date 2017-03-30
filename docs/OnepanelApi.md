@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
+[**login**](OnepanelApi.md#login) | **POST** /login | Create Onepanel user session
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
@@ -324,6 +325,52 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="login"></a>
+# **login**
+> SessionDetails login()
+
+Create Onepanel user session
+
+Creates a new Onepanel user session.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.default;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.login(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SessionDetails**](SessionDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="modifyUser"></a>
 # **modifyUser**

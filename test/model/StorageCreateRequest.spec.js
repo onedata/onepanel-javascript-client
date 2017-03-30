@@ -13,94 +13,47 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.POSIX = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.StorageCreateRequest();
+  });
 
-
-  /**
-   * The POSIX model module.
-   * @module model/POSIX
-   * @version 3.0.0-dev
-   */
-
-  /**
-   * Constructs a new <code>POSIX</code>.
-   * The POSIX storage configuration.
-   * @alias module:model/POSIX
-   * @class
-   * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
-   * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
-   */
-  var exports = function(type, mountPoint) {
-    var _this = this;
-    StorageDetails.call(_this, type);
-    _this['mountPoint'] = mountPoint;
-
-
-  };
-
-  /**
-   * Constructs a <code>POSIX</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/POSIX} obj Optional instance to populate.
-   * @return {module:model/POSIX} The populated <code>POSIX</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('mountPoint')) {
-        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
-  exports.prototype.constructor = exports;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-  /**
-   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
-   * @member {String} mountPoint
-   */
-  exports.prototype['mountPoint'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
+  describe('StorageCreateRequest', function() {
+    it('should create an instance of StorageCreateRequest', function() {
+      // uncomment below and update the code to test StorageCreateRequest
+      //var instane = new Onepanel.StorageCreateRequest();
+      //expect(instance).to.be.a(Onepanel.StorageCreateRequest);
+    });
 
+  });
 
-
-  return exports;
 }));
-
-

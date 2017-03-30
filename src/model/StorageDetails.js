@@ -14,90 +14,102 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.POSIX = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The POSIX model module.
-   * @module model/POSIX
+   * The StorageDetails model module.
+   * @module model/StorageDetails
    * @version 3.0.0-dev
    */
 
   /**
-   * Constructs a new <code>POSIX</code>.
-   * The POSIX storage configuration.
-   * @alias module:model/POSIX
+   * Constructs a new <code>StorageDetails</code>.
+   * The cluster storage configuration.
+   * @alias module:model/StorageDetails
    * @class
-   * @extends module:model/StorageDetails
    * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
-   * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    */
-  var exports = function(type, mountPoint) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this, type);
-    _this['mountPoint'] = mountPoint;
 
 
+    _this['type'] = type;
   };
 
   /**
-   * Constructs a <code>POSIX</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/POSIX} obj Optional instance to populate.
-   * @return {module:model/POSIX} The populated <code>POSIX</code> instance.
+   * @param {module:model/StorageDetails} obj Optional instance to populate.
+   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('mountPoint')) {
-        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
-  exports.prototype.constructor = exports;
+  /**
+   * The name of storage.
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
+   * The type of storage.
+   * @member {module:model/StorageDetails.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+
 
   /**
-   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
-   * @member {String} mountPoint
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
    */
-  exports.prototype['mountPoint'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-
+  exports.TypeEnum = {
+    /**
+     * value: "POSIX"
+     * @const
+     */
+    "POSIX": "POSIX",
+    /**
+     * value: "S3"
+     * @const
+     */
+    "S3": "S3",
+    /**
+     * value: "Ceph"
+     * @const
+     */
+    "Ceph": "Ceph",
+    /**
+     * value: "Swift"
+     * @const
+     */
+    "Swift": "Swift"  };
 
 
   return exports;

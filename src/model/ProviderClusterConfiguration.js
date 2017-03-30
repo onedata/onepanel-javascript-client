@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterStorages', 'model/ClusterWorkers', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterStorages'), require('./ClusterWorkers'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterStorages, root.Onepanel.ClusterWorkers, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterStorages, ClusterWorkers, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
   'use strict';
 
 
@@ -90,7 +90,7 @@
         obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
       }
       if (data.hasOwnProperty('storages')) {
-        obj['storages'] = ApiClient.convertToType(data['storages'], {'String': ClusterStorages});
+        obj['storages'] = StorageCreateRequest.constructFromObject(data['storages']);
       }
     }
     return obj;
@@ -124,8 +124,7 @@
    */
   exports.prototype['workers'] = undefined;
   /**
-   * The cluster storage configuration.
-   * @member {Object.<String, module:model/ClusterStorages>} storages
+   * @member {module:model/StorageCreateRequest} storages
    */
   exports.prototype['storages'] = undefined;
 

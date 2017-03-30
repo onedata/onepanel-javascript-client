@@ -108,6 +108,16 @@
         done();
       });
     });
+    describe('login', function() {
+      it('should call login successfully', function(done) {
+        //uncomment below and update the code to test login
+        //instance.login(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyUser', function() {
       it('should call modifyUser successfully', function(done) {
         //uncomment below and update the code to test modifyUser

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterStorages'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterStorages'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterStorages);
+    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, ClusterStorages) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
@@ -42,8 +42,8 @@
    * The OpenStack Swift configuration.
    * @alias module:model/Swift
    * @class
-   * @extends module:model/ClusterStorages
-   * @param type {module:model/ClusterStorages.TypeEnum} The type of storage.
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
    * @param tenantName {String} The name of the tenant to which the user belongs.
    * @param containerName {String} The name of the Swift storage container.
@@ -52,7 +52,7 @@
    */
   var exports = function(type, authUrl, tenantName, containerName, username, password) {
     var _this = this;
-    ClusterStorages.call(_this, type);
+    StorageDetails.call(_this, type);
     _this['authUrl'] = authUrl;
     _this['tenantName'] = tenantName;
     _this['containerName'] = containerName;
@@ -74,7 +74,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ClusterStorages.constructFromObject(data, obj);
+      StorageDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('authUrl')) {
         obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
       }
@@ -106,7 +106,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(ClusterStorages.prototype);
+  exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest);
   }
-}(this, function(ApiClient, Cookie, Error, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest) {
+}(this, function(ApiClient, Cookie, Error, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest) {
   'use strict';
 
   /**
@@ -301,6 +301,45 @@
 
       return this.apiClient.callApi(
         '/users/{username}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the login operation.
+     * @callback module:api/OnepanelApi~loginCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create Onepanel user session
+     * Creates a new Onepanel user session.
+     * @param {module:api/OnepanelApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SessionDetails}
+     */
+    this.login = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = SessionDetails;
+
+      return this.apiClient.callApi(
+        '/login', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

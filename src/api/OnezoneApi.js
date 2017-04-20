@@ -63,7 +63,7 @@
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts == undefined || serviceHosts == null) {
+      if (serviceHosts === undefined || serviceHosts === null) {
         throw new Error("Missing the required parameter 'serviceHosts' when calling addZoneDatabases");
       }
 
@@ -107,7 +107,7 @@
       var postBody = managerHosts;
 
       // verify the required parameter 'managerHosts' is set
-      if (managerHosts == undefined || managerHosts == null) {
+      if (managerHosts === undefined || managerHosts === null) {
         throw new Error("Missing the required parameter 'managerHosts' when calling addZoneManagers");
       }
 
@@ -151,7 +151,7 @@
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts == undefined || serviceHosts == null) {
+      if (serviceHosts === undefined || serviceHosts === null) {
         throw new Error("Missing the required parameter 'serviceHosts' when calling addZoneWorkers");
       }
 
@@ -195,7 +195,7 @@
       var postBody = zoneConfiguration;
 
       // verify the required parameter 'zoneConfiguration' is set
-      if (zoneConfiguration == undefined || zoneConfiguration == null) {
+      if (zoneConfiguration === undefined || zoneConfiguration === null) {
         throw new Error("Missing the required parameter 'zoneConfiguration' when calling configureZone");
       }
 
@@ -279,7 +279,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getZoneDatabaseStatus");
       }
 
@@ -364,7 +364,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getZoneManagerStatus");
       }
 
@@ -487,7 +487,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getZoneWorkerStatus");
       }
 
@@ -616,7 +616,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopZoneDatabasesHost");
       }
 
@@ -665,7 +665,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopZoneManager");
       }
 
@@ -756,7 +756,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopZoneWorker");
       }
 

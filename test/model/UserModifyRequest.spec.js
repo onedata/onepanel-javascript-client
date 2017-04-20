@@ -54,8 +54,14 @@
       //expect(instance).to.be.a(Onepanel.UserModifyRequest);
     });
 
-    it('should have the property password (base name: "password")', function() {
-      // uncomment below and update the code to test the property password
+    it('should have the property currentPassword (base name: "currentPassword")', function() {
+      // uncomment below and update the code to test the property currentPassword
+      //var instane = new Onepanel.UserModifyRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property newPassword (base name: "newPassword")', function() {
+      // uncomment below and update the code to test the property newPassword
       //var instane = new Onepanel.UserModifyRequest();
       //expect(instance).to.be();
     });

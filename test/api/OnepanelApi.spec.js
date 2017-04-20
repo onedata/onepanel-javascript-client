@@ -68,6 +68,16 @@
         done();
       });
     });
+    describe('createSession', function() {
+      it('should call createSession successfully', function(done) {
+        //uncomment below and update the code to test createSession
+        //instance.createSession(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getClusterCookie', function() {
       it('should call getClusterCookie successfully', function(done) {
         //uncomment below and update the code to test getClusterCookie
@@ -82,6 +92,16 @@
       it('should call getClusterHosts successfully', function(done) {
         //uncomment below and update the code to test getClusterHosts
         //instance.getClusterHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getSession', function() {
+      it('should call getSession successfully', function(done) {
+        //uncomment below and update the code to test getSession
+        //instance.getSession(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -108,16 +128,6 @@
         done();
       });
     });
-    describe('login', function() {
-      it('should call login successfully', function(done) {
-        //uncomment below and update the code to test login
-        //instance.login(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('modifyUser', function() {
       it('should call modifyUser successfully', function(done) {
         //uncomment below and update the code to test modifyUser
@@ -132,6 +142,16 @@
       it('should call removeClusterHost successfully', function(done) {
         //uncomment below and update the code to test removeClusterHost
         //instance.removeClusterHost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeSession', function() {
+      it('should call removeSession successfully', function(done) {
+        //uncomment below and update the code to test removeSession
+        //instance.removeSession(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

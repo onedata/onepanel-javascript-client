@@ -63,7 +63,7 @@
       var postBody = userCreateRequest;
 
       // verify the required parameter 'userCreateRequest' is set
-      if (userCreateRequest == undefined || userCreateRequest == null) {
+      if (userCreateRequest === undefined || userCreateRequest === null) {
         throw new Error("Missing the required parameter 'userCreateRequest' when calling addUser");
       }
 
@@ -127,6 +127,45 @@
 
       return this.apiClient.callApi(
         '/hosts', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createSession operation.
+     * @callback module:api/OnepanelApi~createSessionCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create Onepanel user session
+     * Creates a new Onepanel user session.
+     * @param {module:api/OnepanelApi~createSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SessionDetails}
+     */
+    this.createSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = SessionDetails;
+
+      return this.apiClient.callApi(
+        '/session', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -215,6 +254,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getSession operation.
+     * @callback module:api/OnepanelApi~getSessionCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Onepanel user session
+     * Returns details of a Onepanel user session associated with the request. 
+     * @param {module:api/OnepanelApi~getSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SessionDetails}
+     */
+    this.getSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SessionDetails;
+
+      return this.apiClient.callApi(
+        '/session', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getTaskStatus operation.
      * @callback module:api/OnepanelApi~getTaskStatusCallback
      * @param {String} error Error message, if any.
@@ -233,7 +311,7 @@
       var postBody = null;
 
       // verify the required parameter 'id' is set
-      if (id == undefined || id == null) {
+      if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling getTaskStatus");
       }
 
@@ -279,7 +357,7 @@
       var postBody = null;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling getUser");
       }
 
@@ -307,45 +385,6 @@
     }
 
     /**
-     * Callback function to receive the result of the login operation.
-     * @callback module:api/OnepanelApi~loginCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SessionDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create Onepanel user session
-     * Creates a new Onepanel user session.
-     * @param {module:api/OnepanelApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SessionDetails}
-     */
-    this.login = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = SessionDetails;
-
-      return this.apiClient.callApi(
-        '/login', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the modifyUser operation.
      * @callback module:api/OnepanelApi~modifyUserCallback
      * @param {String} error Error message, if any.
@@ -364,12 +403,12 @@
       var postBody = userModifyRequest;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling modifyUser");
       }
 
       // verify the required parameter 'userModifyRequest' is set
-      if (userModifyRequest == undefined || userModifyRequest == null) {
+      if (userModifyRequest === undefined || userModifyRequest === null) {
         throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyUser");
       }
 
@@ -414,7 +453,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling removeClusterHost");
       }
 
@@ -442,6 +481,44 @@
     }
 
     /**
+     * Callback function to receive the result of the removeSession operation.
+     * @callback module:api/OnepanelApi~removeSessionCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove Onepanel user session
+     * Removes the Onepanel user session. 
+     * @param {module:api/OnepanelApi~removeSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/session', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the removeUser operation.
      * @callback module:api/OnepanelApi~removeUserCallback
      * @param {String} error Error message, if any.
@@ -459,7 +536,7 @@
       var postBody = null;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling removeUser");
       }
 

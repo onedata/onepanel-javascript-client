@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**password** | **String** | The user password. | 
+**currentPassword** | **String** | The current user password that should be changed or password of an administrator that is issuing this request on behalf of a user.   | 
+**newPassword** | **String** | The new user password. | 
 
 

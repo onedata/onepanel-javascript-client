@@ -42,12 +42,24 @@
    * The user configuration details that can be modified.
    * @alias module:model/UserModifyRequest
    * @class
-   * @param password {String} The user password.
+   * @param currentPassword {String} The current user password that should be changed or password of an administrator that is issuing this request on behalf of a user.  
+   * @param newPassword {String} The new user password.
    */
-  var exports = function(password) {
+  var exports = function(currentPassword, newPassword) {
     var _this = this;
 
-    _this['password'] = password;
+    _this['currentPassword'] = currentPassword;
+    _this['newPassword'] = newPassword;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/UserModifyRequest} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
   };
 
   /**
@@ -61,18 +73,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
+      if (data.hasOwnProperty('currentPassword')) {
+        obj['currentPassword'] = ApiClient.convertToType(data['currentPassword'], 'String');
+      }
+      if (data.hasOwnProperty('newPassword')) {
+        obj['newPassword'] = ApiClient.convertToType(data['newPassword'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The user password.
-   * @member {String} password
+   * The current user password that should be changed or password of an administrator that is issuing this request on behalf of a user.  
+   * @member {String} currentPassword
    */
-  exports.prototype['password'] = undefined;
+  exports.prototype['currentPassword'] = undefined;
+  /**
+   * The new user password.
+   * @member {String} newPassword
+   */
+  exports.prototype['newPassword'] = undefined;
 
 
 

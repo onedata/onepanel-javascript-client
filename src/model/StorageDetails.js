@@ -52,6 +52,16 @@
   };
 
   /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    return 'type';
+  };
+
+  /**
    * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.

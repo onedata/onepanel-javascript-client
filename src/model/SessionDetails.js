@@ -43,11 +43,23 @@
    * @alias module:model/SessionDetails
    * @class
    * @param sessionId {String} The session ID.
+   * @param username {String} The name of a user associated with the session.
    */
-  var exports = function(sessionId) {
+  var exports = function(sessionId, username) {
     var _this = this;
 
     _this['sessionId'] = sessionId;
+    _this['username'] = username;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/SessionDetails} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
   };
 
   /**
@@ -64,6 +76,9 @@
       if (data.hasOwnProperty('sessionId')) {
         obj['sessionId'] = ApiClient.convertToType(data['sessionId'], 'String');
       }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
     }
     return obj;
   }
@@ -73,6 +88,11 @@
    * @member {String} sessionId
    */
   exports.prototype['sessionId'] = undefined;
+  /**
+   * The name of a user associated with the session.
+   * @member {String} username
+   */
+  exports.prototype['username'] = undefined;
 
 
 

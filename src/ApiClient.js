@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['superagent'], factory);
+    define(['superagent', 'querystring'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('superagent'));
+    module.exports = factory(require('superagent'), require('querystring'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ApiClient = factory(root.superagent);
+    root.Onepanel.ApiClient = factory(root.superagent, root.querystring);
   }
-}(this, function(superagent) {
+}(this, function(superagent, querystring) {
   'use strict';
 
   /**
@@ -76,6 +76,22 @@
      * @default true
      */
     this.cache = true;
+
+    /**
+     * If set to true, the client will save the cookies from each server
+     * response, and return them in the next request.
+     * @default false
+     */
+    this.enableCookies = false;
+
+    /*
+     * Used to save and return cookies in a node.js (non-browser) setting,
+     * if this.enableCookies is set to true.
+     */
+    if (typeof window === 'undefined') {
+      this.agent = new superagent.agent();
+    }
+
   };
 
   /**
@@ -384,7 +400,7 @@
     }
 
     if (contentType === 'application/x-www-form-urlencoded') {
-      request.send(this.normalizeParams(formParams));
+      request.send(querystring.stringify(this.normalizeParams(formParams)));
     } else if (contentType == 'multipart/form-data') {
       var _formParams = this.normalizeParams(formParams);
       for (var key in _formParams) {
@@ -406,6 +422,20 @@
       request.accept(accept);
     }
 
+    if (returnType === 'Blob') {
+      request.responseType('blob');
+    }
+
+    // Attach previously saved cookies, if enabled
+    if (this.enableCookies){
+      if (typeof window === 'undefined') {
+        this.agent.attachCookies(request);
+      }
+      else {
+        request.withCredentials();
+      }
+    }
+
 
     request.end(function(error, response) {
       if (callback) {
@@ -413,6 +443,9 @@
         if (!error) {
           try {
             data = _this.deserialize(response, returnType);
+            if (_this.enableCookies && typeof window === 'undefined'){
+              _this.agent.saveCookies(response);
+            }
           } catch (err) {
             error = err;
           }
@@ -440,9 +473,12 @@
    * or the constructor function for a complex type. Pass an array containing the type name to return an array of that type. To
    * return an object, pass an object with one property whose name is the key type and whose value is the corresponding value type:
    * all properties on <code>data<code> will be converted to this type.
-   * @returns An instance of the specified type.
+   * @returns An instance of the specified type or null or undefined if data is null or undefined.
    */
   exports.convertToType = function(data, type) {
+    if (data === null || data === undefined)
+      return data
+
     switch (type) {
       case 'Boolean':
         return Boolean(data);
@@ -454,13 +490,45 @@
         return String(data);
       case 'Date':
         return this.parseDate(String(data));
+      case 'Blob':
+      	return data;
       default:
         if (type === Object) {
           // generic object, return directly
           return data;
         } else if (typeof type === 'function') {
-          // for model type like: User
-          return type.constructFromObject(data);
+          // If the model is polymorphic, make sure to use
+          // proper model subclass based on Swagger 'discriminator' field
+          if(type.__swaggerDiscriminator() !== undefined) {
+            var polymorphicType;
+
+            if('Ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Ceph");
+            }
+
+            if('POSIX'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/POSIX");
+            }
+
+            if('S3'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/S3");
+            }
+
+            if('Swift'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Swift");
+            }
+
+            if(polymorphicType) {
+              return polymorphicType.constructFromObject(data);
+            }
+            else {
+              return null;
+            }
+          }
+          // for non-polymorphic models use declared type directly
+          else {
+            return type.constructFromObject(data);
+          }
         } else if (Array.isArray(type)) {
           // for array type like: ['String']
           var itemType = type[0];

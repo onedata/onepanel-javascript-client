@@ -63,7 +63,7 @@
       var postBody = providerRegisterRequest;
 
       // verify the required parameter 'providerRegisterRequest' is set
-      if (providerRegisterRequest == undefined || providerRegisterRequest == null) {
+      if (providerRegisterRequest === undefined || providerRegisterRequest === null) {
         throw new Error("Missing the required parameter 'providerRegisterRequest' when calling addProvider");
       }
 
@@ -107,7 +107,7 @@
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts == undefined || serviceHosts == null) {
+      if (serviceHosts === undefined || serviceHosts === null) {
         throw new Error("Missing the required parameter 'serviceHosts' when calling addProviderDatabases");
       }
 
@@ -151,7 +151,7 @@
       var postBody = managerHosts;
 
       // verify the required parameter 'managerHosts' is set
-      if (managerHosts == undefined || managerHosts == null) {
+      if (managerHosts === undefined || managerHosts === null) {
         throw new Error("Missing the required parameter 'managerHosts' when calling addProviderManagers");
       }
 
@@ -195,7 +195,7 @@
       var postBody = serviceHosts;
 
       // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts == undefined || serviceHosts == null) {
+      if (serviceHosts === undefined || serviceHosts === null) {
         throw new Error("Missing the required parameter 'serviceHosts' when calling addProviderWorkers");
       }
 
@@ -239,7 +239,7 @@
       var postBody = clusterStoragesList;
 
       // verify the required parameter 'clusterStoragesList' is set
-      if (clusterStoragesList == undefined || clusterStoragesList == null) {
+      if (clusterStoragesList === undefined || clusterStoragesList === null) {
         throw new Error("Missing the required parameter 'clusterStoragesList' when calling addStorage");
       }
 
@@ -283,7 +283,7 @@
       var postBody = providerConfiguration;
 
       // verify the required parameter 'providerConfiguration' is set
-      if (providerConfiguration == undefined || providerConfiguration == null) {
+      if (providerConfiguration === undefined || providerConfiguration === null) {
         throw new Error("Missing the required parameter 'providerConfiguration' when calling configureProvider");
       }
 
@@ -406,7 +406,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getProviderDatabaseStatus");
       }
 
@@ -491,7 +491,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getProviderManagerStatus");
       }
 
@@ -615,7 +615,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling getProviderWorkerStatus");
       }
 
@@ -700,7 +700,7 @@
       var postBody = null;
 
       // verify the required parameter 'id' is set
-      if (id == undefined || id == null) {
+      if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling getSpaceDetails");
       }
 
@@ -746,7 +746,7 @@
       var postBody = null;
 
       // verify the required parameter 'name' is set
-      if (name == undefined || name == null) {
+      if (name === undefined || name === null) {
         throw new Error("Missing the required parameter 'name' when calling getStorageDetails");
       }
 
@@ -830,7 +830,7 @@
       var postBody = providerModifyRequest;
 
       // verify the required parameter 'providerModifyRequest' is set
-      if (providerModifyRequest == undefined || providerModifyRequest == null) {
+      if (providerModifyRequest === undefined || providerModifyRequest === null) {
         throw new Error("Missing the required parameter 'providerModifyRequest' when calling modifyProvider");
       }
 
@@ -875,12 +875,12 @@
       var postBody = storageModifyRequest;
 
       // verify the required parameter 'name' is set
-      if (name == undefined || name == null) {
+      if (name === undefined || name === null) {
         throw new Error("Missing the required parameter 'name' when calling modifyStorage");
       }
 
       // verify the required parameter 'storageModifyRequest' is set
-      if (storageModifyRequest == undefined || storageModifyRequest == null) {
+      if (storageModifyRequest === undefined || storageModifyRequest === null) {
         throw new Error("Missing the required parameter 'storageModifyRequest' when calling modifyStorage");
       }
 
@@ -963,7 +963,7 @@
       var postBody = null;
 
       // verify the required parameter 'id' is set
-      if (id == undefined || id == null) {
+      if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling revokeSpaceSupport");
       }
 
@@ -1011,7 +1011,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopProviderDatabase");
       }
 
@@ -1102,7 +1102,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopProviderManager");
       }
 
@@ -1193,7 +1193,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling startStopProviderWorker");
       }
 
@@ -1281,7 +1281,7 @@
       var postBody = spaceSupportRequest;
 
       // verify the required parameter 'spaceSupportRequest' is set
-      if (spaceSupportRequest == undefined || spaceSupportRequest == null) {
+      if (spaceSupportRequest === undefined || spaceSupportRequest === null) {
         throw new Error("Missing the required parameter 'spaceSupportRequest' when calling supportSpace");
       }
 

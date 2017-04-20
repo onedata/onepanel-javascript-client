@@ -63,7 +63,7 @@
       var postBody = userCreateRequest;
 
       // verify the required parameter 'userCreateRequest' is set
-      if (userCreateRequest == undefined || userCreateRequest == null) {
+      if (userCreateRequest === undefined || userCreateRequest === null) {
         throw new Error("Missing the required parameter 'userCreateRequest' when calling addUser");
       }
 
@@ -233,7 +233,7 @@
       var postBody = null;
 
       // verify the required parameter 'id' is set
-      if (id == undefined || id == null) {
+      if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling getTaskStatus");
       }
 
@@ -279,7 +279,7 @@
       var postBody = null;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling getUser");
       }
 
@@ -325,12 +325,12 @@
       var postBody = userModifyRequest;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling modifyUser");
       }
 
       // verify the required parameter 'userModifyRequest' is set
-      if (userModifyRequest == undefined || userModifyRequest == null) {
+      if (userModifyRequest === undefined || userModifyRequest === null) {
         throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyUser");
       }
 
@@ -375,7 +375,7 @@
       var postBody = null;
 
       // verify the required parameter 'host' is set
-      if (host == undefined || host == null) {
+      if (host === undefined || host === null) {
         throw new Error("Missing the required parameter 'host' when calling removeClusterHost");
       }
 
@@ -420,7 +420,7 @@
       var postBody = null;
 
       // verify the required parameter 'username' is set
-      if (username == undefined || username == null) {
+      if (username === undefined || username === null) {
         throw new Error("Missing the required parameter 'username' when calling removeUser");
       }
 

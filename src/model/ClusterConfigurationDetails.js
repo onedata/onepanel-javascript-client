@@ -14,45 +14,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, WorkerHosts) {
   'use strict';
 
 
 
 
   /**
-   * The ZoneClusterConfiguration model module.
-   * @module model/ZoneClusterConfiguration
+   * The ClusterConfigurationDetails model module.
+   * @module model/ClusterConfigurationDetails
    * @version 3.0.0-dev
    */
 
   /**
-   * Constructs a new <code>ZoneClusterConfiguration</code>.
-   * The zone cluster configuration.
-   * @alias module:model/ZoneClusterConfiguration
+   * Constructs a new <code>ClusterConfigurationDetails</code>.
+   * The cluster configuration.
+   * @alias module:model/ClusterConfigurationDetails
    * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitute a node fully qualified domain name. 
-   * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
-   * @param databases {module:model/ClusterDatabases} 
-   * @param managers {module:model/ClusterManagers} 
-   * @param workers {module:model/ClusterWorkers} 
+   * @param databases {module:model/DatabaseHosts} 
+   * @param managers {module:model/ManagerHosts} 
+   * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(domainName, nodes, databases, managers, workers) {
+  var exports = function(databases, managers, workers) {
     var _this = this;
 
-    _this['domainName'] = domainName;
-    _this['nodes'] = nodes;
     _this['databases'] = databases;
     _this['managers'] = managers;
     _this['workers'] = workers;
@@ -62,62 +58,46 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneClusterConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/ClusterConfigurationDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneClusterConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneClusterConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneClusterConfiguration} The populated <code>ZoneClusterConfiguration</code> instance.
+   * @param {module:model/ClusterConfigurationDetails} obj Optional instance to populate.
+   * @return {module:model/ClusterConfigurationDetails} The populated <code>ClusterConfigurationDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('domainName')) {
-        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
-      }
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], {'String': ZoneClusterConfigurationNodes});
-      }
       if (data.hasOwnProperty('databases')) {
-        obj['databases'] = ClusterDatabases.constructFromObject(data['databases']);
+        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
       }
       if (data.hasOwnProperty('managers')) {
-        obj['managers'] = ClusterManagers.constructFromObject(data['managers']);
+        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
       }
       if (data.hasOwnProperty('workers')) {
-        obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
+        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
       }
     }
     return obj;
   }
 
   /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitute a node fully qualified domain name. 
-   * @member {String} domainName
-   */
-  exports.prototype['domainName'] = undefined;
-  /**
-   * The collection of nodes aliases associated with nodes properties.
-   * @member {Object.<String, module:model/ZoneClusterConfigurationNodes>} nodes
-   */
-  exports.prototype['nodes'] = undefined;
-  /**
-   * @member {module:model/ClusterDatabases} databases
+   * @member {module:model/DatabaseHosts} databases
    */
   exports.prototype['databases'] = undefined;
   /**
-   * @member {module:model/ClusterManagers} managers
+   * @member {module:model/ManagerHosts} managers
    */
   exports.prototype['managers'] = undefined;
   /**
-   * @member {module:model/ClusterWorkers} workers
+   * @member {module:model/WorkerHosts} workers
    */
   exports.prototype['workers'] = undefined;
 

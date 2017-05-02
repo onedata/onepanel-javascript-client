@@ -147,10 +147,12 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Onepanel.Ceph](docs/Ceph.md)
+ - [Onepanel.ClusterConfigurationDetails](docs/ClusterConfigurationDetails.md)
  - [Onepanel.ClusterDatabases](docs/ClusterDatabases.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Cookie](docs/Cookie.md)
+ - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.POSIX](docs/POSIX.md)
@@ -158,6 +160,8 @@ Class | Method | HTTP request | Description
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
  - [Onepanel.ProviderConfiguration](docs/ProviderConfiguration.md)
+ - [Onepanel.ProviderConfigurationDetails](docs/ProviderConfigurationDetails.md)
+ - [Onepanel.ProviderConfigurationDetailsOneprovider](docs/ProviderConfigurationDetailsOneprovider.md)
  - [Onepanel.ProviderConfigurationOneprovider](docs/ProviderConfigurationOneprovider.md)
  - [Onepanel.ProviderConfigurationOnezone](docs/ProviderConfigurationOnezone.md)
  - [Onepanel.ProviderDetails](docs/ProviderDetails.md)
@@ -182,9 +186,12 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
+ - [Onepanel.WorkerHosts](docs/WorkerHosts.md)
  - [Onepanel.ZoneClusterConfiguration](docs/ZoneClusterConfiguration.md)
  - [Onepanel.ZoneClusterConfigurationNodes](docs/ZoneClusterConfigurationNodes.md)
  - [Onepanel.ZoneConfiguration](docs/ZoneConfiguration.md)
+ - [Onepanel.ZoneConfigurationDetails](docs/ZoneConfigurationDetails.md)
+ - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
 
 

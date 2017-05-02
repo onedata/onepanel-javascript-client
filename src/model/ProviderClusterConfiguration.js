@@ -51,7 +51,6 @@
   var exports = function(domainName, nodes, databases, managers, workers) {
     var _this = this;
 
-
     _this['domainName'] = domainName;
     _this['nodes'] = nodes;
     _this['databases'] = databases;
@@ -81,9 +80,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('autoDeploy')) {
-        obj['autoDeploy'] = ApiClient.convertToType(data['autoDeploy'], 'Boolean');
-      }
       if (data.hasOwnProperty('domainName')) {
         obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
       }
@@ -106,11 +102,6 @@
     return obj;
   }
 
-  /**
-   * Defines whether administrative cluster should be created from the list of provided cluster nodes. 
-   * @member {Boolean} autoDeploy
-   */
-  exports.prototype['autoDeploy'] = undefined;
   /**
    * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FDQN) of the node. 
    * @member {String} domainName

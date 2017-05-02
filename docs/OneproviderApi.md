@@ -396,7 +396,7 @@ This endpoint does not need any parameter.
 
 <a name="getProviderConfiguration"></a>
 # **getProviderConfiguration**
-> ProviderConfiguration getProviderConfiguration()
+> ProviderConfigurationDetails getProviderConfiguration()
 
 Get provider cluster configuration
 
@@ -429,7 +429,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ProviderConfiguration**](ProviderConfiguration.md)
+[**ProviderConfigurationDetails**](ProviderConfigurationDetails.md)
 
 ### Authorization
 

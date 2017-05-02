@@ -13,117 +13,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/ZoneClusterConfigurationNodes'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./ZoneClusterConfigurationNodes'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ZoneClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.ZoneClusterConfigurationNodes);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, ZoneClusterConfigurationNodes) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.WorkerHosts();
+  });
 
-
-  /**
-   * The ZoneClusterConfiguration model module.
-   * @module model/ZoneClusterConfiguration
-   * @version 3.0.0-dev
-   */
-
-  /**
-   * Constructs a new <code>ZoneClusterConfiguration</code>.
-   * The zone cluster configuration.
-   * @alias module:model/ZoneClusterConfiguration
-   * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitute a node fully qualified domain name. 
-   * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
-   * @param databases {module:model/ClusterDatabases} 
-   * @param managers {module:model/ClusterManagers} 
-   * @param workers {module:model/ClusterWorkers} 
-   */
-  var exports = function(domainName, nodes, databases, managers, workers) {
-    var _this = this;
-
-    _this['domainName'] = domainName;
-    _this['nodes'] = nodes;
-    _this['databases'] = databases;
-    _this['managers'] = managers;
-    _this['workers'] = workers;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ZoneClusterConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ZoneClusterConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneClusterConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneClusterConfiguration} The populated <code>ZoneClusterConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('domainName')) {
-        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
-      }
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], {'String': ZoneClusterConfigurationNodes});
-      }
-      if (data.hasOwnProperty('databases')) {
-        obj['databases'] = ClusterDatabases.constructFromObject(data['databases']);
-      }
-      if (data.hasOwnProperty('managers')) {
-        obj['managers'] = ClusterManagers.constructFromObject(data['managers']);
-      }
-      if (data.hasOwnProperty('workers')) {
-        obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitute a node fully qualified domain name. 
-   * @member {String} domainName
-   */
-  exports.prototype['domainName'] = undefined;
-  /**
-   * The collection of nodes aliases associated with nodes properties.
-   * @member {Object.<String, module:model/ZoneClusterConfigurationNodes>} nodes
-   */
-  exports.prototype['nodes'] = undefined;
-  /**
-   * @member {module:model/ClusterDatabases} databases
-   */
-  exports.prototype['databases'] = undefined;
-  /**
-   * @member {module:model/ClusterManagers} managers
-   */
-  exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/ClusterWorkers} workers
-   */
-  exports.prototype['workers'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('WorkerHosts', function() {
+    it('should create an instance of WorkerHosts', function() {
+      // uncomment below and update the code to test WorkerHosts
+      //var instane = new Onepanel.WorkerHosts();
+      //expect(instance).to.be.a(Onepanel.WorkerHosts);
+    });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.WorkerHosts();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

@@ -72,12 +72,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property storageName (base name: "storageName")', function() {
-      // uncomment below and update the code to test the property storageName
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property storageId (base name: "storageId")', function() {
       // uncomment below and update the code to test the property storageId
       //var instane = new Onepanel.SpaceSupportRequest();

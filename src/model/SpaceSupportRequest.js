@@ -44,15 +44,15 @@
    * @class
    * @param token {String} The token for space creation or support.
    * @param size {Number} The storage space size in bytes that provider is willing to assign to the space. 
+   * @param storageId {String} The ID of the storage resource where the space data should be stored. 
    */
-  var exports = function(token, size) {
+  var exports = function(token, size, storageId) {
     var _this = this;
 
 
     _this['token'] = token;
     _this['size'] = size;
-
-
+    _this['storageId'] = storageId;
 
   };
 
@@ -86,9 +86,6 @@
       if (data.hasOwnProperty('size')) {
         obj['size'] = ApiClient.convertToType(data['size'], 'Number');
       }
-      if (data.hasOwnProperty('storageName')) {
-        obj['storageName'] = ApiClient.convertToType(data['storageName'], 'String');
-      }
       if (data.hasOwnProperty('storageId')) {
         obj['storageId'] = ApiClient.convertToType(data['storageId'], 'String');
       }
@@ -115,12 +112,7 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * The user defined name of the storage resource, where the space data should be stored. To be used interchangeably with `storageId`. 
-   * @member {String} storageName
-   */
-  exports.prototype['storageName'] = undefined;
-  /**
-   * The ID of the storage resource where the space data should be stored. To be used interchangeably with `storageName`. 
+   * The ID of the storage resource where the space data should be stored. 
    * @member {String} storageId
    */
   exports.prototype['storageId'] = undefined;

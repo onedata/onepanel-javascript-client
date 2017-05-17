@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** | The ID of storage. | [optional] 
 **name** | **String** | The name of storage. | [optional] 
 **type** | **String** | The type of storage. | 
 

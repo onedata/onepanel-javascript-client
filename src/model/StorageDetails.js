@@ -48,6 +48,7 @@
     var _this = this;
 
 
+
     _this['type'] = type;
   };
 
@@ -72,6 +73,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -82,6 +86,11 @@
     return obj;
   }
 
+  /**
+   * The ID of storage.
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
   /**
    * The name of storage.
    * @member {String} name

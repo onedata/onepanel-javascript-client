@@ -23,7 +23,7 @@
   'use strict';
 
   /**
-   * This is a Javascript client for [Onedata Onepanel](https://onedata.org) service, automatically generated using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen).<br>
+   * This is a Javascript client for [Onedata Onepanel](https://onedata.org) service..<br>
    * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

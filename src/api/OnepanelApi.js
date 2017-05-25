@@ -99,7 +99,7 @@
 
     /**
      * Create or join cluster
-     * Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has been  provided in the query string adds this host to an existing cluster. In both cases the host handling this request has to be newly started or  removed from previous cluster. It cannot contain any configuration data. This request can be executed by unauthorized users as long as there are no  admin users. 
+     * Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has been provided in the query string adds this host to an existing cluster. In both cases the host handling this request has to be newly started or removed from previous cluster. It cannot contain any configuration data. This request can be executed by unauthorized users as long as there are no admin users. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.clusterHost Hostname of an existing cluster node.
      * @param {module:model/Cookie} opts.cookie The cookie used for cluster authentication.
@@ -181,7 +181,7 @@
 
     /**
      * Get cluster or discovered hosts
-     * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast  advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there  are no admin users in the system. 
+     * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.discovered Defines whether to return cluster or discovered hosts. (default to false)
      * @param {module:api/OnepanelApi~getClusterHostsCallback} callback The callback function, accepting three arguments: error, data, response

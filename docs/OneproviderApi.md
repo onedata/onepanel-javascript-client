@@ -1514,7 +1514,7 @@ null (empty response body)
 
 Create or support space
 
-Supports an existing space or creates a new space and automatically  supports it. 
+Supports an existing space or creates a new space and automatically supports it. 
 
 ### Example
 ```javascript

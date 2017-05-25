@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property maxDepth (base name: "maxDepth")', function() {
+      // uncomment below and update the code to test the property maxDepth
+      //var instane = new Onepanel.StorageUpdateDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property scanInterval (base name: "scanInterval")', function() {
       // uncomment below and update the code to test the property scanInterval
       //var instane = new Onepanel.StorageUpdateDetails();

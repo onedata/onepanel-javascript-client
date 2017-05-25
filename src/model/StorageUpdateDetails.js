@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -77,6 +78,9 @@
       if (data.hasOwnProperty('strategy')) {
         obj['strategy'] = ApiClient.convertToType(data['strategy'], 'String');
       }
+      if (data.hasOwnProperty('maxDepth')) {
+        obj['maxDepth'] = ApiClient.convertToType(data['maxDepth'], 'Number');
+      }
       if (data.hasOwnProperty('scanInterval')) {
         obj['scanInterval'] = ApiClient.convertToType(data['scanInterval'], 'Number');
       }
@@ -95,6 +99,11 @@
    * @member {String} strategy
    */
   exports.prototype['strategy'] = undefined;
+  /**
+   * todo
+   * @member {Number} maxDepth
+   */
+  exports.prototype['maxDepth'] = undefined;
   /**
    * todo
    * @member {Number} scanInterval

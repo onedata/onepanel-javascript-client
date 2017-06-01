@@ -60,6 +60,7 @@
 
 
 
+
   };
 
   /**
@@ -94,6 +95,9 @@
       }
       if (data.hasOwnProperty('secretKey')) {
         obj['secretKey'] = ApiClient.convertToType(data['secretKey'], 'String');
+      }
+      if (data.hasOwnProperty('signatureVersion')) {
+        obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -134,6 +138,11 @@
    * @member {String} secretKey
    */
   exports.prototype['secretKey'] = undefined;
+  /**
+   * The version of signature used to sign requests. One of: 2, 4. Default: 4. 
+   * @member {Number} signatureVersion
+   */
+  exports.prototype['signatureVersion'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout

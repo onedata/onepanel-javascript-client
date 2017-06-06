@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
-[**getProviderSpaceSyncStats**](OnezoneApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 [**getZoneDatabaseStatus**](OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
 [**getZoneDatabasesStatus**](OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status
@@ -232,64 +231,6 @@ null (empty response body)
 
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
-
-<a name="getProviderSpaceSyncStats"></a>
-# **getProviderSpaceSyncStats**
-> SpaceSyncStats getProviderSpaceSyncStats(spaceId, opts)
-
-Get statistics of storage synchronization
-
-Returns requested statistics of storage synchronization for given space on this provider. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var spaceId = "spaceId_example"; // String | The ID of a space for which sync stats should be returned.
-
-var opts = { 
-  'period': "period_example", // String | Predefined time period for which the statistics should be fetched
-  'metrics': ["metrics_example"] // [String] | Specify which statistic metrics should be returned
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getProviderSpaceSyncStats(spaceId, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **spaceId** | **String**| The ID of a space for which sync stats should be returned. | 
- **period** | **String**| Predefined time period for which the statistics should be fetched | [optional] 
- **metrics** | [**[String]**](String.md)| Specify which statistic metrics should be returned | [optional] 
-
-### Return type
-
-[**SpaceSyncStats**](SpaceSyncStats.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="getZoneConfiguration"></a>
 # **getZoneConfiguration**

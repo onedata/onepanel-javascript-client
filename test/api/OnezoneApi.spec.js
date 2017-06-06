@@ -88,16 +88,6 @@
         done();
       });
     });
-    describe('getProviderSpaceSyncStats', function() {
-      it('should call getProviderSpaceSyncStats successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaceSyncStats
-        //instance.getProviderSpaceSyncStats(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getZoneConfiguration', function() {
       it('should call getZoneConfiguration successfully', function(done) {
         //uncomment below and update the code to test getZoneConfiguration

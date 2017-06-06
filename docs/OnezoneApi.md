@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
-[**getProvivderSpaceSyncStats**](OnezoneApi.md#getProvivderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
+[**getProviderSpaceSyncStats**](OnezoneApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 [**getZoneDatabaseStatus**](OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
 [**getZoneDatabasesStatus**](OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status
@@ -233,9 +233,9 @@ null (empty response body)
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
-<a name="getProvivderSpaceSyncStats"></a>
-# **getProvivderSpaceSyncStats**
-> SpaceSyncStats getProvivderSpaceSyncStats(spaceId, opts)
+<a name="getProviderSpaceSyncStats"></a>
+# **getProviderSpaceSyncStats**
+> SpaceSyncStats getProviderSpaceSyncStats(spaceId, opts)
 
 Get statistics of storage synchronization
 
@@ -267,7 +267,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getProvivderSpaceSyncStats(spaceId, opts, callback);
+apiInstance.getProviderSpaceSyncStats(spaceId, opts, callback);
 ```
 
 ### Parameters

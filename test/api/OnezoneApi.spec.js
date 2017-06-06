@@ -88,10 +88,10 @@
         done();
       });
     });
-    describe('getProvivderSpaceSyncStats', function() {
-      it('should call getProvivderSpaceSyncStats successfully', function(done) {
-        //uncomment below and update the code to test getProvivderSpaceSyncStats
-        //instance.getProvivderSpaceSyncStats(function(error) {
+    describe('getProviderSpaceSyncStats', function() {
+      it('should call getProviderSpaceSyncStats successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceSyncStats
+        //instance.getProviderSpaceSyncStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

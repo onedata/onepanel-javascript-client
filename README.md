@@ -128,7 +128,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**addZoneManagers**](docs/OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 *Onepanel.OnezoneApi* | [**configureZone**](docs/OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
-*Onepanel.OnezoneApi* | [**getProvivderSpaceSyncStats**](docs/OnezoneApi.md#getProvivderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
+*Onepanel.OnezoneApi* | [**getProviderSpaceSyncStats**](docs/OnezoneApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
 *Onepanel.OnezoneApi* | [**getZoneConfiguration**](docs/OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 *Onepanel.OnezoneApi* | [**getZoneDatabaseStatus**](docs/OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
 *Onepanel.OnezoneApi* | [**getZoneDatabasesStatus**](docs/OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status

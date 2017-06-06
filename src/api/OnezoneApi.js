@@ -222,8 +222,8 @@
     }
 
     /**
-     * Callback function to receive the result of the getProvivderSpaceSyncStats operation.
-     * @callback module:api/OnezoneApi~getProvivderSpaceSyncStatsCallback
+     * Callback function to receive the result of the getProviderSpaceSyncStats operation.
+     * @callback module:api/OnezoneApi~getProviderSpaceSyncStatsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceSyncStats} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -236,16 +236,16 @@
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
      * @param {Array.<module:model/String>} opts.metrics Specify which statistic metrics should be returned
-     * @param {module:api/OnezoneApi~getProvivderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneApi~getProviderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceSyncStats}
      */
-    this.getProvivderSpaceSyncStats = function(spaceId, opts, callback) {
+    this.getProviderSpaceSyncStats = function(spaceId, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'spaceId' is set
       if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling getProvivderSpaceSyncStats");
+        throw new Error("Missing the required parameter 'spaceId' when calling getProviderSpaceSyncStats");
       }
 
 

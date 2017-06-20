@@ -13,117 +13,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Error'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ServiceError = factory(root.Onepanel.ApiClient, root.Onepanel.Error);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, Error) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.StorageModifyRequest();
+  });
 
-
-  /**
-   * The ServiceError model module.
-   * @module model/ServiceError
-   * @version 3.0.0-rc15
-   */
-
-  /**
-   * Constructs a new <code>ServiceError</code>.
-   * The service error model for REST requests.
-   * @alias module:model/ServiceError
-   * @class
-   * @param error {String} The name of an error type.
-   * @param description {String} The detailed error description.
-   */
-  var exports = function(error, description) {
-    var _this = this;
-
-    _this['error'] = error;
-    _this['description'] = description;
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ServiceError} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ServiceError</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceError} obj Optional instance to populate.
-   * @return {module:model/ServiceError} The populated <code>ServiceError</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
-      }
-      if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
-      }
-      if (data.hasOwnProperty('module')) {
-        obj['module'] = ApiClient.convertToType(data['module'], 'String');
-      }
-      if (data.hasOwnProperty('function')) {
-        obj['function'] = ApiClient.convertToType(data['function'], 'String');
-      }
-      if (data.hasOwnProperty('hosts')) {
-        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': Error});
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name of an error type.
-   * @member {String} error
-   */
-  exports.prototype['error'] = undefined;
-  /**
-   * The detailed error description.
-   * @member {String} description
-   */
-  exports.prototype['description'] = undefined;
-  /**
-   * The name of a module containing function that returned error.
-   * @member {String} module
-   */
-  exports.prototype['module'] = undefined;
-  /**
-   * The name of a function that returned error.
-   * @member {String} function
-   */
-  exports.prototype['function'] = undefined;
-  /**
-   * The collection of hosts with associated error description.
-   * @member {Object.<String, module:model/Error>} hosts
-   */
-  exports.prototype['hosts'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('StorageModifyRequest', function() {
+    it('should create an instance of StorageModifyRequest', function() {
+      // uncomment below and update the code to test StorageModifyRequest
+      //var instane = new Onepanel.StorageModifyRequest();
+      //expect(instance).to.be.a(Onepanel.StorageModifyRequest);
+    });
 
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.StorageModifyRequest();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

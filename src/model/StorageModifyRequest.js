@@ -14,43 +14,37 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Error'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceError = factory(root.Onepanel.ApiClient, root.Onepanel.Error);
+    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, Error) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ServiceError model module.
-   * @module model/ServiceError
+   * The StorageModifyRequest model module.
+   * @module model/StorageModifyRequest
    * @version 3.0.0-rc15
    */
 
   /**
-   * Constructs a new <code>ServiceError</code>.
-   * The service error model for REST requests.
-   * @alias module:model/ServiceError
+   * Constructs a new <code>StorageModifyRequest</code>.
+   * The storage configuration details that can be modified.
+   * @alias module:model/StorageModifyRequest
    * @class
-   * @param error {String} The name of an error type.
-   * @param description {String} The detailed error description.
    */
-  var exports = function(error, description) {
+  var exports = function() {
     var _this = this;
-
-    _this['error'] = error;
-    _this['description'] = description;
-
 
 
   };
@@ -59,67 +53,35 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceError} The value of 'discriminator' field or undefined.
+   * @return {module:model/StorageModifyRequest} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceError</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StorageModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceError} obj Optional instance to populate.
-   * @return {module:model/ServiceError} The populated <code>ServiceError</code> instance.
+   * @param {module:model/StorageModifyRequest} obj Optional instance to populate.
+   * @return {module:model/StorageModifyRequest} The populated <code>StorageModifyRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
-      }
-      if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
-      }
-      if (data.hasOwnProperty('module')) {
-        obj['module'] = ApiClient.convertToType(data['module'], 'String');
-      }
-      if (data.hasOwnProperty('function')) {
-        obj['function'] = ApiClient.convertToType(data['function'], 'String');
-      }
-      if (data.hasOwnProperty('hosts')) {
-        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': Error});
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * The name of an error type.
-   * @member {String} error
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
    */
-  exports.prototype['error'] = undefined;
-  /**
-   * The detailed error description.
-   * @member {String} description
-   */
-  exports.prototype['description'] = undefined;
-  /**
-   * The name of a module containing function that returned error.
-   * @member {String} module
-   */
-  exports.prototype['module'] = undefined;
-  /**
-   * The name of a function that returned error.
-   * @member {String} function
-   */
-  exports.prototype['function'] = undefined;
-  /**
-   * The collection of hosts with associated error description.
-   * @member {Object.<String, module:model/Error>} hosts
-   */
-  exports.prototype['hosts'] = undefined;
+  exports.prototype['timeout'] = undefined;
 
 
 

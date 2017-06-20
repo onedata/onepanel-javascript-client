@@ -8,5 +8,9 @@ Name | Type | Description | Notes
 **containerName** | **String** | The name of the Swift storage container. | 
 **username** | **String** | The Keystone authentication username. | 
 **password** | **String** | The Keystone authentication password. | 
+**timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
+**blockSize** | **Number** | Storage block size in bytes. | [optional] 
+**insecure** | **Boolean** | Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to false]
+**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] [default to false]
 
 

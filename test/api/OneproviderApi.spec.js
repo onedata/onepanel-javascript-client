@@ -1,8 +1,8 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate > client libraries - [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a Couchbase backend, which can be distributed on any number of nodes, these are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other deployed processes in one site, these are availables under these are available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using which users can login to Onezone service using HTTP Basic authentication without OpenID. This role makes sense only on Onepanel which manages Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`, `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
- * OpenAPI spec version: 3.0.0-rc9
+ * OpenAPI spec version: 3.0.0-rc15
  * Contact: info@onedata.org
  *
  * NOTE: This class is auto generated by the swagger code generator program.
@@ -48,20 +48,60 @@
   }
 
   describe('OneproviderApi', function() {
-    describe('deleteProvider', function() {
-      it('should call deleteProvider successfully', function(done) {
-        //uncomment below and update the code to test deleteProvider
-        //instance.deleteProvider(function(error) {
+    describe('addProvider', function() {
+      it('should call addProvider successfully', function(done) {
+        //uncomment below and update the code to test addProvider
+        //instance.addProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('deleteProviderSpacesId', function() {
-      it('should call deleteProviderSpacesId successfully', function(done) {
-        //uncomment below and update the code to test deleteProviderSpacesId
-        //instance.deleteProviderSpacesId(function(error) {
+    describe('addProviderDatabases', function() {
+      it('should call addProviderDatabases successfully', function(done) {
+        //uncomment below and update the code to test addProviderDatabases
+        //instance.addProviderDatabases(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('addProviderManagers', function() {
+      it('should call addProviderManagers successfully', function(done) {
+        //uncomment below and update the code to test addProviderManagers
+        //instance.addProviderManagers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('addProviderWorkers', function() {
+      it('should call addProviderWorkers successfully', function(done) {
+        //uncomment below and update the code to test addProviderWorkers
+        //instance.addProviderWorkers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('addStorage', function() {
+      it('should call addStorage successfully', function(done) {
+        //uncomment below and update the code to test addStorage
+        //instance.addStorage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('configureProvider', function() {
+      it('should call configureProvider successfully', function(done) {
+        //uncomment below and update the code to test configureProvider
+        //instance.configureProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -88,40 +128,50 @@
         done();
       });
     });
-    describe('getProviderDatabases', function() {
-      it('should call getProviderDatabases successfully', function(done) {
-        //uncomment below and update the code to test getProviderDatabases
-        //instance.getProviderDatabases(function(error) {
+    describe('getProviderDatabaseStatus', function() {
+      it('should call getProviderDatabaseStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderDatabaseStatus
+        //instance.getProviderDatabaseStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderDatabasesHost', function() {
-      it('should call getProviderDatabasesHost successfully', function(done) {
-        //uncomment below and update the code to test getProviderDatabasesHost
-        //instance.getProviderDatabasesHost(function(error) {
+    describe('getProviderDatabasesStatus', function() {
+      it('should call getProviderDatabasesStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderDatabasesStatus
+        //instance.getProviderDatabasesStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderManagers', function() {
-      it('should call getProviderManagers successfully', function(done) {
-        //uncomment below and update the code to test getProviderManagers
-        //instance.getProviderManagers(function(error) {
+    describe('getProviderManagerStatus', function() {
+      it('should call getProviderManagerStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderManagerStatus
+        //instance.getProviderManagerStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderManagersHost', function() {
-      it('should call getProviderManagersHost successfully', function(done) {
-        //uncomment below and update the code to test getProviderManagersHost
-        //instance.getProviderManagersHost(function(error) {
+    describe('getProviderManagersStatus', function() {
+      it('should call getProviderManagersStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderManagersStatus
+        //instance.getProviderManagersStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderNagiosReport', function() {
+      it('should call getProviderNagiosReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderNagiosReport
+        //instance.getProviderNagiosReport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -138,190 +188,160 @@
         done();
       });
     });
-    describe('getProviderSpacesId', function() {
-      it('should call getProviderSpacesId successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpacesId
-        //instance.getProviderSpacesId(function(error) {
+    describe('getProviderWorkerStatus', function() {
+      it('should call getProviderWorkerStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderWorkerStatus
+        //instance.getProviderWorkerStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderStorages', function() {
-      it('should call getProviderStorages successfully', function(done) {
-        //uncomment below and update the code to test getProviderStorages
-        //instance.getProviderStorages(function(error) {
+    describe('getProviderWorkersStatus', function() {
+      it('should call getProviderWorkersStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderWorkersStatus
+        //instance.getProviderWorkersStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderStoragesName', function() {
-      it('should call getProviderStoragesName successfully', function(done) {
-        //uncomment below and update the code to test getProviderStoragesName
-        //instance.getProviderStoragesName(function(error) {
+    describe('getSpaceDetails', function() {
+      it('should call getSpaceDetails successfully', function(done) {
+        //uncomment below and update the code to test getSpaceDetails
+        //instance.getSpaceDetails(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderWorkers', function() {
-      it('should call getProviderWorkers successfully', function(done) {
-        //uncomment below and update the code to test getProviderWorkers
-        //instance.getProviderWorkers(function(error) {
+    describe('getStorageDetails', function() {
+      it('should call getStorageDetails successfully', function(done) {
+        //uncomment below and update the code to test getStorageDetails
+        //instance.getStorageDetails(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderWorkersHost', function() {
-      it('should call getProviderWorkersHost successfully', function(done) {
-        //uncomment below and update the code to test getProviderWorkersHost
-        //instance.getProviderWorkersHost(function(error) {
+    describe('getStorages', function() {
+      it('should call getStorages successfully', function(done) {
+        //uncomment below and update the code to test getStorages
+        //instance.getStorages(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProvider', function() {
-      it('should call patchProvider successfully', function(done) {
-        //uncomment below and update the code to test patchProvider
-        //instance.patchProvider(function(error) {
+    describe('modifyProvider', function() {
+      it('should call modifyProvider successfully', function(done) {
+        //uncomment below and update the code to test modifyProvider
+        //instance.modifyProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderDatabases', function() {
-      it('should call patchProviderDatabases successfully', function(done) {
-        //uncomment below and update the code to test patchProviderDatabases
-        //instance.patchProviderDatabases(function(error) {
+    describe('modifyStorage', function() {
+      it('should call modifyStorage successfully', function(done) {
+        //uncomment below and update the code to test modifyStorage
+        //instance.modifyStorage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderDatabasesHost', function() {
-      it('should call patchProviderDatabasesHost successfully', function(done) {
-        //uncomment below and update the code to test patchProviderDatabasesHost
-        //instance.patchProviderDatabasesHost(function(error) {
+    describe('removeProvider', function() {
+      it('should call removeProvider successfully', function(done) {
+        //uncomment below and update the code to test removeProvider
+        //instance.removeProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderManagers', function() {
-      it('should call patchProviderManagers successfully', function(done) {
-        //uncomment below and update the code to test patchProviderManagers
-        //instance.patchProviderManagers(function(error) {
+    describe('revokeSpaceSupport', function() {
+      it('should call revokeSpaceSupport successfully', function(done) {
+        //uncomment below and update the code to test revokeSpaceSupport
+        //instance.revokeSpaceSupport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderManagersHost', function() {
-      it('should call patchProviderManagersHost successfully', function(done) {
-        //uncomment below and update the code to test patchProviderManagersHost
-        //instance.patchProviderManagersHost(function(error) {
+    describe('startStopProviderDatabase', function() {
+      it('should call startStopProviderDatabase successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderDatabase
+        //instance.startStopProviderDatabase(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderWorkers', function() {
-      it('should call patchProviderWorkers successfully', function(done) {
-        //uncomment below and update the code to test patchProviderWorkers
-        //instance.patchProviderWorkers(function(error) {
+    describe('startStopProviderDatabases', function() {
+      it('should call startStopProviderDatabases successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderDatabases
+        //instance.startStopProviderDatabases(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('patchProviderWorkersHost', function() {
-      it('should call patchProviderWorkersHost successfully', function(done) {
-        //uncomment below and update the code to test patchProviderWorkersHost
-        //instance.patchProviderWorkersHost(function(error) {
+    describe('startStopProviderManager', function() {
+      it('should call startStopProviderManager successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderManager
+        //instance.startStopProviderManager(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('putProvider', function() {
-      it('should call putProvider successfully', function(done) {
-        //uncomment below and update the code to test putProvider
-        //instance.putProvider(function(error) {
+    describe('startStopProviderManagers', function() {
+      it('should call startStopProviderManagers successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderManagers
+        //instance.startStopProviderManagers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('putProviderConfiguration', function() {
-      it('should call putProviderConfiguration successfully', function(done) {
-        //uncomment below and update the code to test putProviderConfiguration
-        //instance.putProviderConfiguration(function(error) {
+    describe('startStopProviderWorker', function() {
+      it('should call startStopProviderWorker successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderWorker
+        //instance.startStopProviderWorker(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('putProviderDatabases', function() {
-      it('should call putProviderDatabases successfully', function(done) {
-        //uncomment below and update the code to test putProviderDatabases
-        //instance.putProviderDatabases(function(error) {
+    describe('startStopProviderWorkers', function() {
+      it('should call startStopProviderWorkers successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderWorkers
+        //instance.startStopProviderWorkers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('putProviderManagers', function() {
-      it('should call putProviderManagers successfully', function(done) {
-        //uncomment below and update the code to test putProviderManagers
-        //instance.putProviderManagers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('putProviderSpaces', function() {
-      it('should call putProviderSpaces successfully', function(done) {
-        //uncomment below and update the code to test putProviderSpaces
-        //instance.putProviderSpaces(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('putProviderStorages', function() {
-      it('should call putProviderStorages successfully', function(done) {
-        //uncomment below and update the code to test putProviderStorages
-        //instance.putProviderStorages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('putProviderWorkers', function() {
-      it('should call putProviderWorkers successfully', function(done) {
-        //uncomment below and update the code to test putProviderWorkers
-        //instance.putProviderWorkers(function(error) {
+    describe('supportSpace', function() {
+      it('should call supportSpace successfully', function(done) {
+        //uncomment below and update the code to test supportSpace
+        //instance.supportSpace(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

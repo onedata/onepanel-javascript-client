@@ -13,130 +13,101 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.Glusterfs();
+  });
 
-
-  /**
-   * The StorageDetails model module.
-   * @module model/StorageDetails
-   * @version 3.0.0-dev
-   */
-
-  /**
-   * Constructs a new <code>StorageDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageDetails
-   * @class
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
-   */
-  var exports = function(type) {
-    var _this = this;
-
-
-
-    _this['type'] = type;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    return 'type';
-  };
-
-  /**
-   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetails} obj Optional instance to populate.
-   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The ID of storage.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * The type of storage.
-   * @member {module:model/StorageDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('Glusterfs', function() {
+    it('should create an instance of Glusterfs', function() {
+      // uncomment below and update the code to test Glusterfs
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be.a(Onepanel.Glusterfs);
+    });
 
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "POSIX"
-     * @const
-     */
-    "POSIX": "POSIX",
-    /**
-     * value: "S3"
-     * @const
-     */
-    "S3": "S3",
-    /**
-     * value: "Ceph"
-     * @const
-     */
-    "Ceph": "Ceph",
-    /**
-     * value: "Swift"
-     * @const
-     */
-    "Swift": "Swift",
-    /**
-     * value: "GlusterFS"
-     * @const
-     */
-    "GlusterFS": "GlusterFS"  };
+    it('should have the property volume (base name: "volume")', function() {
+      // uncomment below and update the code to test the property volume
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property hostname (base name: "hostname")', function() {
+      // uncomment below and update the code to test the property hostname
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transport (base name: "transport")', function() {
+      // uncomment below and update the code to test the property transport
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property xlatorOptions (base name: "xlatorOptions")', function() {
+      // uncomment below and update the code to test the property xlatorOptions
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

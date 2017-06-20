@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.POSIX](docs/POSIX.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)

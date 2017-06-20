@@ -14,126 +14,181 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Glusterfs = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The StorageDetails model module.
-   * @module model/StorageDetails
+   * The Glusterfs model module.
+   * @module model/Glusterfs
    * @version 3.0.0-dev
    */
 
   /**
-   * Constructs a new <code>StorageDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageDetails
+   * Constructs a new <code>Glusterfs</code>.
+   * The GlusterFS storage configuration.
+   * @alias module:model/Glusterfs
    * @class
+   * @extends module:model/StorageDetails
    * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param volume {String} The name of the volume to use as a storage backend.
+   * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
-  var exports = function(type) {
+  var exports = function(type, volume, hostname) {
     var _this = this;
+    StorageDetails.call(_this, type);
+    _this['volume'] = volume;
+    _this['hostname'] = hostname;
 
 
 
-    _this['type'] = type;
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/Glusterfs} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Glusterfs</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetails} obj Optional instance to populate.
-   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
+   * @param {module:model/Glusterfs} obj Optional instance to populate.
+   * @return {module:model/Glusterfs} The populated <code>Glusterfs</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      }
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
+      }
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * The ID of storage.
-   * @member {String} id
+   * The name of the volume to use as a storage backend.
+   * @member {String} volume
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['volume'] = undefined;
   /**
-   * The name of storage.
-   * @member {String} name
+   * The hostname (IP address or FQDN) of GlusterFS volume server.
+   * @member {String} hostname
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['hostname'] = undefined;
   /**
-   * The type of storage.
-   * @member {module:model/StorageDetails.TypeEnum} type
+   * The GlusterFS port on volume server.
+   * @member {Number} port
    */
-  exports.prototype['type'] = undefined;
+  exports.prototype['port'] = undefined;
+  /**
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/Glusterfs.TransportEnum} transport
+   * @default 'tcp'
+   */
+  exports.prototype['transport'] = 'tcp';
+  /**
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
+   * @default ''
+   */
+  exports.prototype['mountPoint'] = '';
+  /**
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   * @default ''
+   */
+  exports.prototype['xlatorOptions'] = '';
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default false
+   */
+  exports.prototype['insecure'] = false;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
 
 
   /**
-   * Allowed values for the <code>type</code> property.
+   * Allowed values for the <code>transport</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.TypeEnum = {
+  exports.TransportEnum = {
     /**
-     * value: "POSIX"
+     * value: "tcp"
      * @const
      */
-    "POSIX": "POSIX",
+    "tcp": "tcp",
     /**
-     * value: "S3"
+     * value: "rdma"
      * @const
      */
-    "S3": "S3",
+    "rdma": "rdma",
     /**
-     * value: "Ceph"
+     * value: "socket"
      * @const
      */
-    "Ceph": "Ceph",
-    /**
-     * value: "Swift"
-     * @const
-     */
-    "Swift": "Swift",
-    /**
-     * value: "GlusterFS"
-     * @const
-     */
-    "GlusterFS": "GlusterFS"  };
+    "socket": "socket"  };
 
 
   return exports;

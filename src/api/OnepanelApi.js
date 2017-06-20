@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest);
   }
-}(this, function(ApiClient, Cookie, Error, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest) {
+}(this, function(ApiClient, Cookie, Error, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest) {
   'use strict';
 
   /**
@@ -133,6 +133,45 @@
     }
 
     /**
+     * Callback function to receive the result of the createSession operation.
+     * @callback module:api/OnepanelApi~createSessionCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create Onepanel user session
+     * Creates a new Onepanel user session.
+     * @param {module:api/OnepanelApi~createSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SessionDetails}
+     */
+    this.createSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = SessionDetails;
+
+      return this.apiClient.callApi(
+        '/session', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getClusterCookie operation.
      * @callback module:api/OnepanelApi~getClusterCookieCallback
      * @param {String} error Error message, if any.
@@ -209,6 +248,45 @@
 
       return this.apiClient.callApi(
         '/hosts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getSession operation.
+     * @callback module:api/OnepanelApi~getSessionCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Onepanel user session
+     * Returns details of a Onepanel user session associated with the request. 
+     * @param {module:api/OnepanelApi~getSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SessionDetails}
+     */
+    this.getSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SessionDetails;
+
+      return this.apiClient.callApi(
+        '/session', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -397,6 +475,44 @@
 
       return this.apiClient.callApi(
         '/hosts/{host}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeSession operation.
+     * @callback module:api/OnepanelApi~removeSessionCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove Onepanel user session
+     * Removes the Onepanel user session. 
+     * @param {module:api/OnepanelApi~removeSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeSession = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/session', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

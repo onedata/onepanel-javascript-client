@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterStorages', 'model/ClusterStoragesList', 'model/Error', 'model/ManagerHosts', 'model/ProviderConfiguration', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceDetails', 'model/SpaceSupportRequest', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/Error', 'model/ManagerHosts', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceDetails', 'model/SpaceSupportRequest', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterStorages'), require('../model/ClusterStoragesList'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ProviderConfiguration'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceDetails'), require('../model/SpaceSupportRequest'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceDetails'), require('../model/SpaceSupportRequest'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterStorages, root.Onepanel.ClusterStoragesList, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceDetails, root.Onepanel.SpaceSupportRequest, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceDetails, root.Onepanel.SpaceSupportRequest, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
   }
-}(this, function(ApiClient, ClusterStorages, ClusterStoragesList, Error, ManagerHosts, ProviderConfiguration, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceDetails, SpaceSupportRequest, StorageModifyRequest) {
+}(this, function(ApiClient, Error, ManagerHosts, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceDetails, SpaceSupportRequest, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
   'use strict';
 
   /**
@@ -230,17 +230,17 @@
      */
 
     /**
-     * Add storage.
-     * Adds additional storage resource to the storage provider.
-     * @param {module:model/ClusterStoragesList} clusterStoragesList The list of configuration details of storages to be added to the provider deployment. 
+     * Add storage
+     * Adds additional storage resources to the provider.
+     * @param {module:model/StorageCreateRequest} storageCreateRequest The configuration details of storage resources to be added to the provider deployment. 
      * @param {module:api/OneproviderApi~addStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addStorage = function(clusterStoragesList, callback) {
-      var postBody = clusterStoragesList;
+    this.addStorage = function(storageCreateRequest, callback) {
+      var postBody = storageCreateRequest;
 
-      // verify the required parameter 'clusterStoragesList' is set
-      if (clusterStoragesList === undefined || clusterStoragesList === null) {
-        throw new Error("Missing the required parameter 'clusterStoragesList' when calling addStorage");
+      // verify the required parameter 'storageCreateRequest' is set
+      if (storageCreateRequest === undefined || storageCreateRequest === null) {
+        throw new Error("Missing the required parameter 'storageCreateRequest' when calling addStorage");
       }
 
 
@@ -352,7 +352,7 @@
      * Callback function to receive the result of the getProviderConfiguration operation.
      * @callback module:api/OneproviderApi~getProviderConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ProviderConfiguration} data The data returned by the service call.
+     * @param {module:model/ProviderConfigurationDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -360,7 +360,7 @@
      * Get provider cluster configuration
      * Returns the provider cluster configuration.
      * @param {module:api/OneproviderApi~getProviderConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ProviderConfiguration}
+     * data is of type: {@link module:model/ProviderConfigurationDetails}
      */
     this.getProviderConfiguration = function(callback) {
       var postBody = null;
@@ -378,7 +378,7 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ProviderConfiguration;
+      var returnType = ProviderConfigurationDetails;
 
       return this.apiClient.callApi(
         '/provider/configuration', 'GET',
@@ -769,28 +769,28 @@
      * Callback function to receive the result of the getStorageDetails operation.
      * @callback module:api/OneproviderApi~getStorageDetailsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ClusterStorages} data The data returned by the service call.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Get storage details
      * Returns the details of the selected storage.
-     * @param {String} name The name of a storage resource, which details should be returned. 
+     * @param {String} id The ID of a storage resource, which details should be returned. 
      * @param {module:api/OneproviderApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ClusterStorages}
+     * data is of type: {@link module:model/StorageDetails}
      */
-    this.getStorageDetails = function(name, callback) {
+    this.getStorageDetails = function(id, callback) {
       var postBody = null;
 
-      // verify the required parameter 'name' is set
-      if (name === undefined || name === null) {
-        throw new Error("Missing the required parameter 'name' when calling getStorageDetails");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getStorageDetails");
       }
 
 
       var pathParams = {
-        'name': name
+        'id': id
       };
       var queryParams = {
       };
@@ -802,10 +802,10 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ClusterStorages;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
-        '/provider/storages/{name}', 'GET',
+        '/provider/storages/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -815,7 +815,7 @@
      * Callback function to receive the result of the getStorages operation.
      * @callback module:api/OneproviderApi~getStoragesCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/ClusterStorages>} data The data returned by the service call.
+     * @param {module:model/ProviderStorages} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -823,7 +823,7 @@
      * Get storages
      * Returns the list of provider storage resources and their details.
      * @param {module:api/OneproviderApi~getStoragesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/ClusterStorages>}
+     * data is of type: {@link module:model/ProviderStorages}
      */
     this.getStorages = function(callback) {
       var postBody = null;
@@ -841,7 +841,7 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [ClusterStorages];
+      var returnType = ProviderStorages;
 
       return this.apiClient.callApi(
         '/provider/storages', 'GET',
@@ -905,16 +905,16 @@
     /**
      * Modify storage details
      * Modifies basic storage details, such as operation timeout.
-     * @param {String} name The name of a storage resource, which details should be returned. 
+     * @param {String} id The ID of a storage resource, which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifyStorage = function(name, storageModifyRequest, callback) {
+    this.modifyStorage = function(id, storageModifyRequest, callback) {
       var postBody = storageModifyRequest;
 
-      // verify the required parameter 'name' is set
-      if (name === undefined || name === null) {
-        throw new Error("Missing the required parameter 'name' when calling modifyStorage");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling modifyStorage");
       }
 
       // verify the required parameter 'storageModifyRequest' is set
@@ -924,7 +924,7 @@
 
 
       var pathParams = {
-        'name': name
+        'id': id
       };
       var queryParams = {
       };
@@ -939,7 +939,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{name}', 'PATCH',
+        '/provider/storages/{id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -992,8 +992,8 @@
      */
 
     /**
-     * Revoke space support for a space.
-     * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider.  
+     * Revoke space support for a space
+     * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider. 
      * @param {String} id The ID of a space to be removed.
      * @param {module:api/OneproviderApi~revokeSpaceSupportCallback} callback The callback function, accepting three arguments: error, data, response
      */

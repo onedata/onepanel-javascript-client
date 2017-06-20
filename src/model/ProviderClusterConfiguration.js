@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterStorages', 'model/ClusterWorkers', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterStorages'), require('./ClusterWorkers'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterStorages, root.Onepanel.ClusterWorkers, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterStorages, ClusterWorkers, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
   'use strict';
 
 
@@ -42,7 +42,7 @@
    * The provider cluster configuration.
    * @alias module:model/ProviderClusterConfiguration
    * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FDQN) of the node. 
+   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
    * @param databases {module:model/ClusterDatabases} 
    * @param managers {module:model/ClusterManagers} 
@@ -50,7 +50,6 @@
    */
   var exports = function(domainName, nodes, databases, managers, workers) {
     var _this = this;
-
 
     _this['domainName'] = domainName;
     _this['nodes'] = nodes;
@@ -81,9 +80,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('autoDeploy')) {
-        obj['autoDeploy'] = ApiClient.convertToType(data['autoDeploy'], 'Boolean');
-      }
       if (data.hasOwnProperty('domainName')) {
         obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
       }
@@ -100,19 +96,14 @@
         obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
       }
       if (data.hasOwnProperty('storages')) {
-        obj['storages'] = ApiClient.convertToType(data['storages'], {'String': ClusterStorages});
+        obj['storages'] = StorageCreateRequest.constructFromObject(data['storages']);
       }
     }
     return obj;
   }
 
   /**
-   * Defines whether administrative cluster should be created from the list of provided cluster nodes. 
-   * @member {Boolean} autoDeploy
-   */
-  exports.prototype['autoDeploy'] = undefined;
-  /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FDQN) of the node. 
+   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @member {String} domainName
    */
   exports.prototype['domainName'] = undefined;
@@ -134,8 +125,7 @@
    */
   exports.prototype['workers'] = undefined;
   /**
-   * The cluster storage configuration.
-   * @member {Object.<String, module:model/ClusterStorages>} storages
+   * @member {module:model/StorageCreateRequest} storages
    */
   exports.prototype['storages'] = undefined;
 

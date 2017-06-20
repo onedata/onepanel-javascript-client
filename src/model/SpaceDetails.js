@@ -42,13 +42,14 @@
    * The space details.
    * @alias module:model/SpaceDetails
    * @class
+   * @param id {String} The ID of the space.
    * @param name {String} The name of the space.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    */
-  var exports = function(name, supportingProviders) {
+  var exports = function(id, name, supportingProviders) {
     var _this = this;
 
-
+    _this['id'] = id;
     _this['name'] = name;
     _this['supportingProviders'] = supportingProviders;
   };

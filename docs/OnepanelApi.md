@@ -6,12 +6,15 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**createCluster**](OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
+[**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
+[**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
+[**removeSession**](OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 
 
@@ -122,6 +125,52 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="createSession"></a>
+# **createSession**
+> SessionDetails createSession()
+
+Create Onepanel user session
+
+Creates a new Onepanel user session.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.default;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createSession(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SessionDetails**](SessionDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="getClusterCookie"></a>
 # **getClusterCookie**
 > &#39;String&#39; getClusterCookie()
@@ -211,6 +260,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 **[&#39;String&#39;]**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getSession"></a>
+# **getSession**
+> SessionDetails getSession()
+
+Get Onepanel user session
+
+Returns details of a Onepanel user session associated with the request. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.default;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getSession(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SessionDetails**](SessionDetails.md)
 
 ### Authorization
 
@@ -418,6 +513,52 @@ apiInstance.removeClusterHost(host, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | **String**| Hostname of a node to be removed from the cluster. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="removeSession"></a>
+# **removeSession**
+> removeSession()
+
+Remove Onepanel user session
+
+Removes the Onepanel user session. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.default;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.removeSession(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 

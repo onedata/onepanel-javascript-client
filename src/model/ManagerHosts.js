@@ -42,8 +42,8 @@
    * The cluster manager service hosts configuration.
    * @alias module:model/ManagerHosts
    * @class
-   * @param mainHost {String} The name of a host where main cluster manager node should be deployed. Main cluster manager node is responsible for monitoring cluster worker nodes. Other nodes, called optional, are suspended. In case of main cluster manager node failure one of optional nodes is resumed and takes over main node responsibilities. 
-   * @param hosts {Array.<String>} The list of hosts where service should be deployed.
+   * @param mainHost {String} The main cluster manager host. Main cluster manager node is responsible for monitoring cluster worker nodes. Other nodes, which are redundant, are suspended. In case of main cluster manager node failure one of redundant nodes is resumed and takes over main node responsibilities. 
+   * @param hosts {Array.<String>} The list of service hosts.
    */
   var exports = function(mainHost, hosts) {
     var _this = this;
@@ -84,12 +84,12 @@
   }
 
   /**
-   * The name of a host where main cluster manager node should be deployed. Main cluster manager node is responsible for monitoring cluster worker nodes. Other nodes, called optional, are suspended. In case of main cluster manager node failure one of optional nodes is resumed and takes over main node responsibilities. 
+   * The main cluster manager host. Main cluster manager node is responsible for monitoring cluster worker nodes. Other nodes, which are redundant, are suspended. In case of main cluster manager node failure one of redundant nodes is resumed and takes over main node responsibilities. 
    * @member {String} mainHost
    */
   exports.prototype['mainHost'] = undefined;
   /**
-   * The list of hosts where service should be deployed.
+   * The list of service hosts.
    * @member {Array.<String>} hosts
    */
   exports.prototype['hosts'] = undefined;

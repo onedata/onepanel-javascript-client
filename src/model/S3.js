@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterStorages'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterStorages'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterStorages);
+    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, ClusterStorages) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
@@ -42,8 +42,8 @@
    * The Simple Storage Service configuration.
    * @alias module:model/S3
    * @class
-   * @extends module:model/ClusterStorages
-   * @param type {module:model/ClusterStorages.TypeEnum} The type of storage.
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    * @param accessKey {String} The access key to the S3 storage.
@@ -51,7 +51,7 @@
    */
   var exports = function(type, hostname, bucketName, accessKey, secretKey) {
     var _this = this;
-    ClusterStorages.call(_this, type);
+    StorageDetails.call(_this, type);
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
     _this['accessKey'] = accessKey;
@@ -83,7 +83,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ClusterStorages.constructFromObject(data, obj);
+      StorageDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
@@ -115,7 +115,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(ClusterStorages.prototype);
+  exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

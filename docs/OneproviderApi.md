@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**addProviderDatabases**](OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
-[**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage.
+[**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -21,12 +21,12 @@ Method | HTTP request | Description
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 [**getSpaceDetails**](OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
-[**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{name} | Get storage details
+[**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
-[**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{name} | Modify storage details
+[**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
-[**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space.
+[**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 [**startStopProviderManager**](OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -246,11 +246,11 @@ null (empty response body)
 
 <a name="addStorage"></a>
 # **addStorage**
-> addStorage(clusterStoragesList)
+> addStorage(storageCreateRequest)
 
-Add storage.
+Add storage
 
-Adds additional storage resource to the storage provider.
+Adds additional storage resources to the provider.
 
 ### Example
 ```javascript
@@ -264,7 +264,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var clusterStoragesList = new Onepanel.ClusterStoragesList(); // ClusterStoragesList | The list of configuration details of storages to be added to the provider deployment. 
+var storageCreateRequest = new Onepanel.StorageCreateRequest(); // StorageCreateRequest | The configuration details of storage resources to be added to the provider deployment. 
 
 
 var callback = function(error, data, response) {
@@ -274,14 +274,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.addStorage(clusterStoragesList, callback);
+apiInstance.addStorage(storageCreateRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterStoragesList** | [**ClusterStoragesList**](ClusterStoragesList.md)| The list of configuration details of storages to be added to the provider deployment.  | 
+ **storageCreateRequest** | [**StorageCreateRequest**](StorageCreateRequest.md)| The configuration details of storage resources to be added to the provider deployment.  | 
 
 ### Return type
 
@@ -396,7 +396,7 @@ This endpoint does not need any parameter.
 
 <a name="getProviderConfiguration"></a>
 # **getProviderConfiguration**
-> ProviderConfiguration getProviderConfiguration()
+> ProviderConfigurationDetails getProviderConfiguration()
 
 Get provider cluster configuration
 
@@ -429,7 +429,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ProviderConfiguration**](ProviderConfiguration.md)
+[**ProviderConfigurationDetails**](ProviderConfigurationDetails.md)
 
 ### Authorization
 
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 <a name="getStorageDetails"></a>
 # **getStorageDetails**
-> ClusterStorages getStorageDetails(name)
+> StorageDetails getStorageDetails(id)
 
 Get storage details
 
@@ -898,7 +898,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var name = "name_example"; // String | The name of a storage resource, which details should be returned. 
+var id = "id_example"; // String | The ID of a storage resource, which details should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -908,18 +908,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getStorageDetails(name, callback);
+apiInstance.getStorageDetails(id, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of a storage resource, which details should be returned.  | 
+ **id** | **String**| The ID of a storage resource, which details should be returned.  | 
 
 ### Return type
 
-[**ClusterStorages**](ClusterStorages.md)
+[**StorageDetails**](StorageDetails.md)
 
 ### Authorization
 
@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 
 <a name="getStorages"></a>
 # **getStorages**
-> [ClusterStorages] getStorages()
+> ProviderStorages getStorages()
 
 Get storages
 
@@ -965,7 +965,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[ClusterStorages]**](ClusterStorages.md)
+[**ProviderStorages**](ProviderStorages.md)
 
 ### Authorization
 
@@ -1030,7 +1030,7 @@ null (empty response body)
 
 <a name="modifyStorage"></a>
 # **modifyStorage**
-> modifyStorage(name, storageModifyRequest)
+> modifyStorage(id, storageModifyRequest)
 
 Modify storage details
 
@@ -1048,7 +1048,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var name = "name_example"; // String | The name of a storage resource, which details should be returned. 
+var id = "id_example"; // String | The ID of a storage resource, which details should be modified. 
 
 var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
 
@@ -1060,14 +1060,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.modifyStorage(name, storageModifyRequest, callback);
+apiInstance.modifyStorage(id, storageModifyRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of a storage resource, which details should be returned.  | 
+ **id** | **String**| The ID of a storage resource, which details should be modified.  | 
  **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
 
 ### Return type
@@ -1133,9 +1133,9 @@ null (empty response body)
 # **revokeSpaceSupport**
 > revokeSpaceSupport(id)
 
-Revoke space support for a space.
+Revoke space support for a space
 
-Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider.  
+Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider. 
 
 ### Example
 ```javascript

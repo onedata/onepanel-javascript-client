@@ -54,12 +54,6 @@
       //expect(instance).to.be.a(Onepanel.ProviderClusterConfiguration);
     });
 
-    it('should have the property autoDeploy (base name: "autoDeploy")', function() {
-      // uncomment below and update the code to test the property autoDeploy
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
     it('should have the property domainName (base name: "domainName")', function() {
       // uncomment below and update the code to test the property domainName
       //var instane = new Onepanel.ProviderClusterConfiguration();

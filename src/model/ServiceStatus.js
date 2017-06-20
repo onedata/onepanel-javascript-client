@@ -42,11 +42,12 @@
    * The generic model for service status.
    * @alias module:model/ServiceStatus
    * @class
+   * @param hosts {Object.<String, module:model/ServiceStatusHost>} The collection of hosts with associated service status, for each host where given service has been deployed. 
    */
-  var exports = function() {
+  var exports = function(hosts) {
     var _this = this;
 
-
+    _this['hosts'] = hosts;
   };
 
   /**

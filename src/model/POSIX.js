@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterStorages'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterStorages'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.POSIX = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterStorages);
+    root.Onepanel.POSIX = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, ClusterStorages) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
@@ -42,13 +42,13 @@
    * The POSIX storage configuration.
    * @alias module:model/POSIX
    * @class
-   * @extends module:model/ClusterStorages
-   * @param type {module:model/ClusterStorages.TypeEnum} The type of storage.
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    */
   var exports = function(type, mountPoint) {
     var _this = this;
-    ClusterStorages.call(_this, type);
+    StorageDetails.call(_this, type);
     _this['mountPoint'] = mountPoint;
 
 
@@ -74,7 +74,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ClusterStorages.constructFromObject(data, obj);
+      StorageDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
@@ -88,7 +88,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(ClusterStorages.prototype);
+  exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

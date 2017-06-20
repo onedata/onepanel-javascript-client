@@ -186,7 +186,7 @@ null (empty response body)
 
 Configure zone deployment
 
-Configures and starts zone services, such as database, cluster manager and cluster worker. This request can be executed by unauthorized usersas long as there are no admin users in the system. 
+Configures and starts zone services, such as database, cluster manager and cluster worker. This request can be executed by unauthorized users as long as there are no admin users in the system. 
 
 ### Example
 ```javascript

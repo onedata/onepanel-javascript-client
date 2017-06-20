@@ -42,7 +42,7 @@
    * The provider cluster configuration.
    * @alias module:model/ProviderClusterConfiguration
    * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FDQN) of the node. 
+   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
    * @param databases {module:model/ClusterDatabases} 
    * @param managers {module:model/ClusterManagers} 
@@ -103,7 +103,7 @@
   }
 
   /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FDQN) of the node. 
+   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @member {String} domainName
    */
   exports.prototype['domainName'] = undefined;

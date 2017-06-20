@@ -1,7 +1,7 @@
 {
   "name": "onepanel",
   "version": "3.0.0-dev",
-  "description": "This is a Javascript client for [Onedata Onepanel](https://onedata.org) service.",
+  "description": "This is a Javascript client for [Onedata Onepanel](https://onedata.org) service, automatically generated using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {

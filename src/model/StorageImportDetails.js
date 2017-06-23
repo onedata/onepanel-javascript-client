@@ -13,89 +13,89 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.StorageImportDetails = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceSupportRequest();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The StorageImportDetails model module.
+   * @module model/StorageImportDetails
+   * @version 3.0.0-dev
+   */
+
+  /**
+   * Constructs a new <code>StorageImportDetails</code>.
+   * The storage import configuration. Storage import allows to import data from storage to space without need for copying the data. 
+   * @alias module:model/StorageImportDetails
+   * @class
+   * @param strategy {String} The import strategy. One of no_import, simple_scan.
+   */
+  var exports = function(strategy) {
+    var _this = this;
+
+    _this['strategy'] = strategy;
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/StorageImportDetails} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>StorageImportDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/StorageImportDetails} obj Optional instance to populate.
+   * @return {module:model/StorageImportDetails} The populated <code>StorageImportDetails</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('strategy')) {
+        obj['strategy'] = ApiClient.convertToType(data['strategy'], 'String');
+      }
+      if (data.hasOwnProperty('maxDepth')) {
+        obj['maxDepth'] = ApiClient.convertToType(data['maxDepth'], 'Number');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * The import strategy. One of no_import, simple_scan.
+   * @member {String} strategy
+   */
+  exports.prototype['strategy'] = undefined;
+  /**
+   * Maximum depth of filesystem tree that will be traversed during storage synchronization. 
+   * @member {Number} maxDepth
+   */
+  exports.prototype['maxDepth'] = undefined;
 
-  describe('SpaceSupportRequest', function() {
-    it('should create an instance of SpaceSupportRequest', function() {
-      // uncomment below and update the code to test SpaceSupportRequest
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
-    });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

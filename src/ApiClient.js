@@ -506,6 +506,10 @@
               polymorphicType = require("./model/Ceph");
             }
 
+            if('Glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Glusterfs");
+            }
+
             if('POSIX'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/POSIX");
             }

@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceSupportRequest();
+    instance = new Onepanel.Glusterfs();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,52 +47,64 @@
       object[property] = value;
   }
 
-  describe('SpaceSupportRequest', function() {
-    it('should create an instance of SpaceSupportRequest', function() {
-      // uncomment below and update the code to test SpaceSupportRequest
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
+  describe('Glusterfs', function() {
+    it('should create an instance of Glusterfs', function() {
+      // uncomment below and update the code to test Glusterfs
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be.a(Onepanel.Glusterfs);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property volume (base name: "volume")', function() {
+      // uncomment below and update the code to test the property volume
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property hostname (base name: "hostname")', function() {
+      // uncomment below and update the code to test the property hostname
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property transport (base name: "transport")', function() {
+      // uncomment below and update the code to test the property transport
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property xlatorOptions (base name: "xlatorOptions")', function() {
+      // uncomment below and update the code to test the property xlatorOptions
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceSupportRequest();
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Glusterfs();
       //expect(instance).to.be();
     });
 

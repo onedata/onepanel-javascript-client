@@ -248,6 +248,16 @@
         done();
       });
     });
+    describe('modifySpace', function() {
+      it('should call modifySpace successfully', function(done) {
+        //uncomment below and update the code to test modifySpace
+        //instance.modifySpace(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyStorage', function() {
       it('should call modifyStorage successfully', function(done) {
         //uncomment below and update the code to test modifyStorage

@@ -14,16 +14,16 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Ceph', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/Cookie', 'model/DatabaseHosts', 'model/Error', 'model/ManagerHosts', 'model/POSIX', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/S3', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceDetails', 'model/SpaceSupportRequest', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest', 'model/Swift', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
+    define(['ApiClient', 'model/Ceph', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/Cookie', 'model/DatabaseHosts', 'model/Error', 'model/Glusterfs', 'model/ManagerHosts', 'model/POSIX', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/S3', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceDetails', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/Swift', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Ceph'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/Cookie'), require('./model/DatabaseHosts'), require('./model/Error'), require('./model/ManagerHosts'), require('./model/POSIX'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/S3'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceDetails'), require('./model/SpaceSupportRequest'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageModifyRequest'), require('./model/Swift'), require('./model/TaskStatus'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Ceph'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/Cookie'), require('./model/DatabaseHosts'), require('./model/Error'), require('./model/Glusterfs'), require('./model/ManagerHosts'), require('./model/POSIX'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/S3'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceDetails'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/Swift'), require('./model/TaskStatus'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
   }
-}(function(ApiClient, Ceph, ClusterConfigurationDetails, ClusterDatabases, ClusterManagers, ClusterWorkers, Cookie, DatabaseHosts, Error, ManagerHosts, POSIX, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, S3, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceDetails, SpaceSupportRequest, StorageCreateRequest, StorageDetails, StorageModifyRequest, Swift, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, OnepanelApi, OneproviderApi, OnezoneApi) {
+}(function(ApiClient, Ceph, ClusterConfigurationDetails, ClusterDatabases, ClusterManagers, ClusterWorkers, Cookie, DatabaseHosts, Error, Glusterfs, ManagerHosts, POSIX, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, S3, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceDetails, SpaceModifyRequest, SpaceSupportRequest, StorageCreateRequest, StorageDetails, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, Swift, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, OnepanelApi, OneproviderApi, OnezoneApi) {
   'use strict';
 
   /**
-   * This is a Javascript client for [Onedata Onepanel](https://onedata.org) service, automatically generated using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen).<br>
+   * This is a Javascript client for [Onedata Onepanel](https://onedata.org) service..<br>
    * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -99,6 +99,11 @@
      * @property {module:model/Error}
      */
     Error: Error,
+    /**
+     * The Glusterfs model constructor.
+     * @property {module:model/Glusterfs}
+     */
+    Glusterfs: Glusterfs,
     /**
      * The ManagerHosts model constructor.
      * @property {module:model/ManagerHosts}
@@ -215,6 +220,11 @@
      */
     SpaceDetails: SpaceDetails,
     /**
+     * The SpaceModifyRequest model constructor.
+     * @property {module:model/SpaceModifyRequest}
+     */
+    SpaceModifyRequest: SpaceModifyRequest,
+    /**
      * The SpaceSupportRequest model constructor.
      * @property {module:model/SpaceSupportRequest}
      */
@@ -230,10 +240,20 @@
      */
     StorageDetails: StorageDetails,
     /**
+     * The StorageImportDetails model constructor.
+     * @property {module:model/StorageImportDetails}
+     */
+    StorageImportDetails: StorageImportDetails,
+    /**
      * The StorageModifyRequest model constructor.
      * @property {module:model/StorageModifyRequest}
      */
     StorageModifyRequest: StorageModifyRequest,
+    /**
+     * The StorageUpdateDetails model constructor.
+     * @property {module:model/StorageUpdateDetails}
+     */
+    StorageUpdateDetails: StorageUpdateDetails,
     /**
      * The Swift model constructor.
      * @property {module:model/Swift}

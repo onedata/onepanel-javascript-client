@@ -14,46 +14,49 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.Glusterfs = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceDetails model module.
-   * @module model/SpaceDetails
+   * The Glusterfs model module.
+   * @module model/Glusterfs
    * @version 3.0.0-dev
    */
 
   /**
-   * Constructs a new <code>SpaceDetails</code>.
-   * The space details.
-   * @alias module:model/SpaceDetails
+   * Constructs a new <code>Glusterfs</code>.
+   * The GlusterFS storage configuration.
+   * @alias module:model/Glusterfs
    * @class
-   * @param id {String} The ID of the space.
-   * @param name {String} The name of the space.
-   * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
-   * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param volume {String} The name of the volume to use as a storage backend.
+   * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
-  var exports = function(id, name, storageId, supportingProviders) {
+  var exports = function(type, volume, hostname) {
     var _this = this;
+    StorageDetails.call(_this, type);
+    _this['volume'] = volume;
+    _this['hostname'] = hostname;
 
-    _this['id'] = id;
-    _this['name'] = name;
-    _this['storageId'] = storageId;
-    _this['supportingProviders'] = supportingProviders;
+
+
+
+
 
 
   };
@@ -62,74 +65,130 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/Glusterfs} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Glusterfs</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceDetails} obj Optional instance to populate.
-   * @return {module:model/SpaceDetails} The populated <code>SpaceDetails</code> instance.
+   * @param {module:model/Glusterfs} obj Optional instance to populate.
+   * @return {module:model/Glusterfs} The populated <code>Glusterfs</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('storageId')) {
-        obj['storageId'] = ApiClient.convertToType(data['storageId'], 'String');
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
       }
-      if (data.hasOwnProperty('supportingProviders')) {
-        obj['supportingProviders'] = ApiClient.convertToType(data['supportingProviders'], {'String': 'Number'});
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
       }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('storageUpdate')) {
-        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
     }
     return obj;
   }
 
-  /**
-   * The ID of the space.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * The name of the space.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Id of StorageDetails that supports this space on provider that is associated with this panel. 
-   * @member {String} storageId
-   */
-  exports.prototype['storageId'] = undefined;
-  /**
-   * The collection of provider IDs with associated supported storage space in bytes. 
-   * @member {Object.<String, Number>} supportingProviders
-   */
-  exports.prototype['supportingProviders'] = undefined;
-  /**
-   * @member {module:model/StorageImportDetails} storageImport
-   */
-  exports.prototype['storageImport'] = undefined;
-  /**
-   * @member {module:model/StorageUpdateDetails} storageUpdate
-   */
-  exports.prototype['storageUpdate'] = undefined;
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
+  /**
+   * The name of the volume to use as a storage backend.
+   * @member {String} volume
+   */
+  exports.prototype['volume'] = undefined;
+  /**
+   * The hostname (IP address or FQDN) of GlusterFS volume server.
+   * @member {String} hostname
+   */
+  exports.prototype['hostname'] = undefined;
+  /**
+   * The GlusterFS port on volume server.
+   * @member {Number} port
+   */
+  exports.prototype['port'] = undefined;
+  /**
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/Glusterfs.TransportEnum} transport
+   * @default 'tcp'
+   */
+  exports.prototype['transport'] = 'tcp';
+  /**
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
+   * @default ''
+   */
+  exports.prototype['mountPoint'] = '';
+  /**
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   * @default ''
+   */
+  exports.prototype['xlatorOptions'] = '';
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default false
+   */
+  exports.prototype['insecure'] = false;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+
+
+  /**
+   * Allowed values for the <code>transport</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TransportEnum = {
+    /**
+     * value: "tcp"
+     * @const
+     */
+    "tcp": "tcp",
+    /**
+     * value: "rdma"
+     * @const
+     */
+    "rdma": "rdma",
+    /**
+     * value: "socket"
+     * @const
+     */
+    "socket": "socket"  };
 
 
   return exports;

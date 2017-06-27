@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceSupportRequest();
+    instance = new Onepanel.SpaceModifyRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,52 +47,22 @@
       object[property] = value;
   }
 
-  describe('SpaceSupportRequest', function() {
-    it('should create an instance of SpaceSupportRequest', function() {
-      // uncomment below and update the code to test SpaceSupportRequest
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
+  describe('SpaceModifyRequest', function() {
+    it('should create an instance of SpaceModifyRequest', function() {
+      // uncomment below and update the code to test SpaceModifyRequest
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
     });
 
     it('should have the property storageImport (base name: "storageImport")', function() {
       // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceSupportRequest();
+      //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property storageUpdate (base name: "storageUpdate")', function() {
       // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceSupportRequest();
+      //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });
 

@@ -66,8 +66,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property storageId (base name: "storageId")', function() {
+      // uncomment below and update the code to test the property storageId
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property supportingProviders (base name: "supportingProviders")', function() {
       // uncomment below and update the code to test the property supportingProviders
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageImport (base name: "storageImport")', function() {
+      // uncomment below and update the code to test the property storageImport
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
+      // uncomment below and update the code to test the property storageUpdate
       //var instane = new Onepanel.SpaceDetails();
       //expect(instance).to.be();
     });

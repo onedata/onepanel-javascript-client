@@ -13,89 +13,86 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceSupportRequest();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The SpaceModifyRequest model module.
+   * @module model/SpaceModifyRequest
+   * @version 3.0.0-dev
+   */
+
+  /**
+   * Constructs a new <code>SpaceModifyRequest</code>.
+   * The space configuration details that can be modified.
+   * @alias module:model/SpaceModifyRequest
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/SpaceModifyRequest} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>SpaceModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/SpaceModifyRequest} obj Optional instance to populate.
+   * @return {module:model/SpaceModifyRequest} The populated <code>SpaceModifyRequest</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('storageImport')) {
+        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
+      }
+      if (data.hasOwnProperty('storageUpdate')) {
+        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * @member {module:model/StorageImportDetails} storageImport
+   */
+  exports.prototype['storageImport'] = undefined;
+  /**
+   * @member {module:model/StorageUpdateDetails} storageUpdate
+   */
+  exports.prototype['storageUpdate'] = undefined;
 
-  describe('SpaceSupportRequest', function() {
-    it('should create an instance of SpaceSupportRequest', function() {
-      // uncomment below and update the code to test SpaceSupportRequest
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
-    });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

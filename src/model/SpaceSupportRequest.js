@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSupportRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceSupportRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -53,6 +53,8 @@
     _this['token'] = token;
     _this['size'] = size;
     _this['storageId'] = storageId;
+
+
 
   };
 
@@ -92,6 +94,12 @@
       if (data.hasOwnProperty('mountInRoot')) {
         obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
       }
+      if (data.hasOwnProperty('storageImport')) {
+        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
+      }
+      if (data.hasOwnProperty('storageUpdate')) {
+        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
+      }
     }
     return obj;
   }
@@ -122,6 +130,14 @@
    * @default false
    */
   exports.prototype['mountInRoot'] = false;
+  /**
+   * @member {module:model/StorageImportDetails} storageImport
+   */
+  exports.prototype['storageImport'] = undefined;
+  /**
+   * @member {module:model/StorageUpdateDetails} storageUpdate
+   */
+  exports.prototype['storageUpdate'] = undefined;
 
 
 

@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 
 * `Swift` (value: `"Swift"`)
 
+* `GlusterFS` (value: `"GlusterFS"`)
+
 
 
 

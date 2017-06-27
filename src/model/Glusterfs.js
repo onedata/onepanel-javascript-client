@@ -14,48 +14,50 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.Glusterfs = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The ProviderClusterConfiguration model module.
-   * @module model/ProviderClusterConfiguration
+   * The Glusterfs model module.
+   * @module model/Glusterfs
    * @version 3.0.0-dev
    */
 
   /**
-   * Constructs a new <code>ProviderClusterConfiguration</code>.
-   * The provider cluster configuration.
-   * @alias module:model/ProviderClusterConfiguration
+   * Constructs a new <code>Glusterfs</code>.
+   * The GlusterFS storage configuration.
+   * @alias module:model/Glusterfs
    * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
-   * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
-   * @param databases {module:model/ClusterDatabases} 
-   * @param managers {module:model/ClusterManagers} 
-   * @param workers {module:model/ClusterWorkers} 
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param volume {String} The name of the volume to use as a storage backend.
+   * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
-  var exports = function(domainName, nodes, databases, managers, workers) {
+  var exports = function(type, volume, hostname) {
     var _this = this;
+    StorageDetails.call(_this, type);
+    _this['volume'] = volume;
+    _this['hostname'] = hostname;
 
-    _this['domainName'] = domainName;
-    _this['nodes'] = nodes;
-    _this['databases'] = databases;
-    _this['managers'] = managers;
-    _this['workers'] = workers;
+
+
+
+
+
 
   };
 
@@ -63,72 +65,130 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderClusterConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/Glusterfs} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderClusterConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Glusterfs</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderClusterConfiguration} obj Optional instance to populate.
-   * @return {module:model/ProviderClusterConfiguration} The populated <code>ProviderClusterConfiguration</code> instance.
+   * @param {module:model/Glusterfs} obj Optional instance to populate.
+   * @return {module:model/Glusterfs} The populated <code>Glusterfs</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('domainName')) {
-        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], {'String': ZoneClusterConfigurationNodes});
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('databases')) {
-        obj['databases'] = ClusterDatabases.constructFromObject(data['databases']);
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
       }
-      if (data.hasOwnProperty('managers')) {
-        obj['managers'] = ClusterManagers.constructFromObject(data['managers']);
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
       }
-      if (data.hasOwnProperty('workers')) {
-        obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('storages')) {
-        obj['storages'] = StorageCreateRequest.constructFromObject(data['storages']);
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
     }
     return obj;
   }
 
-  /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
-   * @member {String} domainName
-   */
-  exports.prototype['domainName'] = undefined;
-  /**
-   * The collection of nodes aliases associated with nodes properties.
-   * @member {Object.<String, module:model/ZoneClusterConfigurationNodes>} nodes
-   */
-  exports.prototype['nodes'] = undefined;
-  /**
-   * @member {module:model/ClusterDatabases} databases
-   */
-  exports.prototype['databases'] = undefined;
-  /**
-   * @member {module:model/ClusterManagers} managers
-   */
-  exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/ClusterWorkers} workers
-   */
-  exports.prototype['workers'] = undefined;
-  /**
-   * @member {module:model/StorageCreateRequest} storages
-   */
-  exports.prototype['storages'] = undefined;
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
+  /**
+   * The name of the volume to use as a storage backend.
+   * @member {String} volume
+   */
+  exports.prototype['volume'] = undefined;
+  /**
+   * The hostname (IP address or FQDN) of GlusterFS volume server.
+   * @member {String} hostname
+   */
+  exports.prototype['hostname'] = undefined;
+  /**
+   * The GlusterFS port on volume server.
+   * @member {Number} port
+   */
+  exports.prototype['port'] = undefined;
+  /**
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/Glusterfs.TransportEnum} transport
+   * @default 'tcp'
+   */
+  exports.prototype['transport'] = 'tcp';
+  /**
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
+   * @default ''
+   */
+  exports.prototype['mountPoint'] = '';
+  /**
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   * @default ''
+   */
+  exports.prototype['xlatorOptions'] = '';
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default false
+   */
+  exports.prototype['insecure'] = false;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+
+
+  /**
+   * Allowed values for the <code>transport</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TransportEnum = {
+    /**
+     * value: "tcp"
+     * @const
+     */
+    "tcp": "tcp",
+    /**
+     * value: "rdma"
+     * @const
+     */
+    "rdma": "rdma",
+    /**
+     * value: "socket"
+     * @const
+     */
+    "socket": "socket"  };
 
 
   return exports;

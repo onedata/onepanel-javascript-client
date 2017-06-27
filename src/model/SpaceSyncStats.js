@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/TimeStats'], factory);
+    define(['ApiClient', 'model/TimeStatsCollection'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TimeStats'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStats);
+    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
   }
-}(this, function(ApiClient, TimeStats) {
+}(this, function(ApiClient, TimeStatsCollection) {
   'use strict';
 
 
@@ -44,14 +44,13 @@
    * @class
    * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
    * @param updateStatus {module:model/SpaceSyncStats.UpdateStatusEnum} Describes update algorithm run status.
-   * @param stats {Array.<module:model/TimeStats>} Collection of statistics for requested metrics.
    */
-  var exports = function(importStatus, updateStatus, stats) {
+  var exports = function(importStatus, updateStatus) {
     var _this = this;
 
     _this['importStatus'] = importStatus;
     _this['updateStatus'] = updateStatus;
-    _this['stats'] = stats;
+
   };
 
   /**
@@ -82,7 +81,7 @@
         obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
       }
       if (data.hasOwnProperty('stats')) {
-        obj['stats'] = ApiClient.convertToType(data['stats'], [TimeStats]);
+        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
       }
     }
     return obj;
@@ -100,7 +99,7 @@
   exports.prototype['updateStatus'] = undefined;
   /**
    * Collection of statistics for requested metrics.
-   * @member {Array.<module:model/TimeStats>} stats
+   * @member {module:model/TimeStatsCollection} stats
    */
   exports.prototype['stats'] = undefined;
 

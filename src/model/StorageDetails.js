@@ -128,7 +128,12 @@
      * value: "Swift"
      * @const
      */
-    "Swift": "Swift"  };
+    "Swift": "Swift",
+    /**
+     * value: "GlusterFS"
+     * @const
+     */
+    "GlusterFS": "GlusterFS"  };
 
 
   return exports;

@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
+*Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
@@ -155,6 +156,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.POSIX](docs/POSIX.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
@@ -178,14 +180,18 @@ Class | Method | HTTP request | Description
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
  - [Onepanel.SessionDetails](docs/SessionDetails.md)
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
+ - [Onepanel.SpaceModifyRequest](docs/SpaceModifyRequest.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
  - [Onepanel.SpaceSyncStats](docs/SpaceSyncStats.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
  - [Onepanel.StorageDetails](docs/StorageDetails.md)
+ - [Onepanel.StorageImportDetails](docs/StorageImportDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
+ - [Onepanel.StorageUpdateDetails](docs/StorageUpdateDetails.md)
  - [Onepanel.Swift](docs/Swift.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
  - [Onepanel.TimeStats](docs/TimeStats.md)
+ - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)

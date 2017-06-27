@@ -13,89 +13,106 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/TimeStats'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStats'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.TimeStatsCollection = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStats);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, TimeStats) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceSupportRequest();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The TimeStatsCollection model module.
+   * @module model/TimeStatsCollection
+   * @version 3.0.0-dev
+   */
+
+  /**
+   * Constructs a new <code>TimeStatsCollection</code>.
+   * Statistics for single metric over specified time.
+   * @alias module:model/TimeStatsCollection
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/TimeStatsCollection} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>TimeStatsCollection</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/TimeStatsCollection} obj Optional instance to populate.
+   * @return {module:model/TimeStatsCollection} The populated <code>TimeStatsCollection</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('queueLength')) {
+        obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
+      }
+      if (data.hasOwnProperty('insertCount')) {
+        obj['insertCount'] = TimeStats.constructFromObject(data['insertCount']);
+      }
+      if (data.hasOwnProperty('updateCount')) {
+        obj['updateCount'] = TimeStats.constructFromObject(data['updateCount']);
+      }
+      if (data.hasOwnProperty('deleteCount')) {
+        obj['deleteCount'] = TimeStats.constructFromObject(data['deleteCount']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Statistics of storage sync jobs queue length.
+   * @member {module:model/TimeStats} queueLength
+   */
+  exports.prototype['queueLength'] = undefined;
+  /**
+   * Statistics of storage sync imported files.
+   * @member {module:model/TimeStats} insertCount
+   */
+  exports.prototype['insertCount'] = undefined;
+  /**
+   * Statistics of storage sync updated files.
+   * @member {module:model/TimeStats} updateCount
+   */
+  exports.prototype['updateCount'] = undefined;
+  /**
+   * Statistics of storage sync deleted files.
+   * @member {module:model/TimeStats} deleteCount
+   */
+  exports.prototype['deleteCount'] = undefined;
 
-  describe('SpaceSupportRequest', function() {
-    it('should create an instance of SpaceSupportRequest', function() {
-      // uncomment below and update the code to test SpaceSupportRequest
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
-    });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

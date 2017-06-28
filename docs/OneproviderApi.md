@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{space_id}/sync | Get statistics of storage synchronization
+[**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
@@ -686,7 +686,7 @@ null (empty response body)
 
 <a name="getProviderSpaceSyncStats"></a>
 # **getProviderSpaceSyncStats**
-> SpaceSyncStats getProviderSpaceSyncStats(spaceId, opts)
+> SpaceSyncStats getProviderSpaceSyncStats(id, opts)
 
 Get statistics of storage synchronization
 
@@ -704,11 +704,11 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var spaceId = "spaceId_example"; // String | The ID of a space for which sync stats should be returned.
+var id = "id_example"; // String | The ID of a space for which sync stats should be returned.
 
 var opts = { 
   'period': "period_example", // String | Predefined time period for which the statistics should be fetched
-  'metrics': ["metrics_example"] // [String] | Specify which statistic metrics should be returned
+  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma
 };
 
 var callback = function(error, data, response) {
@@ -718,16 +718,16 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getProviderSpaceSyncStats(spaceId, opts, callback);
+apiInstance.getProviderSpaceSyncStats(id, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **spaceId** | **String**| The ID of a space for which sync stats should be returned. | 
+ **id** | **String**| The ID of a space for which sync stats should be returned. | 
  **period** | **String**| Predefined time period for which the statistics should be fetched | [optional] 
- **metrics** | [**[String]**](String.md)| Specify which statistic metrics should be returned | [optional] 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma | [optional] 
 
 ### Return type
 

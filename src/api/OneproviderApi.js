@@ -606,29 +606,29 @@
     /**
      * Get statistics of storage synchronization
      * Returns requested statistics of storage synchronization for given space on this provider. 
-     * @param {String} spaceId The ID of a space for which sync stats should be returned.
+     * @param {String} id The ID of a space for which sync stats should be returned.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
-     * @param {Array.<module:model/String>} opts.metrics Specify which statistic metrics should be returned
+     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma
      * @param {module:api/OneproviderApi~getProviderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceSyncStats}
      */
-    this.getProviderSpaceSyncStats = function(spaceId, opts, callback) {
+    this.getProviderSpaceSyncStats = function(id, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'spaceId' is set
-      if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling getProviderSpaceSyncStats");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getProviderSpaceSyncStats");
       }
 
 
       var pathParams = {
-        'space_id': spaceId
+        'id': id
       };
       var queryParams = {
         'period': opts['period'],
-        'metrics': this.apiClient.buildCollectionParam(opts['metrics'], 'csv')
+        'metrics': opts['metrics']
       };
       var headerParams = {
       };
@@ -641,7 +641,7 @@
       var returnType = SpaceSyncStats;
 
       return this.apiClient.callApi(
-        '/provider/spaces/{space_id}/sync', 'GET',
+        '/provider/spaces/{id}/sync', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

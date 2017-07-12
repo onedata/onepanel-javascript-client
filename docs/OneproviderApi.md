@@ -48,7 +48,7 @@ Registers provider in the zone.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -100,7 +100,7 @@ Deploys a database service on provided hosts.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -152,7 +152,7 @@ Deploys a cluster manager service on provided hosts.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -204,7 +204,7 @@ Deploys cluster worker services on provided hosts.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -256,7 +256,7 @@ Adds additional storage resources to the provider.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -308,7 +308,7 @@ Configures and starts provider services, such as database, cluster manager and c
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -360,7 +360,7 @@ Returns the basic configuration information of the provider.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -406,7 +406,7 @@ Returns the provider cluster configuration.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -452,7 +452,7 @@ Returns status of database service on the selected host.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -504,7 +504,7 @@ Returns status of database service on each host where it has been deployed.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -550,7 +550,7 @@ Returns status of cluster manager service on the selected host.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -602,7 +602,7 @@ Returns status of cluster manager service on each host where it has been deploye
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -648,7 +648,7 @@ Returns the provider nagios report.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -694,7 +694,7 @@ Returns the list of spaces supported by the provider.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -740,7 +740,7 @@ Returns status of cluster worker service on the selected host.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -792,7 +792,7 @@ Returns status of cluster worker service on each host where it has been  deploye
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -838,7 +838,7 @@ Returns details of space specified by space Id in the path.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -890,7 +890,7 @@ Returns the details of the selected storage.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -942,7 +942,7 @@ Returns the list of provider storage resources and their details.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -988,7 +988,7 @@ Modifies basic provider details in the zone.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1040,7 +1040,7 @@ Modifies the space import/update strategies.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1095,7 +1095,7 @@ Modifies basic storage details, such as operation timeout.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1150,7 +1150,7 @@ Unregisters provider from the zone.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1196,7 +1196,7 @@ Allows provider to revoke storage support for a specific space. Users with acces
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1248,7 +1248,7 @@ Starts or stops database service on the selected hosts in the local deployment.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1304,7 +1304,7 @@ Starts or stops database service on all hosts in the local deployment.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1357,7 +1357,7 @@ Starts or stops cluster manager service on the selected hosts in the local  depl
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1413,7 +1413,7 @@ Starts or stops cluster manager service on all hosts in the local deployment.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1466,7 +1466,7 @@ Starts or stops cluster worker service on the selected host in the  local deploy
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1522,7 +1522,7 @@ Starts or stops cluster worker service on all hosts in the local deployment.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1575,7 +1575,7 @@ Supports an existing space or creates a new space and automatically supports it.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];

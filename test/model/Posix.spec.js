@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ProviderDetails();
+    instance = new Onepanel.Posix();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,46 +50,28 @@
       object[property] = value;
   }
 
-  describe('ProviderDetails', function() {
-    it('should create an instance of ProviderDetails', function() {
-      // uncomment below and update the code to test ProviderDetails
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be.a(Onepanel.ProviderDetails);
+  describe('Posix', function() {
+    it('should create an instance of Posix', function() {
+      // uncomment below and update the code to test Posix
+      //var instane = new Onepanel.Posix();
+      //expect(instance).to.be.a(Onepanel.Posix);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.ProviderDetails();
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.Posix();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ProviderDetails();
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Posix();
       //expect(instance).to.be();
     });
 
-    it('should have the property urls (base name: "urls")', function() {
-      // uncomment below and update the code to test the property urls
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property redirectionPoint (base name: "redirectionPoint")', function() {
-      // uncomment below and update the code to test the property redirectionPoint
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
-      // uncomment below and update the code to test the property geoLongitude
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
-      // uncomment below and update the code to test the property geoLatitude
-      //var instane = new Onepanel.ProviderDetails();
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Posix();
       //expect(instance).to.be();
     });
 

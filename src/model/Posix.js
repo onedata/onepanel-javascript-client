@@ -16,83 +16,104 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.Posix = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ProviderDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The Posix model module.
+   * @module model/Posix
+   * @version 17.06.0-beta5
+   */
+
+  /**
+   * Constructs a new <code>Posix</code>.
+   * The POSIX storage configuration.
+   * @alias module:model/Posix
+   * @class
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   */
+  var exports = function(type, mountPoint) {
+    var _this = this;
+    StorageDetails.call(_this, type);
+    _this['mountPoint'] = mountPoint;
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/Posix} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>Posix</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/Posix} obj Optional instance to populate.
+   * @return {module:model/Posix} The populated <code>Posix</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('ProviderDetails', function() {
-    it('should create an instance of ProviderDetails', function() {
-      // uncomment below and update the code to test ProviderDetails
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be.a(Onepanel.ProviderDetails);
-    });
+  /**
+   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * @member {String} mountPoint
+   */
+  exports.prototype['mountPoint'] = undefined;
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property urls (base name: "urls")', function() {
-      // uncomment below and update the code to test the property urls
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property redirectionPoint (base name: "redirectionPoint")', function() {
-      // uncomment below and update the code to test the property redirectionPoint
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
-      // uncomment below and update the code to test the property geoLongitude
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
-      // uncomment below and update the code to test the property geoLatitude
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

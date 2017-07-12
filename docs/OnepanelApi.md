@@ -29,7 +29,7 @@ Creates a new Onepanel user account.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -81,7 +81,7 @@ Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has b
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -136,7 +136,7 @@ Creates a new Onepanel user session.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -182,7 +182,7 @@ Returns cookie of a cluster this host belongs to. The cookie is a character sequ
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -228,7 +228,7 @@ Returns the list of administrative cluster hosts. It is also possible to return 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -281,7 +281,7 @@ Returns details of a Onepanel user session associated with the request.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -327,7 +327,7 @@ Returns result of an asynchronous operation, e.g. database service configuration
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -379,7 +379,7 @@ Returns the configuration information of the Onepanel user.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -431,7 +431,7 @@ Modifies the Onepanel user password.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -486,7 +486,7 @@ Removes a node from the administrative cluster. This operation removes all user 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -538,7 +538,7 @@ Removes the Onepanel user session.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -584,7 +584,7 @@ Removes the Onepanel user account.
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.default;
+var defaultClient = Onepanel.ApiClient.instance;
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];

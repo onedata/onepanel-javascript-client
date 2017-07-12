@@ -1,11 +1,14 @@
 {
   "name": "onepanel",
-  "version": "3.0.0-dev",
+  "version": "17.06.0-beta5",
   "description": "This is a Javascript client for [Onedata Onepanel](https://onedata.org) service.",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
   },
   "dependencies": {
     "superagent": "3.5.2"

@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderManagerStatus**](docs/OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderApi* | [**getProviderManagersStatus**](docs/OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderApi* | [**getProviderNagiosReport**](docs/OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
+*Onepanel.OneproviderApi* | [**getProviderSpaceSyncStats**](docs/OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 *Onepanel.OneproviderApi* | [**getProviderSpaces**](docs/OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderApi* | [**getProviderWorkersStatus**](docs/OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
@@ -195,12 +196,15 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
  - [Onepanel.SpaceModifyRequest](docs/SpaceModifyRequest.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
+ - [Onepanel.SpaceSyncStats](docs/SpaceSyncStats.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
  - [Onepanel.StorageDetails](docs/StorageDetails.md)
  - [Onepanel.StorageImportDetails](docs/StorageImportDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
  - [Onepanel.StorageUpdateDetails](docs/StorageUpdateDetails.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
+ - [Onepanel.TimeStats](docs/TimeStats.md)
+ - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)

@@ -58,6 +58,7 @@
 
 
 
+
   };
 
   /**
@@ -104,6 +105,9 @@
       }
       if (data.hasOwnProperty('lumaCacheTimeout')) {
         obj['lumaCacheTimeout'] = ApiClient.convertToType(data['lumaCacheTimeout'], 'Number');
+      }
+      if (data.hasOwnProperty('lumaApiKey')) {
+        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
       }
     }
     return obj;
@@ -152,6 +156,11 @@
    * @member {Number} lumaCacheTimeout
    */
   exports.prototype['lumaCacheTimeout'] = undefined;
+  /**
+   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * @member {String} lumaApiKey
+   */
+  exports.prototype['lumaApiKey'] = undefined;
 
 
   /**

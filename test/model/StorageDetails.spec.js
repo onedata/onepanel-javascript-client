@@ -105,6 +105,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

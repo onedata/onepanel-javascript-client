@@ -57,6 +57,7 @@
     _this['type'] = type;
 
 
+
   };
 
   /**
@@ -101,6 +102,9 @@
       if (data.hasOwnProperty('lumaUrl')) {
         obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
       }
+      if (data.hasOwnProperty('lumaCacheTimeout')) {
+        obj['lumaCacheTimeout'] = ApiClient.convertToType(data['lumaCacheTimeout'], 'Number');
+      }
     }
     return obj;
   }
@@ -143,6 +147,11 @@
    * @member {String} lumaUrl
    */
   exports.prototype['lumaUrl'] = undefined;
+  /**
+   * LUMA cache timeout in minutes.
+   * @member {Number} lumaCacheTimeout
+   */
+  exports.prototype['lumaCacheTimeout'] = undefined;
 
 
   /**

@@ -99,6 +99,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lumaCacheTimeout (base name: "lumaCacheTimeout")', function() {
+      // uncomment below and update the code to test the property lumaCacheTimeout
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

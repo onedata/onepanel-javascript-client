@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **type** | **String** | The type of storage. | 
 **lumaEnabled** | **Boolean** | If true LUMA and reverse LUMA services will be enabled. | [optional] [default to false]
 **lumaUrl** | **String** | URL of external LUMA service | [optional] 
+**lumaCacheTimeout** | **Number** | LUMA cache timeout in minutes. | [optional] 
 
 
 <a name="TypeEnum"></a>

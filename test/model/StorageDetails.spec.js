@@ -87,6 +87,30 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
+      // uncomment below and update the code to test the property lumaEnabled
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
+      // uncomment below and update the code to test the property lumaUrl
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaCacheTimeout (base name: "lumaCacheTimeout")', function() {
+      // uncomment below and update the code to test the property lumaCacheTimeout
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.StorageDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

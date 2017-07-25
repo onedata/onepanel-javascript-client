@@ -55,6 +55,10 @@
 
 
     _this['type'] = type;
+
+
+
+
   };
 
   /**
@@ -93,6 +97,18 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
+      if (data.hasOwnProperty('lumaEnabled')) {
+        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('lumaUrl')) {
+        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
+      }
+      if (data.hasOwnProperty('lumaCacheTimeout')) {
+        obj['lumaCacheTimeout'] = ApiClient.convertToType(data['lumaCacheTimeout'], 'Number');
+      }
+      if (data.hasOwnProperty('lumaApiKey')) {
+        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      }
     }
     return obj;
   }
@@ -124,6 +140,27 @@
    * @member {module:model/StorageDetails.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
+  /**
+   * If true LUMA and reverse LUMA services will be enabled.
+   * @member {Boolean} lumaEnabled
+   * @default false
+   */
+  exports.prototype['lumaEnabled'] = false;
+  /**
+   * URL of external LUMA service
+   * @member {String} lumaUrl
+   */
+  exports.prototype['lumaUrl'] = undefined;
+  /**
+   * LUMA cache timeout in minutes.
+   * @member {Number} lumaCacheTimeout
+   */
+  exports.prototype['lumaCacheTimeout'] = undefined;
+  /**
+   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * @member {String} lumaApiKey
+   */
+  exports.prototype['lumaApiKey'] = undefined;
 
 
   /**

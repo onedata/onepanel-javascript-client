@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **scanInterval** | **Number** | Period between subsequent scans in seconds (counted from end of one scan till beginning of the following).  | [optional] 
 **writeOnce** | **Boolean** | Flag determining that synchronized storage will be treated as immutable (only creations and deletions of files on storage will be detected).  | [optional] 
 **deleteEnable** | **Boolean** | Flag determining that deletions of files will be detected.  | [optional] 
+**syncAcl** | **Boolean** | Flag that enables synchronization of NFSv4 ACLs.  | [optional] 
 
 

@@ -111,6 +111,26 @@
         done();
       });
     });
+    describe('configureSpaceAutoCleaning', function() {
+      it('should call configureSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceAutoCleaning
+        //instance.configureSpaceAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('configureSpaceFilesPopularity', function() {
+      it('should call configureSpaceFilesPopularity successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceFilesPopularity
+        //instance.configureSpaceFilesPopularity(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProvider', function() {
       it('should call getProvider successfully', function(done) {
         //uncomment below and update the code to test getProvider
@@ -175,6 +195,46 @@
       it('should call getProviderNagiosReport successfully', function(done) {
         //uncomment below and update the code to test getProviderNagiosReport
         //instance.getProviderNagiosReport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaning', function() {
+      it('should call getProviderSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaning
+        //instance.getProviderSpaceAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningReports', function() {
+      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
+        //instance.getProviderSpaceAutoCleaningReports(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningStatus', function() {
+      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
+        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceFilesPopularity', function() {
+      it('should call getProviderSpaceFilesPopularity successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceFilesPopularity
+        //instance.getProviderSpaceFilesPopularity(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

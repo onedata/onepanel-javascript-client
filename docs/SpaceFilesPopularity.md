@@ -1,0 +1,9 @@
+# Onepanel.SpaceFilesPopularity
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**enabled** | **Boolean** | If true, files popularity feature for the space is enabled | 
+**restUrl** | **String** | FIXME | [optional] 
+
+

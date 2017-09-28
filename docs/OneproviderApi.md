@@ -358,7 +358,7 @@ null (empty response body)
 
 <a name="configureSpaceAutoCleaning"></a>
 # **configureSpaceAutoCleaning**
-> configureSpaceAutoCleaning(id)
+> SpaceAutoCleaning configureSpaceAutoCleaning(id)
 
 Configure space auto cleaning
 
@@ -383,7 +383,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureSpaceAutoCleaning(id, callback);
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SpaceAutoCleaning**](SpaceAutoCleaning.md)
 
 ### Authorization
 
@@ -410,7 +410,7 @@ null (empty response body)
 
 <a name="configureSpaceFilesPopularity"></a>
 # **configureSpaceFilesPopularity**
-> configureSpaceFilesPopularity(id)
+> SpaceFilesPopularity configureSpaceFilesPopularity(id)
 
 Configure space files popularity
 
@@ -435,7 +435,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureSpaceFilesPopularity(id, callback);
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SpaceFilesPopularity**](SpaceFilesPopularity.md)
 
 ### Authorization
 

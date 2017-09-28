@@ -316,7 +316,7 @@
      * Callback function to receive the result of the configureSpaceAutoCleaning operation.
      * @callback module:api/OneproviderApi~configureSpaceAutoCleaningCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SpaceAutoCleaning} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -325,6 +325,7 @@
      * Change auto cleaning feature options for the space
      * @param {String} id The ID of a space
      * @param {module:api/OneproviderApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceAutoCleaning}
      */
     this.configureSpaceAutoCleaning = function(id, callback) {
       var postBody = null;
@@ -348,7 +349,7 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = SpaceAutoCleaning;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto_cleaning', 'PATCH',
@@ -361,7 +362,7 @@
      * Callback function to receive the result of the configureSpaceFilesPopularity operation.
      * @callback module:api/OneproviderApi~configureSpaceFilesPopularityCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SpaceFilesPopularity} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -370,6 +371,7 @@
      * Change files popularity feature options for the space
      * @param {String} id The ID of a space
      * @param {module:api/OneproviderApi~configureSpaceFilesPopularityCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceFilesPopularity}
      */
     this.configureSpaceFilesPopularity = function(id, callback) {
       var postBody = null;
@@ -393,7 +395,7 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = SpaceFilesPopularity;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/files_popularity', 'PATCH',

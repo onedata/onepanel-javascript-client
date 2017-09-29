@@ -69,6 +69,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
+      // uncomment below and update the code to test the property filesPopularity
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
+      // uncomment below and update the code to test the property autoCleaning
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

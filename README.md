@@ -118,8 +118,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-*Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto_cleaning | Configure space auto cleaning
-*Onepanel.OneproviderApi* | [**configureSpaceFilesPopularity**](docs/OneproviderApi.md#configureSpaceFilesPopularity) | **PATCH** /provider/spaces/{id}/files_popularity | Configure space files popularity
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 *Onepanel.OneproviderApi* | [**getProviderDatabaseStatus**](docs/OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -127,10 +125,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderManagerStatus**](docs/OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderApi* | [**getProviderManagersStatus**](docs/OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderApi* | [**getProviderNagiosReport**](docs/OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaning**](docs/OneproviderApi.md#getProviderSpaceAutoCleaning) | **GET** /provider/spaces/{id}/auto_cleaning | Get config of space auto cleaning
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto_cleaning/reports | Get reports of space auto cleaning
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto_cleaning/status | Get status of space auto cleaning
-*Onepanel.OneproviderApi* | [**getProviderSpaceFilesPopularity**](docs/OneproviderApi.md#getProviderSpaceFilesPopularity) | **GET** /provider/spaces/{id}/files_popularity | Get config of space files popularity
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto_cleaning_reports | Get reports of space auto cleaning
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto_cleaning_status | Get status of space auto cleaning
 *Onepanel.OneproviderApi* | [**getProviderSpaceSyncStats**](docs/OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 *Onepanel.OneproviderApi* | [**getProviderSpaces**](docs/OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status

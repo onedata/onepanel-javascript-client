@@ -75,14 +75,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property spaceSoftQuota (base name: "spaceSoftQuota")', function() {
-      // uncomment below and update the code to test the property spaceSoftQuota
+    it('should have the property threshold (base name: "threshold")', function() {
+      // uncomment below and update the code to test the property threshold
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property spaceHardQuota (base name: "spaceHardQuota")', function() {
-      // uncomment below and update the code to test the property spaceHardQuota
+    it('should have the property target (base name: "target")', function() {
+      // uncomment below and update the code to test the property target
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });

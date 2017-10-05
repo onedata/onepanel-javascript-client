@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningSettings = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningReport = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,92 +35,97 @@
 
 
   /**
-   * The SpaceAutoCleaningSettings model module.
-   * @module model/SpaceAutoCleaningSettings
+   * The SpaceAutoCleaningReport model module.
+   * @module model/SpaceAutoCleaningReport
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>SpaceAutoCleaningSettings</code>.
-   * Settings for auto cleaning algorithms - for what files and when it should be started. If parameter is not set in the request, previous value will be used. 
-   * @alias module:model/SpaceAutoCleaningSettings
+   * Constructs a new <code>SpaceAutoCleaningReport</code>.
+   * Autocleaning report
+   * @alias module:model/SpaceAutoCleaningReport
    * @class
+   * @param startedAt {String} Start time of autocleaning procedure in ISO 8601 format
+   * @param stoppedAt {String} Finish time of autocleaning procedure in ISO 8601 format
+   * @param releasedSize {Number} Number of bytes deleted during autocleaning procedure.
+   * @param plannedReleasedSize {Number} Number of bytes that should be deleted.
+   * @param filesNumber {Number} Number of deleted files.
    */
-  var exports = function() {
+  var exports = function(startedAt, stoppedAt, releasedSize, plannedReleasedSize, filesNumber) {
     var _this = this;
 
-
-
-
-
-
+    _this['startedAt'] = startedAt;
+    _this['stoppedAt'] = stoppedAt;
+    _this['releasedSize'] = releasedSize;
+    _this['plannedReleasedSize'] = plannedReleasedSize;
+    _this['filesNumber'] = filesNumber;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceAutoCleaningSettings} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningReport} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceAutoCleaningSettings</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningReport</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceAutoCleaningSettings} obj Optional instance to populate.
-   * @return {module:model/SpaceAutoCleaningSettings} The populated <code>SpaceAutoCleaningSettings</code> instance.
+   * @param {module:model/SpaceAutoCleaningReport} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningReport} The populated <code>SpaceAutoCleaningReport</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('fileSizeGreaterThan')) {
-        obj['fileSizeGreaterThan'] = ApiClient.convertToType(data['fileSizeGreaterThan'], 'Number');
+      if (data.hasOwnProperty('startedAt')) {
+        obj['startedAt'] = ApiClient.convertToType(data['startedAt'], 'String');
       }
-      if (data.hasOwnProperty('fileSizeLesserThan')) {
-        obj['fileSizeLesserThan'] = ApiClient.convertToType(data['fileSizeLesserThan'], 'Number');
+      if (data.hasOwnProperty('stoppedAt')) {
+        obj['stoppedAt'] = ApiClient.convertToType(data['stoppedAt'], 'String');
       }
-      if (data.hasOwnProperty('fileTimeNotActive')) {
-        obj['fileTimeNotActive'] = ApiClient.convertToType(data['fileTimeNotActive'], 'Number');
+      if (data.hasOwnProperty('releasedSize')) {
+        obj['releasedSize'] = ApiClient.convertToType(data['releasedSize'], 'Number');
       }
-      if (data.hasOwnProperty('threshold')) {
-        obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
+      if (data.hasOwnProperty('plannedReleasedSize')) {
+        obj['plannedReleasedSize'] = ApiClient.convertToType(data['plannedReleasedSize'], 'Number');
       }
-      if (data.hasOwnProperty('target')) {
-        obj['target'] = ApiClient.convertToType(data['target'], 'Number');
+      if (data.hasOwnProperty('filesNumber')) {
+        obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * Only files which size [b] exceeds given should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileSizeGreaterThan
+   * Start time of autocleaning procedure in ISO 8601 format
+   * @member {String} startedAt
    */
-  exports.prototype['fileSizeGreaterThan'] = undefined;
+  exports.prototype['startedAt'] = undefined;
   /**
-   * Only files which size [b] is lesser than given should be cleaned Set to null to disable this parameter. 
-   * @member {Number} fileSizeLesserThan
+   * Finish time of autocleaning procedure in ISO 8601 format
+   * @member {String} stoppedAt
    */
-  exports.prototype['fileSizeLesserThan'] = undefined;
+  exports.prototype['stoppedAt'] = undefined;
   /**
-   * Only files that were not active for given amount of time [s] should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileTimeNotActive
+   * Number of bytes deleted during autocleaning procedure.
+   * @member {Number} releasedSize
    */
-  exports.prototype['fileTimeNotActive'] = undefined;
+  exports.prototype['releasedSize'] = undefined;
   /**
-   * Autocleaning will start if occupancy of storage will exceed this value. This parameter is required to start autocleaning. 
-   * @member {Number} threshold
+   * Number of bytes that should be deleted.
+   * @member {Number} plannedReleasedSize
    */
-  exports.prototype['threshold'] = undefined;
+  exports.prototype['plannedReleasedSize'] = undefined;
   /**
-   * Autocleaning will stop if occupancy of storage will reach this value. This parameter is required to start autocleaning. 
-   * @member {Number} target
+   * Number of deleted files.
+   * @member {Number} filesNumber
    */
-  exports.prototype['target'] = undefined;
+  exports.prototype['filesNumber'] = undefined;
 
 
 

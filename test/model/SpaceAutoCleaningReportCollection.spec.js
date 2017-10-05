@@ -16,115 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.SpaceAutoCleaningSettings = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.SpaceAutoCleaningReportCollection();
+  });
 
-
-  /**
-   * The SpaceAutoCleaningSettings model module.
-   * @module model/SpaceAutoCleaningSettings
-   * @version 17.06.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>SpaceAutoCleaningSettings</code>.
-   * Settings for auto cleaning algorithms - for what files and when it should be started. If parameter is not set in the request, previous value will be used. 
-   * @alias module:model/SpaceAutoCleaningSettings
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceAutoCleaningSettings} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceAutoCleaningSettings</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceAutoCleaningSettings} obj Optional instance to populate.
-   * @return {module:model/SpaceAutoCleaningSettings} The populated <code>SpaceAutoCleaningSettings</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('fileSizeGreaterThan')) {
-        obj['fileSizeGreaterThan'] = ApiClient.convertToType(data['fileSizeGreaterThan'], 'Number');
-      }
-      if (data.hasOwnProperty('fileSizeLesserThan')) {
-        obj['fileSizeLesserThan'] = ApiClient.convertToType(data['fileSizeLesserThan'], 'Number');
-      }
-      if (data.hasOwnProperty('fileTimeNotActive')) {
-        obj['fileTimeNotActive'] = ApiClient.convertToType(data['fileTimeNotActive'], 'Number');
-      }
-      if (data.hasOwnProperty('threshold')) {
-        obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
-      }
-      if (data.hasOwnProperty('target')) {
-        obj['target'] = ApiClient.convertToType(data['target'], 'Number');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Only files which size [b] exceeds given should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileSizeGreaterThan
-   */
-  exports.prototype['fileSizeGreaterThan'] = undefined;
-  /**
-   * Only files which size [b] is lesser than given should be cleaned Set to null to disable this parameter. 
-   * @member {Number} fileSizeLesserThan
-   */
-  exports.prototype['fileSizeLesserThan'] = undefined;
-  /**
-   * Only files that were not active for given amount of time [s] should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileTimeNotActive
-   */
-  exports.prototype['fileTimeNotActive'] = undefined;
-  /**
-   * Autocleaning will start if occupancy of storage will exceed this value. This parameter is required to start autocleaning. 
-   * @member {Number} threshold
-   */
-  exports.prototype['threshold'] = undefined;
-  /**
-   * Autocleaning will stop if occupancy of storage will reach this value. This parameter is required to start autocleaning. 
-   * @member {Number} target
-   */
-  exports.prototype['target'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('SpaceAutoCleaningReportCollection', function() {
+    it('should create an instance of SpaceAutoCleaningReportCollection', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningReportCollection
+      //var instane = new Onepanel.SpaceAutoCleaningReportCollection();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningReportCollection);
+    });
 
+    it('should have the property reportEntries (base name: "reportEntries")', function() {
+      // uncomment below and update the code to test the property reportEntries
+      //var instane = new Onepanel.SpaceAutoCleaningReportCollection();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

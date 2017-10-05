@@ -17,41 +17,37 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaningReport'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningReport'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningSettings = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningReportCollection = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningReport);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, SpaceAutoCleaningReport) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceAutoCleaningSettings model module.
-   * @module model/SpaceAutoCleaningSettings
+   * The SpaceAutoCleaningReportCollection model module.
+   * @module model/SpaceAutoCleaningReportCollection
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>SpaceAutoCleaningSettings</code>.
-   * Settings for auto cleaning algorithms - for what files and when it should be started. If parameter is not set in the request, previous value will be used. 
-   * @alias module:model/SpaceAutoCleaningSettings
+   * Constructs a new <code>SpaceAutoCleaningReportCollection</code>.
+   * List of report entries
+   * @alias module:model/SpaceAutoCleaningReportCollection
    * @class
    */
   var exports = function() {
     var _this = this;
-
-
-
-
 
 
   };
@@ -60,67 +56,34 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceAutoCleaningSettings} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningReportCollection} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceAutoCleaningSettings</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningReportCollection</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceAutoCleaningSettings} obj Optional instance to populate.
-   * @return {module:model/SpaceAutoCleaningSettings} The populated <code>SpaceAutoCleaningSettings</code> instance.
+   * @param {module:model/SpaceAutoCleaningReportCollection} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningReportCollection} The populated <code>SpaceAutoCleaningReportCollection</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('fileSizeGreaterThan')) {
-        obj['fileSizeGreaterThan'] = ApiClient.convertToType(data['fileSizeGreaterThan'], 'Number');
-      }
-      if (data.hasOwnProperty('fileSizeLesserThan')) {
-        obj['fileSizeLesserThan'] = ApiClient.convertToType(data['fileSizeLesserThan'], 'Number');
-      }
-      if (data.hasOwnProperty('fileTimeNotActive')) {
-        obj['fileTimeNotActive'] = ApiClient.convertToType(data['fileTimeNotActive'], 'Number');
-      }
-      if (data.hasOwnProperty('threshold')) {
-        obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
-      }
-      if (data.hasOwnProperty('target')) {
-        obj['target'] = ApiClient.convertToType(data['target'], 'Number');
+      if (data.hasOwnProperty('reportEntries')) {
+        obj['reportEntries'] = ApiClient.convertToType(data['reportEntries'], [SpaceAutoCleaningReport]);
       }
     }
     return obj;
   }
 
   /**
-   * Only files which size [b] exceeds given should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileSizeGreaterThan
+   * @member {Array.<module:model/SpaceAutoCleaningReport>} reportEntries
    */
-  exports.prototype['fileSizeGreaterThan'] = undefined;
-  /**
-   * Only files which size [b] is lesser than given should be cleaned Set to null to disable this parameter. 
-   * @member {Number} fileSizeLesserThan
-   */
-  exports.prototype['fileSizeLesserThan'] = undefined;
-  /**
-   * Only files that were not active for given amount of time [s] should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileTimeNotActive
-   */
-  exports.prototype['fileTimeNotActive'] = undefined;
-  /**
-   * Autocleaning will start if occupancy of storage will exceed this value. This parameter is required to start autocleaning. 
-   * @member {Number} threshold
-   */
-  exports.prototype['threshold'] = undefined;
-  /**
-   * Autocleaning will stop if occupancy of storage will reach this value. This parameter is required to start autocleaning. 
-   * @member {Number} target
-   */
-  exports.prototype['target'] = undefined;
+  exports.prototype['reportEntries'] = undefined;
 
 
 

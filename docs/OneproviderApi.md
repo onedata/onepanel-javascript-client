@@ -688,7 +688,7 @@ null (empty response body)
 
 <a name="getProviderSpaceAutoCleaningReports"></a>
 # **getProviderSpaceAutoCleaningReports**
-> SpaceAutoCleaningReports getProviderSpaceAutoCleaningReports(id)
+> SpaceAutoCleaningReportCollection getProviderSpaceAutoCleaningReports(id, startedAfter)
 
 Get reports of space auto cleaning
 
@@ -708,6 +708,8 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The ID of a space
 
+var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO-8601)
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -716,7 +718,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getProviderSpaceAutoCleaningReports(id, callback);
+apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
 ```
 
 ### Parameters
@@ -724,10 +726,11 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of a space | 
+ **startedAfter** | **String**| Fetch only reports that started after this date (ISO-8601) | 
 
 ### Return type
 
-[**SpaceAutoCleaningReports**](SpaceAutoCleaningReports.md)
+[**SpaceAutoCleaningReportCollection**](SpaceAutoCleaningReportCollection.md)
 
 ### Authorization
 

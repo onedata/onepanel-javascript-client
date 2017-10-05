@@ -47,17 +47,17 @@
    * @class
    * @param startedAt {String} Start time of autocleaning procedure in ISO 8601 format
    * @param stoppedAt {String} Finish time of autocleaning procedure in ISO 8601 format
-   * @param releasedSize {Number} Number of bytes deleted during autocleaning procedure.
-   * @param plannedReleasedSize {Number} Number of bytes that should be deleted.
+   * @param releasedBytes {Number} Number of bytes deleted during autocleaning procedure.
+   * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
    */
-  var exports = function(startedAt, stoppedAt, releasedSize, plannedReleasedSize, filesNumber) {
+  var exports = function(startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
     var _this = this;
 
     _this['startedAt'] = startedAt;
     _this['stoppedAt'] = stoppedAt;
-    _this['releasedSize'] = releasedSize;
-    _this['plannedReleasedSize'] = plannedReleasedSize;
+    _this['releasedBytes'] = releasedBytes;
+    _this['bytesToRelease'] = bytesToRelease;
     _this['filesNumber'] = filesNumber;
   };
 
@@ -88,11 +88,11 @@
       if (data.hasOwnProperty('stoppedAt')) {
         obj['stoppedAt'] = ApiClient.convertToType(data['stoppedAt'], 'String');
       }
-      if (data.hasOwnProperty('releasedSize')) {
-        obj['releasedSize'] = ApiClient.convertToType(data['releasedSize'], 'Number');
+      if (data.hasOwnProperty('releasedBytes')) {
+        obj['releasedBytes'] = ApiClient.convertToType(data['releasedBytes'], 'Number');
       }
-      if (data.hasOwnProperty('plannedReleasedSize')) {
-        obj['plannedReleasedSize'] = ApiClient.convertToType(data['plannedReleasedSize'], 'Number');
+      if (data.hasOwnProperty('bytesToRelease')) {
+        obj['bytesToRelease'] = ApiClient.convertToType(data['bytesToRelease'], 'Number');
       }
       if (data.hasOwnProperty('filesNumber')) {
         obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
@@ -113,14 +113,14 @@
   exports.prototype['stoppedAt'] = undefined;
   /**
    * Number of bytes deleted during autocleaning procedure.
-   * @member {Number} releasedSize
+   * @member {Number} releasedBytes
    */
-  exports.prototype['releasedSize'] = undefined;
+  exports.prototype['releasedBytes'] = undefined;
   /**
    * Number of bytes that should be deleted.
-   * @member {Number} plannedReleasedSize
+   * @member {Number} bytesToRelease
    */
-  exports.prototype['plannedReleasedSize'] = undefined;
+  exports.prototype['bytesToRelease'] = undefined;
   /**
    * Number of deleted files.
    * @member {Number} filesNumber

@@ -46,12 +46,13 @@
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
    * @param isWorking {Boolean} If true, auto cleaning algorithm is currently working
+   * @param spaceUsed {Number} Current occupancy [b] of storage support supporting given space
    */
-  var exports = function(isWorking) {
+  var exports = function(isWorking, spaceUsed) {
     var _this = this;
 
     _this['isWorking'] = isWorking;
-
+    _this['spaceUsed'] = spaceUsed;
   };
 
   /**
@@ -91,7 +92,7 @@
    */
   exports.prototype['isWorking'] = undefined;
   /**
-   * Currently used space [b] in the space
+   * Current occupancy [b] of storage support supporting given space
    * @member {Number} spaceUsed
    */
   exports.prototype['spaceUsed'] = undefined;

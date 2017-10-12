@@ -91,7 +91,7 @@
    */
   exports.prototype['enabled'] = undefined;
   /**
-   * FIXME
+   * REST endpoint to view file popularity statistics 
    * @member {String} restUrl
    */
   exports.prototype['restUrl'] = undefined;

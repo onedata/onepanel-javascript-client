@@ -80,11 +80,11 @@
       if (data.hasOwnProperty('fileSizeGreaterThan')) {
         obj['fileSizeGreaterThan'] = ApiClient.convertToType(data['fileSizeGreaterThan'], 'Number');
       }
-      if (data.hasOwnProperty('fileSizeLesserThan')) {
-        obj['fileSizeLesserThan'] = ApiClient.convertToType(data['fileSizeLesserThan'], 'Number');
+      if (data.hasOwnProperty('fileSizeLessThan')) {
+        obj['fileSizeLessThan'] = ApiClient.convertToType(data['fileSizeLessThan'], 'Number');
       }
-      if (data.hasOwnProperty('fileTimeNotActive')) {
-        obj['fileTimeNotActive'] = ApiClient.convertToType(data['fileTimeNotActive'], 'Number');
+      if (data.hasOwnProperty('fileNotActiveHours')) {
+        obj['fileNotActiveHours'] = ApiClient.convertToType(data['fileNotActiveHours'], 'Number');
       }
       if (data.hasOwnProperty('threshold')) {
         obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
@@ -102,15 +102,15 @@
    */
   exports.prototype['fileSizeGreaterThan'] = undefined;
   /**
-   * Only files which size [b] is lesser than given should be cleaned Set to null to disable this parameter. 
-   * @member {Number} fileSizeLesserThan
+   * Only files which size [b] is less than given should be cleaned Set to null to disable this parameter. 
+   * @member {Number} fileSizeLessThan
    */
-  exports.prototype['fileSizeLesserThan'] = undefined;
+  exports.prototype['fileSizeLessThan'] = undefined;
   /**
-   * Only files that were not active for given amount of time [s] should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileTimeNotActive
+   * Only files that were not active for given period [h] should be cleaned. Set to null to disable this parameter. 
+   * @member {Number} fileNotActiveHours
    */
-  exports.prototype['fileTimeNotActive'] = undefined;
+  exports.prototype['fileNotActiveHours'] = undefined;
   /**
    * Autocleaning will start if occupancy of storage will exceed this value. This parameter is required to start autocleaning. 
    * @member {Number} threshold

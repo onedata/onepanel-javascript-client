@@ -57,14 +57,14 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningStatus);
     });
 
-    it('should have the property isWorking (base name: "isWorking")', function() {
-      // uncomment below and update the code to test the property isWorking
+    it('should have the property inProgress (base name: "inProgress")', function() {
+      // uncomment below and update the code to test the property inProgress
       //var instane = new Onepanel.SpaceAutoCleaningStatus();
       //expect(instance).to.be();
     });
 
-    it('should have the property spaceUsed (base name: "spaceUsed")', function() {
-      // uncomment below and update the code to test the property spaceUsed
+    it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
+      // uncomment below and update the code to test the property spaceOccupancy
       //var instane = new Onepanel.SpaceAutoCleaningStatus();
       //expect(instance).to.be();
     });

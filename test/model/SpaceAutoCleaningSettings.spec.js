@@ -57,20 +57,20 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningSettings);
     });
 
-    it('should have the property fileSizeGreaterThan (base name: "fileSizeGreaterThan")', function() {
-      // uncomment below and update the code to test the property fileSizeGreaterThan
+    it('should have the property lowerFileSizeLimit (base name: "lowerFileSizeLimit")', function() {
+      // uncomment below and update the code to test the property lowerFileSizeLimit
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property fileSizeLesserThan (base name: "fileSizeLesserThan")', function() {
-      // uncomment below and update the code to test the property fileSizeLesserThan
+    it('should have the property upperFileSizeLimit (base name: "upperFileSizeLimit")', function() {
+      // uncomment below and update the code to test the property upperFileSizeLimit
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property fileTimeNotActive (base name: "fileTimeNotActive")', function() {
-      // uncomment below and update the code to test the property fileTimeNotActive
+    it('should have the property maxFileNotOpenedHours (base name: "maxFileNotOpenedHours")', function() {
+      // uncomment below and update the code to test the property maxFileNotOpenedHours
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });

@@ -69,14 +69,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property releasedBytes (base name: "releasedBytes")', function() {
-      // uncomment below and update the code to test the property releasedBytes
+    it('should have the property releasedSize (base name: "releasedSize")', function() {
+      // uncomment below and update the code to test the property releasedSize
       //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });
 
-    it('should have the property bytesToRelease (base name: "bytesToRelease")', function() {
-      // uncomment below and update the code to test the property bytesToRelease
+    it('should have the property plannedReleasedSize (base name: "plannedReleasedSize")', function() {
+      // uncomment below and update the code to test the property plannedReleasedSize
       //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });

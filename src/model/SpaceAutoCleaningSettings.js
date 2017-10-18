@@ -77,14 +77,14 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('fileSizeGreaterThan')) {
-        obj['fileSizeGreaterThan'] = ApiClient.convertToType(data['fileSizeGreaterThan'], 'Number');
+      if (data.hasOwnProperty('lowerFileSizeLimit')) {
+        obj['lowerFileSizeLimit'] = ApiClient.convertToType(data['lowerFileSizeLimit'], 'Number');
       }
-      if (data.hasOwnProperty('fileSizeLessThan')) {
-        obj['fileSizeLessThan'] = ApiClient.convertToType(data['fileSizeLessThan'], 'Number');
+      if (data.hasOwnProperty('upperFileSizeLimit')) {
+        obj['upperFileSizeLimit'] = ApiClient.convertToType(data['upperFileSizeLimit'], 'Number');
       }
-      if (data.hasOwnProperty('fileNotActiveHours')) {
-        obj['fileNotActiveHours'] = ApiClient.convertToType(data['fileNotActiveHours'], 'Number');
+      if (data.hasOwnProperty('maxFileNotOpenedHours')) {
+        obj['maxFileNotOpenedHours'] = ApiClient.convertToType(data['maxFileNotOpenedHours'], 'Number');
       }
       if (data.hasOwnProperty('threshold')) {
         obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
@@ -97,27 +97,27 @@
   }
 
   /**
-   * Only files which size [b] exceeds given should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileSizeGreaterThan
+   * Only files which size [b] is greater than or equal to given value should be cleaned. Set to null to disable this parameter. 
+   * @member {Number} lowerFileSizeLimit
    */
-  exports.prototype['fileSizeGreaterThan'] = undefined;
+  exports.prototype['lowerFileSizeLimit'] = undefined;
   /**
-   * Only files which size [b] is less than given should be cleaned Set to null to disable this parameter. 
-   * @member {Number} fileSizeLessThan
+   * Only files which size [b] is less than or equal to given value should be cleaned Set to null to disable this parameter. 
+   * @member {Number} upperFileSizeLimit
    */
-  exports.prototype['fileSizeLessThan'] = undefined;
+  exports.prototype['upperFileSizeLimit'] = undefined;
   /**
-   * Only files that were not active for given period [h] should be cleaned. Set to null to disable this parameter. 
-   * @member {Number} fileNotActiveHours
+   * Files that haven't been opened for longer than or equal to given period [h] will be cleaned. Set to null to disable this parameter. 
+   * @member {Number} maxFileNotOpenedHours
    */
-  exports.prototype['fileNotActiveHours'] = undefined;
+  exports.prototype['maxFileNotOpenedHours'] = undefined;
   /**
-   * Autocleaning will start if occupancy of storage will exceed this value. This parameter is required to start autocleaning. 
+   * Autocleaning will start if occupancy of storage will greater than or equal to this value [b]. This parameter is required to start autocleaning. 
    * @member {Number} threshold
    */
   exports.prototype['threshold'] = undefined;
   /**
-   * Autocleaning will stop if occupancy of storage will reach this value. This parameter is required to start autocleaning. 
+   * Autocleaning will stop if occupancy of storage will be less than or equal to this value [b]. This parameter is required to start autocleaning. 
    * @member {Number} target
    */
   exports.prototype['target'] = undefined;

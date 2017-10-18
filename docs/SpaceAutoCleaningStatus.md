@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**isWorking** | **Boolean** | If true, auto cleaning algorithm is currently working | 
-**spaceUsed** | **Number** | Current occupancy [b] of storage support supporting given space | 
+**inProgress** | **Boolean** | Flag which indicates that autocleaning process is currently in progress. | 
+**spaceOccupancy** | **Number** | Current occupancy [b] of storage supporting given space. | 
 
 

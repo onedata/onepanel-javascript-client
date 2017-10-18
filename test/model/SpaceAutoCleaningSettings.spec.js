@@ -63,14 +63,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property fileSizeLessThan (base name: "fileSizeLessThan")', function() {
-      // uncomment below and update the code to test the property fileSizeLessThan
+    it('should have the property fileSizeLesserThan (base name: "fileSizeLesserThan")', function() {
+      // uncomment below and update the code to test the property fileSizeLesserThan
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property fileNotActiveHours (base name: "fileNotActiveHours")', function() {
-      // uncomment below and update the code to test the property fileNotActiveHours
+    it('should have the property fileTimeNotActive (base name: "fileTimeNotActive")', function() {
+      // uncomment below and update the code to test the property fileTimeNotActive
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });

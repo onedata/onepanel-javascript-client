@@ -45,14 +45,14 @@
    * Status of current auto cleaning process for given space
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param isWorking {Boolean} If true, auto cleaning algorithm is currently working
-   * @param spaceUsed {Number} Current occupancy [b] of storage support supporting given space
+   * @param inProgress {Boolean} Flag which indicates that autocleaning process is currently in progress.
+   * @param spaceOccupancy {Number} Current occupancy [b] of storage supporting given space.
    */
-  var exports = function(isWorking, spaceUsed) {
+  var exports = function(inProgress, spaceOccupancy) {
     var _this = this;
 
-    _this['isWorking'] = isWorking;
-    _this['spaceUsed'] = spaceUsed;
+    _this['inProgress'] = inProgress;
+    _this['spaceOccupancy'] = spaceOccupancy;
   };
 
   /**
@@ -76,26 +76,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('isWorking')) {
-        obj['isWorking'] = ApiClient.convertToType(data['isWorking'], 'Boolean');
+      if (data.hasOwnProperty('inProgress')) {
+        obj['inProgress'] = ApiClient.convertToType(data['inProgress'], 'Boolean');
       }
-      if (data.hasOwnProperty('spaceUsed')) {
-        obj['spaceUsed'] = ApiClient.convertToType(data['spaceUsed'], 'Number');
+      if (data.hasOwnProperty('spaceOccupancy')) {
+        obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * If true, auto cleaning algorithm is currently working
-   * @member {Boolean} isWorking
+   * Flag which indicates that autocleaning process is currently in progress.
+   * @member {Boolean} inProgress
    */
-  exports.prototype['isWorking'] = undefined;
+  exports.prototype['inProgress'] = undefined;
   /**
-   * Current occupancy [b] of storage support supporting given space
-   * @member {Number} spaceUsed
+   * Current occupancy [b] of storage supporting given space.
+   * @member {Number} spaceOccupancy
    */
-  exports.prototype['spaceUsed'] = undefined;
+  exports.prototype['spaceOccupancy'] = undefined;
 
 
 

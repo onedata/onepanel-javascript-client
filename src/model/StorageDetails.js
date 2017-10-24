@@ -53,7 +53,6 @@
 
 
 
-
     _this['type'] = type;
 
 
@@ -88,17 +87,14 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      if (data.hasOwnProperty('secure')) {
+        obj['secure'] = ApiClient.convertToType(data['secure'], 'Boolean');
       }
       if (data.hasOwnProperty('lumaUrl')) {
         obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
@@ -124,12 +120,6 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
-  /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly
    * @default false
@@ -141,11 +131,11 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
+   * If enabled, provided LUMA service will be used to map onedata user credentials into storage credentials and vice versa. If disabled, storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} secure
    * @default false
    */
-  exports.prototype['lumaEnabled'] = false;
+  exports.prototype['secure'] = false;
   /**
    * URL of external LUMA service
    * @member {String} lumaUrl

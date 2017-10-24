@@ -64,7 +64,6 @@
 
 
 
-
   };
 
   /**
@@ -108,9 +107,6 @@
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
@@ -157,12 +153,6 @@
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly

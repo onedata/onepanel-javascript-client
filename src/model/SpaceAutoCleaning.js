@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaning</code>.
-   * Settings of auto cleanging space feature
+   * Space auto cleaning settings
    * @alias module:model/SpaceAutoCleaning
    * @class
    */

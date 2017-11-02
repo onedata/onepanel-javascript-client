@@ -112,12 +112,12 @@
    */
   exports.prototype['maxFileNotOpenedHours'] = undefined;
   /**
-   * Autocleaning will start if occupancy of storage will greater than or equal to this value [b]. This parameter is required to start autocleaning. 
+   * Amount of data [b], which should trigger the auto cleaning in the space.  Only replicas maintained by this storage provider will be removed. If not  specified, the auto cleaning will not start automatically. 
    * @member {Number} threshold
    */
   exports.prototype['threshold'] = undefined;
   /**
-   * Autocleaning will stop if occupancy of storage will be less than or equal to this value [b]. This parameter is required to start autocleaning. 
+   * Amount of data [b], at which the auto cleaning process should stop. This parameter is required to enale auto cleaning. 
    * @member {Number} target
    */
   exports.prototype['target'] = undefined;

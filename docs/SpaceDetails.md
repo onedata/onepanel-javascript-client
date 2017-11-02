@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **localStorages** | **[String]** | The list of IDs of cluster storage resources. | 
 **supportingProviders** | **{String: Number}** | The collection of provider IDs with associated supported storage space in bytes.  | 
 **mountInRoot** | **Boolean** | Defines whether space will be mounted in / or /{SpaceId}/ path.  | [optional] [default to false]
+**softQuota** | **Number** | Number of bytes that can be written above support limit.  | 
 **storageImport** | [**StorageImportDetails**](StorageImportDetails.md) |  | [optional] 
 **storageUpdate** | [**StorageUpdateDetails**](StorageUpdateDetails.md) |  | [optional] 
 **filesPopularity** | [**SpaceFilesPopularity**](SpaceFilesPopularity.md) | Configuration of files popularity feature for this space | [optional] 

@@ -1151,6 +1151,51 @@
     }
 
     /**
+     * Callback function to receive the result of the providerSpaceStartCleaning operation.
+     * @callback module:api/OneproviderApi~providerSpaceStartCleaningCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Start space cleaning
+     * Starts cleaning of space with current configuration.
+     * @param {String} id The ID of a space
+     * @param {module:api/OneproviderApi~providerSpaceStartCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.providerSpaceStartCleaning = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling providerSpaceStartCleaning");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/start_cleaning', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the removeProvider operation.
      * @callback module:api/OneproviderApi~removeProviderCallback
      * @param {String} error Error message, if any.

@@ -301,6 +301,16 @@
         done();
       });
     });
+    describe('providerSpaceStartCleaning', function() {
+      it('should call providerSpaceStartCleaning successfully', function(done) {
+        //uncomment below and update the code to test providerSpaceStartCleaning
+        //instance.providerSpaceStartCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('removeProvider', function() {
       it('should call removeProvider successfully', function(done) {
         //uncomment below and update the code to test removeProvider

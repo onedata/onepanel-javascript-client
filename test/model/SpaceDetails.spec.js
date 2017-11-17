@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property softQuota (base name: "softQuota")', function() {
+      // uncomment below and update the code to test the property softQuota
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property storageImport (base name: "storageImport")', function() {
       // uncomment below and update the code to test the property storageImport
       //var instane = new Onepanel.SpaceDetails();
@@ -101,6 +107,18 @@
 
     it('should have the property storageUpdate (base name: "storageUpdate")', function() {
       // uncomment below and update the code to test the property storageUpdate
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
+      // uncomment below and update the code to test the property filesPopularity
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
+      // uncomment below and update the code to test the property autoCleaning
       //var instane = new Onepanel.SpaceDetails();
       //expect(instance).to.be();
     });

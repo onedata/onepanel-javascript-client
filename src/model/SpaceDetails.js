@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaning', 'model/SpaceFilesPopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaning'), require('./SpaceFilesPopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaning, root.Onepanel.SpaceFilesPopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, SpaceAutoCleaning, SpaceFilesPopularity, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -50,8 +50,9 @@
    * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
+   * @param softQuota {Number} Number of bytes that can be written above support limit. 
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders) {
+  var exports = function(id, name, storageId, localStorages, supportingProviders, softQuota) {
     var _this = this;
 
     _this['id'] = id;
@@ -59,6 +60,9 @@
     _this['storageId'] = storageId;
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
+
+    _this['softQuota'] = softQuota;
+
 
 
 
@@ -103,11 +107,20 @@
       if (data.hasOwnProperty('mountInRoot')) {
         obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
       }
+      if (data.hasOwnProperty('softQuota')) {
+        obj['softQuota'] = ApiClient.convertToType(data['softQuota'], 'Number');
+      }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
       }
       if (data.hasOwnProperty('storageUpdate')) {
         obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
+      }
+      if (data.hasOwnProperty('filesPopularity')) {
+        obj['filesPopularity'] = SpaceFilesPopularity.constructFromObject(data['filesPopularity']);
+      }
+      if (data.hasOwnProperty('autoCleaning')) {
+        obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
       }
     }
     return obj;
@@ -145,6 +158,11 @@
    */
   exports.prototype['mountInRoot'] = false;
   /**
+   * Number of bytes that can be written above support limit. 
+   * @member {Number} softQuota
+   */
+  exports.prototype['softQuota'] = undefined;
+  /**
    * @member {module:model/StorageImportDetails} storageImport
    */
   exports.prototype['storageImport'] = undefined;
@@ -152,6 +170,16 @@
    * @member {module:model/StorageUpdateDetails} storageUpdate
    */
   exports.prototype['storageUpdate'] = undefined;
+  /**
+   * Configuration of files popularity feature for this space
+   * @member {module:model/SpaceFilesPopularity} filesPopularity
+   */
+  exports.prototype['filesPopularity'] = undefined;
+  /**
+   * Configuration of auto cleaning feature for this space
+   * @member {module:model/SpaceAutoCleaning} autoCleaning
+   */
+  exports.prototype['autoCleaning'] = undefined;
 
 
 

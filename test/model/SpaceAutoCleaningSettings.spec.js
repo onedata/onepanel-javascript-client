@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceModifyRequest();
+    instance = new Onepanel.SpaceAutoCleaningSettings();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,40 @@
       object[property] = value;
   }
 
-  describe('SpaceModifyRequest', function() {
-    it('should create an instance of SpaceModifyRequest', function() {
-      // uncomment below and update the code to test SpaceModifyRequest
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
+  describe('SpaceAutoCleaningSettings', function() {
+    it('should create an instance of SpaceAutoCleaningSettings', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningSettings
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningSettings);
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property lowerFileSizeLimit (base name: "lowerFileSizeLimit")', function() {
+      // uncomment below and update the code to test the property lowerFileSizeLimit
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property upperFileSizeLimit (base name: "upperFileSizeLimit")', function() {
+      // uncomment below and update the code to test the property upperFileSizeLimit
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
-      // uncomment below and update the code to test the property filesPopularity
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property maxFileNotOpenedHours (base name: "maxFileNotOpenedHours")', function() {
+      // uncomment below and update the code to test the property maxFileNotOpenedHours
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 
-    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
-      // uncomment below and update the code to test the property autoCleaning
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property threshold (base name: "threshold")', function() {
+      // uncomment below and update the code to test the property threshold
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property target (base name: "target")', function() {
+      // uncomment below and update the code to test the property target
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });
 

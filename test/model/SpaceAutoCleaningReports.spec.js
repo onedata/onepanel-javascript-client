@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceModifyRequest();
+    instance = new Onepanel.SpaceAutoCleaningReports();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,16 @@
       object[property] = value;
   }
 
-  describe('SpaceModifyRequest', function() {
-    it('should create an instance of SpaceModifyRequest', function() {
-      // uncomment below and update the code to test SpaceModifyRequest
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
+  describe('SpaceAutoCleaningReports', function() {
+    it('should create an instance of SpaceAutoCleaningReports', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningReports
+      //var instane = new Onepanel.SpaceAutoCleaningReports();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningReports);
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
-      // uncomment below and update the code to test the property filesPopularity
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
-      // uncomment below and update the code to test the property autoCleaning
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property reportEntries (base name: "reportEntries")', function() {
+      // uncomment below and update the code to test the property reportEntries
+      //var instane = new Onepanel.SpaceAutoCleaningReports();
       //expect(instance).to.be();
     });
 

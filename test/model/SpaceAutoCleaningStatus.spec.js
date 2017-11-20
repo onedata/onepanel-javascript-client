@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceModifyRequest();
+    instance = new Onepanel.SpaceAutoCleaningStatus();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,22 @@
       object[property] = value;
   }
 
-  describe('SpaceModifyRequest', function() {
-    it('should create an instance of SpaceModifyRequest', function() {
-      // uncomment below and update the code to test SpaceModifyRequest
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
+  describe('SpaceAutoCleaningStatus', function() {
+    it('should create an instance of SpaceAutoCleaningStatus', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningStatus
+      //var instane = new Onepanel.SpaceAutoCleaningStatus();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningStatus);
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property inProgress (base name: "inProgress")', function() {
+      // uncomment below and update the code to test the property inProgress
+      //var instane = new Onepanel.SpaceAutoCleaningStatus();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
-      // uncomment below and update the code to test the property filesPopularity
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
-      // uncomment below and update the code to test the property autoCleaning
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
+      // uncomment below and update the code to test the property spaceOccupancy
+      //var instane = new Onepanel.SpaceAutoCleaningStatus();
       //expect(instance).to.be();
     });
 

@@ -181,6 +181,26 @@
         done();
       });
     });
+    describe('getProviderSpaceAutoCleaningReports', function() {
+      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
+        //instance.getProviderSpaceAutoCleaningReports(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningStatus', function() {
+      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
+        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderSpaceSyncStats', function() {
       it('should call getProviderSpaceSyncStats successfully', function(done) {
         //uncomment below and update the code to test getProviderSpaceSyncStats
@@ -275,6 +295,16 @@
       it('should call modifyStorage successfully', function(done) {
         //uncomment below and update the code to test modifyStorage
         //instance.modifyStorage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('providerSpaceStartCleaning', function() {
+      it('should call providerSpaceStartCleaning successfully', function(done) {
+        //uncomment below and update the code to test providerSpaceStartCleaning
+        //instance.providerSpaceStartCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

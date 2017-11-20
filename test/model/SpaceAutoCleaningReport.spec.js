@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceModifyRequest();
+    instance = new Onepanel.SpaceAutoCleaningReport();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,40 @@
       object[property] = value;
   }
 
-  describe('SpaceModifyRequest', function() {
-    it('should create an instance of SpaceModifyRequest', function() {
-      // uncomment below and update the code to test SpaceModifyRequest
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
+  describe('SpaceAutoCleaningReport', function() {
+    it('should create an instance of SpaceAutoCleaningReport', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningReport
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningReport);
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property startedAt (base name: "startedAt")', function() {
+      // uncomment below and update the code to test the property startedAt
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });
 
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property stoppedAt (base name: "stoppedAt")', function() {
+      // uncomment below and update the code to test the property stoppedAt
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });
 
-    it('should have the property filesPopularity (base name: "filesPopularity")', function() {
-      // uncomment below and update the code to test the property filesPopularity
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property releasedBytes (base name: "releasedBytes")', function() {
+      // uncomment below and update the code to test the property releasedBytes
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });
 
-    it('should have the property autoCleaning (base name: "autoCleaning")', function() {
-      // uncomment below and update the code to test the property autoCleaning
-      //var instane = new Onepanel.SpaceModifyRequest();
+    it('should have the property bytesToRelease (base name: "bytesToRelease")', function() {
+      // uncomment below and update the code to test the property bytesToRelease
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property filesNumber (base name: "filesNumber")', function() {
+      // uncomment below and update the code to test the property filesNumber
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
       //expect(instance).to.be();
     });
 

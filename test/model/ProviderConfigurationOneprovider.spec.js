@@ -69,8 +69,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property redirectionPoint (base name: "redirectionPoint")', function() {
-      // uncomment below and update the code to test the property redirectionPoint
+    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
+      // uncomment below and update the code to test the property subdomainDelegation
+      //var instane = new Onepanel.ProviderConfigurationOneprovider();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subdomain (base name: "subdomain")', function() {
+      // uncomment below and update the code to test the property subdomain
+      //var instane = new Onepanel.ProviderConfigurationOneprovider();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
       //var instane = new Onepanel.ProviderConfigurationOneprovider();
       //expect(instance).to.be();
     });

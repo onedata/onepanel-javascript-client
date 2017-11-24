@@ -47,14 +47,15 @@
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
-   * @param redirectionPoint {String} The address used for user redirection from a zone to the provider.
    */
-  var exports = function(register, name, redirectionPoint) {
+  var exports = function(register, name) {
     var _this = this;
 
     _this['register'] = register;
     _this['name'] = name;
-    _this['redirectionPoint'] = redirectionPoint;
+
+
+
 
 
   };
@@ -86,8 +87,14 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('redirectionPoint')) {
-        obj['redirectionPoint'] = ApiClient.convertToType(data['redirectionPoint'], 'String');
+      if (data.hasOwnProperty('subdomainDelegation')) {
+        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      }
+      if (data.hasOwnProperty('subdomain')) {
+        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
+      }
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
       if (data.hasOwnProperty('geoLongitude')) {
         obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
@@ -110,10 +117,21 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * The address used for user redirection from a zone to the provider.
-   * @member {String} redirectionPoint
+   * If enabled, the storage provider will be assigned a subdomain in onezone's  domain and 'subdomain' property must be provided. If disabled,  'domain' property should be provided. 
+   * @member {Boolean} subdomainDelegation
+   * @default false
    */
-  exports.prototype['redirectionPoint'] = undefined;
+  exports.prototype['subdomainDelegation'] = false;
+  /**
+   * Unique subdomain in onezone's domain for the provider. Required if subdomain  delegation is enabled. 
+   * @member {String} subdomain
+   */
+  exports.prototype['subdomain'] = undefined;
+  /**
+   * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
+   * @member {String} domain
+   */
+  exports.prototype['domain'] = undefined;
   /**
    * The geographical longitude of the provider.
    * @member {Number} geoLongitude

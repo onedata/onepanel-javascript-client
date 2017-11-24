@@ -47,20 +47,23 @@
    * @class
    * @param id {String} The ID assigned by a zone.
    * @param name {String} The name under which the provider has been registered in a zone.
-   * @param urls {Array.<String>} The list of IP addresses of provider cluster worker nodes.
-   * @param redirectionPoint {String} The address used for user redirection from a zone to the provider.
+   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and  'subdomain' property must be provided. 
+   * @param domain {String} The fully qualified domain name of the provider or its IP address  (only for single-node deployments or clusters with a reverse proxy). 
    * @param geoLongitude {Number} The geographical longitude of the provider.
    * @param geoLatitude {Number} The geographical latitude of the provider.
+   * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
    */
-  var exports = function(id, name, urls, redirectionPoint, geoLongitude, geoLatitude) {
+  var exports = function(id, name, subdomainDelegation, domain, geoLongitude, geoLatitude, onezoneDomainName) {
     var _this = this;
 
     _this['id'] = id;
     _this['name'] = name;
-    _this['urls'] = urls;
-    _this['redirectionPoint'] = redirectionPoint;
+    _this['subdomainDelegation'] = subdomainDelegation;
+
+    _this['domain'] = domain;
     _this['geoLongitude'] = geoLongitude;
     _this['geoLatitude'] = geoLatitude;
+    _this['onezoneDomainName'] = onezoneDomainName;
   };
 
   /**
@@ -90,17 +93,23 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('urls')) {
-        obj['urls'] = ApiClient.convertToType(data['urls'], ['String']);
+      if (data.hasOwnProperty('subdomainDelegation')) {
+        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
-      if (data.hasOwnProperty('redirectionPoint')) {
-        obj['redirectionPoint'] = ApiClient.convertToType(data['redirectionPoint'], 'String');
+      if (data.hasOwnProperty('subdomain')) {
+        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
+      }
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
       if (data.hasOwnProperty('geoLongitude')) {
         obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
       }
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      }
+      if (data.hasOwnProperty('onezoneDomainName')) {
+        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
       }
     }
     return obj;
@@ -117,15 +126,20 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * The list of IP addresses of provider cluster worker nodes.
-   * @member {Array.<String>} urls
+   * If enabled, the storage provider has a subdomain in onezone's domain and  'subdomain' property must be provided. 
+   * @member {Boolean} subdomainDelegation
    */
-  exports.prototype['urls'] = undefined;
+  exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * The address used for user redirection from a zone to the provider.
-   * @member {String} redirectionPoint
+   * Unique subdomain in onezone's domain for the provider. Required if subdomain  delegation is enabled. 
+   * @member {String} subdomain
    */
-  exports.prototype['redirectionPoint'] = undefined;
+  exports.prototype['subdomain'] = undefined;
+  /**
+   * The fully qualified domain name of the provider or its IP address  (only for single-node deployments or clusters with a reverse proxy). 
+   * @member {String} domain
+   */
+  exports.prototype['domain'] = undefined;
   /**
    * The geographical longitude of the provider.
    * @member {Number} geoLongitude
@@ -136,6 +150,11 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
+  /**
+   * The domain name of a zone where this storage provider is registered.
+   * @member {String} onezoneDomainName
+   */
+  exports.prototype['onezoneDomainName'] = undefined;
 
 
 

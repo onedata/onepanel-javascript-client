@@ -61,6 +61,7 @@
     _this['subdomainDelegation'] = subdomainDelegation;
 
     _this['domain'] = domain;
+
     _this['geoLongitude'] = geoLongitude;
     _this['geoLatitude'] = geoLatitude;
     _this['onezoneDomainName'] = onezoneDomainName;
@@ -102,6 +103,9 @@
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
+      if (data.hasOwnProperty('letsencryptEnabled')) {
+        obj['letsencryptEnabled'] = ApiClient.convertToType(data['letsencryptEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('geoLongitude')) {
         obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
       }
@@ -140,6 +144,11 @@
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
+  /**
+   * . If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false.
+   * @member {Boolean} letsencryptEnabled
+   */
+  exports.prototype['letsencryptEnabled'] = undefined;
   /**
    * The geographical longitude of the provider.
    * @member {Number} geoLongitude

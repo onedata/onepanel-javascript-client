@@ -58,6 +58,7 @@
 
 
     _this['onezoneDomainName'] = onezoneDomainName;
+
   };
 
   /**
@@ -102,6 +103,9 @@
       if (data.hasOwnProperty('onezoneDomainName')) {
         obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
       }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      }
     }
     return obj;
   }
@@ -142,6 +146,11 @@
    * @member {String} onezoneDomainName
    */
   exports.prototype['onezoneDomainName'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

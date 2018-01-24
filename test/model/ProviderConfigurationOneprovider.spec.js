@@ -81,6 +81,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property letsencryptEnabled (base name: "letsencryptEnabled")', function() {
+      // uncomment below and update the code to test the property letsencryptEnabled
+      //var instane = new Onepanel.ProviderConfigurationOneprovider();
+      //expect(instance).to.be();
+    });
+
     it('should have the property domain (base name: "domain")', function() {
       // uncomment below and update the code to test the property domain
       //var instane = new Onepanel.ProviderConfigurationOneprovider();
@@ -95,6 +101,12 @@
 
     it('should have the property geoLatitude (base name: "geoLatitude")', function() {
       // uncomment below and update the code to test the property geoLatitude
+      //var instane = new Onepanel.ProviderConfigurationOneprovider();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property adminEmail (base name: "adminEmail")', function() {
+      // uncomment below and update the code to test the property adminEmail
       //var instane = new Onepanel.ProviderConfigurationOneprovider();
       //expect(instance).to.be();
     });

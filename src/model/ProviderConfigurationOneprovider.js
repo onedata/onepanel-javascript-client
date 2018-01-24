@@ -47,17 +47,21 @@
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
+   * @param letsencryptEnabled {Boolean} If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(register, name) {
+  var exports = function(register, name, letsencryptEnabled, adminEmail) {
     var _this = this;
 
     _this['register'] = register;
     _this['name'] = name;
 
 
+    _this['letsencryptEnabled'] = letsencryptEnabled;
 
 
 
+    _this['adminEmail'] = adminEmail;
   };
 
   /**
@@ -93,6 +97,9 @@
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
       }
+      if (data.hasOwnProperty('letsencryptEnabled')) {
+        obj['letsencryptEnabled'] = ApiClient.convertToType(data['letsencryptEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
@@ -101,6 +108,9 @@
       }
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
     }
     return obj;
@@ -128,6 +138,11 @@
    */
   exports.prototype['subdomain'] = undefined;
   /**
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsencryptEnabled
+   */
+  exports.prototype['letsencryptEnabled'] = undefined;
+  /**
    * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
    * @member {String} domain
    */
@@ -142,6 +157,11 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

@@ -99,6 +99,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property adminEmail (base name: "adminEmail")', function() {
+      // uncomment below and update the code to test the property adminEmail
+      //var instane = new Onepanel.ProviderRegisterRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

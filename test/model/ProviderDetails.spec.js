@@ -87,6 +87,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property letsencryptEnabled (base name: "letsencryptEnabled")', function() {
+      // uncomment below and update the code to test the property letsencryptEnabled
+      //var instane = new Onepanel.ProviderDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property geoLongitude (base name: "geoLongitude")', function() {
       // uncomment below and update the code to test the property geoLongitude
       //var instane = new Onepanel.ProviderDetails();

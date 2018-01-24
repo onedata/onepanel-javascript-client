@@ -55,6 +55,8 @@
 
 
 
+
+
   };
 
   /**
@@ -84,6 +86,9 @@
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
+      if (data.hasOwnProperty('letsencryptEnabled')) {
+        obj['letsencryptEnabled'] = ApiClient.convertToType(data['letsencryptEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
       }
@@ -95,6 +100,9 @@
       }
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
     }
     return obj;
@@ -110,6 +118,11 @@
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;
+  /**
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled is subdomainDelegation is disabled. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsencryptEnabled
+   */
+  exports.prototype['letsencryptEnabled'] = undefined;
   /**
    * Unique subdomain in onezone's domain for the provider. This property is required  only if subdomain delegation is enabled. Otherwise it is ignored. 
    * @member {String} subdomain
@@ -130,6 +143,11 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

@@ -46,13 +46,11 @@
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
    * @param inProgress {Boolean} Flag which indicates whether auto cleaning process is currently in progress 
-   * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
-  var exports = function(inProgress, spaceOccupancy) {
+  var exports = function(inProgress) {
     var _this = this;
 
     _this['inProgress'] = inProgress;
-    _this['spaceOccupancy'] = spaceOccupancy;
   };
 
   /**
@@ -79,9 +77,6 @@
       if (data.hasOwnProperty('inProgress')) {
         obj['inProgress'] = ApiClient.convertToType(data['inProgress'], 'Boolean');
       }
-      if (data.hasOwnProperty('spaceOccupancy')) {
-        obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
-      }
     }
     return obj;
   }
@@ -91,11 +86,6 @@
    * @member {Boolean} inProgress
    */
   exports.prototype['inProgress'] = undefined;
-  /**
-   * Amount of storage [b] used by data from given space on that storage.
-   * @member {Number} spaceOccupancy
-   */
-  exports.prototype['spaceOccupancy'] = undefined;
 
 
 

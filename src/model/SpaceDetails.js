@@ -51,8 +51,9 @@
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param softQuota {Number} Number of bytes that can be written above support limit. 
+   * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders, softQuota) {
+  var exports = function(id, name, storageId, localStorages, supportingProviders, softQuota, spaceOccupancy) {
     var _this = this;
 
     _this['id'] = id;
@@ -66,6 +67,7 @@
 
 
 
+    _this['spaceOccupancy'] = spaceOccupancy;
   };
 
   /**
@@ -121,6 +123,9 @@
       }
       if (data.hasOwnProperty('autoCleaning')) {
         obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
+      }
+      if (data.hasOwnProperty('spaceOccupancy')) {
+        obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
     }
     return obj;
@@ -180,6 +185,11 @@
    * @member {module:model/SpaceAutoCleaning} autoCleaning
    */
   exports.prototype['autoCleaning'] = undefined;
+  /**
+   * Amount of storage [b] used by data from given space on that storage.
+   * @member {Number} spaceOccupancy
+   */
+  exports.prototype['spaceOccupancy'] = undefined;
 
 
 

@@ -518,6 +518,10 @@
               polymorphicType = require("./model/Glusterfs");
             }
 
+            if('nulldevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Nulldevice");
+            }
+
             if('posix'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Posix");
             }

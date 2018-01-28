@@ -17,44 +17,43 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Nulldevice = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The StorageDetails model module.
-   * @module model/StorageDetails
+   * The Nulldevice model module.
+   * @module model/Nulldevice
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>StorageDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageDetails
+   * Constructs a new <code>Nulldevice</code>.
+   * The Null Device storage configuration.
+   * @alias module:model/Nulldevice
    * @class
+   * @extends module:model/StorageDetails
    * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    */
   var exports = function(type) {
     var _this = this;
+    StorageDetails.call(_this, type);
 
 
 
-
-
-    _this['type'] = type;
 
 
 
@@ -65,28 +64,37 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/Nulldevice} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Nulldevice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetails} obj Optional instance to populate.
-   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
+   * @param {module:model/Nulldevice} obj Optional instance to populate.
+   * @return {module:model/Nulldevice} The populated <code>Nulldevice</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('latencyMin')) {
+        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('latencyMax')) {
+        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
+      }
+      if (data.hasOwnProperty('timeoutProbability')) {
+        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
+      }
+      if (data.hasOwnProperty('filter')) {
+        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -94,35 +102,39 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaCacheTimeout')) {
-        obj['lumaCacheTimeout'] = ApiClient.convertToType(data['lumaCacheTimeout'], 'Number');
-      }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
-      }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * The ID of storage.
-   * @member {String} id
+   * Minimum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMin
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['latencyMin'] = undefined;
   /**
-   * The name of storage.
-   * @member {String} name
+   * Maximum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMax
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['latencyMax'] = undefined;
+  /**
+   * Probability (0.0, 1.0), with which an operation should return a timeout error. 
+   * @member {Number} timeoutProbability
+   */
+  exports.prototype['timeoutProbability'] = undefined;
+  /**
+   * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
+   * @member {String} filter
+   * @default '*'
+   */
+  exports.prototype['filter'] = '*';
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
@@ -135,70 +147,7 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
-  /**
-   * The type of storage.
-   * @member {module:model/StorageDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
-   */
-  exports.prototype['lumaEnabled'] = false;
-  /**
-   * URL of external LUMA service
-   * @member {String} lumaUrl
-   */
-  exports.prototype['lumaUrl'] = undefined;
-  /**
-   * LUMA cache timeout in minutes.
-   * @member {Number} lumaCacheTimeout
-   */
-  exports.prototype['lumaCacheTimeout'] = undefined;
-  /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
-   * @member {String} lumaApiKey
-   */
-  exports.prototype['lumaApiKey'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "posix"
-     * @const
-     */
-    "posix": "posix",
-    /**
-     * value: "s3"
-     * @const
-     */
-    "s3": "s3",
-    /**
-     * value: "ceph"
-     * @const
-     */
-    "ceph": "ceph",
-    /**
-     * value: "swift"
-     * @const
-     */
-    "swift": "swift",
-    /**
-     * value: "glusterfs"
-     * @const
-     */
-    "glusterfs": "glusterfs",
-    /**
-     * value: "nulldevice"
-     * @const
-     */
-    "nulldevice": "nulldevice"  };
 
 
   return exports;

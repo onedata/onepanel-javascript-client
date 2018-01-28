@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **timeoutProbability** | **Number** | Probability (0.0, 1.0), with which an operation should return a timeout error.  | [optional] 
 **filter** | **String** | Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or &#39;*&#39; mean all operations will be affected.  | [optional] [default to &#39;*&#39;]
 **timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
-**insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to false]
 **readonly** | **Boolean** | Defines whether storage is readonly. | [optional] [default to false]
 
 

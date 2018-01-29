@@ -118,8 +118,9 @@
   /**
    * Probability (0.0, 1.0), with which an operation should return a timeout error. 
    * @member {Number} timeoutProbability
+   * @default 0.0
    */
-  exports.prototype['timeoutProbability'] = undefined;
+  exports.prototype['timeoutProbability'] = 0.0;
   /**
    * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
    * @member {String} filter

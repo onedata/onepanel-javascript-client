@@ -47,17 +47,17 @@
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
-   * @param letsencryptEnabled {Boolean} If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @param letsEncryptEnabled {Boolean} If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
    * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(register, name, letsencryptEnabled, adminEmail) {
+  var exports = function(register, name, letsEncryptEnabled, adminEmail) {
     var _this = this;
 
     _this['register'] = register;
     _this['name'] = name;
 
 
-    _this['letsencryptEnabled'] = letsencryptEnabled;
+    _this['letsEncryptEnabled'] = letsEncryptEnabled;
 
 
 
@@ -97,8 +97,8 @@
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
       }
-      if (data.hasOwnProperty('letsencryptEnabled')) {
-        obj['letsencryptEnabled'] = ApiClient.convertToType(data['letsencryptEnabled'], 'Boolean');
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
@@ -138,10 +138,10 @@
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsencryptEnabled
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
    */
-  exports.prototype['letsencryptEnabled'] = undefined;
+  exports.prototype['letsEncryptEnabled'] = undefined;
   /**
    * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
    * @member {String} domain

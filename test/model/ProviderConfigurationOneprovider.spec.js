@@ -81,8 +81,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property letsencryptEnabled (base name: "letsencryptEnabled")', function() {
-      // uncomment below and update the code to test the property letsencryptEnabled
+    it('should have the property letsEncryptEnabled (base name: "letsEncryptEnabled")', function() {
+      // uncomment below and update the code to test the property letsEncryptEnabled
       //var instane = new Onepanel.ProviderConfigurationOneprovider();
       //expect(instance).to.be();
     });

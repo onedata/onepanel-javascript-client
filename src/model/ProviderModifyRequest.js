@@ -86,8 +86,8 @@
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
-      if (data.hasOwnProperty('letsencryptEnabled')) {
-        obj['letsencryptEnabled'] = ApiClient.convertToType(data['letsencryptEnabled'], 'Boolean');
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
@@ -119,10 +119,10 @@
    */
   exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwises certificates must be manually provided. This option cannot be enabled is subdomainDelegation is disabled. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsencryptEnabled
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled is subdomainDelegation is disabled. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
    */
-  exports.prototype['letsencryptEnabled'] = undefined;
+  exports.prototype['letsEncryptEnabled'] = undefined;
   /**
    * Unique subdomain in onezone's domain for the provider. This property is required  only if subdomain delegation is enabled. Otherwise it is ignored. 
    * @member {String} subdomain

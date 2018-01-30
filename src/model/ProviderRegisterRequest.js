@@ -46,19 +46,21 @@
    * @alias module:model/ProviderRegisterRequest
    * @class
    * @param name {String} The name under which the provider should be registered in a zone. 
+   * @param subdomainDelegation {Boolean} If enabled, the storage provider will be assigned a subdomain in onezone's domain  and 'subdomain' property must be provided. If disabled, 'domain' property  should be provided. 
    * @param onezoneDomainName {String} The domain name of a zone where this storage provider will be registered. 
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(name, onezoneDomainName) {
+  var exports = function(name, subdomainDelegation, onezoneDomainName, adminEmail) {
     var _this = this;
 
     _this['name'] = name;
-
+    _this['subdomainDelegation'] = subdomainDelegation;
 
 
 
 
     _this['onezoneDomainName'] = onezoneDomainName;
-
+    _this['adminEmail'] = adminEmail;
   };
 
   /**

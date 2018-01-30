@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property adminEmail (base name: "adminEmail")', function() {
+      // uncomment below and update the code to test the property adminEmail
+      //var instane = new Onepanel.ProviderDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property geoLongitude (base name: "geoLongitude")', function() {
       // uncomment below and update the code to test the property geoLongitude
       //var instane = new Onepanel.ProviderDetails();

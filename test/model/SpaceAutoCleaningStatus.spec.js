@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
+      // uncomment below and update the code to test the property spaceOccupancy
+      //var instane = new Onepanel.SpaceAutoCleaningStatus();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

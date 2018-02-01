@@ -47,17 +47,16 @@
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
-   * @param letsEncryptEnabled {Boolean} If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
    * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(register, name, letsEncryptEnabled, adminEmail) {
+  var exports = function(register, name, adminEmail) {
     var _this = this;
 
     _this['register'] = register;
     _this['name'] = name;
 
 
-    _this['letsEncryptEnabled'] = letsEncryptEnabled;
+
 
 
 
@@ -140,8 +139,9 @@
   /**
    * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
    * @member {Boolean} letsEncryptEnabled
+   * @default false
    */
-  exports.prototype['letsEncryptEnabled'] = undefined;
+  exports.prototype['letsEncryptEnabled'] = false;
   /**
    * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
    * @member {String} domain

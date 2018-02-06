@@ -799,7 +799,7 @@
     /**
      * Get provider cluster worker status
      * Returns status of cluster worker service on the selected host.
-     * @param {String} host The name of a host for which cluster worker service status should be  returned. 
+     * @param {String} host The name of a host for which cluster worker service status should be returned. 
      * @param {module:api/OneproviderApi~getProviderWorkerStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatusHost}
      */
@@ -844,7 +844,7 @@
 
     /**
      * Get provider cluster workers status
-     * Returns status of cluster worker service on each host where it has been  deployed. 
+     * Returns status of cluster worker service on each host where it has been deployed. 
      * @param {module:api/OneproviderApi~getProviderWorkersStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
      */
@@ -1379,10 +1379,10 @@
 
     /**
      * Start/stop provider cluster manager
-     * Starts or stops cluster manager service on the selected hosts in the local  deployment. 
+     * Starts or stops cluster manager service on the selected hosts in the local deployment. 
      * @param {String} host The name of a host for which cluster manager service status should be changed. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OneproviderApi~startStopProviderManagerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopProviderManager = function(host, opts, callback) {
@@ -1470,10 +1470,10 @@
 
     /**
      * Start/stop provider cluster worker
-     * Starts or stops cluster worker service on the selected host in the  local deployment. 
-     * @param {String} host The name of a host for which cluster worker service status should be  changed. 
+     * Starts or stops cluster worker service on the selected host in the local deployment. 
+     * @param {String} host The name of a host for which cluster worker service status should be changed. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will  be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OneproviderApi~startStopProviderWorkerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopProviderWorker = function(host, opts, callback) {
@@ -1521,7 +1521,7 @@
      * Start/stop provider cluster workers
      * Starts or stops cluster worker service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OneproviderApi~startStopProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopProviderWorkers = function(opts, callback) {

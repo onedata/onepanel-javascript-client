@@ -16,95 +16,132 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.Nulldevice = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ProviderRegisterRequest();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The Nulldevice model module.
+   * @module model/Nulldevice
+   * @version 17.06.0-rc2
+   */
+
+  /**
+   * Constructs a new <code>Nulldevice</code>.
+   * The Null Device storage configuration.
+   * @alias module:model/Nulldevice
+   * @class
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   */
+  var exports = function(type) {
+    var _this = this;
+    StorageDetails.call(_this, type);
+
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/Nulldevice} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>Nulldevice</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/Nulldevice} obj Optional instance to populate.
+   * @return {module:model/Nulldevice} The populated <code>Nulldevice</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('latencyMin')) {
+        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
+      }
+      if (data.hasOwnProperty('latencyMax')) {
+        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
+      }
+      if (data.hasOwnProperty('timeoutProbability')) {
+        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
+      }
+      if (data.hasOwnProperty('filter')) {
+        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('ProviderRegisterRequest', function() {
-    it('should create an instance of ProviderRegisterRequest', function() {
-      // uncomment below and update the code to test ProviderRegisterRequest
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be.a(Onepanel.ProviderRegisterRequest);
-    });
+  /**
+   * Minimum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMin
+   */
+  exports.prototype['latencyMin'] = undefined;
+  /**
+   * Maximum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMax
+   */
+  exports.prototype['latencyMax'] = undefined;
+  /**
+   * Probability (0.0, 1.0), with which an operation should return a timeout error. 
+   * @member {Number} timeoutProbability
+   * @default 0.0
+   */
+  exports.prototype['timeoutProbability'] = 0.0;
+  /**
+   * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
+   * @member {String} filter
+   * @default '*'
+   */
+  exports.prototype['filter'] = '*';
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
-      // uncomment below and update the code to test the property subdomainDelegation
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property subdomain (base name: "subdomain")', function() {
-      // uncomment below and update the code to test the property subdomain
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
-      // uncomment below and update the code to test the property geoLongitude
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
-      // uncomment below and update the code to test the property geoLatitude
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onezoneDomainName (base name: "onezoneDomainName")', function() {
-      // uncomment below and update the code to test the property onezoneDomainName
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property adminEmail (base name: "adminEmail")', function() {
-      // uncomment below and update the code to test the property adminEmail
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

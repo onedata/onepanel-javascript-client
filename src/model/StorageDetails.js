@@ -193,7 +193,12 @@
      * value: "glusterfs"
      * @const
      */
-    "glusterfs": "glusterfs"  };
+    "glusterfs": "glusterfs",
+    /**
+     * value: "nulldevice"
+     * @const
+     */
+    "nulldevice": "nulldevice"  };
 
 
   return exports;

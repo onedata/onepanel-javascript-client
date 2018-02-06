@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ProviderRegisterRequest();
+    instance = new Onepanel.Nulldevice();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,58 +50,46 @@
       object[property] = value;
   }
 
-  describe('ProviderRegisterRequest', function() {
-    it('should create an instance of ProviderRegisterRequest', function() {
-      // uncomment below and update the code to test ProviderRegisterRequest
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be.a(Onepanel.ProviderRegisterRequest);
+  describe('Nulldevice', function() {
+    it('should create an instance of Nulldevice', function() {
+      // uncomment below and update the code to test Nulldevice
+      //var instane = new Onepanel.Nulldevice();
+      //expect(instance).to.be.a(Onepanel.Nulldevice);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property latencyMin (base name: "latencyMin")', function() {
+      // uncomment below and update the code to test the property latencyMin
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 
-    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
-      // uncomment below and update the code to test the property subdomainDelegation
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property latencyMax (base name: "latencyMax")', function() {
+      // uncomment below and update the code to test the property latencyMax
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 
-    it('should have the property subdomain (base name: "subdomain")', function() {
-      // uncomment below and update the code to test the property subdomain
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property timeoutProbability (base name: "timeoutProbability")', function() {
+      // uncomment below and update the code to test the property timeoutProbability
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property filter (base name: "filter")', function() {
+      // uncomment below and update the code to test the property filter
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 
-    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
-      // uncomment below and update the code to test the property geoLongitude
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 
-    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
-      // uncomment below and update the code to test the property geoLatitude
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onezoneDomainName (base name: "onezoneDomainName")', function() {
-      // uncomment below and update the code to test the property onezoneDomainName
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property adminEmail (base name: "adminEmail")', function() {
-      // uncomment below and update the code to test the property adminEmail
-      //var instane = new Onepanel.ProviderRegisterRequest();
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Nulldevice();
       //expect(instance).to.be();
     });
 

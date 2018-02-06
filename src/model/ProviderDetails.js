@@ -47,13 +47,14 @@
    * @class
    * @param id {String} The ID assigned by a zone.
    * @param name {String} The name under which the provider has been registered in a zone.
-   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and  'subdomain' property must be provided. 
-   * @param domain {String} The fully qualified domain name of the provider or its IP address  (only for single-node deployments or clusters with a reverse proxy). 
+   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
+   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    * @param geoLongitude {Number} The geographical longitude of the provider.
    * @param geoLatitude {Number} The geographical latitude of the provider.
    * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
    */
-  var exports = function(id, name, subdomainDelegation, domain, geoLongitude, geoLatitude, onezoneDomainName) {
+  var exports = function(id, name, subdomainDelegation, domain, adminEmail, geoLongitude, geoLatitude, onezoneDomainName) {
     var _this = this;
 
     _this['id'] = id;
@@ -61,6 +62,8 @@
     _this['subdomainDelegation'] = subdomainDelegation;
 
     _this['domain'] = domain;
+
+    _this['adminEmail'] = adminEmail;
     _this['geoLongitude'] = geoLongitude;
     _this['geoLatitude'] = geoLatitude;
     _this['onezoneDomainName'] = onezoneDomainName;
@@ -102,6 +105,12 @@
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      }
       if (data.hasOwnProperty('geoLongitude')) {
         obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
       }
@@ -126,20 +135,30 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider has a subdomain in onezone's domain and  'subdomain' property must be provided. 
+   * If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain  delegation is enabled. 
+   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address  (only for single-node deployments or clusters with a reverse proxy). 
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
+  /**
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. 
+   * @member {Boolean} letsEncryptEnabled
+   */
+  exports.prototype['letsEncryptEnabled'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
   /**
    * The geographical longitude of the provider.
    * @member {Number} geoLongitude

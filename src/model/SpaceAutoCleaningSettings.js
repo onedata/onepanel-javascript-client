@@ -112,7 +112,7 @@
    */
   exports.prototype['maxFileNotOpenedHours'] = undefined;
   /**
-   * Amount of data [b], which should trigger the auto cleaning in the space.  Only replicas maintained by this storage provider will be removed. If not  specified, the auto cleaning will not start automatically. 
+   * Amount of data [b], which should trigger the auto cleaning in the space. Only replicas maintained by this storage provider will be removed. If not specified, the auto cleaning will not start automatically. 
    * @member {Number} threshold
    */
   exports.prototype['threshold'] = undefined;

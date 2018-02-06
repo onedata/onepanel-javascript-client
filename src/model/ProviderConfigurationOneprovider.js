@@ -47,8 +47,9 @@
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(register, name) {
+  var exports = function(register, name, adminEmail) {
     var _this = this;
 
     _this['register'] = register;
@@ -58,6 +59,8 @@
 
 
 
+
+    _this['adminEmail'] = adminEmail;
   };
 
   /**
@@ -93,6 +96,9 @@
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
       }
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
@@ -101,6 +107,9 @@
       }
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
     }
     return obj;
@@ -117,18 +126,24 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's  domain and 'subdomain' property must be provided. If disabled,  'domain' property should be provided. 
+   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @member {Boolean} subdomainDelegation
    * @default false
    */
   exports.prototype['subdomainDelegation'] = false;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain  delegation is enabled. 
+   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
+   * @default false
+   */
+  exports.prototype['letsEncryptEnabled'] = false;
+  /**
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). Required if subdomain delegation is disabled. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
@@ -142,6 +157,11 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

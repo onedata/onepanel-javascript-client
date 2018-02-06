@@ -918,7 +918,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be  returned. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -935,7 +935,7 @@ apiInstance.getProviderWorkerStatus(host, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be  returned.  | 
+ **host** | **String**| The name of a host for which cluster worker service status should be returned.  | 
 
 ### Return type
 
@@ -956,7 +956,7 @@ Name | Type | Description  | Notes
 
 Get provider cluster workers status
 
-Returns status of cluster worker service on each host where it has been  deployed. 
+Returns status of cluster worker service on each host where it has been deployed. 
 
 ### Example
 ```javascript
@@ -1573,7 +1573,7 @@ null (empty response body)
 
 Start/stop provider cluster manager
 
-Starts or stops cluster manager service on the selected hosts in the local  deployment. 
+Starts or stops cluster manager service on the selected hosts in the local deployment. 
 
 ### Example
 ```javascript
@@ -1590,7 +1590,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1608,7 +1608,7 @@ apiInstance.startStopProviderManager(host, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | **String**| The name of a host for which cluster manager service status should be changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -1682,7 +1682,7 @@ null (empty response body)
 
 Start/stop provider cluster worker
 
-Starts or stops cluster worker service on the selected host in the  local deployment. 
+Starts or stops cluster worker service on the selected host in the local deployment. 
 
 ### Example
 ```javascript
@@ -1696,10 +1696,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be  changed. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will  be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1716,8 +1716,8 @@ apiInstance.startStopProviderWorker(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be  changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will  be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **host** | **String**| The name of a host for which cluster worker service status should be changed.  | 
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -1753,7 +1753,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OneproviderApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1770,7 +1770,7 @@ apiInstance.startStopProviderWorkers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 

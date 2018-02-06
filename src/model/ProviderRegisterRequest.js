@@ -46,18 +46,21 @@
    * @alias module:model/ProviderRegisterRequest
    * @class
    * @param name {String} The name under which the provider should be registered in a zone. 
+   * @param subdomainDelegation {Boolean} If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @param onezoneDomainName {String} The domain name of a zone where this storage provider will be registered. 
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(name, onezoneDomainName) {
+  var exports = function(name, subdomainDelegation, onezoneDomainName, adminEmail) {
     var _this = this;
 
     _this['name'] = name;
-
+    _this['subdomainDelegation'] = subdomainDelegation;
 
 
 
 
     _this['onezoneDomainName'] = onezoneDomainName;
+    _this['adminEmail'] = adminEmail;
   };
 
   /**
@@ -102,6 +105,9 @@
       if (data.hasOwnProperty('onezoneDomainName')) {
         obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
       }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      }
     }
     return obj;
   }
@@ -112,18 +118,18 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's domain  and 'subdomain' property must be provided. If disabled, 'domain' property  should be provided. 
+   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @member {Boolean} subdomainDelegation
    * @default false
    */
   exports.prototype['subdomainDelegation'] = false;
   /**
-   * Unique subdomain in onezone's domain for the storage provider. Required if  subdomain delegation is enabled. 
+   * Unique subdomain in onezone's domain for the storage provider. Required if subdomain delegation is enabled. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * The fully qualified domain name of the storage provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if  subdomain delegation is disabled. 
+   * The fully qualified domain name of the storage provider or its IP address (only for single-node deployments or clusters with a reverse proxy). Required if subdomain delegation is disabled. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
@@ -142,6 +148,11 @@
    * @member {String} onezoneDomainName
    */
   exports.prototype['onezoneDomainName'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

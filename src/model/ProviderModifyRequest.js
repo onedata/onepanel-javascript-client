@@ -55,6 +55,8 @@
 
 
 
+
+
   };
 
   /**
@@ -84,6 +86,9 @@
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('subdomain')) {
         obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
       }
@@ -96,6 +101,9 @@
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
       }
+      if (data.hasOwnProperty('adminEmail')) {
+        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      }
     }
     return obj;
   }
@@ -106,17 +114,22 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's domain  and 'subdomain' property must be provided. If disabled, 'domain' property  should be provided. 
+   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. This property is required  only if subdomain delegation is enabled. Otherwise it is ignored. 
+   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled is subdomainDelegation is disabled. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
+   */
+  exports.prototype['letsEncryptEnabled'] = undefined;
+  /**
+   * Unique subdomain in onezone's domain for the provider. This property is required only if subdomain delegation is enabled. Otherwise it is ignored. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). This property is required  only if subdomain delegation is disabled. Otherwise it is ignored. 
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). This property is required only if subdomain delegation is disabled. Otherwise it is ignored. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
@@ -130,6 +143,11 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
+   * @member {String} adminEmail
+   */
+  exports.prototype['adminEmail'] = undefined;
 
 
 

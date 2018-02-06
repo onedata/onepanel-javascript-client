@@ -126,13 +126,13 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's  domain and 'subdomain' property must be provided. If disabled,  'domain' property should be provided. 
+   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @member {Boolean} subdomainDelegation
    * @default false
    */
   exports.prototype['subdomainDelegation'] = false;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain  delegation is enabled. 
+   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
@@ -143,7 +143,7 @@
    */
   exports.prototype['letsEncryptEnabled'] = false;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for  single-node deployments or clusters with a reverse proxy). Required if subdomain  delegation is disabled. 
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). Required if subdomain delegation is disabled. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;

@@ -359,7 +359,7 @@
     /**
      * Get zone cluster manager status
      * Returns status of cluster manager service on the selected host.
-     * @param {String} host The name of a host for which cluster manager service status should be  returned. 
+     * @param {String} host The name of a host for which cluster manager service status should be returned. 
      * @param {module:api/OnezoneApi~getZoneManagerStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatusHost}
      */
@@ -404,7 +404,7 @@
 
     /**
      * Get zone cluster managers status
-     * Returns status of cluster manager service on each host where it has been  eployed. 
+     * Returns status of cluster manager service on each host where it has been eployed. 
      * @param {module:api/OnezoneApi~getZoneManagersStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
      */
@@ -608,7 +608,7 @@
 
     /**
      * Start/stop zone database
-     * Starts or stops database service on the selected hosts in the local  deployment. 
+     * Starts or stops database service on the selected hosts in the local deployment. 
      * @param {String} host The name of a host for which database service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
@@ -657,10 +657,10 @@
 
     /**
      * Start/stop zone cluster manager
-     * Starts or stops cluster manager service on the selected hosts in the local  deployment. 
-     * @param {String} host The name of a host for which cluster manager service status should be  changed. 
+     * Starts or stops cluster manager service on the selected hosts in the local deployment. 
+     * @param {String} host The name of a host for which cluster manager service status should be changed. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OnezoneApi~startStopZoneManagerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneManager = function(host, opts, callback) {
@@ -708,7 +708,7 @@
      * Start/stop zone cluster managers
      * Starts or stops cluster manager service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OnezoneApi~startStopZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneManagers = function(opts, callback) {
@@ -748,8 +748,8 @@
 
     /**
      * Start/stop zone cluster worker
-     * Starts or stops cluster worker service on the selected hosts in the local  deployment. 
-     * @param {String} host The name of a host for which cluster worker service status should be  changed. 
+     * Starts or stops cluster worker service on the selected hosts in the local deployment. 
+     * @param {String} host The name of a host for which cluster worker service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OnezoneApi~startStopZoneWorkerCallback} callback The callback function, accepting three arguments: error, data, response
@@ -799,7 +799,7 @@
      * Start/stop zone cluster workers
      * Starts or stops cluster worker service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OnezoneApi~startStopZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneWorkers = function(opts, callback) {

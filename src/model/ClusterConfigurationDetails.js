@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/WorkerHosts'], factory);
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/RTransferHosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./WorkerHosts'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./RTransferHosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.WorkerHosts);
+    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.RTransferHosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(ApiClient, DatabaseHosts, ManagerHosts, WorkerHosts) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, RTransferHosts, WorkerHosts) {
   'use strict';
 
 
@@ -55,6 +55,7 @@
     _this['databases'] = databases;
     _this['managers'] = managers;
     _this['workers'] = workers;
+
   };
 
   /**
@@ -87,6 +88,9 @@
       if (data.hasOwnProperty('workers')) {
         obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
       }
+      if (data.hasOwnProperty('rTransfers')) {
+        obj['rTransfers'] = RTransferHosts.constructFromObject(data['rTransfers']);
+      }
     }
     return obj;
   }
@@ -103,6 +107,10 @@
    * @member {module:model/WorkerHosts} workers
    */
   exports.prototype['workers'] = undefined;
+  /**
+   * @member {module:model/RTransferHosts} rTransfers
+   */
+  exports.prototype['rTransfers'] = undefined;
 
 
 

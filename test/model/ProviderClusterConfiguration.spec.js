@@ -87,6 +87,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property rTransfers (base name: "rTransfers")', function() {
+      // uncomment below and update the code to test the property rTransfers
+      //var instane = new Onepanel.ProviderClusterConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property storages (base name: "storages")', function() {
       // uncomment below and update the code to test the property storages
       //var instane = new Onepanel.ProviderClusterConfiguration();

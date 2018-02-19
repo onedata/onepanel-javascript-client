@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ClusterConfigurationDetails();
+    instance = new Onepanel.RTransferHosts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,16 @@
       object[property] = value;
   }
 
-  describe('ClusterConfigurationDetails', function() {
-    it('should create an instance of ClusterConfigurationDetails', function() {
-      // uncomment below and update the code to test ClusterConfigurationDetails
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be.a(Onepanel.ClusterConfigurationDetails);
+  describe('RTransferHosts', function() {
+    it('should create an instance of RTransferHosts', function() {
+      // uncomment below and update the code to test RTransferHosts
+      //var instane = new Onepanel.RTransferHosts();
+      //expect(instance).to.be.a(Onepanel.RTransferHosts);
     });
 
-    it('should have the property databases (base name: "databases")', function() {
-      // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workers (base name: "workers")', function() {
-      // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property rTransfers (base name: "rTransfers")', function() {
-      // uncomment below and update the code to test the property rTransfers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.RTransferHosts();
       //expect(instance).to.be();
     });
 

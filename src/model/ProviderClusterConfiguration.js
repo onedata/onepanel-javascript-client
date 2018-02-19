@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterRTransfers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterRTransfers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterRTransfers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterRTransfers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
   'use strict';
 
 
@@ -50,8 +50,9 @@
    * @param databases {module:model/ClusterDatabases} 
    * @param managers {module:model/ClusterManagers} 
    * @param workers {module:model/ClusterWorkers} 
+   * @param rTransfers {module:model/ClusterRTransfers} 
    */
-  var exports = function(domainName, nodes, databases, managers, workers) {
+  var exports = function(domainName, nodes, databases, managers, workers, rTransfers) {
     var _this = this;
 
     _this['domainName'] = domainName;
@@ -59,6 +60,7 @@
     _this['databases'] = databases;
     _this['managers'] = managers;
     _this['workers'] = workers;
+    _this['rTransfers'] = rTransfers;
 
   };
 
@@ -98,6 +100,9 @@
       if (data.hasOwnProperty('workers')) {
         obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
       }
+      if (data.hasOwnProperty('rTransfers')) {
+        obj['rTransfers'] = ClusterRTransfers.constructFromObject(data['rTransfers']);
+      }
       if (data.hasOwnProperty('storages')) {
         obj['storages'] = StorageCreateRequest.constructFromObject(data['storages']);
       }
@@ -127,6 +132,10 @@
    * @member {module:model/ClusterWorkers} workers
    */
   exports.prototype['workers'] = undefined;
+  /**
+   * @member {module:model/ClusterRTransfers} rTransfers
+   */
+  exports.prototype['rTransfers'] = undefined;
   /**
    * @member {module:model/StorageCreateRequest} storages
    */

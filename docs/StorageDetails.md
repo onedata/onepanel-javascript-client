@@ -28,8 +28,6 @@ Name | Type | Description | Notes
 
 * `glusterfs` (value: `"glusterfs"`)
 
-* `nulldevice` (value: `"nulldevice"`)
-
 
 
 

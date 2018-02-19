@@ -396,7 +396,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster manager service status should be returned. 
+var host = "host_example"; // String | The name of a host for which cluster manager service status should be  returned. 
 
 
 var callback = function(error, data, response) {
@@ -413,7 +413,7 @@ apiInstance.getZoneManagerStatus(host, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster manager service status should be returned.  | 
+ **host** | **String**| The name of a host for which cluster manager service status should be  returned.  | 
 
 ### Return type
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 Get zone cluster managers status
 
-Returns status of cluster manager service on each host where it has been eployed. 
+Returns status of cluster manager service on each host where it has been  eployed. 
 
 ### Example
 ```javascript
@@ -677,7 +677,7 @@ null (empty response body)
 
 Start/stop zone database
 
-Starts or stops database service on the selected hosts in the local deployment. 
+Starts or stops database service on the selected hosts in the local  deployment. 
 
 ### Example
 ```javascript
@@ -733,7 +733,7 @@ null (empty response body)
 
 Start/stop zone cluster manager
 
-Starts or stops cluster manager service on the selected hosts in the local deployment. 
+Starts or stops cluster manager service on the selected hosts in the local  deployment. 
 
 ### Example
 ```javascript
@@ -747,10 +747,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster manager service status should be changed. 
+var host = "host_example"; // String | The name of a host for which cluster manager service status should be  changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -767,8 +767,8 @@ apiInstance.startStopZoneManager(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster manager service status should be changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **host** | **String**| The name of a host for which cluster manager service status should be  changed.  | 
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -804,7 +804,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnezoneApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -821,7 +821,7 @@ apiInstance.startStopZoneManagers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -842,7 +842,7 @@ null (empty response body)
 
 Start/stop zone cluster worker
 
-Starts or stops cluster worker service on the selected hosts in the local deployment. 
+Starts or stops cluster worker service on the selected hosts in the local  deployment. 
 
 ### Example
 ```javascript
@@ -856,7 +856,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be changed. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be  changed. 
 
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
@@ -876,7 +876,7 @@ apiInstance.startStopZoneWorker(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be changed.  | 
+ **host** | **String**| The name of a host for which cluster worker service status should be  changed.  | 
  **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
@@ -913,7 +913,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnezoneApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -930,7 +930,7 @@ apiInstance.startStopZoneWorkers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 

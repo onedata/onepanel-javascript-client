@@ -14,6 +14,5 @@ Name | Type | Description | Notes
 **storageUpdate** | [**StorageUpdateDetails**](StorageUpdateDetails.md) |  | [optional] 
 **filesPopularity** | [**SpaceFilesPopularity**](SpaceFilesPopularity.md) | Configuration of files popularity feature for this space | [optional] 
 **autoCleaning** | [**SpaceAutoCleaning**](SpaceAutoCleaning.md) | Configuration of auto cleaning feature for this space | [optional] 
-**spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
 
 

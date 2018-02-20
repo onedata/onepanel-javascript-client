@@ -17,100 +17,75 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/RtransferHosts', 'model/WorkerHosts'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./RtransferHosts'), require('./WorkerHosts'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.RtransferHosts, root.Onepanel.WorkerHosts);
+    root.Onepanel.RtransferHosts = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, DatabaseHosts, ManagerHosts, RtransferHosts, WorkerHosts) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ClusterConfigurationDetails model module.
-   * @module model/ClusterConfigurationDetails
+   * The RtransferHosts model module.
+   * @module model/RtransferHosts
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>ClusterConfigurationDetails</code>.
-   * The cluster configuration.
-   * @alias module:model/ClusterConfigurationDetails
+   * Constructs a new <code>RtransferHosts</code>.
+   * The RTransfer service hosts configuration. Used only in Oneprovider cluster. 
+   * @alias module:model/RtransferHosts
    * @class
-   * @param databases {module:model/DatabaseHosts} 
-   * @param managers {module:model/ManagerHosts} 
-   * @param workers {module:model/WorkerHosts} 
+   * @param hosts {Array.<String>} The list of service hosts.
    */
-  var exports = function(databases, managers, workers) {
+  var exports = function(hosts) {
     var _this = this;
 
-    _this['databases'] = databases;
-    _this['managers'] = managers;
-    _this['workers'] = workers;
-
+    _this['hosts'] = hosts;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ClusterConfigurationDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/RtransferHosts} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>RtransferHosts</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterConfigurationDetails} obj Optional instance to populate.
-   * @return {module:model/ClusterConfigurationDetails} The populated <code>ClusterConfigurationDetails</code> instance.
+   * @param {module:model/RtransferHosts} obj Optional instance to populate.
+   * @return {module:model/RtransferHosts} The populated <code>RtransferHosts</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('databases')) {
-        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
-      }
-      if (data.hasOwnProperty('managers')) {
-        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
-      }
-      if (data.hasOwnProperty('workers')) {
-        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
-      }
-      if (data.hasOwnProperty('rtransfers')) {
-        obj['rtransfers'] = RtransferHosts.constructFromObject(data['rtransfers']);
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/DatabaseHosts} databases
+   * The list of service hosts.
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['databases'] = undefined;
-  /**
-   * @member {module:model/ManagerHosts} managers
-   */
-  exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/WorkerHosts} workers
-   */
-  exports.prototype['workers'] = undefined;
-  /**
-   * @member {module:model/RtransferHosts} rtransfers
-   */
-  exports.prototype['rtransfers'] = undefined;
+  exports.prototype['hosts'] = undefined;
 
 
 

@@ -75,8 +75,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property rTransfers (base name: "rTransfers")', function() {
-      // uncomment below and update the code to test the property rTransfers
+    it('should have the property rtransfers (base name: "rtransfers")', function() {
+      // uncomment below and update the code to test the property rtransfers
       //var instane = new Onepanel.ClusterConfigurationDetails();
       //expect(instance).to.be();
     });

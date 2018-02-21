@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneClusterConfigurationNodes = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ProviderClusterConfigurationNodes = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,41 +35,39 @@
 
 
   /**
-   * The ZoneClusterConfigurationNodes model module.
-   * @module model/ZoneClusterConfigurationNodes
+   * The ProviderClusterConfigurationNodes model module.
+   * @module model/ProviderClusterConfigurationNodes
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>ZoneClusterConfigurationNodes</code>.
-   * @alias module:model/ZoneClusterConfigurationNodes
+   * Constructs a new <code>ProviderClusterConfigurationNodes</code>.
+   * @alias module:model/ProviderClusterConfigurationNodes
    * @class
    * @param hostname {String} The name of a host.
-   * @param externalIp {String} External IP of the host used in DNS.
    */
-  var exports = function(hostname, externalIp) {
+  var exports = function(hostname) {
     var _this = this;
 
     _this['hostname'] = hostname;
-    _this['externalIp'] = externalIp;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneClusterConfigurationNodes} The value of 'discriminator' field or undefined.
+   * @return {module:model/ProviderClusterConfigurationNodes} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneClusterConfigurationNodes</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ProviderClusterConfigurationNodes</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneClusterConfigurationNodes} obj Optional instance to populate.
-   * @return {module:model/ZoneClusterConfigurationNodes} The populated <code>ZoneClusterConfigurationNodes</code> instance.
+   * @param {module:model/ProviderClusterConfigurationNodes} obj Optional instance to populate.
+   * @return {module:model/ProviderClusterConfigurationNodes} The populated <code>ProviderClusterConfigurationNodes</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -77,9 +75,6 @@
 
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
-      }
-      if (data.hasOwnProperty('externalIp')) {
-        obj['externalIp'] = ApiClient.convertToType(data['externalIp'], 'String');
       }
     }
     return obj;
@@ -90,11 +85,6 @@
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
-  /**
-   * External IP of the host used in DNS.
-   * @member {String} externalIp
-   */
-  exports.prototype['externalIp'] = undefined;
 
 
 

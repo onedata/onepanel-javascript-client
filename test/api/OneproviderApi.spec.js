@@ -151,6 +151,16 @@
         done();
       });
     });
+    describe('getProviderIps', function() {
+      it('should call getProviderIps successfully', function(done) {
+        //uncomment below and update the code to test getProviderIps
+        //instance.getProviderIps(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderManagerStatus', function() {
       it('should call getProviderManagerStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderManagerStatus
@@ -265,6 +275,16 @@
       it('should call getStorages successfully', function(done) {
         //uncomment below and update the code to test getStorages
         //instance.getStorages(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyClusterIps', function() {
+      it('should call modifyClusterIps successfully', function(done) {
+        //uncomment below and update the code to test modifyClusterIps
+        //instance.modifyClusterIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

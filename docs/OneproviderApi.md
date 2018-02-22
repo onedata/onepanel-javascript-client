@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 [**getProviderDatabaseStatus**](OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
 [**getProviderDatabasesStatus**](OneproviderApi.md#getProviderDatabasesStatus) | **GET** /provider/databases | Get provider databases status
+[**getProviderIps**](OneproviderApi.md#getProviderIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
@@ -26,6 +27,7 @@ Method | HTTP request | Description
 [**getSpaceDetails**](OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
+[**modifyClusterIps**](OneproviderApi.md#modifyClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
@@ -533,6 +535,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ServiceStatus**](ServiceStatus.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderIps"></a>
+# **getProviderIps**
+> ClusterIps getProviderIps()
+
+Get provider cluster nodes IPs
+
+Returns IPs of nodes in provider cluster
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderIps(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterIps**](ClusterIps.md)
 
 ### Authorization
 
@@ -1145,6 +1193,58 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="modifyClusterIps"></a>
+# **modifyClusterIps**
+> modifyClusterIps(clusterIps)
+
+Set external IPs of nodes in application config
+
+Informs cluster nodes about external IPs which can be used to access them by other providers. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var clusterIps = new Onepanel.ModifyClusterIps(); // ModifyClusterIps | The provider configuration description.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyClusterIps(clusterIps, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterIps** | [**ModifyClusterIps**](ModifyClusterIps.md)| The provider configuration description. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
 
 <a name="modifyProvider"></a>
 # **modifyProvider**

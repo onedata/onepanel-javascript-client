@@ -180,7 +180,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
- - [Onepanel.ProviderClusterConfigurationNodes](docs/ProviderClusterConfigurationNodes.md)
  - [Onepanel.ProviderConfiguration](docs/ProviderConfiguration.md)
  - [Onepanel.ProviderConfigurationDetails](docs/ProviderConfigurationDetails.md)
  - [Onepanel.ProviderConfigurationDetailsOneprovider](docs/ProviderConfigurationDetailsOneprovider.md)

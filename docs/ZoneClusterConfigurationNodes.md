@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hostname** | **String** | The name of a host. | 
-**externalIp** | **String** | External IP of the host used in DNS. | 
+**externalIp** | **String** | External IP of the node. | [optional] 
 
 

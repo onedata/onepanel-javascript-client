@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/ProviderClusterConfigurationNodes', 'model/StorageCreateRequest'], factory);
+    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./ProviderClusterConfigurationNodes'), require('./StorageCreateRequest'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.ProviderClusterConfigurationNodes, root.Onepanel.StorageCreateRequest);
+    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, ProviderClusterConfigurationNodes, StorageCreateRequest) {
+}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
   'use strict';
 
 
@@ -46,7 +46,7 @@
    * @alias module:model/ProviderClusterConfiguration
    * @class
    * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
-   * @param nodes {Object.<String, module:model/ProviderClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
+   * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
    * @param databases {module:model/ClusterDatabases} 
    * @param managers {module:model/ClusterManagers} 
    * @param workers {module:model/ClusterWorkers} 
@@ -87,7 +87,7 @@
         obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
       }
       if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], {'String': ProviderClusterConfigurationNodes});
+        obj['nodes'] = ApiClient.convertToType(data['nodes'], {'String': ZoneClusterConfigurationNodes});
       }
       if (data.hasOwnProperty('databases')) {
         obj['databases'] = ClusterDatabases.constructFromObject(data['databases']);
@@ -112,7 +112,7 @@
   exports.prototype['domainName'] = undefined;
   /**
    * The collection of nodes aliases associated with nodes properties.
-   * @member {Object.<String, module:model/ProviderClusterConfigurationNodes>} nodes
+   * @member {Object.<String, module:model/ZoneClusterConfigurationNodes>} nodes
    */
   exports.prototype['nodes'] = undefined;
   /**

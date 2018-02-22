@@ -45,13 +45,12 @@
    * @alias module:model/ZoneClusterConfigurationNodes
    * @class
    * @param hostname {String} The name of a host.
-   * @param externalIp {String} External IP of the host used in DNS.
    */
-  var exports = function(hostname, externalIp) {
+  var exports = function(hostname) {
     var _this = this;
 
     _this['hostname'] = hostname;
-    _this['externalIp'] = externalIp;
+
   };
 
   /**
@@ -91,7 +90,7 @@
    */
   exports.prototype['hostname'] = undefined;
   /**
-   * External IP of the host used in DNS.
+   * External IP of the node.
    * @member {String} externalIp
    */
   exports.prototype['externalIp'] = undefined;

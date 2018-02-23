@@ -119,10 +119,10 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
+*Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 *Onepanel.OneproviderApi* | [**getProviderDatabaseStatus**](docs/OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
 *Onepanel.OneproviderApi* | [**getProviderDatabasesStatus**](docs/OneproviderApi.md#getProviderDatabasesStatus) | **GET** /provider/databases | Get provider databases status
-*Onepanel.OneproviderApi* | [**getProviderIps**](docs/OneproviderApi.md#getProviderIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderManagerStatus**](docs/OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderApi* | [**getProviderManagersStatus**](docs/OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderApi* | [**getProviderNagiosReport**](docs/OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
@@ -135,8 +135,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getSpaceDetails**](docs/OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
-*Onepanel.OneproviderApi* | [**modifyClusterIps**](docs/OneproviderApi.md#modifyClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
+*Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 *Onepanel.OneproviderApi* | [**providerSpaceStartCleaning**](docs/OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**addZoneManagers**](docs/OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 *Onepanel.OnezoneApi* | [**configureZone**](docs/OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+*Onepanel.OnezoneApi* | [**getZoneClusterIps**](docs/OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 *Onepanel.OnezoneApi* | [**getZoneConfiguration**](docs/OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 *Onepanel.OnezoneApi* | [**getZoneDatabaseStatus**](docs/OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
 *Onepanel.OnezoneApi* | [**getZoneDatabasesStatus**](docs/OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status
@@ -161,6 +162,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**getZoneNagiosReport**](docs/OnezoneApi.md#getZoneNagiosReport) | **GET** /zone/nagios | Get zone nagios report
 *Onepanel.OnezoneApi* | [**getZoneWorkerStatus**](docs/OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 *Onepanel.OnezoneApi* | [**getZoneWorkersStatus**](docs/OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+*Onepanel.OnezoneApi* | [**modifyZoneClusterIps**](docs/OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OnezoneApi* | [**startStopZoneDatabases**](docs/OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
 *Onepanel.OnezoneApi* | [**startStopZoneDatabasesHost**](docs/OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
 *Onepanel.OnezoneApi* | [**startStopZoneManager**](docs/OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager

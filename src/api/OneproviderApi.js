@@ -352,6 +352,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getProviderClusterIps operation.
+     * @callback module:api/OneproviderApi~getProviderClusterIpsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterIps} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get provider cluster nodes IPs
+     * Returns IPs of nodes in provider cluster
+     * @param {module:api/OneproviderApi~getProviderClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterIps}
+     */
+    this.getProviderClusterIps = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ClusterIps;
+
+      return this.apiClient.callApi(
+        '/provider/cluster_ips', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getProviderConfiguration operation.
      * @callback module:api/OneproviderApi~getProviderConfigurationCallback
      * @param {String} error Error message, if any.
@@ -470,45 +509,6 @@
 
       return this.apiClient.callApi(
         '/provider/databases', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getProviderIps operation.
-     * @callback module:api/OneproviderApi~getProviderIpsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ClusterIps} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get provider cluster nodes IPs
-     * Returns IPs of nodes in provider cluster
-     * @param {module:api/OneproviderApi~getProviderIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ClusterIps}
-     */
-    this.getProviderIps = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ClusterIps;
-
-      return this.apiClient.callApi(
-        '/provider/cluster_ips', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1044,50 +1044,6 @@
     }
 
     /**
-     * Callback function to receive the result of the modifyClusterIps operation.
-     * @callback module:api/OneproviderApi~modifyClusterIpsCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Set external IPs of nodes in application config
-     * Informs cluster nodes about external IPs which can be used to access them by other providers. 
-     * @param {module:model/ModifyClusterIps} clusterIps The provider configuration description.
-     * @param {module:api/OneproviderApi~modifyClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyClusterIps = function(clusterIps, callback) {
-      var postBody = clusterIps;
-
-      // verify the required parameter 'clusterIps' is set
-      if (clusterIps === undefined || clusterIps === null) {
-        throw new Error("Missing the required parameter 'clusterIps' when calling modifyClusterIps");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json', 'application/x-yaml'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/cluster_ips', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the modifyProvider operation.
      * @callback module:api/OneproviderApi~modifyProviderCallback
      * @param {String} error Error message, if any.
@@ -1126,6 +1082,50 @@
 
       return this.apiClient.callApi(
         '/provider', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyProviderClusterIps operation.
+     * @callback module:api/OneproviderApi~modifyProviderClusterIpsCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set external IPs of nodes in application config
+     * Informs cluster nodes about external IPs which can be used to access them by other providers. 
+     * @param {module:model/ModifyClusterIps} clusterIps The provider configuration description.
+     * @param {module:api/OneproviderApi~modifyProviderClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyProviderClusterIps = function(clusterIps, callback) {
+      var postBody = clusterIps;
+
+      // verify the required parameter 'clusterIps' is set
+      if (clusterIps === undefined || clusterIps === null) {
+        throw new Error("Missing the required parameter 'clusterIps' when calling modifyProviderClusterIps");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/cluster_ips', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

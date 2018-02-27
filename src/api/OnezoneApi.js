@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/ManagerHosts', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails);
   }
-}(this, function(ApiClient, Error, ManagerHosts, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails) {
   'use strict';
 
   /**
@@ -219,6 +219,45 @@
 
       return this.apiClient.callApi(
         '/zone/configuration', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getZoneClusterIps operation.
+     * @callback module:api/OnezoneApi~getZoneClusterIpsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterIps} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get zone cluster nodes IPs
+     * Returns IPs of nodes in zone cluster
+     * @param {module:api/OnezoneApi~getZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterIps}
+     */
+    this.getZoneClusterIps = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ClusterIps;
+
+      return this.apiClient.callApi(
+        '/zone/cluster_ips', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -551,6 +590,50 @@
 
       return this.apiClient.callApi(
         '/zone/workers', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyZoneClusterIps operation.
+     * @callback module:api/OnezoneApi~modifyZoneClusterIpsCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set external IPs of nodes in application config
+     * Informs cluster nodes about external IPs which can be used to access them by other zones. 
+     * @param {module:model/ModifyClusterIps} clusterIps The zone configuration description.
+     * @param {module:api/OnezoneApi~modifyZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyZoneClusterIps = function(clusterIps, callback) {
+      var postBody = clusterIps;
+
+      // verify the required parameter 'clusterIps' is set
+      if (clusterIps === undefined || clusterIps === null) {
+        throw new Error("Missing the required parameter 'clusterIps' when calling modifyZoneClusterIps");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/zone/cluster_ips', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

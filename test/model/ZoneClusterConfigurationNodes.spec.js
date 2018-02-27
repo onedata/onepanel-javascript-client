@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property externalIp (base name: "externalIp")', function() {
+      // uncomment below and update the code to test the property externalIp
+      //var instane = new Onepanel.ZoneClusterConfigurationNodes();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

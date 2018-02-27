@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneClusterConfigurationNodes = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ClusterIps = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,65 +35,67 @@
 
 
   /**
-   * The ZoneClusterConfigurationNodes model module.
-   * @module model/ZoneClusterConfigurationNodes
+   * The ClusterIps model module.
+   * @module model/ClusterIps
    * @version 17.06.0-rc2
    */
 
   /**
-   * Constructs a new <code>ZoneClusterConfigurationNodes</code>.
-   * @alias module:model/ZoneClusterConfigurationNodes
+   * Constructs a new <code>ClusterIps</code>.
+   * External IPs used by cluster nodes.
+   * @alias module:model/ClusterIps
    * @class
-   * @param hostname {String} The name of a host.
+   * @param isConfigured {Boolean} If true, user has already sent a request updating IPs thus marking them as accepted. 
+   * @param hosts {Object.<String, String>} The collection of cluster nodes associated with their IPs.
    */
-  var exports = function(hostname) {
+  var exports = function(isConfigured, hosts) {
     var _this = this;
 
-    _this['hostname'] = hostname;
-
+    _this['isConfigured'] = isConfigured;
+    _this['hosts'] = hosts;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneClusterConfigurationNodes} The value of 'discriminator' field or undefined.
+   * @return {module:model/ClusterIps} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneClusterConfigurationNodes</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ClusterIps</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneClusterConfigurationNodes} obj Optional instance to populate.
-   * @return {module:model/ZoneClusterConfigurationNodes} The populated <code>ZoneClusterConfigurationNodes</code> instance.
+   * @param {module:model/ClusterIps} obj Optional instance to populate.
+   * @return {module:model/ClusterIps} The populated <code>ClusterIps</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('hostname')) {
-        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+      if (data.hasOwnProperty('isConfigured')) {
+        obj['isConfigured'] = ApiClient.convertToType(data['isConfigured'], 'Boolean');
       }
-      if (data.hasOwnProperty('externalIp')) {
-        obj['externalIp'] = ApiClient.convertToType(data['externalIp'], 'String');
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': 'String'});
       }
     }
     return obj;
   }
 
   /**
-   * The name of a host.
-   * @member {String} hostname
+   * If true, user has already sent a request updating IPs thus marking them as accepted. 
+   * @member {Boolean} isConfigured
    */
-  exports.prototype['hostname'] = undefined;
+  exports.prototype['isConfigured'] = undefined;
   /**
-   * External IP of the node.
-   * @member {String} externalIp
+   * The collection of cluster nodes associated with their IPs.
+   * @member {Object.<String, String>} hosts
    */
-  exports.prototype['externalIp'] = undefined;
+  exports.prototype['hosts'] = undefined;
 
 
 

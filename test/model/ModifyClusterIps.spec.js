@@ -16,88 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ZoneClusterConfigurationNodes = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ModifyClusterIps();
+  });
 
-
-  /**
-   * The ZoneClusterConfigurationNodes model module.
-   * @module model/ZoneClusterConfigurationNodes
-   * @version 17.06.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>ZoneClusterConfigurationNodes</code>.
-   * @alias module:model/ZoneClusterConfigurationNodes
-   * @class
-   * @param hostname {String} The name of a host.
-   */
-  var exports = function(hostname) {
-    var _this = this;
-
-    _this['hostname'] = hostname;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ZoneClusterConfigurationNodes} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ZoneClusterConfigurationNodes</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneClusterConfigurationNodes} obj Optional instance to populate.
-   * @return {module:model/ZoneClusterConfigurationNodes} The populated <code>ZoneClusterConfigurationNodes</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('hostname')) {
-        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
-      }
-      if (data.hasOwnProperty('externalIp')) {
-        obj['externalIp'] = ApiClient.convertToType(data['externalIp'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name of a host.
-   * @member {String} hostname
-   */
-  exports.prototype['hostname'] = undefined;
-  /**
-   * External IP of the node.
-   * @member {String} externalIp
-   */
-  exports.prototype['externalIp'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ModifyClusterIps', function() {
+    it('should create an instance of ModifyClusterIps', function() {
+      // uncomment below and update the code to test ModifyClusterIps
+      //var instane = new Onepanel.ModifyClusterIps();
+      //expect(instance).to.be.a(Onepanel.ModifyClusterIps);
+    });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.ModifyClusterIps();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

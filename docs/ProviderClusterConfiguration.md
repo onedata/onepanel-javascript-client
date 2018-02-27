@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **databases** | [**ClusterDatabases**](ClusterDatabases.md) |  | 
 **managers** | [**ClusterManagers**](ClusterManagers.md) |  | 
 **workers** | [**ClusterWorkers**](ClusterWorkers.md) |  | 
+**rtransfers** | [**ClusterRtransfers**](ClusterRtransfers.md) |  | 
 **storages** | [**StorageCreateRequest**](StorageCreateRequest.md) |  | [optional] 
 
 

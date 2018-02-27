@@ -16,105 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/RtransferHosts', 'model/WorkerHosts'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./RtransferHosts'), require('./WorkerHosts'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.RtransferHosts, root.Onepanel.WorkerHosts);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, DatabaseHosts, ManagerHosts, RtransferHosts, WorkerHosts) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.RtransferHosts();
+  });
 
-
-  /**
-   * The ClusterConfigurationDetails model module.
-   * @module model/ClusterConfigurationDetails
-   * @version 17.06.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>ClusterConfigurationDetails</code>.
-   * The cluster configuration.
-   * @alias module:model/ClusterConfigurationDetails
-   * @class
-   * @param databases {module:model/DatabaseHosts} 
-   * @param managers {module:model/ManagerHosts} 
-   * @param workers {module:model/WorkerHosts} 
-   */
-  var exports = function(databases, managers, workers) {
-    var _this = this;
-
-    _this['databases'] = databases;
-    _this['managers'] = managers;
-    _this['workers'] = workers;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ClusterConfigurationDetails} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterConfigurationDetails} obj Optional instance to populate.
-   * @return {module:model/ClusterConfigurationDetails} The populated <code>ClusterConfigurationDetails</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('databases')) {
-        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
-      }
-      if (data.hasOwnProperty('managers')) {
-        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
-      }
-      if (data.hasOwnProperty('workers')) {
-        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
-      }
-      if (data.hasOwnProperty('rtransfers')) {
-        obj['rtransfers'] = RtransferHosts.constructFromObject(data['rtransfers']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {module:model/DatabaseHosts} databases
-   */
-  exports.prototype['databases'] = undefined;
-  /**
-   * @member {module:model/ManagerHosts} managers
-   */
-  exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/WorkerHosts} workers
-   */
-  exports.prototype['workers'] = undefined;
-  /**
-   * @member {module:model/RtransferHosts} rtransfers
-   */
-  exports.prototype['rtransfers'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('RtransferHosts', function() {
+    it('should create an instance of RtransferHosts', function() {
+      // uncomment below and update the code to test RtransferHosts
+      //var instane = new Onepanel.RtransferHosts();
+      //expect(instance).to.be.a(Onepanel.RtransferHosts);
+    });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.RtransferHosts();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.ZoneConfigurationOnezone);
     });
 
+    it('should have the property batchConfig (base name: "batchConfig")', function() {
+      // uncomment below and update the code to test the property batchConfig
+      //var instane = new Onepanel.ZoneConfigurationOnezone();
+      //expect(instance).to.be();
+    });
+
     it('should have the property domainName (base name: "domainName")', function() {
       // uncomment below and update the code to test the property domainName
       //var instane = new Onepanel.ZoneConfigurationOnezone();

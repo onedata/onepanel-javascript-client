@@ -45,14 +45,13 @@
    * The provider custom configuration.
    * @alias module:model/ProviderConfigurationOneprovider
    * @class
-   * @param register {Boolean} Defines whether the provider should be registered in a zone.
    * @param name {String} The name under which the provider will be registered in a zone.
    * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(register, name, adminEmail) {
+  var exports = function(name, adminEmail) {
     var _this = this;
 
-    _this['register'] = register;
+
     _this['name'] = name;
 
 
@@ -84,8 +83,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('register')) {
-        obj['register'] = ApiClient.convertToType(data['register'], 'Boolean');
+      if (data.hasOwnProperty('batchConfig')) {
+        obj['batchConfig'] = ApiClient.convertToType(data['batchConfig'], 'Boolean');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -116,10 +115,10 @@
   }
 
   /**
-   * Defines whether the provider should be registered in a zone.
-   * @member {Boolean} register
+   * If enabled the oneprovider will be configured by registering in the onezone. 
+   * @member {Boolean} batchConfig
    */
-  exports.prototype['register'] = undefined;
+  exports.prototype['batchConfig'] = undefined;
   /**
    * The name under which the provider will be registered in a zone.
    * @member {String} name

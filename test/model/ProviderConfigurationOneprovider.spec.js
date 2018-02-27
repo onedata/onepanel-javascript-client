@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.ProviderConfigurationOneprovider);
     });
 
-    it('should have the property register (base name: "register")', function() {
-      // uncomment below and update the code to test the property register
+    it('should have the property batchConfig (base name: "batchConfig")', function() {
+      // uncomment below and update the code to test the property batchConfig
       //var instane = new Onepanel.ProviderConfigurationOneprovider();
       //expect(instance).to.be();
     });

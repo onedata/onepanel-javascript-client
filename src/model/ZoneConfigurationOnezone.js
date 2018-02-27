@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -74,6 +75,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('batchConfig')) {
+        obj['batchConfig'] = ApiClient.convertToType(data['batchConfig'], 'Boolean');
+      }
       if (data.hasOwnProperty('domainName')) {
         obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
       }
@@ -84,6 +88,11 @@
     return obj;
   }
 
+  /**
+   * Defines whether the onezone should be configured at once without GUI interaction. 
+   * @member {Boolean} batchConfig
+   */
+  exports.prototype['batchConfig'] = undefined;
   /**
    * The name of a HTTP domain.
    * @member {String} domainName

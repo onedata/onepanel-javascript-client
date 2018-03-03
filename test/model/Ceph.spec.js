@@ -105,6 +105,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Ceph();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

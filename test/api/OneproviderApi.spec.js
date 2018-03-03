@@ -121,16 +121,6 @@
         done();
       });
     });
-    describe('getProviderClusterIps', function() {
-      it('should call getProviderClusterIps successfully', function(done) {
-        //uncomment below and update the code to test getProviderClusterIps
-        //instance.getProviderClusterIps(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getProviderConfiguration', function() {
       it('should call getProviderConfiguration successfully', function(done) {
         //uncomment below and update the code to test getProviderConfiguration
@@ -285,16 +275,6 @@
       it('should call modifyProvider successfully', function(done) {
         //uncomment below and update the code to test modifyProvider
         //instance.modifyProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyProviderClusterIps', function() {
-      it('should call modifyProviderClusterIps successfully', function(done) {
-        //uncomment below and update the code to test modifyProviderClusterIps
-        //instance.modifyProviderClusterIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -50,6 +50,7 @@
     var _this = this;
 
     _this['hostname'] = hostname;
+
   };
 
   /**
@@ -76,6 +77,9 @@
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
+      if (data.hasOwnProperty('externalIp')) {
+        obj['externalIp'] = ApiClient.convertToType(data['externalIp'], 'String');
+      }
     }
     return obj;
   }
@@ -85,6 +89,11 @@
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
+  /**
+   * External IP of the node.
+   * @member {String} externalIp
+   */
+  exports.prototype['externalIp'] = undefined;
 
 
 

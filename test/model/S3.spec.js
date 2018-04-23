@@ -81,12 +81,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
       //var instane = new Onepanel.S3();

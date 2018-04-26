@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property ready (base name: "ready")', function() {
+      // uncomment below and update the code to test the property ready
+      //var instane = new Onepanel.ProviderConfigurationDetailsOneprovider();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

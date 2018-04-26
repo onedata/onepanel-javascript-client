@@ -34,6 +34,7 @@ Method | HTTP request | Description
 [**providerSpaceStartCleaning**](OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
+[**startStopOneproviderService**](OneproviderApi.md#startStopOneproviderService) | **PATCH** /provider/service | Start/stop provider service
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 [**startStopProviderManager**](OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -1544,6 +1545,59 @@ apiInstance.revokeSpaceSupport(id, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of a space to be removed. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="startStopOneproviderService"></a>
+# **startStopOneproviderService**
+> startStopOneproviderService(opts)
+
+Start/stop provider service
+
+Starts or stops oneprovider service on all hosts in the local deployment. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var opts = { 
+  'started': true // Boolean | Defines the intended state of the Oneprovider service. The service will be started or stopped in order to match the requested state. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopOneproviderService(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **started** | **Boolean**| Defines the intended state of the Oneprovider service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 

@@ -351,6 +351,16 @@
         done();
       });
     });
+    describe('startStopOneproviderService', function() {
+      it('should call startStopOneproviderService successfully', function(done) {
+        //uncomment below and update the code to test startStopOneproviderService
+        //instance.startStopOneproviderService(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('startStopProviderDatabase', function() {
       it('should call startStopProviderDatabase successfully', function(done) {
         //uncomment below and update the code to test startStopProviderDatabase

@@ -191,6 +191,16 @@
         done();
       });
     });
+    describe('startStopOnezoneService', function() {
+      it('should call startStopOnezoneService successfully', function(done) {
+        //uncomment below and update the code to test startStopOnezoneService
+        //instance.startStopOnezoneService(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('startStopZoneDatabases', function() {
       it('should call startStopZoneDatabases successfully', function(done) {
         //uncomment below and update the code to test startStopZoneDatabases

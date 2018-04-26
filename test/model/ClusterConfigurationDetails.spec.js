@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.ClusterConfigurationDetails);
     });
 
+    it('should have the property master (base name: "master")', function() {
+      // uncomment below and update the code to test the property master
+      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property databases (base name: "databases")', function() {
       // uncomment below and update the code to test the property databases
       //var instane = new Onepanel.ClusterConfigurationDetails();

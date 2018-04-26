@@ -46,11 +46,13 @@
    * @alias module:model/ProviderConfigurationDetailsOneprovider
    * @class
    * @param name {String} The name of a provider.
+   * @param ready {Boolean} Informs about cluster deployment being finished
    */
-  var exports = function(name) {
+  var exports = function(name, ready) {
     var _this = this;
 
     _this['name'] = name;
+    _this['ready'] = ready;
   };
 
   /**
@@ -77,6 +79,9 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('ready')) {
+        obj['ready'] = ApiClient.convertToType(data['ready'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -86,6 +91,11 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+  /**
+   * Informs about cluster deployment being finished
+   * @member {Boolean} ready
+   */
+  exports.prototype['ready'] = undefined;
 
 
 

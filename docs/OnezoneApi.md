@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
 [**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
+[**startStopOnezoneService**](OnezoneApi.md#startStopOnezoneService) | **PATCH** /zone/service | Start/stop onezone service
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
 [**startStopZoneDatabasesHost**](OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
 [**startStopZoneManager**](OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager
@@ -716,6 +717,59 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="startStopOnezoneService"></a>
+# **startStopOnezoneService**
+> startStopOnezoneService(opts)
+
+Start/stop onezone service
+
+Starts or stops onezone service on all hosts in the local deployment. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var opts = { 
+  'started': true // Boolean | Defines the intended state of the Onezone service. The service will be started or stopped in order to match the requested state. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopOnezoneService(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **started** | **Boolean**| Defines the intended state of the Onezone service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 <a name="startStopZoneDatabases"></a>

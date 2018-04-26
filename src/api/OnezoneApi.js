@@ -640,6 +640,48 @@
     }
 
     /**
+     * Callback function to receive the result of the startStopOnezoneService operation.
+     * @callback module:api/OnezoneApi~startStopOnezoneServiceCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Start/stop onezone service
+     * Starts or stops onezone service on all hosts in the local deployment. 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.started Defines the intended state of the Onezone service. The service will be started or stopped in order to match the requested state.  (default to true)
+     * @param {module:api/OnezoneApi~startStopOnezoneServiceCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.startStopOnezoneService = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'started': opts['started']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/zone/service', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the startStopZoneDatabases operation.
      * @callback module:api/OnezoneApi~startStopZoneDatabasesCallback
      * @param {String} error Error message, if any.

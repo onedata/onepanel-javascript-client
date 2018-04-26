@@ -45,13 +45,15 @@
    * The cluster configuration.
    * @alias module:model/ClusterConfigurationDetails
    * @class
+   * @param master {String} Host designated for managing service deployment and subsequent starts.
    * @param databases {module:model/DatabaseHosts} 
    * @param managers {module:model/ManagerHosts} 
    * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(databases, managers, workers) {
+  var exports = function(master, databases, managers, workers) {
     var _this = this;
 
+    _this['master'] = master;
     _this['databases'] = databases;
     _this['managers'] = managers;
     _this['workers'] = workers;
@@ -78,6 +80,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('master')) {
+        obj['master'] = ApiClient.convertToType(data['master'], 'String');
+      }
       if (data.hasOwnProperty('databases')) {
         obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
       }
@@ -91,6 +96,11 @@
     return obj;
   }
 
+  /**
+   * Host designated for managing service deployment and subsequent starts.
+   * @member {String} master
+   */
+  exports.prototype['master'] = undefined;
   /**
    * @member {module:model/DatabaseHosts} databases
    */

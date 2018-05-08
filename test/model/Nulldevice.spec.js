@@ -99,6 +99,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemParameters
+      //var instane = new Onepanel.Nulldevice();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property simulatedFilesystemGrowSpeed (base name: "simulatedFilesystemGrowSpeed")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemGrowSpeed
+      //var instane = new Onepanel.Nulldevice();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -1362,48 +1362,6 @@
     }
 
     /**
-     * Callback function to receive the result of the startStopOneproviderService operation.
-     * @callback module:api/OneproviderApi~startStopOneproviderServiceCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Start/stop provider service
-     * Starts or stops oneprovider service on all hosts in the local deployment. 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the Oneprovider service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OneproviderApi~startStopOneproviderServiceCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.startStopOneproviderService = function(opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'started': opts['started']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/service', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the startStopProviderDatabase operation.
      * @callback module:api/OneproviderApi~startStopProviderDatabaseCallback
      * @param {String} error Error message, if any.

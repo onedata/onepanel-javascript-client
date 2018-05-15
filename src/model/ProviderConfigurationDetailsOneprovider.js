@@ -45,14 +45,14 @@
    * The provider custom configuration.
    * @alias module:model/ProviderConfigurationDetailsOneprovider
    * @class
-   * @param name {String} The name of a provider.
-   * @param ready {Boolean} Informs about cluster deployment being finished
+   * @param name {String} The name of a provider. Null if not registered.
+   * @param configured {Boolean} True iff all steps of initial cluster deployment have been performed.
    */
-  var exports = function(name, ready) {
+  var exports = function(name, configured) {
     var _this = this;
 
     _this['name'] = name;
-    _this['ready'] = ready;
+    _this['configured'] = configured;
   };
 
   /**
@@ -79,23 +79,23 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('ready')) {
-        obj['ready'] = ApiClient.convertToType(data['ready'], 'Boolean');
+      if (data.hasOwnProperty('configured')) {
+        obj['configured'] = ApiClient.convertToType(data['configured'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * The name of a provider.
+   * The name of a provider. Null if not registered.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * Informs about cluster deployment being finished
-   * @member {Boolean} ready
+   * True iff all steps of initial cluster deployment have been performed.
+   * @member {Boolean} configured
    */
-  exports.prototype['ready'] = undefined;
+  exports.prototype['configured'] = undefined;
 
 
 

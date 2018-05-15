@@ -142,7 +142,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**providerSpaceStartCleaning**](docs/OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
-*Onepanel.OneproviderApi* | [**startStopOneproviderService**](docs/OneproviderApi.md#startStopOneproviderService) | **PATCH** /provider/service | Start/stop provider service
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 *Onepanel.OneproviderApi* | [**startStopProviderDatabases**](docs/OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 *Onepanel.OneproviderApi* | [**startStopProviderManager**](docs/OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -164,7 +163,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**getZoneWorkerStatus**](docs/OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 *Onepanel.OnezoneApi* | [**getZoneWorkersStatus**](docs/OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
 *Onepanel.OnezoneApi* | [**modifyZoneClusterIps**](docs/OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
-*Onepanel.OnezoneApi* | [**startStopOnezoneService**](docs/OnezoneApi.md#startStopOnezoneService) | **PATCH** /zone/service | Start/stop onezone service
 *Onepanel.OnezoneApi* | [**startStopZoneDatabases**](docs/OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
 *Onepanel.OnezoneApi* | [**startStopZoneDatabasesHost**](docs/OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
 *Onepanel.OnezoneApi* | [**startStopZoneManager**](docs/OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager

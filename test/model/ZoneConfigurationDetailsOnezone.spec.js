@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property ready (base name: "ready")', function() {
-      // uncomment below and update the code to test the property ready
+    it('should have the property configured (base name: "configured")', function() {
+      // uncomment below and update the code to test the property configured
       //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
       //expect(instance).to.be();
     });

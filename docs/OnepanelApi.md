@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
+[**getHostname**](OnepanelApi.md#getHostname) | **GET** /hostname | Get cluster or discovered hosts
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -260,6 +261,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 **[&#39;String&#39;]**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getHostname"></a>
+# **getHostname**
+> &#39;String&#39; getHostname()
+
+Get cluster or discovered hosts
+
+Returns the erlang hostname of queried node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getHostname(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**&#39;String&#39;**
 
 ### Authorization
 

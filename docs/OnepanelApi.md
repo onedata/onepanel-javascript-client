@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 <a name="getHostname"></a>
 # **getHostname**
-> &#39;String&#39; getHostname()
+> &#39;String&#39; getHostname(opts)
 
 Get cluster or discovered hosts
 
@@ -291,6 +291,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
+var opts = { 
+  'host': "host_example" // String | If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned. 
+};
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -298,11 +302,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getHostname(callback);
+apiInstance.getHostname(opts, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned.  | [optional] 
 
 ### Return type
 

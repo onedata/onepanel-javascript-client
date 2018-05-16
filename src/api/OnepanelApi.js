@@ -267,16 +267,20 @@
     /**
      * Get cluster or discovered hosts
      * Returns the erlang hostname of queried node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.host If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned. 
      * @param {module:api/OnepanelApi~getHostnameCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'String'}
      */
-    this.getHostname = function(callback) {
+    this.getHostname = function(opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
+        'host': opts['host']
       };
       var headerParams = {
       };

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **[String]** | The list of usernames. | [optional] 
+**usernames** | **[String]** | The list of usernames. | 
 
 

@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.Users);
     });
 
-    it('should have the property ids (base name: "ids")', function() {
-      // uncomment below and update the code to test the property ids
+    it('should have the property usernames (base name: "usernames")', function() {
+      // uncomment below and update the code to test the property usernames
       //var instane = new Onepanel.Users();
       //expect(instance).to.be();
     });

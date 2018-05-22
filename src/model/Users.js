@@ -45,11 +45,12 @@
    * List of onepanel user usernames.
    * @alias module:model/Users
    * @class
+   * @param usernames {Array.<String>} The list of usernames.
    */
-  var exports = function() {
+  var exports = function(usernames) {
     var _this = this;
 
-
+    _this['usernames'] = usernames;
   };
 
   /**
@@ -73,8 +74,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('ids')) {
-        obj['ids'] = ApiClient.convertToType(data['ids'], ['String']);
+      if (data.hasOwnProperty('usernames')) {
+        obj['usernames'] = ApiClient.convertToType(data['usernames'], ['String']);
       }
     }
     return obj;
@@ -82,9 +83,9 @@
 
   /**
    * The list of usernames.
-   * @member {Array.<String>} ids
+   * @member {Array.<String>} usernames
    */
-  exports.prototype['ids'] = undefined;
+  exports.prototype['usernames'] = undefined;
 
 
 

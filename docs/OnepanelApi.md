@@ -9,9 +9,9 @@ Method | HTTP request | Description
 [**createCluster**](OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
-[**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
-[**getHostname**](OnepanelApi.md#getHostname) | **GET** /hostname | Get cluster or discovered hosts
+[**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
 [**getKnownHosts**](OnepanelApi.md#getKnownHosts) | **GET** /known_hosts/ | Get nodes available for clustering
+[**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addKnownHost"></a>
 # **addKnownHost**
-> addKnownHost(opts)
+> KnownHost addKnownHost(opts)
 
 Adds given host if it&#39;s available for clustering.
 
@@ -51,7 +51,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addKnownHost(opts, callback);
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**KnownHost**](KnownHost.md)
 
 ### Authorization
 
@@ -279,7 +279,7 @@ This endpoint does not need any parameter.
 # **getClusterHosts**
 > [&#39;String&#39;] getClusterHosts()
 
-Get cluster or discovered hosts
+Get cluster hosts
 
 Returns the list of administrative cluster hosts. This request can be executed by unauthorized users only if there are no admin users in the system. 
 
@@ -311,52 +311,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 **[&#39;String&#39;]**
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getHostname"></a>
-# **getHostname**
-> &#39;String&#39; getHostname()
-
-Get cluster or discovered hosts
-
-Returns the erlang hostname of queried node. This request can be executed by unauthorized users only if there are no admin users in the system. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getHostname(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**&#39;String&#39;**
 
 ### Authorization
 
@@ -403,6 +357,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 **[&#39;String&#39;]**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getNode"></a>
+# **getNode**
+> Node getNode()
+
+Get information about current onepanel node.
+
+Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getNode(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Node**](Node.md)
 
 ### Authorization
 
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> [Users] getUsers(opts)
+> Users getUsers(opts)
 
 List onepanel users
 
@@ -605,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Users]**](Users.md)
+[**Users**](Users.md)
 
 ### Authorization
 

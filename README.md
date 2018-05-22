@@ -88,7 +88,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.addKnownHost(opts, callback);
@@ -106,9 +106,9 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**createCluster**](docs/OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
-*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
-*Onepanel.OnepanelApi* | [**getHostname**](docs/OnepanelApi.md#getHostname) | **GET** /hostname | Get cluster or discovered hosts
+*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
 *Onepanel.OnepanelApi* | [**getKnownHosts**](docs/OnepanelApi.md#getKnownHosts) | **GET** /known_hosts/ | Get nodes available for clustering
+*Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -187,9 +187,11 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.KnownHost](docs/KnownHost.md)
  - [Onepanel.KnownHostAddRequest](docs/KnownHostAddRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
+ - [Onepanel.Node](docs/Node.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)

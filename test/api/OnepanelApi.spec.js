@@ -111,20 +111,20 @@
         done();
       });
     });
-    describe('getHostname', function() {
-      it('should call getHostname successfully', function(done) {
-        //uncomment below and update the code to test getHostname
-        //instance.getHostname(function(error) {
+    describe('getKnownHosts', function() {
+      it('should call getKnownHosts successfully', function(done) {
+        //uncomment below and update the code to test getKnownHosts
+        //instance.getKnownHosts(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getKnownHosts', function() {
-      it('should call getKnownHosts successfully', function(done) {
-        //uncomment below and update the code to test getKnownHosts
-        //instance.getKnownHosts(function(error) {
+    describe('getNode', function() {
+      it('should call getNode successfully', function(done) {
+        //uncomment below and update the code to test getNode
+        //instance.getNode(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

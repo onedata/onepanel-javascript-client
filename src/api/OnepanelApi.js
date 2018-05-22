@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/KnownHostAddRequest', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/KnownHostAddRequest'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.KnownHostAddRequest, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users);
   }
-}(this, function(ApiClient, Cookie, Error, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users) {
+}(this, function(ApiClient, Cookie, Error, KnownHostAddRequest, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users) {
   'use strict';
 
   /**
@@ -47,6 +47,47 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the addKnownHost operation.
+     * @callback module:api/OnepanelApi~addKnownHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds given host if it&#39;s available for clustering.
+     * Checks if given host is available for clustering (has no admin users configured) and stores it. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/KnownHostAddRequest} opts.address 
+     * @param {module:api/OnepanelApi~addKnownHostCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.addKnownHost = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['address'];
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/known_hosts/', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the addUser operation.
@@ -223,21 +264,17 @@
 
     /**
      * Get cluster or discovered hosts
-     * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.discovered Defines whether to return cluster or discovered hosts. (default to false)
+     * Returns the list of administrative cluster hosts. This request can be executed by unauthorized users only if there are no admin users in the system. 
      * @param {module:api/OnepanelApi~getClusterHostsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<'String'>}
      */
-    this.getClusterHosts = function(opts, callback) {
-      opts = opts || {};
+    this.getClusterHosts = function(callback) {
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
-        'discovered': opts['discovered']
       };
       var headerParams = {
       };
@@ -267,20 +304,16 @@
     /**
      * Get cluster or discovered hosts
      * Returns the erlang hostname of queried node. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.host If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned. 
      * @param {module:api/OnepanelApi~getHostnameCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'String'}
      */
-    this.getHostname = function(opts, callback) {
-      opts = opts || {};
+    this.getHostname = function(callback) {
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
-        'host': opts['host']
       };
       var headerParams = {
       };
@@ -294,6 +327,45 @@
 
       return this.apiClient.callApi(
         '/hostname', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getKnownHosts operation.
+     * @callback module:api/OnepanelApi~getKnownHostsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<'String'>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get nodes available for clustering
+     * Returns the list of hosts available for clustering. 
+     * @param {module:api/OnepanelApi~getKnownHostsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<'String'>}
+     */
+    this.getKnownHosts = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ['String'];
+
+      return this.apiClient.callApi(
+        '/known_hosts/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -564,6 +636,51 @@
 
       return this.apiClient.callApi(
         '/hosts/{host}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeKnownHost operation.
+     * @callback module:api/OnepanelApi~removeKnownHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove host from nodes available for deployment.
+     * Removes node stored as available for clustering. 
+     * @param {String} host Hostname of a node to be removed.
+     * @param {module:api/OnepanelApi~removeKnownHostCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeKnownHost = function(host, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'host' is set
+      if (host === undefined || host === null) {
+        throw new Error("Missing the required parameter 'host' when calling removeKnownHost");
+      }
+
+
+      var pathParams = {
+        'host': host
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/known_hosts/{host}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -4,21 +4,77 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addKnownHost**](OnepanelApi.md#addKnownHost) | **POST** /known_hosts/ | Adds given host if it&#39;s available for clustering.
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**createCluster**](OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
 [**getHostname**](OnepanelApi.md#getHostname) | **GET** /hostname | Get cluster or discovered hosts
+[**getKnownHosts**](OnepanelApi.md#getKnownHosts) | **GET** /known_hosts/ | Get nodes available for clustering
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
+[**removeKnownHost**](OnepanelApi.md#removeKnownHost) | **DELETE** /known_hosts/{host} | Remove host from nodes available for deployment.
 [**removeSession**](OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 
+
+<a name="addKnownHost"></a>
+# **addKnownHost**
+> addKnownHost(opts)
+
+Adds given host if it&#39;s available for clustering.
+
+Checks if given host is available for clustering (has no admin users configured) and stores it. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var opts = { 
+  'address': new Onepanel.KnownHostAddRequest() // KnownHostAddRequest | 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addKnownHost(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | [**KnownHostAddRequest**](KnownHostAddRequest.md)|  | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="addUser"></a>
 # **addUser**
@@ -221,11 +277,11 @@ This endpoint does not need any parameter.
 
 <a name="getClusterHosts"></a>
 # **getClusterHosts**
-> [&#39;String&#39;] getClusterHosts(opts)
+> [&#39;String&#39;] getClusterHosts()
 
 Get cluster or discovered hosts
 
-Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
+Returns the list of administrative cluster hosts. This request can be executed by unauthorized users only if there are no admin users in the system. 
 
 ### Example
 ```javascript
@@ -239,10 +295,6 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var opts = { 
-  'discovered': false // Boolean | Defines whether to return cluster or discovered hosts.
-};
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -250,14 +302,11 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getClusterHosts(opts, callback);
+apiInstance.getClusterHosts(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **discovered** | **Boolean**| Defines whether to return cluster or discovered hosts. | [optional] [default to false]
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -274,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="getHostname"></a>
 # **getHostname**
-> &#39;String&#39; getHostname(opts)
+> &#39;String&#39; getHostname()
 
 Get cluster or discovered hosts
 
@@ -292,9 +341,51 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var opts = { 
-  'host': "host_example" // String | If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned. 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
 };
+apiInstance.getHostname(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**&#39;String&#39;**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getKnownHosts"></a>
+# **getKnownHosts**
+> [&#39;String&#39;] getKnownHosts()
+
+Get nodes available for clustering
+
+Returns the list of hosts available for clustering. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -303,18 +394,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getHostname(opts, callback);
+apiInstance.getKnownHosts(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **host** | **String**| If present, specified remote host is queried for its hostname. Otherwise hostname of current node is returned.  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-**&#39;String&#39;**
+**[&#39;String&#39;]**
 
 ### Authorization
 
@@ -621,6 +709,58 @@ apiInstance.removeClusterHost(host, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | **String**| Hostname of a node to be removed from the cluster. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="removeKnownHost"></a>
+# **removeKnownHost**
+> removeKnownHost(host)
+
+Remove host from nodes available for deployment.
+
+Removes node stored as available for clustering. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var host = "host_example"; // String | Hostname of a node to be removed.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.removeKnownHost(host, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| Hostname of a node to be removed. | 
 
 ### Return type
 

@@ -80,8 +80,9 @@ basic.password = 'YOUR PASSWORD'
 
 var api = new Onepanel.OnepanelApi()
 
-var userCreateRequest = new Onepanel.UserCreateRequest(); // {UserCreateRequest} The user configuration details.
-
+var opts = { 
+  'address': new Onepanel.KnownHostAddRequest() // {KnownHostAddRequest} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -90,7 +91,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.addUser(userCreateRequest, callback);
+api.addKnownHost(opts, callback);
 
 ```
 
@@ -100,18 +101,21 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Onepanel.OnepanelApi* | [**addKnownHost**](docs/OnepanelApi.md#addKnownHost) | **POST** /known_hosts/ | Adds given host if it&#39;s available for clustering.
 *Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 *Onepanel.OnepanelApi* | [**createCluster**](docs/OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
 *Onepanel.OnepanelApi* | [**getHostname**](docs/OnepanelApi.md#getHostname) | **GET** /hostname | Get cluster or discovered hosts
+*Onepanel.OnepanelApi* | [**getKnownHosts**](docs/OnepanelApi.md#getKnownHosts) | **GET** /known_hosts/ | Get nodes available for clustering
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 *Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
+*Onepanel.OnepanelApi* | [**removeKnownHost**](docs/OnepanelApi.md#removeKnownHost) | **DELETE** /known_hosts/{host} | Remove host from nodes available for deployment.
 *Onepanel.OnepanelApi* | [**removeSession**](docs/OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
@@ -183,6 +187,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.KnownHostAddRequest](docs/KnownHostAddRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)

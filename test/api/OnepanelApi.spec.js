@@ -51,6 +51,16 @@
   }
 
   describe('OnepanelApi', function() {
+    describe('addKnownHost', function() {
+      it('should call addKnownHost successfully', function(done) {
+        //uncomment below and update the code to test addKnownHost
+        //instance.addKnownHost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addUser', function() {
       it('should call addUser successfully', function(done) {
         //uncomment below and update the code to test addUser
@@ -111,6 +121,16 @@
         done();
       });
     });
+    describe('getKnownHosts', function() {
+      it('should call getKnownHosts successfully', function(done) {
+        //uncomment below and update the code to test getKnownHosts
+        //instance.getKnownHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getSession', function() {
       it('should call getSession successfully', function(done) {
         //uncomment below and update the code to test getSession
@@ -165,6 +185,16 @@
       it('should call removeClusterHost successfully', function(done) {
         //uncomment below and update the code to test removeClusterHost
         //instance.removeClusterHost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeKnownHost', function() {
+      it('should call removeKnownHost successfully', function(done) {
+        //uncomment below and update the code to test removeKnownHost
+        //instance.removeKnownHost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

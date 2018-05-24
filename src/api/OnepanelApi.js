@@ -59,14 +59,17 @@
     /**
      * Adds given host if it&#39;s available for clustering.
      * Checks if given host is available for clustering (has no admin users configured) and stores it. 
-     * @param {Object} opts Optional parameters
-     * @param {module:model/KnownHostAddRequest} opts.address 
+     * @param {module:model/KnownHostAddRequest} knownHostAddRequest 
      * @param {module:api/OnepanelApi~addKnownHostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/KnownHost}
      */
-    this.addKnownHost = function(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['address'];
+    this.addKnownHost = function(knownHostAddRequest, callback) {
+      var postBody = knownHostAddRequest;
+
+      // verify the required parameter 'knownHostAddRequest' is set
+      if (knownHostAddRequest === undefined || knownHostAddRequest === null) {
+        throw new Error("Missing the required parameter 'knownHostAddRequest' when calling addKnownHost");
+      }
 
 
       var pathParams = {

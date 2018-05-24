@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addKnownHost"></a>
 # **addKnownHost**
-> KnownHost addKnownHost(opts)
+> KnownHost addKnownHost(knownHostAddRequest)
 
 Adds given host if it&#39;s available for clustering.
 
@@ -43,9 +43,8 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var opts = { 
-  'address': new Onepanel.KnownHostAddRequest() // KnownHostAddRequest | 
-};
+var knownHostAddRequest = new Onepanel.KnownHostAddRequest(); // KnownHostAddRequest | 
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -54,14 +53,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.addKnownHost(opts, callback);
+apiInstance.addKnownHost(knownHostAddRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | [**KnownHostAddRequest**](KnownHostAddRequest.md)|  | [optional] 
+ **knownHostAddRequest** | [**KnownHostAddRequest**](KnownHostAddRequest.md)|  | 
 
 ### Return type
 

@@ -80,9 +80,8 @@ basic.password = 'YOUR PASSWORD'
 
 var api = new Onepanel.OnepanelApi()
 
-var opts = { 
-  'address': new Onepanel.KnownHostAddRequest() // {KnownHostAddRequest} 
-};
+var knownHostAddRequest = new Onepanel.KnownHostAddRequest(); // {KnownHostAddRequest} 
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -91,7 +90,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addKnownHost(opts, callback);
+api.addKnownHost(knownHostAddRequest, callback);
 
 ```
 

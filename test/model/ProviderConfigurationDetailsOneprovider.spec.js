@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property configured (base name: "configured")', function() {
+      // uncomment below and update the code to test the property configured
+      //var instane = new Onepanel.ProviderConfigurationDetailsOneprovider();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

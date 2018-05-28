@@ -46,11 +46,13 @@
    * @alias module:model/ZoneConfigurationDetailsOnezone
    * @class
    * @param name {String} The name of a zone.
+   * @param configured {Boolean} True if all steps of cluster deployment and configuration have been performed.
    */
-  var exports = function(name) {
+  var exports = function(name, configured) {
     var _this = this;
 
     _this['name'] = name;
+    _this['configured'] = configured;
   };
 
   /**
@@ -77,6 +79,9 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('configured')) {
+        obj['configured'] = ApiClient.convertToType(data['configured'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -86,6 +91,11 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+  /**
+   * True if all steps of cluster deployment and configuration have been performed.
+   * @member {Boolean} configured
+   */
+  exports.prototype['configured'] = undefined;
 
 
 

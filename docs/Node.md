@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hostname** | **String** | Erlang hostname of the node. | 
+**hostname** | **String** | Hostname of the node. | 
 **application** | **String** | Type of application managed by this onepanel. | 
 
 

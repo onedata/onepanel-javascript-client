@@ -186,8 +186,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
  - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
- - [Onepanel.KnownHost](docs/KnownHost.md)
- - [Onepanel.KnownHostAddRequest](docs/KnownHostAddRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)

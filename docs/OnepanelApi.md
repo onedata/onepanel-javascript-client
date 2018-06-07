@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 
 List onepanel users
 
-Lists all usernames.
+Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
 
 ### Example
 ```javascript

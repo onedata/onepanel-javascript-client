@@ -434,7 +434,7 @@
 
     /**
      * List onepanel users
-     * Lists all usernames.
+     * Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.role If present, query returns only users with specified role.
      * @param {module:api/OnepanelApi~getUsersCallback} callback The callback function, accepting three arguments: error, data, response

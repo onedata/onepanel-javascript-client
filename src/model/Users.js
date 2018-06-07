@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Users</code>.
-   * List of onepanel user usernames.
+   * List of onepanel user usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
    * @alias module:model/Users
    * @class
    * @param usernames {Array.<String>} The list of usernames.

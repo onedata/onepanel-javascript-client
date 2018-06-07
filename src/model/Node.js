@@ -46,13 +46,13 @@
    * @alias module:model/Node
    * @class
    * @param hostname {String} Hostname of the node.
-   * @param application {module:model/Node.ApplicationEnum} Type of application managed by this onepanel.
+   * @param componentType {module:model/Node.ComponentTypeEnum} Type of Onedata component managed by this onepanel.
    */
-  var exports = function(hostname, application) {
+  var exports = function(hostname, componentType) {
     var _this = this;
 
     _this['hostname'] = hostname;
-    _this['application'] = application;
+    _this['componentType'] = componentType;
   };
 
   /**
@@ -79,8 +79,8 @@
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('application')) {
-        obj['application'] = ApiClient.convertToType(data['application'], 'String');
+      if (data.hasOwnProperty('componentType')) {
+        obj['componentType'] = ApiClient.convertToType(data['componentType'], 'String');
       }
     }
     return obj;
@@ -92,18 +92,18 @@
    */
   exports.prototype['hostname'] = undefined;
   /**
-   * Type of application managed by this onepanel.
-   * @member {module:model/Node.ApplicationEnum} application
+   * Type of Onedata component managed by this onepanel.
+   * @member {module:model/Node.ComponentTypeEnum} componentType
    */
-  exports.prototype['application'] = undefined;
+  exports.prototype['componentType'] = undefined;
 
 
   /**
-   * Allowed values for the <code>application</code> property.
+   * Allowed values for the <code>componentType</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.ApplicationEnum = {
+  exports.ComponentTypeEnum = {
     /**
      * value: "oneprovider"
      * @const

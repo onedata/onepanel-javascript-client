@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property application (base name: "application")', function() {
-      // uncomment below and update the code to test the property application
+    it('should have the property componentType (base name: "componentType")', function() {
+      // uncomment below and update the code to test the property componentType
       //var instane = new Onepanel.Node();
       //expect(instance).to.be();
     });

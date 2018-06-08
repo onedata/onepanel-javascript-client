@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **String** | Address which can be used for performing request to the host.  | 
+**address** | **String** | Address at which the host is available, IP or hostname.  | 
 
 

@@ -45,7 +45,7 @@
    * Details of host added to cluster
    * @alias module:model/HostAddRequest
    * @class
-   * @param address {String} Address which can be used for performing request to the host. 
+   * @param address {String} Address at which the host is available, IP or hostname. 
    */
   var exports = function(address) {
     var _this = this;
@@ -82,7 +82,7 @@
   }
 
   /**
-   * Address which can be used for performing request to the host. 
+   * Address at which the host is available, IP or hostname. 
    * @member {String} address
    */
   exports.prototype['address'] = undefined;

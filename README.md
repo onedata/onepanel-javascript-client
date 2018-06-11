@@ -90,7 +90,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addHost(hostAddRequest, callback);
+api.addClusterHost(hostAddRequest, callback);
 
 ```
 
@@ -100,7 +100,7 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Onepanel.OnepanelApi* | [**addHost**](docs/OnepanelApi.md#addHost) | **POST** /hosts | Adds given host to the cluster.
+*Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie

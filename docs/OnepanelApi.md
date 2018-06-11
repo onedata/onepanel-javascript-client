@@ -4,7 +4,7 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addHost**](OnepanelApi.md#addHost) | **POST** /hosts | Adds given host to the cluster.
+[**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
@@ -21,11 +21,11 @@ Method | HTTP request | Description
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 
 
-<a name="addHost"></a>
-# **addHost**
-> Host addHost(hostAddRequest)
+<a name="addClusterHost"></a>
+# **addClusterHost**
+> Host addClusterHost(hostAddRequest)
 
-Adds given host to the cluster.
+Adds given host to the cluster
 
 Adds given host to the current cluster. The host can be specified by any address by which it is reachable. Upon success returns proper hostname used to address the new host in cluster management. 
 
@@ -51,7 +51,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.addHost(hostAddRequest, callback);
+apiInstance.addClusterHost(hostAddRequest, callback);
 ```
 
 ### Parameters
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 Join existing cluster
 
-Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefor this request does not need authorization. 
+Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
 
 ### Example
 ```javascript

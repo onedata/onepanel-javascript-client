@@ -51,10 +51,10 @@
   }
 
   describe('OnepanelApi', function() {
-    describe('addHost', function() {
-      it('should call addHost successfully', function(done) {
-        //uncomment below and update the code to test addHost
-        //instance.addHost(function(error) {
+    describe('addClusterHost', function() {
+      it('should call addClusterHost successfully', function(done) {
+        //uncomment below and update the code to test addClusterHost
+        //instance.addClusterHost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

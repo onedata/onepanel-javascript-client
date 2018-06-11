@@ -49,26 +49,26 @@
 
 
     /**
-     * Callback function to receive the result of the addHost operation.
-     * @callback module:api/OnepanelApi~addHostCallback
+     * Callback function to receive the result of the addClusterHost operation.
+     * @callback module:api/OnepanelApi~addClusterHostCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Host} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Adds given host to the cluster.
+     * Adds given host to the cluster
      * Adds given host to the current cluster. The host can be specified by any address by which it is reachable. Upon success returns proper hostname used to address the new host in cluster management. 
      * @param {module:model/HostAddRequest} hostAddRequest 
-     * @param {module:api/OnepanelApi~addHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnepanelApi~addClusterHostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Host}
      */
-    this.addHost = function(hostAddRequest, callback) {
+    this.addClusterHost = function(hostAddRequest, callback) {
       var postBody = hostAddRequest;
 
       // verify the required parameter 'hostAddRequest' is set
       if (hostAddRequest === undefined || hostAddRequest === null) {
-        throw new Error("Missing the required parameter 'hostAddRequest' when calling addHost");
+        throw new Error("Missing the required parameter 'hostAddRequest' when calling addClusterHost");
       }
 
 
@@ -477,7 +477,7 @@
 
     /**
      * Join existing cluster
-     * Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefor this request does not need authorization. 
+     * Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
      * @param {module:model/JoinClusterRequest} joinClusterRequest 
      * @param {module:api/OnepanelApi~joinClusterCallback} callback The callback function, accepting three arguments: error, data, response
      */

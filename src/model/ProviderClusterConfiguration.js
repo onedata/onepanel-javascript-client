@@ -45,16 +45,15 @@
    * The provider cluster configuration.
    * @alias module:model/ProviderClusterConfiguration
    * @class
-   * @param domainName {String} The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @param nodes {Object.<String, module:model/ZoneClusterConfigurationNodes>} The collection of nodes aliases associated with nodes properties.
    * @param databases {module:model/ClusterDatabases} 
    * @param managers {module:model/ClusterManagers} 
    * @param workers {module:model/ClusterWorkers} 
    */
-  var exports = function(domainName, nodes, databases, managers, workers) {
+  var exports = function(nodes, databases, managers, workers) {
     var _this = this;
 
-    _this['domainName'] = domainName;
+
     _this['nodes'] = nodes;
     _this['databases'] = databases;
     _this['managers'] = managers;
@@ -108,8 +107,9 @@
   /**
    * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
    * @member {String} domainName
+   * @default ''
    */
-  exports.prototype['domainName'] = undefined;
+  exports.prototype['domainName'] = '';
   /**
    * The collection of nodes aliases associated with nodes properties.
    * @member {Object.<String, module:model/ZoneClusterConfigurationNodes>} nodes

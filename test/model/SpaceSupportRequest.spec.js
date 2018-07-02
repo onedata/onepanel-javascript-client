@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.SpaceSupportRequest);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceSupportRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property token (base name: "token")', function() {
       // uncomment below and update the code to test the property token
       //var instane = new Onepanel.SpaceSupportRequest();

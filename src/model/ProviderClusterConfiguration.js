@@ -105,7 +105,7 @@
   }
 
   /**
-   * The name of a domain common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. 
+   * Hostname suffix common for all services in the cluster. Together with a node hostname constitutes a fully qualified domain name (FQDN) of the node. May be skipped to allow unrelated hostnames for each node. 
    * @member {String} domainName
    * @default ''
    */

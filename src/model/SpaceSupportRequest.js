@@ -52,7 +52,6 @@
   var exports = function(token, size, storageId) {
     var _this = this;
 
-
     _this['token'] = token;
     _this['size'] = size;
     _this['storageId'] = storageId;
@@ -82,9 +81,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
       if (data.hasOwnProperty('token')) {
         obj['token'] = ApiClient.convertToType(data['token'], 'String');
       }
@@ -107,11 +103,6 @@
     return obj;
   }
 
-  /**
-   * The space name. If this property is provided and space with given name will be created and automatically supported by a provider. 
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
   /**
    * The token for space creation or support.
    * @member {String} token

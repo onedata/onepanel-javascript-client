@@ -80,17 +80,17 @@ basic.password = 'YOUR PASSWORD'
 
 var api = new Onepanel.OnepanelApi()
 
-var userCreateRequest = new Onepanel.UserCreateRequest(); // {UserCreateRequest} The user configuration details.
+var hostAddRequest = new Onepanel.HostAddRequest(); // {HostAddRequest} 
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addUser(userCreateRequest, callback);
+api.addClusterHost(hostAddRequest, callback);
 
 ```
 
@@ -100,14 +100,17 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
-*Onepanel.OnepanelApi* | [**createCluster**](docs/OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
-*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
+*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+*Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
+*Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
+*Onepanel.OnepanelApi* | [**joinCluster**](docs/OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**removeSession**](docs/OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
@@ -178,11 +181,14 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterIps](docs/ClusterIps.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
- - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.Host](docs/Host.md)
+ - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
+ - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
+ - [Onepanel.Node](docs/Node.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
@@ -223,6 +229,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
+ - [Onepanel.Users](docs/Users.md)
  - [Onepanel.WorkerHosts](docs/WorkerHosts.md)
  - [Onepanel.ZoneClusterConfiguration](docs/ZoneClusterConfiguration.md)
  - [Onepanel.ZoneClusterConfigurationNodes](docs/ZoneClusterConfigurationNodes.md)

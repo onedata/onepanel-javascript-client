@@ -40,7 +40,7 @@ Method | HTTP request | Description
 [**startStopProviderManagers**](OneproviderApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
 [**startStopProviderWorker**](OneproviderApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 [**startStopProviderWorkers**](OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
-[**supportSpace**](OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Create or support space
+[**supportSpace**](OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
 
 
 <a name="addProvider"></a>
@@ -1889,9 +1889,9 @@ null (empty response body)
 # **supportSpace**
 > supportSpace(spaceSupportRequest)
 
-Create or support space
+Support space
 
-Supports an existing space or creates a new space and automatically supports it. 
+Supports an existing space. 
 
 ### Example
 ```javascript
@@ -1905,7 +1905,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var spaceSupportRequest = new Onepanel.SpaceSupportRequest(); // SpaceSupportRequest | Specification of the space support request including name of the space, size and support token. 
+var spaceSupportRequest = new Onepanel.SpaceSupportRequest(); // SpaceSupportRequest | Specification of the space support request including support size and token. 
 
 
 var callback = function(error, data, response) {
@@ -1922,7 +1922,7 @@ apiInstance.supportSpace(spaceSupportRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **spaceSupportRequest** | [**SpaceSupportRequest**](SpaceSupportRequest.md)| Specification of the space support request including name of the space, size and support token.  | 
+ **spaceSupportRequest** | [**SpaceSupportRequest**](SpaceSupportRequest.md)| Specification of the space support request including support size and token.  | 
 
 ### Return type
 

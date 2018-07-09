@@ -1643,9 +1643,9 @@
      */
 
     /**
-     * Create or support space
-     * Supports an existing space or creates a new space and automatically supports it. 
-     * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including name of the space, size and support token. 
+     * Support space
+     * Supports an existing space. 
+     * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
      * @param {module:api/OneproviderApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.supportSpace = function(spaceSupportRequest, callback) {

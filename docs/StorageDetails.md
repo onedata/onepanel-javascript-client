@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 
 * `ceph` (value: `"ceph"`)
 
+* `cephrados` (value: `"cephrados"`)
+
 * `swift` (value: `"swift"`)
 
 * `glusterfs` (value: `"glusterfs"`)

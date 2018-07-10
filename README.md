@@ -231,6 +231,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.Ceph](docs/Ceph.md)
+ - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
  - [Onepanel.Posix](docs/Posix.md)

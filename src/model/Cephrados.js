@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Cephrados = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
 }(this, function(ApiClient, StorageDetails) {
   'use strict';
@@ -35,15 +35,15 @@
 
 
   /**
-   * The Ceph model module.
-   * @module model/Ceph
+   * The Cephrados model module.
+   * @module model/Cephrados
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>Ceph</code>.
-   * The Ceph storage configuration (uses libradosstriper).
-   * @alias module:model/Ceph
+   * Constructs a new <code>Cephrados</code>.
+   * The Ceph storage configuration (using librados).
+   * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageDetails
    * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
@@ -65,24 +65,25 @@
 
 
 
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Ceph} The value of 'discriminator' field or undefined.
+   * @return {module:model/Cephrados} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Ceph</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Cephrados</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Ceph} obj Optional instance to populate.
-   * @return {module:model/Ceph} The populated <code>Ceph</code> instance.
+   * @param {module:model/Cephrados} obj Optional instance to populate.
+   * @return {module:model/Cephrados} The populated <code>Cephrados</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -105,6 +106,9 @@
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -152,6 +156,11 @@
    * @member {Number} timeout
    */
   exports.prototype['timeout'] = undefined;
+  /**
+   * Storage block size in bytes.
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

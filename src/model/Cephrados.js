@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Cephrados</code>.
-   * The Ceph storage configuration (using librados).
+   * The Ceph storage configuration (uses librados).
    * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageDetails

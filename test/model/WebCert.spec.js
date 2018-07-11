@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.OnepanelApi();
+    instance = new Onepanel.WebCert();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,147 +50,19 @@
       object[property] = value;
   }
 
-  describe('OnepanelApi', function() {
-    describe('addUser', function() {
-      it('should call addUser successfully', function(done) {
-        //uncomment below and update the code to test addUser
-        //instance.addUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('WebCert', function() {
+    it('should create an instance of WebCert', function() {
+      // uncomment below and update the code to test WebCert
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be.a(Onepanel.WebCert);
     });
-    describe('createCluster', function() {
-      it('should call createCluster successfully', function(done) {
-        //uncomment below and update the code to test createCluster
-        //instance.createCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property letsencrypt (base name: "letsencrypt")', function() {
+      // uncomment below and update the code to test the property letsencrypt
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
     });
-    describe('createSession', function() {
-      it('should call createSession successfully', function(done) {
-        //uncomment below and update the code to test createSession
-        //instance.createSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterCookie', function() {
-      it('should call getClusterCookie successfully', function(done) {
-        //uncomment below and update the code to test getClusterCookie
-        //instance.getClusterCookie(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusterHosts', function() {
-      it('should call getClusterHosts successfully', function(done) {
-        //uncomment below and update the code to test getClusterHosts
-        //instance.getClusterHosts(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getSession', function() {
-      it('should call getSession successfully', function(done) {
-        //uncomment below and update the code to test getSession
-        //instance.getSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getTaskStatus', function() {
-      it('should call getTaskStatus successfully', function(done) {
-        //uncomment below and update the code to test getTaskStatus
-        //instance.getTaskStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getUser', function() {
-      it('should call getUser successfully', function(done) {
-        //uncomment below and update the code to test getUser
-        //instance.getUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyUser', function() {
-      it('should call modifyUser successfully', function(done) {
-        //uncomment below and update the code to test modifyUser
-        //instance.modifyUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyWebCert', function() {
-      it('should call modifyWebCert successfully', function(done) {
-        //uncomment below and update the code to test modifyWebCert
-        //instance.modifyWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeClusterHost', function() {
-      it('should call removeClusterHost successfully', function(done) {
-        //uncomment below and update the code to test removeClusterHost
-        //instance.removeClusterHost(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeSession', function() {
-      it('should call removeSession successfully', function(done) {
-        //uncomment below and update the code to test removeSession
-        //instance.removeSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeUser', function() {
-      it('should call removeUser successfully', function(done) {
-        //uncomment below and update the code to test removeUser
-        //instance.removeUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

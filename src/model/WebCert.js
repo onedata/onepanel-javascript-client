@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderModifyRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.WebCert = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,119 +35,106 @@
 
 
   /**
-   * The ProviderModifyRequest model module.
-   * @module model/ProviderModifyRequest
+   * The WebCert model module.
+   * @module model/WebCert
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ProviderModifyRequest</code>.
-   * The provider configuration details that can be modified.
-   * @alias module:model/ProviderModifyRequest
+   * Constructs a new <code>WebCert</code>.
+   * The SSL certificate details.
+   * @alias module:model/WebCert
    * @class
+   * @param letsencrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is left to the administrator. 
+   * @param obtainedTime {String} Installed certificate's creation time formatted in ISO 8601. 
+   * @param path {String} Path to the certificate file. 
+   * @param domain {String} The domain (Common Name) for which current certificate was issued. 
+   * @param issuer {String} Issuer value of the current certificate. 
    */
-  var exports = function() {
+  var exports = function(letsencrypt, obtainedTime, path, domain, issuer) {
     var _this = this;
 
+    _this['letsencrypt'] = letsencrypt;
 
-
-
-
-
-
-
-
+    _this['obtainedTime'] = obtainedTime;
+    _this['path'] = path;
+    _this['domain'] = domain;
+    _this['issuer'] = issuer;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebCert} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebCert</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderModifyRequest} obj Optional instance to populate.
-   * @return {module:model/ProviderModifyRequest} The populated <code>ProviderModifyRequest</code> instance.
+   * @param {module:model/WebCert} obj Optional instance to populate.
+   * @return {module:model/WebCert} The populated <code>WebCert</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('letsencrypt')) {
+        obj['letsencrypt'] = ApiClient.convertToType(data['letsencrypt'], 'Boolean');
       }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      if (data.hasOwnProperty('expirationTime')) {
+        obj['expirationTime'] = ApiClient.convertToType(data['expirationTime'], 'String');
       }
-      if (data.hasOwnProperty('letsEncryptEnabled')) {
-        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      if (data.hasOwnProperty('obtainedTime')) {
+        obj['obtainedTime'] = ApiClient.convertToType(data['obtainedTime'], 'String');
       }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
+      if (data.hasOwnProperty('path')) {
+        obj['path'] = ApiClient.convertToType(data['path'], 'String');
       }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
-      }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
-      }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      if (data.hasOwnProperty('issuer')) {
+        obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
+   * If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is left to the administrator. 
+   * @member {Boolean} letsencrypt
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['letsencrypt'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @member {Boolean} subdomainDelegation
+   * Installed certificate's expiration time formatted in ISO 8601. 
+   * @member {String} expirationTime
    */
-  exports.prototype['subdomainDelegation'] = undefined;
+  exports.prototype['expirationTime'] = undefined;
   /**
-   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsEncryptEnabled
+   * Installed certificate's creation time formatted in ISO 8601. 
+   * @member {String} obtainedTime
    */
-  exports.prototype['letsEncryptEnabled'] = undefined;
+  exports.prototype['obtainedTime'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. This property is required only if subdomain delegation is enabled. Otherwise it is ignored. 
-   * @member {String} subdomain
+   * Path to the certificate file. 
+   * @member {String} path
    */
-  exports.prototype['subdomain'] = undefined;
+  exports.prototype['path'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). This property is required only if subdomain delegation is disabled. Otherwise it is ignored. 
+   * The domain (Common Name) for which current certificate was issued. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
   /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
+   * Issuer value of the current certificate. 
+   * @member {String} issuer
    */
-  exports.prototype['geoLongitude'] = undefined;
-  /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
-   */
-  exports.prototype['geoLatitude'] = undefined;
-  /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
-   */
-  exports.prototype['adminEmail'] = undefined;
+  exports.prototype['issuer'] = undefined;
 
 
 

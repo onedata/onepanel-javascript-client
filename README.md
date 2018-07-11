@@ -227,6 +227,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
  - [Onepanel.WebCert](docs/WebCert.md)
  - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)
+ - [Onepanel.WebCertPaths](docs/WebCertPaths.md)
  - [Onepanel.WorkerHosts](docs/WorkerHosts.md)
  - [Onepanel.ZoneClusterConfiguration](docs/ZoneClusterConfiguration.md)
  - [Onepanel.ZoneClusterConfigurationNodes](docs/ZoneClusterConfigurationNodes.md)

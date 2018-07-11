@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebCertModifyRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.WebCertPaths = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,57 +35,77 @@
 
 
   /**
-   * The WebCertModifyRequest model module.
-   * @module model/WebCertModifyRequest
+   * The WebCertPaths model module.
+   * @module model/WebCertPaths
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>WebCertModifyRequest</code>.
-   * The SSL certificate configuration details that can be modified.
-   * @alias module:model/WebCertModifyRequest
+   * Constructs a new <code>WebCertPaths</code>.
+   * Paths to certificate-related files.
+   * @alias module:model/WebCertPaths
    * @class
-   * @param letsEncrypt {Boolean} If enabled Let's Encrypt service will be used to obtain SSL certificates and renew them before expiration. Otherwise certificates must be manually provided. 
+   * @param cert {String} Path to the certificate PEM file.
+   * @param key {String} Path to the corresponding private key PEM file.
+   * @param chain {String} Path to the file containing certificate chain.
    */
-  var exports = function(letsEncrypt) {
+  var exports = function(cert, key, chain) {
     var _this = this;
 
-    _this['letsEncrypt'] = letsEncrypt;
+    _this['cert'] = cert;
+    _this['key'] = key;
+    _this['chain'] = chain;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/WebCertModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebCertPaths} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>WebCertModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebCertPaths</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/WebCertModifyRequest} obj Optional instance to populate.
-   * @return {module:model/WebCertModifyRequest} The populated <code>WebCertModifyRequest</code> instance.
+   * @param {module:model/WebCertPaths} obj Optional instance to populate.
+   * @return {module:model/WebCertPaths} The populated <code>WebCertPaths</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('letsEncrypt')) {
-        obj['letsEncrypt'] = ApiClient.convertToType(data['letsEncrypt'], 'Boolean');
+      if (data.hasOwnProperty('cert')) {
+        obj['cert'] = ApiClient.convertToType(data['cert'], 'String');
+      }
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      }
+      if (data.hasOwnProperty('chain')) {
+        obj['chain'] = ApiClient.convertToType(data['chain'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * If enabled Let's Encrypt service will be used to obtain SSL certificates and renew them before expiration. Otherwise certificates must be manually provided. 
-   * @member {Boolean} letsEncrypt
+   * Path to the certificate PEM file.
+   * @member {String} cert
    */
-  exports.prototype['letsEncrypt'] = undefined;
+  exports.prototype['cert'] = undefined;
+  /**
+   * Path to the corresponding private key PEM file.
+   * @member {String} key
+   */
+  exports.prototype['key'] = undefined;
+  /**
+   * Path to the file containing certificate chain.
+   * @member {String} chain
+   */
+  exports.prototype['chain'] = undefined;
 
 
 

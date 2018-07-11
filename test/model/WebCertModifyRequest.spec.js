@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.WebCertModifyRequest);
     });
 
-    it('should have the property letsencrypt (base name: "letsencrypt")', function() {
-      // uncomment below and update the code to test the property letsencrypt
+    it('should have the property letsEncrypt (base name: "letsEncrypt")', function() {
+      // uncomment below and update the code to test the property letsEncrypt
       //var instane = new Onepanel.WebCertModifyRequest();
       //expect(instance).to.be();
     });

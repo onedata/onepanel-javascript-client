@@ -57,8 +57,38 @@
       //expect(instance).to.be.a(Onepanel.WebCert);
     });
 
-    it('should have the property letsencrypt (base name: "letsencrypt")', function() {
-      // uncomment below and update the code to test the property letsencrypt
+    it('should have the property letsEncrypt (base name: "letsEncrypt")', function() {
+      // uncomment below and update the code to test the property letsEncrypt
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property expirationTime (base name: "expirationTime")', function() {
+      // uncomment below and update the code to test the property expirationTime
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property creationTime (base name: "creationTime")', function() {
+      // uncomment below and update the code to test the property creationTime
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property paths (base name: "paths")', function() {
+      // uncomment below and update the code to test the property paths
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property issuer (base name: "issuer")', function() {
+      // uncomment below and update the code to test the property issuer
       //var instane = new Onepanel.WebCert();
       //expect(instance).to.be();
     });

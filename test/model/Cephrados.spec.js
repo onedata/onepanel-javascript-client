@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.OnepanelApi();
+    instance = new Onepanel.Cephrados();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,127 +50,73 @@
       object[property] = value;
   }
 
-  describe('OnepanelApi', function() {
-    describe('addUser', function() {
-      it('should call addUser successfully', function(done) {
-        //uncomment below and update the code to test addUser
-        //instance.addUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('Cephrados', function() {
+    it('should create an instance of Cephrados', function() {
+      // uncomment below and update the code to test Cephrados
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be.a(Onepanel.Cephrados);
     });
-    describe('createCluster', function() {
-      it('should call createCluster successfully', function(done) {
-        //uncomment below and update the code to test createCluster
-        //instance.createCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('createSession', function() {
-      it('should call createSession successfully', function(done) {
-        //uncomment below and update the code to test createSession
-        //instance.createSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property key (base name: "key")', function() {
+      // uncomment below and update the code to test the property key
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('getClusterCookie', function() {
-      it('should call getClusterCookie successfully', function(done) {
-        //uncomment below and update the code to test getClusterCookie
-        //instance.getClusterCookie(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
+      // uncomment below and update the code to test the property monitorHostname
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('getClusterHosts', function() {
-      it('should call getClusterHosts successfully', function(done) {
-        //uncomment below and update the code to test getClusterHosts
-        //instance.getClusterHosts(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property clusterName (base name: "clusterName")', function() {
+      // uncomment below and update the code to test the property clusterName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('getSession', function() {
-      it('should call getSession successfully', function(done) {
-        //uncomment below and update the code to test getSession
-        //instance.getSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property poolName (base name: "poolName")', function() {
+      // uncomment below and update the code to test the property poolName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('getTaskStatus', function() {
-      it('should call getTaskStatus successfully', function(done) {
-        //uncomment below and update the code to test getTaskStatus
-        //instance.getTaskStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('getUser', function() {
-      it('should call getUser successfully', function(done) {
-        //uncomment below and update the code to test getUser
-        //instance.getUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('modifyUser', function() {
-      it('should call modifyUser successfully', function(done) {
-        //uncomment below and update the code to test modifyUser
-        //instance.modifyUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('removeClusterHost', function() {
-      it('should call removeClusterHost successfully', function(done) {
-        //uncomment below and update the code to test removeClusterHost
-        //instance.removeClusterHost(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('removeSession', function() {
-      it('should call removeSession successfully', function(done) {
-        //uncomment below and update the code to test removeSession
-        //instance.removeSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
     });
-    describe('removeUser', function() {
-      it('should call removeUser successfully', function(done) {
-        //uncomment below and update the code to test removeUser
-        //instance.removeUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

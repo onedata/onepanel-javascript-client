@@ -176,6 +176,11 @@
      */
     "ceph": "ceph",
     /**
+     * value: "cephrados"
+     * @const
+     */
+    "cephrados": "cephrados",
+    /**
      * value: "swift"
      * @const
      */

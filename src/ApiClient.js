@@ -514,6 +514,10 @@
               polymorphicType = require("./model/Ceph");
             }
 
+            if('cephrados'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Cephrados");
+            }
+
             if('glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Glusterfs");
             }

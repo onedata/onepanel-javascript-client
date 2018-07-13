@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Ceph</code>.
-   * The Ceph storage configuration.
+   * The Ceph storage configuration (uses libradosstriper).
    * @alias module:model/Ceph
    * @class
    * @extends module:model/StorageDetails

@@ -17,41 +17,50 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderModifyRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Cephrados = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The ProviderModifyRequest model module.
-   * @module model/ProviderModifyRequest
+   * The Cephrados model module.
+   * @module model/Cephrados
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ProviderModifyRequest</code>.
-   * The provider configuration details that can be modified.
-   * @alias module:model/ProviderModifyRequest
+   * Constructs a new <code>Cephrados</code>.
+   * The Ceph storage configuration (uses librados).
+   * @alias module:model/Cephrados
    * @class
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param username {String} The username of the Ceph cluster administrator.
+   * @param key {String} The admin key to access the Ceph cluster.
+   * @param monitorHostname {String} The monitor host name.
+   * @param clusterName {String} The Ceph cluster name.
+   * @param poolName {String} The Ceph pool name.
    */
-  var exports = function() {
+  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
-
-
-
-
+    StorageDetails.call(_this, type);
+    _this['username'] = username;
+    _this['key'] = key;
+    _this['monitorHostname'] = monitorHostname;
+    _this['clusterName'] = clusterName;
+    _this['poolName'] = poolName;
 
 
 
@@ -63,91 +72,113 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/Cephrados} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Cephrados</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderModifyRequest} obj Optional instance to populate.
-   * @return {module:model/ProviderModifyRequest} The populated <code>ProviderModifyRequest</code> instance.
+   * @param {module:model/Cephrados} obj Optional instance to populate.
+   * @return {module:model/Cephrados} The populated <code>Cephrados</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
-      if (data.hasOwnProperty('letsEncryptEnabled')) {
-        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
       }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
       }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['username'] = undefined;
   /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @member {Boolean} subdomainDelegation
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
    */
-  exports.prototype['subdomainDelegation'] = undefined;
+  exports.prototype['key'] = undefined;
   /**
-   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled is subdomainDelegation is disabled. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsEncryptEnabled
+   * The monitor host name.
+   * @member {String} monitorHostname
    */
-  exports.prototype['letsEncryptEnabled'] = undefined;
+  exports.prototype['monitorHostname'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. This property is required only if subdomain delegation is enabled. Otherwise it is ignored. 
-   * @member {String} subdomain
+   * The Ceph cluster name.
+   * @member {String} clusterName
    */
-  exports.prototype['subdomain'] = undefined;
+  exports.prototype['clusterName'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). This property is required only if subdomain delegation is disabled. Otherwise it is ignored. 
-   * @member {String} domain
+   * The Ceph pool name.
+   * @member {String} poolName
    */
-  exports.prototype['domain'] = undefined;
+  exports.prototype['poolName'] = undefined;
   /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
    */
-  exports.prototype['geoLongitude'] = undefined;
+  exports.prototype['timeout'] = undefined;
   /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
+   * Storage block size in bytes.
+   * @member {Number} blockSize
    */
-  exports.prototype['geoLatitude'] = undefined;
+  exports.prototype['blockSize'] = undefined;
   /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default false
    */
-  exports.prototype['adminEmail'] = undefined;
+  exports.prototype['insecure'] = false;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
 
 

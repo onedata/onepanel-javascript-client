@@ -1044,6 +1044,51 @@
     }
 
     /**
+     * Callback function to receive the result of the invalidateLumaCache operation.
+     * @callback module:api/OneproviderApi~invalidateLumaCacheCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Invalidate LUMA cache
+     * Invalidates LUMA cache in provider for given storage.
+     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * @param {module:api/OneproviderApi~invalidateLumaCacheCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.invalidateLumaCache = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling invalidateLumaCache");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/storages/{id}/invalidate_luma', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the modifyProvider operation.
      * @callback module:api/OneproviderApi~modifyProviderCallback
      * @param {String} error Error message, if any.

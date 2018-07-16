@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property letsEncryptEnabled (base name: "letsEncryptEnabled")', function() {
+      // uncomment below and update the code to test the property letsEncryptEnabled
+      //var instane = new Onepanel.ZoneConfigurationOnezone();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

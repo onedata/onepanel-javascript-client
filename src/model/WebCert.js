@@ -48,15 +48,17 @@
    * @param letsEncrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
    * @param expirationTime {String} Installed certificate's expiration time formatted in ISO 8601. 
    * @param creationTime {String} Installed certificate's creation time formatted in ISO 8601. 
+   * @param status {module:model/WebCert.StatusEnum} Describes certificate validity status.
    * @param domain {String} The domain (Common Name) for which current certificate was issued. 
    * @param issuer {String} Issuer value of the current certificate. 
    */
-  var exports = function(letsEncrypt, expirationTime, creationTime, domain, issuer) {
+  var exports = function(letsEncrypt, expirationTime, creationTime, status, domain, issuer) {
     var _this = this;
 
     _this['letsEncrypt'] = letsEncrypt;
     _this['expirationTime'] = expirationTime;
     _this['creationTime'] = creationTime;
+    _this['status'] = status;
 
     _this['domain'] = domain;
     _this['issuer'] = issuer;
@@ -92,6 +94,9 @@
       if (data.hasOwnProperty('creationTime')) {
         obj['creationTime'] = ApiClient.convertToType(data['creationTime'], 'String');
       }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
       if (data.hasOwnProperty('paths')) {
         obj['paths'] = WebCertPaths.constructFromObject(data['paths']);
       }
@@ -121,6 +126,11 @@
    */
   exports.prototype['creationTime'] = undefined;
   /**
+   * Describes certificate validity status.
+   * @member {module:model/WebCert.StatusEnum} status
+   */
+  exports.prototype['status'] = undefined;
+  /**
    * @member {module:model/WebCertPaths} paths
    */
   exports.prototype['paths'] = undefined;
@@ -135,6 +145,43 @@
    */
   exports.prototype['issuer'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "valid"
+     * @const
+     */
+    "valid": "valid",
+    /**
+     * value: "near_expiration"
+     * @const
+     */
+    "near_expiration": "near_expiration",
+    /**
+     * value: "expired"
+     * @const
+     */
+    "expired": "expired",
+    /**
+     * value: "domain_mismatch"
+     * @const
+     */
+    "domain_mismatch": "domain_mismatch",
+    /**
+     * value: "regenerating"
+     * @const
+     */
+    "regenerating": "regenerating",
+    /**
+     * value: "unknown"
+     * @const
+     */
+    "unknown": "unknown"  };
 
 
   return exports;

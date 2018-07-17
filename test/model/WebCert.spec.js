@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
     it('should have the property paths (base name: "paths")', function() {
       // uncomment below and update the code to test the property paths
       //var instane = new Onepanel.WebCert();

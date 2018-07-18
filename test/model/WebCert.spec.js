@@ -99,6 +99,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lastRenewalSuccess (base name: "lastRenewalSuccess")', function() {
+      // uncomment below and update the code to test the property lastRenewalSuccess
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lastRenewalFailure (base name: "lastRenewalFailure")', function() {
+      // uncomment below and update the code to test the property lastRenewalFailure
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

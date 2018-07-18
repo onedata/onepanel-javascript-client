@@ -62,6 +62,8 @@
 
     _this['domain'] = domain;
     _this['issuer'] = issuer;
+
+
   };
 
   /**
@@ -106,6 +108,12 @@
       if (data.hasOwnProperty('issuer')) {
         obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
       }
+      if (data.hasOwnProperty('lastRenewalSuccess')) {
+        obj['lastRenewalSuccess'] = ApiClient.convertToType(data['lastRenewalSuccess'], 'String');
+      }
+      if (data.hasOwnProperty('lastRenewalFailure')) {
+        obj['lastRenewalFailure'] = ApiClient.convertToType(data['lastRenewalFailure'], 'String');
+      }
     }
     return obj;
   }
@@ -144,6 +152,16 @@
    * @member {String} issuer
    */
   exports.prototype['issuer'] = undefined;
+  /**
+   * Date and time formatted as iso8601. Represents last sucesfful attempt to obtain certificate from Let's Encrypt. Null if there are no successful attempts. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalSuccess
+   */
+  exports.prototype['lastRenewalSuccess'] = undefined;
+  /**
+   * Date and time formatted as iso8601. Represents last unsucesfful attempt to obtain certificate from Let's Encrypt. Null if there are no failed attempts. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalFailure
+   */
+  exports.prototype['lastRenewalFailure'] = undefined;
 
 
   /**

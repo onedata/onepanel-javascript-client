@@ -487,7 +487,7 @@
 
     /**
      * Modify SSL certificate configuration
-     * Modifies basic provider details in the zone.
+     * Modifies configuration regarding certificate management.
      * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate configuration parameters which should be changed. 
      * @param {module:api/OnepanelApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
      */

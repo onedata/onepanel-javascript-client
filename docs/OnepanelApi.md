@@ -529,7 +529,7 @@ null (empty response body)
 
 Modify SSL certificate configuration
 
-Modifies basic provider details in the zone.
+Modifies configuration regarding certificate management.
 
 ### Example
 ```javascript

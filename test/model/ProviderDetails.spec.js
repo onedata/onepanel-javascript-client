@@ -87,12 +87,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property letsEncryptEnabled (base name: "letsEncryptEnabled")', function() {
-      // uncomment below and update the code to test the property letsEncryptEnabled
-      //var instane = new Onepanel.ProviderDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property adminEmail (base name: "adminEmail")', function() {
       // uncomment below and update the code to test the property adminEmail
       //var instane = new Onepanel.ProviderDetails();

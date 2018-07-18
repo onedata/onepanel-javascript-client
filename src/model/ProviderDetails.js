@@ -62,7 +62,6 @@
     _this['subdomainDelegation'] = subdomainDelegation;
 
     _this['domain'] = domain;
-
     _this['adminEmail'] = adminEmail;
     _this['geoLongitude'] = geoLongitude;
     _this['geoLatitude'] = geoLatitude;
@@ -105,9 +104,6 @@
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('letsEncryptEnabled')) {
-        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
-      }
       if (data.hasOwnProperty('adminEmail')) {
         obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
@@ -149,11 +145,6 @@
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
-  /**
-   * If enabled the provider will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. This option cannot be enabled if subdomainDelegation is false. 
-   * @member {Boolean} letsEncryptEnabled
-   */
-  exports.prototype['letsEncryptEnabled'] = undefined;
   /**
    * Email address of the oneprovider administrator.
    * @member {String} adminEmail

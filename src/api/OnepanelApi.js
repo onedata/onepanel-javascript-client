@@ -487,8 +487,8 @@
 
     /**
      * Modify SSL certificate configuration
-     * Modifies configuration regarding certificate management.
-     * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate configuration parameters which should be changed. 
+     * Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
+     * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate management configuration. 
      * @param {module:api/OnepanelApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.modifyWebCert = function(webCertModifyRequest, callback) {

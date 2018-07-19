@@ -17,51 +17,53 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/WebCertPaths'], factory);
+    define(['ApiClient', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./WebCertPaths'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebCert = factory(root.Onepanel.ApiClient, root.Onepanel.WebCertPaths);
+    root.Onepanel.Cephrados = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, WebCertPaths) {
+}(this, function(ApiClient, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The WebCert model module.
-   * @module model/WebCert
+   * The Cephrados model module.
+   * @module model/Cephrados
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>WebCert</code>.
-   * The SSL certificate details.
-   * @alias module:model/WebCert
+   * Constructs a new <code>Cephrados</code>.
+   * The Ceph storage configuration (uses librados).
+   * @alias module:model/Cephrados
    * @class
-   * @param letsEncrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
-   * @param expirationTime {String} Installed certificate's expiration time in ISO 8601 format. 
-   * @param creationTime {String} Installed certificate's creation time in ISO 8601 format. 
-   * @param status {module:model/WebCert.StatusEnum} Describes certificate validity status.
-   * @param domain {String} The domain (Common Name) for which current certificate was issued. 
-   * @param issuer {String} Issuer value of the current certificate. 
+   * @extends module:model/StorageDetails
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param username {String} The username of the Ceph cluster administrator.
+   * @param key {String} The admin key to access the Ceph cluster.
+   * @param monitorHostname {String} The monitor host name.
+   * @param clusterName {String} The Ceph cluster name.
+   * @param poolName {String} The Ceph pool name.
    */
-  var exports = function(letsEncrypt, expirationTime, creationTime, status, domain, issuer) {
+  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
+    StorageDetails.call(_this, type);
+    _this['username'] = username;
+    _this['key'] = key;
+    _this['monitorHostname'] = monitorHostname;
+    _this['clusterName'] = clusterName;
+    _this['poolName'] = poolName;
 
-    _this['letsEncrypt'] = letsEncrypt;
-    _this['expirationTime'] = expirationTime;
-    _this['creationTime'] = creationTime;
-    _this['status'] = status;
 
-    _this['domain'] = domain;
-    _this['issuer'] = issuer;
+
 
 
   };
@@ -70,136 +72,114 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/WebCert} The value of 'discriminator' field or undefined.
+   * @return {module:model/Cephrados} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>WebCert</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Cephrados</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/WebCert} obj Optional instance to populate.
-   * @return {module:model/WebCert} The populated <code>WebCert</code> instance.
+   * @param {module:model/Cephrados} obj Optional instance to populate.
+   * @return {module:model/Cephrados} The populated <code>Cephrados</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('letsEncrypt')) {
-        obj['letsEncrypt'] = ApiClient.convertToType(data['letsEncrypt'], 'Boolean');
+      StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
-      if (data.hasOwnProperty('expirationTime')) {
-        obj['expirationTime'] = ApiClient.convertToType(data['expirationTime'], 'String');
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
-      if (data.hasOwnProperty('creationTime')) {
-        obj['creationTime'] = ApiClient.convertToType(data['creationTime'], 'String');
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
       }
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
       }
-      if (data.hasOwnProperty('paths')) {
-        obj['paths'] = WebCertPaths.constructFromObject(data['paths']);
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
-      if (data.hasOwnProperty('issuer')) {
-        obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
-      if (data.hasOwnProperty('lastRenewalSuccess')) {
-        obj['lastRenewalSuccess'] = ApiClient.convertToType(data['lastRenewalSuccess'], 'String');
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('lastRenewalFailure')) {
-        obj['lastRenewalFailure'] = ApiClient.convertToType(data['lastRenewalFailure'], 'String');
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
   }
 
-  /**
-   * If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
-   * @member {Boolean} letsEncrypt
-   */
-  exports.prototype['letsEncrypt'] = undefined;
-  /**
-   * Installed certificate's expiration time in ISO 8601 format. 
-   * @member {String} expirationTime
-   */
-  exports.prototype['expirationTime'] = undefined;
-  /**
-   * Installed certificate's creation time in ISO 8601 format. 
-   * @member {String} creationTime
-   */
-  exports.prototype['creationTime'] = undefined;
-  /**
-   * Describes certificate validity status.
-   * @member {module:model/WebCert.StatusEnum} status
-   */
-  exports.prototype['status'] = undefined;
-  /**
-   * @member {module:model/WebCertPaths} paths
-   */
-  exports.prototype['paths'] = undefined;
-  /**
-   * The domain (Common Name) for which current certificate was issued. 
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * Issuer value of the current certificate. 
-   * @member {String} issuer
-   */
-  exports.prototype['issuer'] = undefined;
-  /**
-   * Date and time in ISO 8601 format. Represents last sucesfful attempt to obtain certificate from Let's Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
-   * @member {String} lastRenewalSuccess
-   */
-  exports.prototype['lastRenewalSuccess'] = undefined;
-  /**
-   * Date and time in ISO 8601 format. Represents last unsucesfful attempt to obtain certificate from Let's Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
-   * @member {String} lastRenewalFailure
-   */
-  exports.prototype['lastRenewalFailure'] = undefined;
-
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
   /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
    */
-  exports.StatusEnum = {
-    /**
-     * value: "valid"
-     * @const
-     */
-    "valid": "valid",
-    /**
-     * value: "near_expiration"
-     * @const
-     */
-    "near_expiration": "near_expiration",
-    /**
-     * value: "expired"
-     * @const
-     */
-    "expired": "expired",
-    /**
-     * value: "domain_mismatch"
-     * @const
-     */
-    "domain_mismatch": "domain_mismatch",
-    /**
-     * value: "regenerating"
-     * @const
-     */
-    "regenerating": "regenerating",
-    /**
-     * value: "unknown"
-     * @const
-     */
-    "unknown": "unknown"  };
+  exports.prototype['username'] = undefined;
+  /**
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
+   */
+  exports.prototype['key'] = undefined;
+  /**
+   * The monitor host name.
+   * @member {String} monitorHostname
+   */
+  exports.prototype['monitorHostname'] = undefined;
+  /**
+   * The Ceph cluster name.
+   * @member {String} clusterName
+   */
+  exports.prototype['clusterName'] = undefined;
+  /**
+   * The Ceph pool name.
+   * @member {String} poolName
+   */
+  exports.prototype['poolName'] = undefined;
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Storage block size in bytes.
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default false
+   */
+  exports.prototype['insecure'] = false;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
+
 
 
   return exports;

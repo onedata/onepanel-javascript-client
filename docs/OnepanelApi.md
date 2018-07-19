@@ -529,7 +529,7 @@ null (empty response body)
 
 Modify SSL certificate configuration
 
-Modifies configuration regarding certificate management.
+Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
 
 ### Example
 ```javascript
@@ -543,7 +543,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var webCertModifyRequest = new Onepanel.WebCertModifyRequest(); // WebCertModifyRequest | New values for certificate configuration parameters which should be changed. 
+var webCertModifyRequest = new Onepanel.WebCertModifyRequest(); // WebCertModifyRequest | New values for certificate management configuration. 
 
 
 var callback = function(error, data, response) {
@@ -560,7 +560,7 @@ apiInstance.modifyWebCert(webCertModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webCertModifyRequest** | [**WebCertModifyRequest**](WebCertModifyRequest.md)| New values for certificate configuration parameters which should be changed.  | 
+ **webCertModifyRequest** | [**WebCertModifyRequest**](WebCertModifyRequest.md)| New values for certificate management configuration.  | 
 
 ### Return type
 

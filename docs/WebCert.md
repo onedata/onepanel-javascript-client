@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **paths** | [**WebCertPaths**](WebCertPaths.md) |  | [optional] 
 **domain** | **String** | The domain (Common Name) for which current certificate was issued.  | 
 **issuer** | **String** | Issuer value of the current certificate.  | 
-**lastRenewalSuccess** | **String** | Date and time in ISO 8601 format. Represents last sucesfful attempt to obtain certificate from Let&#39;s Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 
-**lastRenewalFailure** | **String** | Date and time in ISO 8601 format. Represents last unsucesfful attempt to obtain certificate from Let&#39;s Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 
+**lastRenewalSuccess** | **String** | Date and time in ISO 8601 format. Represents last successful Let&#39;s Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 
+**lastRenewalFailure** | **String** | Date and time in ISO 8601 format. Represents last unsuccessful Let&#39;s Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 
 
 
 <a name="StatusEnum"></a>

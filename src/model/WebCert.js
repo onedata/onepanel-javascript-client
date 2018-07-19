@@ -153,12 +153,12 @@
    */
   exports.prototype['issuer'] = undefined;
   /**
-   * Date and time in ISO 8601 format. Represents last sucesfful attempt to obtain certificate from Let's Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * Date and time in ISO 8601 format. Represents last successful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
    * @member {String} lastRenewalSuccess
    */
   exports.prototype['lastRenewalSuccess'] = undefined;
   /**
-   * Date and time in ISO 8601 format. Represents last unsucesfful attempt to obtain certificate from Let's Encrypt. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * Date and time in ISO 8601 format. Represents last unsuccessful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
    * @member {String} lastRenewalFailure
    */
   exports.prototype['lastRenewalFailure'] = undefined;

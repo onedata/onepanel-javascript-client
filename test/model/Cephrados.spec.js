@@ -16,188 +16,107 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.Cephrados();
+  });
 
-
-  /**
-   * The StorageDetails model module.
-   * @module model/StorageDetails
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>StorageDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageDetails
-   * @class
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
-   */
-  var exports = function(type) {
-    var _this = this;
-
-
-
-
-
-    _this['type'] = type;
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    return 'type';
-  };
-
-  /**
-   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetails} obj Optional instance to populate.
-   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The ID of storage.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
-   * The type of storage.
-   * @member {module:model/StorageDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
-   */
-  exports.prototype['lumaEnabled'] = false;
-  /**
-   * URL of external LUMA service
-   * @member {String} lumaUrl
-   */
-  exports.prototype['lumaUrl'] = undefined;
-  /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
-   * @member {String} lumaApiKey
-   */
-  exports.prototype['lumaApiKey'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('Cephrados', function() {
+    it('should create an instance of Cephrados', function() {
+      // uncomment below and update the code to test Cephrados
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be.a(Onepanel.Cephrados);
+    });
 
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "posix"
-     * @const
-     */
-    "posix": "posix",
-    /**
-     * value: "s3"
-     * @const
-     */
-    "s3": "s3",
-    /**
-     * value: "ceph"
-     * @const
-     */
-    "ceph": "ceph",
-    /**
-     * value: "cephrados"
-     * @const
-     */
-    "cephrados": "cephrados",
-    /**
-     * value: "swift"
-     * @const
-     */
-    "swift": "swift",
-    /**
-     * value: "glusterfs"
-     * @const
-     */
-    "glusterfs": "glusterfs",
-    /**
-     * value: "nulldevice"
-     * @const
-     */
-    "nulldevice": "nulldevice"  };
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property key (base name: "key")', function() {
+      // uncomment below and update the code to test the property key
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
+      // uncomment below and update the code to test the property monitorHostname
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clusterName (base name: "clusterName")', function() {
+      // uncomment below and update the code to test the property clusterName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property poolName (base name: "poolName")', function() {
+      // uncomment below and update the code to test the property poolName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

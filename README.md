@@ -138,6 +138,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getSpaceDetails**](docs/OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
+*Onepanel.OneproviderApi* | [**invalidateLumaCache**](docs/OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
@@ -238,6 +239,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.Ceph](docs/Ceph.md)
+ - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
  - [Onepanel.Posix](docs/Posix.md)

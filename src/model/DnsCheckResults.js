@@ -45,11 +45,12 @@
    * Describes results of a dns configuration check. 
    * @alias module:model/DnsCheckResults
    * @class
+   * @param domain {module:model/DnsCheckResults.DomainEnum} Describes the cluster domain name status in public dns. Possible values: - \"unresolvable\" - no A records can be found for the domain - \"missing_ips\" - no A records can be found for the domain - \"unknown_ips\" - IPs returned by dns servers are not the cluster external IPs as configured in onepanel - \"ok\" - The domain is configured correctly 
    */
-  var exports = function() {
+  var exports = function(domain) {
     var _this = this;
 
-
+    _this['domain'] = domain;
 
   };
 

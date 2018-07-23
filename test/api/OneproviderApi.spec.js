@@ -101,6 +101,16 @@
         done();
       });
     });
+    describe('checkProviderDns', function() {
+      it('should call checkProviderDns successfully', function(done) {
+        //uncomment below and update the code to test checkProviderDns
+        //instance.checkProviderDns(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('configureProvider', function() {
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider

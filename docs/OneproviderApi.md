@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+[**checkProviderDns**](OneproviderApi.md#checkProviderDns) | **GET** /provider/dns_check | Check correctness of dns entries for the Oneprovider domain.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -303,6 +304,52 @@ null (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
+<a name="checkProviderDns"></a>
+# **checkProviderDns**
+> DnsCheckResults checkProviderDns()
+
+Check correctness of dns entries for the Oneprovider domain.
+
+Queries public dns servers to check configuration of the oneprovider domain. Checks whether the domain can be resolved in the Internet. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.checkProviderDns(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DnsCheckResults**](DnsCheckResults.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="configureProvider"></a>
 # **configureProvider**

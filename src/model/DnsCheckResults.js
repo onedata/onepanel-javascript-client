@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>DnsCheckResults</code>.
-   * Describes results of a dns configuration check. 
+   * Describes results of a DNS configuration check. 
    * @alias module:model/DnsCheckResults
    * @class
-   * @param domain {module:model/DnsCheckResults.DomainEnum} Describes the cluster domain name status in public dns. Possible values: - \"unresolvable\" - no A records can be found for the domain - \"missing_ips\" - no A records can be found for the domain - \"unknown_ips\" - IPs returned by dns servers are not the cluster external IPs as configured in onepanel - \"ok\" - The domain is configured correctly 
+   * @param domain {module:model/DnsCheckResults.DomainEnum} Describes the cluster domain name status in public DNS. Possible values: - \"unresolvable\" - no A records can be found for the domain - \"missing_ips\" - not all of cluster's IPs are returned in DNS A records - \"unknown_ips\" - IPs returned by DNS servers are different from the cluster external IPs as configured in onepanel - \"ok\" - the domain is configured correctly 
    */
   var exports = function(domain) {
     var _this = this;
@@ -86,12 +86,12 @@
   }
 
   /**
-   * Describes the cluster domain name status in public dns. Possible values: - \"unresolvable\" - no A records can be found for the domain - \"missing_ips\" - no A records can be found for the domain - \"unknown_ips\" - IPs returned by dns servers are not the cluster external IPs as configured in onepanel - \"ok\" - The domain is configured correctly 
+   * Describes the cluster domain name status in public DNS. Possible values: - \"unresolvable\" - no A records can be found for the domain - \"missing_ips\" - not all of cluster's IPs are returned in DNS A records - \"unknown_ips\" - IPs returned by DNS servers are different from the cluster external IPs as configured in onepanel - \"ok\" - the domain is configured correctly 
    * @member {module:model/DnsCheckResults.DomainEnum} domain
    */
   exports.prototype['domain'] = undefined;
   /**
-   * Checks if management of the cluster's domain and its subdomains was delegated to the built-in dns server. This field is returned only in the Onezone onepanel. Possible values: - \"no_ns_records\" - no NS records could be resolved - \"bad_ns_ips\" - nameserver IPs resolved by global dns servers are not the cluster exteanl IPs as configured in onepanel - \"ok\" - The dns zone delegation is configured correctly 
+   * Checks if management of the cluster's domain and its subdomains was delegated to the built-in DNS server. This field is returned only in the Onezone onepanel. Possible values: - \"no_ns_records\" - no NS records could be resolved - \"bad_ns_ips\" - nameserver IPs resolved by global DNS servers are not the cluster exteanl IPs as configured in onepanel - \"ok\" - the DNS zone delegation is configured correctly 
    * @member {module:model/DnsCheckResults.DnsZoneEnum} dnsZone
    */
   exports.prototype['dnsZone'] = undefined;
@@ -114,10 +114,10 @@
      */
     "missing_ips": "missing_ips",
     /**
-     * value: "foreing_ips"
+     * value: "unknown_ips"
      * @const
      */
-    "foreing_ips": "foreing_ips",
+    "unknown_ips": "unknown_ips",
     /**
      * value: "ok"
      * @const

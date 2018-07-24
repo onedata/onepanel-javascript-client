@@ -108,7 +108,9 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
+*Onepanel.OnepanelApi* | [**getWebCert**](docs/OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
+*Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**removeSession**](docs/OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
@@ -117,7 +119,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-*Onepanel.OneproviderApi* | [**checkProviderDns**](docs/OneproviderApi.md#checkProviderDns) | **GET** /provider/dns_check | Check correctness of dns entries for the Oneprovider domain.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -154,7 +155,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**addZoneDatabases**](docs/OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 *Onepanel.OnezoneApi* | [**addZoneManagers**](docs/OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
-*Onepanel.OnezoneApi* | [**checkZoneDns**](docs/OnezoneApi.md#checkZoneDns) | **GET** /zone/dns_check | Check correctness of dns entries for the Onezone domain.
 *Onepanel.OnezoneApi* | [**configureZone**](docs/OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
 *Onepanel.OnezoneApi* | [**getZoneClusterIps**](docs/OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 *Onepanel.OnezoneApi* | [**getZoneConfiguration**](docs/OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
@@ -183,7 +183,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
- - [Onepanel.DnsCheckResults](docs/DnsCheckResults.md)
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
@@ -227,6 +226,9 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
+ - [Onepanel.WebCert](docs/WebCert.md)
+ - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)
+ - [Onepanel.WebCertPaths](docs/WebCertPaths.md)
  - [Onepanel.WorkerHosts](docs/WorkerHosts.md)
  - [Onepanel.ZoneClusterConfiguration](docs/ZoneClusterConfiguration.md)
  - [Onepanel.ZoneClusterConfigurationNodes](docs/ZoneClusterConfigurationNodes.md)

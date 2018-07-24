@@ -81,16 +81,6 @@
         done();
       });
     });
-    describe('checkZoneDns', function() {
-      it('should call checkZoneDns successfully', function(done) {
-        //uncomment below and update the code to test checkZoneDns
-        //instance.checkZoneDns(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureZone', function() {
       it('should call configureZone successfully', function(done) {
         //uncomment below and update the code to test configureZone

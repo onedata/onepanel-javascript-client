@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -80,6 +81,9 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -94,6 +98,12 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+  /**
+   * If enabled the zone will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
+   * @default false
+   */
+  exports.prototype['letsEncryptEnabled'] = false;
 
 
 

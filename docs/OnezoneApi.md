@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**addZoneDatabases**](OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
-[**checkZoneDns**](OnezoneApi.md#checkZoneDns) | **GET** /zone/dns_check | Check correctness of dns entries for the Onezone domain.
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
 [**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
@@ -182,52 +181,6 @@ null (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
-
-<a name="checkZoneDns"></a>
-# **checkZoneDns**
-> DnsCheckResults checkZoneDns()
-
-Check correctness of dns entries for the Onezone domain.
-
-Queries public dns servers to check configuration of the onezone domain. Returns whether the domain is findable and whether dns zone delegation is configured to use the builtin onezone dns server. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.checkZoneDns(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**DnsCheckResults**](DnsCheckResults.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="configureZone"></a>
 # **configureZone**

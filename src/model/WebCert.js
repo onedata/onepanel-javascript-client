@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/WebCertPaths'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./WebCertPaths'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebCert = factory(root.Onepanel.ApiClient);
+    root.Onepanel.WebCert = factory(root.Onepanel.ApiClient, root.Onepanel.WebCertPaths);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, WebCertPaths) {
   'use strict';
 
 
@@ -45,21 +45,25 @@
    * The SSL certificate details.
    * @alias module:model/WebCert
    * @class
-   * @param letsencrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is left to the administrator. 
-   * @param obtainedTime {String} Installed certificate's creation time formatted in ISO 8601. 
-   * @param path {String} Path to the certificate file. 
+   * @param letsEncrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
+   * @param expirationTime {String} Installed certificate's expiration time in ISO 8601 format. 
+   * @param creationTime {String} Installed certificate's creation time in ISO 8601 format. 
+   * @param status {module:model/WebCert.StatusEnum} Describes certificate validity status.
    * @param domain {String} The domain (Common Name) for which current certificate was issued. 
    * @param issuer {String} Issuer value of the current certificate. 
    */
-  var exports = function(letsencrypt, obtainedTime, path, domain, issuer) {
+  var exports = function(letsEncrypt, expirationTime, creationTime, status, domain, issuer) {
     var _this = this;
 
-    _this['letsencrypt'] = letsencrypt;
+    _this['letsEncrypt'] = letsEncrypt;
+    _this['expirationTime'] = expirationTime;
+    _this['creationTime'] = creationTime;
+    _this['status'] = status;
 
-    _this['obtainedTime'] = obtainedTime;
-    _this['path'] = path;
     _this['domain'] = domain;
     _this['issuer'] = issuer;
+
+
   };
 
   /**
@@ -83,17 +87,20 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('letsencrypt')) {
-        obj['letsencrypt'] = ApiClient.convertToType(data['letsencrypt'], 'Boolean');
+      if (data.hasOwnProperty('letsEncrypt')) {
+        obj['letsEncrypt'] = ApiClient.convertToType(data['letsEncrypt'], 'Boolean');
       }
       if (data.hasOwnProperty('expirationTime')) {
         obj['expirationTime'] = ApiClient.convertToType(data['expirationTime'], 'String');
       }
-      if (data.hasOwnProperty('obtainedTime')) {
-        obj['obtainedTime'] = ApiClient.convertToType(data['obtainedTime'], 'String');
+      if (data.hasOwnProperty('creationTime')) {
+        obj['creationTime'] = ApiClient.convertToType(data['creationTime'], 'String');
       }
-      if (data.hasOwnProperty('path')) {
-        obj['path'] = ApiClient.convertToType(data['path'], 'String');
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
+      if (data.hasOwnProperty('paths')) {
+        obj['paths'] = WebCertPaths.constructFromObject(data['paths']);
       }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
@@ -101,30 +108,40 @@
       if (data.hasOwnProperty('issuer')) {
         obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
       }
+      if (data.hasOwnProperty('lastRenewalSuccess')) {
+        obj['lastRenewalSuccess'] = ApiClient.convertToType(data['lastRenewalSuccess'], 'String');
+      }
+      if (data.hasOwnProperty('lastRenewalFailure')) {
+        obj['lastRenewalFailure'] = ApiClient.convertToType(data['lastRenewalFailure'], 'String');
+      }
     }
     return obj;
   }
 
   /**
-   * If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is left to the administrator. 
-   * @member {Boolean} letsencrypt
+   * If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
+   * @member {Boolean} letsEncrypt
    */
-  exports.prototype['letsencrypt'] = undefined;
+  exports.prototype['letsEncrypt'] = undefined;
   /**
-   * Installed certificate's expiration time formatted in ISO 8601. 
+   * Installed certificate's expiration time in ISO 8601 format. 
    * @member {String} expirationTime
    */
   exports.prototype['expirationTime'] = undefined;
   /**
-   * Installed certificate's creation time formatted in ISO 8601. 
-   * @member {String} obtainedTime
+   * Installed certificate's creation time in ISO 8601 format. 
+   * @member {String} creationTime
    */
-  exports.prototype['obtainedTime'] = undefined;
+  exports.prototype['creationTime'] = undefined;
   /**
-   * Path to the certificate file. 
-   * @member {String} path
+   * Describes certificate validity status.
+   * @member {module:model/WebCert.StatusEnum} status
    */
-  exports.prototype['path'] = undefined;
+  exports.prototype['status'] = undefined;
+  /**
+   * @member {module:model/WebCertPaths} paths
+   */
+  exports.prototype['paths'] = undefined;
   /**
    * The domain (Common Name) for which current certificate was issued. 
    * @member {String} domain
@@ -135,7 +152,54 @@
    * @member {String} issuer
    */
   exports.prototype['issuer'] = undefined;
+  /**
+   * Date and time in ISO 8601 format. Represents last successful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalSuccess
+   */
+  exports.prototype['lastRenewalSuccess'] = undefined;
+  /**
+   * Date and time in ISO 8601 format. Represents last unsuccessful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalFailure
+   */
+  exports.prototype['lastRenewalFailure'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "valid"
+     * @const
+     */
+    "valid": "valid",
+    /**
+     * value: "near_expiration"
+     * @const
+     */
+    "near_expiration": "near_expiration",
+    /**
+     * value: "expired"
+     * @const
+     */
+    "expired": "expired",
+    /**
+     * value: "domain_mismatch"
+     * @const
+     */
+    "domain_mismatch": "domain_mismatch",
+    /**
+     * value: "regenerating"
+     * @const
+     */
+    "regenerating": "regenerating",
+    /**
+     * value: "unknown"
+     * @const
+     */
+    "unknown": "unknown"  };
 
 
   return exports;

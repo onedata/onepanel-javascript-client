@@ -649,7 +649,7 @@
      * Get reports of space auto cleaning
      * Returns collection of reports of auto cleaning for the space 
      * @param {String} id The ID of a space
-     * @param {String} startedAfter Fetch only reports that started after this date (ISO-8601)
+     * @param {String} startedAfter Fetch only reports that started after this date (ISO 8601)
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReportCollection}
      */

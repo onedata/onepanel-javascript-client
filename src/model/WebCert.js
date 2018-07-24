@@ -17,155 +17,189 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/WebCertPaths'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./WebCertPaths'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.WebCert = factory(root.Onepanel.ApiClient, root.Onepanel.WebCertPaths);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, WebCertPaths) {
   'use strict';
 
 
 
 
   /**
-   * The ProviderDetails model module.
-   * @module model/ProviderDetails
+   * The WebCert model module.
+   * @module model/WebCert
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ProviderDetails</code>.
-   * The provider configuration details.
-   * @alias module:model/ProviderDetails
+   * Constructs a new <code>WebCert</code>.
+   * The SSL certificate details.
+   * @alias module:model/WebCert
    * @class
-   * @param id {String} The ID assigned by a zone.
-   * @param name {String} The name under which the provider has been registered in a zone.
-   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @param adminEmail {String} Email address of the oneprovider administrator.
-   * @param geoLongitude {Number} The geographical longitude of the provider.
-   * @param geoLatitude {Number} The geographical latitude of the provider.
-   * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
+   * @param letsEncrypt {Boolean} If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
+   * @param expirationTime {String} Installed certificate's expiration time in ISO 8601 format. 
+   * @param creationTime {String} Installed certificate's creation time in ISO 8601 format. 
+   * @param status {module:model/WebCert.StatusEnum} Describes certificate validity status.
+   * @param domain {String} The domain (Common Name) for which current certificate was issued. 
+   * @param issuer {String} Issuer value of the current certificate. 
    */
-  var exports = function(id, name, subdomainDelegation, domain, adminEmail, geoLongitude, geoLatitude, onezoneDomainName) {
+  var exports = function(letsEncrypt, expirationTime, creationTime, status, domain, issuer) {
     var _this = this;
 
-    _this['id'] = id;
-    _this['name'] = name;
-    _this['subdomainDelegation'] = subdomainDelegation;
+    _this['letsEncrypt'] = letsEncrypt;
+    _this['expirationTime'] = expirationTime;
+    _this['creationTime'] = creationTime;
+    _this['status'] = status;
 
     _this['domain'] = domain;
-    _this['adminEmail'] = adminEmail;
-    _this['geoLongitude'] = geoLongitude;
-    _this['geoLatitude'] = geoLatitude;
-    _this['onezoneDomainName'] = onezoneDomainName;
+    _this['issuer'] = issuer;
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebCert} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebCert</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderDetails} obj Optional instance to populate.
-   * @return {module:model/ProviderDetails} The populated <code>ProviderDetails</code> instance.
+   * @param {module:model/WebCert} obj Optional instance to populate.
+   * @return {module:model/WebCert} The populated <code>WebCert</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('letsEncrypt')) {
+        obj['letsEncrypt'] = ApiClient.convertToType(data['letsEncrypt'], 'Boolean');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('expirationTime')) {
+        obj['expirationTime'] = ApiClient.convertToType(data['expirationTime'], 'String');
       }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      if (data.hasOwnProperty('creationTime')) {
+        obj['creationTime'] = ApiClient.convertToType(data['creationTime'], 'String');
       }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
+      if (data.hasOwnProperty('paths')) {
+        obj['paths'] = WebCertPaths.constructFromObject(data['paths']);
       }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
+      if (data.hasOwnProperty('issuer')) {
+        obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
       }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
+      if (data.hasOwnProperty('lastRenewalSuccess')) {
+        obj['lastRenewalSuccess'] = ApiClient.convertToType(data['lastRenewalSuccess'], 'String');
       }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
-      }
-      if (data.hasOwnProperty('onezoneDomainName')) {
-        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
+      if (data.hasOwnProperty('lastRenewalFailure')) {
+        obj['lastRenewalFailure'] = ApiClient.convertToType(data['lastRenewalFailure'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The ID assigned by a zone.
-   * @member {String} id
+   * If true, the certificate is obtained from Let's Encrypt service and renewed automatically. Otherwise, the certificate management is up to the administrator. 
+   * @member {Boolean} letsEncrypt
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['letsEncrypt'] = undefined;
   /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
+   * Installed certificate's expiration time in ISO 8601 format. 
+   * @member {String} expirationTime
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['expirationTime'] = undefined;
   /**
-   * If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @member {Boolean} subdomainDelegation
+   * Installed certificate's creation time in ISO 8601 format. 
+   * @member {String} creationTime
    */
-  exports.prototype['subdomainDelegation'] = undefined;
+  exports.prototype['creationTime'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
-   * @member {String} subdomain
+   * Describes certificate validity status.
+   * @member {module:model/WebCert.StatusEnum} status
    */
-  exports.prototype['subdomain'] = undefined;
+  exports.prototype['status'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @member {module:model/WebCertPaths} paths
+   */
+  exports.prototype['paths'] = undefined;
+  /**
+   * The domain (Common Name) for which current certificate was issued. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
   /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
+   * Issuer value of the current certificate. 
+   * @member {String} issuer
    */
-  exports.prototype['adminEmail'] = undefined;
+  exports.prototype['issuer'] = undefined;
   /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
+   * Date and time in ISO 8601 format. Represents last successful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalSuccess
    */
-  exports.prototype['geoLongitude'] = undefined;
+  exports.prototype['lastRenewalSuccess'] = undefined;
   /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
+   * Date and time in ISO 8601 format. Represents last unsuccessful Let's Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off. 
+   * @member {String} lastRenewalFailure
    */
-  exports.prototype['geoLatitude'] = undefined;
-  /**
-   * The domain name of a zone where this storage provider is registered.
-   * @member {String} onezoneDomainName
-   */
-  exports.prototype['onezoneDomainName'] = undefined;
+  exports.prototype['lastRenewalFailure'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "valid"
+     * @const
+     */
+    "valid": "valid",
+    /**
+     * value: "near_expiration"
+     * @const
+     */
+    "near_expiration": "near_expiration",
+    /**
+     * value: "expired"
+     * @const
+     */
+    "expired": "expired",
+    /**
+     * value: "domain_mismatch"
+     * @const
+     */
+    "domain_mismatch": "domain_mismatch",
+    /**
+     * value: "regenerating"
+     * @const
+     */
+    "regenerating": "regenerating",
+    /**
+     * value: "unknown"
+     * @const
+     */
+    "unknown": "unknown"  };
 
 
   return exports;

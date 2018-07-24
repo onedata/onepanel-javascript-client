@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.ZoneConfigurationDetailsOnezone);
     });
 
+    it('should have the property domainName (base name: "domainName")', function() {
+      // uncomment below and update the code to test the property domainName
+      //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();

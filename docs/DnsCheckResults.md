@@ -28,8 +28,6 @@ Name | Type | Description | Notes
 
 * `unresolvable` (value: `"unresolvable"`)
 
-* `missing_records` (value: `"missing_records"`)
-
 * `bad_records` (value: `"bad_records"`)
 
 * `ok` (value: `"ok"`)

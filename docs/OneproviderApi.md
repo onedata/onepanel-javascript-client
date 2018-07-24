@@ -805,7 +805,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The ID of a space
 
-var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO-8601)
+var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO 8601)
 
 
 var callback = function(error, data, response) {
@@ -823,7 +823,7 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of a space | 
- **startedAfter** | **String**| Fetch only reports that started after this date (ISO-8601) | 
+ **startedAfter** | **String**| Fetch only reports that started after this date (ISO 8601) | 
 
 ### Return type
 

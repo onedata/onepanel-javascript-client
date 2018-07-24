@@ -45,12 +45,14 @@
    * The zone custom configuration.
    * @alias module:model/ZoneConfigurationDetailsOnezone
    * @class
+   * @param domainName {String} Onezone's domain.
    * @param name {String} The name of a zone.
    * @param configured {Boolean} True if all steps of cluster deployment and configuration have been performed.
    */
-  var exports = function(name, configured) {
+  var exports = function(domainName, name, configured) {
     var _this = this;
 
+    _this['domainName'] = domainName;
     _this['name'] = name;
     _this['configured'] = configured;
   };
@@ -76,6 +78,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('domainName')) {
+        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
+      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -86,6 +91,11 @@
     return obj;
   }
 
+  /**
+   * Onezone's domain.
+   * @member {String} domainName
+   */
+  exports.prototype['domainName'] = undefined;
   /**
    * The name of a zone.
    * @member {String} name

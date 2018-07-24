@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, Cookie, Error, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest) {
+}(this, function(ApiClient, Cookie, Error, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -388,6 +388,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getWebCert operation.
+     * @callback module:api/OnepanelApi~getWebCertCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/WebCert} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get information about SSL certificates configuration and status.
+     * Returns information about SSL certificate status and renewal configuration. 
+     * @param {module:api/OnepanelApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/WebCert}
+     */
+    this.getWebCert = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = WebCert;
+
+      return this.apiClient.callApi(
+        '/web_cert', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the modifyUser operation.
      * @callback module:api/OnepanelApi~modifyUserCallback
      * @param {String} error Error message, if any.
@@ -433,6 +472,50 @@
 
       return this.apiClient.callApi(
         '/users/{username}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyWebCert operation.
+     * @callback module:api/OnepanelApi~modifyWebCertCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify SSL certificate configuration
+     * Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
+     * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate management configuration. 
+     * @param {module:api/OnepanelApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyWebCert = function(webCertModifyRequest, callback) {
+      var postBody = webCertModifyRequest;
+
+      // verify the required parameter 'webCertModifyRequest' is set
+      if (webCertModifyRequest === undefined || webCertModifyRequest === null) {
+        throw new Error("Missing the required parameter 'webCertModifyRequest' when calling modifyWebCert");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/web_cert', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -131,10 +131,30 @@
         done();
       });
     });
+    describe('getWebCert', function() {
+      it('should call getWebCert successfully', function(done) {
+        //uncomment below and update the code to test getWebCert
+        //instance.getWebCert(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyUser', function() {
       it('should call modifyUser successfully', function(done) {
         //uncomment below and update the code to test modifyUser
         //instance.modifyUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyWebCert', function() {
+      it('should call modifyWebCert successfully', function(done) {
+        //uncomment below and update the code to test modifyWebCert
+        //instance.modifyWebCert(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

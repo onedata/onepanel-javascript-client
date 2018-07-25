@@ -171,6 +171,16 @@
         done();
       });
     });
+    describe('getZonePolicies', function() {
+      it('should call getZonePolicies successfully', function(done) {
+        //uncomment below and update the code to test getZonePolicies
+        //instance.getZonePolicies(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getZoneWorkerStatus', function() {
       it('should call getZoneWorkerStatus successfully', function(done) {
         //uncomment below and update the code to test getZoneWorkerStatus
@@ -195,6 +205,16 @@
       it('should call modifyZoneClusterIps successfully', function(done) {
         //uncomment below and update the code to test modifyZoneClusterIps
         //instance.modifyZoneClusterIps(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyZonePolicies', function() {
+      it('should call modifyZonePolicies successfully', function(done) {
+        //uncomment below and update the code to test modifyZonePolicies
+        //instance.modifyZonePolicies(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

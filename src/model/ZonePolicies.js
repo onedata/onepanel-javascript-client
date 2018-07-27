@@ -50,6 +50,7 @@
     var _this = this;
 
 
+
   };
 
   /**
@@ -73,6 +74,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('isConfigured')) {
+        obj['isConfigured'] = ApiClient.convertToType(data['isConfigured'], 'Boolean');
+      }
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
@@ -80,6 +84,11 @@
     return obj;
   }
 
+  /**
+   * Indicates that the configuration has already been set by the user. 
+   * @member {Boolean} isConfigured
+   */
+  exports.prototype['isConfigured'] = undefined;
   /**
    * If true, providers are allowed to use subdomains of the Onezone domain as their domains.
    * @member {Boolean} subdomainDelegation

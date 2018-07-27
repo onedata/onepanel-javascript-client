@@ -50,6 +50,7 @@
   var exports = function(users) {
     var _this = this;
 
+
     _this['users'] = users;
   };
 
@@ -74,6 +75,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('batchMode')) {
+        obj['batchMode'] = ApiClient.convertToType(data['batchMode'], 'Boolean');
+      }
       if (data.hasOwnProperty('users')) {
         obj['users'] = ApiClient.convertToType(data['users'], {'String': PanelConfigurationUsers});
       }
@@ -81,6 +85,11 @@
     return obj;
   }
 
+  /**
+   * Indicates that noninteractive deployment is performed. If enabled, users entering GUI will not be asked to complete the configuration. Instead default values will be used, available for change later via appropraite GUI onepanel gui pages or via REST. 
+   * @member {Boolean} batchMode
+   */
+  exports.prototype['batchMode'] = undefined;
   /**
    * The collection of user names associated with users properties.
    * @member {Object.<String, module:model/PanelConfigurationUsers>} users

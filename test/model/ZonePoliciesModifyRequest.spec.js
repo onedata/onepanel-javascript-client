@@ -16,90 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfigurationUsers'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfigurationUsers'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.PanelConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfigurationUsers);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, PanelConfigurationUsers) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ZonePoliciesModifyRequest();
+  });
 
-
-  /**
-   * The PanelConfiguration model module.
-   * @module model/PanelConfiguration
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>PanelConfiguration</code>.
-   * The panel configuration.
-   * @alias module:model/PanelConfiguration
-   * @class
-   * @param users {Object.<String, module:model/PanelConfigurationUsers>} The collection of user names associated with users properties.
-   */
-  var exports = function(users) {
-    var _this = this;
-
-
-    _this['users'] = users;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/PanelConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>PanelConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PanelConfiguration} obj Optional instance to populate.
-   * @return {module:model/PanelConfiguration} The populated <code>PanelConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('batchMode')) {
-        obj['batchMode'] = ApiClient.convertToType(data['batchMode'], 'Boolean');
-      }
-      if (data.hasOwnProperty('users')) {
-        obj['users'] = ApiClient.convertToType(data['users'], {'String': PanelConfigurationUsers});
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Indicates that noninteractive deployment is performed. If enabled, users entering GUI will not be asked to complete the configuration. Instead default values will be used, available for change later via appropraite GUI onepanel gui pages or via REST. 
-   * @member {Boolean} batchMode
-   * @default false
-   */
-  exports.prototype['batchMode'] = false;
-  /**
-   * The collection of user names associated with users properties.
-   * @member {Object.<String, module:model/PanelConfigurationUsers>} users
-   */
-  exports.prototype['users'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ZonePoliciesModifyRequest', function() {
+    it('should create an instance of ZonePoliciesModifyRequest', function() {
+      // uncomment below and update the code to test ZonePoliciesModifyRequest
+      //var instane = new Onepanel.ZonePoliciesModifyRequest();
+      //expect(instance).to.be.a(Onepanel.ZonePoliciesModifyRequest);
+    });
 
+    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
+      // uncomment below and update the code to test the property subdomainDelegation
+      //var instane = new Onepanel.ZonePoliciesModifyRequest();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

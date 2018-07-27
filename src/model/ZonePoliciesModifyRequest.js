@@ -17,85 +17,74 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfigurationUsers'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfigurationUsers'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.PanelConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfigurationUsers);
+    root.Onepanel.ZonePoliciesModifyRequest = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, PanelConfigurationUsers) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The PanelConfiguration model module.
-   * @module model/PanelConfiguration
+   * The ZonePoliciesModifyRequest model module.
+   * @module model/ZonePoliciesModifyRequest
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>PanelConfiguration</code>.
-   * The panel configuration.
-   * @alias module:model/PanelConfiguration
+   * Constructs a new <code>ZonePoliciesModifyRequest</code>.
+   * State of Onezone operation policies.
+   * @alias module:model/ZonePoliciesModifyRequest
    * @class
-   * @param users {Object.<String, module:model/PanelConfigurationUsers>} The collection of user names associated with users properties.
    */
-  var exports = function(users) {
+  var exports = function() {
     var _this = this;
 
 
-    _this['users'] = users;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/PanelConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/ZonePoliciesModifyRequest} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>PanelConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ZonePoliciesModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PanelConfiguration} obj Optional instance to populate.
-   * @return {module:model/PanelConfiguration} The populated <code>PanelConfiguration</code> instance.
+   * @param {module:model/ZonePoliciesModifyRequest} obj Optional instance to populate.
+   * @return {module:model/ZonePoliciesModifyRequest} The populated <code>ZonePoliciesModifyRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('batchMode')) {
-        obj['batchMode'] = ApiClient.convertToType(data['batchMode'], 'Boolean');
-      }
-      if (data.hasOwnProperty('users')) {
-        obj['users'] = ApiClient.convertToType(data['users'], {'String': PanelConfigurationUsers});
+      if (data.hasOwnProperty('subdomainDelegation')) {
+        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * Indicates that noninteractive deployment is performed. If enabled, users entering GUI will not be asked to complete the configuration. Instead default values will be used, available for change later via appropraite GUI onepanel gui pages or via REST. 
-   * @member {Boolean} batchMode
-   * @default false
+   * If true, providers are allowed to use subdomains of the Onezone domain as their domains.
+   * @member {Boolean} subdomainDelegation
    */
-  exports.prototype['batchMode'] = false;
-  /**
-   * The collection of user names associated with users properties.
-   * @member {Object.<String, module:model/PanelConfigurationUsers>} users
-   */
-  exports.prototype['users'] = undefined;
+  exports.prototype['subdomainDelegation'] = undefined;
 
 
 

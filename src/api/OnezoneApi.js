@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/DnsCheckResults', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/DnsCheckResults', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies', 'model/ZonePoliciesModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/DnsCheckResults'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/DnsCheckResults'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'), require('../model/ZonePoliciesModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.DnsCheckResults, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.DnsCheckResults, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies, root.Onepanel.ZonePoliciesModifyRequest);
   }
-}(this, function(ApiClient, ClusterIps, DnsCheckResults, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
+}(this, function(ApiClient, ClusterIps, DnsCheckResults, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies, ZonePoliciesModifyRequest) {
   'use strict';
 
   /**
@@ -728,7 +728,7 @@
     /**
      * Modify current Onezone policies
      * Modifies restrictions placed on Onezone operations such as registering providers. 
-     * @param {module:model/ZonePolicies} zonePoliciesModifyRequest New values for Onezone policies. 
+     * @param {module:model/ZonePoliciesModifyRequest} zonePoliciesModifyRequest New values for Onezone policies. 
      * @param {module:api/OnezoneApi~modifyZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.modifyZonePolicies = function(zonePoliciesModifyRequest, callback) {

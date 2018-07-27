@@ -833,7 +833,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var zonePoliciesModifyRequest = new Onepanel.ZonePolicies(); // ZonePolicies | New values for Onezone policies. 
+var zonePoliciesModifyRequest = new Onepanel.ZonePoliciesModifyRequest(); // ZonePoliciesModifyRequest | New values for Onezone policies. 
 
 
 var callback = function(error, data, response) {
@@ -850,7 +850,7 @@ apiInstance.modifyZonePolicies(zonePoliciesModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **zonePoliciesModifyRequest** | [**ZonePolicies**](ZonePolicies.md)| New values for Onezone policies.  | 
+ **zonePoliciesModifyRequest** | [**ZonePoliciesModifyRequest**](ZonePoliciesModifyRequest.md)| New values for Onezone policies.  | 
 
 ### Return type
 

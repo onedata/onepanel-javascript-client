@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/DnsCheckResult'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./DnsCheckResult'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DnsCheckResults = factory(root.Onepanel.ApiClient);
+    root.Onepanel.DnsCheckResults = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, DnsCheckResult) {
   'use strict';
 
 
@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>DnsCheckResults</code>.
-   * Describes results of a DNS configuration check. Possible values are: - \&quot;unresolvable\&quot; - no dns records could be resolved - \&quot;missing_records\&quot; - some of the expected cluster IPs were not resolved via DNS - \&quot;bad_records\&quot; - IPs resolved via DNS were different from the expected cluster IPs - \&quot;ok\&quot; - configuration is correct 
+   * Results of the DNS checks for domain (A records). In the Onezone contains also results for DNS zone delegatin check (SOA and NS recors).
    * @alias module:model/DnsCheckResults
    * @class
-   * @param domain {module:model/DnsCheckResults.DomainEnum} Describes status of the cluster domain name in public DNS. 
+   * @param domain {module:model/DnsCheckResult} 
    */
   var exports = function(domain) {
     var _this = this;
@@ -76,75 +76,24 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
+        obj['domain'] = DnsCheckResult.constructFromObject(data['domain']);
       }
       if (data.hasOwnProperty('dnsZone')) {
-        obj['dnsZone'] = ApiClient.convertToType(data['dnsZone'], 'String');
+        obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
       }
     }
     return obj;
   }
 
   /**
-   * Describes status of the cluster domain name in public DNS. 
-   * @member {module:model/DnsCheckResults.DomainEnum} domain
+   * @member {module:model/DnsCheckResult} domain
    */
   exports.prototype['domain'] = undefined;
   /**
-   * This field is returned only in the Onezone Onepanel. Indicates whether the nameservers used responsible for the domain (as in NS records) match the cluster IPs. Requires NS and glue records to be configured properly at the dns provider. 
-   * @member {module:model/DnsCheckResults.DnsZoneEnum} dnsZone
+   * @member {module:model/DnsCheckResult} dnsZone
    */
   exports.prototype['dnsZone'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>domain</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DomainEnum = {
-    /**
-     * value: "unresolvable"
-     * @const
-     */
-    "unresolvable": "unresolvable",
-    /**
-     * value: "missing_records"
-     * @const
-     */
-    "missing_records": "missing_records",
-    /**
-     * value: "bad_records"
-     * @const
-     */
-    "bad_records": "bad_records",
-    /**
-     * value: "ok"
-     * @const
-     */
-    "ok": "ok"  };
-
-  /**
-   * Allowed values for the <code>dnsZone</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DnsZoneEnum = {
-    /**
-     * value: "unresolvable"
-     * @const
-     */
-    "unresolvable": "unresolvable",
-    /**
-     * value: "bad_records"
-     * @const
-     */
-    "bad_records": "bad_records",
-    /**
-     * value: "ok"
-     * @const
-     */
-    "ok": "ok"  };
 
 
   return exports;

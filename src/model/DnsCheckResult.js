@@ -45,7 +45,7 @@
    * 
    * @alias module:model/DnsCheckResult
    * @class
-   * @param summary {module:model/DnsCheckResult.SummaryEnum} Presents an interpration of a DNS configuration check. Possible values are: - \"error\" -> no DNS server could be contacted to perform the check - \"unresolvable\" - checked DNS name could not be resolved - \"missing_records\" - only some of the expected results were returned by the DNS server - \"bad_records\" - none of the expected results were returned by the DNS server - \"ok\" - obtained resultsa are correct 
+   * @param summary {module:model/DnsCheckResult.SummaryEnum} Presents an interpration of a DNS configuration check. Possible values are:  - 'error' - no DNS server could be contacted to perform the check - 'unresolvable' - checked DNS name could not be resolved - 'missing_records' - only some of the expected results were returned by the DNS server - 'bad_records' - none of the expected results were returned by the DNS server - 'ok' - obtained resultsa are correct 
    * @param expected {Array.<String>} List of expected query results. 
    * @param got {Array.<String>} List of obtained query results. 
    */
@@ -92,7 +92,7 @@
   }
 
   /**
-   * Presents an interpration of a DNS configuration check. Possible values are: - \"error\" -> no DNS server could be contacted to perform the check - \"unresolvable\" - checked DNS name could not be resolved - \"missing_records\" - only some of the expected results were returned by the DNS server - \"bad_records\" - none of the expected results were returned by the DNS server - \"ok\" - obtained resultsa are correct 
+   * Presents an interpration of a DNS configuration check. Possible values are:  - 'error' - no DNS server could be contacted to perform the check - 'unresolvable' - checked DNS name could not be resolved - 'missing_records' - only some of the expected results were returned by the DNS server - 'bad_records' - none of the expected results were returned by the DNS server - 'ok' - obtained resultsa are correct 
    * @member {module:model/DnsCheckResult.SummaryEnum} summary
    */
   exports.prototype['summary'] = undefined;

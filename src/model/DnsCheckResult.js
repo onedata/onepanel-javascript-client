@@ -17,102 +17,123 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ZonePoliciesModifyRequest'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ZonePoliciesModifyRequest'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfigurationOnezone = factory(root.Onepanel.ApiClient, root.Onepanel.ZonePoliciesModifyRequest);
+    root.Onepanel.DnsCheckResult = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, ZonePoliciesModifyRequest) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ZoneConfigurationOnezone model module.
-   * @module model/ZoneConfigurationOnezone
+   * The DnsCheckResult model module.
+   * @module model/DnsCheckResult
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ZoneConfigurationOnezone</code>.
-   * The zone custom configuration.
-   * @alias module:model/ZoneConfigurationOnezone
+   * Constructs a new <code>DnsCheckResult</code>.
+   * 
+   * @alias module:model/DnsCheckResult
    * @class
+   * @param summary {module:model/DnsCheckResult.SummaryEnum} Presents an interpration of a DNS configuration check. Possible values are: - \"error\" -> no DNS server could be contacted to perform the check - \"unresolvable\" - checked DNS name could not be resolved - \"missing_records\" - only some of the expected results were returned by the DNS server - \"bad_records\" - none of the expected results were returned by the DNS server - \"ok\" - obtained resultsa are correct 
+   * @param expected {Array.<String>} List of expected query results. 
+   * @param got {Array.<String>} List of obtained query results. 
    */
-  var exports = function() {
+  var exports = function(summary, expected, got) {
     var _this = this;
 
-
-
-
-
+    _this['summary'] = summary;
+    _this['expected'] = expected;
+    _this['got'] = got;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneConfigurationOnezone} The value of 'discriminator' field or undefined.
+   * @return {module:model/DnsCheckResult} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneConfigurationOnezone</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DnsCheckResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfigurationOnezone} obj Optional instance to populate.
-   * @return {module:model/ZoneConfigurationOnezone} The populated <code>ZoneConfigurationOnezone</code> instance.
+   * @param {module:model/DnsCheckResult} obj Optional instance to populate.
+   * @return {module:model/DnsCheckResult} The populated <code>DnsCheckResult</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('domainName')) {
-        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
+      if (data.hasOwnProperty('summary')) {
+        obj['summary'] = ApiClient.convertToType(data['summary'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('expected')) {
+        obj['expected'] = ApiClient.convertToType(data['expected'], ['String']);
       }
-      if (data.hasOwnProperty('letsEncryptEnabled')) {
-        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('policies')) {
-        obj['policies'] = ZonePoliciesModifyRequest.constructFromObject(data['policies']);
+      if (data.hasOwnProperty('got')) {
+        obj['got'] = ApiClient.convertToType(data['got'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The name of a HTTP domain.
-   * @member {String} domainName
+   * Presents an interpration of a DNS configuration check. Possible values are: - \"error\" -> no DNS server could be contacted to perform the check - \"unresolvable\" - checked DNS name could not be resolved - \"missing_records\" - only some of the expected results were returned by the DNS server - \"bad_records\" - none of the expected results were returned by the DNS server - \"ok\" - obtained resultsa are correct 
+   * @member {module:model/DnsCheckResult.SummaryEnum} summary
    */
-  exports.prototype['domainName'] = undefined;
+  exports.prototype['summary'] = undefined;
   /**
-   * The name of a zone.
-   * @member {String} name
+   * List of expected query results. 
+   * @member {Array.<String>} expected
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['expected'] = undefined;
   /**
-   * If enabled the zone will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsEncryptEnabled
-   * @default false
+   * List of obtained query results. 
+   * @member {Array.<String>} got
    */
-  exports.prototype['letsEncryptEnabled'] = false;
-  /**
-   * @member {module:model/ZonePoliciesModifyRequest} policies
-   */
-  exports.prototype['policies'] = undefined;
+  exports.prototype['got'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>summary</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.SummaryEnum = {
+    /**
+     * value: "unresolvable"
+     * @const
+     */
+    "unresolvable": "unresolvable",
+    /**
+     * value: "missing_records"
+     * @const
+     */
+    "missing_records": "missing_records",
+    /**
+     * value: "bad_records"
+     * @const
+     */
+    "bad_records": "bad_records",
+    /**
+     * value: "ok"
+     * @const
+     */
+    "ok": "ok"  };
 
 
   return exports;

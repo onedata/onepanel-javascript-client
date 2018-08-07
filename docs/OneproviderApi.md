@@ -307,7 +307,7 @@ null (empty response body)
 
 <a name="checkProviderDns"></a>
 # **checkProviderDns**
-> DnsCheckResults checkProviderDns()
+> InlineResponse200 checkProviderDns()
 
 Check correctness of dns entries for the Oneprovider domain.
 
@@ -340,7 +340,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**DnsCheckResults**](DnsCheckResults.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

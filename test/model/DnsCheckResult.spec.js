@@ -16,106 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ZonePoliciesModifyRequest'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ZonePoliciesModifyRequest'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ZoneConfigurationOnezone = factory(root.Onepanel.ApiClient, root.Onepanel.ZonePoliciesModifyRequest);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, ZonePoliciesModifyRequest) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.DnsCheckResult();
+  });
 
-
-  /**
-   * The ZoneConfigurationOnezone model module.
-   * @module model/ZoneConfigurationOnezone
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>ZoneConfigurationOnezone</code>.
-   * The zone custom configuration.
-   * @alias module:model/ZoneConfigurationOnezone
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ZoneConfigurationOnezone} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ZoneConfigurationOnezone</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfigurationOnezone} obj Optional instance to populate.
-   * @return {module:model/ZoneConfigurationOnezone} The populated <code>ZoneConfigurationOnezone</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('domainName')) {
-        obj['domainName'] = ApiClient.convertToType(data['domainName'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('letsEncryptEnabled')) {
-        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('policies')) {
-        obj['policies'] = ZonePoliciesModifyRequest.constructFromObject(data['policies']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name of a HTTP domain.
-   * @member {String} domainName
-   */
-  exports.prototype['domainName'] = undefined;
-  /**
-   * The name of a zone.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * If enabled the zone will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
-   * @member {Boolean} letsEncryptEnabled
-   * @default false
-   */
-  exports.prototype['letsEncryptEnabled'] = false;
-  /**
-   * @member {module:model/ZonePoliciesModifyRequest} policies
-   */
-  exports.prototype['policies'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('DnsCheckResult', function() {
+    it('should create an instance of DnsCheckResult', function() {
+      // uncomment below and update the code to test DnsCheckResult
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be.a(Onepanel.DnsCheckResult);
+    });
 
+    it('should have the property summary (base name: "summary")', function() {
+      // uncomment below and update the code to test the property summary
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property expected (base name: "expected")', function() {
+      // uncomment below and update the code to test the property expected
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property got (base name: "got")', function() {
+      // uncomment below and update the code to test the property got
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

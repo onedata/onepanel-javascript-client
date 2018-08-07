@@ -187,7 +187,7 @@ null (empty response body)
 
 <a name="checkZoneDns"></a>
 # **checkZoneDns**
-> DnsCheckResults checkZoneDns()
+> InlineResponse2001 checkZoneDns()
 
 Check correctness of dns entries for the Onezone domain.
 
@@ -220,7 +220,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**DnsCheckResults**](DnsCheckResults.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 

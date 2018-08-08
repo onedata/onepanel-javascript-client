@@ -189,8 +189,8 @@
      */
 
     /**
-     * Check correctness of dns entries for the Onezone domain.
-     * Queries public dns servers to check configuration of the onezone domain. Returns whether the domain is findable and whether dns zone delegation is configured to use the builtin onezone dns server. 
+     * Check correctness of DNS entries for the Onezone domain.
+     * Queries public DNS servers to check whether Onezone&#39;s domain can be resolved in the Internet and whether DNS zone delegation has been configured to allow \&quot;subdomain delegation\&quot; functionality. 
      * @param {module:api/OnezoneApi~checkZoneDnsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DnsCheck}
      */
@@ -559,7 +559,7 @@
 
     /**
      * Get Onezone policies.
-     * Returns restrictions placed on Onezone operations such as registering providers. 
+     * Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
      * @param {module:api/OnezoneApi~getZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ZonePolicies}
      */

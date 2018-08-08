@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subdomainDelegation** | **Boolean** | If true, providers are allowed to use subdomains of the Onezone domain as their domains. | [optional] 
+**subdomainDelegation** | **Boolean** | If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains. | [optional] 
 
 

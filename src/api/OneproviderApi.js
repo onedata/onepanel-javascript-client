@@ -277,8 +277,8 @@
      */
 
     /**
-     * Check correctness of dns entries for the Oneprovider domain.
-     * Queries public dns servers to check configuration of the oneprovider domain. Checks whether the domain can be resolved in the Internet. 
+     * Check correctness of DNS entries for the Oneprovider domain.
+     * Queries public DNS servers to check whether Oneprovider&#39;s domain can be resolved in the Internet. 
      * @param {module:api/OneproviderApi~checkProviderDnsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DnsCheck}
      */

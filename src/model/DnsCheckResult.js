@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>DnsCheckResult</code>.
-   * Describes resultts obtained from a dns check. DNS check involves querying DNS servers to ensure publicly visible recorcds match expected values.
+   * Describes results obtained from a DNS check. DNS check involves querying DNS servers to ensure publicly visible records match expected values.
    * @alias module:model/DnsCheckResult
    * @class
-   * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from dns check. Possible values are: 'error' - no DNS server could be contacted to perform the check; 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
+   * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from DNS check. Possible values are: 'error' - no DNS server could be contacted to perform the check; 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
    * @param expected {Array.<String>} List of expected query results. 
    * @param got {Array.<String>} List of obtained query results. 
    */
@@ -92,7 +92,7 @@
   }
 
   /**
-   * An interpreation of results obtained from dns check. Possible values are: 'error' - no DNS server could be contacted to perform the check; 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
+   * An interpreation of results obtained from DNS check. Possible values are: 'error' - no DNS server could be contacted to perform the check; 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
    * @member {module:model/DnsCheckResult.SummaryEnum} summary
    */
   exports.prototype['summary'] = undefined;

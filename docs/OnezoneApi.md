@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**addZoneDatabases**](OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
-[**checkZoneDns**](OnezoneApi.md#checkZoneDns) | **GET** /zone/dns_check | Check correctness of dns entries for the Onezone domain.
+[**checkZoneDns**](OnezoneApi.md#checkZoneDns) | **GET** /zone/dns_check | Check correctness of DNS entries for the Onezone domain.
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
 [**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
@@ -189,9 +189,9 @@ null (empty response body)
 # **checkZoneDns**
 > DnsCheck checkZoneDns()
 
-Check correctness of dns entries for the Onezone domain.
+Check correctness of DNS entries for the Onezone domain.
 
-Queries public dns servers to check configuration of the onezone domain. Returns whether the domain is findable and whether dns zone delegation is configured to use the builtin onezone dns server. 
+Queries public DNS servers to check whether Onezone&#39;s domain can be resolved in the Internet and whether DNS zone delegation has been configured to allow \&quot;subdomain delegation\&quot; functionality. 
 
 ### Example
 ```javascript
@@ -623,7 +623,7 @@ null (empty response body)
 
 Get Onezone policies.
 
-Returns restrictions placed on Onezone operations such as registering providers. 
+Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
 
 ### Example
 ```javascript

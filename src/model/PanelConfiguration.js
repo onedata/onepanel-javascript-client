@@ -86,7 +86,7 @@
   }
 
   /**
-   * Indicates that noninteractive deployment is performed. If enabled, users entering GUI will not be asked to complete the configuration. Instead default values will be used, available for change later via appropraite GUI onepanel gui pages or via REST. 
+   * Indicates that noninteractive deployment is performed. If enabled, users entering GUI will not be asked to complete the configuration. Instead default values will be used, available for change later via appropriate onepanel GUI pages or REST. 
    * @member {Boolean} batchMode
    * @default false
    */

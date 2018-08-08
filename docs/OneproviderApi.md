@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**checkProviderDns**](OneproviderApi.md#checkProviderDns) | **GET** /provider/dns_check | Check correctness of dns entries for the Oneprovider domain.
+[**checkProviderDns**](OneproviderApi.md#checkProviderDns) | **GET** /provider/dns_check | Check correctness of DNS entries for the Oneprovider domain.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -309,9 +309,9 @@ null (empty response body)
 # **checkProviderDns**
 > DnsCheck checkProviderDns()
 
-Check correctness of dns entries for the Oneprovider domain.
+Check correctness of DNS entries for the Oneprovider domain.
 
-Queries public dns servers to check configuration of the oneprovider domain. Checks whether the domain can be resolved in the Internet. 
+Queries public DNS servers to check whether Oneprovider&#39;s domain can be resolved in the Internet. 
 
 ### Example
 ```javascript

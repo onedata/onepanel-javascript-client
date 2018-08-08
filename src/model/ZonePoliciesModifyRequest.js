@@ -81,7 +81,7 @@
   }
 
   /**
-   * If true, providers are allowed to use subdomains of the Onezone domain as their domains.
+   * If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;

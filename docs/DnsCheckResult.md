@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary** | **String** | An interpreation of results obtained from dns check. Possible values are: &#39;error&#39; - no DNS server could be contacted to perform the check; &#39;unresolvable&#39; - query returned empty results; &#39;missing_records&#39; - only some of the expected results were returned; &#39;bad_records&#39; - none of the expected results were returned; &#39;ok&#39; - all of expected values were present in obtained results.  | 
+**summary** | **String** | An interpreation of results obtained from DNS check. Possible values are: &#39;error&#39; - no DNS server could be contacted to perform the check; &#39;unresolvable&#39; - query returned empty results; &#39;missing_records&#39; - only some of the expected results were returned; &#39;bad_records&#39; - none of the expected results were returned; &#39;ok&#39; - all of expected values were present in obtained results.  | 
 **expected** | **[String]** | List of expected query results.  | 
 **got** | **[String]** | List of obtained query results.  | 
 

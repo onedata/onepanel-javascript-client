@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary** | **String** | Presents an interpration of a DNS configuration check. Possible values are:  - &#39;error&#39; - no DNS server could be contacted to perform the check - &#39;unresolvable&#39; - checked DNS name could not be resolved - &#39;missing_records&#39; - only some of the expected results were returned by the DNS server - &#39;bad_records&#39; - none of the expected results were returned by the DNS server - &#39;ok&#39; - obtained resultsa are correct  | 
+**summary** | **String** | An interpreation of results obtained from dns check. Possible values are: &#39;error&#39; - no DNS server could be contacted to perform the check; &#39;unresolvable&#39; - query returned empty results; &#39;missing_records&#39; - only some of the expected results were returned; &#39;bad_records&#39; - none of the expected results were returned; &#39;ok&#39; - all of expected values were present in obtained results.  | 
 **expected** | **[String]** | List of expected query results.  | 
 **got** | **[String]** | List of obtained query results.  | 
 
@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 <a name="SummaryEnum"></a>
 ## Enum: SummaryEnum
 
+
+* `error` (value: `"error"`)
 
 * `unresolvable` (value: `"unresolvable"`)
 

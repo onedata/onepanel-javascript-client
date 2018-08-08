@@ -16,117 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.UserCreateRequest = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.HostAddRequest();
+  });
 
-
-  /**
-   * The UserCreateRequest model module.
-   * @module model/UserCreateRequest
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>UserCreateRequest</code>.
-   * The new user account details.
-   * @alias module:model/UserCreateRequest
-   * @class
-   * @param username {String} The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
-   * @param password {String} The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
-   * @param userRole {module:model/UserCreateRequest.UserRoleEnum} The user role, one of 'admin' or 'regular'.
-   */
-  var exports = function(username, password, userRole) {
-    var _this = this;
-
-    _this['username'] = username;
-    _this['password'] = password;
-    _this['userRole'] = userRole;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/UserCreateRequest} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>UserCreateRequest</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UserCreateRequest} obj Optional instance to populate.
-   * @return {module:model/UserCreateRequest} The populated <code>UserCreateRequest</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('userRole')) {
-        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-  /**
-   * The user role, one of 'admin' or 'regular'.
-   * @member {module:model/UserCreateRequest.UserRoleEnum} userRole
-   */
-  exports.prototype['userRole'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('HostAddRequest', function() {
+    it('should create an instance of HostAddRequest', function() {
+      // uncomment below and update the code to test HostAddRequest
+      //var instane = new Onepanel.HostAddRequest();
+      //expect(instance).to.be.a(Onepanel.HostAddRequest);
+    });
 
-  /**
-   * Allowed values for the <code>userRole</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UserRoleEnum = {
-    /**
-     * value: "admin"
-     * @const
-     */
-    "admin": "admin",
-    /**
-     * value: "regular"
-     * @const
-     */
-    "regular": "regular"  };
+    it('should have the property address (base name: "address")', function() {
+      // uncomment below and update the code to test the property address
+      //var instane = new Onepanel.HostAddRequest();
+      //expect(instance).to.be();
+    });
 
+  });
 
-  return exports;
 }));
-
-

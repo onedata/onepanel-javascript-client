@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.PanelConfiguration);
     });
 
-    it('should have the property batchMode (base name: "batchMode")', function() {
-      // uncomment below and update the code to test the property batchMode
+    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
+      // uncomment below and update the code to test the property interactiveDeployment
       //var instane = new Onepanel.PanelConfiguration();
       //expect(instance).to.be();
     });

@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>DnsCheck</code>.
-   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field \&quot;domain\&quot; for checking if cluster&#39;s domain can be resolved. In Onezone additional field \&quot;dnsZone\&quot; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. 
+   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. 
    * @alias module:model/DnsCheck
    * @class
    * @param domain {module:model/DnsCheckResult} 

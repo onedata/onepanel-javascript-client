@@ -45,13 +45,12 @@
    * The panel configuration.
    * @alias module:model/PanelConfiguration
    * @class
-   * @param users {Object.<String, module:model/PanelConfigurationUsers>} The collection of user names associated with users properties.
    */
-  var exports = function(users) {
+  var exports = function() {
     var _this = this;
 
 
-    _this['users'] = users;
+
   };
 
   /**

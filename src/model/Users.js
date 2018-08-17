@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.UserCreateRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Users = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,95 +35,58 @@
 
 
   /**
-   * The UserCreateRequest model module.
-   * @module model/UserCreateRequest
+   * The Users model module.
+   * @module model/Users
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>UserCreateRequest</code>.
-   * The new user account details.
-   * @alias module:model/UserCreateRequest
+   * Constructs a new <code>Users</code>.
+   * List of onepanel user usernames. 
+   * @alias module:model/Users
    * @class
-   * @param username {String} The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
-   * @param password {String} The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
-   * @param userRole {module:model/UserCreateRequest.UserRoleEnum} The user role, one of 'admin' or 'regular'.
+   * @param usernames {Array.<String>} The list of usernames.
    */
-  var exports = function(username, password, userRole) {
+  var exports = function(usernames) {
     var _this = this;
 
-    _this['username'] = username;
-    _this['password'] = password;
-    _this['userRole'] = userRole;
+    _this['usernames'] = usernames;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/UserCreateRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/Users} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>UserCreateRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Users</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UserCreateRequest} obj Optional instance to populate.
-   * @return {module:model/UserCreateRequest} The populated <code>UserCreateRequest</code> instance.
+   * @param {module:model/Users} obj Optional instance to populate.
+   * @return {module:model/Users} The populated <code>Users</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('userRole')) {
-        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
+      if (data.hasOwnProperty('usernames')) {
+        obj['usernames'] = ApiClient.convertToType(data['usernames'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
-   * @member {String} username
+   * The list of usernames.
+   * @member {Array.<String>} usernames
    */
-  exports.prototype['username'] = undefined;
-  /**
-   * The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-  /**
-   * The user role, one of 'admin' or 'regular'.
-   * @member {module:model/UserCreateRequest.UserRoleEnum} userRole
-   */
-  exports.prototype['userRole'] = undefined;
+  exports.prototype['usernames'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>userRole</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UserRoleEnum = {
-    /**
-     * value: "admin"
-     * @const
-     */
-    "admin": "admin",
-    /**
-     * value: "regular"
-     * @const
-     */
-    "regular": "regular"  };
 
 
   return exports;

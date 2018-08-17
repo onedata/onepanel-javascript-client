@@ -101,10 +101,50 @@
         done();
       });
     });
+    describe('getClusters', function() {
+      it('should call getClusters successfully', function(done) {
+        //uncomment below and update the code to test getClusters
+        //instance.getClusters(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getClusters_0', function() {
+      it('should call getClusters_0 successfully', function(done) {
+        //uncomment below and update the code to test getClusters_0
+        //instance.getClusters_0(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCurrentUser', function() {
+      it('should call getCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test getCurrentUser
+        //instance.getCurrentUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getNode', function() {
       it('should call getNode successfully', function(done) {
         //uncomment below and update the code to test getNode
         //instance.getNode(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getNode_0', function() {
+      it('should call getNode_0 successfully', function(done) {
+        //uncomment below and update the code to test getNode_0
+        //instance.getNode_0(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -141,6 +181,16 @@
         done();
       });
     });
+    describe('getUserLink', function() {
+      it('should call getUserLink successfully', function(done) {
+        //uncomment below and update the code to test getUserLink
+        //instance.getUserLink(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getUsers', function() {
       it('should call getUsers successfully', function(done) {
         //uncomment below and update the code to test getUsers
@@ -165,6 +215,16 @@
       it('should call joinCluster successfully', function(done) {
         //uncomment below and update the code to test joinCluster
         //instance.joinCluster(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyCurrentUser', function() {
+      it('should call modifyCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test modifyCurrentUser
+        //instance.modifyCurrentUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -201,6 +261,16 @@
         done();
       });
     });
+    describe('removeCurrentUser', function() {
+      it('should call removeCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test removeCurrentUser
+        //instance.removeCurrentUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('removeSession', function() {
       it('should call removeSession successfully', function(done) {
         //uncomment below and update the code to test removeSession
@@ -215,6 +285,16 @@
       it('should call removeUser successfully', function(done) {
         //uncomment below and update the code to test removeUser
         //instance.removeUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeUserLink', function() {
+      it('should call removeUserLink successfully', function(done) {
+        //uncomment below and update the code to test removeUserLink
+        //instance.removeUserLink(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

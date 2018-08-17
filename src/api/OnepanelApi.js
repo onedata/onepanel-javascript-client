@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/Clusters', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/OnezoneUserDetails', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/Clusters'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/OnezoneUserDetails'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.Clusters, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.OnezoneUserDetails, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, Error, Host, HostAddRequest, JoinClusterRequest, Node, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, Clusters, Error, Host, HostAddRequest, JoinClusterRequest, Node, OnezoneUserDetails, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -255,6 +255,130 @@
     }
 
     /**
+     * Callback function to receive the result of the getClusters operation.
+     * @callback module:api/OnepanelApi~getClustersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Clusters} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List user&#39;s clusters
+     * Lists clusters linked with current user&#39;s account. 
+     * @param {module:api/OnepanelApi~getClustersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Clusters}
+     */
+    this.getClusters = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = Clusters;
+
+      return this.apiClient.callApi(
+        '/user/clusters', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClusters_0 operation.
+     * @callback module:api/OnepanelApi~getClusters_0Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of a user&#39;s cluster
+     * Lists clusters linked with current user&#39;s account. 
+     * @param {String} id Cluster id which details should be returned.
+     * @param {module:api/OnepanelApi~getClusters_0Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getClusters_0 = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getClusters_0");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCurrentUser operation.
+     * @callback module:api/OnepanelApi~getCurrentUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/UserDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Onepanel user details of currently logged in user.
+     * Returns the configuration information of the Onepanel user performing the query. 
+     * @param {module:api/OnepanelApi~getCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/UserDetails}
+     */
+    this.getCurrentUser = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = UserDetails;
+
+      return this.apiClient.callApi(
+        '/user', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getNode operation.
      * @callback module:api/OnepanelApi~getNodeCallback
      * @param {String} error Error message, if any.
@@ -288,6 +412,49 @@
 
       return this.apiClient.callApi(
         '/node', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getNode_0 operation.
+     * @callback module:api/OnepanelApi~getNode_0Callback
+     * @param {String} error Error message, if any.
+     * @param {'String'} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get information needed for logging in via Onezone.
+     * Returns URL used to redirect user to Onezone connection page. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} opts.action  (default to login)
+     * @param {module:api/OnepanelApi~getNode_0Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
+     */
+    this.getNode_0 = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'action': opts['action']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/onezone_login', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -425,6 +592,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getUserLink operation.
+     * @callback module:api/OnepanelApi~getUserLinkCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/OnezoneUserDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of Onezone account linked to current user.
+     * Returns details of Onezone user account linked to the currently logged in user. 
+     * @param {module:api/OnepanelApi~getUserLinkCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/OnezoneUserDetails}
+     */
+    this.getUserLink = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = OnezoneUserDetails;
+
+      return this.apiClient.callApi(
+        '/user/link', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getUsers operation.
      * @callback module:api/OnepanelApi~getUsersCallback
      * @param {String} error Error message, if any.
@@ -545,6 +751,50 @@
 
       return this.apiClient.callApi(
         '/join_cluster', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyCurrentUser operation.
+     * @callback module:api/OnepanelApi~modifyCurrentUserCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify Onepanel user details of currently logged in user.
+     * Modifies the Onepanel user password. 
+     * @param {module:model/UserModifyRequest} userModifyRequest 
+     * @param {module:api/OnepanelApi~modifyCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyCurrentUser = function(userModifyRequest, callback) {
+      var postBody = userModifyRequest;
+
+      // verify the required parameter 'userModifyRequest' is set
+      if (userModifyRequest === undefined || userModifyRequest === null) {
+        throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyCurrentUser");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/user', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -691,6 +941,44 @@
     }
 
     /**
+     * Callback function to receive the result of the removeCurrentUser operation.
+     * @callback module:api/OnepanelApi~removeCurrentUserCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove the currently logged in Onepanel user
+     * Removes the Onepanel user account. 
+     * @param {module:api/OnepanelApi~removeCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeCurrentUser = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/user', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the removeSession operation.
      * @callback module:api/OnepanelApi~removeSessionCallback
      * @param {String} error Error message, if any.
@@ -768,6 +1056,44 @@
 
       return this.apiClient.callApi(
         '/users/{username}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeUserLink operation.
+     * @callback module:api/OnepanelApi~removeUserLinkCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Detach Onepanel user from the linked Onezone account.
+     * Removes link between Onepanel user and a Onezone account. 
+     * @param {module:api/OnepanelApi~removeUserLinkCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeUserLink = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/user/link', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

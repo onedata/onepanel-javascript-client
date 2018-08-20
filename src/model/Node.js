@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Node = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,85 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The Node model module.
+   * @module model/Node
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>Node</code>.
+   * Details of a onepanel node.
+   * @alias module:model/Node
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param hostname {String} Hostname of the node.
+   * @param componentType {module:model/Node.ComponentTypeEnum} Type of Onedata component managed by this onepanel.
    */
-  var exports = function(status) {
+  var exports = function(hostname, componentType) {
     var _this = this;
 
-    _this['status'] = status;
+    _this['hostname'] = hostname;
+    _this['componentType'] = componentType;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/Node} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Node</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/Node} obj Optional instance to populate.
+   * @return {module:model/Node} The populated <code>Node</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+      }
+      if (data.hasOwnProperty('componentType')) {
+        obj['componentType'] = ApiClient.convertToType(data['componentType'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * Hostname of the node.
+   * @member {String} hostname
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['hostname'] = undefined;
+  /**
+   * Type of Onedata component managed by this onepanel.
+   * @member {module:model/Node.ComponentTypeEnum} componentType
+   */
+  exports.prototype['componentType'] = undefined;
 
 
   /**
-   * Allowed values for the <code>status</code> property.
+   * Allowed values for the <code>componentType</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.StatusEnum = {
+  exports.ComponentTypeEnum = {
     /**
-     * value: "healthy"
+     * value: "oneprovider"
      * @const
      */
-    "healthy": "healthy",
+    "oneprovider": "oneprovider",
     /**
-     * value: "unhealthy"
+     * value: "onezone"
      * @const
      */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
+    "onezone": "onezone"  };
 
 
   return exports;

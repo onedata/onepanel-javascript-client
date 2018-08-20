@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DnsCheck();
+    instance = new Onepanel.DnsCheckConfiguration();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,16 @@
       object[property] = value;
   }
 
-  describe('DnsCheck', function() {
-    it('should create an instance of DnsCheck', function() {
-      // uncomment below and update the code to test DnsCheck
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be.a(Onepanel.DnsCheck);
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property dnsZone (base name: "dnsZone")', function() {
-      // uncomment below and update the code to test the property dnsZone
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
+  describe('DnsCheckConfiguration', function() {
+    it('should create an instance of DnsCheckConfiguration', function() {
+      // uncomment below and update the code to test DnsCheckConfiguration
+      //var instane = new Onepanel.DnsCheckConfiguration();
+      //expect(instance).to.be.a(Onepanel.DnsCheckConfiguration);
     });
 
     it('should have the property dnsServers (base name: "dnsServers")', function() {
       // uncomment below and update the code to test the property dnsServers
-      //var instane = new Onepanel.DnsCheck();
+      //var instane = new Onepanel.DnsCheckConfiguration();
       //expect(instance).to.be();
     });
 

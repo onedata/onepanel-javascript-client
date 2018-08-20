@@ -46,12 +46,14 @@
    * @alias module:model/DnsCheck
    * @class
    * @param domain {module:model/DnsCheckResult} 
+   * @param dnsServers {Array.<String>} List of IP addresses of DNS servers used for the check.
    */
-  var exports = function(domain) {
+  var exports = function(domain, dnsServers) {
     var _this = this;
 
     _this['domain'] = domain;
 
+    _this['dnsServers'] = dnsServers;
   };
 
   /**
@@ -81,6 +83,9 @@
       if (data.hasOwnProperty('dnsZone')) {
         obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
       }
+      if (data.hasOwnProperty('dnsServers')) {
+        obj['dnsServers'] = ApiClient.convertToType(data['dnsServers'], ['String']);
+      }
     }
     return obj;
   }
@@ -93,6 +98,11 @@
    * @member {module:model/DnsCheckResult} dnsZone
    */
   exports.prototype['dnsZone'] = undefined;
+  /**
+   * List of IP addresses of DNS servers used for the check.
+   * @member {Array.<String>} dnsServers
+   */
+  exports.prototype['dnsServers'] = undefined;
 
 
 

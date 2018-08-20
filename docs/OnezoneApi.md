@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+[**modifyDnsCheck**](OnezoneApi.md#modifyDnsCheck) | **PATCH** /zone/dns_check | Configure dns check
 [**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 [**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
@@ -760,6 +761,58 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="modifyDnsCheck"></a>
+# **modifyDnsCheck**
+> modifyDnsCheck(dnsCheckConfiguration)
+
+Configure dns check
+
+Informs what DNS servers to use for checking external DNS records validity. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var dnsCheckConfiguration = new Onepanel.DnsCheckConfiguration(); // DnsCheckConfiguration | The configuration chagnes.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyDnsCheck(dnsCheckConfiguration, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dnsCheckConfiguration** | [**DnsCheckConfiguration**](DnsCheckConfiguration.md)| The configuration chagnes. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
 
 <a name="modifyZoneClusterIps"></a>
 # **modifyZoneClusterIps**

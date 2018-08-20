@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**invalidateLumaCache**](docs/OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
+*Onepanel.OneproviderApi* | [**modifyDnsCheck**](docs/OneproviderApi.md#modifyDnsCheck) | **PATCH** /provider/dns_check | Configure dns check
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
@@ -168,6 +169,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**getZonePolicies**](docs/OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 *Onepanel.OnezoneApi* | [**getZoneWorkerStatus**](docs/OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 *Onepanel.OnezoneApi* | [**getZoneWorkersStatus**](docs/OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+*Onepanel.OnezoneApi* | [**modifyDnsCheck**](docs/OnezoneApi.md#modifyDnsCheck) | **PATCH** /zone/dns_check | Configure dns check
 *Onepanel.OnezoneApi* | [**modifyZoneClusterIps**](docs/OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OnezoneApi* | [**modifyZonePolicies**](docs/OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 *Onepanel.OnezoneApi* | [**startStopZoneDatabases**](docs/OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
@@ -188,6 +190,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
+ - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
  - [Onepanel.DnsCheckResult](docs/DnsCheckResult.md)
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)

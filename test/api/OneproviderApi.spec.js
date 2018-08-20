@@ -301,6 +301,16 @@
         done();
       });
     });
+    describe('modifyDnsCheck', function() {
+      it('should call modifyDnsCheck successfully', function(done) {
+        //uncomment below and update the code to test modifyDnsCheck
+        //instance.modifyDnsCheck(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyProvider', function() {
       it('should call modifyProvider successfully', function(done) {
         //uncomment below and update the code to test modifyProvider

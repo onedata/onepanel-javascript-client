@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 [**invalidateLumaCache**](OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
+[**modifyDnsCheck**](OneproviderApi.md#modifyDnsCheck) | **PATCH** /provider/dns_check | Configure dns check
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
@@ -1292,6 +1293,58 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="modifyDnsCheck"></a>
+# **modifyDnsCheck**
+> modifyDnsCheck(dnsCheckConfiguration)
+
+Configure dns check
+
+Informs what DNS servers to use for checking external DNS records validity. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var dnsCheckConfiguration = new Onepanel.DnsCheckConfiguration(); // DnsCheckConfiguration | The configuration chagnes.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyDnsCheck(dnsCheckConfiguration, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dnsCheckConfiguration** | [**DnsCheckConfiguration**](DnsCheckConfiguration.md)| The configuration chagnes. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
 <a name="modifyProvider"></a>

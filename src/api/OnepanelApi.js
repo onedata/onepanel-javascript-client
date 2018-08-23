@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Cookie', 'model/Error', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/Error'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.Error, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, Cookie, Error, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, Cookie, DnsCheck, DnsCheckConfiguration, Error, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -87,6 +87,45 @@
 
       return this.apiClient.callApi(
         '/users', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the checkDns operation.
+     * @callback module:api/OnepanelApi~checkDnsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheck} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Check correctness of DNS entries for the cluster&#39;s domain.
+     * Queries public DNS servers to check whether domain of the cluster can be resolved in the Internet. 
+     * @param {module:api/OnepanelApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheck}
+     */
+    this.checkDns = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheck;
+
+      return this.apiClient.callApi(
+        '/dns_check', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -257,6 +296,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getDnsCheckConfiguration operation.
+     * @callback module:api/OnepanelApi~getDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheckConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Return settings used when performing the DNS check.
+     * Returns servers queried to check DNS configuration correctness. 
+     * @param {module:api/OnepanelApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheckConfiguration}
+     */
+    this.getDnsCheckConfiguration = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheckConfiguration;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getSession operation.
      * @callback module:api/OnepanelApi~getSessionCallback
      * @param {String} error Error message, if any.
@@ -421,6 +499,50 @@
 
       return this.apiClient.callApi(
         '/web_cert', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyDnsCheckConfiguration operation.
+     * @callback module:api/OnepanelApi~modifyDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Configure dns check
+     * Informs what DNS servers to use for checking external DNS records validity. 
+     * @param {module:model/DnsCheckConfiguration} dnsCheckConfiguration The configuration changes.
+     * @param {module:api/OnepanelApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyDnsCheckConfiguration = function(dnsCheckConfiguration, callback) {
+      var postBody = dnsCheckConfiguration;
+
+      // verify the required parameter 'dnsCheckConfiguration' is set
+      if (dnsCheckConfiguration === undefined || dnsCheckConfiguration === null) {
+        throw new Error("Missing the required parameter 'dnsCheckConfiguration' when calling modifyDnsCheckConfiguration");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

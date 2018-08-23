@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property dnsServers (base name: "dnsServers")', function() {
-      // uncomment below and update the code to test the property dnsServers
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

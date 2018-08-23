@@ -48,13 +48,15 @@
    * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from DNS check. Possible values are: 'error' - no DNS server could be contacted to perform the check; 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
    * @param expected {Array.<String>} List of expected query results. 
    * @param got {Array.<String>} List of obtained query results. 
+   * @param recommended {Array.<String>} List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
    */
-  var exports = function(summary, expected, got) {
+  var exports = function(summary, expected, got, recommended) {
     var _this = this;
 
     _this['summary'] = summary;
     _this['expected'] = expected;
     _this['got'] = got;
+    _this['recommended'] = recommended;
   };
 
   /**
@@ -87,6 +89,9 @@
       if (data.hasOwnProperty('got')) {
         obj['got'] = ApiClient.convertToType(data['got'], ['String']);
       }
+      if (data.hasOwnProperty('recommended')) {
+        obj['recommended'] = ApiClient.convertToType(data['recommended'], ['String']);
+      }
     }
     return obj;
   }
@@ -106,6 +111,11 @@
    * @member {Array.<String>} got
    */
   exports.prototype['got'] = undefined;
+  /**
+   * List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
+   * @member {Array.<String>} recommended
+   */
+  exports.prototype['recommended'] = undefined;
 
 
   /**

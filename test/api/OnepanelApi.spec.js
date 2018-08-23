@@ -61,6 +61,16 @@
         done();
       });
     });
+    describe('checkDns', function() {
+      it('should call checkDns successfully', function(done) {
+        //uncomment below and update the code to test checkDns
+        //instance.checkDns(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createCluster', function() {
       it('should call createCluster successfully', function(done) {
         //uncomment below and update the code to test createCluster
@@ -101,6 +111,16 @@
         done();
       });
     });
+    describe('getDnsCheckConfiguration', function() {
+      it('should call getDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getDnsCheckConfiguration
+        //instance.getDnsCheckConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getSession', function() {
       it('should call getSession successfully', function(done) {
         //uncomment below and update the code to test getSession
@@ -135,6 +155,16 @@
       it('should call getWebCert successfully', function(done) {
         //uncomment below and update the code to test getWebCert
         //instance.getWebCert(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyDnsCheckConfiguration', function() {
+      it('should call modifyDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test modifyDnsCheckConfiguration
+        //instance.modifyDnsCheckConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

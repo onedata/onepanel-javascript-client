@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property builtInDnsServer (base name: "builtInDnsServer")', function() {
+      // uncomment below and update the code to test the property builtInDnsServer
+      //var instane = new Onepanel.DnsCheckConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

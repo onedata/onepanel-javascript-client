@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property recommended (base name: "recommended")', function() {
+      // uncomment below and update the code to test the property recommended
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -42,18 +42,16 @@
 
   /**
    * Constructs a new <code>DnsCheck</code>.
-   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. 
+   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. 
    * @alias module:model/DnsCheck
    * @class
    * @param domain {module:model/DnsCheckResult} 
-   * @param dnsServers {Array.<String>} List of IP addresses of DNS servers used for the check.
    */
-  var exports = function(domain, dnsServers) {
+  var exports = function(domain) {
     var _this = this;
 
     _this['domain'] = domain;
 
-    _this['dnsServers'] = dnsServers;
   };
 
   /**
@@ -83,9 +81,6 @@
       if (data.hasOwnProperty('dnsZone')) {
         obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
       }
-      if (data.hasOwnProperty('dnsServers')) {
-        obj['dnsServers'] = ApiClient.convertToType(data['dnsServers'], ['String']);
-      }
     }
     return obj;
   }
@@ -98,11 +93,6 @@
    * @member {module:model/DnsCheckResult} dnsZone
    */
   exports.prototype['dnsZone'] = undefined;
-  /**
-   * List of IP addresses of DNS servers used for the check.
-   * @member {Array.<String>} dnsServers
-   */
-  exports.prototype['dnsServers'] = undefined;
 
 
 

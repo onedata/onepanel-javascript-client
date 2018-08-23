@@ -81,16 +81,6 @@
         done();
       });
     });
-    describe('checkZoneDns', function() {
-      it('should call checkZoneDns successfully', function(done) {
-        //uncomment below and update the code to test checkZoneDns
-        //instance.checkZoneDns(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureZone', function() {
       it('should call configureZone successfully', function(done) {
         //uncomment below and update the code to test configureZone
@@ -195,16 +185,6 @@
       it('should call getZoneWorkersStatus successfully', function(done) {
         //uncomment below and update the code to test getZoneWorkersStatus
         //instance.getZoneWorkersStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyDnsCheck', function() {
-      it('should call modifyDnsCheck successfully', function(done) {
-        //uncomment below and update the code to test modifyDnsCheck
-        //instance.modifyDnsCheck(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -45,12 +45,12 @@
    * Configuration of the dns check to be modified.
    * @alias module:model/DnsCheckConfiguration
    * @class
-   * @param dnsServers {Array.<String>} A collection of dns server addresses. From now on these servers will be used for dns checks.
    */
-  var exports = function(dnsServers) {
+  var exports = function() {
     var _this = this;
 
-    _this['dnsServers'] = dnsServers;
+
+
   };
 
   /**
@@ -77,15 +77,23 @@
       if (data.hasOwnProperty('dnsServers')) {
         obj['dnsServers'] = ApiClient.convertToType(data['dnsServers'], ['String']);
       }
+      if (data.hasOwnProperty('builtInDnsServer')) {
+        obj['builtInDnsServer'] = ApiClient.convertToType(data['builtInDnsServer'], 'Boolean');
+      }
     }
     return obj;
   }
 
   /**
-   * A collection of dns server addresses. From now on these servers will be used for dns checks.
+   * A collection of IP address for DNS servers used in checking DNS.
    * @member {Array.<String>} dnsServers
    */
   exports.prototype['dnsServers'] = undefined;
+  /**
+   * If true, DNS check will verify that control of DNS zone of Onezone's domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service. 
+   * @member {Boolean} builtInDnsServer
+   */
+  exports.prototype['builtInDnsServer'] = undefined;
 
 
 

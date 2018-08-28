@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property dnsCheckAcknowledged (base name: "dnsCheckAcknowledged")', function() {
+      // uncomment below and update the code to test the property dnsCheckAcknowledged
+      //var instane = new Onepanel.DnsCheckConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

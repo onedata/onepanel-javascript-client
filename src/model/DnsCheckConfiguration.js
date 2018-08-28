@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -80,6 +81,9 @@
       if (data.hasOwnProperty('builtInDnsServer')) {
         obj['builtInDnsServer'] = ApiClient.convertToType(data['builtInDnsServer'], 'Boolean');
       }
+      if (data.hasOwnProperty('dnsCheckAcknowledged')) {
+        obj['dnsCheckAcknowledged'] = ApiClient.convertToType(data['dnsCheckAcknowledged'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -94,6 +98,11 @@
    * @member {Boolean} builtInDnsServer
    */
   exports.prototype['builtInDnsServer'] = undefined;
+  /**
+   * Marks that the DNS check is turned out correct or user has been presented with any negative results. 
+   * @member {Boolean} dnsCheckAcknowledged
+   */
+  exports.prototype['dnsCheckAcknowledged'] = undefined;
 
 
 

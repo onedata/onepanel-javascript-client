@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies', 'model/ZonePoliciesModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'), require('../model/ZonePoliciesModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies, root.Onepanel.ZonePoliciesModifyRequest);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
   }
-}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies, ZonePoliciesModifyRequest) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
   'use strict';
 
   /**
@@ -689,15 +689,15 @@
     /**
      * Modify current Onezone policies
      * Modifies restrictions placed on Onezone operations such as registering providers. 
-     * @param {module:model/ZonePoliciesModifyRequest} zonePoliciesModifyRequest New values for Onezone policies. 
+     * @param {module:model/ZonePolicies} zonePolicies New values for Onezone policies.
      * @param {module:api/OnezoneApi~modifyZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifyZonePolicies = function(zonePoliciesModifyRequest, callback) {
-      var postBody = zonePoliciesModifyRequest;
+    this.modifyZonePolicies = function(zonePolicies, callback) {
+      var postBody = zonePolicies;
 
-      // verify the required parameter 'zonePoliciesModifyRequest' is set
-      if (zonePoliciesModifyRequest === undefined || zonePoliciesModifyRequest === null) {
-        throw new Error("Missing the required parameter 'zonePoliciesModifyRequest' when calling modifyZonePolicies");
+      // verify the required parameter 'zonePolicies' is set
+      if (zonePolicies === undefined || zonePolicies === null) {
+        throw new Error("Missing the required parameter 'zonePolicies' when calling modifyZonePolicies");
       }
 
 

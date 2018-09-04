@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property timestamp (base name: "timestamp")', function() {
+      // uncomment below and update the code to test the property timestamp
+      //var instane = new Onepanel.DnsCheck();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

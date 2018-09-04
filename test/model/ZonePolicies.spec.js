@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.ZonePolicies);
     });
 
-    it('should have the property isConfigured (base name: "isConfigured")', function() {
-      // uncomment below and update the code to test the property isConfigured
-      //var instane = new Onepanel.ZonePolicies();
-      //expect(instance).to.be();
-    });
-
     it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
       // uncomment below and update the code to test the property subdomainDelegation
       //var instane = new Onepanel.ZonePolicies();

@@ -245,7 +245,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
- - [Onepanel.ZonePoliciesModifyRequest](docs/ZonePoliciesModifyRequest.md)
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)

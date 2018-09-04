@@ -42,16 +42,17 @@
 
   /**
    * Constructs a new <code>DnsCheck</code>.
-   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. 
+   * Gathers results of DNS checks for various aspect&#39;s of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither \&quot;domain\&quot; nor \&quot;dnsZone\&quot; is returned. 
    * @alias module:model/DnsCheck
    * @class
-   * @param domain {module:model/DnsCheckResult} 
+   * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
    */
-  var exports = function(domain) {
+  var exports = function(timestamp) {
     var _this = this;
 
-    _this['domain'] = domain;
 
+
+    _this['timestamp'] = timestamp;
   };
 
   /**
@@ -81,6 +82,9 @@
       if (data.hasOwnProperty('dnsZone')) {
         obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
       }
+      if (data.hasOwnProperty('timestamp')) {
+        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], 'String');
+      }
     }
     return obj;
   }
@@ -93,6 +97,11 @@
    * @member {module:model/DnsCheckResult} dnsZone
    */
   exports.prototype['dnsZone'] = undefined;
+  /**
+   * Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
+   * @member {String} timestamp
+   */
+  exports.prototype['timestamp'] = undefined;
 
 
 

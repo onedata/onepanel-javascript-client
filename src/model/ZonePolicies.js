@@ -45,13 +45,11 @@
    * State of Onezone operation policies.
    * @alias module:model/ZonePolicies
    * @class
-   * @param isConfigured {Boolean} Indicates that the configuration has already been set by the user.
    * @param subdomainDelegation {Boolean} If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
    */
-  var exports = function(isConfigured, subdomainDelegation) {
+  var exports = function(subdomainDelegation) {
     var _this = this;
 
-    _this['isConfigured'] = isConfigured;
     _this['subdomainDelegation'] = subdomainDelegation;
   };
 
@@ -76,9 +74,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('isConfigured')) {
-        obj['isConfigured'] = ApiClient.convertToType(data['isConfigured'], 'Boolean');
-      }
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
@@ -86,11 +81,6 @@
     return obj;
   }
 
-  /**
-   * Indicates that the configuration has already been set by the user.
-   * @member {Boolean} isConfigured
-   */
-  exports.prototype['isConfigured'] = undefined;
   /**
    * If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
    * @member {Boolean} subdomainDelegation

@@ -768,7 +768,7 @@ null (empty response body)
 
 <a name="modifyZonePolicies"></a>
 # **modifyZonePolicies**
-> modifyZonePolicies(zonePoliciesModifyRequest)
+> modifyZonePolicies(zonePolicies)
 
 Modify current Onezone policies
 
@@ -786,7 +786,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var zonePoliciesModifyRequest = new Onepanel.ZonePoliciesModifyRequest(); // ZonePoliciesModifyRequest | New values for Onezone policies. 
+var zonePolicies = new Onepanel.ZonePolicies(); // ZonePolicies | New values for Onezone policies.
 
 
 var callback = function(error, data, response) {
@@ -796,14 +796,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.modifyZonePolicies(zonePoliciesModifyRequest, callback);
+apiInstance.modifyZonePolicies(zonePolicies, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **zonePoliciesModifyRequest** | [**ZonePoliciesModifyRequest**](ZonePoliciesModifyRequest.md)| New values for Onezone policies.  | 
+ **zonePolicies** | [**ZonePolicies**](ZonePolicies.md)| New values for Onezone policies. | 
 
 ### Return type
 

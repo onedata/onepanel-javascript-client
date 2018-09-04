@@ -77,11 +77,11 @@ null (empty response body)
 
 <a name="checkDns"></a>
 # **checkDns**
-> DnsCheck checkDns()
+> DnsCheck checkDns(opts)
 
 Check correctness of DNS entries for the cluster&#39;s domain.
 
-Queries public DNS servers to check whether domain of the cluster can be resolved in the Internet. 
+Queries public DNS servers to check whether domain of the cluster can be resolved in the Internet. If the cluster is configured with IP instead of a domain no results are returned. 
 
 ### Example
 ```javascript
@@ -95,6 +95,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
+var opts = { 
+  'forceCheck': false // Boolean | If true the DNS check is overriden and check is performed during handling of the request.
+};
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -102,11 +106,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.checkDns(callback);
+apiInstance.checkDns(opts, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **forceCheck** | **Boolean**| If true the DNS check is overriden and check is performed during handling of the request. | [optional] [default to false]
 
 ### Return type
 

@@ -99,7 +99,7 @@
    */
   exports.prototype['builtInDnsServer'] = undefined;
   /**
-   * Marks that the DNS check is turned out correct or user has been presented with any negative results. 
+   * Marks that the during an interactive deployment user has passed through the DNS check step. 
    * @member {Boolean} dnsCheckAcknowledged
    */
   exports.prototype['dnsCheckAcknowledged'] = undefined;

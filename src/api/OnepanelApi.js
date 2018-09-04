@@ -104,7 +104,7 @@
      * Check correctness of DNS entries for the cluster&#39;s domain.
      * Queries public DNS servers to check whether domain of the cluster can be resolved in the Internet. If the cluster is configured with IP instead of a domain no results are returned. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.forceCheck If true the DNS check is overriden and check is performed during handling of the request. (default to false)
+     * @param {Boolean} opts.forceCheck If true the DNS check cache is overriden and check is performed during handling of the request. (default to false)
      * @param {module:api/OnepanelApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DnsCheck}
      */

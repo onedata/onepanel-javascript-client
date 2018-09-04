@@ -45,12 +45,11 @@
    * State of Onezone operation policies.
    * @alias module:model/ZonePolicies
    * @class
-   * @param subdomainDelegation {Boolean} If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
    */
-  var exports = function(subdomainDelegation) {
+  var exports = function() {
     var _this = this;
 
-    _this['subdomainDelegation'] = subdomainDelegation;
+
   };
 
   /**

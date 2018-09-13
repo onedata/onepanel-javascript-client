@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dnsServers** | **[String]** | A collection of IP address for DNS servers used in checking DNS. | [optional] 
+**dnsServers** | **[String]** | A collection of IP addresses for DNS servers used in checking DNS. | [optional] 
 **builtInDnsServer** | **Boolean** | If true, DNS check will verify that control of DNS zone of Onezone&#39;s domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service.  | [optional] 
-**dnsCheckAcknowledged** | **Boolean** | Marks that the during an interactive deployment user has passed through the DNS check step.  | [optional] 
+**dnsCheckAcknowledged** | **Boolean** | Flag indicating that user completed the DNS check step during interactive deployment.  | [optional] 
 
 

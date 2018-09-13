@@ -102,7 +102,7 @@
 
     /**
      * Check correctness of DNS entries for the cluster&#39;s domain.
-     * Queries public DNS servers to check whether domain of the cluster can be resolved in the Internet. If the cluster is configured with IP instead of a domain no results are returned. 
+     * Returns results of the last DNS check, verifying validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.forceCheck If true the DNS check cache is overriden and check is performed during handling of the request. (default to false)
      * @param {module:api/OnepanelApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response

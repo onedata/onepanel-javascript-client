@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>DnsCheckConfiguration</code>.
-   * Configuration of the dns check to be modified.
+   * Configuration of the &#39;dns_check&#39; method calls.
    * @alias module:model/DnsCheckConfiguration
    * @class
    */
@@ -89,7 +89,7 @@
   }
 
   /**
-   * A collection of IP address for DNS servers used in checking DNS.
+   * A collection of IP addresses for DNS servers used in checking DNS.
    * @member {Array.<String>} dnsServers
    */
   exports.prototype['dnsServers'] = undefined;
@@ -99,7 +99,7 @@
    */
   exports.prototype['builtInDnsServer'] = undefined;
   /**
-   * Marks that the during an interactive deployment user has passed through the DNS check step. 
+   * Flag indicating that user completed the DNS check step during interactive deployment. 
    * @member {Boolean} dnsCheckAcknowledged
    */
   exports.prototype['dnsCheckAcknowledged'] = undefined;

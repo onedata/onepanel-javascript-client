@@ -141,10 +141,10 @@
         done();
       });
     });
-    describe('getNode_0', function() {
-      it('should call getNode_0 successfully', function(done) {
-        //uncomment below and update the code to test getNode_0
-        //instance.getNode_0(function(error) {
+    describe('getOnezoneLogin', function() {
+      it('should call getOnezoneLogin successfully', function(done) {
+        //uncomment below and update the code to test getOnezoneLogin
+        //instance.getOnezoneLogin(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

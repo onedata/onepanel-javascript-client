@@ -109,7 +109,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getClusters_0**](docs/OnepanelApi.md#getClusters_0) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
-*Onepanel.OnepanelApi* | [**getNode_0**](docs/OnepanelApi.md#getNode_0) | **GET** /onezone_login | Get information needed for logging in via Onezone.
+*Onepanel.OnepanelApi* | [**getOnezoneLogin**](docs/OnepanelApi.md#getOnezoneLogin) | **GET** /onezone_login | Get information needed for logging in via Onezone.
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
+ - [Onepanel.OnezoneRedirect](docs/OnezoneRedirect.md)
  - [Onepanel.OnezoneUserDetails](docs/OnezoneUserDetails.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)

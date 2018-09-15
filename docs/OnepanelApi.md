@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**getClusters_0**](OnepanelApi.md#getClusters_0) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
-[**getNode_0**](OnepanelApi.md#getNode_0) | **GET** /onezone_login | Get information needed for logging in via Onezone.
+[**getOnezoneLogin**](OnepanelApi.md#getOnezoneLogin) | **GET** /onezone_login | Get information needed for logging in via Onezone.
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -463,9 +463,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getNode_0"></a>
-# **getNode_0**
-> &#39;String&#39; getNode_0(opts)
+<a name="getOnezoneLogin"></a>
+# **getOnezoneLogin**
+> OnezoneRedirect getOnezoneLogin(opts)
 
 Get information needed for logging in via Onezone.
 
@@ -494,7 +494,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getNode_0(opts, callback);
+apiInstance.getOnezoneLogin(opts, callback);
 ```
 
 ### Parameters
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**&#39;String&#39;**
+[**OnezoneRedirect**](OnezoneRedirect.md)
 
 ### Authorization
 

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
+    instance = new Onepanel.Webdav();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,70 @@
       object[property] = value;
   }
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
+  describe('Webdav', function() {
+    it('should create an instance of Webdav', function() {
+      // uncomment below and update the code to test Webdav
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be.a(Onepanel.Webdav);
     });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property endpoint (base name: "endpoint")', function() {
+      // uncomment below and update the code to test the property endpoint
+      //var instane = new Onepanel.Webdav();
       //expect(instance).to.be();
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentials (base name: "credentials")', function() {
+      // uncomment below and update the code to test the property credentials
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rangeWriteSupport (base name: "rangeWriteSupport")', function() {
+      // uncomment below and update the code to test the property rangeWriteSupport
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Webdav();
       //expect(instance).to.be();
     });
 

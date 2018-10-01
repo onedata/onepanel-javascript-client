@@ -15,9 +15,11 @@ Method | HTTP request | Description
 [**getZoneManagerStatus**](OnezoneApi.md#getZoneManagerStatus) | **GET** /zone/managers/{host} | Get zone cluster manager status
 [**getZoneManagersStatus**](OnezoneApi.md#getZoneManagersStatus) | **GET** /zone/managers | Get zone cluster managers status
 [**getZoneNagiosReport**](OnezoneApi.md#getZoneNagiosReport) | **GET** /zone/nagios | Get zone nagios report
+[**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
 [**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
+[**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
 [**startStopZoneDatabasesHost**](OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
 [**startStopZoneManager**](OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager
@@ -568,6 +570,52 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: text/xml
 
+<a name="getZonePolicies"></a>
+# **getZonePolicies**
+> ZonePolicies getZonePolicies()
+
+Get Onezone policies.
+
+Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZonePolicies(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ZonePolicies**](ZonePolicies.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getZoneWorkerStatus"></a>
 # **getZoneWorkerStatus**
 > ServiceStatusHost getZoneWorkerStatus(host)
@@ -716,6 +764,58 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="modifyZonePolicies"></a>
+# **modifyZonePolicies**
+> modifyZonePolicies(zonePolicies)
+
+Modify current Onezone policies
+
+Modifies restrictions placed on Onezone operations such as registering providers. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var zonePolicies = new Onepanel.ZonePolicies(); // ZonePolicies | New values for Onezone policies.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyZonePolicies(zonePolicies, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **zonePolicies** | [**ZonePolicies**](ZonePolicies.md)| New values for Onezone policies. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="startStopZoneDatabases"></a>

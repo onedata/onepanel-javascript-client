@@ -45,12 +45,12 @@
    * The panel configuration.
    * @alias module:model/PanelConfiguration
    * @class
-   * @param users {Object.<String, module:model/PanelConfigurationUsers>} The collection of user names associated with users properties.
    */
-  var exports = function(users) {
+  var exports = function() {
     var _this = this;
 
-    _this['users'] = users;
+
+
   };
 
   /**
@@ -74,6 +74,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('interactiveDeployment')) {
+        obj['interactiveDeployment'] = ApiClient.convertToType(data['interactiveDeployment'], 'Boolean');
+      }
       if (data.hasOwnProperty('users')) {
         obj['users'] = ApiClient.convertToType(data['users'], {'String': PanelConfigurationUsers});
       }
@@ -81,6 +84,12 @@
     return obj;
   }
 
+  /**
+   * Indicates that interactive deployment is performed. If false, users entering GUI will not be asked to complete the configuration. In that case default values will be used, available for change later via appropriate onepanel GUI pages or REST. 
+   * @member {Boolean} interactiveDeployment
+   * @default true
+   */
+  exports.prototype['interactiveDeployment'] = true;
   /**
    * The collection of user names associated with users properties.
    * @member {Object.<String, module:model/PanelConfigurationUsers>} users

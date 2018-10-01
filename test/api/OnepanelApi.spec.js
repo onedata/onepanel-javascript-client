@@ -71,6 +71,16 @@
         done();
       });
     });
+    describe('checkDns', function() {
+      it('should call checkDns successfully', function(done) {
+        //uncomment below and update the code to test checkDns
+        //instance.checkDns(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createSession', function() {
       it('should call createSession successfully', function(done) {
         //uncomment below and update the code to test createSession
@@ -95,6 +105,16 @@
       it('should call getClusterHosts successfully', function(done) {
         //uncomment below and update the code to test getClusterHosts
         //instance.getClusterHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDnsCheckConfiguration', function() {
+      it('should call getDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getDnsCheckConfiguration
+        //instance.getDnsCheckConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -151,6 +171,16 @@
         done();
       });
     });
+    describe('getWebCert', function() {
+      it('should call getWebCert successfully', function(done) {
+        //uncomment below and update the code to test getWebCert
+        //instance.getWebCert(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('joinCluster', function() {
       it('should call joinCluster successfully', function(done) {
         //uncomment below and update the code to test joinCluster
@@ -161,10 +191,30 @@
         done();
       });
     });
+    describe('modifyDnsCheckConfiguration', function() {
+      it('should call modifyDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test modifyDnsCheckConfiguration
+        //instance.modifyDnsCheckConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyUser', function() {
       it('should call modifyUser successfully', function(done) {
         //uncomment below and update the code to test modifyUser
         //instance.modifyUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyWebCert', function() {
+      it('should call modifyWebCert successfully', function(done) {
+        //uncomment below and update the code to test modifyWebCert
+        //instance.modifyWebCert(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

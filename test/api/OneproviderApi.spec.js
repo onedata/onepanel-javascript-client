@@ -281,6 +281,16 @@
         done();
       });
     });
+    describe('invalidateLumaCache', function() {
+      it('should call invalidateLumaCache successfully', function(done) {
+        //uncomment below and update the code to test invalidateLumaCache
+        //instance.invalidateLumaCache(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyProvider', function() {
       it('should call modifyProvider successfully', function(done) {
         //uncomment below and update the code to test modifyProvider

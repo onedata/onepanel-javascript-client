@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.DnsCheckConfiguration = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,136 +35,74 @@
 
 
   /**
-   * The ProviderDetails model module.
-   * @module model/ProviderDetails
+   * The DnsCheckConfiguration model module.
+   * @module model/DnsCheckConfiguration
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ProviderDetails</code>.
-   * The provider configuration details.
-   * @alias module:model/ProviderDetails
+   * Constructs a new <code>DnsCheckConfiguration</code>.
+   * Configuration of the &#39;dns_check&#39; method calls.
+   * @alias module:model/DnsCheckConfiguration
    * @class
-   * @param id {String} The ID assigned by a zone.
-   * @param name {String} The name under which the provider has been registered in a zone.
-   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @param adminEmail {String} Email address of the oneprovider administrator.
-   * @param geoLongitude {Number} The geographical longitude of the provider.
-   * @param geoLatitude {Number} The geographical latitude of the provider.
-   * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
    */
-  var exports = function(id, name, subdomainDelegation, domain, adminEmail, geoLongitude, geoLatitude, onezoneDomainName) {
+  var exports = function() {
     var _this = this;
 
-    _this['id'] = id;
-    _this['name'] = name;
-    _this['subdomainDelegation'] = subdomainDelegation;
 
-    _this['domain'] = domain;
-    _this['adminEmail'] = adminEmail;
-    _this['geoLongitude'] = geoLongitude;
-    _this['geoLatitude'] = geoLatitude;
-    _this['onezoneDomainName'] = onezoneDomainName;
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/DnsCheckConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DnsCheckConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderDetails} obj Optional instance to populate.
-   * @return {module:model/ProviderDetails} The populated <code>ProviderDetails</code> instance.
+   * @param {module:model/DnsCheckConfiguration} obj Optional instance to populate.
+   * @return {module:model/DnsCheckConfiguration} The populated <code>DnsCheckConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('dnsServers')) {
+        obj['dnsServers'] = ApiClient.convertToType(data['dnsServers'], ['String']);
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('builtInDnsServer')) {
+        obj['builtInDnsServer'] = ApiClient.convertToType(data['builtInDnsServer'], 'Boolean');
       }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
-      }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
-      }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
-      }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
-      }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
-      }
-      if (data.hasOwnProperty('onezoneDomainName')) {
-        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
+      if (data.hasOwnProperty('dnsCheckAcknowledged')) {
+        obj['dnsCheckAcknowledged'] = ApiClient.convertToType(data['dnsCheckAcknowledged'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * The ID assigned by a zone.
-   * @member {String} id
+   * A collection of IP addresses for DNS servers used in checking DNS.
+   * @member {Array.<String>} dnsServers
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['dnsServers'] = undefined;
   /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
+   * If true, DNS check will verify that control of DNS zone of Onezone's domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service. 
+   * @member {Boolean} builtInDnsServer
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['builtInDnsServer'] = undefined;
   /**
-   * If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @member {Boolean} subdomainDelegation
+   * Flag indicating that user completed the DNS check step during interactive deployment. 
+   * @member {Boolean} dnsCheckAcknowledged
    */
-  exports.prototype['subdomainDelegation'] = undefined;
-  /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
-   * @member {String} subdomain
-   */
-  exports.prototype['subdomain'] = undefined;
-  /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
-   */
-  exports.prototype['adminEmail'] = undefined;
-  /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
-   */
-  exports.prototype['geoLongitude'] = undefined;
-  /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
-   */
-  exports.prototype['geoLatitude'] = undefined;
-  /**
-   * The domain name of a zone where this storage provider is registered.
-   * @member {String} onezoneDomainName
-   */
-  exports.prototype['onezoneDomainName'] = undefined;
+  exports.prototype['dnsCheckAcknowledged'] = undefined;
 
 
 

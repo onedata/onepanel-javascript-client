@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/ZonePolicies'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./ZonePolicies'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfigurationOnezone = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ZoneConfigurationOnezone = factory(root.Onepanel.ApiClient, root.Onepanel.ZonePolicies);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, ZonePolicies) {
   'use strict';
 
 
@@ -48,6 +48,8 @@
    */
   var exports = function() {
     var _this = this;
+
+
 
 
 
@@ -80,6 +82,12 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('letsEncryptEnabled')) {
+        obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('policies')) {
+        obj['policies'] = ZonePolicies.constructFromObject(data['policies']);
+      }
     }
     return obj;
   }
@@ -94,6 +102,16 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+  /**
+   * If enabled the zone will use Let's Encrypt service to obtain SSL certificates. Otherwise certificates must be manually provided. By enabling this option you agree to the Let's Encrypt Subscriber Agreement. 
+   * @member {Boolean} letsEncryptEnabled
+   * @default false
+   */
+  exports.prototype['letsEncryptEnabled'] = false;
+  /**
+   * @member {module:model/ZonePolicies} policies
+   */
+  exports.prototype['policies'] = undefined;
 
 
 

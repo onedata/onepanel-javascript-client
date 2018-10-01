@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users'], factory);
+    define(['ApiClient', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'));
+    module.exports = factory(require('../ApiClient'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, Error, Host, HostAddRequest, JoinClusterRequest, Node, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users) {
+}(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, JoinClusterRequest, Node, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -132,6 +132,49 @@
 
       return this.apiClient.callApi(
         '/users', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the checkDns operation.
+     * @callback module:api/OnepanelApi~checkDnsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheck} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Check correctness of DNS entries for the cluster&#39;s domain.
+     * Returns results of the last DNS check, verifying validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.forceCheck If true the DNS check cache is overriden and check is performed during handling of the request. (default to false)
+     * @param {module:api/OnepanelApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheck}
+     */
+    this.checkDns = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'forceCheck': opts['forceCheck']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheck;
+
+      return this.apiClient.callApi(
+        '/dns_check', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -249,6 +292,45 @@
 
       return this.apiClient.callApi(
         '/hosts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDnsCheckConfiguration operation.
+     * @callback module:api/OnepanelApi~getDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheckConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Return settings used when performing the DNS check.
+     * Returns servers queried to check DNS configuration correctness. 
+     * @param {module:api/OnepanelApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheckConfiguration}
+     */
+    this.getDnsCheckConfiguration = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheckConfiguration;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -468,6 +550,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getWebCert operation.
+     * @callback module:api/OnepanelApi~getWebCertCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/WebCert} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get information about SSL certificates configuration and status.
+     * Returns information about SSL certificate status and renewal configuration. 
+     * @param {module:api/OnepanelApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/WebCert}
+     */
+    this.getWebCert = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = WebCert;
+
+      return this.apiClient.callApi(
+        '/web_cert', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the joinCluster operation.
      * @callback module:api/OnepanelApi~joinClusterCallback
      * @param {String} error Error message, if any.
@@ -506,6 +627,50 @@
 
       return this.apiClient.callApi(
         '/join_cluster', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyDnsCheckConfiguration operation.
+     * @callback module:api/OnepanelApi~modifyDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Configure dns check
+     * Informs what DNS servers to use for checking external DNS records validity. 
+     * @param {module:model/DnsCheckConfiguration} dnsCheckConfiguration The configuration changes.
+     * @param {module:api/OnepanelApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyDnsCheckConfiguration = function(dnsCheckConfiguration, callback) {
+      var postBody = dnsCheckConfiguration;
+
+      // verify the required parameter 'dnsCheckConfiguration' is set
+      if (dnsCheckConfiguration === undefined || dnsCheckConfiguration === null) {
+        throw new Error("Missing the required parameter 'dnsCheckConfiguration' when calling modifyDnsCheckConfiguration");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -557,6 +722,50 @@
 
       return this.apiClient.callApi(
         '/users/{username}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyWebCert operation.
+     * @callback module:api/OnepanelApi~modifyWebCertCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify SSL certificate configuration
+     * Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
+     * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate management configuration. 
+     * @param {module:api/OnepanelApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyWebCert = function(webCertModifyRequest, callback) {
+      var postBody = webCertModifyRequest;
+
+      // verify the required parameter 'webCertModifyRequest' is set
+      if (webCertModifyRequest === undefined || webCertModifyRequest === null) {
+        throw new Error("Missing the required parameter 'webCertModifyRequest' when calling modifyWebCert");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/web_cert', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

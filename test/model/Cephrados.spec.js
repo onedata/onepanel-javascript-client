@@ -16,133 +16,107 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ProviderModifyRequest = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.Cephrados();
+  });
 
-
-  /**
-   * The ProviderModifyRequest model module.
-   * @module model/ProviderModifyRequest
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>ProviderModifyRequest</code>.
-   * The provider configuration details that can be modified.
-   * @alias module:model/ProviderModifyRequest
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ProviderModifyRequest} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ProviderModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderModifyRequest} obj Optional instance to populate.
-   * @return {module:model/ProviderModifyRequest} The populated <code>ProviderModifyRequest</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
-      }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
-      }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
-      }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
-      }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @member {Boolean} subdomainDelegation
-   */
-  exports.prototype['subdomainDelegation'] = undefined;
-  /**
-   * Unique subdomain in onezone's domain for the provider. This property is required only if subdomain delegation is enabled. Otherwise it is ignored. 
-   * @member {String} subdomain
-   */
-  exports.prototype['subdomain'] = undefined;
-  /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). This property is required only if subdomain delegation is disabled. Otherwise it is ignored. 
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
-   */
-  exports.prototype['geoLongitude'] = undefined;
-  /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
-   */
-  exports.prototype['geoLatitude'] = undefined;
-  /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
-   */
-  exports.prototype['adminEmail'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('Cephrados', function() {
+    it('should create an instance of Cephrados', function() {
+      // uncomment below and update the code to test Cephrados
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be.a(Onepanel.Cephrados);
+    });
 
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property key (base name: "key")', function() {
+      // uncomment below and update the code to test the property key
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
+      // uncomment below and update the code to test the property monitorHostname
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clusterName (base name: "clusterName")', function() {
+      // uncomment below and update the code to test the property clusterName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property poolName (base name: "poolName")', function() {
+      // uncomment below and update the code to test the property poolName
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

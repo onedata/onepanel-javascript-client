@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.DnsCheckResult = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,137 +35,115 @@
 
 
   /**
-   * The ProviderDetails model module.
-   * @module model/ProviderDetails
+   * The DnsCheckResult model module.
+   * @module model/DnsCheckResult
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ProviderDetails</code>.
-   * The provider configuration details.
-   * @alias module:model/ProviderDetails
+   * Constructs a new <code>DnsCheckResult</code>.
+   * Describes results obtained from a DNS check. DNS check involves querying DNS servers to ensure publicly visible records match expected values.
+   * @alias module:model/DnsCheckResult
    * @class
-   * @param id {String} The ID assigned by a zone.
-   * @param name {String} The name under which the provider has been registered in a zone.
-   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @param adminEmail {String} Email address of the oneprovider administrator.
-   * @param geoLongitude {Number} The geographical longitude of the provider.
-   * @param geoLatitude {Number} The geographical latitude of the provider.
-   * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
+   * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
+   * @param expected {Array.<String>} List of expected query results. 
+   * @param got {Array.<String>} List of obtained query results. 
+   * @param recommended {Array.<String>} List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
    */
-  var exports = function(id, name, subdomainDelegation, domain, adminEmail, geoLongitude, geoLatitude, onezoneDomainName) {
+  var exports = function(summary, expected, got, recommended) {
     var _this = this;
 
-    _this['id'] = id;
-    _this['name'] = name;
-    _this['subdomainDelegation'] = subdomainDelegation;
-
-    _this['domain'] = domain;
-    _this['adminEmail'] = adminEmail;
-    _this['geoLongitude'] = geoLongitude;
-    _this['geoLatitude'] = geoLatitude;
-    _this['onezoneDomainName'] = onezoneDomainName;
+    _this['summary'] = summary;
+    _this['expected'] = expected;
+    _this['got'] = got;
+    _this['recommended'] = recommended;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/DnsCheckResult} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DnsCheckResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderDetails} obj Optional instance to populate.
-   * @return {module:model/ProviderDetails} The populated <code>ProviderDetails</code> instance.
+   * @param {module:model/DnsCheckResult} obj Optional instance to populate.
+   * @return {module:model/DnsCheckResult} The populated <code>DnsCheckResult</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('summary')) {
+        obj['summary'] = ApiClient.convertToType(data['summary'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('expected')) {
+        obj['expected'] = ApiClient.convertToType(data['expected'], ['String']);
       }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      if (data.hasOwnProperty('got')) {
+        obj['got'] = ApiClient.convertToType(data['got'], ['String']);
       }
-      if (data.hasOwnProperty('subdomain')) {
-        obj['subdomain'] = ApiClient.convertToType(data['subdomain'], 'String');
-      }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('adminEmail')) {
-        obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
-      }
-      if (data.hasOwnProperty('geoLongitude')) {
-        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
-      }
-      if (data.hasOwnProperty('geoLatitude')) {
-        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
-      }
-      if (data.hasOwnProperty('onezoneDomainName')) {
-        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
+      if (data.hasOwnProperty('recommended')) {
+        obj['recommended'] = ApiClient.convertToType(data['recommended'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The ID assigned by a zone.
-   * @member {String} id
+   * An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
+   * @member {module:model/DnsCheckResult.SummaryEnum} summary
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['summary'] = undefined;
   /**
-   * The name under which the provider has been registered in a zone.
-   * @member {String} name
+   * List of expected query results. 
+   * @member {Array.<String>} expected
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['expected'] = undefined;
   /**
-   * If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @member {Boolean} subdomainDelegation
+   * List of obtained query results. 
+   * @member {Array.<String>} got
    */
-  exports.prototype['subdomainDelegation'] = undefined;
+  exports.prototype['got'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
-   * @member {String} subdomain
+   * List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
+   * @member {Array.<String>} recommended
    */
-  exports.prototype['subdomain'] = undefined;
-  /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * Email address of the oneprovider administrator.
-   * @member {String} adminEmail
-   */
-  exports.prototype['adminEmail'] = undefined;
-  /**
-   * The geographical longitude of the provider.
-   * @member {Number} geoLongitude
-   */
-  exports.prototype['geoLongitude'] = undefined;
-  /**
-   * The geographical latitude of the provider.
-   * @member {Number} geoLatitude
-   */
-  exports.prototype['geoLatitude'] = undefined;
-  /**
-   * The domain name of a zone where this storage provider is registered.
-   * @member {String} onezoneDomainName
-   */
-  exports.prototype['onezoneDomainName'] = undefined;
+  exports.prototype['recommended'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>summary</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.SummaryEnum = {
+    /**
+     * value: "unresolvable"
+     * @const
+     */
+    "unresolvable": "unresolvable",
+    /**
+     * value: "missing_records"
+     * @const
+     */
+    "missing_records": "missing_records",
+    /**
+     * value: "bad_records"
+     * @const
+     */
+    "bad_records": "bad_records",
+    /**
+     * value: "ok"
+     * @const
+     */
+    "ok": "ok"  };
 
 
   return exports;

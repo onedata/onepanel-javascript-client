@@ -16,59 +16,97 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.DnsCheckConfiguration = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The DnsCheckConfiguration model module.
+   * @module model/DnsCheckConfiguration
+   * @version 18.02.0-rc2
+   */
+
+  /**
+   * Constructs a new <code>DnsCheckConfiguration</code>.
+   * Configuration of the &#39;dns_check&#39; method calls.
+   * @alias module:model/DnsCheckConfiguration
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/DnsCheckConfiguration} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>DnsCheckConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/DnsCheckConfiguration} obj Optional instance to populate.
+   * @return {module:model/DnsCheckConfiguration} The populated <code>DnsCheckConfiguration</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('dnsServers')) {
+        obj['dnsServers'] = ApiClient.convertToType(data['dnsServers'], ['String']);
+      }
+      if (data.hasOwnProperty('builtInDnsServer')) {
+        obj['builtInDnsServer'] = ApiClient.convertToType(data['builtInDnsServer'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dnsCheckAcknowledged')) {
+        obj['dnsCheckAcknowledged'] = ApiClient.convertToType(data['dnsCheckAcknowledged'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * A collection of IP addresses for DNS servers used in checking DNS.
+   * @member {Array.<String>} dnsServers
+   */
+  exports.prototype['dnsServers'] = undefined;
+  /**
+   * If true, DNS check will verify that control of DNS zone of Onezone's domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service. 
+   * @member {Boolean} builtInDnsServer
+   */
+  exports.prototype['builtInDnsServer'] = undefined;
+  /**
+   * Flag indicating that user completed the DNS check step during interactive deployment. 
+   * @member {Boolean} dnsCheckAcknowledged
+   */
+  exports.prototype['dnsCheckAcknowledged'] = undefined;
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
-    });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

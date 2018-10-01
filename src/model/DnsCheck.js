@@ -16,59 +16,96 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/DnsCheckResult'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./DnsCheckResult'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.DnsCheck = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, DnsCheckResult) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The DnsCheck model module.
+   * @module model/DnsCheck
+   * @version 18.02.0-rc2
+   */
+
+  /**
+   * Constructs a new <code>DnsCheck</code>.
+   * Gathers results of DNS checks for various aspects of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither &#39;domain&#39; nor &#39;dnsZone&#39; is returned. 
+   * @alias module:model/DnsCheck
+   * @class
+   * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
+   */
+  var exports = function(timestamp) {
+    var _this = this;
+
+
+
+    _this['timestamp'] = timestamp;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/DnsCheck} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>DnsCheck</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/DnsCheck} obj Optional instance to populate.
+   * @return {module:model/DnsCheck} The populated <code>DnsCheck</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = DnsCheckResult.constructFromObject(data['domain']);
+      }
+      if (data.hasOwnProperty('dnsZone')) {
+        obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
+      }
+      if (data.hasOwnProperty('timestamp')) {
+        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * @member {module:model/DnsCheckResult} domain
+   */
+  exports.prototype['domain'] = undefined;
+  /**
+   * @member {module:model/DnsCheckResult} dnsZone
+   */
+  exports.prototype['dnsZone'] = undefined;
+  /**
+   * Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
+   * @member {String} timestamp
+   */
+  exports.prototype['timestamp'] = undefined;
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
-    });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

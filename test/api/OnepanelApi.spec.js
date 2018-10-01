@@ -71,6 +71,16 @@
         done();
       });
     });
+    describe('checkDns', function() {
+      it('should call checkDns successfully', function(done) {
+        //uncomment below and update the code to test checkDns
+        //instance.checkDns(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createSession', function() {
       it('should call createSession successfully', function(done) {
         //uncomment below and update the code to test createSession
@@ -95,6 +105,16 @@
       it('should call getClusterHosts successfully', function(done) {
         //uncomment below and update the code to test getClusterHosts
         //instance.getClusterHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getDnsCheckConfiguration', function() {
+      it('should call getDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getDnsCheckConfiguration
+        //instance.getDnsCheckConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -165,6 +185,16 @@
       it('should call joinCluster successfully', function(done) {
         //uncomment below and update the code to test joinCluster
         //instance.joinCluster(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyDnsCheckConfiguration', function() {
+      it('should call modifyDnsCheckConfiguration successfully', function(done) {
+        //uncomment below and update the code to test modifyDnsCheckConfiguration
+        //instance.modifyDnsCheckConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

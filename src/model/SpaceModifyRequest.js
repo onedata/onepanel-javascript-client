@@ -53,6 +53,7 @@
 
 
 
+
   };
 
   /**
@@ -76,6 +77,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('size')) {
+        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
       }
@@ -92,6 +96,11 @@
     return obj;
   }
 
+  /**
+   * The storage space size in bytes that provider is willing to assign to the space. 
+   * @member {Number} size
+   */
+  exports.prototype['size'] = undefined;
   /**
    * @member {module:model/StorageImportDetails} storageImport
    */

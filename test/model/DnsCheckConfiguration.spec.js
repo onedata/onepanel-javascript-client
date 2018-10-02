@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
+    instance = new Onepanel.DnsCheckConfiguration();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,28 @@
       object[property] = value;
   }
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
+  describe('DnsCheckConfiguration', function() {
+    it('should create an instance of DnsCheckConfiguration', function() {
+      // uncomment below and update the code to test DnsCheckConfiguration
+      //var instane = new Onepanel.DnsCheckConfiguration();
+      //expect(instance).to.be.a(Onepanel.DnsCheckConfiguration);
     });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property dnsServers (base name: "dnsServers")', function() {
+      // uncomment below and update the code to test the property dnsServers
+      //var instane = new Onepanel.DnsCheckConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property builtInDnsServer (base name: "builtInDnsServer")', function() {
+      // uncomment below and update the code to test the property builtInDnsServer
+      //var instane = new Onepanel.DnsCheckConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dnsCheckAcknowledged (base name: "dnsCheckAcknowledged")', function() {
+      // uncomment below and update the code to test the property dnsCheckAcknowledged
+      //var instane = new Onepanel.DnsCheckConfiguration();
       //expect(instance).to.be();
     });
 

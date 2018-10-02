@@ -16,59 +16,79 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.ZonePolicies = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The ZonePolicies model module.
+   * @module model/ZonePolicies
+   * @version 18.02.0-rc2
+   */
+
+  /**
+   * Constructs a new <code>ZonePolicies</code>.
+   * State of Onezone operation policies.
+   * @alias module:model/ZonePolicies
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/ZonePolicies} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>ZonePolicies</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ZonePolicies} obj Optional instance to populate.
+   * @return {module:model/ZonePolicies} The populated <code>ZonePolicies</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('subdomainDelegation')) {
+        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
+   * @member {Boolean} subdomainDelegation
+   */
+  exports.prototype['subdomainDelegation'] = undefined;
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
-    });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

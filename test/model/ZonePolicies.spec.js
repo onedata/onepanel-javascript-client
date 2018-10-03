@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
+    instance = new Onepanel.ZonePolicies();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,16 @@
       object[property] = value;
   }
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
+  describe('ZonePolicies', function() {
+    it('should create an instance of ZonePolicies', function() {
+      // uncomment below and update the code to test ZonePolicies
+      //var instane = new Onepanel.ZonePolicies();
+      //expect(instance).to.be.a(Onepanel.ZonePolicies);
     });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
+      // uncomment below and update the code to test the property subdomainDelegation
+      //var instane = new Onepanel.ZonePolicies();
       //expect(instance).to.be();
     });
 

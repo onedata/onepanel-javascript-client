@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.PanelConfiguration();
+    instance = new Onepanel.DnsCheckResult();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,34 @@
       object[property] = value;
   }
 
-  describe('PanelConfiguration', function() {
-    it('should create an instance of PanelConfiguration', function() {
-      // uncomment below and update the code to test PanelConfiguration
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be.a(Onepanel.PanelConfiguration);
+  describe('DnsCheckResult', function() {
+    it('should create an instance of DnsCheckResult', function() {
+      // uncomment below and update the code to test DnsCheckResult
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be.a(Onepanel.DnsCheckResult);
     });
 
-    it('should have the property interactiveDeployment (base name: "interactiveDeployment")', function() {
-      // uncomment below and update the code to test the property interactiveDeployment
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property summary (base name: "summary")', function() {
+      // uncomment below and update the code to test the property summary
+      //var instane = new Onepanel.DnsCheckResult();
       //expect(instance).to.be();
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
+    it('should have the property expected (base name: "expected")', function() {
+      // uncomment below and update the code to test the property expected
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property got (base name: "got")', function() {
+      // uncomment below and update the code to test the property got
+      //var instane = new Onepanel.DnsCheckResult();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property recommended (base name: "recommended")', function() {
+      // uncomment below and update the code to test the property recommended
+      //var instane = new Onepanel.DnsCheckResult();
       //expect(instance).to.be();
     });
 

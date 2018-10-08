@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephOsdConfiguration = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,111 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The CephOsdConfiguration model module.
+   * @module model/CephOsdConfiguration
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>CephOsdConfiguration</code>.
+   * 
+   * @alias module:model/CephOsdConfiguration
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param host {String} Host on which given osd should be deployed
+   * @param type {module:model/CephOsdConfiguration.TypeEnum} 
    */
-  var exports = function(status) {
+  var exports = function(host, type) {
     var _this = this;
 
-    _this['status'] = status;
+    _this['host'] = host;
+    _this['type'] = type;
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephOsdConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephOsdConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/CephOsdConfiguration} obj Optional instance to populate.
+   * @return {module:model/CephOsdConfiguration} The populated <code>CephOsdConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
+      }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('device')) {
+        obj['device'] = ApiClient.convertToType(data['device'], 'String');
+      }
+      if (data.hasOwnProperty('partition')) {
+        obj['partition'] = ApiClient.convertToType(data['partition'], 'String');
+      }
+      if (data.hasOwnProperty('path')) {
+        obj['path'] = ApiClient.convertToType(data['path'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * Host on which given osd should be deployed
+   * @member {String} host
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['host'] = undefined;
+  /**
+   * @member {module:model/CephOsdConfiguration.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph.
+   * @member {String} device
+   */
+  exports.prototype['device'] = undefined;
+  /**
+   * partition
+   * @member {String} partition
+   */
+  exports.prototype['partition'] = undefined;
+  /**
+   * Relevant for plain filestore
+   * @member {String} path
+   */
+  exports.prototype['path'] = undefined;
 
 
   /**
-   * Allowed values for the <code>status</code> property.
+   * Allowed values for the <code>type</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.StatusEnum = {
+  exports.TypeEnum = {
     /**
-     * value: "healthy"
+     * value: "bluestore"
      * @const
      */
-    "healthy": "healthy",
+    "bluestore": "bluestore",
     /**
-     * value: "unhealthy"
+     * value: "filestore"
      * @const
      */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
+    "filestore": "filestore"  };
 
 
   return exports;

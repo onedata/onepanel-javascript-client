@@ -51,6 +51,16 @@
   }
 
   describe('OnepanelApi', function() {
+    describe('addClusterHost', function() {
+      it('should call addClusterHost successfully', function(done) {
+        //uncomment below and update the code to test addClusterHost
+        //instance.addClusterHost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addUser', function() {
       it('should call addUser successfully', function(done) {
         //uncomment below and update the code to test addUser
@@ -65,16 +75,6 @@
       it('should call checkDns successfully', function(done) {
         //uncomment below and update the code to test checkDns
         //instance.checkDns(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('createCluster', function() {
-      it('should call createCluster successfully', function(done) {
-        //uncomment below and update the code to test createCluster
-        //instance.createCluster(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -121,6 +121,16 @@
         done();
       });
     });
+    describe('getNode', function() {
+      it('should call getNode successfully', function(done) {
+        //uncomment below and update the code to test getNode
+        //instance.getNode(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getSession', function() {
       it('should call getSession successfully', function(done) {
         //uncomment below and update the code to test getSession
@@ -151,10 +161,30 @@
         done();
       });
     });
+    describe('getUsers', function() {
+      it('should call getUsers successfully', function(done) {
+        //uncomment below and update the code to test getUsers
+        //instance.getUsers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getWebCert', function() {
       it('should call getWebCert successfully', function(done) {
         //uncomment below and update the code to test getWebCert
         //instance.getWebCert(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('joinCluster', function() {
+      it('should call joinCluster successfully', function(done) {
+        //uncomment below and update the code to test joinCluster
+        //instance.joinCluster(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

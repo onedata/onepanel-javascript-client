@@ -17,103 +17,92 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/CephConfigurationMonitors', 'model/CephOsdConfiguration', 'model/CephPool'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./CephConfigurationMonitors'), require('./CephOsdConfiguration'), require('./CephPool'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.CephConfigurationMonitors, root.Onepanel.CephOsdConfiguration, root.Onepanel.CephPool);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, CephConfigurationMonitors, CephOsdConfiguration, CephPool) {
   'use strict';
 
 
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The CephConfiguration model module.
+   * @module model/CephConfiguration
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>CephConfiguration</code>.
+   * Describes initial configuration of a ceph cluster.
+   * @alias module:model/CephConfiguration
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param osds {Array.<module:model/CephOsdConfiguration>} 
+   * @param pools {Array.<module:model/CephPool>} 
    */
-  var exports = function(status) {
+  var exports = function(osds, pools) {
     var _this = this;
 
-    _this['status'] = status;
+
+    _this['osds'] = osds;
+    _this['pools'] = pools;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/CephConfiguration} obj Optional instance to populate.
+   * @return {module:model/CephConfiguration} The populated <code>CephConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('monitors')) {
+        obj['monitors'] = CephConfigurationMonitors.constructFromObject(data['monitors']);
+      }
+      if (data.hasOwnProperty('osds')) {
+        obj['osds'] = ApiClient.convertToType(data['osds'], [CephOsdConfiguration]);
+      }
+      if (data.hasOwnProperty('pools')) {
+        obj['pools'] = ApiClient.convertToType(data['pools'], [CephPool]);
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * @member {module:model/CephConfigurationMonitors} monitors
    */
-  exports.prototype['status'] = undefined;
-
-
+  exports.prototype['monitors'] = undefined;
   /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
+   * @member {Array.<module:model/CephOsdConfiguration>} osds
    */
-  exports.StatusEnum = {
-    /**
-     * value: "healthy"
-     * @const
-     */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
+  exports.prototype['osds'] = undefined;
+  /**
+   * @member {Array.<module:model/CephPool>} pools
+   */
+  exports.prototype['pools'] = undefined;
+
 
 
   return exports;

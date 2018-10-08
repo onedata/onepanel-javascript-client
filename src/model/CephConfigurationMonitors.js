@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephConfigurationMonitors = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,56 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The CephConfigurationMonitors model module.
+   * @module model/CephConfigurationMonitors
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>CephConfigurationMonitors</code>.
+   * 
+   * @alias module:model/CephConfigurationMonitors
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
    */
-  var exports = function(status) {
+  var exports = function() {
     var _this = this;
 
-    _this['status'] = status;
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephConfigurationMonitors} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephConfigurationMonitors</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/CephConfigurationMonitors} obj Optional instance to populate.
+   * @return {module:model/CephConfigurationMonitors} The populated <code>CephConfigurationMonitors</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['hosts'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StatusEnum = {
-    /**
-     * value: "healthy"
-     * @const
-     */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
 
 
   return exports;

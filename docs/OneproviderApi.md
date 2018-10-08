@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+[**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph/configuration | Configure ceph deployment
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -302,6 +303,58 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="configureCeph"></a>
+# **configureCeph**
+> configureCeph(cephConfiguration)
+
+Configure ceph deployment
+
+
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var cephConfiguration = new Onepanel.CephConfiguration(); // CephConfiguration | The ceph configuration description.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.configureCeph(cephConfiguration, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cephConfiguration** | [**CephConfiguration**](CephConfiguration.md)| The ceph configuration description. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
 <a name="configureProvider"></a>

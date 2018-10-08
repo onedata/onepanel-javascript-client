@@ -5,5 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cluster** | [**ClusterConfigurationDetails**](ClusterConfigurationDetails.md) |  | 
 **oneprovider** | [**ProviderConfigurationDetailsOneprovider**](ProviderConfigurationDetailsOneprovider.md) |  | [optional] 
+**ceph** | [**CephConfiguration**](CephConfiguration.md) |  | [optional] 
 
 

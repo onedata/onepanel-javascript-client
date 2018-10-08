@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.Users = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,58 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The Users model module.
+   * @module model/Users
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>Users</code>.
+   * List of onepanel user usernames. 
+   * @alias module:model/Users
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param usernames {Array.<String>} The list of usernames.
    */
-  var exports = function(status) {
+  var exports = function(usernames) {
     var _this = this;
 
-    _this['status'] = status;
+    _this['usernames'] = usernames;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/Users} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Users</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/Users} obj Optional instance to populate.
+   * @return {module:model/Users} The populated <code>Users</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('usernames')) {
+        obj['usernames'] = ApiClient.convertToType(data['usernames'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * The list of usernames.
+   * @member {Array.<String>} usernames
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['usernames'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StatusEnum = {
-    /**
-     * value: "healthy"
-     * @const
-     */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
 
 
   return exports;

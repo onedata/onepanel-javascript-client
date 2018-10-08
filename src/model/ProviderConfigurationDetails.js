@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider'], factory);
+    define(['ApiClient', 'model/CephConfiguration', 'model/ClusterConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterConfigurationDetails'), require('./ProviderConfigurationDetailsOneprovider'));
+    module.exports = factory(require('../ApiClient'), require('./CephConfiguration'), require('./ClusterConfigurationDetails'), require('./ProviderConfigurationDetailsOneprovider'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterConfigurationDetails, root.Onepanel.ProviderConfigurationDetailsOneprovider);
+    root.Onepanel.ProviderConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.CephConfiguration, root.Onepanel.ClusterConfigurationDetails, root.Onepanel.ProviderConfigurationDetailsOneprovider);
   }
-}(this, function(ApiClient, ClusterConfigurationDetails, ProviderConfigurationDetailsOneprovider) {
+}(this, function(ApiClient, CephConfiguration, ClusterConfigurationDetails, ProviderConfigurationDetailsOneprovider) {
   'use strict';
 
 
@@ -51,6 +51,7 @@
     var _this = this;
 
     _this['cluster'] = cluster;
+
 
   };
 
@@ -81,6 +82,9 @@
       if (data.hasOwnProperty('oneprovider')) {
         obj['oneprovider'] = ProviderConfigurationDetailsOneprovider.constructFromObject(data['oneprovider']);
       }
+      if (data.hasOwnProperty('ceph')) {
+        obj['ceph'] = CephConfiguration.constructFromObject(data['ceph']);
+      }
     }
     return obj;
   }
@@ -93,6 +97,10 @@
    * @member {module:model/ProviderConfigurationDetailsOneprovider} oneprovider
    */
   exports.prototype['oneprovider'] = undefined;
+  /**
+   * @member {module:model/CephConfiguration} ceph
+   */
+  exports.prototype['ceph'] = undefined;
 
 
 

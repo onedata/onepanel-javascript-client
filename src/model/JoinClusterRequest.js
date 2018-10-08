@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.JoinClusterRequest = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,67 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The JoinClusterRequest model module.
+   * @module model/JoinClusterRequest
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>JoinClusterRequest</code>.
+   * Information allowing new host to join the cluster.
+   * @alias module:model/JoinClusterRequest
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param clusterHost {String} Hostname of an existing cluster node.
    */
-  var exports = function(status) {
+  var exports = function(clusterHost) {
     var _this = this;
 
-    _this['status'] = status;
+    _this['clusterHost'] = clusterHost;
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/JoinClusterRequest} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>JoinClusterRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/JoinClusterRequest} obj Optional instance to populate.
+   * @return {module:model/JoinClusterRequest} The populated <code>JoinClusterRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('clusterHost')) {
+        obj['clusterHost'] = ApiClient.convertToType(data['clusterHost'], 'String');
+      }
+      if (data.hasOwnProperty('cookie')) {
+        obj['cookie'] = ApiClient.convertToType(data['cookie'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * Hostname of an existing cluster node.
+   * @member {String} clusterHost
    */
-  exports.prototype['status'] = undefined;
-
-
+  exports.prototype['clusterHost'] = undefined;
   /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
+   * The cookie is a character sequence that is common for all the cluster nodes. If this parameter is not provided, in case of a cluster initialization request, it will be generated, and in case of a cluster extension request the current cookie value will be used. However, if the cluster cookie and the cookie of the host that is about to join the cluster doesn't match there will be a connection error. 
+   * @member {String} cookie
    */
-  exports.StatusEnum = {
-    /**
-     * value: "healthy"
-     * @const
-     */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
+  exports.prototype['cookie'] = undefined;
+
 
 
   return exports;

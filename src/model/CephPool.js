@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceStatusHost = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephPool = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,85 +35,76 @@
 
 
   /**
-   * The ServiceStatusHost model module.
-   * @module model/ServiceStatusHost
+   * The CephPool model module.
+   * @module model/CephPool
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>ServiceStatusHost</code>.
-   * The service status.
-   * @alias module:model/ServiceStatusHost
+   * Constructs a new <code>CephPool</code>.
+   * Describes a Ceph pool.
+   * @alias module:model/CephPool
    * @class
-   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   * @param name {String} Name of the pool
    */
-  var exports = function(status) {
+  var exports = function(name) {
     var _this = this;
 
-    _this['status'] = status;
+    _this['name'] = name;
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephPool} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephPool</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
-   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   * @param {module:model/CephPool} obj Optional instance to populate.
+   * @return {module:model/CephPool} The populated <code>CephPool</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('size')) {
+        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      }
+      if (data.hasOwnProperty('minSize')) {
+        obj['minSize'] = ApiClient.convertToType(data['minSize'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * The service status.
-   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   * Name of the pool
+   * @member {String} name
    */
-  exports.prototype['status'] = undefined;
-
-
+  exports.prototype['name'] = undefined;
   /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
+   * Number of object replicas in the pool
+   * @member {Number} size
    */
-  exports.StatusEnum = {
-    /**
-     * value: "healthy"
-     * @const
-     */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
-    /**
-     * value: "stopped"
-     * @const
-     */
-    "stopped": "stopped",
-    /**
-     * value: "missing"
-     * @const
-     */
-    "missing": "missing"  };
+  exports.prototype['size'] = undefined;
+  /**
+   * Minimum number of object replicas in the pool
+   * @member {Number} minSize
+   */
+  exports.prototype['minSize'] = undefined;
+
 
 
   return exports;

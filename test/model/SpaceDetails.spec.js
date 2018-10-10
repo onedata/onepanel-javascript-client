@@ -93,12 +93,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property softQuota (base name: "softQuota")', function() {
-      // uncomment below and update the code to test the property softQuota
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property storageImport (base name: "storageImport")', function() {
       // uncomment below and update the code to test the property storageImport
       //var instane = new Onepanel.SpaceDetails();

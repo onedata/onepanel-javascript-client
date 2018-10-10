@@ -50,10 +50,9 @@
    * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
-   * @param softQuota {Number} Number of bytes that can be written above support limit. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders, softQuota, spaceOccupancy) {
+  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy) {
     var _this = this;
 
     _this['id'] = id;
@@ -62,7 +61,6 @@
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
 
-    _this['softQuota'] = softQuota;
 
 
 
@@ -108,9 +106,6 @@
       }
       if (data.hasOwnProperty('mountInRoot')) {
         obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
-      }
-      if (data.hasOwnProperty('softQuota')) {
-        obj['softQuota'] = ApiClient.convertToType(data['softQuota'], 'Number');
       }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
@@ -162,11 +157,6 @@
    * @default false
    */
   exports.prototype['mountInRoot'] = false;
-  /**
-   * Number of bytes that can be written above support limit. 
-   * @member {Number} softQuota
-   */
-  exports.prototype['softQuota'] = undefined;
   /**
    * @member {module:model/StorageImportDetails} storageImport
    */

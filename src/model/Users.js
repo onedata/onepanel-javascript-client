@@ -17,108 +17,75 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaning', 'model/SpaceFilesPopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaning'), require('./SpaceFilesPopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaning, root.Onepanel.SpaceFilesPopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.Users = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, SpaceAutoCleaning, SpaceFilesPopularity, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceModifyRequest model module.
-   * @module model/SpaceModifyRequest
+   * The Users model module.
+   * @module model/Users
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>SpaceModifyRequest</code>.
-   * The space configuration details that can be modified.
-   * @alias module:model/SpaceModifyRequest
+   * Constructs a new <code>Users</code>.
+   * List of onepanel user usernames. 
+   * @alias module:model/Users
    * @class
+   * @param usernames {Array.<String>} The list of usernames.
    */
-  var exports = function() {
+  var exports = function(usernames) {
     var _this = this;
 
-
-
-
-
-
+    _this['usernames'] = usernames;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/Users} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Users</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceModifyRequest} obj Optional instance to populate.
-   * @return {module:model/SpaceModifyRequest} The populated <code>SpaceModifyRequest</code> instance.
+   * @param {module:model/Users} obj Optional instance to populate.
+   * @return {module:model/Users} The populated <code>Users</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
-      }
-      if (data.hasOwnProperty('storageUpdate')) {
-        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
-      }
-      if (data.hasOwnProperty('filesPopularity')) {
-        obj['filesPopularity'] = SpaceFilesPopularity.constructFromObject(data['filesPopularity']);
-      }
-      if (data.hasOwnProperty('autoCleaning')) {
-        obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
+      if (data.hasOwnProperty('usernames')) {
+        obj['usernames'] = ApiClient.convertToType(data['usernames'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The storage space size in bytes that provider is willing to assign to the space. 
-   * @member {Number} size
+   * The list of usernames.
+   * @member {Array.<String>} usernames
    */
-  exports.prototype['size'] = undefined;
-  /**
-   * @member {module:model/StorageImportDetails} storageImport
-   */
-  exports.prototype['storageImport'] = undefined;
-  /**
-   * @member {module:model/StorageUpdateDetails} storageUpdate
-   */
-  exports.prototype['storageUpdate'] = undefined;
-  /**
-   * Configuration of files popularity feature for this space
-   * @member {module:model/SpaceFilesPopularity} filesPopularity
-   */
-  exports.prototype['filesPopularity'] = undefined;
-  /**
-   * Configuration of auto cleaning feature for this space
-   * @member {module:model/SpaceAutoCleaning} autoCleaning
-   */
-  exports.prototype['autoCleaning'] = undefined;
+  exports.prototype['usernames'] = undefined;
 
 
 

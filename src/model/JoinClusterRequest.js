@@ -17,42 +17,40 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaning', 'model/SpaceFilesPopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaning'), require('./SpaceFilesPopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaning, root.Onepanel.SpaceFilesPopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.JoinClusterRequest = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, SpaceAutoCleaning, SpaceFilesPopularity, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceModifyRequest model module.
-   * @module model/SpaceModifyRequest
+   * The JoinClusterRequest model module.
+   * @module model/JoinClusterRequest
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>SpaceModifyRequest</code>.
-   * The space configuration details that can be modified.
-   * @alias module:model/SpaceModifyRequest
+   * Constructs a new <code>JoinClusterRequest</code>.
+   * Information allowing new host to join the cluster.
+   * @alias module:model/JoinClusterRequest
    * @class
+   * @param clusterHost {String} Hostname of an existing cluster node.
    */
-  var exports = function() {
+  var exports = function(clusterHost) {
     var _this = this;
 
-
-
-
-
+    _this['clusterHost'] = clusterHost;
 
   };
 
@@ -60,65 +58,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/JoinClusterRequest} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>JoinClusterRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceModifyRequest} obj Optional instance to populate.
-   * @return {module:model/SpaceModifyRequest} The populated <code>SpaceModifyRequest</code> instance.
+   * @param {module:model/JoinClusterRequest} obj Optional instance to populate.
+   * @return {module:model/JoinClusterRequest} The populated <code>JoinClusterRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      if (data.hasOwnProperty('clusterHost')) {
+        obj['clusterHost'] = ApiClient.convertToType(data['clusterHost'], 'String');
       }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
-      }
-      if (data.hasOwnProperty('storageUpdate')) {
-        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
-      }
-      if (data.hasOwnProperty('filesPopularity')) {
-        obj['filesPopularity'] = SpaceFilesPopularity.constructFromObject(data['filesPopularity']);
-      }
-      if (data.hasOwnProperty('autoCleaning')) {
-        obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
+      if (data.hasOwnProperty('cookie')) {
+        obj['cookie'] = ApiClient.convertToType(data['cookie'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The storage space size in bytes that provider is willing to assign to the space. 
-   * @member {Number} size
+   * Hostname of an existing cluster node.
+   * @member {String} clusterHost
    */
-  exports.prototype['size'] = undefined;
+  exports.prototype['clusterHost'] = undefined;
   /**
-   * @member {module:model/StorageImportDetails} storageImport
+   * The cookie is a character sequence that is common for all the cluster nodes. If this parameter is not provided, in case of a cluster initialization request, it will be generated, and in case of a cluster extension request the current cookie value will be used. However, if the cluster cookie and the cookie of the host that is about to join the cluster doesn't match there will be a connection error. 
+   * @member {String} cookie
    */
-  exports.prototype['storageImport'] = undefined;
-  /**
-   * @member {module:model/StorageUpdateDetails} storageUpdate
-   */
-  exports.prototype['storageUpdate'] = undefined;
-  /**
-   * Configuration of files popularity feature for this space
-   * @member {module:model/SpaceFilesPopularity} filesPopularity
-   */
-  exports.prototype['filesPopularity'] = undefined;
-  /**
-   * Configuration of auto cleaning feature for this space
-   * @member {module:model/SpaceAutoCleaning} autoCleaning
-   */
-  exports.prototype['autoCleaning'] = undefined;
+  exports.prototype['cookie'] = undefined;
 
 
 

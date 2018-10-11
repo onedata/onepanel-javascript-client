@@ -1353,7 +1353,7 @@ null (empty response body)
 
 <a name="modifySpace"></a>
 # **modifySpace**
-> modifySpace(id, spaceModifyRequest)
+> SpaceId modifySpace(id, spaceModifyRequest)
 
 Modify space details
 
@@ -1380,7 +1380,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.modifySpace(id, spaceModifyRequest, callback);
@@ -1395,7 +1395,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SpaceId**](SpaceId.md)
 
 ### Authorization
 

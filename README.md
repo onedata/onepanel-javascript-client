@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceAutoCleaningStatus](docs/SpaceAutoCleaningStatus.md)
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
  - [Onepanel.SpaceFilesPopularity](docs/SpaceFilesPopularity.md)
+ - [Onepanel.SpaceId](docs/SpaceId.md)
  - [Onepanel.SpaceModifyRequest](docs/SpaceModifyRequest.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
  - [Onepanel.SpaceSyncStats](docs/SpaceSyncStats.md)

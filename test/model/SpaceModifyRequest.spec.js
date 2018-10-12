@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.SpaceModifyRequest);
     });
 
+    it('should have the property size (base name: "size")', function() {
+      // uncomment below and update the code to test the property size
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property storageImport (base name: "storageImport")', function() {
       // uncomment below and update the code to test the property storageImport
       //var instane = new Onepanel.SpaceModifyRequest();

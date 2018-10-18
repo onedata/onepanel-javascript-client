@@ -62,6 +62,8 @@
 
 
 
+
+
   };
 
   /**
@@ -102,6 +104,12 @@
       }
       if (data.hasOwnProperty('rangeWriteSupport')) {
         obj['rangeWriteSupport'] = ApiClient.convertToType(data['rangeWriteSupport'], 'String');
+      }
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maximumUploadSize')) {
+        obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -145,17 +153,27 @@
    */
   exports.prototype['credentials'] = undefined;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer`. 
+   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer'
+   * @default 'Authorization: Bearer {}'
    */
-  exports.prototype['authorizationHeader'] = 'Authorization: Bearer';
+  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
    * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
    * @default 'none'
    */
   exports.prototype['rangeWriteSupport'] = 'none';
+  /**
+   * Defines the maximum number of parallel connections for a single WebDAV storage. 
+   * @member {Number} connectionPoolSize
+   */
+  exports.prototype['connectionPoolSize'] = undefined;
+  /**
+   * Defines the maximum upload size for a single `PUT` or `PATCH` request. If set to 0, assumes that the WebDAV server has no upload limit. 
+   * @member {Number} maximumUploadSize
+   */
+  exports.prototype['maximumUploadSize'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout

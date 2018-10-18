@@ -93,6 +93,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumUploadSize (base name: "maximumUploadSize")', function() {
+      // uncomment below and update the code to test the property maximumUploadSize
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
       //var instane = new Onepanel.Webdav();

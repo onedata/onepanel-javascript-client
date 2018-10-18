@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceId = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,56 +35,57 @@
 
 
   /**
-   * The StorageModifyRequest model module.
-   * @module model/StorageModifyRequest
+   * The SpaceId model module.
+   * @module model/SpaceId
    * @version 18.02.0-rc11
    */
 
   /**
-   * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage configuration details that can be modified.
-   * @alias module:model/StorageModifyRequest
+   * Constructs a new <code>SpaceId</code>.
+   * Provides ID of a space.
+   * @alias module:model/SpaceId
    * @class
+   * @param id {String} The ID of the space.
    */
-  var exports = function() {
+  var exports = function(id) {
     var _this = this;
 
-
+    _this['id'] = id;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceId} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>StorageModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceId</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageModifyRequest} obj Optional instance to populate.
-   * @return {module:model/StorageModifyRequest} The populated <code>StorageModifyRequest</code> instance.
+   * @param {module:model/SpaceId} obj Optional instance to populate.
+   * @return {module:model/SpaceId} The populated <code>SpaceId</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
+   * The ID of the space.
+   * @member {String} id
    */
-  exports.prototype['timeout'] = undefined;
+  exports.prototype['id'] = undefined;
 
 
 

@@ -81,6 +81,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property dbDevice (base name: "dbDevice")', function() {
+      // uncomment below and update the code to test the property dbDevice
+      //var instane = new Onepanel.CephOsdConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walDevice (base name: "walDevice")', function() {
+      // uncomment below and update the code to test the property walDevice
+      //var instane = new Onepanel.CephOsdConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property path (base name: "path")', function() {
       // uncomment below and update the code to test the property path
       //var instane = new Onepanel.CephOsdConfiguration();

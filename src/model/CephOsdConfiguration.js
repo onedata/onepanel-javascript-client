@@ -56,6 +56,8 @@
 
 
 
+
+
   };
 
   /**
@@ -91,6 +93,12 @@
       if (data.hasOwnProperty('partition')) {
         obj['partition'] = ApiClient.convertToType(data['partition'], 'String');
       }
+      if (data.hasOwnProperty('dbDevice')) {
+        obj['dbDevice'] = ApiClient.convertToType(data['dbDevice'], 'String');
+      }
+      if (data.hasOwnProperty('walDevice')) {
+        obj['walDevice'] = ApiClient.convertToType(data['walDevice'], 'String');
+      }
       if (data.hasOwnProperty('path')) {
         obj['path'] = ApiClient.convertToType(data['path'], 'String');
       }
@@ -117,6 +125,16 @@
    * @member {String} partition
    */
   exports.prototype['partition'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} dbDevice
+   */
+  exports.prototype['dbDevice'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} walDevice
+   */
+  exports.prototype['walDevice'] = undefined;
   /**
    * Relevant for plain filestore. If omitted, default location based on OSD id will be used.
    * @member {String} path

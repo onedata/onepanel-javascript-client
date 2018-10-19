@@ -57,14 +57,20 @@
       //expect(instance).to.be.a(Onepanel.CephConfiguration);
     });
 
-    it('should have the property monitors (base name: "monitors")', function() {
-      // uncomment below and update the code to test the property monitors
+    it('should have the property osds (base name: "osds")', function() {
+      // uncomment below and update the code to test the property osds
       //var instane = new Onepanel.CephConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property osds (base name: "osds")', function() {
-      // uncomment below and update the code to test the property osds
+    it('should have the property mons (base name: "mons")', function() {
+      // uncomment below and update the code to test the property mons
+      //var instane = new Onepanel.CephConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mgrs (base name: "mgrs")', function() {
+      // uncomment below and update the code to test the property mgrs
       //var instane = new Onepanel.CephConfiguration();
       //expect(instance).to.be();
     });

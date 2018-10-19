@@ -17,100 +17,94 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephMgrConfiguration', 'model/CephMonConfiguration', 'model/CephOsdConfiguration', 'model/CephPool'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephMgrConfiguration'), require('./CephMonConfiguration'), require('./CephOsdConfiguration'), require('./CephPool'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.CephMgrConfiguration, root.Onepanel.CephMonConfiguration, root.Onepanel.CephOsdConfiguration, root.Onepanel.CephPool);
+    root.Onepanel.CephUsageTotal = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, CephMgrConfiguration, CephMonConfiguration, CephOsdConfiguration, CephPool) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The CephConfiguration model module.
-   * @module model/CephConfiguration
+   * The CephUsageTotal model module.
+   * @module model/CephUsageTotal
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>CephConfiguration</code>.
-   * Describes initial configuration of a ceph cluster.
-   * @alias module:model/CephConfiguration
+   * Constructs a new <code>CephUsageTotal</code>.
+   * @alias module:model/CephUsageTotal
    * @class
+   * @param total {Number} Total space (used and available) in bytes.
+   * @param used {Number} Total used space in bytes.
+   * @param available {Number} Total available space in bytes.
    */
-  var exports = function() {
+  var exports = function(total, used, available) {
     var _this = this;
 
-
-
-
-
+    _this['total'] = total;
+    _this['used'] = used;
+    _this['available'] = available;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephUsageTotal} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephUsageTotal</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephConfiguration} obj Optional instance to populate.
-   * @return {module:model/CephConfiguration} The populated <code>CephConfiguration</code> instance.
+   * @param {module:model/CephUsageTotal} obj Optional instance to populate.
+   * @return {module:model/CephUsageTotal} The populated <code>CephUsageTotal</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('osds')) {
-        obj['osds'] = ApiClient.convertToType(data['osds'], [CephOsdConfiguration]);
+      if (data.hasOwnProperty('total')) {
+        obj['total'] = ApiClient.convertToType(data['total'], 'Number');
       }
-      if (data.hasOwnProperty('mons')) {
-        obj['mons'] = ApiClient.convertToType(data['mons'], [CephMonConfiguration]);
+      if (data.hasOwnProperty('used')) {
+        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
       }
-      if (data.hasOwnProperty('mgrs')) {
-        obj['mgrs'] = ApiClient.convertToType(data['mgrs'], [CephMgrConfiguration]);
-      }
-      if (data.hasOwnProperty('pools')) {
-        obj['pools'] = ApiClient.convertToType(data['pools'], [CephPool]);
+      if (data.hasOwnProperty('available')) {
+        obj['available'] = ApiClient.convertToType(data['available'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * @fixme
-   * @member {Array.<module:model/CephOsdConfiguration>} osds
+   * Total space (used and available) in bytes.
+   * @member {Number} total
    */
-  exports.prototype['osds'] = undefined;
+  exports.prototype['total'] = undefined;
   /**
-   * @fixme
-   * @member {Array.<module:model/CephMonConfiguration>} mons
+   * Total used space in bytes.
+   * @member {Number} used
    */
-  exports.prototype['mons'] = undefined;
+  exports.prototype['used'] = undefined;
   /**
-   * @fixme
-   * @member {Array.<module:model/CephMgrConfiguration>} mgrs
+   * Total available space in bytes.
+   * @member {Number} available
    */
-  exports.prototype['mgrs'] = undefined;
-  /**
-   * @member {Array.<module:model/CephPool>} pools
-   */
-  exports.prototype['pools'] = undefined;
+  exports.prototype['available'] = undefined;
 
 
 

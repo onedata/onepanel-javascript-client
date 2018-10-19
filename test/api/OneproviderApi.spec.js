@@ -151,6 +151,16 @@
         done();
       });
     });
+    describe('getCephMonitor', function() {
+      it('should call getCephMonitor successfully', function(done) {
+        //uncomment below and update the code to test getCephMonitor
+        //instance.getCephMonitor(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephMonitors', function() {
       it('should call getCephMonitors successfully', function(done) {
         //uncomment below and update the code to test getCephMonitors
@@ -161,10 +171,20 @@
         done();
       });
     });
-    describe('getCephMonitorsStatus', function() {
-      it('should call getCephMonitorsStatus successfully', function(done) {
-        //uncomment below and update the code to test getCephMonitorsStatus
-        //instance.getCephMonitorsStatus(function(error) {
+    describe('getCephOsd', function() {
+      it('should call getCephOsd successfully', function(done) {
+        //uncomment below and update the code to test getCephOsd
+        //instance.getCephOsd(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCephOsdsStatus', function() {
+      it('should call getCephOsdsStatus successfully', function(done) {
+        //uncomment below and update the code to test getCephOsdsStatus
+        //instance.getCephOsdsStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -181,10 +201,30 @@
         done();
       });
     });
+    describe('getCephPoolUsage', function() {
+      it('should call getCephPoolUsage successfully', function(done) {
+        //uncomment below and update the code to test getCephPoolUsage
+        //instance.getCephPoolUsage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephPools', function() {
       it('should call getCephPools successfully', function(done) {
         //uncomment below and update the code to test getCephPools
         //instance.getCephPools(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCephUsage', function() {
+      it('should call getCephUsage successfully', function(done) {
+        //uncomment below and update the code to test getCephUsage
+        //instance.getCephUsage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -425,6 +465,16 @@
       it('should call providerSpaceStartCleaning successfully', function(done) {
         //uncomment below and update the code to test providerSpaceStartCleaning
         //instance.providerSpaceStartCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeCephOsd', function() {
+      it('should call removeCephOsd successfully', function(done) {
+        //uncomment below and update the code to test removeCephOsd
+        //instance.removeCephOsd(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

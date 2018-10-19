@@ -14,10 +14,14 @@ Method | HTTP request | Description
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph/configuration | Configure ceph deployment
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{name} | Get ceph monitor
 [**getCephMonitors**](OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | Get ceph monitor
-[**getCephMonitorsStatus**](OneproviderApi.md#getCephMonitorsStatus) | **GET** /provider/ceph/osds | Get ceph monitor status
+[**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get ceph OSD
+[**getCephOsdsStatus**](OneproviderApi.md#getCephOsdsStatus) | **GET** /provider/ceph/osds | Get ceph monitor status
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
+[**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get space usage details for specific pool.
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | Get list of ceph pools
+[**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -42,6 +46,7 @@ Method | HTTP request | Description
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 [**providerSpaceStartCleaning**](OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
+[**removeCephOsd**](OneproviderApi.md#removeCephOsd) | **DELETE** /provider/ceph/osds/{id} | Purge Ceph OSD.
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
@@ -73,7 +78,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The service hosts configuration where monitors should be deployed. 
+var serviceHosts = new Onepanel.CephMonsConfiguration(); // CephMonsConfiguration | The service hosts configuration where monitors should be deployed. 
 
 
 var callback = function(error, data, response) {
@@ -90,7 +95,7 @@ apiInstance.addCephMonitors(serviceHosts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceHosts** | [**ServiceHosts**](ServiceHosts.md)| The service hosts configuration where monitors should be deployed.  | 
+ **serviceHosts** | [**CephMonsConfiguration**](CephMonsConfiguration.md)| The service hosts configuration where monitors should be deployed.  | 
 
 ### Return type
 
@@ -573,6 +578,58 @@ null (empty response body)
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
+<a name="getCephMonitor"></a>
+# **getCephMonitor**
+> CephMonConfiguration getCephMonitor(name)
+
+Get ceph monitor
+
+
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var name = "name_example"; // String | @fixme
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephMonitor(name, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| @fixme | 
+
+### Return type
+
+[**CephMonConfiguration**](CephMonConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getCephMonitors"></a>
 # **getCephMonitors**
 > ServiceHosts getCephMonitors()
@@ -619,9 +676,61 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getCephMonitorsStatus"></a>
-# **getCephMonitorsStatus**
-> CephOsds getCephMonitorsStatus()
+<a name="getCephOsd"></a>
+# **getCephOsd**
+> CephOsdConfiguration getCephOsd(id)
+
+Get ceph OSD
+
+
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | @fixme
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephOsd(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| @fixme | 
+
+### Return type
+
+[**CephOsdConfiguration**](CephOsdConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getCephOsdsStatus"></a>
+# **getCephOsdsStatus**
+> CephOsds getCephOsdsStatus()
 
 Get ceph monitor status
 
@@ -646,7 +755,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getCephMonitorsStatus(callback);
+apiInstance.getCephOsdsStatus(callback);
 ```
 
 ### Parameters
@@ -717,6 +826,58 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getCephPoolUsage"></a>
+# **getCephPoolUsage**
+> CephPoolUsage getCephPoolUsage(name)
+
+Get space usage details for specific pool.
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var name = "name_example"; // String | The name of the pool to describe.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephPoolUsage(name, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The name of the pool to describe. | 
+
+### Return type
+
+[**CephPoolUsage**](CephPoolUsage.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getCephPools"></a>
 # **getCephPools**
 > Names getCephPools()
@@ -753,6 +914,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Names**](Names.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getCephUsage"></a>
+# **getCephUsage**
+> CephUsage getCephUsage()
+
+Get Ceph storage space usage.
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephUsage(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CephUsage**](CephUsage.md)
 
 ### Authorization
 
@@ -1973,6 +2180,58 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="removeCephOsd"></a>
+# **removeCephOsd**
+> removeCephOsd(id)
+
+Purge Ceph OSD.
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | @fixme
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.removeCephOsd(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| @fixme | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 <a name="removeProvider"></a>

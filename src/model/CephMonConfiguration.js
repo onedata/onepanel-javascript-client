@@ -17,41 +17,40 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephMgrConfiguration', 'model/CephMonConfiguration', 'model/CephOsdConfiguration', 'model/CephPool'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephMgrConfiguration'), require('./CephMonConfiguration'), require('./CephOsdConfiguration'), require('./CephPool'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.CephMgrConfiguration, root.Onepanel.CephMonConfiguration, root.Onepanel.CephOsdConfiguration, root.Onepanel.CephPool);
+    root.Onepanel.CephMonConfiguration = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, CephMgrConfiguration, CephMonConfiguration, CephOsdConfiguration, CephPool) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The CephConfiguration model module.
-   * @module model/CephConfiguration
+   * The CephMonConfiguration model module.
+   * @module model/CephMonConfiguration
    * @version 18.02.0-rc2
    */
 
   /**
-   * Constructs a new <code>CephConfiguration</code>.
-   * Describes initial configuration of a ceph cluster.
-   * @alias module:model/CephConfiguration
+   * Constructs a new <code>CephMonConfiguration</code>.
+   * @fixme
+   * @alias module:model/CephMonConfiguration
    * @class
+   * @param host {String} Host on which given mon should be deployed
    */
-  var exports = function() {
+  var exports = function(host) {
     var _this = this;
 
-
-
-
+    _this['host'] = host;
 
   };
 
@@ -59,58 +58,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephMonConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephMonConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephConfiguration} obj Optional instance to populate.
-   * @return {module:model/CephConfiguration} The populated <code>CephConfiguration</code> instance.
+   * @param {module:model/CephMonConfiguration} obj Optional instance to populate.
+   * @return {module:model/CephMonConfiguration} The populated <code>CephMonConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('osds')) {
-        obj['osds'] = ApiClient.convertToType(data['osds'], [CephOsdConfiguration]);
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
-      if (data.hasOwnProperty('mons')) {
-        obj['mons'] = ApiClient.convertToType(data['mons'], [CephMonConfiguration]);
-      }
-      if (data.hasOwnProperty('mgrs')) {
-        obj['mgrs'] = ApiClient.convertToType(data['mgrs'], [CephMgrConfiguration]);
-      }
-      if (data.hasOwnProperty('pools')) {
-        obj['pools'] = ApiClient.convertToType(data['pools'], [CephPool]);
+      if (data.hasOwnProperty('ip')) {
+        obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @fixme
-   * @member {Array.<module:model/CephOsdConfiguration>} osds
+   * Host on which given mon should be deployed
+   * @member {String} host
    */
-  exports.prototype['osds'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
-   * @fixme
-   * @member {Array.<module:model/CephMonConfiguration>} mons
+   * Local IP to be used for communication between Ceph nodes. If not specified it will be autodetected.
+   * @member {String} ip
    */
-  exports.prototype['mons'] = undefined;
-  /**
-   * @fixme
-   * @member {Array.<module:model/CephMgrConfiguration>} mgrs
-   */
-  exports.prototype['mgrs'] = undefined;
-  /**
-   * @member {Array.<module:model/CephPool>} pools
-   */
-  exports.prototype['pools'] = undefined;
+  exports.prototype['ip'] = undefined;
 
 
 

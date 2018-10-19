@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephConfiguration', 'model/CephOsds', 'model/CephOsdsConfiguration', 'model/CephPool', 'model/CephPoolModifyRequest', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Names', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/CephConfiguration', 'model/CephMonConfiguration', 'model/CephMonsConfiguration', 'model/CephOsdConfiguration', 'model/CephOsds', 'model/CephOsdsConfiguration', 'model/CephPool', 'model/CephPoolModifyRequest', 'model/CephPoolUsage', 'model/CephUsage', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Names', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CephConfiguration'), require('../model/CephOsds'), require('../model/CephOsdsConfiguration'), require('../model/CephPool'), require('../model/CephPoolModifyRequest'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/Names'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningReportCollection'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/CephConfiguration'), require('../model/CephMonConfiguration'), require('../model/CephMonsConfiguration'), require('../model/CephOsdConfiguration'), require('../model/CephOsds'), require('../model/CephOsdsConfiguration'), require('../model/CephPool'), require('../model/CephPoolModifyRequest'), require('../model/CephPoolUsage'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/Names'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningReportCollection'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.CephConfiguration, root.Onepanel.CephOsds, root.Onepanel.CephOsdsConfiguration, root.Onepanel.CephPool, root.Onepanel.CephPoolModifyRequest, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.Names, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningReportCollection, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.CephConfiguration, root.Onepanel.CephMonConfiguration, root.Onepanel.CephMonsConfiguration, root.Onepanel.CephOsdConfiguration, root.Onepanel.CephOsds, root.Onepanel.CephOsdsConfiguration, root.Onepanel.CephPool, root.Onepanel.CephPoolModifyRequest, root.Onepanel.CephPoolUsage, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.Names, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningReportCollection, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
   }
-}(this, function(ApiClient, CephConfiguration, CephOsds, CephOsdsConfiguration, CephPool, CephPoolModifyRequest, ClusterIps, Error, ManagerHosts, ModifyClusterIps, Names, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningReportCollection, SpaceAutoCleaningStatus, SpaceDetails, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
+}(this, function(ApiClient, CephConfiguration, CephMonConfiguration, CephMonsConfiguration, CephOsdConfiguration, CephOsds, CephOsdsConfiguration, CephPool, CephPoolModifyRequest, CephPoolUsage, CephUsage, ClusterIps, Error, ManagerHosts, ModifyClusterIps, Names, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningReportCollection, SpaceAutoCleaningStatus, SpaceDetails, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
   'use strict';
 
   /**
@@ -59,7 +59,7 @@
     /**
      * Add monitors to ceph cluster
      * Deploys ceph monitor services on given hosts.
-     * @param {module:model/ServiceHosts} serviceHosts The service hosts configuration where monitors should be deployed. 
+     * @param {module:model/CephMonsConfiguration} serviceHosts The service hosts configuration where monitors should be deployed. 
      * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addCephMonitors = function(serviceHosts, callback) {
@@ -489,6 +489,52 @@
     }
 
     /**
+     * Callback function to receive the result of the getCephMonitor operation.
+     * @callback module:api/OneproviderApi~getCephMonitorCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CephMonConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get ceph monitor
+     * 
+     * @param {String} name @fixme
+     * @param {module:api/OneproviderApi~getCephMonitorCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CephMonConfiguration}
+     */
+    this.getCephMonitor = function(name, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'name' is set
+      if (name === undefined || name === null) {
+        throw new Error("Missing the required parameter 'name' when calling getCephMonitor");
+      }
+
+
+      var pathParams = {
+        'name': name
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CephMonConfiguration;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/monitors/{name}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getCephMonitors operation.
      * @callback module:api/OneproviderApi~getCephMonitorsCallback
      * @param {String} error Error message, if any.
@@ -528,8 +574,54 @@
     }
 
     /**
-     * Callback function to receive the result of the getCephMonitorsStatus operation.
-     * @callback module:api/OneproviderApi~getCephMonitorsStatusCallback
+     * Callback function to receive the result of the getCephOsd operation.
+     * @callback module:api/OneproviderApi~getCephOsdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CephOsdConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get ceph OSD
+     * 
+     * @param {String} id @fixme
+     * @param {module:api/OneproviderApi~getCephOsdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CephOsdConfiguration}
+     */
+    this.getCephOsd = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getCephOsd");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CephOsdConfiguration;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/osds/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCephOsdsStatus operation.
+     * @callback module:api/OneproviderApi~getCephOsdsStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/CephOsds} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -538,10 +630,10 @@
     /**
      * Get ceph monitor status
      * Returns status of cluster worker service on each host where it has been deployed. 
-     * @param {module:api/OneproviderApi~getCephMonitorsStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OneproviderApi~getCephOsdsStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephOsds}
      */
-    this.getCephMonitorsStatus = function(callback) {
+    this.getCephOsdsStatus = function(callback) {
       var postBody = null;
 
 
@@ -613,6 +705,52 @@
     }
 
     /**
+     * Callback function to receive the result of the getCephPoolUsage operation.
+     * @callback module:api/OneproviderApi~getCephPoolUsageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CephPoolUsage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get space usage details for specific pool.
+     * @fixme
+     * @param {String} name The name of the pool to describe.
+     * @param {module:api/OneproviderApi~getCephPoolUsageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CephPoolUsage}
+     */
+    this.getCephPoolUsage = function(name, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'name' is set
+      if (name === undefined || name === null) {
+        throw new Error("Missing the required parameter 'name' when calling getCephPoolUsage");
+      }
+
+
+      var pathParams = {
+        'name': name
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CephPoolUsage;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/pools/{name}/usage', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getCephPools operation.
      * @callback module:api/OneproviderApi~getCephPoolsCallback
      * @param {String} error Error message, if any.
@@ -646,6 +784,45 @@
 
       return this.apiClient.callApi(
         '/provider/ceph/pools', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCephUsage operation.
+     * @callback module:api/OneproviderApi~getCephUsageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CephUsage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Ceph storage space usage.
+     * @fixme
+     * @param {module:api/OneproviderApi~getCephUsageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CephUsage}
+     */
+    this.getCephUsage = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CephUsage;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/usage', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1708,6 +1885,51 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/start_cleaning', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeCephOsd operation.
+     * @callback module:api/OneproviderApi~removeCephOsdCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Purge Ceph OSD.
+     * @fixme
+     * @param {String} id @fixme
+     * @param {module:api/OneproviderApi~removeCephOsdCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeCephOsd = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling removeCephOsd");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/osds/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -3,8 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**monitors** | [**CephConfigurationMonitors**](CephConfigurationMonitors.md) |  | [optional] 
-**osds** | [**[CephOsdConfiguration]**](CephOsdConfiguration.md) |  | 
-**pools** | [**[CephPool]**](CephPool.md) |  | 
+**osds** | [**[CephOsdConfiguration]**](CephOsdConfiguration.md) | @fixme | [optional] 
+**mons** | [**[CephMonConfiguration]**](CephMonConfiguration.md) | @fixme | [optional] 
+**mgrs** | [**[CephMgrConfiguration]**](CephMgrConfiguration.md) | @fixme | [optional] 
+**pools** | [**[CephPool]**](CephPool.md) |  | [optional] 
 
 

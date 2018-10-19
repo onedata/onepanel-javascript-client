@@ -16,105 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephMgrConfiguration', 'model/CephMonConfiguration', 'model/CephOsdConfiguration', 'model/CephPool'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephMgrConfiguration'), require('./CephMonConfiguration'), require('./CephOsdConfiguration'), require('./CephPool'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.CephConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.CephMgrConfiguration, root.Onepanel.CephMonConfiguration, root.Onepanel.CephOsdConfiguration, root.Onepanel.CephPool);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, CephMgrConfiguration, CephMonConfiguration, CephOsdConfiguration, CephPool) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.CephMgrsConfiguration();
+  });
 
-
-  /**
-   * The CephConfiguration model module.
-   * @module model/CephConfiguration
-   * @version 18.02.0-rc2
-   */
-
-  /**
-   * Constructs a new <code>CephConfiguration</code>.
-   * Describes initial configuration of a ceph cluster.
-   * @alias module:model/CephConfiguration
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CephConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>CephConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephConfiguration} obj Optional instance to populate.
-   * @return {module:model/CephConfiguration} The populated <code>CephConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('osds')) {
-        obj['osds'] = ApiClient.convertToType(data['osds'], [CephOsdConfiguration]);
-      }
-      if (data.hasOwnProperty('mons')) {
-        obj['mons'] = ApiClient.convertToType(data['mons'], [CephMonConfiguration]);
-      }
-      if (data.hasOwnProperty('mgrs')) {
-        obj['mgrs'] = ApiClient.convertToType(data['mgrs'], [CephMgrConfiguration]);
-      }
-      if (data.hasOwnProperty('pools')) {
-        obj['pools'] = ApiClient.convertToType(data['pools'], [CephPool]);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @fixme
-   * @member {Array.<module:model/CephOsdConfiguration>} osds
-   */
-  exports.prototype['osds'] = undefined;
-  /**
-   * @fixme
-   * @member {Array.<module:model/CephMonConfiguration>} mons
-   */
-  exports.prototype['mons'] = undefined;
-  /**
-   * @fixme
-   * @member {Array.<module:model/CephMgrConfiguration>} mgrs
-   */
-  exports.prototype['mgrs'] = undefined;
-  /**
-   * @member {Array.<module:model/CephPool>} pools
-   */
-  exports.prototype['pools'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('CephMgrsConfiguration', function() {
+    it('should create an instance of CephMgrsConfiguration', function() {
+      // uncomment below and update the code to test CephMgrsConfiguration
+      //var instane = new Onepanel.CephMgrsConfiguration();
+      //expect(instance).to.be.a(Onepanel.CephMgrsConfiguration);
+    });
 
+    it('should have the property mgrs (base name: "mgrs")', function() {
+      // uncomment below and update the code to test the property mgrs
+      //var instane = new Onepanel.CephMgrsConfiguration();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+  });
+
 }));
-
-

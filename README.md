@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Posix](docs/Posix.md)
  - [Onepanel.S3](docs/S3.md)
  - [Onepanel.Swift](docs/Swift.md)
+ - [Onepanel.Webdav](docs/Webdav.md)
 
 
 ## Documentation for Authorization

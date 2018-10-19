@@ -538,6 +538,10 @@
               polymorphicType = require("./model/Swift");
             }
 
+            if('webdav'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Webdav");
+            }
+
             if(polymorphicType) {
               return polymorphicType.constructFromObject(data);
             }

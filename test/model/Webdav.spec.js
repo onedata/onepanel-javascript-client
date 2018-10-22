@@ -16,106 +16,119 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.PanelConfigurationUsers = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.Webdav();
+  });
 
-
-  /**
-   * The PanelConfigurationUsers model module.
-   * @module model/PanelConfigurationUsers
-   * @version 18.02.0-rc12
-   */
-
-  /**
-   * Constructs a new <code>PanelConfigurationUsers</code>.
-   * @alias module:model/PanelConfigurationUsers
-   * @class
-   * @param password {String} The user password.
-   * @param userRole {module:model/PanelConfigurationUsers.UserRoleEnum} The user role, one of 'admin' or 'regular'.
-   */
-  var exports = function(password, userRole) {
-    var _this = this;
-
-    _this['password'] = password;
-    _this['userRole'] = userRole;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/PanelConfigurationUsers} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>PanelConfigurationUsers</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PanelConfigurationUsers} obj Optional instance to populate.
-   * @return {module:model/PanelConfigurationUsers} The populated <code>PanelConfigurationUsers</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('userRole')) {
-        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The user password.
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-  /**
-   * The user role, one of 'admin' or 'regular'.
-   * @member {module:model/PanelConfigurationUsers.UserRoleEnum} userRole
-   */
-  exports.prototype['userRole'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('Webdav', function() {
+    it('should create an instance of Webdav', function() {
+      // uncomment below and update the code to test Webdav
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be.a(Onepanel.Webdav);
+    });
 
-  /**
-   * Allowed values for the <code>userRole</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UserRoleEnum = {
-    /**
-     * value: "admin"
-     * @const
-     */
-    "admin": "admin",
-    /**
-     * value: "regular"
-     * @const
-     */
-    "regular": "regular"  };
+    it('should have the property endpoint (base name: "endpoint")', function() {
+      // uncomment below and update the code to test the property endpoint
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentials (base name: "credentials")', function() {
+      // uncomment below and update the code to test the property credentials
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rangeWriteSupport (base name: "rangeWriteSupport")', function() {
+      // uncomment below and update the code to test the property rangeWriteSupport
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumUploadSize (base name: "maximumUploadSize")', function() {
+      // uncomment below and update the code to test the property maximumUploadSize
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

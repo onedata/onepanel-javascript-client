@@ -489,7 +489,11 @@
 
     switch (type) {
       case 'Boolean':
-        return Boolean(data);
+        if (typeof data === 'string') {
+          return data === 'true';
+        } else {
+          return Boolean(data);
+        }
       case 'Integer':
         return parseInt(data, 10);
       case 'Number':

@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPoolUsage = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephMonitor = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,23 @@
 
 
   /**
-   * The CephPoolUsage model module.
-   * @module model/CephPoolUsage
+   * The CephMonitor model module.
+   * @module model/CephMonitor
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephPoolUsage</code>.
-   * Space usage of a single Ceph pool.
-   * @alias module:model/CephPoolUsage
+   * Constructs a new <code>CephMonitor</code>.
+   * Ceph Monitor specification
+   * @alias module:model/CephMonitor
    * @class
-   * @param used {Number} Total size of objects in the pool in bytes.
+   * @param host {String} Host on which given mon should be deployed
    */
-  var exports = function(used) {
+  var exports = function(host) {
     var _this = this;
 
-    _this['used'] = used;
+    _this['host'] = host;
+
 
   };
 
@@ -58,43 +59,51 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephPoolUsage} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephMonitor} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephPoolUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephMonitor</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephPoolUsage} obj Optional instance to populate.
-   * @return {module:model/CephPoolUsage} The populated <code>CephPoolUsage</code> instance.
+   * @param {module:model/CephMonitor} obj Optional instance to populate.
+   * @return {module:model/CephMonitor} The populated <code>CephMonitor</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('used')) {
-        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
-      if (data.hasOwnProperty('maxAvailable')) {
-        obj['maxAvailable'] = ApiClient.convertToType(data['maxAvailable'], 'Number');
+      if (data.hasOwnProperty('ip')) {
+        obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
+      }
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Total size of objects in the pool in bytes.
-   * @member {Number} used
+   * Host on which given mon should be deployed
+   * @member {String} host
    */
-  exports.prototype['used'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
-   * Projected size of data which can be written to the pool in bytes. See 'Checking a Cluster’s Usage Stats' in the Ceph documentation.
-   * @member {Number} maxAvailable
+   * Local IP to be used for communication between Ceph nodes. If not specified it will be autodetected.
+   * @member {String} ip
    */
-  exports.prototype['maxAvailable'] = undefined;
+  exports.prototype['ip'] = undefined;
+  /**
+   * Monitor identifier. Be default the hostname is used.
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
 
 
 

@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPoolUsage = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephManager = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,21 @@
 
 
   /**
-   * The CephPoolUsage model module.
-   * @module model/CephPoolUsage
+   * The CephManager model module.
+   * @module model/CephManager
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephPoolUsage</code>.
-   * Space usage of a single Ceph pool.
-   * @alias module:model/CephPoolUsage
+   * Constructs a new <code>CephManager</code>.
+   * Ceph Manager specification.
+   * @alias module:model/CephManager
    * @class
-   * @param used {Number} Total size of objects in the pool in bytes.
    */
-  var exports = function(used) {
+  var exports = function() {
     var _this = this;
 
-    _this['used'] = used;
+
 
   };
 
@@ -58,43 +57,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephPoolUsage} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephManager} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephPoolUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephManager</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephPoolUsage} obj Optional instance to populate.
-   * @return {module:model/CephPoolUsage} The populated <code>CephPoolUsage</code> instance.
+   * @param {module:model/CephManager} obj Optional instance to populate.
+   * @return {module:model/CephManager} The populated <code>CephManager</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('used')) {
-        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
-      if (data.hasOwnProperty('maxAvailable')) {
-        obj['maxAvailable'] = ApiClient.convertToType(data['maxAvailable'], 'Number');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Total size of objects in the pool in bytes.
-   * @member {Number} used
+   * Host on which given mgr should be deployed
+   * @member {String} host
    */
-  exports.prototype['used'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
-   * Projected size of data which can be written to the pool in bytes. See 'Checking a Cluster’s Usage Stats' in the Ceph documentation.
-   * @member {Number} maxAvailable
+   * Manager identifier. Be default the hostname is used.
+   * @member {String} id
    */
-  exports.prototype['maxAvailable'] = undefined;
+  exports.prototype['id'] = undefined;
 
 
 

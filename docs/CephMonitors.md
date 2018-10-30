@@ -1,4 +1,4 @@
-# Onepanel.CephOsds
+# Onepanel.CephMonitors
 
 ## Properties
 Name | Type | Description | Notes

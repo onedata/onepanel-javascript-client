@@ -1,4 +1,4 @@
-# Onepanel.CephOsds
+# Onepanel.CephPools
 
 ## Properties
 Name | Type | Description | Notes

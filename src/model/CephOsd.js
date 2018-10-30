@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPoolUsage = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephOsd = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,27 @@
 
 
   /**
-   * The CephPoolUsage model module.
-   * @module model/CephPoolUsage
+   * The CephOsd model module.
+   * @module model/CephOsd
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephPoolUsage</code>.
-   * Space usage of a single Ceph pool.
-   * @alias module:model/CephPoolUsage
+   * Constructs a new <code>CephOsd</code>.
+   * 
+   * @alias module:model/CephOsd
    * @class
-   * @param used {Number} Total size of objects in the pool in bytes.
+   * @param host {String} Host on which given osd should be deployed
+   * @param type {module:model/CephOsd.TypeEnum} 
    */
-  var exports = function(used) {
+  var exports = function(host, type) {
     var _this = this;
 
-    _this['used'] = used;
+    _this['host'] = host;
+    _this['type'] = type;
+
+
+
 
   };
 
@@ -58,44 +63,92 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephPoolUsage} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephOsd} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephPoolUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephOsd</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephPoolUsage} obj Optional instance to populate.
-   * @return {module:model/CephPoolUsage} The populated <code>CephPoolUsage</code> instance.
+   * @param {module:model/CephOsd} obj Optional instance to populate.
+   * @return {module:model/CephOsd} The populated <code>CephOsd</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('used')) {
-        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
-      if (data.hasOwnProperty('maxAvailable')) {
-        obj['maxAvailable'] = ApiClient.convertToType(data['maxAvailable'], 'Number');
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('device')) {
+        obj['device'] = ApiClient.convertToType(data['device'], 'String');
+      }
+      if (data.hasOwnProperty('dbDevice')) {
+        obj['dbDevice'] = ApiClient.convertToType(data['dbDevice'], 'String');
+      }
+      if (data.hasOwnProperty('walDevice')) {
+        obj['walDevice'] = ApiClient.convertToType(data['walDevice'], 'String');
+      }
+      if (data.hasOwnProperty('path')) {
+        obj['path'] = ApiClient.convertToType(data['path'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Total size of objects in the pool in bytes.
-   * @member {Number} used
+   * Host on which given osd should be deployed
+   * @member {String} host
    */
-  exports.prototype['used'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
-   * Projected size of data which can be written to the pool in bytes. See 'Checking a Cluster’s Usage Stats' in the Ceph documentation.
-   * @member {Number} maxAvailable
+   * @member {module:model/CephOsd.TypeEnum} type
    */
-  exports.prototype['maxAvailable'] = undefined;
+  exports.prototype['type'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph.
+   * @member {String} device
+   */
+  exports.prototype['device'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} dbDevice
+   */
+  exports.prototype['dbDevice'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} walDevice
+   */
+  exports.prototype['walDevice'] = undefined;
+  /**
+   * Relevant for plain filestore. If omitted, default location based on OSD id will be used.
+   * @member {String} path
+   */
+  exports.prototype['path'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "bluestore"
+     * @const
+     */
+    "bluestore": "bluestore",
+    /**
+     * value: "filestore"
+     * @const
+     */
+    "filestore": "filestore"  };
 
 
   return exports;

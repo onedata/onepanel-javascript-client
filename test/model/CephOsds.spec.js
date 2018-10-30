@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.CephOsds);
     });
 
-    it('should have the property ids (base name: "ids")', function() {
-      // uncomment below and update the code to test the property ids
-      //var instane = new Onepanel.CephOsds();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

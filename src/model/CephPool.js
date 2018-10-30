@@ -99,12 +99,12 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Number of object replicas in the pool
+   * Desired number of object replicas in the pool. When below this number the pool still may be used in \"degraded\" mode.
    * @member {Number} size
    */
   exports.prototype['size'] = undefined;
   /**
-   * Minimum number of object replicas in the pool
+   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is forbidden.
    * @member {Number} minSize
    */
   exports.prototype['minSize'] = undefined;

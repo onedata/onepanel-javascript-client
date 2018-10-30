@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**removeSession**](docs/OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
+*Onepanel.OneproviderApi* | [**addCephManagers**](docs/OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephMonitors**](docs/OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephOsds**](docs/OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
 *Onepanel.OneproviderApi* | [**addCephPool**](docs/OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pool.
@@ -128,12 +129,14 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-*Onepanel.OneproviderApi* | [**configureCeph**](docs/OneproviderApi.md#configureCeph) | **POST** /provider/ceph/configuration | Configure ceph deployment
+*Onepanel.OneproviderApi* | [**configureCeph**](docs/OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-*Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{name} | Get ceph monitor
-*Onepanel.OneproviderApi* | [**getCephMonitors**](docs/OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | Get ceph monitor
+*Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get ceph manager
+*Onepanel.OneproviderApi* | [**getCephManagers**](docs/OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | Get ceph manager
+*Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get ceph monitor
+*Onepanel.OneproviderApi* | [**getCephMonitors**](docs/OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | Get Ceph monitor
 *Onepanel.OneproviderApi* | [**getCephOsd**](docs/OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get ceph OSD
-*Onepanel.OneproviderApi* | [**getCephOsdsStatus**](docs/OneproviderApi.md#getCephOsdsStatus) | **GET** /provider/ceph/osds | Get ceph monitor status
+*Onepanel.OneproviderApi* | [**getCephOsds**](docs/OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 *Onepanel.OneproviderApi* | [**getCephPool**](docs/OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
 *Onepanel.OneproviderApi* | [**getCephPoolUsage**](docs/OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get space usage details for specific pool.
 *Onepanel.OneproviderApi* | [**getCephPools**](docs/OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | Get list of ceph pools
@@ -162,6 +165,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 *Onepanel.OneproviderApi* | [**providerSpaceStartCleaning**](docs/OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
+*Onepanel.OneproviderApi* | [**removeCephManager**](docs/OneproviderApi.md#removeCephManager) | **DELETE** /provider/ceph/managers/{id} | Purge Ceph manager.
+*Onepanel.OneproviderApi* | [**removeCephMonitor**](docs/OneproviderApi.md#removeCephMonitor) | **DELETE** /provider/ceph/monitors/{id} | Purge Ceph monitor.
 *Onepanel.OneproviderApi* | [**removeCephOsd**](docs/OneproviderApi.md#removeCephOsd) | **DELETE** /provider/ceph/osds/{id} | Purge Ceph OSD.
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
@@ -198,19 +203,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [Onepanel.CephConfiguration](docs/CephConfiguration.md)
- - [Onepanel.CephConfigurationCluster](docs/CephConfigurationCluster.md)
- - [Onepanel.CephMgrConfiguration](docs/CephMgrConfiguration.md)
- - [Onepanel.CephMgrsConfiguration](docs/CephMgrsConfiguration.md)
- - [Onepanel.CephMonConfiguration](docs/CephMonConfiguration.md)
- - [Onepanel.CephMonsConfiguration](docs/CephMonsConfiguration.md)
- - [Onepanel.CephOsdConfiguration](docs/CephOsdConfiguration.md)
+ - [Onepanel.CephGlobalParams](docs/CephGlobalParams.md)
+ - [Onepanel.CephManager](docs/CephManager.md)
+ - [Onepanel.CephManagers](docs/CephManagers.md)
+ - [Onepanel.CephMonitor](docs/CephMonitor.md)
+ - [Onepanel.CephMonitors](docs/CephMonitors.md)
+ - [Onepanel.CephOsd](docs/CephOsd.md)
  - [Onepanel.CephOsds](docs/CephOsds.md)
- - [Onepanel.CephOsdsConfiguration](docs/CephOsdsConfiguration.md)
  - [Onepanel.CephPool](docs/CephPool.md)
  - [Onepanel.CephPoolModifyRequest](docs/CephPoolModifyRequest.md)
  - [Onepanel.CephPoolStorageParams](docs/CephPoolStorageParams.md)
  - [Onepanel.CephPoolUsage](docs/CephPoolUsage.md)
+ - [Onepanel.CephPools](docs/CephPools.md)
  - [Onepanel.CephUsage](docs/CephUsage.md)
  - [Onepanel.CephUsageTotal](docs/CephUsageTotal.md)
  - [Onepanel.ClusterConfigurationDetails](docs/ClusterConfigurationDetails.md)
@@ -228,7 +232,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
- - [Onepanel.Names](docs/Names.md)
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
@@ -284,6 +287,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
  - [Onepanel.Ceph](docs/Ceph.md)
+ - [Onepanel.CephCluster](docs/CephCluster.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)

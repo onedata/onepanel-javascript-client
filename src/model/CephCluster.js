@@ -17,40 +17,43 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/CephGlobalParams', 'model/CephManagers', 'model/CephMonitors', 'model/CephOsds', 'model/CephPools'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./CephGlobalParams'), require('./CephManagers'), require('./CephMonitors'), require('./CephOsds'), require('./CephPools'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPoolUsage = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CephCluster = factory(root.Onepanel.ApiClient, root.Onepanel.CephGlobalParams, root.Onepanel.CephManagers, root.Onepanel.CephMonitors, root.Onepanel.CephOsds, root.Onepanel.CephPools);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, CephGlobalParams, CephManagers, CephMonitors, CephOsds, CephPools) {
   'use strict';
 
 
 
 
   /**
-   * The CephPoolUsage model module.
-   * @module model/CephPoolUsage
+   * The CephCluster model module.
+   * @module model/CephCluster
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephPoolUsage</code>.
-   * Space usage of a single Ceph pool.
-   * @alias module:model/CephPoolUsage
+   * Constructs a new <code>CephCluster</code>.
+   * Describes whole of ceph configuration.
+   * @alias module:model/CephCluster
    * @class
-   * @param used {Number} Total size of objects in the pool in bytes.
+   * @implements module:model/CephGlobalParams
    */
-  var exports = function(used) {
+  var exports = function() {
     var _this = this;
 
-    _this['used'] = used;
+    CephGlobalParams.call(_this);
+
+
+
 
   };
 
@@ -58,43 +61,70 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephPoolUsage} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephCluster} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephPoolUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephCluster</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephPoolUsage} obj Optional instance to populate.
-   * @return {module:model/CephPoolUsage} The populated <code>CephPoolUsage</code> instance.
+   * @param {module:model/CephCluster} obj Optional instance to populate.
+   * @return {module:model/CephCluster} The populated <code>CephCluster</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('used')) {
-        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      CephGlobalParams.constructFromObject(data, obj);
+      if (data.hasOwnProperty('osds')) {
+        obj['osds'] = CephOsds.constructFromObject(data['osds']);
       }
-      if (data.hasOwnProperty('maxAvailable')) {
-        obj['maxAvailable'] = ApiClient.convertToType(data['maxAvailable'], 'Number');
+      if (data.hasOwnProperty('monitors')) {
+        obj['monitors'] = CephMonitors.constructFromObject(data['monitors']);
+      }
+      if (data.hasOwnProperty('managers')) {
+        obj['managers'] = CephManagers.constructFromObject(data['managers']);
+      }
+      if (data.hasOwnProperty('pools')) {
+        obj['pools'] = CephPools.constructFromObject(data['pools']);
       }
     }
     return obj;
   }
 
   /**
-   * Total size of objects in the pool in bytes.
-   * @member {Number} used
+   * @member {module:model/CephOsds} osds
    */
-  exports.prototype['used'] = undefined;
+  exports.prototype['osds'] = undefined;
   /**
-   * Projected size of data which can be written to the pool in bytes. See 'Checking a Cluster’s Usage Stats' in the Ceph documentation.
-   * @member {Number} maxAvailable
+   * @member {module:model/CephMonitors} monitors
    */
-  exports.prototype['maxAvailable'] = undefined;
+  exports.prototype['monitors'] = undefined;
+  /**
+   * @member {module:model/CephManagers} managers
+   */
+  exports.prototype['managers'] = undefined;
+  /**
+   * @member {module:model/CephPools} pools
+   */
+  exports.prototype['pools'] = undefined;
+
+  // Implement CephGlobalParams interface:
+  /**
+   * Name of the cluster.
+   * @member {String} name
+   * @default 'ceph'
+   */
+exports.prototype['name'] = 'ceph';
+
+  /**
+   * Unique UUID of the cluster. Autogenerated when cluster is deployed if not specified.
+   * @member {String} fsid
+   */
+exports.prototype['fsid'] = undefined;
 
 
 

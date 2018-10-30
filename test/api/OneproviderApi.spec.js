@@ -51,6 +51,16 @@
   }
 
   describe('OneproviderApi', function() {
+    describe('addCephManagers', function() {
+      it('should call addCephManagers successfully', function(done) {
+        //uncomment below and update the code to test addCephManagers
+        //instance.addCephManagers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addCephMonitors', function() {
       it('should call addCephMonitors successfully', function(done) {
         //uncomment below and update the code to test addCephMonitors
@@ -151,6 +161,26 @@
         done();
       });
     });
+    describe('getCephManager', function() {
+      it('should call getCephManager successfully', function(done) {
+        //uncomment below and update the code to test getCephManager
+        //instance.getCephManager(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCephManagers', function() {
+      it('should call getCephManagers successfully', function(done) {
+        //uncomment below and update the code to test getCephManagers
+        //instance.getCephManagers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephMonitor', function() {
       it('should call getCephMonitor successfully', function(done) {
         //uncomment below and update the code to test getCephMonitor
@@ -181,10 +211,10 @@
         done();
       });
     });
-    describe('getCephOsdsStatus', function() {
-      it('should call getCephOsdsStatus successfully', function(done) {
-        //uncomment below and update the code to test getCephOsdsStatus
-        //instance.getCephOsdsStatus(function(error) {
+    describe('getCephOsds', function() {
+      it('should call getCephOsds successfully', function(done) {
+        //uncomment below and update the code to test getCephOsds
+        //instance.getCephOsds(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -465,6 +495,26 @@
       it('should call providerSpaceStartCleaning successfully', function(done) {
         //uncomment below and update the code to test providerSpaceStartCleaning
         //instance.providerSpaceStartCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeCephManager', function() {
+      it('should call removeCephManager successfully', function(done) {
+        //uncomment below and update the code to test removeCephManager
+        //instance.removeCephManager(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeCephMonitor', function() {
+      it('should call removeCephMonitor successfully', function(done) {
+        //uncomment below and update the code to test removeCephMonitor
+        //instance.removeCephMonitor(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

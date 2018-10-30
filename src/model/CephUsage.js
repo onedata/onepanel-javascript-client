@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>CephUsage</code>.
-   * @fixme
+   * Summary of storage space usage in the ceph cluster.
    * @alias module:model/CephUsage
    * @class
-   * @param pools {Object.<String, module:model/CephPoolUsage>} The collection of pools with associated usage data. 
+   * @param pools {Object.<String, module:model/CephPoolUsage>} The collection of pools with associated usage data.
    */
   var exports = function(pools) {
     var _this = this;
@@ -90,7 +90,7 @@
    */
   exports.prototype['total'] = undefined;
   /**
-   * The collection of pools with associated usage data. 
+   * The collection of pools with associated usage data.
    * @member {Object.<String, module:model/CephPoolUsage>} pools
    */
   exports.prototype['pools'] = undefined;

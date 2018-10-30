@@ -63,7 +63,7 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property maxAvailable (base name: "max_available")', function() {
+    it('should have the property maxAvailable (base name: "maxAvailable")', function() {
       // uncomment below and update the code to test the property maxAvailable
       //var instane = new Onepanel.CephPoolUsage();
       //expect(instance).to.be();

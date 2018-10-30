@@ -1,6 +1,6 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
  * OpenAPI spec version: 18.02.0-rc12
  * Contact: info@onedata.org
@@ -17,12 +17,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/Cookie', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceAutoCleaning', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningSettings', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilesPopularity', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/Cephrados', 'model/Glusterfs', 'model/Nulldevice', 'model/Posix', 'model/S3', 'model/Swift', 'model/Webdav', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
+    define(['ApiClient', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolModifyRequest', 'model/CephPoolStorageParams', 'model/CephPoolUsage', 'model/CephPools', 'model/CephUsage', 'model/CephUsageTotal', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Node', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceAutoCleaning', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningSettings', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilesPopularity', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/CephCluster', 'model/Cephrados', 'model/Glusterfs', 'model/Nulldevice', 'model/Posix', 'model/S3', 'model/Swift', 'model/Webdav', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/Cookie'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/Error'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceAutoCleaning'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReportCollection'), require('./model/SpaceAutoCleaningSettings'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilesPopularity'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/Cephrados'), require('./model/Glusterfs'), require('./model/Nulldevice'), require('./model/Posix'), require('./model/S3'), require('./model/Swift'), require('./model/Webdav'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/CephGlobalParams'), require('./model/CephManager'), require('./model/CephManagers'), require('./model/CephMonitor'), require('./model/CephMonitors'), require('./model/CephOsd'), require('./model/CephOsds'), require('./model/CephPool'), require('./model/CephPoolModifyRequest'), require('./model/CephPoolStorageParams'), require('./model/CephPoolUsage'), require('./model/CephPools'), require('./model/CephUsage'), require('./model/CephUsageTotal'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/Error'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/JoinClusterRequest'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceAutoCleaning'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReportCollection'), require('./model/SpaceAutoCleaningSettings'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilesPopularity'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/Users'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/CephCluster'), require('./model/Cephrados'), require('./model/Glusterfs'), require('./model/Nulldevice'), require('./model/Posix'), require('./model/S3'), require('./model/Swift'), require('./model/Webdav'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
   }
-}(function(ApiClient, ClusterConfigurationDetails, ClusterDatabases, ClusterIps, ClusterManagers, ClusterWorkers, Cookie, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, Error, ManagerHosts, ModifyClusterIps, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceAutoCleaning, SpaceAutoCleaningReport, SpaceAutoCleaningReportCollection, SpaceAutoCleaningSettings, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilesPopularity, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, Cephrados, Glusterfs, Nulldevice, Posix, S3, Swift, Webdav, OnepanelApi, OneproviderApi, OnezoneApi) {
+}(function(ApiClient, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolModifyRequest, CephPoolStorageParams, CephPoolUsage, CephPools, CephUsage, CephUsageTotal, ClusterConfigurationDetails, ClusterDatabases, ClusterIps, ClusterManagers, ClusterWorkers, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, Error, Host, HostAddRequest, JoinClusterRequest, ManagerHosts, ModifyClusterIps, Node, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceAutoCleaning, SpaceAutoCleaningReport, SpaceAutoCleaningReportCollection, SpaceAutoCleaningSettings, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilesPopularity, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, CephCluster, Cephrados, Glusterfs, Nulldevice, Posix, S3, Swift, Webdav, OnepanelApi, OneproviderApi, OnezoneApi) {
   'use strict';
 
   /**
@@ -63,6 +63,76 @@
      */
     ApiClient: ApiClient,
     /**
+     * The CephGlobalParams model constructor.
+     * @property {module:model/CephGlobalParams}
+     */
+    CephGlobalParams: CephGlobalParams,
+    /**
+     * The CephManager model constructor.
+     * @property {module:model/CephManager}
+     */
+    CephManager: CephManager,
+    /**
+     * The CephManagers model constructor.
+     * @property {module:model/CephManagers}
+     */
+    CephManagers: CephManagers,
+    /**
+     * The CephMonitor model constructor.
+     * @property {module:model/CephMonitor}
+     */
+    CephMonitor: CephMonitor,
+    /**
+     * The CephMonitors model constructor.
+     * @property {module:model/CephMonitors}
+     */
+    CephMonitors: CephMonitors,
+    /**
+     * The CephOsd model constructor.
+     * @property {module:model/CephOsd}
+     */
+    CephOsd: CephOsd,
+    /**
+     * The CephOsds model constructor.
+     * @property {module:model/CephOsds}
+     */
+    CephOsds: CephOsds,
+    /**
+     * The CephPool model constructor.
+     * @property {module:model/CephPool}
+     */
+    CephPool: CephPool,
+    /**
+     * The CephPoolModifyRequest model constructor.
+     * @property {module:model/CephPoolModifyRequest}
+     */
+    CephPoolModifyRequest: CephPoolModifyRequest,
+    /**
+     * The CephPoolStorageParams model constructor.
+     * @property {module:model/CephPoolStorageParams}
+     */
+    CephPoolStorageParams: CephPoolStorageParams,
+    /**
+     * The CephPoolUsage model constructor.
+     * @property {module:model/CephPoolUsage}
+     */
+    CephPoolUsage: CephPoolUsage,
+    /**
+     * The CephPools model constructor.
+     * @property {module:model/CephPools}
+     */
+    CephPools: CephPools,
+    /**
+     * The CephUsage model constructor.
+     * @property {module:model/CephUsage}
+     */
+    CephUsage: CephUsage,
+    /**
+     * The CephUsageTotal model constructor.
+     * @property {module:model/CephUsageTotal}
+     */
+    CephUsageTotal: CephUsageTotal,
+    /**
      * The ClusterConfigurationDetails model constructor.
      * @property {module:model/ClusterConfigurationDetails}
      */
@@ -87,11 +157,6 @@
      * @property {module:model/ClusterWorkers}
      */
     ClusterWorkers: ClusterWorkers,
-    /**
-     * The Cookie model constructor.
-     * @property {module:model/Cookie}
-     */
-    Cookie: Cookie,
     /**
      * The DatabaseHosts model constructor.
      * @property {module:model/DatabaseHosts}
@@ -118,6 +183,21 @@
      */
     Error: Error,
     /**
+     * The Host model constructor.
+     * @property {module:model/Host}
+     */
+    Host: Host,
+    /**
+     * The HostAddRequest model constructor.
+     * @property {module:model/HostAddRequest}
+     */
+    HostAddRequest: HostAddRequest,
+    /**
+     * The JoinClusterRequest model constructor.
+     * @property {module:model/JoinClusterRequest}
+     */
+    JoinClusterRequest: JoinClusterRequest,
+    /**
      * The ManagerHosts model constructor.
      * @property {module:model/ManagerHosts}
      */
@@ -127,6 +207,11 @@
      * @property {module:model/ModifyClusterIps}
      */
     ModifyClusterIps: ModifyClusterIps,
+    /**
+     * The Node model constructor.
+     * @property {module:model/Node}
+     */
+    Node: Node,
     /**
      * The PanelConfiguration model constructor.
      * @property {module:model/PanelConfiguration}
@@ -333,6 +418,11 @@
      */
     UserModifyRequest: UserModifyRequest,
     /**
+     * The Users model constructor.
+     * @property {module:model/Users}
+     */
+    Users: Users,
+    /**
      * The WebCert model constructor.
      * @property {module:model/WebCert}
      */
@@ -392,6 +482,11 @@
      * @property {module:model/Ceph}
      */
     Ceph: Ceph,
+    /**
+     * The CephCluster model constructor.
+     * @property {module:model/CephCluster}
+     */
+    CephCluster: CephCluster,
     /**
      * The Cephrados model constructor.
      * @property {module:model/Cephrados}

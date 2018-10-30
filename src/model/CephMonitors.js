@@ -42,17 +42,14 @@
 
   /**
    * Constructs a new <code>CephMonitors</code>.
-   * List of Ceph Monitor specifications
+   * fixme
    * @alias module:model/CephMonitors
    * @class
-   * @extends Array
    */
   var exports = function() {
     var _this = this;
-    _this = new Array();
-    Object.setPrototypeOf(_this, exports);
 
-    return _this;
+
   };
 
   /**
@@ -75,12 +72,19 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'CephMonitor');
 
+      if (data.hasOwnProperty('monitors')) {
+        obj['monitors'] = ApiClient.convertToType(data['monitors'], [CephMonitor]);
+      }
     }
     return obj;
   }
 
+  /**
+   * List of Ceph Monitor specifications
+   * @member {Array.<module:model/CephMonitor>} monitors
+   */
+  exports.prototype['monitors'] = undefined;
 
 
 

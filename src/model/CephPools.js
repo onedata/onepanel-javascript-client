@@ -42,17 +42,14 @@
 
   /**
    * Constructs a new <code>CephPools</code>.
-   * List of Ceph pools.
+   * fixme
    * @alias module:model/CephPools
    * @class
-   * @extends Array
    */
   var exports = function() {
     var _this = this;
-    _this = new Array();
-    Object.setPrototypeOf(_this, exports);
 
-    return _this;
+
   };
 
   /**
@@ -75,12 +72,19 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'CephPool');
 
+      if (data.hasOwnProperty('pools')) {
+        obj['pools'] = ApiClient.convertToType(data['pools'], [CephPool]);
+      }
     }
     return obj;
   }
 
+  /**
+   * List of Ceph pools.
+   * @member {Array.<module:model/CephPool>} pools
+   */
+  exports.prototype['pools'] = undefined;
 
 
 

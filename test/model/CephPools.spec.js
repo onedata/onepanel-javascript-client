@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.CephPools);
     });
 
+    it('should have the property pools (base name: "pools")', function() {
+      // uncomment below and update the code to test the property pools
+      //var instane = new Onepanel.CephPools();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

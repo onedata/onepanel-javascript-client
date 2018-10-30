@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.CephOsds);
     });
 
+    it('should have the property osds (base name: "osds")', function() {
+      // uncomment below and update the code to test the property osds
+      //var instane = new Onepanel.CephOsds();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

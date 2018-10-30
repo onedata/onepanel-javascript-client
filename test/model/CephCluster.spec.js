@@ -57,30 +57,6 @@
       //expect(instance).to.be.a(Onepanel.CephCluster);
     });
 
-    it('should have the property osds (base name: "osds")', function() {
-      // uncomment below and update the code to test the property osds
-      //var instane = new Onepanel.CephCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property monitors (base name: "monitors")', function() {
-      // uncomment below and update the code to test the property monitors
-      //var instane = new Onepanel.CephCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.CephCluster();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pools (base name: "pools")', function() {
-      // uncomment below and update the code to test the property pools
-      //var instane = new Onepanel.CephCluster();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

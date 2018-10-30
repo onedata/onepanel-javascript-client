@@ -42,17 +42,14 @@
 
   /**
    * Constructs a new <code>CephOsds</code>.
-   * List of Ceph OSD specifications.
+   * fixme
    * @alias module:model/CephOsds
    * @class
-   * @extends Array
    */
   var exports = function() {
     var _this = this;
-    _this = new Array();
-    Object.setPrototypeOf(_this, exports);
 
-    return _this;
+
   };
 
   /**
@@ -75,12 +72,19 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'CephOsd');
 
+      if (data.hasOwnProperty('osds')) {
+        obj['osds'] = ApiClient.convertToType(data['osds'], [CephOsd]);
+      }
     }
     return obj;
   }
 
+  /**
+   * List of Ceph OSD specifications.
+   * @member {Array.<module:model/CephOsd>} osds
+   */
+  exports.prototype['osds'] = undefined;
 
 
 

@@ -103,7 +103,7 @@
     /**
      * Add monitors to ceph cluster
      * Deploys ceph monitor services on given hosts.
-     * @param {module:model/CephMonitors} serviceHosts List of Ceph Monitor specifications.
+     * @param {module:model/CephMonitor} serviceHosts List of Ceph Monitor specifications.
      * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addCephMonitors = function(serviceHosts, callback) {

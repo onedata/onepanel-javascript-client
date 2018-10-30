@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.CephManagers);
     });
 
+    it('should have the property managers (base name: "managers")', function() {
+      // uncomment below and update the code to test the property managers
+      //var instane = new Onepanel.CephManagers();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -42,17 +42,14 @@
 
   /**
    * Constructs a new <code>CephManagers</code>.
-   * List of Ceph Manager configurations
+   * fixme
    * @alias module:model/CephManagers
    * @class
-   * @extends Array
    */
   var exports = function() {
     var _this = this;
-    _this = new Array();
-    Object.setPrototypeOf(_this, exports);
 
-    return _this;
+
   };
 
   /**
@@ -75,12 +72,19 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'CephManager');
 
+      if (data.hasOwnProperty('managers')) {
+        obj['managers'] = ApiClient.convertToType(data['managers'], [CephManager]);
+      }
     }
     return obj;
   }
 
+  /**
+   * List of Ceph Manager configurations
+   * @member {Array.<module:model/CephManager>} managers
+   */
+  exports.prototype['managers'] = undefined;
 
 
 

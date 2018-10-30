@@ -135,7 +135,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var serviceHosts = new Onepanel.CephMonitors(); // CephMonitors | List of Ceph Monitor specifications.
+var serviceHosts = new Onepanel.CephMonitor(); // CephMonitor | List of Ceph Monitor specifications.
 
 
 var callback = function(error, data, response) {
@@ -152,7 +152,7 @@ apiInstance.addCephMonitors(serviceHosts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceHosts** | [**CephMonitors**](CephMonitors.md)| List of Ceph Monitor specifications. | 
+ **serviceHosts** | [**CephMonitor**](CephMonitor.md)| List of Ceph Monitor specifications. | 
 
 ### Return type
 

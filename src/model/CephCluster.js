@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephGlobalParams', 'model/CephManagers', 'model/CephMonitors', 'model/CephOsds', 'model/CephPools'], factory);
+    define(['ApiClient', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPools'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephGlobalParams'), require('./CephManagers'), require('./CephMonitors'), require('./CephOsds'), require('./CephPools'));
+    module.exports = factory(require('../ApiClient'), require('./CephGlobalParams'), require('./CephManager'), require('./CephManagers'), require('./CephMonitor'), require('./CephMonitors'), require('./CephOsd'), require('./CephOsds'), require('./CephPool'), require('./CephPools'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephCluster = factory(root.Onepanel.ApiClient, root.Onepanel.CephGlobalParams, root.Onepanel.CephManagers, root.Onepanel.CephMonitors, root.Onepanel.CephOsds, root.Onepanel.CephPools);
+    root.Onepanel.CephCluster = factory(root.Onepanel.ApiClient, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPools);
   }
-}(this, function(ApiClient, CephGlobalParams, CephManagers, CephMonitors, CephOsds, CephPools) {
+}(this, function(ApiClient, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPools) {
   'use strict';
 
 
@@ -46,15 +46,19 @@
    * @alias module:model/CephCluster
    * @class
    * @implements module:model/CephGlobalParams
+   * @implements module:model/CephOsds
+   * @implements module:model/CephMonitors
+   * @implements module:model/CephManagers
+   * @implements module:model/CephPools
    */
   var exports = function() {
     var _this = this;
 
     CephGlobalParams.call(_this);
-
-
-
-
+    CephOsds.call(_this);
+    CephMonitors.call(_this);
+    CephManagers.call(_this);
+    CephPools.call(_this);
   };
 
   /**
@@ -79,38 +83,14 @@
       obj = obj || new exports();
 
       CephGlobalParams.constructFromObject(data, obj);
-      if (data.hasOwnProperty('osds')) {
-        obj['osds'] = CephOsds.constructFromObject(data['osds']);
-      }
-      if (data.hasOwnProperty('monitors')) {
-        obj['monitors'] = CephMonitors.constructFromObject(data['monitors']);
-      }
-      if (data.hasOwnProperty('managers')) {
-        obj['managers'] = CephManagers.constructFromObject(data['managers']);
-      }
-      if (data.hasOwnProperty('pools')) {
-        obj['pools'] = CephPools.constructFromObject(data['pools']);
-      }
+      CephOsds.constructFromObject(data, obj);
+      CephMonitors.constructFromObject(data, obj);
+      CephManagers.constructFromObject(data, obj);
+      CephPools.constructFromObject(data, obj);
     }
     return obj;
   }
 
-  /**
-   * @member {module:model/CephOsds} osds
-   */
-  exports.prototype['osds'] = undefined;
-  /**
-   * @member {module:model/CephMonitors} monitors
-   */
-  exports.prototype['monitors'] = undefined;
-  /**
-   * @member {module:model/CephManagers} managers
-   */
-  exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/CephPools} pools
-   */
-  exports.prototype['pools'] = undefined;
 
   // Implement CephGlobalParams interface:
   /**
@@ -125,6 +105,34 @@ exports.prototype['name'] = 'ceph';
    * @member {String} fsid
    */
 exports.prototype['fsid'] = undefined;
+
+  // Implement CephOsds interface:
+  /**
+   * List of Ceph OSD specifications.
+   * @member {Array.<module:model/CephOsd>} osds
+   */
+exports.prototype['osds'] = undefined;
+
+  // Implement CephMonitors interface:
+  /**
+   * List of Ceph Monitor specifications
+   * @member {Array.<module:model/CephMonitor>} monitors
+   */
+exports.prototype['monitors'] = undefined;
+
+  // Implement CephManagers interface:
+  /**
+   * List of Ceph Manager configurations
+   * @member {Array.<module:model/CephManager>} managers
+   */
+exports.prototype['managers'] = undefined;
+
+  // Implement CephPools interface:
+  /**
+   * List of Ceph pools.
+   * @member {Array.<module:model/CephPool>} pools
+   */
+exports.prototype['pools'] = undefined;
 
 
 

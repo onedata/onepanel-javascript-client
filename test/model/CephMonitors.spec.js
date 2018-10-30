@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.CephMonitors);
     });
 
+    it('should have the property monitors (base name: "monitors")', function() {
+      // uncomment below and update the code to test the property monitors
+      //var instane = new Onepanel.CephMonitors();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **geoLongitude** | **Number** | The geographical longitude of the storage provider.  | [optional] 
 **geoLatitude** | **Number** | The geographical latitude of the storage provider.  | [optional] 
 **onezoneDomainName** | **String** | The domain name of a zone where this storage provider will be registered.  | 
-**adminEmail** | **String** | Email address of the Oneprovider administrator. | 
+**adminEmail** | **String** | Email address of the oneprovider administrator. | 
 
 

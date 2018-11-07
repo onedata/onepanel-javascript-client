@@ -17,93 +17,75 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/BlockDevicesBlockDevices'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./BlockDevicesBlockDevices'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephMonitor = factory(root.Onepanel.ApiClient);
+    root.Onepanel.BlockDevices = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevicesBlockDevices);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, BlockDevicesBlockDevices) {
   'use strict';
 
 
 
 
   /**
-   * The CephMonitor model module.
-   * @module model/CephMonitor
+   * The BlockDevices model module.
+   * @module model/BlockDevices
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephMonitor</code>.
-   * Ceph Monitor specification
-   * @alias module:model/CephMonitor
+   * Constructs a new <code>BlockDevices</code>.
+   * @fixme
+   * @alias module:model/BlockDevices
    * @class
-   * @param host {String} Host on which given mon should be deployed
+   * @param blockDevices {Array.<module:model/BlockDevicesBlockDevices>} @fixme
    */
-  var exports = function(host) {
+  var exports = function(blockDevices) {
     var _this = this;
 
-    _this['host'] = host;
-
-
+    _this['block_devices'] = blockDevices;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephMonitor} The value of 'discriminator' field or undefined.
+   * @return {module:model/BlockDevices} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephMonitor</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>BlockDevices</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephMonitor} obj Optional instance to populate.
-   * @return {module:model/CephMonitor} The populated <code>CephMonitor</code> instance.
+   * @param {module:model/BlockDevices} obj Optional instance to populate.
+   * @return {module:model/BlockDevices} The populated <code>BlockDevices</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('host')) {
-        obj['host'] = ApiClient.convertToType(data['host'], 'String');
-      }
-      if (data.hasOwnProperty('ip')) {
-        obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
-      }
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('block_devices')) {
+        obj['block_devices'] = ApiClient.convertToType(data['block_devices'], [BlockDevicesBlockDevices]);
       }
     }
     return obj;
   }
 
   /**
-   * Host on which given mon should be deployed
-   * @member {String} host
+   * @fixme
+   * @member {Array.<module:model/BlockDevicesBlockDevices>} block_devices
    */
-  exports.prototype['host'] = undefined;
-  /**
-   * Local IP to be used for communication between Ceph nodes. If not specified it will be autodetected.
-   * @member {String} ip
-   */
-  exports.prototype['ip'] = undefined;
-  /**
-   * Monitor identifier. Be default the hostname is used. Must be specified if more than one monitor is deployed at a host.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
+  exports.prototype['block_devices'] = undefined;
 
 
 

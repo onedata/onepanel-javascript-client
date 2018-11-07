@@ -161,6 +161,16 @@
         done();
       });
     });
+    describe('getBlockDevices', function() {
+      it('should call getBlockDevices successfully', function(done) {
+        //uncomment below and update the code to test getBlockDevices
+        //instance.getBlockDevices(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephManager', function() {
       it('should call getCephManager successfully', function(done) {
         //uncomment below and update the code to test getCephManager

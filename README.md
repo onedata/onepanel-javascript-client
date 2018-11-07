@@ -123,7 +123,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addCephManagers**](docs/OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephMonitors**](docs/OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephOsds**](docs/OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-*Onepanel.OneproviderApi* | [**addCephPool**](docs/OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pool.
+*Onepanel.OneproviderApi* | [**addCephPool**](docs/OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pools.
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**configureCeph**](docs/OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+*Onepanel.OneproviderApi* | [**getBlockDevices**](docs/OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/block_devices | Get block devices for Ceph OSD
 *Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get ceph manager
 *Onepanel.OneproviderApi* | [**getCephManagers**](docs/OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | Get ceph manager
 *Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get ceph monitor
@@ -203,6 +204,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [Onepanel.BlockDevices](docs/BlockDevices.md)
+ - [Onepanel.BlockDevicesBlockDevices](docs/BlockDevicesBlockDevices.md)
  - [Onepanel.CephGlobalParams](docs/CephGlobalParams.md)
  - [Onepanel.CephManager](docs/CephManager.md)
  - [Onepanel.CephManagers](docs/CephManagers.md)

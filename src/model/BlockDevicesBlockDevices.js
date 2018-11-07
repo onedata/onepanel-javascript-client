@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephMonitor = factory(root.Onepanel.ApiClient);
+    root.Onepanel.BlockDevicesBlockDevices = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,75 +35,75 @@
 
 
   /**
-   * The CephMonitor model module.
-   * @module model/CephMonitor
+   * The BlockDevicesBlockDevices model module.
+   * @module model/BlockDevicesBlockDevices
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephMonitor</code>.
-   * Ceph Monitor specification
-   * @alias module:model/CephMonitor
+   * Constructs a new <code>BlockDevicesBlockDevices</code>.
+   * @alias module:model/BlockDevicesBlockDevices
    * @class
-   * @param host {String} Host on which given mon should be deployed
+   * @param name {String} 
+   * @param size {Number} Device size in bytes.
+   * @param mounted {Boolean} Whether the device or its partition has a mount point.
    */
-  var exports = function(host) {
+  var exports = function(name, size, mounted) {
     var _this = this;
 
-    _this['host'] = host;
-
-
+    _this['name'] = name;
+    _this['size'] = size;
+    _this['mounted'] = mounted;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephMonitor} The value of 'discriminator' field or undefined.
+   * @return {module:model/BlockDevicesBlockDevices} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephMonitor</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>BlockDevicesBlockDevices</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephMonitor} obj Optional instance to populate.
-   * @return {module:model/CephMonitor} The populated <code>CephMonitor</code> instance.
+   * @param {module:model/BlockDevicesBlockDevices} obj Optional instance to populate.
+   * @return {module:model/BlockDevicesBlockDevices} The populated <code>BlockDevicesBlockDevices</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('host')) {
-        obj['host'] = ApiClient.convertToType(data['host'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('ip')) {
-        obj['ip'] = ApiClient.convertToType(data['ip'], 'String');
+      if (data.hasOwnProperty('size')) {
+        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
       }
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('mounted')) {
+        obj['mounted'] = ApiClient.convertToType(data['mounted'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * Host on which given mon should be deployed
-   * @member {String} host
+   * @member {String} name
    */
-  exports.prototype['host'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
-   * Local IP to be used for communication between Ceph nodes. If not specified it will be autodetected.
-   * @member {String} ip
+   * Device size in bytes.
+   * @member {Number} size
    */
-  exports.prototype['ip'] = undefined;
+  exports.prototype['size'] = undefined;
   /**
-   * Monitor identifier. Be default the hostname is used. Must be specified if more than one monitor is deployed at a host.
-   * @member {String} id
+   * Whether the device or its partition has a mount point.
+   * @member {Boolean} mounted
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['mounted'] = undefined;
 
 
 

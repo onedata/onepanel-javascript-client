@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**addCephManagers**](OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 [**addCephMonitors**](OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to ceph cluster
 [**addCephOsds**](OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-[**addCephPool**](OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pool.
+[**addCephPool**](OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pools.
 [**addProvider**](OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 [**addProviderDatabases**](OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**getBlockDevices**](OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/block_devices | Get block devices for Ceph OSD
 [**getCephManager**](OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get ceph manager
 [**getCephManagers**](OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | Get ceph manager
 [**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get ceph monitor
@@ -223,7 +224,7 @@ null (empty response body)
 # **addCephPool**
 > addCephPool(poolSpecs)
 
-Add Ceph pool.
+Add Ceph pools.
 
 @fixme
 
@@ -239,7 +240,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var poolSpecs = new Onepanel.CephPool(); // CephPool | @fixme
+var poolSpecs = new Onepanel.CephPools(); // CephPools | @fixme
 
 
 var callback = function(error, data, response) {
@@ -256,7 +257,7 @@ apiInstance.addCephPool(poolSpecs, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **poolSpecs** | [**CephPool**](CephPool.md)| @fixme | 
+ **poolSpecs** | [**CephPools**](CephPools.md)| @fixme | 
 
 ### Return type
 
@@ -634,6 +635,58 @@ null (empty response body)
 
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
+
+<a name="getBlockDevices"></a>
+# **getBlockDevices**
+> BlockDevices getBlockDevices(host)
+
+Get block devices for Ceph OSD
+
+
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var host = "host_example"; // String | Host for which block devices should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getBlockDevices(host, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| Host for which block devices should be returned. | 
+
+### Return type
+
+[**BlockDevices**](BlockDevices.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getCephManager"></a>
 # **getCephManager**

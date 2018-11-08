@@ -16,65 +16,86 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/CephOsd'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./CephOsd'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.Filestore = factory(root.Onepanel.ApiClient, root.Onepanel.CephOsd);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, CephOsd) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.CephOsd();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The Filestore model module.
+   * @module model/Filestore
+   * @version 18.02.0-rc12
+   */
+
+  /**
+   * Constructs a new <code>Filestore</code>.
+   * @fixme
+   * @alias module:model/Filestore
+   * @class
+   * @extends module:model/CephOsd
+   * @param host {String} Host on which given osd should be deployed
+   * @param id {Number} Id of the OSD. OSD ids should be contiguous integers starting at 0.
+   * @param type {module:model/CephOsd.TypeEnum} 
+   */
+  var exports = function(host, id, type) {
+    var _this = this;
+    CephOsd.call(_this, host, id, type);
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/Filestore} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>Filestore</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/Filestore} obj Optional instance to populate.
+   * @return {module:model/Filestore} The populated <code>Filestore</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      CephOsd.constructFromObject(data, obj);
+      if (data.hasOwnProperty('path')) {
+        obj['path'] = ApiClient.convertToType(data['path'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(CephOsd.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('CephOsd', function() {
-    it('should create an instance of CephOsd', function() {
-      // uncomment below and update the code to test CephOsd
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be.a(Onepanel.CephOsd);
-    });
+  /**
+   * Relevant for plain filestore. If omitted, default location based on OSD id will be used.
+   * @member {String} path
+   */
+  exports.prototype['path'] = undefined;
 
-    it('should have the property host (base name: "host")', function() {
-      // uncomment below and update the code to test the property host
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

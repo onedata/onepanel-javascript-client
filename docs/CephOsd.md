@@ -4,11 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **String** | Host on which given osd should be deployed | 
+**id** | **Number** | Id of the OSD. OSD ids should be contiguous integers starting at 0. | 
 **type** | **String** |  | 
-**device** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph. | [optional] 
-**dbDevice** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage.  | [optional] 
-**walDevice** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage.  | [optional] 
-**path** | **String** | Relevant for plain filestore. If omitted, default location based on OSD id will be used. | [optional] 
 
 
 <a name="TypeEnum"></a>

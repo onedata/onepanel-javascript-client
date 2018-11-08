@@ -16,65 +16,104 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/CephOsd'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./CephOsd'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.Bluestore = factory(root.Onepanel.ApiClient, root.Onepanel.CephOsd);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, CephOsd) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.CephOsd();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The Bluestore model module.
+   * @module model/Bluestore
+   * @version 18.02.0-rc12
+   */
+
+  /**
+   * Constructs a new <code>Bluestore</code>.
+   * @fixme
+   * @alias module:model/Bluestore
+   * @class
+   * @extends module:model/CephOsd
+   * @param host {String} Host on which given osd should be deployed
+   * @param id {Number} Id of the OSD. OSD ids should be contiguous integers starting at 0.
+   * @param type {module:model/CephOsd.TypeEnum} 
+   */
+  var exports = function(host, id, type) {
+    var _this = this;
+    CephOsd.call(_this, host, id, type);
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/Bluestore} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>Bluestore</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/Bluestore} obj Optional instance to populate.
+   * @return {module:model/Bluestore} The populated <code>Bluestore</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      CephOsd.constructFromObject(data, obj);
+      if (data.hasOwnProperty('device')) {
+        obj['device'] = ApiClient.convertToType(data['device'], 'String');
+      }
+      if (data.hasOwnProperty('dbDevice')) {
+        obj['dbDevice'] = ApiClient.convertToType(data['dbDevice'], 'String');
+      }
+      if (data.hasOwnProperty('walDevice')) {
+        obj['walDevice'] = ApiClient.convertToType(data['walDevice'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(CephOsd.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('CephOsd', function() {
-    it('should create an instance of CephOsd', function() {
-      // uncomment below and update the code to test CephOsd
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be.a(Onepanel.CephOsd);
-    });
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph.
+   * @member {String} device
+   */
+  exports.prototype['device'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} dbDevice
+   */
+  exports.prototype['dbDevice'] = undefined;
+  /**
+   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage. 
+   * @member {String} walDevice
+   */
+  exports.prototype['walDevice'] = undefined;
 
-    it('should have the property host (base name: "host")', function() {
-      // uncomment below and update the code to test the property host
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

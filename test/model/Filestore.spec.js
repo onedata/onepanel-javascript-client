@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.CephOsd();
+    instance = new Onepanel.Filestore();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,16 @@
       object[property] = value;
   }
 
-  describe('CephOsd', function() {
-    it('should create an instance of CephOsd', function() {
-      // uncomment below and update the code to test CephOsd
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be.a(Onepanel.CephOsd);
+  describe('Filestore', function() {
+    it('should create an instance of Filestore', function() {
+      // uncomment below and update the code to test Filestore
+      //var instane = new Onepanel.Filestore();
+      //expect(instance).to.be.a(Onepanel.Filestore);
     });
 
-    it('should have the property host (base name: "host")', function() {
-      // uncomment below and update the code to test the property host
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephOsd();
+    it('should have the property path (base name: "path")', function() {
+      // uncomment below and update the code to test the property path
+      //var instane = new Onepanel.Filestore();
       //expect(instance).to.be();
     });
 

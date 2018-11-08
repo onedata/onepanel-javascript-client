@@ -42,21 +42,19 @@
 
   /**
    * Constructs a new <code>CephOsd</code>.
-   * 
+   * The cluster storage configuration.
    * @alias module:model/CephOsd
    * @class
    * @param host {String} Host on which given osd should be deployed
+   * @param id {Number} Id of the OSD. OSD ids should be contiguous integers starting at 0.
    * @param type {module:model/CephOsd.TypeEnum} 
    */
-  var exports = function(host, type) {
+  var exports = function(host, id, type) {
     var _this = this;
 
     _this['host'] = host;
+    _this['id'] = id;
     _this['type'] = type;
-
-
-
-
   };
 
   /**
@@ -66,7 +64,7 @@
    * @return {module:model/CephOsd} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    ;
+    return 'type';
   };
 
   /**
@@ -83,20 +81,11 @@
       if (data.hasOwnProperty('host')) {
         obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('device')) {
-        obj['device'] = ApiClient.convertToType(data['device'], 'String');
-      }
-      if (data.hasOwnProperty('dbDevice')) {
-        obj['dbDevice'] = ApiClient.convertToType(data['dbDevice'], 'String');
-      }
-      if (data.hasOwnProperty('walDevice')) {
-        obj['walDevice'] = ApiClient.convertToType(data['walDevice'], 'String');
-      }
-      if (data.hasOwnProperty('path')) {
-        obj['path'] = ApiClient.convertToType(data['path'], 'String');
       }
     }
     return obj;
@@ -108,29 +97,14 @@
    */
   exports.prototype['host'] = undefined;
   /**
+   * Id of the OSD. OSD ids should be contiguous integers starting at 0.
+   * @member {Number} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
    * @member {module:model/CephOsd.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
-  /**
-   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph.
-   * @member {String} device
-   */
-  exports.prototype['device'] = undefined;
-  /**
-   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage. 
-   * @member {String} dbDevice
-   */
-  exports.prototype['dbDevice'] = undefined;
-  /**
-   * Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage. 
-   * @member {String} walDevice
-   */
-  exports.prototype['walDevice'] = undefined;
-  /**
-   * Relevant for plain filestore. If omitted, default location based on OSD id will be used.
-   * @member {String} path
-   */
-  exports.prototype['path'] = undefined;
 
 
   /**

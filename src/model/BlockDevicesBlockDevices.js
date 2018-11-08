@@ -46,7 +46,7 @@
    * @class
    * @param name {String} 
    * @param size {Number} Device size in bytes.
-   * @param mounted {Boolean} Whether the device or its partition has a mount point.
+   * @param mounted {Boolean} Attempt to detect whether a device or its child is already mounted.
    */
   var exports = function(name, size, mounted) {
     var _this = this;
@@ -100,7 +100,7 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * Whether the device or its partition has a mount point.
+   * Attempt to detect whether a device or its child is already mounted.
    * @member {Boolean} mounted
    */
   exports.prototype['mounted'] = undefined;

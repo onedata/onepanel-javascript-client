@@ -510,12 +510,20 @@
           if(type.__swaggerDiscriminator() !== undefined) {
             var polymorphicType;
 
+            if('bluestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Bluestore");
+            }
+
             if('ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Ceph");
             }
 
             if('cephrados'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Cephrados");
+            }
+
+            if('filestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Filestore");
             }
 
             if('glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

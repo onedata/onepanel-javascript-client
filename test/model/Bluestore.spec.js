@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.CephOsd();
+    instance = new Onepanel.Bluestore();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,28 @@
       object[property] = value;
   }
 
-  describe('CephOsd', function() {
-    it('should create an instance of CephOsd', function() {
-      // uncomment below and update the code to test CephOsd
-      //var instane = new Onepanel.CephOsd();
-      //expect(instance).to.be.a(Onepanel.CephOsd);
+  describe('Bluestore', function() {
+    it('should create an instance of Bluestore', function() {
+      // uncomment below and update the code to test Bluestore
+      //var instane = new Onepanel.Bluestore();
+      //expect(instance).to.be.a(Onepanel.Bluestore);
     });
 
-    it('should have the property host (base name: "host")', function() {
-      // uncomment below and update the code to test the property host
-      //var instane = new Onepanel.CephOsd();
+    it('should have the property device (base name: "device")', function() {
+      // uncomment below and update the code to test the property device
+      //var instane = new Onepanel.Bluestore();
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.CephOsd();
+    it('should have the property dbDevice (base name: "dbDevice")', function() {
+      // uncomment below and update the code to test the property dbDevice
+      //var instane = new Onepanel.Bluestore();
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephOsd();
+    it('should have the property walDevice (base name: "walDevice")', function() {
+      // uncomment below and update the code to test the property walDevice
+      //var instane = new Onepanel.Bluestore();
       //expect(instance).to.be();
     });
 

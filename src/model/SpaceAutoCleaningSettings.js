@@ -42,12 +42,16 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningSettings</code>.
-   * Settings for auto cleaning algorithms - for what files and when it should be started. If parameter is not set in the request, previous value will be used. 
+   * Settings for space auto-cleaning mechanism. Setting value to &#x60;null&#x60; disables given parameter. It will be ignored by auto-cleaning mechanism. All presented parameter ranges are inclusive. 
    * @alias module:model/SpaceAutoCleaningSettings
    * @class
    */
   var exports = function() {
     var _this = this;
+
+
+
+
 
 
 
@@ -77,14 +81,26 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('maxOpenCount')) {
+        obj['maxOpenCount'] = ApiClient.convertToType(data['maxOpenCount'], 'Number');
+      }
+      if (data.hasOwnProperty('minHoursSinceLastOpen')) {
+        obj['minHoursSinceLastOpen'] = ApiClient.convertToType(data['minHoursSinceLastOpen'], 'Number');
+      }
       if (data.hasOwnProperty('lowerFileSizeLimit')) {
         obj['lowerFileSizeLimit'] = ApiClient.convertToType(data['lowerFileSizeLimit'], 'Number');
       }
       if (data.hasOwnProperty('upperFileSizeLimit')) {
         obj['upperFileSizeLimit'] = ApiClient.convertToType(data['upperFileSizeLimit'], 'Number');
       }
-      if (data.hasOwnProperty('maxFileNotOpenedHours')) {
-        obj['maxFileNotOpenedHours'] = ApiClient.convertToType(data['maxFileNotOpenedHours'], 'Number');
+      if (data.hasOwnProperty('maxHourlyMovingAverage')) {
+        obj['maxHourlyMovingAverage'] = ApiClient.convertToType(data['maxHourlyMovingAverage'], 'Number');
+      }
+      if (data.hasOwnProperty('maxDailyMovingAverage')) {
+        obj['maxDailyMovingAverage'] = ApiClient.convertToType(data['maxDailyMovingAverage'], 'Number');
+      }
+      if (data.hasOwnProperty('maxMonthlyMovingAverage')) {
+        obj['maxMonthlyMovingAverage'] = ApiClient.convertToType(data['maxMonthlyMovingAverage'], 'Number');
       }
       if (data.hasOwnProperty('threshold')) {
         obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
@@ -97,27 +113,47 @@
   }
 
   /**
-   * Only files which size [b] is greater than or equal to given value should be cleaned. Set to null to disable this parameter. 
+   * Files that have been opened less than `maxOpenCount` times may be cleaned. 
+   * @member {Number} maxOpenCount
+   */
+  exports.prototype['maxOpenCount'] = undefined;
+  /**
+   * Files that haven't been opened for longer than or equal to given period [h] may be cleaned. 
+   * @member {Number} minHoursSinceLastOpen
+   */
+  exports.prototype['minHoursSinceLastOpen'] = undefined;
+  /**
+   * Only files which size [b] is greater than given value may be cleaned. 
    * @member {Number} lowerFileSizeLimit
    */
   exports.prototype['lowerFileSizeLimit'] = undefined;
   /**
-   * Only files which size [b] is less than or equal to given value should be cleaned Set to null to disable this parameter. 
+   * Only files which size [b] is less than given value may be cleaned. 
    * @member {Number} upperFileSizeLimit
    */
   exports.prototype['upperFileSizeLimit'] = undefined;
   /**
-   * Files that haven't been opened for longer than or equal to given period [h] will be cleaned. Set to null to disable this parameter. 
-   * @member {Number} maxFileNotOpenedHours
+   * Files that have moving average of open operations count per hour less than given value may be cleaned. The average is calculated in 24 hours window. 
+   * @member {Number} maxHourlyMovingAverage
    */
-  exports.prototype['maxFileNotOpenedHours'] = undefined;
+  exports.prototype['maxHourlyMovingAverage'] = undefined;
   /**
-   * Amount of data [b], which should trigger the auto cleaning in the space. Only replicas maintained by this storage provider will be removed. If not specified, the auto cleaning will not start automatically. 
+   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 31 days window. 
+   * @member {Number} maxDailyMovingAverage
+   */
+  exports.prototype['maxDailyMovingAverage'] = undefined;
+  /**
+   * Files that have moving average of open operations count per month less than given value may be cleaned. The average is calculated in 12 months window. 
+   * @member {Number} maxMonthlyMovingAverage
+   */
+  exports.prototype['maxMonthlyMovingAverage'] = undefined;
+  /**
+   * Amount of data [b], which should trigger the auto-cleaning in the space. Only replicas maintained by this storage provider will be removed.  This parameter is required to enable auto-cleaning. 
    * @member {Number} threshold
    */
   exports.prototype['threshold'] = undefined;
   /**
-   * Amount of data [b], at which the auto cleaning process should stop. This parameter is required to enale auto cleaning. 
+   * Amount of data [b], at which the auto-cleaning process should stop. This parameter is required to enable auto-cleaning. 
    * @member {Number} target
    */
   exports.prototype['target'] = undefined;

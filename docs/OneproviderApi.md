@@ -18,8 +18,8 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto_cleaning_reports | Get reports of space auto cleaning
-[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto_cleaning_status | Get status of space auto cleaning
+[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto_cleaning_reports | Get reports of space auto-cleaning
+[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto_cleaning_status | Get status of space auto-cleaning
 [**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
@@ -740,9 +740,9 @@ null (empty response body)
 # **getProviderSpaceAutoCleaningReports**
 > SpaceAutoCleaningReportCollection getProviderSpaceAutoCleaningReports(id, startedAfter)
 
-Get reports of space auto cleaning
+Get reports of space auto-cleaning
 
-Returns collection of reports of auto cleaning for the space 
+Returns collection of reports of auto-cleaning for the space 
 
 ### Example
 ```javascript
@@ -756,7 +756,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space
+var id = "id_example"; // String | The Id of a space
 
 var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO 8601)
 
@@ -775,7 +775,7 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space | 
+ **id** | **String**| The Id of a space | 
  **startedAfter** | **String**| Fetch only reports that started after this date (ISO 8601) | 
 
 ### Return type
@@ -795,9 +795,9 @@ Name | Type | Description  | Notes
 # **getProviderSpaceAutoCleaningStatus**
 > SpaceAutoCleaningStatus getProviderSpaceAutoCleaningStatus(id)
 
-Get status of space auto cleaning
+Get status of space auto-cleaning
 
-Returns status of current process of auto cleaning for the space 
+Returns status of current process of auto-cleaning for the space 
 
 ### Example
 ```javascript
@@ -811,7 +811,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space
+var id = "id_example"; // String | The Id of a space
 
 
 var callback = function(error, data, response) {
@@ -828,7 +828,7 @@ apiInstance.getProviderSpaceAutoCleaningStatus(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space | 
+ **id** | **String**| The Id of a space | 
 
 ### Return type
 
@@ -863,7 +863,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space for which sync stats should be returned.
+var id = "id_example"; // String | The Id of a space for which sync stats should be returned.
 
 var opts = { 
   'period': "period_example", // String | Predefined time period for which the statistics should be fetched
@@ -884,7 +884,7 @@ apiInstance.getProviderSpaceSyncStats(id, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space for which sync stats should be returned. | 
+ **id** | **String**| The Id of a space for which sync stats should be returned. | 
  **period** | **String**| Predefined time period for which the statistics should be fetched | [optional] 
  **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma | [optional] 
 
@@ -1065,7 +1065,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space which details should be returned.
+var id = "id_example"; // String | The Id of a space which details should be returned.
 
 
 var callback = function(error, data, response) {
@@ -1082,7 +1082,7 @@ apiInstance.getSpaceDetails(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space which details should be returned. | 
+ **id** | **String**| The Id of a space which details should be returned. | 
 
 ### Return type
 
@@ -1117,7 +1117,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be returned. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -1134,7 +1134,7 @@ apiInstance.getStorageDetails(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be returned.  | 
+ **id** | **String**| The Id of a storage resource, which details should be returned.  | 
 
 ### Return type
 
@@ -1215,7 +1215,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be modified. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be modified. 
 
 
 var callback = function(error, data, response) {
@@ -1232,7 +1232,7 @@ apiInstance.invalidateLumaCache(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be modified.  | 
+ **id** | **String**| The Id of a storage resource, which details should be modified.  | 
 
 ### Return type
 
@@ -1371,7 +1371,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space which details should be modified.
+var id = "id_example"; // String | The Id of a space which details should be modified.
 
 var spaceModifyRequest = new Onepanel.SpaceModifyRequest(); // SpaceModifyRequest | 
 
@@ -1390,7 +1390,7 @@ apiInstance.modifySpace(id, spaceModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space which details should be modified. | 
+ **id** | **String**| The Id of a space which details should be modified. | 
  **spaceModifyRequest** | [**SpaceModifyRequest**](SpaceModifyRequest.md)|  | 
 
 ### Return type
@@ -1426,7 +1426,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be modified. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be modified. 
 
 var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
 
@@ -1445,7 +1445,7 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be modified.  | 
+ **id** | **String**| The Id of a storage resource, which details should be modified.  | 
  **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
 
 ### Return type
@@ -1481,7 +1481,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space
+var id = "id_example"; // String | The Id of a space
 
 
 var callback = function(error, data, response) {
@@ -1498,7 +1498,7 @@ apiInstance.providerSpaceStartCleaning(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space | 
+ **id** | **String**| The Id of a space | 
 
 ### Return type
 
@@ -1579,7 +1579,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space to be removed.
+var id = "id_example"; // String | The Id of a space to be removed.
 
 
 var callback = function(error, data, response) {
@@ -1596,7 +1596,7 @@ apiInstance.revokeSpaceSupport(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space to be removed. | 
+ **id** | **String**| The Id of a space to be removed. | 
 
 ### Return type
 

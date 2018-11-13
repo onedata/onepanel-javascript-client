@@ -646,9 +646,9 @@
      */
 
     /**
-     * Get reports of space auto cleaning
-     * Returns collection of reports of auto cleaning for the space 
-     * @param {String} id The ID of a space
+     * Get reports of space auto-cleaning
+     * Returns collection of reports of auto-cleaning for the space 
+     * @param {String} id The Id of a space
      * @param {String} startedAfter Fetch only reports that started after this date (ISO 8601)
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReportCollection}
@@ -699,9 +699,9 @@
      */
 
     /**
-     * Get status of space auto cleaning
-     * Returns status of current process of auto cleaning for the space 
-     * @param {String} id The ID of a space
+     * Get status of space auto-cleaning
+     * Returns status of current process of auto-cleaning for the space 
+     * @param {String} id The Id of a space
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningStatus}
      */
@@ -747,7 +747,7 @@
     /**
      * Get statistics of storage synchronization
      * Returns requested statistics of storage synchronization for given space on this provider. 
-     * @param {String} id The ID of a space for which sync stats should be returned.
+     * @param {String} id The Id of a space for which sync stats should be returned.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
      * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma
@@ -923,7 +923,7 @@
     /**
      * Get space details
      * Returns details of space specified by space Id in the path. 
-     * @param {String} id The ID of a space which details should be returned.
+     * @param {String} id The Id of a space which details should be returned.
      * @param {module:api/OneproviderApi~getSpaceDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceDetails}
      */
@@ -969,7 +969,7 @@
     /**
      * Get storage details
      * Returns the details of the selected storage.
-     * @param {String} id The ID of a storage resource, which details should be returned. 
+     * @param {String} id The Id of a storage resource, which details should be returned. 
      * @param {module:api/OneproviderApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageDetails}
      */
@@ -1054,7 +1054,7 @@
     /**
      * Invalidate LUMA cache
      * Invalidates LUMA cache in provider for given storage.
-     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * @param {String} id The Id of a storage resource, which details should be modified. 
      * @param {module:api/OneproviderApi~invalidateLumaCacheCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.invalidateLumaCache = function(id, callback) {
@@ -1187,7 +1187,7 @@
     /**
      * Modify space details
      * Modifies the space import/update strategies.
-     * @param {String} id The ID of a space which details should be modified.
+     * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/OneproviderApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceId}
@@ -1239,7 +1239,7 @@
     /**
      * Modify storage details
      * Modifies basic storage details, such as operation timeout.
-     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * @param {String} id The Id of a storage resource, which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -1290,7 +1290,7 @@
     /**
      * Start space cleaning
      * Starts cleaning of space with current configuration.
-     * @param {String} id The ID of a space
+     * @param {String} id The Id of a space
      * @param {module:api/OneproviderApi~providerSpaceStartCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.providerSpaceStartCleaning = function(id, callback) {
@@ -1373,7 +1373,7 @@
     /**
      * Revoke space support for a space
      * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider. 
-     * @param {String} id The ID of a space to be removed.
+     * @param {String} id The Id of a space to be removed.
      * @param {module:api/OneproviderApi~revokeSpaceSupportCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.revokeSpaceSupport = function(id, callback) {

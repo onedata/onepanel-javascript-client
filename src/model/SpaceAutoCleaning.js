@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaning</code>.
-   * Space auto cleaning settings
+   * Space auto-cleaning settings
    * @alias module:model/SpaceAutoCleaning
    * @class
    */
@@ -85,12 +85,12 @@
   }
 
   /**
-   * If true, auto cleaning feature for the space is enabled
+   * If true, auto-cleaning feature for the space is enabled
    * @member {Boolean} enabled
    */
   exports.prototype['enabled'] = undefined;
   /**
-   * Settings when and what files auto cleaning should clean
+   * Settings when and what files auto-cleaning should clean
    * @member {module:model/SpaceAutoCleaningSettings} settings
    */
   exports.prototype['settings'] = undefined;

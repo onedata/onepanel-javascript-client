@@ -57,6 +57,18 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningSettings);
     });
 
+    it('should have the property maxOpenCount (base name: "maxOpenCount")', function() {
+      // uncomment below and update the code to test the property maxOpenCount
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minHoursSinceLastOpen (base name: "minHoursSinceLastOpen")', function() {
+      // uncomment below and update the code to test the property minHoursSinceLastOpen
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be();
+    });
+
     it('should have the property lowerFileSizeLimit (base name: "lowerFileSizeLimit")', function() {
       // uncomment below and update the code to test the property lowerFileSizeLimit
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
@@ -69,8 +81,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property maxFileNotOpenedHours (base name: "maxFileNotOpenedHours")', function() {
-      // uncomment below and update the code to test the property maxFileNotOpenedHours
+    it('should have the property maxHourlyMovingAverage (base name: "maxHourlyMovingAverage")', function() {
+      // uncomment below and update the code to test the property maxHourlyMovingAverage
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxDailyMovingAverage (base name: "maxDailyMovingAverage")', function() {
+      // uncomment below and update the code to test the property maxDailyMovingAverage
+      //var instane = new Onepanel.SpaceAutoCleaningSettings();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxMonthlyMovingAverage (base name: "maxMonthlyMovingAverage")', function() {
+      // uncomment below and update the code to test the property maxMonthlyMovingAverage
       //var instane = new Onepanel.SpaceAutoCleaningSettings();
       //expect(instance).to.be();
     });

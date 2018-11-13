@@ -115,7 +115,7 @@
    */
   exports.prototype['filesPopularity'] = undefined;
   /**
-   * Configuration of auto cleaning feature for this space
+   * Configuration of auto-cleaning feature for this space
    * @member {module:model/SpaceAutoCleaning} autoCleaning
    */
   exports.prototype['autoCleaning'] = undefined;

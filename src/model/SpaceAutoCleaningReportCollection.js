@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningReportCollection</code>.
-   * List of auto cleaning report entries
+   * List of auto-cleaning report entries
    * @alias module:model/SpaceAutoCleaningReportCollection
    * @class
    */

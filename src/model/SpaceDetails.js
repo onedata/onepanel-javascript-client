@@ -45,7 +45,7 @@
    * The space details.
    * @alias module:model/SpaceDetails
    * @class
-   * @param id {String} The ID of the space.
+   * @param id {String} The Id of the space.
    * @param name {String} The name of the space.
    * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
@@ -127,7 +127,7 @@
   }
 
   /**
-   * The ID of the space.
+   * The Id of the space.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
@@ -171,7 +171,7 @@
    */
   exports.prototype['filesPopularity'] = undefined;
   /**
-   * Configuration of auto cleaning feature for this space
+   * Configuration of auto-cleaning feature for this space
    * @member {module:model/SpaceAutoCleaning} autoCleaning
    */
   exports.prototype['autoCleaning'] = undefined;

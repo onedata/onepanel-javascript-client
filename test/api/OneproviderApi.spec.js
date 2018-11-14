@@ -261,6 +261,16 @@
         done();
       });
     });
+    describe('getCephStatus', function() {
+      it('should call getCephStatus successfully', function(done) {
+        //uncomment below and update the code to test getCephStatus
+        //instance.getCephStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephUsage', function() {
       it('should call getCephUsage successfully', function(done) {
         //uncomment below and update the code to test getCephUsage

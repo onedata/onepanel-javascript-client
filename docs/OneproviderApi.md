@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
 [**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get space usage details for specific pool.
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | Get list of ceph pools
+[**getCephStatus**](OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 [**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -136,7 +137,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var serviceHosts = new Onepanel.CephMonitor(); // CephMonitor | List of Ceph Monitor specifications.
+var serviceHosts = new Onepanel.CephMonitors(); // CephMonitors | List of Ceph Monitor specifications.
 
 
 var callback = function(error, data, response) {
@@ -153,7 +154,7 @@ apiInstance.addCephMonitors(serviceHosts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceHosts** | [**CephMonitor**](CephMonitor.md)| List of Ceph Monitor specifications. | 
+ **serviceHosts** | [**CephMonitors**](CephMonitors.md)| List of Ceph Monitor specifications. | 
 
 ### Return type
 
@@ -1122,6 +1123,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**CephPools**](CephPools.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getCephStatus"></a>
+# **getCephStatus**
+> CephStatus getCephStatus()
+
+Get Ceph cluster health
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephStatus(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CephStatus**](CephStatus.md)
 
 ### Authorization
 

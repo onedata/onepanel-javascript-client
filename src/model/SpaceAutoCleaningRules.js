@@ -17,40 +17,44 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaningRuleSetting'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRuleSetting'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningRules = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRuleSetting);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, SpaceAutoCleaningRuleSetting) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceSyncStats model module.
-   * @module model/SpaceSyncStats
+   * The SpaceAutoCleaningRules model module.
+   * @module model/SpaceAutoCleaningRules
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SpaceSyncStats</code>.
-   * Status and statistics of storage/space synchronization.
-   * @alias module:model/SpaceSyncStats
+   * Constructs a new <code>SpaceAutoCleaningRules</code>.
+   * Rules used to select certain list of file replicas that can be evicted by auto-cleaning mechanism. A rule is enabled by setting its &#x60;enabled&#x60; field to &#x60;true&#x60;. By default all rules are disabled (ignored). A rule can be enabled without specifying its value. In that case previous value is used. If the rule is enabled for the first time a default value will be used. All rules&#39; values are inclusive. 
+   * @alias module:model/SpaceAutoCleaningRules
    * @class
-   * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
    */
-  var exports = function(importStatus) {
+  var exports = function() {
     var _this = this;
 
-    _this['importStatus'] = importStatus;
+
+
+
+
+
+
 
   };
 
@@ -58,78 +62,84 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceSyncStats} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningRules} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceSyncStats</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningRules</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceSyncStats} obj Optional instance to populate.
-   * @return {module:model/SpaceSyncStats} The populated <code>SpaceSyncStats</code> instance.
+   * @param {module:model/SpaceAutoCleaningRules} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningRules} The populated <code>SpaceAutoCleaningRules</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('importStatus')) {
-        obj['importStatus'] = ApiClient.convertToType(data['importStatus'], 'String');
+      if (data.hasOwnProperty('maxOpenCount')) {
+        obj['maxOpenCount'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxOpenCount']);
       }
-      if (data.hasOwnProperty('updateStatus')) {
-        obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
+      if (data.hasOwnProperty('minHoursSinceLastOpen')) {
+        obj['minHoursSinceLastOpen'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['minHoursSinceLastOpen']);
+      }
+      if (data.hasOwnProperty('lowerFileSizeLimit')) {
+        obj['lowerFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['lowerFileSizeLimit']);
+      }
+      if (data.hasOwnProperty('upperFileSizeLimit')) {
+        obj['upperFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['upperFileSizeLimit']);
+      }
+      if (data.hasOwnProperty('maxHourlyMovingAverage')) {
+        obj['maxHourlyMovingAverage'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxHourlyMovingAverage']);
+      }
+      if (data.hasOwnProperty('maxDailyMovingAverage')) {
+        obj['maxDailyMovingAverage'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxDailyMovingAverage']);
+      }
+      if (data.hasOwnProperty('maxMonthlyMovingAverage')) {
+        obj['maxMonthlyMovingAverage'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxMonthlyMovingAverage']);
       }
     }
     return obj;
   }
 
   /**
-   * Describes import algorithm run status.
-   * @member {module:model/SpaceSyncStats.ImportStatusEnum} importStatus
+   * Files that have been opened less than `maxOpenCount` times may be cleaned. The default value is `9007199254740991 (2^53-1)`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} maxOpenCount
    */
-  exports.prototype['importStatus'] = undefined;
+  exports.prototype['maxOpenCount'] = undefined;
   /**
-   * Describes update algorithm run status.
-   * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
+   * Files that haven't been opened for longer than or equal to given period [h] may be cleaned. The default value is `0`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} minHoursSinceLastOpen
    */
-  exports.prototype['updateStatus'] = undefined;
-
-
+  exports.prototype['minHoursSinceLastOpen'] = undefined;
   /**
-   * Allowed values for the <code>importStatus</code> property.
-   * @enum {String}
-   * @readonly
+   * Only files which size [b] is greater than given value may be cleaned. The default value is `1`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} lowerFileSizeLimit
    */
-  exports.ImportStatusEnum = {
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress",
-    /**
-     * value: "done"
-     * @const
-     */
-    "done": "done"  };
-
+  exports.prototype['lowerFileSizeLimit'] = undefined;
   /**
-   * Allowed values for the <code>updateStatus</code> property.
-   * @enum {String}
-   * @readonly
+   * Only files which size [b] is less than given value may be cleaned. The default value is `1125899906842624 (1 PiB)`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} upperFileSizeLimit
    */
-  exports.UpdateStatusEnum = {
-    /**
-     * value: "waiting"
-     * @const
-     */
-    "waiting": "waiting",
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress"  };
+  exports.prototype['upperFileSizeLimit'] = undefined;
+  /**
+   * Files that have moving average of open operations count per hour less than given value may be cleaned. The average is calculated in 24 hours window. The default value is `9007199254740991 (2^53-1)`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} maxHourlyMovingAverage
+   */
+  exports.prototype['maxHourlyMovingAverage'] = undefined;
+  /**
+   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 31 days window. The default value is `9007199254740991 (2^53-1)`. 
+   * @member {module:model/SpaceAutoCleaningRuleSetting} maxDailyMovingAverage
+   */
+  exports.prototype['maxDailyMovingAverage'] = undefined;
+  /**
+   * Files that have moving average of open operations count per month less than given value may be cleaned. The average is calculated in 12 months window. The default value is `9007199254740991 (2^53-1)`.
+   * @member {module:model/SpaceAutoCleaningRuleSetting} maxMonthlyMovingAverage
+   */
+  exports.prototype['maxMonthlyMovingAverage'] = undefined;
+
 
 
   return exports;

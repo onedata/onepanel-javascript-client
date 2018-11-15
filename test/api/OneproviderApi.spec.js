@@ -101,10 +101,30 @@
         done();
       });
     });
+    describe('configureFilePopularity', function() {
+      it('should call configureFilePopularity successfully', function(done) {
+        //uncomment below and update the code to test configureFilePopularity
+        //instance.configureFilePopularity(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('configureProvider', function() {
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider
         //instance.configureProvider(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('configureSpaceAutoCleaning', function() {
+      it('should call configureSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceAutoCleaning
+        //instance.configureSpaceAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -331,16 +351,6 @@
         done();
       });
     });
-    describe('providerSpaceStartCleaning', function() {
-      it('should call providerSpaceStartCleaning successfully', function(done) {
-        //uncomment below and update the code to test providerSpaceStartCleaning
-        //instance.providerSpaceStartCleaning(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('removeProvider', function() {
       it('should call removeProvider successfully', function(done) {
         //uncomment below and update the code to test removeProvider
@@ -425,6 +435,16 @@
       it('should call supportSpace successfully', function(done) {
         //uncomment below and update the code to test supportSpace
         //instance.supportSpace(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('triggerAutoCleaning', function() {
+      it('should call triggerAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test triggerAutoCleaning
+        //instance.triggerAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

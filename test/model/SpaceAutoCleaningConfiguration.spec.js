@@ -16,123 +16,71 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.SpaceAutoCleaningConfiguration();
+  });
 
-
-  /**
-   * The SpaceSyncStats model module.
-   * @module model/SpaceSyncStats
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>SpaceSyncStats</code>.
-   * Status and statistics of storage/space synchronization.
-   * @alias module:model/SpaceSyncStats
-   * @class
-   * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
-   */
-  var exports = function(importStatus) {
-    var _this = this;
-
-    _this['importStatus'] = importStatus;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceSyncStats} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceSyncStats</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceSyncStats} obj Optional instance to populate.
-   * @return {module:model/SpaceSyncStats} The populated <code>SpaceSyncStats</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('importStatus')) {
-        obj['importStatus'] = ApiClient.convertToType(data['importStatus'], 'String');
-      }
-      if (data.hasOwnProperty('updateStatus')) {
-        obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Describes import algorithm run status.
-   * @member {module:model/SpaceSyncStats.ImportStatusEnum} importStatus
-   */
-  exports.prototype['importStatus'] = undefined;
-  /**
-   * Describes update algorithm run status.
-   * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
-   */
-  exports.prototype['updateStatus'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('SpaceAutoCleaningConfiguration', function() {
+    it('should create an instance of SpaceAutoCleaningConfiguration', function() {
+      // uncomment below and update the code to test SpaceAutoCleaningConfiguration
+      //var instane = new Onepanel.SpaceAutoCleaningConfiguration();
+      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningConfiguration);
+    });
 
-  /**
-   * Allowed values for the <code>importStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ImportStatusEnum = {
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress",
-    /**
-     * value: "done"
-     * @const
-     */
-    "done": "done"  };
+    it('should have the property enabled (base name: "enabled")', function() {
+      // uncomment below and update the code to test the property enabled
+      //var instane = new Onepanel.SpaceAutoCleaningConfiguration();
+      //expect(instance).to.be();
+    });
 
-  /**
-   * Allowed values for the <code>updateStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UpdateStatusEnum = {
-    /**
-     * value: "waiting"
-     * @const
-     */
-    "waiting": "waiting",
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress"  };
+    it('should have the property threshold (base name: "threshold")', function() {
+      // uncomment below and update the code to test the property threshold
+      //var instane = new Onepanel.SpaceAutoCleaningConfiguration();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property target (base name: "target")', function() {
+      // uncomment below and update the code to test the property target
+      //var instane = new Onepanel.SpaceAutoCleaningConfiguration();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property rules (base name: "rules")', function() {
+      // uncomment below and update the code to test the property rules
+      //var instane = new Onepanel.SpaceAutoCleaningConfiguration();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

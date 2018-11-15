@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaning', 'model/SpaceFilesPopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceFilePopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaning'), require('./SpaceFilesPopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningConfiguration'), require('./SpaceFilePopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaning, root.Onepanel.SpaceFilesPopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceFilePopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, SpaceAutoCleaning, SpaceFilesPopularity, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, SpaceAutoCleaningConfiguration, SpaceFilePopularity, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -114,10 +114,10 @@
         obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
       }
       if (data.hasOwnProperty('filesPopularity')) {
-        obj['filesPopularity'] = SpaceFilesPopularity.constructFromObject(data['filesPopularity']);
+        obj['filesPopularity'] = SpaceFilePopularity.constructFromObject(data['filesPopularity']);
       }
       if (data.hasOwnProperty('autoCleaning')) {
-        obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
+        obj['autoCleaning'] = SpaceAutoCleaningConfiguration.constructFromObject(data['autoCleaning']);
       }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
@@ -166,13 +166,13 @@
    */
   exports.prototype['storageUpdate'] = undefined;
   /**
-   * Configuration of files popularity feature for this space
-   * @member {module:model/SpaceFilesPopularity} filesPopularity
+   * Configuration of collecting file-popularity statistics mechanism for this space
+   * @member {module:model/SpaceFilePopularity} filesPopularity
    */
   exports.prototype['filesPopularity'] = undefined;
   /**
-   * Configuration of auto-cleaning feature for this space
-   * @member {module:model/SpaceAutoCleaning} autoCleaning
+   * Configuration of auto-cleaning mechanism for this space
+   * @member {module:model/SpaceAutoCleaningConfiguration} autoCleaning
    */
   exports.prototype['autoCleaning'] = undefined;
   /**

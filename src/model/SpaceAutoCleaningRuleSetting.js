@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningRuleSetting = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,21 @@
 
 
   /**
-   * The SpaceSyncStats model module.
-   * @module model/SpaceSyncStats
+   * The SpaceAutoCleaningRuleSetting model module.
+   * @module model/SpaceAutoCleaningRuleSetting
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SpaceSyncStats</code>.
-   * Status and statistics of storage/space synchronization.
-   * @alias module:model/SpaceSyncStats
+   * Constructs a new <code>SpaceAutoCleaningRuleSetting</code>.
+   * Rule setting for a space auto-cleaning mechanism. Setting field &#x60;enabled&#x60; to &#x60;false&#x60; disables the rule. 
+   * @alias module:model/SpaceAutoCleaningRuleSetting
    * @class
-   * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
    */
-  var exports = function(importStatus) {
+  var exports = function() {
     var _this = this;
 
-    _this['importStatus'] = importStatus;
+
 
   };
 
@@ -58,78 +57,44 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceSyncStats} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningRuleSetting} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceSyncStats</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningRuleSetting</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceSyncStats} obj Optional instance to populate.
-   * @return {module:model/SpaceSyncStats} The populated <code>SpaceSyncStats</code> instance.
+   * @param {module:model/SpaceAutoCleaningRuleSetting} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningRuleSetting} The populated <code>SpaceAutoCleaningRuleSetting</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('importStatus')) {
-        obj['importStatus'] = ApiClient.convertToType(data['importStatus'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('updateStatus')) {
-        obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
+      if (data.hasOwnProperty('value')) {
+        obj['value'] = ApiClient.convertToType(data['value'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * Describes import algorithm run status.
-   * @member {module:model/SpaceSyncStats.ImportStatusEnum} importStatus
+   * Informs whether given setting is enabled. 
+   * @member {Boolean} enabled
    */
-  exports.prototype['importStatus'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * Describes update algorithm run status.
-   * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
+   * Integer value of a given setting.
+   * @member {Number} value
    */
-  exports.prototype['updateStatus'] = undefined;
+  exports.prototype['value'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>importStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ImportStatusEnum = {
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress",
-    /**
-     * value: "done"
-     * @const
-     */
-    "done": "done"  };
-
-  /**
-   * Allowed values for the <code>updateStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UpdateStatusEnum = {
-    /**
-     * value: "waiting"
-     * @const
-     */
-    "waiting": "waiting",
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress"  };
 
 
   return exports;

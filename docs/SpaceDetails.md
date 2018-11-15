@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **mountInRoot** | **Boolean** | Defines whether space will be mounted in / or /{SpaceId}/ path.  | [optional] [default to false]
 **storageImport** | [**StorageImportDetails**](StorageImportDetails.md) |  | [optional] 
 **storageUpdate** | [**StorageUpdateDetails**](StorageUpdateDetails.md) |  | [optional] 
-**filesPopularity** | [**SpaceFilesPopularity**](SpaceFilesPopularity.md) | Configuration of files popularity feature for this space | [optional] 
-**autoCleaning** | [**SpaceAutoCleaning**](SpaceAutoCleaning.md) | Configuration of auto-cleaning feature for this space | [optional] 
+**filesPopularity** | [**SpaceFilePopularity**](SpaceFilePopularity.md) | Configuration of collecting file-popularity statistics mechanism for this space | [optional] 
+**autoCleaning** | [**SpaceAutoCleaningConfiguration**](SpaceAutoCleaningConfiguration.md) | Configuration of auto-cleaning mechanism for this space | [optional] 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
 
 

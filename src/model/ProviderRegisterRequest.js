@@ -47,19 +47,18 @@
    * @class
    * @param name {String} The name under which the provider should be registered in a zone. 
    * @param subdomainDelegation {Boolean} If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @param onezoneDomainName {String} The domain name of a zone where this storage provider will be registered. 
+   * @param token {String} Registration token obtained from Onezone service. This token identifies Onezone to be used and authorizes the registration request. 
    * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(name, subdomainDelegation, onezoneDomainName, adminEmail) {
+  var exports = function(name, subdomainDelegation, token, adminEmail) {
     var _this = this;
 
     _this['name'] = name;
     _this['subdomainDelegation'] = subdomainDelegation;
 
+    _this['token'] = token;
 
 
-
-    _this['onezoneDomainName'] = onezoneDomainName;
     _this['adminEmail'] = adminEmail;
   };
 
@@ -102,9 +101,6 @@
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
       }
-      if (data.hasOwnProperty('onezoneDomainName')) {
-        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
-      }
       if (data.hasOwnProperty('adminEmail')) {
         obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
@@ -129,7 +125,7 @@
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * Registration token obtained from Onezone service at which the provider registers. 
+   * Registration token obtained from Onezone service. This token identifies Onezone to be used and authorizes the registration request. 
    * @member {String} token
    */
   exports.prototype['token'] = undefined;
@@ -143,11 +139,6 @@
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
-  /**
-   * The domain name of a zone where this storage provider will be registered. 
-   * @member {String} onezoneDomainName
-   */
-  exports.prototype['onezoneDomainName'] = undefined;
   /**
    * Email address of the oneprovider administrator.
    * @member {String} adminEmail

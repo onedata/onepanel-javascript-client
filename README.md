@@ -219,7 +219,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderConfigurationDetails](docs/ProviderConfigurationDetails.md)
  - [Onepanel.ProviderConfigurationDetailsOneprovider](docs/ProviderConfigurationDetailsOneprovider.md)
  - [Onepanel.ProviderConfigurationOneprovider](docs/ProviderConfigurationOneprovider.md)
- - [Onepanel.ProviderConfigurationOnezone](docs/ProviderConfigurationOnezone.md)
  - [Onepanel.ProviderDetails](docs/ProviderDetails.md)
  - [Onepanel.ProviderModifyRequest](docs/ProviderModifyRequest.md)
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)

@@ -31,6 +31,8 @@ Name | Type | Description | Notes
 
 * `nulldevice` (value: `"nulldevice"`)
 
+* `webdav` (value: `"webdav"`)
+
 
 
 

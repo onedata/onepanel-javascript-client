@@ -10,7 +10,9 @@ Name | Type | Description | Notes
 ## Enum: StatusEnum
 
 
-* `running` (value: `"running"`)
+* `healthy` (value: `"healthy"`)
+
+* `unhealthy` (value: `"unhealthy"`)
 
 * `stopped` (value: `"stopped"`)
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceFilePopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningConfiguration'), require('./SpaceFilePopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceFilePopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, SpaceAutoCleaningConfiguration, SpaceFilePopularity, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -60,8 +60,6 @@
     _this['storageId'] = storageId;
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
-
-
 
 
 
@@ -113,12 +111,6 @@
       if (data.hasOwnProperty('storageUpdate')) {
         obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
       }
-      if (data.hasOwnProperty('filesPopularity')) {
-        obj['filesPopularity'] = SpaceFilePopularity.constructFromObject(data['filesPopularity']);
-      }
-      if (data.hasOwnProperty('autoCleaning')) {
-        obj['autoCleaning'] = SpaceAutoCleaningConfiguration.constructFromObject(data['autoCleaning']);
-      }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
@@ -165,16 +157,6 @@
    * @member {module:model/StorageUpdateDetails} storageUpdate
    */
   exports.prototype['storageUpdate'] = undefined;
-  /**
-   * Configuration of collecting file-popularity statistics mechanism for this space
-   * @member {module:model/SpaceFilePopularity} filesPopularity
-   */
-  exports.prototype['filesPopularity'] = undefined;
-  /**
-   * Configuration of auto-cleaning mechanism for this space
-   * @member {module:model/SpaceAutoCleaningConfiguration} autoCleaning
-   */
-  exports.prototype['autoCleaning'] = undefined;
   /**
    * Amount of storage [b] used by data from given space on that storage.
    * @member {Number} spaceOccupancy

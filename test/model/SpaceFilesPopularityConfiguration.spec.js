@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceDetails();
+    instance = new Onepanel.SpaceFilesPopularityConfiguration();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,64 +50,22 @@
       object[property] = value;
   }
 
-  describe('SpaceDetails', function() {
-    it('should create an instance of SpaceDetails', function() {
-      // uncomment below and update the code to test SpaceDetails
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be.a(Onepanel.SpaceDetails);
+  describe('SpaceFilesPopularityConfiguration', function() {
+    it('should create an instance of SpaceFilesPopularityConfiguration', function() {
+      // uncomment below and update the code to test SpaceFilesPopularityConfiguration
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
+      //expect(instance).to.be.a(Onepanel.SpaceFilesPopularityConfiguration);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.SpaceDetails();
+    it('should have the property enabled (base name: "enabled")', function() {
+      // uncomment below and update the code to test the property enabled
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property localStorages (base name: "localStorages")', function() {
-      // uncomment below and update the code to test the property localStorages
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property supportingProviders (base name: "supportingProviders")', function() {
-      // uncomment below and update the code to test the property supportingProviders
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
-      // uncomment below and update the code to test the property spaceOccupancy
-      //var instane = new Onepanel.SpaceDetails();
+    it('should have the property restUrl (base name: "restUrl")', function() {
+      // uncomment below and update the code to test the property restUrl
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
       //expect(instance).to.be();
     });
 

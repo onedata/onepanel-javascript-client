@@ -101,10 +101,10 @@
         done();
       });
     });
-    describe('configureFilePopularity', function() {
-      it('should call configureFilePopularity successfully', function(done) {
-        //uncomment below and update the code to test configureFilePopularity
-        //instance.configureFilePopularity(function(error) {
+    describe('configureFilesPopularity', function() {
+      it('should call configureFilesPopularity successfully', function(done) {
+        //uncomment below and update the code to test configureFilesPopularity
+        //instance.configureFilesPopularity(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -125,6 +125,16 @@
       it('should call configureSpaceAutoCleaning successfully', function(done) {
         //uncomment below and update the code to test configureSpaceAutoCleaning
         //instance.configureSpaceAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getFilesPopularityConfiguration', function() {
+      it('should call getFilesPopularityConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getFilesPopularityConfiguration
+        //instance.getFilesPopularityConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -265,6 +275,16 @@
       it('should call getProviderWorkersStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderWorkersStatus
         //instance.getProviderWorkersStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getSpaceAutoCleaningConfiguration', function() {
+      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
+        //instance.getSpaceAutoCleaningConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

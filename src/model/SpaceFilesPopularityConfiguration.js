@@ -16,101 +16,89 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.SpaceFilesPopularityConfiguration = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The SpaceFilesPopularityConfiguration model module.
+   * @module model/SpaceFilesPopularityConfiguration
+   * @version 18.02.0-rc13
+   */
+
+  /**
+   * Constructs a new <code>SpaceFilesPopularityConfiguration</code>.
+   * Settings of files-popularity feature of space
+   * @alias module:model/SpaceFilesPopularityConfiguration
+   * @class
+   * @param enabled {Boolean} If true, collecting files-popularity mechanism in the space is enabled
+   */
+  var exports = function(enabled) {
+    var _this = this;
+
+    _this['enabled'] = enabled;
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/SpaceFilesPopularityConfiguration} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>SpaceFilesPopularityConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/SpaceFilesPopularityConfiguration} obj Optional instance to populate.
+   * @return {module:model/SpaceFilesPopularityConfiguration} The populated <code>SpaceFilesPopularityConfiguration</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('restUrl')) {
+        obj['restUrl'] = ApiClient.convertToType(data['restUrl'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * If true, collecting files-popularity mechanism in the space is enabled
+   * @member {Boolean} enabled
+   */
+  exports.prototype['enabled'] = undefined;
+  /**
+   * REST endpoint to view files-popularity statistics 
+   * @member {String} restUrl
+   */
+  exports.prototype['restUrl'] = undefined;
 
-  describe('SpaceDetails', function() {
-    it('should create an instance of SpaceDetails', function() {
-      // uncomment below and update the code to test SpaceDetails
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be.a(Onepanel.SpaceDetails);
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageId (base name: "storageId")', function() {
-      // uncomment below and update the code to test the property storageId
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property localStorages (base name: "localStorages")', function() {
-      // uncomment below and update the code to test the property localStorages
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property supportingProviders (base name: "supportingProviders")', function() {
-      // uncomment below and update the code to test the property supportingProviders
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
-      // uncomment below and update the code to test the property spaceOccupancy
-      //var instane = new Onepanel.SpaceDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

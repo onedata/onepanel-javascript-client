@@ -16,95 +16,59 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OpPanelConfiguration', 'model/ProviderClusterConfiguration', 'model/ProviderConfigurationOneprovider'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OpPanelConfiguration'), require('./ProviderClusterConfiguration'), require('./ProviderConfigurationOneprovider'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ProviderConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.OpPanelConfiguration, root.Onepanel.ProviderClusterConfiguration, root.Onepanel.ProviderConfigurationOneprovider);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, OpPanelConfiguration, ProviderClusterConfiguration, ProviderConfigurationOneprovider) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.OzPanelConfigurationUsers();
+  });
 
-
-  /**
-   * The ProviderConfiguration model module.
-   * @module model/ProviderConfiguration
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>ProviderConfiguration</code>.
-   * The provider deployment configuration.
-   * @alias module:model/ProviderConfiguration
-   * @class
-   * @param cluster {module:model/ProviderClusterConfiguration} 
-   */
-  var exports = function(cluster) {
-    var _this = this;
-
-    _this['cluster'] = cluster;
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ProviderConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ProviderConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderConfiguration} obj Optional instance to populate.
-   * @return {module:model/ProviderConfiguration} The populated <code>ProviderConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ProviderClusterConfiguration.constructFromObject(data['cluster']);
-      }
-      if (data.hasOwnProperty('oneprovider')) {
-        obj['oneprovider'] = ProviderConfigurationOneprovider.constructFromObject(data['oneprovider']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = OpPanelConfiguration.constructFromObject(data['onepanel']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {module:model/ProviderClusterConfiguration} cluster
-   */
-  exports.prototype['cluster'] = undefined;
-  /**
-   * @member {module:model/ProviderConfigurationOneprovider} oneprovider
-   */
-  exports.prototype['oneprovider'] = undefined;
-  /**
-   * @member {module:model/OpPanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('OzPanelConfigurationUsers', function() {
+    it('should create an instance of OzPanelConfigurationUsers', function() {
+      // uncomment below and update the code to test OzPanelConfigurationUsers
+      //var instane = new Onepanel.OzPanelConfigurationUsers();
+      //expect(instance).to.be.a(Onepanel.OzPanelConfigurationUsers);
+    });
 
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instane = new Onepanel.OzPanelConfigurationUsers();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property userRole (base name: "userRole")', function() {
+      // uncomment below and update the code to test the property userRole
+      //var instane = new Onepanel.OzPanelConfigurationUsers();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

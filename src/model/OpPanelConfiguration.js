@@ -17,40 +17,38 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OpPanelConfiguration', 'model/ProviderClusterConfiguration', 'model/ProviderConfigurationOneprovider'], factory);
+    define(['ApiClient', 'model/OpPanelConfigurationAdmin'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OpPanelConfiguration'), require('./ProviderClusterConfiguration'), require('./ProviderConfigurationOneprovider'));
+    module.exports = factory(require('../ApiClient'), require('./OpPanelConfigurationAdmin'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.OpPanelConfiguration, root.Onepanel.ProviderClusterConfiguration, root.Onepanel.ProviderConfigurationOneprovider);
+    root.Onepanel.OpPanelConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.OpPanelConfigurationAdmin);
   }
-}(this, function(ApiClient, OpPanelConfiguration, ProviderClusterConfiguration, ProviderConfigurationOneprovider) {
+}(this, function(ApiClient, OpPanelConfigurationAdmin) {
   'use strict';
 
 
 
 
   /**
-   * The ProviderConfiguration model module.
-   * @module model/ProviderConfiguration
+   * The OpPanelConfiguration model module.
+   * @module model/OpPanelConfiguration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>ProviderConfiguration</code>.
-   * The provider deployment configuration.
-   * @alias module:model/ProviderConfiguration
+   * Constructs a new <code>OpPanelConfiguration</code>.
+   * The panel configuration.
+   * @alias module:model/OpPanelConfiguration
    * @class
-   * @param cluster {module:model/ProviderClusterConfiguration} 
    */
-  var exports = function(cluster) {
+  var exports = function() {
     var _this = this;
 
-    _this['cluster'] = cluster;
 
 
   };
@@ -59,48 +57,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/OpPanelConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>OpPanelConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderConfiguration} obj Optional instance to populate.
-   * @return {module:model/ProviderConfiguration} The populated <code>ProviderConfiguration</code> instance.
+   * @param {module:model/OpPanelConfiguration} obj Optional instance to populate.
+   * @return {module:model/OpPanelConfiguration} The populated <code>OpPanelConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ProviderClusterConfiguration.constructFromObject(data['cluster']);
+      if (data.hasOwnProperty('interactiveDeployment')) {
+        obj['interactiveDeployment'] = ApiClient.convertToType(data['interactiveDeployment'], 'Boolean');
       }
-      if (data.hasOwnProperty('oneprovider')) {
-        obj['oneprovider'] = ProviderConfigurationOneprovider.constructFromObject(data['oneprovider']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = OpPanelConfiguration.constructFromObject(data['onepanel']);
+      if (data.hasOwnProperty('admin')) {
+        obj['admin'] = OpPanelConfigurationAdmin.constructFromObject(data['admin']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ProviderClusterConfiguration} cluster
+   * Indicates that interactive deployment is performed. If false, users entering GUI will not be asked to complete the configuration. In that case default values will be used, available for change later via appropriate onepanel GUI pages or REST. 
+   * @member {Boolean} interactiveDeployment
+   * @default true
    */
-  exports.prototype['cluster'] = undefined;
+  exports.prototype['interactiveDeployment'] = true;
   /**
-   * @member {module:model/ProviderConfigurationOneprovider} oneprovider
+   * @member {module:model/OpPanelConfigurationAdmin} admin
    */
-  exports.prototype['oneprovider'] = undefined;
-  /**
-   * @member {module:model/OpPanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  exports.prototype['admin'] = undefined;
 
 
 

@@ -17,91 +17,102 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OpPanelConfiguration', 'model/ProviderClusterConfiguration', 'model/ProviderConfigurationOneprovider'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OpPanelConfiguration'), require('./ProviderClusterConfiguration'), require('./ProviderConfigurationOneprovider'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.OpPanelConfiguration, root.Onepanel.ProviderClusterConfiguration, root.Onepanel.ProviderConfigurationOneprovider);
+    root.Onepanel.OzPanelConfigurationUsers = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, OpPanelConfiguration, ProviderClusterConfiguration, ProviderConfigurationOneprovider) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ProviderConfiguration model module.
-   * @module model/ProviderConfiguration
+   * The OzPanelConfigurationUsers model module.
+   * @module model/OzPanelConfigurationUsers
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>ProviderConfiguration</code>.
-   * The provider deployment configuration.
-   * @alias module:model/ProviderConfiguration
+   * Constructs a new <code>OzPanelConfigurationUsers</code>.
+   * @alias module:model/OzPanelConfigurationUsers
    * @class
-   * @param cluster {module:model/ProviderClusterConfiguration} 
+   * @param password {String} The user password.
+   * @param userRole {module:model/OzPanelConfigurationUsers.UserRoleEnum} The user role, one of 'admin' or 'regular'.
    */
-  var exports = function(cluster) {
+  var exports = function(password, userRole) {
     var _this = this;
 
-    _this['cluster'] = cluster;
-
-
+    _this['password'] = password;
+    _this['userRole'] = userRole;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ProviderConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/OzPanelConfigurationUsers} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ProviderConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>OzPanelConfigurationUsers</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ProviderConfiguration} obj Optional instance to populate.
-   * @return {module:model/ProviderConfiguration} The populated <code>ProviderConfiguration</code> instance.
+   * @param {module:model/OzPanelConfigurationUsers} obj Optional instance to populate.
+   * @return {module:model/OzPanelConfigurationUsers} The populated <code>OzPanelConfigurationUsers</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ProviderClusterConfiguration.constructFromObject(data['cluster']);
+      if (data.hasOwnProperty('password')) {
+        obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
-      if (data.hasOwnProperty('oneprovider')) {
-        obj['oneprovider'] = ProviderConfigurationOneprovider.constructFromObject(data['oneprovider']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = OpPanelConfiguration.constructFromObject(data['onepanel']);
+      if (data.hasOwnProperty('userRole')) {
+        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ProviderClusterConfiguration} cluster
+   * The user password.
+   * @member {String} password
    */
-  exports.prototype['cluster'] = undefined;
+  exports.prototype['password'] = undefined;
   /**
-   * @member {module:model/ProviderConfigurationOneprovider} oneprovider
+   * The user role, one of 'admin' or 'regular'.
+   * @member {module:model/OzPanelConfigurationUsers.UserRoleEnum} userRole
    */
-  exports.prototype['oneprovider'] = undefined;
-  /**
-   * @member {module:model/OpPanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  exports.prototype['userRole'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>userRole</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.UserRoleEnum = {
+    /**
+     * value: "admin"
+     * @const
+     */
+    "admin": "admin",
+    /**
+     * value: "regular"
+     * @const
+     */
+    "regular": "regular"  };
 
 
   return exports;

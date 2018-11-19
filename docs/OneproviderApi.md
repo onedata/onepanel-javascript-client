@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | Get list of ceph pools
 [**getCephStatus**](OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 [**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
-[**getNextOsdId**](OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd | @fixme
+[**getNextOsdId**](OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd_id | @fixme
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration

@@ -144,7 +144,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getCephPools**](docs/OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | Get list of ceph pools
 *Onepanel.OneproviderApi* | [**getCephStatus**](docs/OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 *Onepanel.OneproviderApi* | [**getCephUsage**](docs/OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
-*Onepanel.OneproviderApi* | [**getNextOsdId**](docs/OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd | @fixme
+*Onepanel.OneproviderApi* | [**getNextOsdId**](docs/OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd_id | @fixme
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration

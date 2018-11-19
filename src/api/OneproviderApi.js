@@ -1114,7 +1114,7 @@
       var returnType = 'Number';
 
       return this.apiClient.callApi(
-        '/provider/ceph/preflight/next_osd', 'GET',
+        '/provider/ceph/preflight/next_osd_id', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

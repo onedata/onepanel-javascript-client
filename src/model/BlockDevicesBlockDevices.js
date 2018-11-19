@@ -44,13 +44,15 @@
    * Constructs a new <code>BlockDevicesBlockDevices</code>.
    * @alias module:model/BlockDevicesBlockDevices
    * @class
+   * @param host {String} Host on which the device is available
    * @param name {String} 
    * @param size {Number} Device size in bytes.
    * @param mounted {Boolean} Attempt to detect whether a device or its child is already mounted.
    */
-  var exports = function(name, size, mounted) {
+  var exports = function(host, name, size, mounted) {
     var _this = this;
 
+    _this['host'] = host;
     _this['name'] = name;
     _this['size'] = size;
     _this['mounted'] = mounted;
@@ -77,6 +79,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
+      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -90,6 +95,11 @@
     return obj;
   }
 
+  /**
+   * Host on which the device is available
+   * @member {String} host
+   */
+  exports.prototype['host'] = undefined;
   /**
    * @member {String} name
    */

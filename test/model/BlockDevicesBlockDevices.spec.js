@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.BlockDevicesBlockDevices);
     });
 
+    it('should have the property host (base name: "host")', function() {
+      // uncomment below and update the code to test the property host
+      //var instane = new Onepanel.BlockDevicesBlockDevices();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instane = new Onepanel.BlockDevicesBlockDevices();

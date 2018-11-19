@@ -231,6 +231,16 @@
         done();
       });
     });
+    describe('getCephParams', function() {
+      it('should call getCephParams successfully', function(done) {
+        //uncomment below and update the code to test getCephParams
+        //instance.getCephParams(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephPool', function() {
       it('should call getCephPool successfully', function(done) {
         //uncomment below and update the code to test getCephPool
@@ -275,6 +285,16 @@
       it('should call getCephUsage successfully', function(done) {
         //uncomment below and update the code to test getCephUsage
         //instance.getCephUsage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getNextOsdId', function() {
+      it('should call getNextOsdId successfully', function(done) {
+        //uncomment below and update the code to test getNextOsdId
+        //instance.getNextOsdId(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

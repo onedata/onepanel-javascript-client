@@ -406,7 +406,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var id = "id_example"; // String | Cluster id which users should be returned.
+var id = "id_example"; // String | Cluster id.
 
 
 var callback = function(error, data, response) {
@@ -423,7 +423,7 @@ apiInstance.getClusterUsers(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Cluster id which users should be returned. | 
+ **id** | **String**| Cluster id. | 
 
 ### Return type
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 <a name="getClusters"></a>
 # **getClusters**
-> Clusters getClusters()
+> Ids getClusters()
 
 List user&#39;s clusters
 
@@ -473,7 +473,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Clusters**](Clusters.md)
+[**Ids**](Ids.md)
 
 ### Authorization
 

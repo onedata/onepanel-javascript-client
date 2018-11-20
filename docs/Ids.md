@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **[String]** |  | 
+**ids** | **[String]** | List of ids. | 
 
 

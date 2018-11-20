@@ -42,10 +42,9 @@
 
   /**
    * Constructs a new <code>Ids</code>.
-   * List of ids
    * @alias module:model/Ids
    * @class
-   * @param ids {Array.<String>} 
+   * @param ids {Array.<String>} List of ids.
    */
   var exports = function(ids) {
     var _this = this;
@@ -82,6 +81,7 @@
   }
 
   /**
+   * List of ids.
    * @member {Array.<String>} ids
    */
   exports.prototype['ids'] = undefined;

@@ -56,6 +56,7 @@
 
 
 
+
   };
 
   /**
@@ -79,6 +80,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('maxOpenCount')) {
         obj['maxOpenCount'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxOpenCount']);
       }
@@ -104,6 +108,11 @@
     return obj;
   }
 
+  /**
+   * Informs whether selective rules should be used by auto-cleaning mechanism. 
+   * @member {Boolean} enabled
+   */
+  exports.prototype['enabled'] = undefined;
   /**
    * Files that have been opened less than `maxOpenCount` times may be cleaned. The default value is `9007199254740991 (2^53-1)`. 
    * @member {module:model/SpaceAutoCleaningRuleSetting} maxOpenCount

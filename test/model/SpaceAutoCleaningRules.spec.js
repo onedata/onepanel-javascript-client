@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningRules);
     });
 
+    it('should have the property enabled (base name: "enabled")', function() {
+      // uncomment below and update the code to test the property enabled
+      //var instane = new Onepanel.SpaceAutoCleaningRules();
+      //expect(instance).to.be();
+    });
+
     it('should have the property maxOpenCount (base name: "maxOpenCount")', function() {
       // uncomment below and update the code to test the property maxOpenCount
       //var instane = new Onepanel.SpaceAutoCleaningRules();

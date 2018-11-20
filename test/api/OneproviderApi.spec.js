@@ -101,6 +101,16 @@
         done();
       });
     });
+    describe('checkOnezone', function() {
+      it('should call checkOnezone successfully', function(done) {
+        //uncomment below and update the code to test checkOnezone
+        //instance.checkOnezone(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('configureProvider', function() {
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider

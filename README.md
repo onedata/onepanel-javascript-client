@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+*Onepanel.OneproviderApi* | [**checkOnezone**](docs/OneproviderApi.md#checkOnezone) | **GET** /provider/onezone_check | Get information about Onezone needed for registration.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -228,6 +229,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
  - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
+ - [Onepanel.RemoteOnezone](docs/RemoteOnezone.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)

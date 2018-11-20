@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.CephUsage();
+    instance = new Onepanel.DataUsage();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,28 @@
       object[property] = value;
   }
 
-  describe('CephUsage', function() {
-    it('should create an instance of CephUsage', function() {
-      // uncomment below and update the code to test CephUsage
-      //var instane = new Onepanel.CephUsage();
-      //expect(instance).to.be.a(Onepanel.CephUsage);
+  describe('DataUsage', function() {
+    it('should create an instance of DataUsage', function() {
+      // uncomment below and update the code to test DataUsage
+      //var instane = new Onepanel.DataUsage();
+      //expect(instance).to.be.a(Onepanel.DataUsage);
     });
 
     it('should have the property total (base name: "total")', function() {
       // uncomment below and update the code to test the property total
-      //var instane = new Onepanel.CephUsage();
+      //var instane = new Onepanel.DataUsage();
       //expect(instance).to.be();
     });
 
-    it('should have the property osds (base name: "osds")', function() {
-      // uncomment below and update the code to test the property osds
-      //var instane = new Onepanel.CephUsage();
+    it('should have the property used (base name: "used")', function() {
+      // uncomment below and update the code to test the property used
+      //var instane = new Onepanel.DataUsage();
       //expect(instance).to.be();
     });
 
-    it('should have the property pools (base name: "pools")', function() {
-      // uncomment below and update the code to test the property pools
-      //var instane = new Onepanel.CephUsage();
+    it('should have the property available (base name: "available")', function() {
+      // uncomment below and update the code to test the property available
+      //var instane = new Onepanel.DataUsage();
       //expect(instance).to.be();
     });
 

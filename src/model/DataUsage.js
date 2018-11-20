@@ -16,65 +16,100 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.DataUsage = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.CephUsage();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The DataUsage model module.
+   * @module model/DataUsage
+   * @version 18.02.0-rc12
+   */
+
+  /**
+   * Constructs a new <code>DataUsage</code>.
+   * Describes storage space usage level.
+   * @alias module:model/DataUsage
+   * @class
+   * @param total {Number} Total space (used and available) in bytes.
+   * @param used {Number} Total used space in bytes.
+   * @param available {Number} Total available space in bytes.
+   */
+  var exports = function(total, used, available) {
+    var _this = this;
+
+    _this['total'] = total;
+    _this['used'] = used;
+    _this['available'] = available;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/DataUsage} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>DataUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/DataUsage} obj Optional instance to populate.
+   * @return {module:model/DataUsage} The populated <code>DataUsage</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('total')) {
+        obj['total'] = ApiClient.convertToType(data['total'], 'Number');
+      }
+      if (data.hasOwnProperty('used')) {
+        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      }
+      if (data.hasOwnProperty('available')) {
+        obj['available'] = ApiClient.convertToType(data['available'], 'Number');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Total space (used and available) in bytes.
+   * @member {Number} total
+   */
+  exports.prototype['total'] = undefined;
+  /**
+   * Total used space in bytes.
+   * @member {Number} used
+   */
+  exports.prototype['used'] = undefined;
+  /**
+   * Total available space in bytes.
+   * @member {Number} available
+   */
+  exports.prototype['available'] = undefined;
 
-  describe('CephUsage', function() {
-    it('should create an instance of CephUsage', function() {
-      // uncomment below and update the code to test CephUsage
-      //var instane = new Onepanel.CephUsage();
-      //expect(instance).to.be.a(Onepanel.CephUsage);
-    });
 
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instane = new Onepanel.CephUsage();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property osds (base name: "osds")', function() {
-      // uncomment below and update the code to test the property osds
-      //var instane = new Onepanel.CephUsage();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pools (base name: "pools")', function() {
-      // uncomment below and update the code to test the property pools
-      //var instane = new Onepanel.CephUsage();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

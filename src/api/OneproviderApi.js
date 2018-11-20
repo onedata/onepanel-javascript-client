@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolModifyRequest', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolModifyRequest', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolModifyRequest'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningReportCollection'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolModifyRequest'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningReportCollection'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolModifyRequest, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningReportCollection, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolModifyRequest, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningReportCollection, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
   }
-}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolModifyRequest, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningReportCollection, SpaceAutoCleaningStatus, SpaceDetails, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
+}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolModifyRequest, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningReportCollection, SpaceAutoCleaningStatus, SpaceDetails, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
   'use strict';
 
   /**
@@ -795,6 +795,52 @@
     }
 
     /**
+     * Callback function to receive the result of the getCephOsdUsage operation.
+     * @callback module:api/OneproviderApi~getCephOsdUsageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DataUsage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get space usage details for specific osd.
+     * @fixme
+     * @param {String} id The id of the OSD for usage check.
+     * @param {module:api/OneproviderApi~getCephOsdUsageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DataUsage}
+     */
+    this.getCephOsdUsage = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getCephOsdUsage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DataUsage;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/osds/{id}/usage', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getCephOsds operation.
      * @callback module:api/OneproviderApi~getCephOsdsCallback
      * @param {String} error Error message, if any.
@@ -929,7 +975,7 @@
     /**
      * Get space usage details for specific pool.
      * @fixme
-     * @param {String} name The name of the pool to describe.
+     * @param {String} name The name of the pool for usage check.
      * @param {module:api/OneproviderApi~getCephPoolUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephPoolUsage}
      */

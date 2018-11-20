@@ -221,6 +221,16 @@
         done();
       });
     });
+    describe('getCephOsdUsage', function() {
+      it('should call getCephOsdUsage successfully', function(done) {
+        //uncomment below and update the code to test getCephOsdUsage
+        //instance.getCephOsdUsage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCephOsds', function() {
       it('should call getCephOsds successfully', function(done) {
         //uncomment below and update the code to test getCephOsds

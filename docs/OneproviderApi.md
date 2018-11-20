@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get ceph monitor
 [**getCephMonitors**](OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | Get Ceph monitor
 [**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get ceph OSD
+[**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get space usage details for specific osd.
 [**getCephOsds**](OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 [**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global params
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
@@ -939,6 +940,58 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getCephOsdUsage"></a>
+# **getCephOsdUsage**
+> DataUsage getCephOsdUsage(id)
+
+Get space usage details for specific osd.
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The id of the OSD for usage check.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCephOsdUsage(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The id of the OSD for usage check. | 
+
+### Return type
+
+[**DataUsage**](DataUsage.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getCephOsds"></a>
 # **getCephOsds**
 > CephOsds getCephOsds()
@@ -1103,7 +1156,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var name = "name_example"; // String | The name of the pool to describe.
+var name = "name_example"; // String | The name of the pool for usage check.
 
 
 var callback = function(error, data, response) {
@@ -1120,7 +1173,7 @@ apiInstance.getCephPoolUsage(name, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the pool to describe. | 
+ **name** | **String**| The name of the pool for usage check. | 
 
 ### Return type
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephPoolUsage', 'model/CephUsageTotal'], factory);
+    define(['ApiClient', 'model/CephPoolUsage', 'model/DataUsage'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephPoolUsage'), require('./CephUsageTotal'));
+    module.exports = factory(require('../ApiClient'), require('./CephPoolUsage'), require('./DataUsage'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephUsage = factory(root.Onepanel.ApiClient, root.Onepanel.CephPoolUsage, root.Onepanel.CephUsageTotal);
+    root.Onepanel.CephUsage = factory(root.Onepanel.ApiClient, root.Onepanel.CephPoolUsage, root.Onepanel.DataUsage);
   }
-}(this, function(ApiClient, CephPoolUsage, CephUsageTotal) {
+}(this, function(ApiClient, CephPoolUsage, DataUsage) {
   'use strict';
 
 
@@ -45,12 +45,15 @@
    * Summary of storage space usage in the ceph cluster.
    * @alias module:model/CephUsage
    * @class
-   * @param pools {Object.<String, module:model/CephPoolUsage>} The collection of pools with associated usage data.
+   * @param total {module:model/DataUsage} 
+   * @param osds {Object.<String, module:model/DataUsage>} Dictionary of OSDs with associated usage data.
+   * @param pools {Object.<String, module:model/CephPoolUsage>} Dictionary of pools with associated usage data.
    */
-  var exports = function(pools) {
+  var exports = function(total, osds, pools) {
     var _this = this;
 
-
+    _this['total'] = total;
+    _this['osds'] = osds;
     _this['pools'] = pools;
   };
 
@@ -76,7 +79,10 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('total')) {
-        obj['total'] = CephUsageTotal.constructFromObject(data['total']);
+        obj['total'] = DataUsage.constructFromObject(data['total']);
+      }
+      if (data.hasOwnProperty('osds')) {
+        obj['osds'] = ApiClient.convertToType(data['osds'], {'String': DataUsage});
       }
       if (data.hasOwnProperty('pools')) {
         obj['pools'] = ApiClient.convertToType(data['pools'], {'String': CephPoolUsage});
@@ -86,11 +92,16 @@
   }
 
   /**
-   * @member {module:model/CephUsageTotal} total
+   * @member {module:model/DataUsage} total
    */
   exports.prototype['total'] = undefined;
   /**
-   * The collection of pools with associated usage data.
+   * Dictionary of OSDs with associated usage data.
+   * @member {Object.<String, module:model/DataUsage>} osds
+   */
+  exports.prototype['osds'] = undefined;
+  /**
+   * Dictionary of pools with associated usage data.
    * @member {Object.<String, module:model/CephPoolUsage>} pools
    */
   exports.prototype['pools'] = undefined;

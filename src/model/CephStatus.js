@@ -45,14 +45,14 @@
    * @fixme
    * @alias module:model/CephStatus
    * @class
-   * @param summary {String} 
-   * @param checks {Array.<String>} 
+   * @param level {module:model/CephStatus.LevelEnum} @fixme
+   * @param messages {Array.<String>} @fixme
    */
-  var exports = function(summary, checks) {
+  var exports = function(level, messages) {
     var _this = this;
 
-    _this['summary'] = summary;
-    _this['checks'] = checks;
+    _this['level'] = level;
+    _this['messages'] = messages;
   };
 
   /**
@@ -76,25 +76,49 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('summary')) {
-        obj['summary'] = ApiClient.convertToType(data['summary'], 'String');
+      if (data.hasOwnProperty('level')) {
+        obj['level'] = ApiClient.convertToType(data['level'], 'String');
       }
-      if (data.hasOwnProperty('checks')) {
-        obj['checks'] = ApiClient.convertToType(data['checks'], ['String']);
+      if (data.hasOwnProperty('messages')) {
+        obj['messages'] = ApiClient.convertToType(data['messages'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} summary
+   * @fixme
+   * @member {module:model/CephStatus.LevelEnum} level
    */
-  exports.prototype['summary'] = undefined;
+  exports.prototype['level'] = undefined;
   /**
-   * @member {Array.<String>} checks
+   * @fixme
+   * @member {Array.<String>} messages
    */
-  exports.prototype['checks'] = undefined;
+  exports.prototype['messages'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>level</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.LevelEnum = {
+    /**
+     * value: "ok"
+     * @const
+     */
+    "ok": "ok",
+    /**
+     * value: "warning"
+     * @const
+     */
+    "warning": "warning",
+    /**
+     * value: "error"
+     * @const
+     */
+    "error": "error"  };
 
 
   return exports;

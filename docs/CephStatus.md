@@ -3,7 +3,20 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary** | **String** |  | 
-**checks** | **[String]** |  | 
+**level** | **String** | @fixme | 
+**messages** | **[String]** | @fixme | 
+
+
+<a name="LevelEnum"></a>
+## Enum: LevelEnum
+
+
+* `ok` (value: `"ok"`)
+
+* `warning` (value: `"warning"`)
+
+* `error` (value: `"error"`)
+
+
 
 

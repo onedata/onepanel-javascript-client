@@ -57,14 +57,14 @@
       //expect(instance).to.be.a(Onepanel.CephStatus);
     });
 
-    it('should have the property summary (base name: "summary")', function() {
-      // uncomment below and update the code to test the property summary
+    it('should have the property level (base name: "level")', function() {
+      // uncomment below and update the code to test the property level
       //var instane = new Onepanel.CephStatus();
       //expect(instance).to.be();
     });
 
-    it('should have the property checks (base name: "checks")', function() {
-      // uncomment below and update the code to test the property checks
+    it('should have the property messages (base name: "messages")', function() {
+      // uncomment below and update the code to test the property messages
       //var instane = new Onepanel.CephStatus();
       //expect(instance).to.be();
     });

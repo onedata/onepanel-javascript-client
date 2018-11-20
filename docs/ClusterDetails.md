@@ -7,9 +7,8 @@ Name | Type | Description | Notes
 **domain** | **String** | Domain of the cluster. | 
 **name** | **String** |  | 
 **online** | **Boolean** |  | 
-**type** | **String** | Type of Onedata component in this cluster. (@fixme) | [optional] 
-**users** | **[String]** |  | [optional] 
-**proxy** | **Boolean** |  | [optional] 
+**type** | **String** | Type of Onedata component in this cluster. (@fixme) | 
+**proxy** | **Boolean** |  | 
 
 
 <a name="TypeEnum"></a>

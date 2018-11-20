@@ -49,17 +49,18 @@
    * @param domain {String} Domain of the cluster.
    * @param name {String} 
    * @param online {Boolean} 
+   * @param type {module:model/ClusterDetails.TypeEnum} Type of Onedata component in this cluster. (@fixme)
+   * @param proxy {Boolean} 
    */
-  var exports = function(id, domain, name, online) {
+  var exports = function(id, domain, name, online, type, proxy) {
     var _this = this;
 
     _this['id'] = id;
     _this['domain'] = domain;
     _this['name'] = name;
     _this['online'] = online;
-
-
-
+    _this['type'] = type;
+    _this['proxy'] = proxy;
   };
 
   /**
@@ -98,9 +99,6 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('users')) {
-        obj['users'] = ApiClient.convertToType(data['users'], ['String']);
-      }
       if (data.hasOwnProperty('proxy')) {
         obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
       }
@@ -130,10 +128,6 @@
    * @member {module:model/ClusterDetails.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
-  /**
-   * @member {Array.<String>} users
-   */
-  exports.prototype['users'] = undefined;
   /**
    * @member {Boolean} proxy
    */

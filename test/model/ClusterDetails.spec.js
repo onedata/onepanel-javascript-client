@@ -87,12 +87,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property proxy (base name: "proxy")', function() {
       // uncomment below and update the code to test the property proxy
       //var instane = new Onepanel.ClusterDetails();

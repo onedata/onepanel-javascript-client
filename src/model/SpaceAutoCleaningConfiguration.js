@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningConfiguration</code>.
-   * Settings for space auto-cleaning mechanism Setting value to &#x60;null&#x60; disables given parameter. It will be ignored by auto-cleaning mechanism. All presented parameters&#39; ranges are inclusive. 
+   * Settings for space auto-cleaning mechanism Setting enabled to &#x60;false&#x60; disables given parameter. It will be ignored by auto-cleaning mechanism. All presented parameters&#39; ranges are inclusive. 
    * @alias module:model/SpaceAutoCleaningConfiguration
    * @class
    */

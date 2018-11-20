@@ -421,7 +421,7 @@ null (empty response body)
 
 Configure space auto-cleaning mechanism.
 
-Returns collection of reports of auto-cleaning for the space. 
+Configures space auto-cleaning mechanism in the space. 
 
 ### Example
 ```javascript

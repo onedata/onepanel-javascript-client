@@ -373,7 +373,7 @@
 
     /**
      * Configure space auto-cleaning mechanism.
-     * Returns collection of reports of auto-cleaning for the space. 
+     * Configures space auto-cleaning mechanism in the space. 
      * @param {String} id The Id of a space
      * @param {module:model/SpaceAutoCleaningConfiguration} spaceAutoCleaningConfiguration New configuration of space auto-cleaning mechanism. 
      * @param {module:api/OneproviderApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response

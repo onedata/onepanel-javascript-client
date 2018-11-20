@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+[**getClusterUser**](OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
+[**getClusterUsers**](OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getClusters_0**](OnepanelApi.md#getClusters_0) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
@@ -328,6 +330,113 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="getClusterUser"></a>
+# **getClusterUser**
+> OnezoneUser getClusterUser(id, userId)
+
+Get info about Onezone user linked to cluster
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var id = "id_example"; // String | Cluster id which users should be returned.
+
+var userId = "userId_example"; // String | Id of the user.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getClusterUser(id, userId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Cluster id which users should be returned. | 
+ **userId** | **String**| Id of the user. | 
+
+### Return type
+
+[**OnezoneUser**](OnezoneUser.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="getClusterUsers"></a>
+# **getClusterUsers**
+> Ids getClusterUsers(id)
+
+List Onezone users linked to a cluster
+
+@fixme
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var id = "id_example"; // String | Cluster id which users should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getClusterUsers(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Cluster id which users should be returned. | 
+
+### Return type
+
+[**Ids**](Ids.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getClusters"></a>
 # **getClusters**
@@ -770,7 +879,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserLink"></a>
 # **getUserLink**
-> OnezoneUserDetails getUserLink()
+> OnezoneUser getUserLink()
 
 Get details of Onezone account linked to current user.
 
@@ -803,7 +912,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**OnezoneUserDetails**](OnezoneUserDetails.md)
+[**OnezoneUser**](OnezoneUser.md)
 
 ### Authorization
 

@@ -106,6 +106,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+*Onepanel.OnepanelApi* | [**getClusterUser**](docs/OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
+*Onepanel.OnepanelApi* | [**getClusterUsers**](docs/OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
 *Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.OnepanelApi* | [**getClusters_0**](docs/OnepanelApi.md#getClusters_0) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
@@ -206,12 +208,13 @@ Class | Method | HTTP request | Description
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
+ - [Onepanel.Ids](docs/Ids.md)
  - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.OnezoneRedirect](docs/OnezoneRedirect.md)
- - [Onepanel.OnezoneUserDetails](docs/OnezoneUserDetails.md)
+ - [Onepanel.OnezoneUser](docs/OnezoneUser.md)
  - [Onepanel.OpPanelConfiguration](docs/OpPanelConfiguration.md)
  - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)
  - [Onepanel.OzPanelConfiguration](docs/OzPanelConfiguration.md)

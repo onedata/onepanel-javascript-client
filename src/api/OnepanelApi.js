@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDetails', 'model/Clusters', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/OnezoneRedirect', 'model/OnezoneUserDetails', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/Clusters', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/OnezoneRedirect', 'model/OnezoneUser', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/Clusters'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/OnezoneRedirect'), require('../model/OnezoneUserDetails'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/Clusters'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/OnezoneRedirect'), require('../model/OnezoneUser'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.Clusters, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.OnezoneRedirect, root.Onepanel.OnezoneUserDetails, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.Clusters, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.OnezoneRedirect, root.Onepanel.OnezoneUser, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, ClusterDetails, Clusters, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, JoinClusterRequest, Node, OnezoneRedirect, OnezoneUserDetails, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, Clusters, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, OnezoneRedirect, OnezoneUser, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -292,6 +292,105 @@
 
       return this.apiClient.callApi(
         '/hosts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClusterUser operation.
+     * @callback module:api/OnepanelApi~getClusterUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/OnezoneUser} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get info about Onezone user linked to cluster
+     * @fixme
+     * @param {String} id Cluster id which users should be returned.
+     * @param {String} userId Id of the user.
+     * @param {module:api/OnepanelApi~getClusterUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/OnezoneUser}
+     */
+    this.getClusterUser = function(id, userId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getClusterUser");
+      }
+
+      // verify the required parameter 'userId' is set
+      if (userId === undefined || userId === null) {
+        throw new Error("Missing the required parameter 'userId' when calling getClusterUser");
+      }
+
+
+      var pathParams = {
+        'id': id,
+        'userId': userId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = OnezoneUser;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}/users/{userId}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClusterUsers operation.
+     * @callback module:api/OnepanelApi~getClusterUsersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Ids} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Onezone users linked to a cluster
+     * @fixme
+     * @param {String} id Cluster id which users should be returned.
+     * @param {module:api/OnepanelApi~getClusterUsersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Ids}
+     */
+    this.getClusterUsers = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getClusterUsers");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = Ids;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}/users', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -677,7 +776,7 @@
      * Callback function to receive the result of the getUserLink operation.
      * @callback module:api/OnepanelApi~getUserLinkCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/OnezoneUserDetails} data The data returned by the service call.
+     * @param {module:model/OnezoneUser} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -685,7 +784,7 @@
      * Get details of Onezone account linked to current user.
      * Returns details of Onezone user account linked to the currently logged in user. 
      * @param {module:api/OnepanelApi~getUserLinkCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/OnezoneUserDetails}
+     * data is of type: {@link module:model/OnezoneUser}
      */
     this.getUserLink = function(callback) {
       var postBody = null;
@@ -703,7 +802,7 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = OnezoneUserDetails;
+      var returnType = OnezoneUser;
 
       return this.apiClient.callApi(
         '/user/link', 'GET',

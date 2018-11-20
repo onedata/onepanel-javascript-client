@@ -111,6 +111,26 @@
         done();
       });
     });
+    describe('getClusterUser', function() {
+      it('should call getClusterUser successfully', function(done) {
+        //uncomment below and update the code to test getClusterUser
+        //instance.getClusterUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getClusterUsers', function() {
+      it('should call getClusterUsers successfully', function(done) {
+        //uncomment below and update the code to test getClusterUsers
+        //instance.getClusterUsers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getClusters', function() {
       it('should call getClusters successfully', function(done) {
         //uncomment below and update the code to test getClusters

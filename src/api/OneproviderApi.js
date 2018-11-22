@@ -269,49 +269,6 @@
     }
 
     /**
-     * Callback function to receive the result of the checkOnezone operation.
-     * @callback module:api/OneproviderApi~checkOnezoneCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/OnezoneInfo} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get pre-register Onezone info
-     * Get information about Onezone needed for registration.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.token Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone.
-     * @param {module:api/OneproviderApi~checkOnezoneCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/OnezoneInfo}
-     */
-    this.checkOnezone = function(opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'token': opts['token']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = OnezoneInfo;
-
-      return this.apiClient.callApi(
-        '/provider/onezone_check', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the configureProvider operation.
      * @callback module:api/OneproviderApi~configureProviderCallback
      * @param {String} error Error message, if any.
@@ -350,6 +307,49 @@
 
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getOnezoneInfo operation.
+     * @callback module:api/OneproviderApi~getOnezoneInfoCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/OnezoneInfo} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Onezone information
+     * Get information about Onezone. Before registration this endpoint requires a registration token and returns information about Onezone issuing the token. When provider is registered returns information about Onezone at which the provider is registered. 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.token Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone.
+     * @param {module:api/OneproviderApi~getOnezoneInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/OnezoneInfo}
+     */
+    this.getOnezoneInfo = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'token': opts['token']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = OnezoneInfo;
+
+      return this.apiClient.callApi(
+        '/provider/onezone_check', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**checkOnezone**](OneproviderApi.md#checkOnezone) | **GET** /provider/onezone_check | Get pre-register Onezone info
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_check | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -305,59 +305,6 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="checkOnezone"></a>
-# **checkOnezone**
-> OnezoneInfo checkOnezone(opts)
-
-Get pre-register Onezone info
-
-Get information about Onezone needed for registration.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var opts = { 
-  'token': "token_example" // String | Provider registration token obtained be the Onezone's user. Required if provider is not registered at Onezone.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.checkOnezone(opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token** | **String**| Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone. | [optional] 
-
-### Return type
-
-[**OnezoneInfo**](OnezoneInfo.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 <a name="configureProvider"></a>
 # **configureProvider**
 > configureProvider(providerConfiguration)
@@ -409,6 +356,59 @@ null (empty response body)
 
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
+
+<a name="getOnezoneInfo"></a>
+# **getOnezoneInfo**
+> OnezoneInfo getOnezoneInfo(opts)
+
+Get Onezone information
+
+Get information about Onezone. Before registration this endpoint requires a registration token and returns information about Onezone issuing the token. When provider is registered returns information about Onezone at which the provider is registered. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var opts = { 
+  'token': "token_example" // String | Provider registration token obtained be the Onezone's user. Required if provider is not registered at Onezone.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnezoneInfo(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**| Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone. | [optional] 
+
+### Return type
+
+[**OnezoneInfo**](OnezoneInfo.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getProvider"></a>
 # **getProvider**

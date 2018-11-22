@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneUser = factory(root.Onepanel.ApiClient);
+    root.Onepanel.OnezoneInfo = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,24 +35,26 @@
 
 
   /**
-   * The OnezoneUser model module.
-   * @module model/OnezoneUser
+   * The OnezoneInfo model module.
+   * @module model/OnezoneInfo
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>OnezoneUser</code>.
-   * Describes user information coming from Onezone.
-   * @alias module:model/OnezoneUser
+   * Constructs a new <code>OnezoneInfo</code>.
+   * Information which can be obtained about remote Onezone.
+   * @alias module:model/OnezoneInfo
    * @class
-   * @param userId {String} Onezone user ID.
-   * @param name {String} User name as registered in Onezone.
+   * @param domain {String} Domain of the Onezone.
+   * @param online {Boolean} True if connection to the Onezone was achieved. If false, fields 'compatible' and 'subdomainDelegationSupported' will not be sent. 
    */
-  var exports = function(userId, name) {
+  var exports = function(domain, online) {
     var _this = this;
 
-    _this['userId'] = userId;
-    _this['name'] = name;
+    _this['domain'] = domain;
+
+    _this['online'] = online;
+
 
   };
 
@@ -60,51 +62,67 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/OnezoneUser} The value of 'discriminator' field or undefined.
+   * @return {module:model/OnezoneInfo} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>OnezoneUser</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>OnezoneInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/OnezoneUser} obj Optional instance to populate.
-   * @return {module:model/OnezoneUser} The populated <code>OnezoneUser</code> instance.
+   * @param {module:model/OnezoneInfo} obj Optional instance to populate.
+   * @return {module:model/OnezoneInfo} The populated <code>OnezoneInfo</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('alias')) {
-        obj['alias'] = ApiClient.convertToType(data['alias'], 'String');
+      if (data.hasOwnProperty('online')) {
+        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
+      }
+      if (data.hasOwnProperty('compatible')) {
+        obj['compatible'] = ApiClient.convertToType(data['compatible'], 'Boolean');
+      }
+      if (data.hasOwnProperty('subdomainDelegationSupported')) {
+        obj['subdomainDelegationSupported'] = ApiClient.convertToType(data['subdomainDelegationSupported'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * Onezone user ID.
-   * @member {String} userId
+   * Domain of the Onezone.
+   * @member {String} domain
    */
-  exports.prototype['userId'] = undefined;
+  exports.prototype['domain'] = undefined;
   /**
-   * User name as registered in Onezone.
+   * Name of the Onezone cluster.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * Oneozne user login.
-   * @member {String} alias
+   * True if connection to the Onezone was achieved. If false, fields 'compatible' and 'subdomainDelegationSupported' will not be sent. 
+   * @member {Boolean} online
    */
-  exports.prototype['alias'] = undefined;
+  exports.prototype['online'] = undefined;
+  /**
+   * True if versions of this Oneprovider and the Onezone are compatible. 
+   * @member {Boolean} compatible
+   */
+  exports.prototype['compatible'] = undefined;
+  /**
+   * Whether given Onezone allows subdomain delegation.
+   * @member {Boolean} subdomainDelegationSupported
+   */
+  exports.prototype['subdomainDelegationSupported'] = undefined;
 
 
 

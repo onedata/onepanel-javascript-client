@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**checkOnezone**](OneproviderApi.md#checkOnezone) | **GET** /provider/onezone_check | Get information about Onezone needed for registration.
+[**checkOnezone**](OneproviderApi.md#checkOnezone) | **GET** /provider/onezone_check | Get pre-register Onezone info
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -307,11 +307,11 @@ null (empty response body)
 
 <a name="checkOnezone"></a>
 # **checkOnezone**
-> RemoteOnezone checkOnezone(token)
+> OnezoneInfo checkOnezone(opts)
+
+Get pre-register Onezone info
 
 Get information about Onezone needed for registration.
-
-@fixme
 
 ### Example
 ```javascript
@@ -325,8 +325,9 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var token = "token_example"; // String | Provider registration token obtained be the Onezone's user.
-
+var opts = { 
+  'token': "token_example" // String | Provider registration token obtained be the Onezone's user. Required if provider is not registered at Onezone.
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -335,18 +336,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.checkOnezone(token, callback);
+apiInstance.checkOnezone(opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **String**| Provider registration token obtained be the Onezone&#39;s user. | 
+ **token** | **String**| Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone. | [optional] 
 
 ### Return type
 
-[**RemoteOnezone**](RemoteOnezone.md)
+[**OnezoneInfo**](OnezoneInfo.md)
 
 ### Authorization
 

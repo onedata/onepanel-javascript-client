@@ -69,8 +69,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property login (base name: "login")', function() {
-      // uncomment below and update the code to test the property login
+    it('should have the property alias (base name: "alias")', function() {
+      // uncomment below and update the code to test the property alias
       //var instane = new Onepanel.OnezoneUser();
       //expect(instance).to.be();
     });

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **String** | Unique user ID. | 
-**name** | **String** | The user friendly name of storage resource. | 
-**login** | **String** | User login | [optional] 
+**userId** | **String** | Onezone user ID. | 
+**name** | **String** | User name as registered in Onezone. | 
+**alias** | **String** | Oneozne user login. | [optional] 
 
 

@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property token (base name: "token")', function() {
+      // uncomment below and update the code to test the property token
+      //var instane = new Onepanel.ProviderRegisterRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
       // uncomment below and update the code to test the property subdomainDelegation
       //var instane = new Onepanel.ProviderRegisterRequest();
@@ -75,8 +81,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
       //var instane = new Onepanel.ProviderRegisterRequest();
       //expect(instance).to.be();
     });

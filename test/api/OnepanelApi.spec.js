@@ -91,6 +91,16 @@
         done();
       });
     });
+    describe('getCluster', function() {
+      it('should call getCluster successfully', function(done) {
+        //uncomment below and update the code to test getCluster
+        //instance.getCluster(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getClusterCookie', function() {
       it('should call getClusterCookie successfully', function(done) {
         //uncomment below and update the code to test getClusterCookie
@@ -135,16 +145,6 @@
       it('should call getClusters successfully', function(done) {
         //uncomment below and update the code to test getClusters
         //instance.getClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusters_0', function() {
-      it('should call getClusters_0 successfully', function(done) {
-        //uncomment below and update the code to test getClusters_0
-        //instance.getClusters_0(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

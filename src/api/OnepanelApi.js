@@ -220,6 +220,52 @@
     }
 
     /**
+     * Callback function to receive the result of the getCluster operation.
+     * @callback module:api/OnepanelApi~getClusterCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of a user&#39;s cluster
+     * Lists clusters linked with current user&#39;s account. 
+     * @param {String} id Cluster id which details should be returned.
+     * @param {module:api/OnepanelApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getCluster = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getCluster");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getClusterCookie operation.
      * @callback module:api/OnepanelApi~getClusterCookieCallback
      * @param {String} error Error message, if any.
@@ -430,52 +476,6 @@
 
       return this.apiClient.callApi(
         '/user/clusters', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getClusters_0 operation.
-     * @callback module:api/OnepanelApi~getClusters_0Callback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ClusterDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get details of a user&#39;s cluster
-     * Lists clusters linked with current user&#39;s account. 
-     * @param {String} id Cluster id which details should be returned.
-     * @param {module:api/OnepanelApi~getClusters_0Callback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ClusterDetails}
-     */
-    this.getClusters_0 = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getClusters_0");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = ClusterDetails;
-
-      return this.apiClient.callApi(
-        '/user/clusters/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

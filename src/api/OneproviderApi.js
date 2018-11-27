@@ -1373,7 +1373,7 @@
     /**
      * Remove storage
      * Removes storage from the cluster. Only storage not supporting any spaces can be removed.
-     * @param {String} id The ID of the storage resource which details should be modified. 
+     * @param {String} id The ID of the storage to remove.
      * @param {module:api/OneproviderApi~removeStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.removeStorage = function(id, callback) {

@@ -1580,7 +1580,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of the storage resource which details should be modified. 
+var id = "id_example"; // String | The ID of the storage to remove.
 
 
 var callback = function(error, data, response) {
@@ -1597,7 +1597,7 @@ apiInstance.removeStorage(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of the storage resource which details should be modified.  | 
+ **id** | **String**| The ID of the storage to remove. | 
 
 ### Return type
 

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.S3();
+    instance = new Onepanel.NulldeviceModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,64 @@
       object[property] = value;
   }
 
-  describe('S3', function() {
-    it('should create an instance of S3', function() {
-      // uncomment below and update the code to test S3
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be.a(Onepanel.S3);
+  describe('NulldeviceModify', function() {
+    it('should create an instance of NulldeviceModify', function() {
+      // uncomment below and update the code to test NulldeviceModify
+      //var instane = new Onepanel.NulldeviceModify();
+      //expect(instance).to.be.a(Onepanel.NulldeviceModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.S3();
+    it('should have the property latencyMin (base name: "latencyMin")', function() {
+      // uncomment below and update the code to test the property latencyMin
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property bucketName (base name: "bucketName")', function() {
-      // uncomment below and update the code to test the property bucketName
-      //var instane = new Onepanel.S3();
+    it('should have the property latencyMax (base name: "latencyMax")', function() {
+      // uncomment below and update the code to test the property latencyMax
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
+    it('should have the property timeoutProbability (base name: "timeoutProbability")', function() {
+      // uncomment below and update the code to test the property timeoutProbability
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
+    it('should have the property filter (base name: "filter")', function() {
+      // uncomment below and update the code to test the property filter
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockSize (base name: "blockSize")', function() {
-      // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.S3();
+    it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemParameters
+      //var instane = new Onepanel.NulldeviceModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property simulatedFilesystemGrowSpeed (base name: "simulatedFilesystemGrowSpeed")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemGrowSpeed
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 

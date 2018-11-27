@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.S3();
+    instance = new Onepanel.StorageDetailsModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,52 @@
       object[property] = value;
   }
 
-  describe('S3', function() {
-    it('should create an instance of S3', function() {
-      // uncomment below and update the code to test S3
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be.a(Onepanel.S3);
+  describe('StorageDetailsModify', function() {
+    it('should create an instance of StorageDetailsModify', function() {
+      // uncomment below and update the code to test StorageDetailsModify
+      //var instane = new Onepanel.StorageDetailsModify();
+      //expect(instance).to.be.a(Onepanel.StorageDetailsModify);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.S3();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property bucketName (base name: "bucketName")', function() {
-      // uncomment below and update the code to test the property bucketName
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockSize (base name: "blockSize")', function() {
-      // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.S3();
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.S3();
+    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
+      // uncomment below and update the code to test the property lumaEnabled
+      //var instane = new Onepanel.StorageDetailsModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
+      // uncomment below and update the code to test the property lumaUrl
+      //var instane = new Onepanel.StorageDetailsModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 

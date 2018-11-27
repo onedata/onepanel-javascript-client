@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.S3();
+    instance = new Onepanel.WebdavModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,82 @@
       object[property] = value;
   }
 
-  describe('S3', function() {
-    it('should create an instance of S3', function() {
-      // uncomment below and update the code to test S3
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be.a(Onepanel.S3);
+  describe('WebdavModify', function() {
+    it('should create an instance of WebdavModify', function() {
+      // uncomment below and update the code to test WebdavModify
+      //var instane = new Onepanel.WebdavModify();
+      //expect(instance).to.be.a(Onepanel.WebdavModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.S3();
+    it('should have the property endpoint (base name: "endpoint")', function() {
+      // uncomment below and update the code to test the property endpoint
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property bucketName (base name: "bucketName")', function() {
-      // uncomment below and update the code to test the property bucketName
-      //var instane = new Onepanel.S3();
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
+    it('should have the property credentials (base name: "credentials")', function() {
+      // uncomment below and update the code to test the property credentials
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.WebdavModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rangeWriteSupport (base name: "rangeWriteSupport")', function() {
+      // uncomment below and update the code to test the property rangeWriteSupport
+      //var instane = new Onepanel.WebdavModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.WebdavModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumUploadSize (base name: "maximumUploadSize")', function() {
+      // uncomment below and update the code to test the property maximumUploadSize
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockSize (base name: "blockSize")', function() {
-      // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.WebdavModify();
       //expect(instance).to.be();
     });
 

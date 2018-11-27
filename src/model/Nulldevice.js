@@ -46,11 +46,12 @@
    * @alias module:model/Nulldevice
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    */
   var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
 
 
 
@@ -83,6 +84,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('latencyMin')) {
         obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
       }
@@ -117,6 +121,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * Minimum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMin

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.S3();
+    instance = new Onepanel.SwiftModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,64 @@
       object[property] = value;
   }
 
-  describe('S3', function() {
-    it('should create an instance of S3', function() {
-      // uncomment below and update the code to test S3
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be.a(Onepanel.S3);
+  describe('SwiftModify', function() {
+    it('should create an instance of SwiftModify', function() {
+      // uncomment below and update the code to test SwiftModify
+      //var instane = new Onepanel.SwiftModify();
+      //expect(instance).to.be.a(Onepanel.SwiftModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.S3();
+    it('should have the property authUrl (base name: "authUrl")', function() {
+      // uncomment below and update the code to test the property authUrl
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property bucketName (base name: "bucketName")', function() {
-      // uncomment below and update the code to test the property bucketName
-      //var instane = new Onepanel.S3();
+    it('should have the property tenantName (base name: "tenantName")', function() {
+      // uncomment below and update the code to test the property tenantName
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
+    it('should have the property containerName (base name: "containerName")', function() {
+      // uncomment below and update the code to test the property containerName
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockSize (base name: "blockSize")', function() {
-      // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.S3();
+      //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });
 

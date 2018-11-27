@@ -17,45 +17,39 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.CephModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Webdav model module.
-   * @module model/Webdav
+   * The CephModify model module.
+   * @module model/CephModify
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Webdav</code>.
-   * The WebDAV storage configuration.
-   * @alias module:model/Webdav
+   * Constructs a new <code>CephModify</code>.
+   * The Ceph storage configuration (uses libradosstriper).
+   * @alias module:model/CephModify
    * @class
-   * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
-   * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
+   * @extends module:model/StorageDetailsModify
    */
-  var exports = function(type, endpoint) {
+  var exports = function() {
     var _this = this;
-    StorageDetails.call(_this);
-    _this['type'] = type;
-    _this['endpoint'] = endpoint;
-
-
+    StorageDetailsModify.call(_this);
 
 
 
@@ -71,49 +65,40 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Webdav} The value of 'discriminator' field or undefined.
+   * @return {module:model/CephModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Webdav</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CephModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Webdav} obj Optional instance to populate.
-   * @return {module:model/Webdav} The populated <code>Webdav</code> instance.
+   * @param {module:model/CephModify} obj Optional instance to populate.
+   * @return {module:model/CephModify} The populated <code>CephModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('endpoint')) {
-        obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
-      if (data.hasOwnProperty('verifyServerCertificate')) {
-        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
-      if (data.hasOwnProperty('credentialsType')) {
-        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
       }
-      if (data.hasOwnProperty('credentials')) {
-        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
       }
-      if (data.hasOwnProperty('authorizationHeader')) {
-        obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
-      }
-      if (data.hasOwnProperty('rangeWriteSupport')) {
-        obj['rangeWriteSupport'] = ApiClient.convertToType(data['rangeWriteSupport'], 'String');
-      }
-      if (data.hasOwnProperty('connectionPoolSize')) {
-        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
-      }
-      if (data.hasOwnProperty('maximumUploadSize')) {
-        obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -124,14 +109,11 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
-      }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -140,49 +122,30 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Full URL of the WebDAV server, including scheme (http or https) and path. 
-   * @member {String} endpoint
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
    */
-  exports.prototype['endpoint'] = undefined;
+  exports.prototype['username'] = undefined;
   /**
-   * Determines whether Oneprovider should verify the certificate of the WebDAV server. 
-   * @member {Boolean} verifyServerCertificate
-   * @default true
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
    */
-  exports.prototype['verifyServerCertificate'] = true;
+  exports.prototype['key'] = undefined;
   /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
-   * @default 'none'
+   * The monitor host name.
+   * @member {String} monitorHostname
    */
-  exports.prototype['credentialsType'] = 'none';
+  exports.prototype['monitorHostname'] = undefined;
   /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
-   * @member {String} credentials
+   * The Ceph cluster name.
+   * @member {String} clusterName
    */
-  exports.prototype['credentials'] = undefined;
+  exports.prototype['clusterName'] = undefined;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
-   * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer {}'
+   * The Ceph pool name.
+   * @member {String} poolName
    */
-  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
-  /**
-   * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
-   * @default 'none'
-   */
-  exports.prototype['rangeWriteSupport'] = 'none';
-  /**
-   * Defines the maximum number of parallel connections for a single WebDAV storage. 
-   * @member {Number} connectionPoolSize
-   */
-  exports.prototype['connectionPoolSize'] = undefined;
-  /**
-   * Defines the maximum upload size for a single `PUT` or `PATCH` request. If set to 0, assumes that the WebDAV server has no upload limit. 
-   * @member {Number} maximumUploadSize
-   */
-  exports.prototype['maximumUploadSize'] = undefined;
+  exports.prototype['poolName'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout
@@ -200,57 +163,7 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'canonical'
-   */
-  exports.prototype['storagePathType'] = 'canonical';
 
-
-  /**
-   * Allowed values for the <code>credentialsType</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.CredentialsTypeEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "basic"
-     * @const
-     */
-    "basic": "basic",
-    /**
-     * value: "token"
-     * @const
-     */
-    "token": "token"  };
-
-  /**
-   * Allowed values for the <code>rangeWriteSupport</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.RangeWriteSupportEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "moddav"
-     * @const
-     */
-    "moddav": "moddav",
-    /**
-     * value: "sabredav"
-     * @const
-     */
-    "sabredav": "sabredav"  };
 
 
   return exports;

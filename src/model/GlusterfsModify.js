@@ -17,45 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.GlusterfsModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Webdav model module.
-   * @module model/Webdav
+   * The GlusterfsModify model module.
+   * @module model/GlusterfsModify
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Webdav</code>.
-   * The WebDAV storage configuration.
-   * @alias module:model/Webdav
+   * Constructs a new <code>GlusterfsModify</code>.
+   * The GlusterFS storage configuration.
+   * @alias module:model/GlusterfsModify
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageDetailsModify
    * @param type {String} The type of storage.
-   * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
-  var exports = function(type, endpoint) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-    _this['endpoint'] = endpoint;
-
-
 
 
 
@@ -71,49 +67,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Webdav} The value of 'discriminator' field or undefined.
+   * @return {module:model/GlusterfsModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Webdav</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>GlusterfsModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Webdav} obj Optional instance to populate.
-   * @return {module:model/Webdav} The populated <code>Webdav</code> instance.
+   * @param {module:model/GlusterfsModify} obj Optional instance to populate.
+   * @return {module:model/GlusterfsModify} The populated <code>GlusterfsModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('endpoint')) {
-        obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('verifyServerCertificate')) {
-        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('credentialsType')) {
-        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
       }
-      if (data.hasOwnProperty('credentials')) {
-        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
       }
-      if (data.hasOwnProperty('authorizationHeader')) {
-        obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('rangeWriteSupport')) {
-        obj['rangeWriteSupport'] = ApiClient.convertToType(data['rangeWriteSupport'], 'String');
-      }
-      if (data.hasOwnProperty('connectionPoolSize')) {
-        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
-      }
-      if (data.hasOwnProperty('maximumUploadSize')) {
-        obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -124,14 +114,11 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
-      }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -140,49 +127,38 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Full URL of the WebDAV server, including scheme (http or https) and path. 
-   * @member {String} endpoint
+   * The name of the volume to use as a storage backend.
+   * @member {String} volume
    */
-  exports.prototype['endpoint'] = undefined;
+  exports.prototype['volume'] = undefined;
   /**
-   * Determines whether Oneprovider should verify the certificate of the WebDAV server. 
-   * @member {Boolean} verifyServerCertificate
-   * @default true
+   * The hostname (IP address or FQDN) of GlusterFS volume server.
+   * @member {String} hostname
    */
-  exports.prototype['verifyServerCertificate'] = true;
+  exports.prototype['hostname'] = undefined;
   /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
-   * @default 'none'
+   * The GlusterFS port on volume server.
+   * @member {Number} port
    */
-  exports.prototype['credentialsType'] = 'none';
+  exports.prototype['port'] = undefined;
   /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
-   * @member {String} credentials
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/GlusterfsModify.TransportEnum} transport
+   * @default 'tcp'
    */
-  exports.prototype['credentials'] = undefined;
+  exports.prototype['transport'] = 'tcp';
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
-   * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer {}'
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
+   * @default ''
    */
-  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
+  exports.prototype['mountPoint'] = '';
   /**
-   * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
-   * @default 'none'
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   * @default ''
    */
-  exports.prototype['rangeWriteSupport'] = 'none';
-  /**
-   * Defines the maximum number of parallel connections for a single WebDAV storage. 
-   * @member {Number} connectionPoolSize
-   */
-  exports.prototype['connectionPoolSize'] = undefined;
-  /**
-   * Defines the maximum upload size for a single `PUT` or `PATCH` request. If set to 0, assumes that the WebDAV server has no upload limit. 
-   * @member {Number} maximumUploadSize
-   */
-  exports.prototype['maximumUploadSize'] = undefined;
+  exports.prototype['xlatorOptions'] = '';
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout
@@ -200,57 +176,29 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'canonical'
-   */
-  exports.prototype['storagePathType'] = 'canonical';
 
 
   /**
-   * Allowed values for the <code>credentialsType</code> property.
+   * Allowed values for the <code>transport</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.CredentialsTypeEnum = {
+  exports.TransportEnum = {
     /**
-     * value: "none"
+     * value: "tcp"
      * @const
      */
-    "none": "none",
+    "tcp": "tcp",
     /**
-     * value: "basic"
+     * value: "rdma"
      * @const
      */
-    "basic": "basic",
+    "rdma": "rdma",
     /**
-     * value: "token"
+     * value: "socket"
      * @const
      */
-    "token": "token"  };
-
-  /**
-   * Allowed values for the <code>rangeWriteSupport</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.RangeWriteSupportEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "moddav"
-     * @const
-     */
-    "moddav": "moddav",
-    /**
-     * value: "sabredav"
-     * @const
-     */
-    "sabredav": "sabredav"  };
+    "socket": "socket"  };
 
 
   return exports;

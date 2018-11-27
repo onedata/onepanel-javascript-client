@@ -1,10 +1,10 @@
-# Onepanel.Webdav
+# Onepanel.WebdavModify
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of storage. | 
-**endpoint** | **String** | Full URL of the WebDAV server, including scheme (http or https) and path.  | 
+**endpoint** | **String** | Full URL of the WebDAV server, including scheme (http or https) and path.  | [optional] 
 **verifyServerCertificate** | **Boolean** | Determines whether Oneprovider should verify the certificate of the WebDAV server.  | [optional] [default to true]
 **credentialsType** | **String** | Determines the types of credentials provided in the credentials field.  | [optional] [default to &#39;none&#39;]
 **credentials** | **String** | The credentials to authenticate with the WebDAV server. &#x60;basic&#x60; credentials should be provided in the form &#x60;username:password&#x60;, for &#x60;token&#x60; just the token. For &#x60;none&#x60; this field is ignored.  | [optional] 
@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to false]
 **readonly** | **Boolean** | Defines whether storage is readonly. | [optional] [default to false]
-**storagePathType** | **String** | Determines how the logical file paths will be mapped on the storage. &#39;canonical&#39; paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. &#39;flat&#39; paths are based on unique file UUID&#39;s and do not require on-storage rename when logical file name is changed.  | [optional] [default to &#39;canonical&#39;]
 
 
 <a name="CredentialsTypeEnum"></a>

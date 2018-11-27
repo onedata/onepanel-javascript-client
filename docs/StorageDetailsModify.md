@@ -1,4 +1,4 @@
-# Onepanel.StorageDetails
+# Onepanel.StorageDetailsModify
 
 ## Properties
 Name | Type | Description | Notes

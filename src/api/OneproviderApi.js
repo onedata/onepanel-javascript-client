@@ -1237,9 +1237,9 @@
      */
 
     /**
-     * Modify storage details
-     * Modifies basic storage details, such as operation timeout.
-     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * Modify storage config
+     * Modifies storage configuration.
+     * @param {String} id The ID of the storage resource which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */

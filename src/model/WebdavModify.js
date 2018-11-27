@@ -17,43 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Webdav model module.
-   * @module model/Webdav
+   * The WebdavModify model module.
+   * @module model/WebdavModify
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Webdav</code>.
+   * Constructs a new <code>WebdavModify</code>.
    * The WebDAV storage configuration.
-   * @alias module:model/Webdav
+   * @alias module:model/WebdavModify
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageDetailsModify
    * @param type {String} The type of storage.
-   * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
-  var exports = function(type, endpoint) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-    _this['endpoint'] = endpoint;
 
 
 
@@ -71,23 +69,23 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Webdav} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebdavModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Webdav</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebdavModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Webdav} obj Optional instance to populate.
-   * @return {module:model/Webdav} The populated <code>Webdav</code> instance.
+   * @param {module:model/WebdavModify} obj Optional instance to populate.
+   * @return {module:model/WebdavModify} The populated <code>WebdavModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -124,14 +122,11 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
-      }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -152,7 +147,7 @@
   exports.prototype['verifyServerCertificate'] = true;
   /**
    * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
+   * @member {module:model/WebdavModify.CredentialsTypeEnum} credentialsType
    * @default 'none'
    */
   exports.prototype['credentialsType'] = 'none';
@@ -169,7 +164,7 @@
   exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
+   * @member {module:model/WebdavModify.RangeWriteSupportEnum} rangeWriteSupport
    * @default 'none'
    */
   exports.prototype['rangeWriteSupport'] = 'none';
@@ -200,12 +195,6 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'canonical'
-   */
-  exports.prototype['storagePathType'] = 'canonical';
 
 
   /**

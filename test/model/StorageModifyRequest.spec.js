@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.StorageModifyRequest);
     });
 
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageModifyRequest();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

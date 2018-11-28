@@ -1409,7 +1409,7 @@ Name | Type | Description  | Notes
 
 <a name="modifyStorage"></a>
 # **modifyStorage**
-> modifyStorage(id, storageModifyRequest)
+> StorageDetails modifyStorage(id, storageModifyRequest)
 
 Modify storage config
 
@@ -1436,7 +1436,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.modifyStorage(id, storageModifyRequest, callback);
@@ -1451,7 +1451,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**StorageDetails**](StorageDetails.md)
 
 ### Authorization
 

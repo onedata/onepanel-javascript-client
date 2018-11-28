@@ -1232,7 +1232,7 @@
      * Callback function to receive the result of the modifyStorage operation.
      * @callback module:api/OneproviderApi~modifyStorageCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1242,6 +1242,7 @@
      * @param {String} id The ID of the storage resource which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StorageDetails}
      */
     this.modifyStorage = function(id, storageModifyRequest, callback) {
       var postBody = storageModifyRequest;
@@ -1270,7 +1271,7 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getClusterUser**](OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
 [**getClusterUsers**](OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
+[**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
@@ -526,6 +527,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Ids**](Ids.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="getCurrentCluster"></a>
+# **getCurrentCluster**
+> ClusterDetails getCurrentCluster()
+
+Get details of this cluster
+
+Returns details of this cluster. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCurrentCluster(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterDetails**](ClusterDetails.md)
 
 ### Authorization
 

@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>ClusterDetails</code>.
-   * Details of a user&#39;s cluster.
+   * Details of a cluster.
    * @alias module:model/ClusterDetails
    * @class
    * @param id {String} 

@@ -151,6 +151,16 @@
         done();
       });
     });
+    describe('getCurrentCluster', function() {
+      it('should call getCurrentCluster successfully', function(done) {
+        //uncomment below and update the code to test getCurrentCluster
+        //instance.getCurrentCluster(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCurrentUser', function() {
       it('should call getCurrentUser successfully', function(done) {
         //uncomment below and update the code to test getCurrentUser

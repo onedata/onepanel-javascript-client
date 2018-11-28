@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getClusterUser**](docs/OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
 *Onepanel.OnepanelApi* | [**getClusterUsers**](docs/OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
 *Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
+*Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 *Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.

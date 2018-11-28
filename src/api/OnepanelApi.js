@@ -482,6 +482,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getCurrentCluster operation.
+     * @callback module:api/OnepanelApi~getCurrentClusterCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of this cluster
+     * Returns details of this cluster. 
+     * @param {module:api/OnepanelApi~getCurrentClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getCurrentCluster = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/cluster', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getCurrentUser operation.
      * @callback module:api/OnepanelApi~getCurrentUserCallback
      * @param {String} error Error message, if any.

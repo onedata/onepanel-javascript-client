@@ -54,8 +54,6 @@
 
 
 
-
-
   };
 
   /**
@@ -79,9 +77,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -90,9 +85,6 @@
       }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('lumaUrl')) {
         obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
@@ -104,11 +96,6 @@
     return obj;
   }
 
-  /**
-   * The ID of storage.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
   /**
    * The name of storage.
    * @member {String} name
@@ -126,12 +113,6 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
-   */
-  exports.prototype['lumaEnabled'] = false;
   /**
    * URL of external LUMA service
    * @member {String} lumaUrl

@@ -45,15 +45,16 @@
    * Information which can be obtained about remote Onezone.
    * @alias module:model/OnezoneInfo
    * @class
+   * @param online {Boolean} True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
    * @param domain {String} Domain of the Onezone.
-   * @param online {Boolean} True if connection to the Onezone was achieved. If false, fields 'compatible' and 'subdomainDelegationSupported' will not be sent. 
    */
-  var exports = function(domain, online) {
+  var exports = function(online, domain) {
     var _this = this;
+
+    _this['online'] = online;
 
     _this['domain'] = domain;
 
-    _this['online'] = online;
 
 
   };
@@ -79,14 +80,17 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('online')) {
+        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
+      }
+      if (data.hasOwnProperty('version')) {
+        obj['version'] = ApiClient.convertToType(data['version'], 'String');
+      }
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('online')) {
-        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
       }
       if (data.hasOwnProperty('compatible')) {
         obj['compatible'] = ApiClient.convertToType(data['compatible'], 'Boolean');
@@ -99,6 +103,16 @@
   }
 
   /**
+   * True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
+   * @member {Boolean} online
+   */
+  exports.prototype['online'] = undefined;
+  /**
+   * Onezone cluster version.
+   * @member {String} version
+   */
+  exports.prototype['version'] = undefined;
+  /**
    * Domain of the Onezone.
    * @member {String} domain
    */
@@ -108,11 +122,6 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
-  /**
-   * True if connection to the Onezone was achieved. If false, fields 'compatible' and 'subdomainDelegationSupported' will not be sent. 
-   * @member {Boolean} online
-   */
-  exports.prototype['online'] = undefined;
   /**
    * True if versions of this Oneprovider and the Onezone are compatible. 
    * @member {Boolean} compatible

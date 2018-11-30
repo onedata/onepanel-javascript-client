@@ -137,7 +137,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-*Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_check | Get Onezone information
+*Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration

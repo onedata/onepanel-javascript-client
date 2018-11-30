@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-[**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_check | Get Onezone information
+[**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration

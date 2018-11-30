@@ -349,7 +349,7 @@
       var returnType = OnezoneInfo;
 
       return this.apiClient.callApi(
-        '/provider/onezone_check', 'GET',
+        '/provider/onezone_info', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

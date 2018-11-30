@@ -46,20 +46,24 @@
    * @alias module:model/ClusterDetails
    * @class
    * @param id {String} 
-   * @param domain {String} Domain of the cluster.
-   * @param name {String} 
-   * @param online {Boolean} 
    * @param type {module:model/ClusterDetails.TypeEnum} Type of Onedata component in this cluster. (@fixme)
+   * @param serviceId {module:model/ClusterDetails.ServiceIdEnum} The id of the service hosted on this cluster - depending on the type equal to the provider Id or 'onezone' literal 
+   * @param name {String} 
+   * @param domain {String} Domain of the cluster.
+   * @param version {String} 
+   * @param online {Boolean} 
    * @param proxy {Boolean} 
    */
-  var exports = function(id, domain, name, online, type, proxy) {
+  var exports = function(id, type, serviceId, name, domain, version, online, proxy) {
     var _this = this;
 
     _this['id'] = id;
-    _this['domain'] = domain;
-    _this['name'] = name;
-    _this['online'] = online;
     _this['type'] = type;
+    _this['serviceId'] = serviceId;
+    _this['name'] = name;
+    _this['domain'] = domain;
+    _this['version'] = version;
+    _this['online'] = online;
     _this['proxy'] = proxy;
   };
 
@@ -87,17 +91,23 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('serviceId')) {
+        obj['serviceId'] = ApiClient.convertToType(data['serviceId'], 'String');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
+      }
+      if (data.hasOwnProperty('version')) {
+        obj['version'] = ApiClient.convertToType(data['version'], 'String');
+      }
       if (data.hasOwnProperty('online')) {
         obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('proxy')) {
         obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
@@ -111,23 +121,32 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * Domain of the cluster.
-   * @member {String} domain
+   * Type of Onedata component in this cluster. (@fixme)
+   * @member {module:model/ClusterDetails.TypeEnum} type
    */
-  exports.prototype['domain'] = undefined;
+  exports.prototype['type'] = undefined;
+  /**
+   * The id of the service hosted on this cluster - depending on the type equal to the provider Id or 'onezone' literal 
+   * @member {module:model/ClusterDetails.ServiceIdEnum} serviceId
+   */
+  exports.prototype['serviceId'] = undefined;
   /**
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
+   * Domain of the cluster.
+   * @member {String} domain
+   */
+  exports.prototype['domain'] = undefined;
+  /**
+   * @member {String} version
+   */
+  exports.prototype['version'] = undefined;
+  /**
    * @member {Boolean} online
    */
   exports.prototype['online'] = undefined;
-  /**
-   * Type of Onedata component in this cluster. (@fixme)
-   * @member {module:model/ClusterDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
   /**
    * @member {Boolean} proxy
    */
@@ -140,6 +159,23 @@
    * @readonly
    */
   exports.TypeEnum = {
+    /**
+     * value: "oneprovider"
+     * @const
+     */
+    "oneprovider": "oneprovider",
+    /**
+     * value: "onezone"
+     * @const
+     */
+    "onezone": "onezone"  };
+
+  /**
+   * Allowed values for the <code>serviceId</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ServiceIdEnum = {
     /**
      * value: "oneprovider"
      * @const

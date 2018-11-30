@@ -63,8 +63,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.ClusterDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property serviceId (base name: "serviceId")', function() {
+      // uncomment below and update the code to test the property serviceId
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });
@@ -75,14 +81,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property online (base name: "online")', function() {
-      // uncomment below and update the code to test the property online
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
+      //var instane = new Onepanel.ClusterDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property online (base name: "online")', function() {
+      // uncomment below and update the code to test the property online
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });

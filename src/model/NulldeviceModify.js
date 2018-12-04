@@ -59,7 +59,6 @@
 
 
 
-
   };
 
   /**
@@ -101,9 +100,6 @@
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
       if (data.hasOwnProperty('simulatedFilesystemParameters')) {
         obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
       }
@@ -135,38 +131,28 @@
   /**
    * Probability (0.0, 1.0), with which an operation should return a timeout error. 
    * @member {Number} timeoutProbability
-   * @default 0.0
    */
-  exports.prototype['timeoutProbability'] = 0.0;
+  exports.prototype['timeoutProbability'] = undefined;
   /**
    * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
    * @member {String} filter
-   * @default '*'
    */
-  exports.prototype['filter'] = '*';
+  exports.prototype['filter'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout
    */
   exports.prototype['timeout'] = undefined;
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
    * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
    * @member {String} simulatedFilesystemParameters
-   * @default ''
    */
-  exports.prototype['simulatedFilesystemParameters'] = '';
+  exports.prototype['simulatedFilesystemParameters'] = undefined;
   /**
    * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
    * @member {Number} simulatedFilesystemGrowSpeed
-   * @default 0.0
    */
-  exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
+  exports.prototype['simulatedFilesystemGrowSpeed'] = undefined;
 
 
 

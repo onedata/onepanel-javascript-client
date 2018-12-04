@@ -86,8 +86,8 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('verificationResult')) {
-        obj['verificationResult'] = ApiClient.convertToType(data['verificationResult'], 'String');
+      if (data.hasOwnProperty('verificationPassed')) {
+        obj['verificationPassed'] = ApiClient.convertToType(data['verificationPassed'], 'Boolean');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -120,9 +120,9 @@
   exports.prototype['name'] = undefined;
   /**
    * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read/write storages.
-   * @member {String} verificationResult
+   * @member {Boolean} verificationPassed
    */
-  exports.prototype['verificationResult'] = undefined;
+  exports.prototype['verificationPassed'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

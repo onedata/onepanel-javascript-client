@@ -144,21 +144,18 @@
   /**
    * The transport protocol to use to connect to the volume server.
    * @member {module:model/GlusterfsModify.TransportEnum} transport
-   * @default 'tcp'
    */
-  exports.prototype['transport'] = 'tcp';
+  exports.prototype['transport'] = undefined;
   /**
    * Relative mountpoint within the volume which should be used by Oneprovider.
    * @member {String} mountPoint
-   * @default ''
    */
-  exports.prototype['mountPoint'] = '';
+  exports.prototype['mountPoint'] = undefined;
   /**
    * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
    * @member {String} xlatorOptions
-   * @default ''
    */
-  exports.prototype['xlatorOptions'] = '';
+  exports.prototype['xlatorOptions'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout
@@ -167,15 +164,13 @@
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
-   * @default false
    */
-  exports.prototype['insecure'] = false;
+  exports.prototype['insecure'] = undefined;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly
-   * @default false
    */
-  exports.prototype['readonly'] = false;
+  exports.prototype['readonly'] = undefined;
 
 
   /**

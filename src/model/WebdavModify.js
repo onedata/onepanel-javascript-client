@@ -142,15 +142,13 @@
   /**
    * Determines whether Oneprovider should verify the certificate of the WebDAV server. 
    * @member {Boolean} verifyServerCertificate
-   * @default true
    */
-  exports.prototype['verifyServerCertificate'] = true;
+  exports.prototype['verifyServerCertificate'] = undefined;
   /**
    * Determines the types of credentials provided in the credentials field. 
    * @member {module:model/WebdavModify.CredentialsTypeEnum} credentialsType
-   * @default 'none'
    */
-  exports.prototype['credentialsType'] = 'none';
+  exports.prototype['credentialsType'] = undefined;
   /**
    * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
    * @member {String} credentials
@@ -159,15 +157,13 @@
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer {}'
    */
-  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
+  exports.prototype['authorizationHeader'] = undefined;
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
    * @member {module:model/WebdavModify.RangeWriteSupportEnum} rangeWriteSupport
-   * @default 'none'
    */
-  exports.prototype['rangeWriteSupport'] = 'none';
+  exports.prototype['rangeWriteSupport'] = undefined;
   /**
    * Defines the maximum number of parallel connections for a single WebDAV storage. 
    * @member {Number} connectionPoolSize
@@ -186,15 +182,13 @@
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
-   * @default false
    */
-  exports.prototype['insecure'] = false;
+  exports.prototype['insecure'] = undefined;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly
-   * @default false
    */
-  exports.prototype['readonly'] = false;
+  exports.prototype['readonly'] = undefined;
 
 
   /**

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **username** | **String** | The Keystone authentication username. | [optional] 
 **password** | **String** | The Keystone authentication password. | [optional] 
 **timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
-**insecure** | **Boolean** | Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to false]
-**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] [default to false]
+**insecure** | **Boolean** | Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] 
+**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] 
 
 

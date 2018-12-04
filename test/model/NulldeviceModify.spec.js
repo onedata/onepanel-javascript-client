@@ -93,12 +93,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.NulldeviceModify();
-      //expect(instance).to.be();
-    });
-
     it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
       // uncomment below and update the code to test the property simulatedFilesystemParameters
       //var instane = new Onepanel.NulldeviceModify();

@@ -155,15 +155,13 @@
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
-   * @default false
    */
-  exports.prototype['insecure'] = false;
+  exports.prototype['insecure'] = undefined;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly
-   * @default false
    */
-  exports.prototype['readonly'] = false;
+  exports.prototype['readonly'] = undefined;
 
 
 

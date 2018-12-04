@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value.
+   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value. If changing the storage name, use old name as dictionary key and provide new name among the changed params.
    * @alias module:model/StorageModifyRequest
    * @class
    * @extends Object

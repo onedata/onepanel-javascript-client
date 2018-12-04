@@ -69,8 +69,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property verificationResult (base name: "verificationResult")', function() {
-      // uncomment below and update the code to test the property verificationResult
+    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
+      // uncomment below and update the code to test the property verificationPassed
       //var instane = new Onepanel.StorageDetails();
       //expect(instance).to.be();
     });

@@ -115,9 +115,8 @@
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly
-   * @default false
    */
-  exports.prototype['readonly'] = false;
+  exports.prototype['readonly'] = undefined;
 
 
 

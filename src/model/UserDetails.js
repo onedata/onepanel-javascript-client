@@ -46,14 +46,12 @@
    * @alias module:model/UserDetails
    * @class
    * @param userId {String} The user Id.
-   * @param username {String} The user name.
    * @param userRole {module:model/UserDetails.UserRoleEnum} The user role, one of `admin` or `regular`.
    */
-  var exports = function(userId, username, userRole) {
+  var exports = function(userId, userRole) {
     var _this = this;
 
     _this['userId'] = userId;
-    _this['username'] = username;
     _this['userRole'] = userRole;
   };
 
@@ -81,9 +79,6 @@
       if (data.hasOwnProperty('userId')) {
         obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
       if (data.hasOwnProperty('userRole')) {
         obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
       }
@@ -96,11 +91,6 @@
    * @member {String} userId
    */
   exports.prototype['userId'] = undefined;
-  /**
-   * The user name.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
   /**
    * The user role, one of `admin` or `regular`.
    * @member {module:model/UserDetails.UserRoleEnum} userRole

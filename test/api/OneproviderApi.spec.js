@@ -221,6 +221,16 @@
         done();
       });
     });
+    describe('getProviderSpaceAutoCleaningReport', function() {
+      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
+        //instance.getProviderSpaceAutoCleaningReport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderSpaceAutoCleaningReports', function() {
       it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
         //uncomment below and update the code to test getProviderSpaceAutoCleaningReports

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**configureFilesPopularity**](OneproviderApi.md#configureFilesPopularity) | **PATCH** /provider/spaces/{id}/files-popularity/configuration | Configure files-popularity in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-[**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism.
+[**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 [**getFilesPopularityConfiguration**](OneproviderApi.md#getFilesPopularityConfiguration) | **GET** /provider/spaces/{id}/files-popularity/configuration | Get files-popularity configuration
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -21,8 +21,9 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get reports of space auto-cleaning
-[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning
+[**getProviderSpaceAutoCleaningReport**](OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report of a space auto-cleaning run
+[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 [**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
@@ -419,7 +420,7 @@ null (empty response body)
 # **configureSpaceAutoCleaning**
 > configureSpaceAutoCleaning(id, spaceAutoCleaningConfiguration)
 
-Configure space auto-cleaning mechanism.
+Configure space auto-cleaning mechanism
 
 Configures space auto-cleaning mechanism in the space. 
 
@@ -902,13 +903,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: text/xml
 
-<a name="getProviderSpaceAutoCleaningReports"></a>
-# **getProviderSpaceAutoCleaningReports**
-> SpaceAutoCleaningReportCollection getProviderSpaceAutoCleaningReports(id, startedAfter)
+<a name="getProviderSpaceAutoCleaningReport"></a>
+# **getProviderSpaceAutoCleaningReport**
+> SpaceAutoCleaningReport getProviderSpaceAutoCleaningReport(id, reportId)
 
-Get reports of space auto-cleaning
+Get the report of a space auto-cleaning run
 
-Returns collection of reports of auto-cleaning for the space. 
+Returns the details of a specific auto-cleaning mechanism run. 
 
 ### Example
 ```javascript
@@ -924,7 +925,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space
 
-var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO 8601)
+var reportId = "reportId_example"; // String | The Id of a auto-cleaning report.
 
 
 var callback = function(error, data, response) {
@@ -934,7 +935,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
+apiInstance.getProviderSpaceAutoCleaningReport(id, reportId, callback);
 ```
 
 ### Parameters
@@ -942,11 +943,71 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space | 
- **startedAfter** | **String**| Fetch only reports that started after this date (ISO 8601) | 
+ **reportId** | **String**| The Id of a auto-cleaning report. | 
 
 ### Return type
 
-[**SpaceAutoCleaningReportCollection**](SpaceAutoCleaningReportCollection.md)
+[**SpaceAutoCleaningReport**](SpaceAutoCleaningReport.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderSpaceAutoCleaningReports"></a>
+# **getProviderSpaceAutoCleaningReports**
+> SpaceAutoCleaningReports getProviderSpaceAutoCleaningReports(id, opts)
+
+Get Ids of of the space auto-cleaning reports
+
+Returns the list of Ids of space auto-cleaning runs&#39; reports. The list is sorted descending by start time of auto-cleaning run (the newest report is first). 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+var opts = { 
+  'offset': 0, // Number | Allows to skip N first reports' Ids.
+  'limit': 56, // Number | Allows to limit the number of returned reports' Ids up to N last reports. By default, all reports' Ids will be returned. 
+  'index': "index_example" // String | Allows to list the reports' Ids starting from the specific report. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaceAutoCleaningReports(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+ **offset** | **Number**| Allows to skip N first reports&#39; Ids. | [optional] [default to 0]
+ **limit** | **Number**| Allows to limit the number of returned reports&#39; Ids up to N last reports. By default, all reports&#39; Ids will be returned.  | [optional] 
+ **index** | **String**| Allows to list the reports&#39; Ids starting from the specific report.  | [optional] 
+
+### Return type
+
+[**SpaceAutoCleaningReports**](SpaceAutoCleaningReports.md)
 
 ### Authorization
 
@@ -961,7 +1022,7 @@ Name | Type | Description  | Notes
 # **getProviderSpaceAutoCleaningStatus**
 > SpaceAutoCleaningStatus getProviderSpaceAutoCleaningStatus(id)
 
-Get status of space auto-cleaning
+Get status of space auto-cleaning mechanism
 
 Returns status of current process of auto-cleaning for the space. 
 

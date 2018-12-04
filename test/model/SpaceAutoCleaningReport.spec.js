@@ -57,6 +57,18 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningReport);
     });
 
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property index (base name: "index")', function() {
+      // uncomment below and update the code to test the property index
+      //var instane = new Onepanel.SpaceAutoCleaningReport();
+      //expect(instance).to.be();
+    });
+
     it('should have the property startedAt (base name: "startedAt")', function() {
       // uncomment below and update the code to test the property startedAt
       //var instane = new Onepanel.SpaceAutoCleaningReport();

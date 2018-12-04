@@ -96,7 +96,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnepanelApi();
 
 var opts = { 
-  'forceCheck': false // Boolean | If true the DNS check cache is overriden and check is performed during handling of the request.
+  'forceCheck': false // Boolean | If true the DNS check cache is overridden and check is performed during handling of the request.
 };
 
 var callback = function(error, data, response) {
@@ -113,7 +113,7 @@ apiInstance.checkDns(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **forceCheck** | **Boolean**| If true the DNS check cache is overriden and check is performed during handling of the request. | [optional] [default to false]
+ **forceCheck** | **Boolean**| If true the DNS check cache is overridden and check is performed during handling of the request. | [optional] [default to false]
 
 ### Return type
 

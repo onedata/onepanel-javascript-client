@@ -42,12 +42,12 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningReport</code>.
-   * Autocleaning report
+   * Auto-cleaning report
    * @alias module:model/SpaceAutoCleaningReport
    * @class
-   * @param startedAt {String} Start time of autocleaning procedure in ISO 8601 format
-   * @param stoppedAt {String} Finish time of autocleaning procedure in ISO 8601 format
-   * @param releasedBytes {Number} Number of bytes deleted during autocleaning procedure.
+   * @param startedAt {String} Start time of auto-cleaning procedure in ISO 8601 format
+   * @param stoppedAt {String} Finish time of auto-cleaning procedure in ISO 8601 format
+   * @param releasedBytes {Number} Number of bytes deleted during auto-cleaning procedure.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
    */
@@ -102,17 +102,17 @@
   }
 
   /**
-   * Start time of autocleaning procedure in ISO 8601 format
+   * Start time of auto-cleaning procedure in ISO 8601 format
    * @member {String} startedAt
    */
   exports.prototype['startedAt'] = undefined;
   /**
-   * Finish time of autocleaning procedure in ISO 8601 format
+   * Finish time of auto-cleaning procedure in ISO 8601 format
    * @member {String} stoppedAt
    */
   exports.prototype['stoppedAt'] = undefined;
   /**
-   * Number of bytes deleted during autocleaning procedure.
+   * Number of bytes deleted during auto-cleaning procedure.
    * @member {Number} releasedBytes
    */
   exports.prototype['releasedBytes'] = undefined;

@@ -89,11 +89,11 @@
       if (data.hasOwnProperty('minHoursSinceLastOpen')) {
         obj['minHoursSinceLastOpen'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['minHoursSinceLastOpen']);
       }
-      if (data.hasOwnProperty('lowerFileSizeLimit')) {
-        obj['lowerFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['lowerFileSizeLimit']);
+      if (data.hasOwnProperty('minFileSize')) {
+        obj['minFileSize'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['minFileSize']);
       }
-      if (data.hasOwnProperty('upperFileSizeLimit')) {
-        obj['upperFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['upperFileSizeLimit']);
+      if (data.hasOwnProperty('maxFileSize')) {
+        obj['maxFileSize'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxFileSize']);
       }
       if (data.hasOwnProperty('maxHourlyMovingAverage')) {
         obj['maxHourlyMovingAverage'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxHourlyMovingAverage']);
@@ -125,14 +125,14 @@
   exports.prototype['minHoursSinceLastOpen'] = undefined;
   /**
    * Only files which size [b] is greater than given value may be cleaned. The default value is `1`. 
-   * @member {module:model/SpaceAutoCleaningRuleSetting} lowerFileSizeLimit
+   * @member {module:model/SpaceAutoCleaningRuleSetting} minFileSize
    */
-  exports.prototype['lowerFileSizeLimit'] = undefined;
+  exports.prototype['minFileSize'] = undefined;
   /**
    * Only files which size [b] is less than given value may be cleaned. The default value is `1125899906842624 (1 PiB)`. 
-   * @member {module:model/SpaceAutoCleaningRuleSetting} upperFileSizeLimit
+   * @member {module:model/SpaceAutoCleaningRuleSetting} maxFileSize
    */
-  exports.prototype['upperFileSizeLimit'] = undefined;
+  exports.prototype['maxFileSize'] = undefined;
   /**
    * Files that have moving average of open operations count per hour less than given value may be cleaned. The average is calculated in 24 hours window. The default value is `9007199254740991 (2^53-1)`. 
    * @member {module:model/SpaceAutoCleaningRuleSetting} maxHourlyMovingAverage

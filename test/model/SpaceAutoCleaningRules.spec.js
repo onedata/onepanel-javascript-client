@@ -75,14 +75,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property lowerFileSizeLimit (base name: "lowerFileSizeLimit")', function() {
-      // uncomment below and update the code to test the property lowerFileSizeLimit
+    it('should have the property minFileSize (base name: "minFileSize")', function() {
+      // uncomment below and update the code to test the property minFileSize
       //var instane = new Onepanel.SpaceAutoCleaningRules();
       //expect(instance).to.be();
     });
 
-    it('should have the property upperFileSizeLimit (base name: "upperFileSizeLimit")', function() {
-      // uncomment below and update the code to test the property upperFileSizeLimit
+    it('should have the property maxFileSize (base name: "maxFileSize")', function() {
+      // uncomment below and update the code to test the property maxFileSize
       //var instane = new Onepanel.SpaceAutoCleaningRules();
       //expect(instance).to.be();
     });

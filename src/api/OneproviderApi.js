@@ -969,7 +969,7 @@
     /**
      * Get storage details
      * Returns the details of the selected storage.
-     * @param {String} id The ID of a storage resource, which details should be returned. 
+     * @param {String} id The Id of a storage resource, which details should be returned. 
      * @param {module:api/OneproviderApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageDetails}
      */
@@ -1239,7 +1239,7 @@
     /**
      * Modify storage config
      * Modifies storage configuration.
-     * @param {String} id The ID of the storage resource which details should be modified. 
+     * @param {String} id The Id of the storage resource which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageDetails}
@@ -1374,7 +1374,7 @@
     /**
      * Remove storage
      * Removes storage from the cluster. Only storage not supporting any spaces can be removed.
-     * @param {String} id The ID of the storage to remove.
+     * @param {String} id The Id of the storage to remove.
      * @param {module:api/OneproviderApi~removeStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.removeStorage = function(id, callback) {

@@ -1118,7 +1118,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be returned. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -1135,7 +1135,7 @@ apiInstance.getStorageDetails(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be returned.  | 
+ **id** | **String**| The Id of a storage resource, which details should be returned.  | 
 
 ### Return type
 
@@ -1427,7 +1427,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of the storage resource which details should be modified. 
+var id = "id_example"; // String | The Id of the storage resource which details should be modified. 
 
 var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
 
@@ -1446,7 +1446,7 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of the storage resource which details should be modified.  | 
+ **id** | **String**| The Id of the storage resource which details should be modified.  | 
  **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
 
 ### Return type
@@ -1580,7 +1580,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of the storage to remove.
+var id = "id_example"; // String | The Id of the storage to remove.
 
 
 var callback = function(error, data, response) {
@@ -1597,7 +1597,7 @@ apiInstance.removeStorage(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of the storage to remove. | 
+ **id** | **String**| The Id of the storage to remove. | 
 
 ### Return type
 

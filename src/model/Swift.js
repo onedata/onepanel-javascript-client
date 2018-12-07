@@ -46,7 +46,7 @@
    * @alias module:model/Swift
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Swift.TypeEnum} The type of storage.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
    * @param tenantName {String} The name of the tenant to which the user belongs.
    * @param containerName {String} The name of the Swift storage container.
@@ -128,7 +128,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Swift.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -179,6 +179,18 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "swift"
+     * @const
+     */
+    "swift": "swift"  };
 
 
   return exports;

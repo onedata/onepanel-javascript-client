@@ -14,3 +14,12 @@ Name | Type | Description | Notes
 **simulatedFilesystemGrowSpeed** | **Number** | Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the &#x60;simulatedFilesystemParameters&#x60; specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second.  | [optional] [default to 0.0]
 
 
+<a name="TypeEnum"></a>
+## Enum: TypeEnum
+
+
+* `nulldevice` (value: `"nulldevice"`)
+
+
+
+

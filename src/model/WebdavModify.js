@@ -46,7 +46,7 @@
    * @alias module:model/WebdavModify
    * @class
    * @extends module:model/StorageDetailsModify
-   * @param type {String} The type of storage.
+   * @param type {module:model/WebdavModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
   var exports = function(type) {
     var _this = this;
@@ -130,8 +130,8 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {String} type
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/WebdavModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -190,6 +190,18 @@
    */
   exports.prototype['readonly'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "webdav"
+     * @const
+     */
+    "webdav": "webdav"  };
 
   /**
    * Allowed values for the <code>credentialsType</code> property.

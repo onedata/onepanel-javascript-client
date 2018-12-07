@@ -46,7 +46,7 @@
    * @alias module:model/NulldeviceModify
    * @class
    * @extends module:model/StorageDetailsModify
-   * @param type {String} The type of storage.
+   * @param type {module:model/NulldeviceModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
   var exports = function(type) {
     var _this = this;
@@ -114,8 +114,8 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {String} type
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/NulldeviceModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -154,6 +154,18 @@
    */
   exports.prototype['simulatedFilesystemGrowSpeed'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "nulldevice"
+     * @const
+     */
+    "nulldevice": "nulldevice"  };
 
 
   return exports;

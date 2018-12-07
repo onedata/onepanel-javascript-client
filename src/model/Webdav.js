@@ -46,7 +46,7 @@
    * @alias module:model/Webdav
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Webdav.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
@@ -132,7 +132,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Webdav.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -197,6 +197,18 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "webdav"
+     * @const
+     */
+    "webdav": "webdav"  };
 
   /**
    * Allowed values for the <code>credentialsType</code> property.

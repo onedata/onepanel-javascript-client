@@ -46,7 +46,7 @@
    * @alias module:model/S3
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/S3.TypeEnum} The type of storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    * @param accessKey {String} The access key to the S3 storage.
@@ -127,7 +127,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/S3.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -178,6 +178,18 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "s3"
+     * @const
+     */
+    "s3": "s3"  };
 
 
   return exports;

@@ -46,7 +46,7 @@
    * @alias module:model/Posix
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Posix.TypeEnum} The type of storage.
    * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    */
   var exports = function(type, mountPoint) {
@@ -100,7 +100,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Posix.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -120,6 +120,18 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "posix"
+     * @const
+     */
+    "posix": "posix"  };
 
 
   return exports;

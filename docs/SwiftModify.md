@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of storage. | 
+**type** | **String** | Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. | 
 **authUrl** | **String** | The URL to OpenStack Keystone identity service. | [optional] 
 **tenantName** | **String** | The name of the tenant to which the user belongs. | [optional] 
 **containerName** | **String** | The name of the Swift storage container. | [optional] 
@@ -12,5 +12,14 @@ Name | Type | Description | Notes
 **timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] 
 **readonly** | **Boolean** | Defines whether storage is readonly. | [optional] 
+
+
+<a name="TypeEnum"></a>
+## Enum: TypeEnum
+
+
+* `swift` (value: `"swift"`)
+
+
 
 

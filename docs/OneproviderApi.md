@@ -1429,7 +1429,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of the storage resource which details should be modified. 
 
-var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
+var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
 
 
 var callback = function(error, data, response) {
@@ -1447,7 +1447,7 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of the storage resource which details should be modified.  | 
- **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
+ **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed. Must contain the current type of the storage.  | 
 
 ### Return type
 

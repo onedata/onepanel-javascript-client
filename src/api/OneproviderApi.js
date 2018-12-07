@@ -1240,7 +1240,7 @@
      * Modify storage config
      * Modifies storage configuration.
      * @param {String} id The Id of the storage resource which details should be modified. 
-     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
+     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageDetails}
      */

@@ -46,7 +46,7 @@
    * @alias module:model/Nulldevice
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Nulldevice.TypeEnum} The type of storage.
    */
   var exports = function(type) {
     var _this = this;
@@ -119,7 +119,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Nulldevice.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -168,6 +168,18 @@
    */
   exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "nulldevice"
+     * @const
+     */
+    "nulldevice": "nulldevice"  };
 
 
   return exports;

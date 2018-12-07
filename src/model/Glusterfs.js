@@ -46,7 +46,7 @@
    * @alias module:model/Glusterfs
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Glusterfs.TypeEnum} The type of storage.
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
@@ -125,7 +125,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Glusterfs.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -179,6 +179,18 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "glusterfs"
+     * @const
+     */
+    "glusterfs": "glusterfs"  };
 
   /**
    * Allowed values for the <code>transport</code> property.

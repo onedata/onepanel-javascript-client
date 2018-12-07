@@ -17,112 +17,177 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds'], factory);
+    define(['ApiClient', 'model/CephPool', 'model/StorageDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephGlobalParams'), require('./CephManager'), require('./CephManagers'), require('./CephMonitor'), require('./CephMonitors'), require('./CephOsd'), require('./CephOsds'));
+    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephCluster = factory(root.Onepanel.ApiClient, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds);
+    root.Onepanel.Embeddedceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageDetails);
   }
-}(this, function(ApiClient, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds) {
+}(this, function(ApiClient, CephPool, StorageDetails) {
   'use strict';
 
 
 
 
   /**
-   * The CephCluster model module.
-   * @module model/CephCluster
+   * The Embeddedceph model module.
+   * @module model/Embeddedceph
    * @version 18.02.0-rc12
    */
 
   /**
-   * Constructs a new <code>CephCluster</code>.
-   * Describes whole of ceph configuration.
-   * @alias module:model/CephCluster
+   * Constructs a new <code>Embeddedceph</code>.
+   * The Ceph storage configuration (uses librados).
+   * @alias module:model/Embeddedceph
    * @class
-   * @implements module:model/CephGlobalParams
-   * @implements module:model/CephOsds
-   * @implements module:model/CephMonitors
-   * @implements module:model/CephManagers
+   * @extends module:model/StorageDetails
+   * @implements module:model/CephPool
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
+    StorageDetails.call(_this, type);
+    CephPool.call(_this);
 
-    CephGlobalParams.call(_this);
-    CephOsds.call(_this);
-    CephMonitors.call(_this);
-    CephManagers.call(_this);
+
+
+
+
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephCluster} The value of 'discriminator' field or undefined.
+   * @return {module:model/Embeddedceph} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephCluster</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Embeddedceph</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephCluster} obj Optional instance to populate.
-   * @return {module:model/CephCluster} The populated <code>CephCluster</code> instance.
+   * @param {module:model/Embeddedceph} obj Optional instance to populate.
+   * @return {module:model/Embeddedceph} The populated <code>Embeddedceph</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      CephGlobalParams.constructFromObject(data, obj);
-      CephOsds.constructFromObject(data, obj);
-      CephMonitors.constructFromObject(data, obj);
-      CephManagers.constructFromObject(data, obj);
+      StorageDetails.constructFromObject(data, obj);
+      CephPool.constructFromObject(data, obj);
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+      if (data.hasOwnProperty('lumaEnabled')) {
+        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('lumaUrl')) {
+        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
+      }
+      if (data.hasOwnProperty('lumaApiKey')) {
+        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype.constructor = exports;
 
-  // Implement CephGlobalParams interface:
   /**
-   * Name of the cluster.
+   * Name of the storage and corresponding Ceph pool.
    * @member {String} name
-   * @default 'ceph'
    */
-exports.prototype['name'] = 'ceph';
+  exports.prototype['name'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   * @default true
+   */
+  exports.prototype['insecure'] = true;
+  /**
+   * Storage block size in bytes.
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+  /**
+   * If true LUMA and reverse LUMA services will be enabled.
+   * @member {Boolean} lumaEnabled
+   * @default false
+   */
+  exports.prototype['lumaEnabled'] = false;
+  /**
+   * URL of external LUMA service
+   * @member {String} lumaUrl
+   */
+  exports.prototype['lumaUrl'] = undefined;
+  /**
+   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * @member {String} lumaApiKey
+   */
+  exports.prototype['lumaApiKey'] = undefined;
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
+
+  // Implement CephPool interface:
+  /**
+   * Name of the pool
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
 
   /**
-   * Unique UUID of the cluster. Autogenerated when cluster is deployed if not specified.
-   * @member {String} fsid
+   * Desired number of object replicas in the pool. When below this number the pool still may be used in 'degraded' mode.
+   * @member {Number} copiesNumber
    */
-exports.prototype['fsid'] = undefined;
+exports.prototype['copiesNumber'] = undefined;
 
-  // Implement CephOsds interface:
   /**
-   * List of Ceph OSD specifications.
-   * @member {Array.<module:model/CephOsd>} osds
+   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is disabled. Must be lower or equal to 'copiesNumber'.
+   * @member {Number} minCopiesNumber
    */
-exports.prototype['osds'] = undefined;
-
-  // Implement CephMonitors interface:
-  /**
-   * List of Ceph Monitor specifications
-   * @member {Array.<module:model/CephMonitor>} monitors
-   */
-exports.prototype['monitors'] = undefined;
-
-  // Implement CephManagers interface:
-  /**
-   * List of Ceph Manager configurations
-   * @member {Array.<module:model/CephManager>} managers
-   */
-exports.prototype['managers'] = undefined;
+exports.prototype['minCopiesNumber'] = undefined;
 
 
 

@@ -45,11 +45,12 @@
    * fixme
    * @alias module:model/CephPools
    * @class
+   * @param pools {Array.<module:model/CephPool>} List of Ceph pools.
    */
-  var exports = function() {
+  var exports = function(pools) {
     var _this = this;
 
-
+    _this['pools'] = pools;
   };
 
   /**

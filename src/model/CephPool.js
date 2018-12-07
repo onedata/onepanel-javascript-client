@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephPoolStorageParams'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephPoolStorageParams'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPool = factory(root.Onepanel.ApiClient, root.Onepanel.CephPoolStorageParams);
+    root.Onepanel.CephPool = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, CephPoolStorageParams) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -45,12 +45,10 @@
    * Describes a Ceph pool.
    * @alias module:model/CephPool
    * @class
-   * @param name {String} Name of the pool
    */
-  var exports = function(name) {
+  var exports = function() {
     var _this = this;
 
-    _this['name'] = name;
 
 
 
@@ -80,14 +78,11 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      if (data.hasOwnProperty('copiesNumber')) {
+        obj['copiesNumber'] = ApiClient.convertToType(data['copiesNumber'], 'Number');
       }
-      if (data.hasOwnProperty('minSize')) {
-        obj['minSize'] = ApiClient.convertToType(data['minSize'], 'Number');
-      }
-      if (data.hasOwnProperty('storageParams')) {
-        obj['storageParams'] = CephPoolStorageParams.constructFromObject(data['storageParams']);
+      if (data.hasOwnProperty('minCopiesNumber')) {
+        obj['minCopiesNumber'] = ApiClient.convertToType(data['minCopiesNumber'], 'Number');
       }
     }
     return obj;
@@ -99,19 +94,15 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Desired number of object replicas in the pool. When below this number the pool still may be used in \"degraded\" mode.
-   * @member {Number} size
+   * Desired number of object replicas in the pool. When below this number the pool still may be used in 'degraded' mode.
+   * @member {Number} copiesNumber
    */
-  exports.prototype['size'] = undefined;
+  exports.prototype['copiesNumber'] = undefined;
   /**
-   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is forbidden.
-   * @member {Number} minSize
+   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is disabled. Must be lower or equal to 'copiesNumber'.
+   * @member {Number} minCopiesNumber
    */
-  exports.prototype['minSize'] = undefined;
-  /**
-   * @member {module:model/CephPoolStorageParams} storageParams
-   */
-  exports.prototype['storageParams'] = undefined;
+  exports.prototype['minCopiesNumber'] = undefined;
 
 
 

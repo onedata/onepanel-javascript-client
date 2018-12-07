@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**addCephManagers**](OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 [**addCephMonitors**](OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to ceph cluster
 [**addCephOsds**](OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-[**addCephPool**](OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pools.
 [**addProvider**](OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 [**addProviderDatabases**](OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -48,7 +47,6 @@ Method | HTTP request | Description
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 [**invalidateLumaCache**](OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
-[**modifyCephPool**](OneproviderApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify Ceph pool.
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
@@ -210,58 +208,6 @@ apiInstance.addCephOsds(osds, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **osds** | [**CephOsds**](CephOsds.md)| List of OSD specifications | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="addCephPool"></a>
-# **addCephPool**
-> addCephPool(poolSpecs)
-
-Add Ceph pools.
-
-@fixme
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var poolSpecs = new Onepanel.CephPools(); // CephPools | @fixme
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.addCephPool(poolSpecs, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **poolSpecs** | [**CephPools**](CephPools.md)| @fixme | 
 
 ### Return type
 
@@ -1104,7 +1050,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var name = "name_example"; // String | The name of the pool to describe. 
+var name = "name_example"; // String | The name of the pool to describe.
 
 
 var callback = function(error, data, response) {
@@ -1121,7 +1067,7 @@ apiInstance.getCephPool(name, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the pool to describe.  | 
+ **name** | **String**| The name of the pool to describe. | 
 
 ### Return type
 
@@ -2249,61 +2195,6 @@ apiInstance.invalidateLumaCache(id, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of a storage resource, which details should be modified.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="modifyCephPool"></a>
-# **modifyCephPool**
-> modifyCephPool(name, poolSpec)
-
-Modify Ceph pool.
-
-@fixme
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var name = "name_example"; // String | The name of the pool to modify.
-
-var poolSpec = new Onepanel.CephPoolModifyRequest(); // CephPoolModifyRequest | @fixme
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyCephPool(name, poolSpec, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The name of the pool to modify. | 
- **poolSpec** | [**CephPoolModifyRequest**](CephPoolModifyRequest.md)| @fixme | 
 
 ### Return type
 

@@ -522,6 +522,10 @@
               polymorphicType = require("./model/Cephrados");
             }
 
+            if('embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Embeddedceph");
+            }
+
             if('filestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Filestore");
             }

@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 
 * `cephrados` (value: `"cephrados"`)
 
+* `embeddedceph` (value: `"embeddedceph"`)
+
 * `swift` (value: `"swift"`)
 
 * `glusterfs` (value: `"glusterfs"`)

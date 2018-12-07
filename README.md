@@ -123,7 +123,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addCephManagers**](docs/OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephMonitors**](docs/OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to ceph cluster
 *Onepanel.OneproviderApi* | [**addCephOsds**](docs/OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-*Onepanel.OneproviderApi* | [**addCephPool**](docs/OneproviderApi.md#addCephPool) | **POST** /provider/ceph/pools | Add Ceph pools.
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -164,7 +163,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**invalidateLumaCache**](docs/OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
-*Onepanel.OneproviderApi* | [**modifyCephPool**](docs/OneproviderApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify Ceph pool.
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
@@ -218,8 +216,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.CephOsd](docs/CephOsd.md)
  - [Onepanel.CephOsds](docs/CephOsds.md)
  - [Onepanel.CephPool](docs/CephPool.md)
- - [Onepanel.CephPoolModifyRequest](docs/CephPoolModifyRequest.md)
- - [Onepanel.CephPoolStorageParams](docs/CephPoolStorageParams.md)
  - [Onepanel.CephPoolUsage](docs/CephPoolUsage.md)
  - [Onepanel.CephPools](docs/CephPools.md)
  - [Onepanel.CephStatus](docs/CephStatus.md)
@@ -298,6 +294,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.CephCluster](docs/CephCluster.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
+ - [Onepanel.Embeddedceph](docs/Embeddedceph.md)
  - [Onepanel.Filestore](docs/Filestore.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)

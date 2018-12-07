@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.CephPool();
+    instance = new Onepanel.Embeddedceph();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,64 @@
       object[property] = value;
   }
 
-  describe('CephPool', function() {
-    it('should create an instance of CephPool', function() {
-      // uncomment below and update the code to test CephPool
-      //var instane = new Onepanel.CephPool();
-      //expect(instance).to.be.a(Onepanel.CephPool);
+  describe('Embeddedceph', function() {
+    it('should create an instance of Embeddedceph', function() {
+      // uncomment below and update the code to test Embeddedceph
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be.a(Onepanel.Embeddedceph);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.CephPool();
+      //var instane = new Onepanel.Embeddedceph();
       //expect(instance).to.be();
     });
 
-    it('should have the property copiesNumber (base name: "copiesNumber")', function() {
-      // uncomment below and update the code to test the property copiesNumber
-      //var instane = new Onepanel.CephPool();
+    it('should have the property insecure (base name: "insecure")', function() {
+      // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Embeddedceph();
       //expect(instance).to.be();
     });
 
-    it('should have the property minCopiesNumber (base name: "minCopiesNumber")', function() {
-      // uncomment below and update the code to test the property minCopiesNumber
-      //var instane = new Onepanel.CephPool();
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
+      // uncomment below and update the code to test the property lumaEnabled
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
+      // uncomment below and update the code to test the property lumaUrl
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Embeddedceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.Embeddedceph();
       //expect(instance).to.be();
     });
 

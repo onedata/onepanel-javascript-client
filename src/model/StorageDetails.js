@@ -181,6 +181,11 @@
      */
     "cephrados": "cephrados",
     /**
+     * value: "embeddedceph"
+     * @const
+     */
+    "embeddedceph": "embeddedceph",
+    /**
      * value: "swift"
      * @const
      */

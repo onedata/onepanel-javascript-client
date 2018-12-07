@@ -81,16 +81,6 @@
         done();
       });
     });
-    describe('addCephPool', function() {
-      it('should call addCephPool successfully', function(done) {
-        //uncomment below and update the code to test addCephPool
-        //instance.addCephPool(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addProvider', function() {
       it('should call addProvider successfully', function(done) {
         //uncomment below and update the code to test addProvider
@@ -485,16 +475,6 @@
       it('should call invalidateLumaCache successfully', function(done) {
         //uncomment below and update the code to test invalidateLumaCache
         //instance.invalidateLumaCache(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyCephPool', function() {
-      it('should call modifyCephPool successfully', function(done) {
-        //uncomment below and update the code to test modifyCephPool
-        //instance.modifyCephPool(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

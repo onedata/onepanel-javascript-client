@@ -1364,51 +1364,6 @@
     }
 
     /**
-     * Callback function to receive the result of the removeStorage operation.
-     * @callback module:api/OneproviderApi~removeStorageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove storage
-     * Removes storage from the cluster. Only storage not supporting any spaces can be removed.
-     * @param {String} id The Id of the storage to remove.
-     * @param {module:api/OneproviderApi~removeStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeStorage = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling removeStorage");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the revokeSpaceSupport operation.
      * @callback module:api/OneproviderApi~revokeSpaceSupportCallback
      * @param {String} error Error message, if any.

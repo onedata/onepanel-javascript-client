@@ -47,7 +47,7 @@
    * @class
    * @param id {String} 
    * @param type {module:model/ClusterDetails.TypeEnum} Type of Onedata component in this cluster. (@fixme)
-   * @param serviceId {module:model/ClusterDetails.ServiceIdEnum} The id of the service hosted on this cluster - depending on the type equal to the provider Id or 'onezone' literal 
+   * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @param name {String} 
    * @param domain {String} Domain of the cluster.
    * @param version {String} 
@@ -126,8 +126,8 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The id of the service hosted on this cluster - depending on the type equal to the provider Id or 'onezone' literal 
-   * @member {module:model/ClusterDetails.ServiceIdEnum} serviceId
+   * The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
+   * @member {String} serviceId
    */
   exports.prototype['serviceId'] = undefined;
   /**
@@ -159,23 +159,6 @@
    * @readonly
    */
   exports.TypeEnum = {
-    /**
-     * value: "oneprovider"
-     * @const
-     */
-    "oneprovider": "oneprovider",
-    /**
-     * value: "onezone"
-     * @const
-     */
-    "onezone": "onezone"  };
-
-  /**
-   * Allowed values for the <code>serviceId</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ServiceIdEnum = {
     /**
      * value: "oneprovider"
      * @const

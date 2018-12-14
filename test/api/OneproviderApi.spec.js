@@ -101,40 +101,10 @@
         done();
       });
     });
-    describe('configureFilesPopularity', function() {
-      it('should call configureFilesPopularity successfully', function(done) {
-        //uncomment below and update the code to test configureFilesPopularity
-        //instance.configureFilesPopularity(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureProvider', function() {
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider
         //instance.configureProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('configureSpaceAutoCleaning', function() {
-      it('should call configureSpaceAutoCleaning successfully', function(done) {
-        //uncomment below and update the code to test configureSpaceAutoCleaning
-        //instance.configureSpaceAutoCleaning(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getFilesPopularityConfiguration', function() {
-      it('should call getFilesPopularityConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getFilesPopularityConfiguration
-        //instance.getFilesPopularityConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -281,16 +251,6 @@
         done();
       });
     });
-    describe('getSpaceAutoCleaningConfiguration', function() {
-      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
-        //instance.getSpaceAutoCleaningConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getSpaceDetails', function() {
       it('should call getSpaceDetails successfully', function(done) {
         //uncomment below and update the code to test getSpaceDetails
@@ -365,6 +325,16 @@
       it('should call modifyStorage successfully', function(done) {
         //uncomment below and update the code to test modifyStorage
         //instance.modifyStorage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('providerSpaceStartCleaning', function() {
+      it('should call providerSpaceStartCleaning successfully', function(done) {
+        //uncomment below and update the code to test providerSpaceStartCleaning
+        //instance.providerSpaceStartCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -455,16 +425,6 @@
       it('should call supportSpace successfully', function(done) {
         //uncomment below and update the code to test supportSpace
         //instance.supportSpace(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('triggerAutoCleaning', function() {
-      it('should call triggerAutoCleaning successfully', function(done) {
-        //uncomment below and update the code to test triggerAutoCleaning
-        //instance.triggerAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

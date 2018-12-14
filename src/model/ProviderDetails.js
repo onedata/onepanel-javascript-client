@@ -45,7 +45,7 @@
    * The provider configuration details.
    * @alias module:model/ProviderDetails
    * @class
-   * @param id {String} The Id assigned by a zone.
+   * @param id {String} The ID assigned by a zone.
    * @param name {String} The name under which the provider has been registered in a zone.
    * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
    * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
@@ -121,7 +121,7 @@
   }
 
   /**
-   * The Id assigned by a zone.
+   * The ID assigned by a zone.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;

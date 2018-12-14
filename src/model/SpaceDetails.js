@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaning', 'model/SpaceFilesPopularity', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaning'), require('./SpaceFilesPopularity'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaning, root.Onepanel.SpaceFilesPopularity, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, SpaceAutoCleaning, SpaceFilesPopularity, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * The space details.
    * @alias module:model/SpaceDetails
    * @class
-   * @param id {String} The Id of the space.
+   * @param id {String} The ID of the space.
    * @param name {String} The name of the space.
    * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
@@ -60,6 +60,8 @@
     _this['storageId'] = storageId;
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
+
+
 
 
 
@@ -111,6 +113,12 @@
       if (data.hasOwnProperty('storageUpdate')) {
         obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
       }
+      if (data.hasOwnProperty('filesPopularity')) {
+        obj['filesPopularity'] = SpaceFilesPopularity.constructFromObject(data['filesPopularity']);
+      }
+      if (data.hasOwnProperty('autoCleaning')) {
+        obj['autoCleaning'] = SpaceAutoCleaning.constructFromObject(data['autoCleaning']);
+      }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
@@ -119,7 +127,7 @@
   }
 
   /**
-   * The Id of the space.
+   * The ID of the space.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
@@ -157,6 +165,16 @@
    * @member {module:model/StorageUpdateDetails} storageUpdate
    */
   exports.prototype['storageUpdate'] = undefined;
+  /**
+   * Configuration of files popularity feature for this space
+   * @member {module:model/SpaceFilesPopularity} filesPopularity
+   */
+  exports.prototype['filesPopularity'] = undefined;
+  /**
+   * Configuration of auto cleaning feature for this space
+   * @member {module:model/SpaceAutoCleaning} autoCleaning
+   */
+  exports.prototype['autoCleaning'] = undefined;
   /**
    * Amount of storage [b] used by data from given space on that storage.
    * @member {Number} spaceOccupancy

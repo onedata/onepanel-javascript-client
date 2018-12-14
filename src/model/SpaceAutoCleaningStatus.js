@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningStatus</code>.
-   * Status of current auto cleaning process for given space
+   * Status of current auto-cleaning process for given space
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param inProgress {Boolean} Flag which indicates whether auto cleaning process is currently in progress 
+   * @param inProgress {Boolean} Flag which indicates whether auto-cleaning process is currently in progress 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
   var exports = function(inProgress, spaceOccupancy) {
@@ -87,7 +87,7 @@
   }
 
   /**
-   * Flag which indicates whether auto cleaning process is currently in progress 
+   * Flag which indicates whether auto-cleaning process is currently in progress 
    * @member {Boolean} inProgress
    */
   exports.prototype['inProgress'] = undefined;

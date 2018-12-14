@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>SpaceId</code>.
-   * Provides ID of a space.
+   * Provides Id of a space.
    * @alias module:model/SpaceId
    * @class
-   * @param id {String} The ID of the space.
+   * @param id {String} The Id of the space.
    */
   var exports = function(id) {
     var _this = this;
@@ -82,7 +82,7 @@
   }
 
   /**
-   * The ID of the space.
+   * The Id of the space.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;

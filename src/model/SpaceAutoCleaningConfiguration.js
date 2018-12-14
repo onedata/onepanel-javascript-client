@@ -17,85 +17,101 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaningRules'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRules'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SessionDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRules);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, SpaceAutoCleaningRules) {
   'use strict';
 
 
 
 
   /**
-   * The SessionDetails model module.
-   * @module model/SessionDetails
+   * The SpaceAutoCleaningConfiguration model module.
+   * @module model/SpaceAutoCleaningConfiguration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SessionDetails</code>.
-   * The user session details.
-   * @alias module:model/SessionDetails
+   * Constructs a new <code>SpaceAutoCleaningConfiguration</code>.
+   * Settings for space auto-cleaning mechanism. Setting enabled to &#x60;false&#x60; disables given parameter. It will be ignored by auto-cleaning mechanism. All presented parameters&#39; ranges are inclusive. 
+   * @alias module:model/SpaceAutoCleaningConfiguration
    * @class
-   * @param sessionId {String} The session Id.
-   * @param username {String} The name of a user associated with the session.
    */
-  var exports = function(sessionId, username) {
+  var exports = function() {
     var _this = this;
 
-    _this['sessionId'] = sessionId;
-    _this['username'] = username;
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SessionDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SessionDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SessionDetails} obj Optional instance to populate.
-   * @return {module:model/SessionDetails} The populated <code>SessionDetails</code> instance.
+   * @param {module:model/SpaceAutoCleaningConfiguration} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningConfiguration} The populated <code>SpaceAutoCleaningConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('sessionId')) {
-        obj['sessionId'] = ApiClient.convertToType(data['sessionId'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('threshold')) {
+        obj['threshold'] = ApiClient.convertToType(data['threshold'], 'Number');
+      }
+      if (data.hasOwnProperty('target')) {
+        obj['target'] = ApiClient.convertToType(data['target'], 'Number');
+      }
+      if (data.hasOwnProperty('rules')) {
+        obj['rules'] = SpaceAutoCleaningRules.constructFromObject(data['rules']);
       }
     }
     return obj;
   }
 
   /**
-   * The session Id.
-   * @member {String} sessionId
+   * If true, auto-cleaning mechanism is enabled in the space.
+   * @member {Boolean} enabled
    */
-  exports.prototype['sessionId'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * The name of a user associated with the session.
-   * @member {String} username
+   * Amount of data [b], which should trigger the auto-cleaning in the space. Only replicas maintained by this storage provider will be removed.  This parameter is required to enable auto-cleaning. 
+   * @member {Number} threshold
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['threshold'] = undefined;
+  /**
+   * Amount of data [b], at which the auto-cleaning process should stop. This parameter is required to enable auto-cleaning. 
+   * @member {Number} target
+   */
+  exports.prototype['target'] = undefined;
+  /**
+   * Rules used to select certain list of file replicas that can be evicted by auto-cleaning mechanism. 
+   * @member {module:model/SpaceAutoCleaningRules} rules
+   */
+  exports.prototype['rules'] = undefined;
 
 
 

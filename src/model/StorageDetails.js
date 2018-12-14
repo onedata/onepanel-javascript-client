@@ -110,7 +110,7 @@
   }
 
   /**
-   * The ID of storage.
+   * The Id of storage.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;

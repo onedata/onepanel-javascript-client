@@ -45,7 +45,7 @@
    * The user configuration details.
    * @alias module:model/UserDetails
    * @class
-   * @param userId {String} The user ID.
+   * @param userId {String} The user Id.
    * @param userRole {module:model/UserDetails.UserRoleEnum} The user role, one of `admin` or `regular`.
    */
   var exports = function(userId, userRole) {
@@ -87,7 +87,7 @@
   }
 
   /**
-   * The user ID.
+   * The user Id.
    * @member {String} userId
    */
   exports.prototype['userId'] = undefined;

@@ -4,20 +4,17 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+[**createCluster**](OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
-[**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+[**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
-[**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
-[**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 [**getWebCert**](OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
-[**joinCluster**](OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
 [**modifyDnsCheckConfiguration**](OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
@@ -25,58 +22,6 @@ Method | HTTP request | Description
 [**removeSession**](OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 
-
-<a name="addClusterHost"></a>
-# **addClusterHost**
-> Host addClusterHost(hostAddRequest)
-
-Adds given host to the cluster
-
-Adds given host to the current cluster. The host can be specified by any address by which it is reachable. Upon success returns proper hostname used to address the new host in cluster management. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var hostAddRequest = new Onepanel.HostAddRequest(); // HostAddRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.addClusterHost(hostAddRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **hostAddRequest** | [**HostAddRequest**](HostAddRequest.md)|  | 
-
-### Return type
-
-[**Host**](Host.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
 
 <a name="addUser"></a>
 # **addUser**
@@ -151,7 +96,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnepanelApi();
 
 var opts = { 
-  'forceCheck': false // Boolean | If true the DNS check cache is overridden and check is performed during handling of the request.
+  'forceCheck': false // Boolean | If true the DNS check cache is overriden and check is performed during handling of the request.
 };
 
 var callback = function(error, data, response) {
@@ -168,7 +113,7 @@ apiInstance.checkDns(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **forceCheck** | **Boolean**| If true the DNS check cache is overridden and check is performed during handling of the request. | [optional] [default to false]
+ **forceCheck** | **Boolean**| If true the DNS check cache is overriden and check is performed during handling of the request. | [optional] [default to false]
 
 ### Return type
 
@@ -182,6 +127,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="createCluster"></a>
+# **createCluster**
+> createCluster(opts)
+
+Create or join cluster
+
+Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has been provided in the query string adds this host to an existing cluster. In both cases the host handling this request has to be newly started or removed from previous cluster. It cannot contain any configuration data. This request can be executed by unauthorized users as long as there are no admin users. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var opts = { 
+  'clusterHost': "clusterHost_example", // String | Hostname of an existing cluster node.
+  'cookie': new Onepanel.Cookie() // Cookie | The cookie used for cluster authentication.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.createCluster(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterHost** | **String**| Hostname of an existing cluster node. | [optional] 
+ **cookie** | [**Cookie**](Cookie.md)| The cookie used for cluster authentication. | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="createSession"></a>
 # **createSession**
@@ -277,11 +277,11 @@ This endpoint does not need any parameter.
 
 <a name="getClusterHosts"></a>
 # **getClusterHosts**
-> [&#39;String&#39;] getClusterHosts()
+> [&#39;String&#39;] getClusterHosts(opts)
 
-Get cluster hosts
+Get cluster or discovered hosts
 
-Returns the list of administrative cluster hosts. 
+Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
 
 ### Example
 ```javascript
@@ -295,6 +295,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
+var opts = { 
+  'discovered': false // Boolean | Defines whether to return cluster or discovered hosts.
+};
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -302,11 +306,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getClusterHosts(callback);
+apiInstance.getClusterHosts(opts, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discovered** | **Boolean**| Defines whether to return cluster or discovered hosts. | [optional] [default to false]
 
 ### Return type
 
@@ -357,52 +364,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**DnsCheckConfiguration**](DnsCheckConfiguration.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getNode"></a>
-# **getNode**
-> Node getNode()
-
-Get information about current onepanel node.
-
-Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getNode(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Node**](Node.md)
 
 ### Authorization
 
@@ -563,59 +524,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getUsers"></a>
-# **getUsers**
-> Users getUsers(opts)
-
-List onepanel users
-
-Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var opts = { 
-  'role': "role_example" // String | If present, query returns only users with specified role.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUsers(opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **role** | **String**| If present, query returns only users with specified role. | [optional] 
-
-### Return type
-
-[**Users**](Users.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
 <a name="getWebCert"></a>
 # **getWebCert**
 > WebCert getWebCert()
@@ -661,58 +569,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-<a name="joinCluster"></a>
-# **joinCluster**
-> joinCluster(joinClusterRequest)
-
-Join existing cluster
-
-Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var joinClusterRequest = new Onepanel.JoinClusterRequest(); // JoinClusterRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.joinCluster(joinClusterRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **joinClusterRequest** | [**JoinClusterRequest**](JoinClusterRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
 
 <a name="modifyDnsCheckConfiguration"></a>
 # **modifyDnsCheckConfiguration**
@@ -879,7 +735,7 @@ null (empty response body)
 
 Remove host from cluster
 
-Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. 
+Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. It also removes the host from each service cluster it belonged to. 
 
 ### Example
 ```javascript

@@ -46,7 +46,7 @@
    * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {module:model/Cephrados.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor host name.
@@ -55,7 +55,8 @@
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
     _this['username'] = username;
     _this['key'] = key;
     _this['monitorHostname'] = monitorHostname;
@@ -89,6 +90,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('username')) {
         obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
@@ -126,6 +130,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {module:model/Cephrados.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * The username of the Ceph cluster administrator.
    * @member {String} username
@@ -180,6 +189,18 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "cephrados"
+     * @const
+     */
+    "cephrados": "cephrados"  };
 
 
   return exports;

@@ -17,12 +17,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Node', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningRuleSetting', 'model/SpaceAutoCleaningRules', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilesPopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/Cephrados', 'model/Glusterfs', 'model/Nulldevice', 'model/Posix', 'model/S3', 'model/Swift', 'model/Webdav', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
+    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/Cookie', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/PanelConfiguration', 'model/PanelConfigurationUsers', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderConfigurationOnezone', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SessionDetails', 'model/SpaceAutoCleaning', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningSettings', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilesPopularity', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageDetailsModify', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/CephModify', 'model/Cephrados', 'model/CephradosModify', 'model/Glusterfs', 'model/GlusterfsModify', 'model/Nulldevice', 'model/NulldeviceModify', 'model/Posix', 'model/PosixModify', 'model/S3', 'model/S3Modify', 'model/Swift', 'model/SwiftModify', 'model/Webdav', 'model/WebdavModify', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/Error'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/JoinClusterRequest'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceAutoCleaningConfiguration'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReportCollection'), require('./model/SpaceAutoCleaningRuleSetting'), require('./model/SpaceAutoCleaningRules'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilesPopularityConfiguration'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/Users'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/Cephrados'), require('./model/Glusterfs'), require('./model/Nulldevice'), require('./model/Posix'), require('./model/S3'), require('./model/Swift'), require('./model/Webdav'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterWorkers'), require('./model/Cookie'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/Error'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/PanelConfiguration'), require('./model/PanelConfigurationUsers'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderConfigurationOnezone'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SessionDetails'), require('./model/SpaceAutoCleaning'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReportCollection'), require('./model/SpaceAutoCleaningSettings'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilesPopularity'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageDetailsModify'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/UserCreateRequest'), require('./model/UserDetails'), require('./model/UserModifyRequest'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/CephModify'), require('./model/Cephrados'), require('./model/CephradosModify'), require('./model/Glusterfs'), require('./model/GlusterfsModify'), require('./model/Nulldevice'), require('./model/NulldeviceModify'), require('./model/Posix'), require('./model/PosixModify'), require('./model/S3'), require('./model/S3Modify'), require('./model/Swift'), require('./model/SwiftModify'), require('./model/Webdav'), require('./model/WebdavModify'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
   }
-}(function(ApiClient, ClusterConfigurationDetails, ClusterDatabases, ClusterIps, ClusterManagers, ClusterWorkers, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, Error, Host, HostAddRequest, JoinClusterRequest, ManagerHosts, ModifyClusterIps, Node, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReportCollection, SpaceAutoCleaningRuleSetting, SpaceAutoCleaningRules, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilesPopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, Cephrados, Glusterfs, Nulldevice, Posix, S3, Swift, Webdav, OnepanelApi, OneproviderApi, OnezoneApi) {
+}(function(ApiClient, ClusterConfigurationDetails, ClusterDatabases, ClusterIps, ClusterManagers, ClusterWorkers, Cookie, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, Error, ManagerHosts, ModifyClusterIps, PanelConfiguration, PanelConfigurationUsers, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderConfigurationOnezone, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SessionDetails, SpaceAutoCleaning, SpaceAutoCleaningReport, SpaceAutoCleaningReportCollection, SpaceAutoCleaningSettings, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilesPopularity, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageDetailsModify, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, CephModify, Cephrados, CephradosModify, Glusterfs, GlusterfsModify, Nulldevice, NulldeviceModify, Posix, PosixModify, S3, S3Modify, Swift, SwiftModify, Webdav, WebdavModify, OnepanelApi, OneproviderApi, OnezoneApi) {
   'use strict';
 
   /**
@@ -88,6 +88,11 @@
      */
     ClusterWorkers: ClusterWorkers,
     /**
+     * The Cookie model constructor.
+     * @property {module:model/Cookie}
+     */
+    Cookie: Cookie,
+    /**
      * The DatabaseHosts model constructor.
      * @property {module:model/DatabaseHosts}
      */
@@ -113,21 +118,6 @@
      */
     Error: Error,
     /**
-     * The Host model constructor.
-     * @property {module:model/Host}
-     */
-    Host: Host,
-    /**
-     * The HostAddRequest model constructor.
-     * @property {module:model/HostAddRequest}
-     */
-    HostAddRequest: HostAddRequest,
-    /**
-     * The JoinClusterRequest model constructor.
-     * @property {module:model/JoinClusterRequest}
-     */
-    JoinClusterRequest: JoinClusterRequest,
-    /**
      * The ManagerHosts model constructor.
      * @property {module:model/ManagerHosts}
      */
@@ -137,11 +127,6 @@
      * @property {module:model/ModifyClusterIps}
      */
     ModifyClusterIps: ModifyClusterIps,
-    /**
-     * The Node model constructor.
-     * @property {module:model/Node}
-     */
-    Node: Node,
     /**
      * The PanelConfiguration model constructor.
      * @property {module:model/PanelConfiguration}
@@ -238,10 +223,10 @@
      */
     SessionDetails: SessionDetails,
     /**
-     * The SpaceAutoCleaningConfiguration model constructor.
-     * @property {module:model/SpaceAutoCleaningConfiguration}
+     * The SpaceAutoCleaning model constructor.
+     * @property {module:model/SpaceAutoCleaning}
      */
-    SpaceAutoCleaningConfiguration: SpaceAutoCleaningConfiguration,
+    SpaceAutoCleaning: SpaceAutoCleaning,
     /**
      * The SpaceAutoCleaningReport model constructor.
      * @property {module:model/SpaceAutoCleaningReport}
@@ -253,15 +238,10 @@
      */
     SpaceAutoCleaningReportCollection: SpaceAutoCleaningReportCollection,
     /**
-     * The SpaceAutoCleaningRuleSetting model constructor.
-     * @property {module:model/SpaceAutoCleaningRuleSetting}
+     * The SpaceAutoCleaningSettings model constructor.
+     * @property {module:model/SpaceAutoCleaningSettings}
      */
-    SpaceAutoCleaningRuleSetting: SpaceAutoCleaningRuleSetting,
-    /**
-     * The SpaceAutoCleaningRules model constructor.
-     * @property {module:model/SpaceAutoCleaningRules}
-     */
-    SpaceAutoCleaningRules: SpaceAutoCleaningRules,
+    SpaceAutoCleaningSettings: SpaceAutoCleaningSettings,
     /**
      * The SpaceAutoCleaningStatus model constructor.
      * @property {module:model/SpaceAutoCleaningStatus}
@@ -273,10 +253,10 @@
      */
     SpaceDetails: SpaceDetails,
     /**
-     * The SpaceFilesPopularityConfiguration model constructor.
-     * @property {module:model/SpaceFilesPopularityConfiguration}
+     * The SpaceFilesPopularity model constructor.
+     * @property {module:model/SpaceFilesPopularity}
      */
-    SpaceFilesPopularityConfiguration: SpaceFilesPopularityConfiguration,
+    SpaceFilesPopularity: SpaceFilesPopularity,
     /**
      * The SpaceId model constructor.
      * @property {module:model/SpaceId}
@@ -307,6 +287,11 @@
      * @property {module:model/StorageDetails}
      */
     StorageDetails: StorageDetails,
+    /**
+     * The StorageDetailsModify model constructor.
+     * @property {module:model/StorageDetailsModify}
+     */
+    StorageDetailsModify: StorageDetailsModify,
     /**
      * The StorageImportDetails model constructor.
      * @property {module:model/StorageImportDetails}
@@ -352,11 +337,6 @@
      * @property {module:model/UserModifyRequest}
      */
     UserModifyRequest: UserModifyRequest,
-    /**
-     * The Users model constructor.
-     * @property {module:model/Users}
-     */
-    Users: Users,
     /**
      * The WebCert model constructor.
      * @property {module:model/WebCert}
@@ -418,40 +398,80 @@
      */
     Ceph: Ceph,
     /**
+     * The CephModify model constructor.
+     * @property {module:model/CephModify}
+     */
+    CephModify: CephModify,
+    /**
      * The Cephrados model constructor.
      * @property {module:model/Cephrados}
      */
     Cephrados: Cephrados,
+    /**
+     * The CephradosModify model constructor.
+     * @property {module:model/CephradosModify}
+     */
+    CephradosModify: CephradosModify,
     /**
      * The Glusterfs model constructor.
      * @property {module:model/Glusterfs}
      */
     Glusterfs: Glusterfs,
     /**
+     * The GlusterfsModify model constructor.
+     * @property {module:model/GlusterfsModify}
+     */
+    GlusterfsModify: GlusterfsModify,
+    /**
      * The Nulldevice model constructor.
      * @property {module:model/Nulldevice}
      */
     Nulldevice: Nulldevice,
+    /**
+     * The NulldeviceModify model constructor.
+     * @property {module:model/NulldeviceModify}
+     */
+    NulldeviceModify: NulldeviceModify,
     /**
      * The Posix model constructor.
      * @property {module:model/Posix}
      */
     Posix: Posix,
     /**
+     * The PosixModify model constructor.
+     * @property {module:model/PosixModify}
+     */
+    PosixModify: PosixModify,
+    /**
      * The S3 model constructor.
      * @property {module:model/S3}
      */
     S3: S3,
+    /**
+     * The S3Modify model constructor.
+     * @property {module:model/S3Modify}
+     */
+    S3Modify: S3Modify,
     /**
      * The Swift model constructor.
      * @property {module:model/Swift}
      */
     Swift: Swift,
     /**
+     * The SwiftModify model constructor.
+     * @property {module:model/SwiftModify}
+     */
+    SwiftModify: SwiftModify,
+    /**
      * The Webdav model constructor.
      * @property {module:model/Webdav}
      */
     Webdav: Webdav,
+    /**
+     * The WebdavModify model constructor.
+     * @property {module:model/WebdavModify}
+     */
+    WebdavModify: WebdavModify,
     /**
      * The OnepanelApi service constructor.
      * @property {module:api/OnepanelApi}

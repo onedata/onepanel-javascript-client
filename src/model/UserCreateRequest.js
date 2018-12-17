@@ -45,8 +45,8 @@
    * The new user account details.
    * @alias module:model/UserCreateRequest
    * @class
-   * @param username {String} The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
-   * @param password {String} The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
+   * @param username {String} The user name. It must be at least 4 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
+   * @param password {String} The user password. It must be at least 8 characters long and contain a minimum of 1 lower case letter [a-z] and a minimum of 1 upper case letter [A-Z] and a minimum of 1 numeric character [0-9]. The Password must not contain a colon character [:]. 
    * @param userRole {module:model/UserCreateRequest.UserRoleEnum} The user role, one of 'admin' or 'regular'.
    */
   var exports = function(username, password, userRole) {
@@ -92,12 +92,12 @@
   }
 
   /**
-   * The user name. It must be at least 2 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
+   * The user name. It must be at least 4 characters long and contain only alphanumeric characters [a-zA-Z0-9]. 
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
   /**
-   * The user password. It must be at least 8 characters long. The password must not contain a colon character ':'. 
+   * The user password. It must be at least 8 characters long and contain a minimum of 1 lower case letter [a-z] and a minimum of 1 upper case letter [A-Z] and a minimum of 1 numeric character [0-9]. The Password must not contain a colon character [:]. 
    * @member {String} password
    */
   exports.prototype['password'] = undefined;

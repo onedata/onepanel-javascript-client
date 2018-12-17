@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The Id of the space. | 
+**id** | **String** | The ID of the space. | 
 
 

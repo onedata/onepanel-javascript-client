@@ -54,6 +54,7 @@
 
 
 
+
   };
 
   /**
@@ -86,6 +87,9 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
+      if (data.hasOwnProperty('lumaEnabled')) {
+        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      }
       if (data.hasOwnProperty('lumaUrl')) {
         obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
       }
@@ -111,6 +115,11 @@
    * @member {Boolean} readonly
    */
   exports.prototype['readonly'] = undefined;
+  /**
+   * If true LUMA and reverse LUMA services will be enabled.
+   * @member {Boolean} lumaEnabled
+   */
+  exports.prototype['lumaEnabled'] = undefined;
   /**
    * URL of external LUMA service
    * @member {String} lumaUrl

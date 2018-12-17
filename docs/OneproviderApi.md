@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**configureFilesPopularity**](OneproviderApi.md#configureFilesPopularity) | **PATCH** /provider/spaces/{id}/files-popularity/configuration | Configure files-popularity in the space.
+[**configureFilesPopularity**](OneproviderApi.md#configureFilesPopularity) | **PATCH** /provider/spaces/{id}/files-popularity/configuration | Configure files-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 [**getFilesPopularityConfiguration**](OneproviderApi.md#getFilesPopularityConfiguration) | **GET** /provider/spaces/{id}/files-popularity/configuration | Get files-popularity configuration
@@ -313,9 +313,9 @@ null (empty response body)
 # **configureFilesPopularity**
 > configureFilesPopularity(id, enabled)
 
-Configure files-popularity in the space.
+Configure files-popularity mechanism in the space.
 
-Enables or disables collecting files-popularity statistics in the space.
+Configures the files-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * avgOpenCountPerDay where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript

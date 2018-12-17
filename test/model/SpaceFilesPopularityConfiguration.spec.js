@@ -69,6 +69,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lastOpenHourWeight (base name: "lastOpenHourWeight")', function() {
+      // uncomment below and update the code to test the property lastOpenHourWeight
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgOpenCountPerDayWeight (base name: "avgOpenCountPerDayWeight")', function() {
+      // uncomment below and update the code to test the property avgOpenCountPerDayWeight
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

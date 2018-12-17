@@ -42,16 +42,20 @@
 
   /**
    * Constructs a new <code>SpaceFilesPopularityConfiguration</code>.
-   * Settings of files-popularity feature of space
+   * Configuration of files-popularity mechanism in the space.
    * @alias module:model/SpaceFilesPopularityConfiguration
    * @class
    * @param enabled {Boolean} If true, collecting files-popularity mechanism in the space is enabled
+   * @param lastOpenHourWeight {Number} Weight of `lastOpenHour` parameter. 
+   * @param avgOpenCountPerDayWeight {Number} Weight of `avgOpenCountPerDayWeight` parameter. 
    */
-  var exports = function(enabled) {
+  var exports = function(enabled, lastOpenHourWeight, avgOpenCountPerDayWeight) {
     var _this = this;
 
     _this['enabled'] = enabled;
 
+    _this['lastOpenHourWeight'] = lastOpenHourWeight;
+    _this['avgOpenCountPerDayWeight'] = avgOpenCountPerDayWeight;
   };
 
   /**
@@ -81,6 +85,12 @@
       if (data.hasOwnProperty('restUrl')) {
         obj['restUrl'] = ApiClient.convertToType(data['restUrl'], 'String');
       }
+      if (data.hasOwnProperty('lastOpenHourWeight')) {
+        obj['lastOpenHourWeight'] = ApiClient.convertToType(data['lastOpenHourWeight'], 'Number');
+      }
+      if (data.hasOwnProperty('avgOpenCountPerDayWeight')) {
+        obj['avgOpenCountPerDayWeight'] = ApiClient.convertToType(data['avgOpenCountPerDayWeight'], 'Number');
+      }
     }
     return obj;
   }
@@ -95,6 +105,16 @@
    * @member {String} restUrl
    */
   exports.prototype['restUrl'] = undefined;
+  /**
+   * Weight of `lastOpenHour` parameter. 
+   * @member {Number} lastOpenHourWeight
+   */
+  exports.prototype['lastOpenHourWeight'] = undefined;
+  /**
+   * Weight of `avgOpenCountPerDayWeight` parameter. 
+   * @member {Number} avgOpenCountPerDayWeight
+   */
+  exports.prototype['avgOpenCountPerDayWeight'] = undefined;
 
 
 

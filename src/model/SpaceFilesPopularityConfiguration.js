@@ -46,16 +46,14 @@
    * @alias module:model/SpaceFilesPopularityConfiguration
    * @class
    * @param enabled {Boolean} If true, collecting files-popularity mechanism in the space is enabled
-   * @param lastOpenHourWeight {Number} Weight of `lastOpenHour` parameter. 
-   * @param avgOpenCountPerDayWeight {Number} Weight of `avgOpenCountPerDayWeight` parameter. 
    */
-  var exports = function(enabled, lastOpenHourWeight, avgOpenCountPerDayWeight) {
+  var exports = function(enabled) {
     var _this = this;
 
     _this['enabled'] = enabled;
 
-    _this['lastOpenHourWeight'] = lastOpenHourWeight;
-    _this['avgOpenCountPerDayWeight'] = avgOpenCountPerDayWeight;
+
+
   };
 
   /**
@@ -82,8 +80,8 @@
       if (data.hasOwnProperty('enabled')) {
         obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('restUrl')) {
-        obj['restUrl'] = ApiClient.convertToType(data['restUrl'], 'String');
+      if (data.hasOwnProperty('exampleQuery')) {
+        obj['exampleQuery'] = ApiClient.convertToType(data['exampleQuery'], 'String');
       }
       if (data.hasOwnProperty('lastOpenHourWeight')) {
         obj['lastOpenHourWeight'] = ApiClient.convertToType(data['lastOpenHourWeight'], 'Number');
@@ -101,10 +99,10 @@
    */
   exports.prototype['enabled'] = undefined;
   /**
-   * REST endpoint to view files-popularity statistics 
-   * @member {String} restUrl
+   * Example `curl` command that can be executed to query the files-popularity view in the space. 
+   * @member {String} exampleQuery
    */
-  exports.prototype['restUrl'] = undefined;
+  exports.prototype['exampleQuery'] = undefined;
   /**
    * Weight of `lastOpenHour` parameter. 
    * @member {Number} lastOpenHourWeight

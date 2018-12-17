@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property restUrl (base name: "restUrl")', function() {
-      // uncomment below and update the code to test the property restUrl
+    it('should have the property exampleQuery (base name: "exampleQuery")', function() {
+      // uncomment below and update the code to test the property exampleQuery
       //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
       //expect(instance).to.be();
     });

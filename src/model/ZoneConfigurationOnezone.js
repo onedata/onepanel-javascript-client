@@ -42,12 +42,13 @@
 
   /**
    * Constructs a new <code>ZoneConfigurationOnezone</code>.
-   * The zone custom configuration.
+   * The Onezone custom configuration.
    * @alias module:model/ZoneConfigurationOnezone
    * @class
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -85,6 +86,9 @@
       if (data.hasOwnProperty('letsEncryptEnabled')) {
         obj['letsEncryptEnabled'] = ApiClient.convertToType(data['letsEncryptEnabled'], 'Boolean');
       }
+      if (data.hasOwnProperty('builtInDnsServer')) {
+        obj['builtInDnsServer'] = ApiClient.convertToType(data['builtInDnsServer'], 'Boolean');
+      }
       if (data.hasOwnProperty('policies')) {
         obj['policies'] = ZonePolicies.constructFromObject(data['policies']);
       }
@@ -93,12 +97,12 @@
   }
 
   /**
-   * The name of a HTTP domain.
+   * The domain of Onezone cluster.
    * @member {String} domainName
    */
   exports.prototype['domainName'] = undefined;
   /**
-   * The name of a zone.
+   * The Onezone cluster name.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
@@ -108,6 +112,11 @@
    * @default false
    */
   exports.prototype['letsEncryptEnabled'] = false;
+  /**
+   * If true, DNS check will verify that control of DNS zone for Onezone's domain was delegated to the DNS server built into Onezone service. 
+   * @member {Boolean} builtInDnsServer
+   */
+  exports.prototype['builtInDnsServer'] = undefined;
   /**
    * @member {module:model/ZonePolicies} policies
    */

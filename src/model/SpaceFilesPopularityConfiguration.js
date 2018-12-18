@@ -54,6 +54,7 @@
 
 
 
+
   };
 
   /**
@@ -89,6 +90,9 @@
       if (data.hasOwnProperty('avgOpenCountPerDayWeight')) {
         obj['avgOpenCountPerDayWeight'] = ApiClient.convertToType(data['avgOpenCountPerDayWeight'], 'Number');
       }
+      if (data.hasOwnProperty('maxAvgOpenCountPerDay')) {
+        obj['maxAvgOpenCountPerDay'] = ApiClient.convertToType(data['maxAvgOpenCountPerDay'], 'Number');
+      }
     }
     return obj;
   }
@@ -113,6 +117,11 @@
    * @member {Number} avgOpenCountPerDayWeight
    */
   exports.prototype['avgOpenCountPerDayWeight'] = undefined;
+  /**
+   * Maximal value of average open count per day taken to calculate the value of popularity function. 
+   * @member {Number} maxAvgOpenCountPerDay
+   */
+  exports.prototype['maxAvgOpenCountPerDay'] = undefined;
 
 
 

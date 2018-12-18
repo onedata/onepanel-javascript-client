@@ -81,6 +81,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property maxAvgOpenCountPerDay (base name: "maxAvgOpenCountPerDay")', function() {
+      // uncomment below and update the code to test the property maxAvgOpenCountPerDay
+      //var instane = new Onepanel.SpaceFilesPopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

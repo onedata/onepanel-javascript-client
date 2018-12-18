@@ -45,15 +45,16 @@
    * The cluster storage configuration.
    * @alias module:model/StorageDetails
    * @class
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
 
 
 
 
 
-
+    _this['type'] = type;
 
 
 
@@ -86,14 +87,14 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('verificationPassed')) {
-        obj['verificationPassed'] = ApiClient.convertToType(data['verificationPassed'], 'Boolean');
-      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('lumaEnabled')) {
         obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
@@ -119,11 +120,6 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read/write storages.
-   * @member {Boolean} verificationPassed
-   */
-  exports.prototype['verificationPassed'] = undefined;
-  /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
    * @default false
@@ -135,6 +131,11 @@
    * @default false
    */
   exports.prototype['readonly'] = false;
+  /**
+   * The type of storage.
+   * @member {module:model/StorageDetails.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * If true LUMA and reverse LUMA services will be enabled.
    * @member {Boolean} lumaEnabled
@@ -152,6 +153,53 @@
    */
   exports.prototype['lumaApiKey'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "posix"
+     * @const
+     */
+    "posix": "posix",
+    /**
+     * value: "s3"
+     * @const
+     */
+    "s3": "s3",
+    /**
+     * value: "ceph"
+     * @const
+     */
+    "ceph": "ceph",
+    /**
+     * value: "cephrados"
+     * @const
+     */
+    "cephrados": "cephrados",
+    /**
+     * value: "swift"
+     * @const
+     */
+    "swift": "swift",
+    /**
+     * value: "glusterfs"
+     * @const
+     */
+    "glusterfs": "glusterfs",
+    /**
+     * value: "nulldevice"
+     * @const
+     */
+    "nulldevice": "nulldevice",
+    /**
+     * value: "webdav"
+     * @const
+     */
+    "webdav": "webdav"  };
 
 
   return exports;

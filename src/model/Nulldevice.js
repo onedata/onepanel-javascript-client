@@ -46,12 +46,12 @@
    * @alias module:model/Nulldevice
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/Nulldevice.TypeEnum} The type of storage.
+   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    */
   var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
-    _this['type'] = type;
+    StorageDetails.call(_this, type);
+
 
 
 
@@ -83,9 +83,6 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
       if (data.hasOwnProperty('latencyMin')) {
         obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
       }
@@ -100,6 +97,9 @@
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -117,11 +117,6 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
-  /**
-   * The type of storage.
-   * @member {module:model/Nulldevice.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
   /**
    * Minimum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMin
@@ -150,6 +145,12 @@
    */
   exports.prototype['timeout'] = undefined;
   /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'canonical'
@@ -168,18 +169,6 @@
    */
   exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "nulldevice"
-     * @const
-     */
-    "nulldevice": "nulldevice"  };
 
 
   return exports;

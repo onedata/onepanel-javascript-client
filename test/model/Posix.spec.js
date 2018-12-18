@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Posix);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.Posix();
-      //expect(instance).to.be();
-    });
-
     it('should have the property mountPoint (base name: "mountPoint")', function() {
       // uncomment below and update the code to test the property mountPoint
       //var instane = new Onepanel.Posix();
@@ -71,6 +65,12 @@
 
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.Posix();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
       //var instane = new Onepanel.Posix();
       //expect(instance).to.be();
     });

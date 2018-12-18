@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Ceph);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.Ceph();
-      //expect(instance).to.be();
-    });
-
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
       //var instane = new Onepanel.Ceph();
@@ -101,6 +95,12 @@
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Ceph();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
       //var instane = new Onepanel.Ceph();
       //expect(instance).to.be();
     });

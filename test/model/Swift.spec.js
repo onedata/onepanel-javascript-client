@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Swift);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
     it('should have the property authUrl (base name: "authUrl")', function() {
       // uncomment below and update the code to test the property authUrl
       //var instane = new Onepanel.Swift();
@@ -107,6 +101,12 @@
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
+      //var instane = new Onepanel.Swift();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
       //var instane = new Onepanel.Swift();
       //expect(instance).to.be();
     });

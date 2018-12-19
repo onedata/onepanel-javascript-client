@@ -110,18 +110,21 @@
   /**
    * Weight of `lastOpenHour` parameter. 
    * @member {Number} lastOpenHourWeight
+   * @default 1.0
    */
-  exports.prototype['lastOpenHourWeight'] = undefined;
+  exports.prototype['lastOpenHourWeight'] = 1.0;
   /**
    * Weight of `avgOpenCountPerDayWeight` parameter. 
    * @member {Number} avgOpenCountPerDayWeight
+   * @default 25.0
    */
-  exports.prototype['avgOpenCountPerDayWeight'] = undefined;
+  exports.prototype['avgOpenCountPerDayWeight'] = 25.0;
   /**
    * Maximal value of average open count per day taken to calculate the value of popularity function. 
    * @member {Number} maxAvgOpenCountPerDay
+   * @default 100.0
    */
-  exports.prototype['maxAvgOpenCountPerDay'] = undefined;
+  exports.prototype['maxAvgOpenCountPerDay'] = 100.0;
 
 
 

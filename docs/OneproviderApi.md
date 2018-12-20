@@ -331,7 +331,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space.
 
-var enabled = new Onepanel.SpaceFilesPopularityConfiguration(); // SpaceFilesPopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
+var enabled = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
 
 
 var callback = function(error, data, response) {
@@ -349,7 +349,7 @@ apiInstance.configureFilePopularity(id, enabled, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
- **enabled** | [**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
+ **enabled** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
 
 ### Return type
 
@@ -473,7 +473,7 @@ null (empty response body)
 
 <a name="getFilePopularityConfiguration"></a>
 # **getFilePopularityConfiguration**
-> SpaceFilesPopularityConfiguration getFilePopularityConfiguration(id)
+> SpaceFilePopularityConfiguration getFilePopularityConfiguration(id)
 
 Get file-popularity configuration
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)
+[**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
 
 ### Authorization
 

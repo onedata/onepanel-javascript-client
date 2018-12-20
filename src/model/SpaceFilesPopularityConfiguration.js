@@ -116,9 +116,9 @@
   /**
    * Weight of `avgOpenCountPerDayWeight` parameter. 
    * @member {Number} avgOpenCountPerDayWeight
-   * @default 25.0
+   * @default 20.0
    */
-  exports.prototype['avgOpenCountPerDayWeight'] = 25.0;
+  exports.prototype['avgOpenCountPerDayWeight'] = 20.0;
   /**
    * Maximal value of average open count per day taken to calculate the value of popularity function. 
    * @member {Number} maxAvgOpenCountPerDay

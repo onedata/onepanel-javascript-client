@@ -9,10 +9,10 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**configureFilesPopularity**](OneproviderApi.md#configureFilesPopularity) | **PATCH** /provider/spaces/{id}/files-popularity/configuration | Configure files-popularity mechanism in the space.
+[**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
-[**getFilesPopularityConfiguration**](OneproviderApi.md#getFilesPopularityConfiguration) | **GET** /provider/spaces/{id}/files-popularity/configuration | Get files-popularity configuration
+[**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -309,13 +309,13 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="configureFilesPopularity"></a>
-# **configureFilesPopularity**
-> configureFilesPopularity(id, enabled)
+<a name="configureFilePopularity"></a>
+# **configureFilePopularity**
+> configureFilePopularity(id, enabled)
 
-Configure files-popularity mechanism in the space.
+Configure file-popularity mechanism in the space.
 
-Configures the files-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
+Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript
@@ -331,7 +331,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space.
 
-var enabled = new Onepanel.SpaceFilesPopularityConfiguration(); // SpaceFilesPopularityConfiguration | Value informing whether collecting files-popularity statistics in the space should be turned on or off.
+var enabled = new Onepanel.SpaceFilesPopularityConfiguration(); // SpaceFilesPopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
 
 
 var callback = function(error, data, response) {
@@ -341,7 +341,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.configureFilesPopularity(id, enabled, callback);
+apiInstance.configureFilePopularity(id, enabled, callback);
 ```
 
 ### Parameters
@@ -349,7 +349,7 @@ apiInstance.configureFilesPopularity(id, enabled, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
- **enabled** | [**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)| Value informing whether collecting files-popularity statistics in the space should be turned on or off. | 
+ **enabled** | [**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
 
 ### Return type
 
@@ -471,13 +471,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getFilesPopularityConfiguration"></a>
-# **getFilesPopularityConfiguration**
-> SpaceFilesPopularityConfiguration getFilesPopularityConfiguration(id)
+<a name="getFilePopularityConfiguration"></a>
+# **getFilePopularityConfiguration**
+> SpaceFilesPopularityConfiguration getFilePopularityConfiguration(id)
 
-Get files-popularity configuration
+Get file-popularity configuration
 
-Returns configuration of files-popularity mechanism in the space specified by space Id in the path. 
+Returns configuration of file-popularity mechanism in the space specified by space Id in the path. 
 
 ### Example
 ```javascript
@@ -491,7 +491,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space of which files-popularity configuration should be returned.
+var id = "id_example"; // String | The Id of a space of which file-popularity configuration should be returned.
 
 
 var callback = function(error, data, response) {
@@ -501,14 +501,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getFilesPopularityConfiguration(id, callback);
+apiInstance.getFilePopularityConfiguration(id, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space of which files-popularity configuration should be returned. | 
+ **id** | **String**| The Id of a space of which file-popularity configuration should be returned. | 
 
 ### Return type
 

@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>SpaceFilesPopularityConfiguration</code>.
-   * Configuration of files-popularity mechanism in the space.
+   * Configuration of file-popularity mechanism in the space.
    * @alias module:model/SpaceFilesPopularityConfiguration
    * @class
-   * @param enabled {Boolean} If true, collecting files-popularity mechanism in the space is enabled
+   * @param enabled {Boolean} If true, collecting file-popularity mechanism in the space is enabled
    */
   var exports = function(enabled) {
     var _this = this;
@@ -98,12 +98,12 @@
   }
 
   /**
-   * If true, collecting files-popularity mechanism in the space is enabled
+   * If true, collecting file-popularity mechanism in the space is enabled
    * @member {Boolean} enabled
    */
   exports.prototype['enabled'] = undefined;
   /**
-   * Example `curl` command that can be executed to query the files-popularity view in the space. 
+   * Example `curl` command that can be executed to query the file-popularity view in the space. 
    * @member {String} exampleQuery
    */
   exports.prototype['exampleQuery'] = undefined;

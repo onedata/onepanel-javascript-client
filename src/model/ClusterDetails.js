@@ -46,15 +46,16 @@
    * @alias module:model/ClusterDetails
    * @class
    * @param id {String} 
-   * @param type {module:model/ClusterDetails.TypeEnum} Type of Onedata component in this cluster. (@fixme)
+   * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster
    * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @param name {String} 
    * @param domain {String} Domain of the cluster.
-   * @param version {String} 
+   * @param version {String} Software version.
+   * @param build {String} Software build identifier.
    * @param online {Boolean} 
    * @param proxy {Boolean} 
    */
-  var exports = function(id, type, serviceId, name, domain, version, online, proxy) {
+  var exports = function(id, type, serviceId, name, domain, version, build, online, proxy) {
     var _this = this;
 
     _this['id'] = id;
@@ -63,6 +64,7 @@
     _this['name'] = name;
     _this['domain'] = domain;
     _this['version'] = version;
+    _this['build'] = build;
     _this['online'] = online;
     _this['proxy'] = proxy;
   };
@@ -106,6 +108,9 @@
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'String');
       }
+      if (data.hasOwnProperty('build')) {
+        obj['build'] = ApiClient.convertToType(data['build'], 'String');
+      }
       if (data.hasOwnProperty('online')) {
         obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
       }
@@ -121,7 +126,7 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * Type of Onedata component in this cluster. (@fixme)
+   * Type of the cluster
    * @member {module:model/ClusterDetails.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -140,9 +145,15 @@
    */
   exports.prototype['domain'] = undefined;
   /**
+   * Software version.
    * @member {String} version
    */
   exports.prototype['version'] = undefined;
+  /**
+   * Software build identifier.
+   * @member {String} build
+   */
+  exports.prototype['build'] = undefined;
   /**
    * @member {Boolean} online
    */

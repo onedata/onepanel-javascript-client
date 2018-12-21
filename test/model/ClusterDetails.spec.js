@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property build (base name: "build")', function() {
+      // uncomment below and update the code to test the property build
+      //var instane = new Onepanel.ClusterDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property online (base name: "online")', function() {
       // uncomment below and update the code to test the property online
       //var instane = new Onepanel.ClusterDetails();

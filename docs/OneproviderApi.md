@@ -311,7 +311,7 @@ null (empty response body)
 
 <a name="configureFilePopularity"></a>
 # **configureFilePopularity**
-> configureFilePopularity(id, enabled)
+> configureFilePopularity(id, spaceFilePopularityConfiguration)
 
 Configure file-popularity mechanism in the space.
 
@@ -331,7 +331,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space.
 
-var enabled = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
+var spaceFilePopularityConfiguration = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
 
 
 var callback = function(error, data, response) {
@@ -341,7 +341,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.configureFilePopularity(id, enabled, callback);
+apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callback);
 ```
 
 ### Parameters
@@ -349,7 +349,7 @@ apiInstance.configureFilePopularity(id, enabled, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
- **enabled** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
+ **spaceFilePopularityConfiguration** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
 
 ### Return type
 

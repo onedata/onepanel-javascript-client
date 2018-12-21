@@ -280,20 +280,20 @@
      * Configure file-popularity mechanism in the space.
      * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space.
-     * @param {module:model/SpaceFilePopularityConfiguration} enabled Value informing whether collecting file-popularity statistics in the space should be turned on or off.
+     * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Value informing whether collecting file-popularity statistics in the space should be turned on or off.
      * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.configureFilePopularity = function(id, enabled, callback) {
-      var postBody = enabled;
+    this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
+      var postBody = spaceFilePopularityConfiguration;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling configureFilePopularity");
       }
 
-      // verify the required parameter 'enabled' is set
-      if (enabled === undefined || enabled === null) {
-        throw new Error("Missing the required parameter 'enabled' when calling configureFilePopularity");
+      // verify the required parameter 'spaceFilePopularityConfiguration' is set
+      if (spaceFilePopularityConfiguration === undefined || spaceFilePopularityConfiguration === null) {
+        throw new Error("Missing the required parameter 'spaceFilePopularityConfiguration' when calling configureFilePopularity");
       }
 
 

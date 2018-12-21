@@ -139,7 +139,7 @@
    */
   exports.prototype['maxHourlyMovingAverage'] = undefined;
   /**
-   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 31 days window. The default value is `9007199254740991 (2^53-1)`. 
+   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 30 days window. The default value is `9007199254740991 (2^53-1)`. 
    * @member {module:model/SpaceAutoCleaningRuleSetting} maxDailyMovingAverage
    */
   exports.prototype['maxDailyMovingAverage'] = undefined;

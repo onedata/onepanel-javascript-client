@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/JoinClusterRequest', 'model/Node', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/Cookie', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Cookie'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Cookie, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, JoinClusterRequest, Node, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, Cookie, DnsCheck, DnsCheckConfiguration, Error, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -47,51 +47,6 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
-
-    /**
-     * Callback function to receive the result of the addClusterHost operation.
-     * @callback module:api/OnepanelApi~addClusterHostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Host} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Adds given host to the cluster
-     * Adds given host to the current cluster. The host can be specified by any address by which it is reachable. Upon success returns proper hostname used to address the new host in cluster management. 
-     * @param {module:model/HostAddRequest} hostAddRequest 
-     * @param {module:api/OnepanelApi~addClusterHostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Host}
-     */
-    this.addClusterHost = function(hostAddRequest, callback) {
-      var postBody = hostAddRequest;
-
-      // verify the required parameter 'hostAddRequest' is set
-      if (hostAddRequest === undefined || hostAddRequest === null) {
-        throw new Error("Missing the required parameter 'hostAddRequest' when calling addClusterHost");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Host;
-
-      return this.apiClient.callApi(
-        '/hosts', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
 
     /**
      * Callback function to receive the result of the addUser operation.
@@ -175,6 +130,49 @@
 
       return this.apiClient.callApi(
         '/dns_check', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createCluster operation.
+     * @callback module:api/OnepanelApi~createClusterCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create or join cluster
+     * Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has been provided in the query string adds this host to an existing cluster. In both cases the host handling this request has to be newly started or removed from previous cluster. It cannot contain any configuration data. This request can be executed by unauthorized users as long as there are no admin users. 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.clusterHost Hostname of an existing cluster node.
+     * @param {module:model/Cookie} opts.cookie The cookie used for cluster authentication.
+     * @param {module:api/OnepanelApi~createClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.createCluster = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['cookie'];
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'clusterHost': opts['clusterHost']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/hosts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -267,18 +265,22 @@
      */
 
     /**
-     * Get cluster hosts
-     * Returns the list of administrative cluster hosts. 
+     * Get cluster or discovered hosts
+     * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.discovered Defines whether to return cluster or discovered hosts. (default to false)
      * @param {module:api/OnepanelApi~getClusterHostsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<'String'>}
      */
-    this.getClusterHosts = function(callback) {
+    this.getClusterHosts = function(opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
+        'discovered': opts['discovered']
       };
       var headerParams = {
       };
@@ -331,45 +333,6 @@
 
       return this.apiClient.callApi(
         '/dns_check/configuration', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getNode operation.
-     * @callback module:api/OnepanelApi~getNodeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Node} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get information about current onepanel node.
-     * Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {module:api/OnepanelApi~getNodeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Node}
-     */
-    this.getNode = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Node;
-
-      return this.apiClient.callApi(
-        '/node', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -507,49 +470,6 @@
     }
 
     /**
-     * Callback function to receive the result of the getUsers operation.
-     * @callback module:api/OnepanelApi~getUsersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Users} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List onepanel users
-     * Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.role If present, query returns only users with specified role.
-     * @param {module:api/OnepanelApi~getUsersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Users}
-     */
-    this.getUsers = function(opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'role': opts['role']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Users;
-
-      return this.apiClient.callApi(
-        '/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getWebCert operation.
      * @callback module:api/OnepanelApi~getWebCertCallback
      * @param {String} error Error message, if any.
@@ -583,50 +503,6 @@
 
       return this.apiClient.callApi(
         '/web_cert', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the joinCluster operation.
-     * @callback module:api/OnepanelApi~joinClusterCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Join existing cluster
-     * Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
-     * @param {module:model/JoinClusterRequest} joinClusterRequest 
-     * @param {module:api/OnepanelApi~joinClusterCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.joinCluster = function(joinClusterRequest, callback) {
-      var postBody = joinClusterRequest;
-
-      // verify the required parameter 'joinClusterRequest' is set
-      if (joinClusterRequest === undefined || joinClusterRequest === null) {
-        throw new Error("Missing the required parameter 'joinClusterRequest' when calling joinCluster");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/join_cluster', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -781,7 +657,7 @@
 
     /**
      * Remove host from cluster
-     * Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. 
+     * Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. It also removes the host from each service cluster it belonged to. 
      * @param {String} host Hostname of a node to be removed from the cluster.
      * @param {module:api/OnepanelApi~removeClusterHostCallback} callback The callback function, accepting three arguments: error, data, response
      */

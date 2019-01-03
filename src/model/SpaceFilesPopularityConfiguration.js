@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SessionDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceFilesPopularityConfiguration = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,67 +35,66 @@
 
 
   /**
-   * The SessionDetails model module.
-   * @module model/SessionDetails
+   * The SpaceFilesPopularityConfiguration model module.
+   * @module model/SpaceFilesPopularityConfiguration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SessionDetails</code>.
-   * The user session details.
-   * @alias module:model/SessionDetails
+   * Constructs a new <code>SpaceFilesPopularityConfiguration</code>.
+   * Settings of files-popularity feature of space
+   * @alias module:model/SpaceFilesPopularityConfiguration
    * @class
-   * @param sessionId {String} The session Id.
-   * @param username {String} The name of a user associated with the session.
+   * @param enabled {Boolean} If true, collecting files-popularity mechanism in the space is enabled
    */
-  var exports = function(sessionId, username) {
+  var exports = function(enabled) {
     var _this = this;
 
-    _this['sessionId'] = sessionId;
-    _this['username'] = username;
+    _this['enabled'] = enabled;
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SessionDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceFilesPopularityConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SessionDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceFilesPopularityConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SessionDetails} obj Optional instance to populate.
-   * @return {module:model/SessionDetails} The populated <code>SessionDetails</code> instance.
+   * @param {module:model/SpaceFilesPopularityConfiguration} obj Optional instance to populate.
+   * @return {module:model/SpaceFilesPopularityConfiguration} The populated <code>SpaceFilesPopularityConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('sessionId')) {
-        obj['sessionId'] = ApiClient.convertToType(data['sessionId'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('restUrl')) {
+        obj['restUrl'] = ApiClient.convertToType(data['restUrl'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The session Id.
-   * @member {String} sessionId
+   * If true, collecting files-popularity mechanism in the space is enabled
+   * @member {Boolean} enabled
    */
-  exports.prototype['sessionId'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * The name of a user associated with the session.
-   * @member {String} username
+   * REST endpoint to view files-popularity statistics 
+   * @member {String} restUrl
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['restUrl'] = undefined;
 
 
 

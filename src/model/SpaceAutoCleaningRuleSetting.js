@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SessionDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningRuleSetting = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,67 +35,65 @@
 
 
   /**
-   * The SessionDetails model module.
-   * @module model/SessionDetails
+   * The SpaceAutoCleaningRuleSetting model module.
+   * @module model/SpaceAutoCleaningRuleSetting
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SessionDetails</code>.
-   * The user session details.
-   * @alias module:model/SessionDetails
+   * Constructs a new <code>SpaceAutoCleaningRuleSetting</code>.
+   * Rule setting for a space auto-cleaning mechanism. Setting field &#x60;enabled&#x60; to &#x60;false&#x60; disables the rule. 
+   * @alias module:model/SpaceAutoCleaningRuleSetting
    * @class
-   * @param sessionId {String} The session Id.
-   * @param username {String} The name of a user associated with the session.
    */
-  var exports = function(sessionId, username) {
+  var exports = function() {
     var _this = this;
 
-    _this['sessionId'] = sessionId;
-    _this['username'] = username;
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SessionDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceAutoCleaningRuleSetting} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SessionDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceAutoCleaningRuleSetting</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SessionDetails} obj Optional instance to populate.
-   * @return {module:model/SessionDetails} The populated <code>SessionDetails</code> instance.
+   * @param {module:model/SpaceAutoCleaningRuleSetting} obj Optional instance to populate.
+   * @return {module:model/SpaceAutoCleaningRuleSetting} The populated <code>SpaceAutoCleaningRuleSetting</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('sessionId')) {
-        obj['sessionId'] = ApiClient.convertToType(data['sessionId'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('value')) {
+        obj['value'] = ApiClient.convertToType(data['value'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * The session Id.
-   * @member {String} sessionId
+   * Informs whether given setting is enabled. 
+   * @member {Boolean} enabled
    */
-  exports.prototype['sessionId'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * The name of a user associated with the session.
-   * @member {String} username
+   * Integer value of a given setting.
+   * @member {Number} value
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['value'] = undefined;
 
 
 

@@ -108,7 +108,7 @@
   }
 
   /**
-   * This cluster's Oneprovider Id. In oz_panel this field is omitted. 
+   * This cluster's Oneprovider Id. In Onezone panel this field is omitted. 
    * @member {String} providerId
    */
   exports.prototype['providerId'] = undefined;

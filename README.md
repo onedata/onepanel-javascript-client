@@ -257,6 +257,8 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
+ - [Onepanel.OpConfiguration](docs/OpConfiguration.md)
+ - [Onepanel.OzConfiguration](docs/OzConfiguration.md)
  - [Onepanel.Posix](docs/Posix.md)
  - [Onepanel.S3](docs/S3.md)
  - [Onepanel.Swift](docs/Swift.md)

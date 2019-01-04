@@ -52,10 +52,6 @@
   var exports = function(version, build, deployed) {
     var _this = this;
 
-
-
-
-
     _this['version'] = version;
     _this['build'] = build;
     _this['deployed'] = deployed;
@@ -68,7 +64,7 @@
    * @return {module:model/Configuration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    ;
+    return 'serviceType';
   };
 
   /**
@@ -82,18 +78,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('providerId')) {
-        obj['providerId'] = ApiClient.convertToType(data['providerId'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('onezoneDomain')) {
-        obj['onezoneDomain'] = ApiClient.convertToType(data['onezoneDomain'], 'String');
-      }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'String');
       }
@@ -107,26 +91,6 @@
     return obj;
   }
 
-  /**
-   * This cluster's Oneprovider Id. In Onezone panel this field is omitted. 
-   * @member {String} providerId
-   */
-  exports.prototype['providerId'] = undefined;
-  /**
-   * Name of this cluster.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Domain of this cluster.
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * In oz_panel - the domain of this Onezone cluster, equal to the 'domain' field. In op_panel - the domain of the Onezone where this Oneprovider is registered. 
-   * @member {String} onezoneDomain
-   */
-  exports.prototype['onezoneDomain'] = undefined;
   /**
    * Version of this Onepanel
    * @member {String} version

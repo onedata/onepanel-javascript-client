@@ -57,30 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Configuration);
     });
 
-    it('should have the property providerId (base name: "providerId")', function() {
-      // uncomment below and update the code to test the property providerId
-      //var instane = new Onepanel.Configuration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.Configuration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.Configuration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onezoneDomain (base name: "onezoneDomain")', function() {
-      // uncomment below and update the code to test the property onezoneDomain
-      //var instane = new Onepanel.Configuration();
-      //expect(instance).to.be();
-    });
-
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
       //var instane = new Onepanel.Configuration();

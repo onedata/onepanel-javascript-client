@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Glusterfs);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.Glusterfs();
+      //expect(instance).to.be();
+    });
+
     it('should have the property volume (base name: "volume")', function() {
       // uncomment below and update the code to test the property volume
       //var instane = new Onepanel.Glusterfs();

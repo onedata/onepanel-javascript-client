@@ -87,12 +87,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property online (base name: "online")', function() {
-      // uncomment below and update the code to test the property online
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property proxy (base name: "proxy")', function() {
       // uncomment below and update the code to test the property proxy
       //var instane = new Onepanel.ClusterDetails();

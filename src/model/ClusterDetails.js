@@ -50,10 +50,9 @@
    * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @param version {String} Software version.
    * @param build {String} Software build identifier.
-   * @param online {Boolean} 
    * @param proxy {Boolean} 
    */
-  var exports = function(id, type, serviceId, version, build, online, proxy) {
+  var exports = function(id, type, serviceId, version, build, proxy) {
     var _this = this;
 
     _this['id'] = id;
@@ -61,7 +60,6 @@
     _this['serviceId'] = serviceId;
     _this['version'] = version;
     _this['build'] = build;
-    _this['online'] = online;
     _this['proxy'] = proxy;
   };
 
@@ -101,9 +99,6 @@
       if (data.hasOwnProperty('build')) {
         obj['build'] = ApiClient.convertToType(data['build'], 'String');
       }
-      if (data.hasOwnProperty('online')) {
-        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
-      }
       if (data.hasOwnProperty('proxy')) {
         obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
       }
@@ -135,10 +130,6 @@
    * @member {String} build
    */
   exports.prototype['build'] = undefined;
-  /**
-   * @member {Boolean} online
-   */
-  exports.prototype['online'] = undefined;
   /**
    * @member {Boolean} proxy
    */

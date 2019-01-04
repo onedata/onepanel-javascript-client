@@ -75,18 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
       //var instane = new Onepanel.ClusterDetails();

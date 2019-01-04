@@ -91,6 +91,16 @@
         done();
       });
     });
+    describe('getAnyProvider', function() {
+      it('should call getAnyProvider successfully', function(done) {
+        //uncomment below and update the code to test getAnyProvider
+        //instance.getAnyProvider(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCluster', function() {
       it('should call getCluster successfully', function(done) {
         //uncomment below and update the code to test getCluster

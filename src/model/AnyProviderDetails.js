@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.AnyProviderDetails = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,52 +35,52 @@
 
 
   /**
-   * The ClusterDetails model module.
-   * @module model/ClusterDetails
+   * The AnyProviderDetails model module.
+   * @module model/AnyProviderDetails
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>ClusterDetails</code>.
-   * Details of a cluster.
-   * @alias module:model/ClusterDetails
+   * Constructs a new <code>AnyProviderDetails</code>.
+   * Oneprovider details.
+   * @alias module:model/AnyProviderDetails
    * @class
-   * @param id {String} 
-   * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster
-   * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
-   * @param version {String} Software version.
-   * @param build {String} Software build identifier.
-   * @param online {Boolean} 
-   * @param proxy {Boolean} 
+   * @param id {String} The Id assigned by a zone.
+   * @param name {String} The name under which the provider has been registered in a zone.
+   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @param geoLongitude {Number} The geographical longitude of the provider.
+   * @param geoLatitude {Number} The geographical latitude of the provider.
+   * @param cluster {String} The Id of the corresponding cluster record.
+   * @param online {Boolean} Indicates if the provider is currently online.
    */
-  var exports = function(id, type, serviceId, version, build, online, proxy) {
+  var exports = function(id, name, domain, geoLongitude, geoLatitude, cluster, online) {
     var _this = this;
 
     _this['id'] = id;
-    _this['type'] = type;
-    _this['serviceId'] = serviceId;
-    _this['version'] = version;
-    _this['build'] = build;
+    _this['name'] = name;
+    _this['domain'] = domain;
+    _this['geoLongitude'] = geoLongitude;
+    _this['geoLatitude'] = geoLatitude;
+    _this['cluster'] = cluster;
     _this['online'] = online;
-    _this['proxy'] = proxy;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ClusterDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/AnyProviderDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ClusterDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AnyProviderDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterDetails} obj Optional instance to populate.
-   * @return {module:model/ClusterDetails} The populated <code>ClusterDetails</code> instance.
+   * @param {module:model/AnyProviderDetails} obj Optional instance to populate.
+   * @return {module:model/AnyProviderDetails} The populated <code>AnyProviderDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -89,78 +89,64 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('serviceId')) {
-        obj['serviceId'] = ApiClient.convertToType(data['serviceId'], 'String');
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('version')) {
-        obj['version'] = ApiClient.convertToType(data['version'], 'String');
+      if (data.hasOwnProperty('geoLongitude')) {
+        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
       }
-      if (data.hasOwnProperty('build')) {
-        obj['build'] = ApiClient.convertToType(data['build'], 'String');
+      if (data.hasOwnProperty('geoLatitude')) {
+        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
+      }
+      if (data.hasOwnProperty('cluster')) {
+        obj['cluster'] = ApiClient.convertToType(data['cluster'], 'String');
       }
       if (data.hasOwnProperty('online')) {
         obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
-      }
-      if (data.hasOwnProperty('proxy')) {
-        obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
+   * The Id assigned by a zone.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
-   * Type of the cluster
-   * @member {module:model/ClusterDetails.TypeEnum} type
+   * The name under which the provider has been registered in a zone.
+   * @member {String} name
    */
-  exports.prototype['type'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
-   * The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
-   * @member {String} serviceId
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @member {String} domain
    */
-  exports.prototype['serviceId'] = undefined;
+  exports.prototype['domain'] = undefined;
   /**
-   * Software version.
-   * @member {String} version
+   * The geographical longitude of the provider.
+   * @member {Number} geoLongitude
    */
-  exports.prototype['version'] = undefined;
+  exports.prototype['geoLongitude'] = undefined;
   /**
-   * Software build identifier.
-   * @member {String} build
+   * The geographical latitude of the provider.
+   * @member {Number} geoLatitude
    */
-  exports.prototype['build'] = undefined;
+  exports.prototype['geoLatitude'] = undefined;
   /**
+   * The Id of the corresponding cluster record.
+   * @member {String} cluster
+   */
+  exports.prototype['cluster'] = undefined;
+  /**
+   * Indicates if the provider is currently online.
    * @member {Boolean} online
    */
   exports.prototype['online'] = undefined;
-  /**
-   * @member {Boolean} proxy
-   */
-  exports.prototype['proxy'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "oneprovider"
-     * @const
-     */
-    "oneprovider": "oneprovider",
-    /**
-     * value: "onezone"
-     * @const
-     */
-    "onezone": "onezone"  };
 
 
   return exports;

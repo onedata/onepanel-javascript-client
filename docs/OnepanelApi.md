@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
+[**getAnyProvider**](OnepanelApi.md#getAnyProvider) | **GET** /providers/{id} | Get details of any provider
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
@@ -230,6 +231,58 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SessionDetails**](SessionDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="getAnyProvider"></a>
+# **getAnyProvider**
+> AnyProviderDetails getAnyProvider(id)
+
+Get details of any provider
+
+Returns the details of given provider. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var id = "id_example"; // String | Provider id which details should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getAnyProvider(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Provider id which details should be returned. | 
+
+### Return type
+
+[**AnyProviderDetails**](AnyProviderDetails.md)
 
 ### Authorization
 

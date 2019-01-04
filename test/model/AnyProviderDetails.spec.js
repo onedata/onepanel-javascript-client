@@ -16,154 +16,89 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ClusterDetails = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.AnyProviderDetails();
+  });
 
-
-  /**
-   * The ClusterDetails model module.
-   * @module model/ClusterDetails
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>ClusterDetails</code>.
-   * Details of a cluster.
-   * @alias module:model/ClusterDetails
-   * @class
-   * @param id {String} 
-   * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster
-   * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
-   * @param version {String} Software version.
-   * @param build {String} Software build identifier.
-   * @param online {Boolean} 
-   * @param proxy {Boolean} 
-   */
-  var exports = function(id, type, serviceId, version, build, online, proxy) {
-    var _this = this;
-
-    _this['id'] = id;
-    _this['type'] = type;
-    _this['serviceId'] = serviceId;
-    _this['version'] = version;
-    _this['build'] = build;
-    _this['online'] = online;
-    _this['proxy'] = proxy;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ClusterDetails} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ClusterDetails</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterDetails} obj Optional instance to populate.
-   * @return {module:model/ClusterDetails} The populated <code>ClusterDetails</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('serviceId')) {
-        obj['serviceId'] = ApiClient.convertToType(data['serviceId'], 'String');
-      }
-      if (data.hasOwnProperty('version')) {
-        obj['version'] = ApiClient.convertToType(data['version'], 'String');
-      }
-      if (data.hasOwnProperty('build')) {
-        obj['build'] = ApiClient.convertToType(data['build'], 'String');
-      }
-      if (data.hasOwnProperty('online')) {
-        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
-      }
-      if (data.hasOwnProperty('proxy')) {
-        obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * Type of the cluster
-   * @member {module:model/ClusterDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
-   * @member {String} serviceId
-   */
-  exports.prototype['serviceId'] = undefined;
-  /**
-   * Software version.
-   * @member {String} version
-   */
-  exports.prototype['version'] = undefined;
-  /**
-   * Software build identifier.
-   * @member {String} build
-   */
-  exports.prototype['build'] = undefined;
-  /**
-   * @member {Boolean} online
-   */
-  exports.prototype['online'] = undefined;
-  /**
-   * @member {Boolean} proxy
-   */
-  exports.prototype['proxy'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('AnyProviderDetails', function() {
+    it('should create an instance of AnyProviderDetails', function() {
+      // uncomment below and update the code to test AnyProviderDetails
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be.a(Onepanel.AnyProviderDetails);
+    });
 
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "oneprovider"
-     * @const
-     */
-    "oneprovider": "oneprovider",
-    /**
-     * value: "onezone"
-     * @const
-     */
-    "onezone": "onezone"  };
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
+      // uncomment below and update the code to test the property geoLongitude
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
+      // uncomment below and update the code to test the property geoLatitude
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cluster (base name: "cluster")', function() {
+      // uncomment below and update the code to test the property cluster
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property online (base name: "online")', function() {
+      // uncomment below and update the code to test the property online
+      //var instane = new Onepanel.AnyProviderDetails();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

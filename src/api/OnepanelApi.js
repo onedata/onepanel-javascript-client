@@ -308,8 +308,8 @@
      */
 
     /**
-     * Get Onepanel configuration
-     * Returns public configuration information. 
+     * Get public configuration
+     * Returns public configuration information.
      * @param {module:api/OnepanelApi~getConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Configuration}
      */

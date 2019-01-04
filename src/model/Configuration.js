@@ -82,8 +82,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('serviceId')) {
-        obj['serviceId'] = ApiClient.convertToType(data['serviceId'], 'String');
+      if (data.hasOwnProperty('providerId')) {
+        obj['providerId'] = ApiClient.convertToType(data['providerId'], 'String');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -108,10 +108,10 @@
   }
 
   /**
-   * The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
-   * @member {String} serviceId
+   * This cluster's Oneprovider Id. In oz_panel this field is omitted. 
+   * @member {String} providerId
    */
-  exports.prototype['serviceId'] = undefined;
+  exports.prototype['providerId'] = undefined;
   /**
    * Name of this cluster.
    * @member {String} name
@@ -123,7 +123,7 @@
    */
   exports.prototype['domain'] = undefined;
   /**
-   * In oz_panel - the domain of this Onezone cluster. In op_panel - the domain of the Onezone where this Oneprovider is registered. 
+   * In oz_panel - the domain of this Onezone cluster, equal to the 'domain' field. In op_panel - the domain of the Onezone where this Oneprovider is registered. 
    * @member {String} onezoneDomain
    */
   exports.prototype['onezoneDomain'] = undefined;

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
-[**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get Onepanel configuration
+[**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
@@ -333,9 +333,9 @@ Name | Type | Description  | Notes
 # **getConfiguration**
 > Configuration getConfiguration()
 
-Get Onepanel configuration
+Get public configuration
 
-Returns public configuration information. 
+Returns public configuration information.
 
 ### Example
 ```javascript

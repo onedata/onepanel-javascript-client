@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.Configuration);
     });
 
-    it('should have the property serviceId (base name: "serviceId")', function() {
-      // uncomment below and update the code to test the property serviceId
+    it('should have the property providerId (base name: "providerId")', function() {
+      // uncomment below and update the code to test the property providerId
       //var instane = new Onepanel.Configuration();
       //expect(instance).to.be();
     });

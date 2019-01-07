@@ -89,12 +89,12 @@
   }
 
   /**
-   * A collection of IP addresses for DNS servers used in checking DNS.
+   * A collection of IP addresses for DNS servers used in checking DNS. If empty, local system configuration will be used.
    * @member {Array.<String>} dnsServers
    */
   exports.prototype['dnsServers'] = undefined;
   /**
-   * If true, DNS check will verify that control of DNS zone of Onezone's domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service. 
+   * If true, DNS check will verify that control of DNS zone for Onezone's domain was delegated to the DNS server built into Onezone service. This option is available only in Onezone service. 
    * @member {Boolean} builtInDnsServer
    */
   exports.prototype['builtInDnsServer'] = undefined;

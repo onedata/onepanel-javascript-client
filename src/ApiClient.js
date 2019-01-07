@@ -526,11 +526,11 @@
               polymorphicType = require("./model/Nulldevice");
             }
 
-            if('OpConfiguration'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+            if('op_configuration'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/OpConfiguration");
             }
 
-            if('OzConfiguration'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+            if('oz_configuration'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/OzConfiguration");
             }
 

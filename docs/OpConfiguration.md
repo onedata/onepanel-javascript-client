@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **serviceType** | **String** | Indicates that this is Oneprovider&#39;s panel. | 
-**providerId** | **String** | This cluster&#39;s Oneprovider Id. Null if the Oneprovider is not registered.  | 
+**providerId** | **String** | This cluster&#39;s Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down.  | 
 **zoneDomain** | **String** | The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered.  | 
 
 

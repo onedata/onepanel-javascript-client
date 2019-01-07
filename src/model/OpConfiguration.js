@@ -50,7 +50,7 @@
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when initial cluster deployment is finished
    * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
-   * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered. 
+   * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
    */
   var exports = function(version, build, deployed, serviceType, providerId, zoneDomain) {
@@ -104,7 +104,7 @@
    */
   exports.prototype['serviceType'] = undefined;
   /**
-   * This cluster's Oneprovider Id. Null if the Oneprovider is not registered. 
+   * This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @member {String} providerId
    */
   exports.prototype['providerId'] = undefined;

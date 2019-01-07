@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **serviceType** | **String** | Indicates that this is Onezone&#39;s panel. | 
-**zoneDomain** | **String** | The domain of this Onezone cluster.  | 
+**zoneDomain** | **String** | The domain of this Onezone cluster. Null before cluster is configured.  | 
 
 
 <a name="ServiceTypeEnum"></a>

@@ -42,13 +42,13 @@
 
   /**
    * Constructs a new <code>OpConfiguration</code>.
-   * Public configuration information.
+   * Public service configuration details
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
-   * @param deployed {Boolean} True when initial cluster deployment is finished
+   * @param deployed {Boolean} True when cluster deployment is finished
    * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
@@ -59,6 +59,7 @@
     _this['serviceType'] = serviceType;
     _this['providerId'] = providerId;
     _this['zoneDomain'] = zoneDomain;
+
   };
 
   /**
@@ -91,6 +92,9 @@
       if (data.hasOwnProperty('zoneDomain')) {
         obj['zoneDomain'] = ApiClient.convertToType(data['zoneDomain'], 'String');
       }
+      if (data.hasOwnProperty('isRegistered')) {
+        obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -113,6 +117,11 @@
    * @member {String} zoneDomain
    */
   exports.prototype['zoneDomain'] = undefined;
+  /**
+   * True if the Oneprovider has been registered at a Onezone. 
+   * @member {Boolean} isRegistered
+   */
+  exports.prototype['isRegistered'] = undefined;
 
 
   /**

@@ -42,12 +42,12 @@
 
   /**
    * Constructs a new <code>Configuration</code>.
-   * Public configuration information.
+   * Public service configuration details
    * @alias module:model/Configuration
    * @class
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
-   * @param deployed {Boolean} True when initial cluster deployment is finished
+   * @param deployed {Boolean} True when cluster deployment is finished
    */
   var exports = function(version, build, deployed) {
     var _this = this;
@@ -102,7 +102,7 @@
    */
   exports.prototype['build'] = undefined;
   /**
-   * True when initial cluster deployment is finished
+   * True when cluster deployment is finished
    * @member {Boolean} deployed
    * @default true
    */

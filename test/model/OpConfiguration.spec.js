@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isRegistered (base name: "isRegistered")', function() {
+      // uncomment below and update the code to test the property isRegistered
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

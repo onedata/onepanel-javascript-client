@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 Get public configuration
 
-Returns public configuration information.
+Returns public configuration details.
 
 ### Example
 ```javascript

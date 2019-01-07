@@ -42,13 +42,13 @@
 
   /**
    * Constructs a new <code>OzConfiguration</code>.
-   * Public configuration information.
+   * Public service configuration details
    * @alias module:model/OzConfiguration
    * @class
    * @extends module:model/Configuration
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
-   * @param deployed {Boolean} True when initial cluster deployment is finished
+   * @param deployed {Boolean} True when cluster deployment is finished
    * @param serviceType {module:model/OzConfiguration.ServiceTypeEnum} Indicates that this is Onezone's panel.
    * @param zoneDomain {String} The domain of this Onezone cluster. Null before cluster is configured. 
    */

@@ -134,7 +134,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderManagerStatus**](docs/OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderApi* | [**getProviderManagersStatus**](docs/OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderApi* | [**getProviderNagiosReport**](docs/OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReport**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report of a space auto-cleaning run
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReport**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 *Onepanel.OneproviderApi* | [**getProviderSpaceSyncStats**](docs/OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization

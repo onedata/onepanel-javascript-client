@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>SpaceFilePopularityConfiguration</code>.
-   * Configuration of file-popularity mechanism in the space.
+   * Configuration of the file-popularity mechanism in the space.
    * @alias module:model/SpaceFilePopularityConfiguration
    * @class
    * @param enabled {Boolean} If true, collecting file-popularity mechanism in the space is enabled

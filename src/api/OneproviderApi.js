@@ -280,7 +280,7 @@
      * Configure file-popularity mechanism in the space.
      * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space.
-     * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Value informing whether collecting file-popularity statistics in the space should be turned on or off.
+     * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
      * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
@@ -794,10 +794,10 @@
      */
 
     /**
-     * Get the report of a space auto-cleaning run
-     * Returns the details of a specific auto-cleaning mechanism run. 
+     * Get the report from a space auto-cleaning run
+     * Returns the details of a specific auto-cleaning run. 
      * @param {String} id The Id of a space
-     * @param {String} reportId The Id of a auto-cleaning report.
+     * @param {String} reportId The Id of an auto-cleaning report.
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReport}
      */
@@ -848,12 +848,12 @@
 
     /**
      * Get Ids of of the space auto-cleaning reports
-     * Returns the list of Ids of space auto-cleaning runs&#39; reports. The list is sorted descending by start time of auto-cleaning run (the newest report is first). 
+     * Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
      * @param {String} id The Id of a space
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.offset Allows to skip N first reports&#39; Ids. (default to 0)
-     * @param {Number} opts.limit Allows to limit the number of returned reports&#39; Ids up to N last reports. By default, all reports&#39; Ids will be returned. 
-     * @param {String} opts.index Allows to list the reports&#39; Ids starting from the specific report. 
+     * @param {Number} opts.offset Allows to skip N first report Ids. (default to 0)
+     * @param {Number} opts.limit Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
+     * @param {String} opts.index Allows to list the report Ids starting from the specific report. 
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReports}
      */

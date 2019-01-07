@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderSpaceAutoCleaningReport**](OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report of a space auto-cleaning run
+[**getProviderSpaceAutoCleaningReport**](OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
 [**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
 [**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 [**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
@@ -331,7 +331,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space.
 
-var spaceFilePopularityConfiguration = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Value informing whether collecting file-popularity statistics in the space should be turned on or off.
+var spaceFilePopularityConfiguration = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Configuration of the file-popularity mechanism in the space.
 
 
 var callback = function(error, data, response) {
@@ -349,7 +349,7 @@ apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callba
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
- **spaceFilePopularityConfiguration** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Value informing whether collecting file-popularity statistics in the space should be turned on or off. | 
+ **spaceFilePopularityConfiguration** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Configuration of the file-popularity mechanism in the space. | 
 
 ### Return type
 
@@ -907,9 +907,9 @@ null (empty response body)
 # **getProviderSpaceAutoCleaningReport**
 > SpaceAutoCleaningReport getProviderSpaceAutoCleaningReport(id, reportId)
 
-Get the report of a space auto-cleaning run
+Get the report from a space auto-cleaning run
 
-Returns the details of a specific auto-cleaning mechanism run. 
+Returns the details of a specific auto-cleaning run. 
 
 ### Example
 ```javascript
@@ -925,7 +925,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space
 
-var reportId = "reportId_example"; // String | The Id of a auto-cleaning report.
+var reportId = "reportId_example"; // String | The Id of an auto-cleaning report.
 
 
 var callback = function(error, data, response) {
@@ -943,7 +943,7 @@ apiInstance.getProviderSpaceAutoCleaningReport(id, reportId, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space | 
- **reportId** | **String**| The Id of a auto-cleaning report. | 
+ **reportId** | **String**| The Id of an auto-cleaning report. | 
 
 ### Return type
 
@@ -964,7 +964,7 @@ Name | Type | Description  | Notes
 
 Get Ids of of the space auto-cleaning reports
 
-Returns the list of Ids of space auto-cleaning runs&#39; reports. The list is sorted descending by start time of auto-cleaning run (the newest report is first). 
+Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
 
 ### Example
 ```javascript
@@ -981,9 +981,9 @@ var apiInstance = new Onepanel.OneproviderApi();
 var id = "id_example"; // String | The Id of a space
 
 var opts = { 
-  'offset': 0, // Number | Allows to skip N first reports' Ids.
-  'limit': 56, // Number | Allows to limit the number of returned reports' Ids up to N last reports. By default, all reports' Ids will be returned. 
-  'index': "index_example" // String | Allows to list the reports' Ids starting from the specific report. 
+  'offset': 0, // Number | Allows to skip N first report Ids.
+  'limit': 56, // Number | Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
+  'index': "index_example" // String | Allows to list the report Ids starting from the specific report. 
 };
 
 var callback = function(error, data, response) {
@@ -1001,9 +1001,9 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space | 
- **offset** | **Number**| Allows to skip N first reports&#39; Ids. | [optional] [default to 0]
- **limit** | **Number**| Allows to limit the number of returned reports&#39; Ids up to N last reports. By default, all reports&#39; Ids will be returned.  | [optional] 
- **index** | **String**| Allows to list the reports&#39; Ids starting from the specific report.  | [optional] 
+ **offset** | **Number**| Allows to skip N first report Ids. | [optional] [default to 0]
+ **limit** | **Number**| Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned.  | [optional] 
+ **index** | **String**| Allows to list the report Ids starting from the specific report.  | [optional] 
 
 ### Return type
 

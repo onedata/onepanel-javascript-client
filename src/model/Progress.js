@@ -54,6 +54,7 @@
 
 
 
+
   };
 
   /**
@@ -92,6 +93,9 @@
       if (data.hasOwnProperty('storageSetup')) {
         obj['storageSetup'] = ApiClient.convertToType(data['storageSetup'], 'Boolean');
       }
+      if (data.hasOwnProperty('isRegistered')) {
+        obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -121,6 +125,11 @@
    * @member {Boolean} storageSetup
    */
   exports.prototype['storageSetup'] = undefined;
+  /**
+   * True if the Oneprovider is registered at Onezone. Omitted in Onezone panel.
+   * @member {Boolean} isRegistered
+   */
+  exports.prototype['isRegistered'] = undefined;
 
 
 

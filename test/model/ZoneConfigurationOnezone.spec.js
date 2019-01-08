@@ -75,12 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property builtInDnsServer (base name: "builtInDnsServer")', function() {
-      // uncomment below and update the code to test the property builtInDnsServer
-      //var instane = new Onepanel.ZoneConfigurationOnezone();
-      //expect(instance).to.be();
-    });
-
     it('should have the property policies (base name: "policies")', function() {
       // uncomment below and update the code to test the property policies
       //var instane = new Onepanel.ZoneConfigurationOnezone();

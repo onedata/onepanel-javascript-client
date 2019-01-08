@@ -16,137 +16,77 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.DnsCheckResult = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.SpaceFilePopularityConfiguration();
+  });
 
-
-  /**
-   * The DnsCheckResult model module.
-   * @module model/DnsCheckResult
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>DnsCheckResult</code>.
-   * Describes results obtained from a DNS check. DNS check involves querying DNS servers to ensure publicly visible records match expected values.
-   * @alias module:model/DnsCheckResult
-   * @class
-   * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
-   * @param expected {Array.<String>} List of expected query results. 
-   * @param got {Array.<String>} List of obtained query results. 
-   * @param recommended {Array.<String>} List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
-   */
-  var exports = function(summary, expected, got, recommended) {
-    var _this = this;
-
-    _this['summary'] = summary;
-    _this['expected'] = expected;
-    _this['got'] = got;
-    _this['recommended'] = recommended;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/DnsCheckResult} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>DnsCheckResult</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheckResult} obj Optional instance to populate.
-   * @return {module:model/DnsCheckResult} The populated <code>DnsCheckResult</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('summary')) {
-        obj['summary'] = ApiClient.convertToType(data['summary'], 'String');
-      }
-      if (data.hasOwnProperty('expected')) {
-        obj['expected'] = ApiClient.convertToType(data['expected'], ['String']);
-      }
-      if (data.hasOwnProperty('got')) {
-        obj['got'] = ApiClient.convertToType(data['got'], ['String']);
-      }
-      if (data.hasOwnProperty('recommended')) {
-        obj['recommended'] = ApiClient.convertToType(data['recommended'], ['String']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
-   * @member {module:model/DnsCheckResult.SummaryEnum} summary
-   */
-  exports.prototype['summary'] = undefined;
-  /**
-   * List of expected query results. 
-   * @member {Array.<String>} expected
-   */
-  exports.prototype['expected'] = undefined;
-  /**
-   * List of obtained query results. 
-   * @member {Array.<String>} got
-   */
-  exports.prototype['got'] = undefined;
-  /**
-   * List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
-   * @member {Array.<String>} recommended
-   */
-  exports.prototype['recommended'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('SpaceFilePopularityConfiguration', function() {
+    it('should create an instance of SpaceFilePopularityConfiguration', function() {
+      // uncomment below and update the code to test SpaceFilePopularityConfiguration
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be.a(Onepanel.SpaceFilePopularityConfiguration);
+    });
 
-  /**
-   * Allowed values for the <code>summary</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.SummaryEnum = {
-    /**
-     * value: "unresolvable"
-     * @const
-     */
-    "unresolvable": "unresolvable",
-    /**
-     * value: "missing_records"
-     * @const
-     */
-    "missing_records": "missing_records",
-    /**
-     * value: "bad_records"
-     * @const
-     */
-    "bad_records": "bad_records",
-    /**
-     * value: "ok"
-     * @const
-     */
-    "ok": "ok"  };
+    it('should have the property enabled (base name: "enabled")', function() {
+      // uncomment below and update the code to test the property enabled
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property exampleQuery (base name: "exampleQuery")', function() {
+      // uncomment below and update the code to test the property exampleQuery
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property lastOpenHourWeight (base name: "lastOpenHourWeight")', function() {
+      // uncomment below and update the code to test the property lastOpenHourWeight
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgOpenCountPerDayWeight (base name: "avgOpenCountPerDayWeight")', function() {
+      // uncomment below and update the code to test the property avgOpenCountPerDayWeight
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxAvgOpenCountPerDay (base name: "maxAvgOpenCountPerDay")', function() {
+      // uncomment below and update the code to test the property maxAvgOpenCountPerDay
+      //var instane = new Onepanel.SpaceFilePopularityConfiguration();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

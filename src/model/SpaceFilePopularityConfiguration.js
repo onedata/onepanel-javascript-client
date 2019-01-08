@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DnsCheckResult = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceFilePopularityConfiguration = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,115 +35,97 @@
 
 
   /**
-   * The DnsCheckResult model module.
-   * @module model/DnsCheckResult
+   * The SpaceFilePopularityConfiguration model module.
+   * @module model/SpaceFilePopularityConfiguration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>DnsCheckResult</code>.
-   * Describes results obtained from a DNS check. DNS check involves querying DNS servers to ensure publicly visible records match expected values.
-   * @alias module:model/DnsCheckResult
+   * Constructs a new <code>SpaceFilePopularityConfiguration</code>.
+   * Configuration of the file-popularity mechanism in the space.
+   * @alias module:model/SpaceFilePopularityConfiguration
    * @class
-   * @param summary {module:model/DnsCheckResult.SummaryEnum} An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
-   * @param expected {Array.<String>} List of expected query results. 
-   * @param got {Array.<String>} List of obtained query results. 
-   * @param recommended {Array.<String>} List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
+   * @param enabled {Boolean} If true, collecting file-popularity mechanism in the space is enabled
    */
-  var exports = function(summary, expected, got, recommended) {
+  var exports = function(enabled) {
     var _this = this;
 
-    _this['summary'] = summary;
-    _this['expected'] = expected;
-    _this['got'] = got;
-    _this['recommended'] = recommended;
+    _this['enabled'] = enabled;
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/DnsCheckResult} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceFilePopularityConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>DnsCheckResult</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceFilePopularityConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheckResult} obj Optional instance to populate.
-   * @return {module:model/DnsCheckResult} The populated <code>DnsCheckResult</code> instance.
+   * @param {module:model/SpaceFilePopularityConfiguration} obj Optional instance to populate.
+   * @return {module:model/SpaceFilePopularityConfiguration} The populated <code>SpaceFilePopularityConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('summary')) {
-        obj['summary'] = ApiClient.convertToType(data['summary'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('expected')) {
-        obj['expected'] = ApiClient.convertToType(data['expected'], ['String']);
+      if (data.hasOwnProperty('exampleQuery')) {
+        obj['exampleQuery'] = ApiClient.convertToType(data['exampleQuery'], 'String');
       }
-      if (data.hasOwnProperty('got')) {
-        obj['got'] = ApiClient.convertToType(data['got'], ['String']);
+      if (data.hasOwnProperty('lastOpenHourWeight')) {
+        obj['lastOpenHourWeight'] = ApiClient.convertToType(data['lastOpenHourWeight'], 'Number');
       }
-      if (data.hasOwnProperty('recommended')) {
-        obj['recommended'] = ApiClient.convertToType(data['recommended'], ['String']);
+      if (data.hasOwnProperty('avgOpenCountPerDayWeight')) {
+        obj['avgOpenCountPerDayWeight'] = ApiClient.convertToType(data['avgOpenCountPerDayWeight'], 'Number');
+      }
+      if (data.hasOwnProperty('maxAvgOpenCountPerDay')) {
+        obj['maxAvgOpenCountPerDay'] = ApiClient.convertToType(data['maxAvgOpenCountPerDay'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * An interpreation of results obtained from DNS check. Possible values are: 'unresolvable' - query returned empty results; 'missing_records' - only some of the expected results were returned; 'bad_records' - none of the expected results were returned; 'ok' - all of expected values were present in obtained results. 
-   * @member {module:model/DnsCheckResult.SummaryEnum} summary
+   * If true, collecting file-popularity mechanism in the space is enabled
+   * @member {Boolean} enabled
    */
-  exports.prototype['summary'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * List of expected query results. 
-   * @member {Array.<String>} expected
+   * Example `curl` command that can be executed to query the file-popularity view in the space. 
+   * @member {String} exampleQuery
    */
-  exports.prototype['expected'] = undefined;
+  exports.prototype['exampleQuery'] = undefined;
   /**
-   * List of obtained query results. 
-   * @member {Array.<String>} got
+   * Weight of `lastOpenHour` parameter. 
+   * @member {Number} lastOpenHourWeight
+   * @default 1.0
    */
-  exports.prototype['got'] = undefined;
+  exports.prototype['lastOpenHourWeight'] = 1.0;
   /**
-   * List of suggested DNS records to set at your DNS provider to fulfill this check. Each record is provided in the format of BIND server.
-   * @member {Array.<String>} recommended
+   * Weight of `avgOpenCountPerDayWeight` parameter. 
+   * @member {Number} avgOpenCountPerDayWeight
+   * @default 20.0
    */
-  exports.prototype['recommended'] = undefined;
+  exports.prototype['avgOpenCountPerDayWeight'] = 20.0;
+  /**
+   * Maximal value of average open count per day taken to calculate the value of popularity function. 
+   * @member {Number} maxAvgOpenCountPerDay
+   * @default 100.0
+   */
+  exports.prototype['maxAvgOpenCountPerDay'] = 100.0;
 
-
-  /**
-   * Allowed values for the <code>summary</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.SummaryEnum = {
-    /**
-     * value: "unresolvable"
-     * @const
-     */
-    "unresolvable": "unresolvable",
-    /**
-     * value: "missing_records"
-     * @const
-     */
-    "missing_records": "missing_records",
-    /**
-     * value: "bad_records"
-     * @const
-     */
-    "bad_records": "bad_records",
-    /**
-     * value: "ok"
-     * @const
-     */
-    "ok": "ok"  };
 
 
   return exports;

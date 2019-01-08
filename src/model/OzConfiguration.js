@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>OzConfiguration</code>.
-   * Public service configuration details
+   * Public Onezone configuration details
    * @alias module:model/OzConfiguration
    * @class
    * @extends module:model/Configuration

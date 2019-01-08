@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>OpConfiguration</code>.
-   * Public service configuration details
+   * Public Oneprovider configuration details
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration

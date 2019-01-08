@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AnyProviderDetails', 'model/ClusterDetails', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/OnezoneRedirect', 'model/OnezoneUser', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/AnyProviderDetails', 'model/ClusterDetails', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/OnezoneRedirect', 'model/OnezoneUser', 'model/Progress', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AnyProviderDetails'), require('../model/ClusterDetails'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/OnezoneRedirect'), require('../model/OnezoneUser'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/AnyProviderDetails'), require('../model/ClusterDetails'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/OnezoneRedirect'), require('../model/OnezoneUser'), require('../model/Progress'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.AnyProviderDetails, root.Onepanel.ClusterDetails, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.OnezoneRedirect, root.Onepanel.OnezoneUser, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.AnyProviderDetails, root.Onepanel.ClusterDetails, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.OnezoneRedirect, root.Onepanel.OnezoneUser, root.Onepanel.Progress, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, AnyProviderDetails, ClusterDetails, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, OnezoneRedirect, OnezoneUser, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, AnyProviderDetails, ClusterDetails, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, OnezoneRedirect, OnezoneUser, Progress, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -727,6 +727,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getProgress operation.
+     * @callback module:api/OnepanelApi~getProgressCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Progress} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get deployment progress
+     * Returns status of deployment steps.
+     * @param {module:api/OnepanelApi~getProgressCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Progress}
+     */
+    this.getProgress = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Progress;
+
+      return this.apiClient.callApi(
+        '/progress', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getSession operation.
      * @callback module:api/OnepanelApi~getSessionCallback
      * @param {String} error Error message, if any.
@@ -1105,6 +1144,45 @@
 
       return this.apiClient.callApi(
         '/dns_check/configuration', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyProgress operation.
+     * @callback module:api/OnepanelApi~modifyProgressCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Progress} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify progress marks
+     * Adds or removes completed deployment steps.
+     * @param {module:api/OnepanelApi~modifyProgressCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Progress}
+     */
+    this.modifyProgress = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = Progress;
+
+      return this.apiClient.callApi(
+        '/progress', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

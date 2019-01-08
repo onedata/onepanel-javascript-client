@@ -211,6 +211,16 @@
         done();
       });
     });
+    describe('getProgress', function() {
+      it('should call getProgress successfully', function(done) {
+        //uncomment below and update the code to test getProgress
+        //instance.getProgress(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getSession', function() {
       it('should call getSession successfully', function(done) {
         //uncomment below and update the code to test getSession
@@ -295,6 +305,16 @@
       it('should call modifyDnsCheckConfiguration successfully', function(done) {
         //uncomment below and update the code to test modifyDnsCheckConfiguration
         //instance.modifyDnsCheckConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyProgress', function() {
+      it('should call modifyProgress successfully', function(done) {
+        //uncomment below and update the code to test modifyProgress
+        //instance.modifyProgress(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getOnezoneLogin**](docs/OnepanelApi.md#getOnezoneLogin) | **GET** /onezone_login | Get information needed for logging in via Onezone.
+*Onepanel.OnepanelApi* | [**getProgress**](docs/OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
@@ -125,6 +126,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**joinCluster**](docs/OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
 *Onepanel.OnepanelApi* | [**modifyCurrentUser**](docs/OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**modifyDnsCheckConfiguration**](docs/OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
+*Onepanel.OnepanelApi* | [**modifyProgress**](docs/OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress marks
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
@@ -223,6 +225,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)
  - [Onepanel.OzPanelConfiguration](docs/OzPanelConfiguration.md)
  - [Onepanel.OzPanelConfigurationUsers](docs/OzPanelConfigurationUsers.md)
+ - [Onepanel.Progress](docs/Progress.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
  - [Onepanel.ProviderConfiguration](docs/ProviderConfiguration.md)
  - [Onepanel.ProviderConfigurationDetails](docs/ProviderConfigurationDetails.md)

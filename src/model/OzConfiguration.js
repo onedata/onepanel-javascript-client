@@ -57,6 +57,7 @@
     Configuration.call(_this, version, build, deployed);
     _this['serviceType'] = serviceType;
     _this['zoneDomain'] = zoneDomain;
+
   };
 
   /**
@@ -86,6 +87,9 @@
       if (data.hasOwnProperty('zoneDomain')) {
         obj['zoneDomain'] = ApiClient.convertToType(data['zoneDomain'], 'String');
       }
+      if (data.hasOwnProperty('zoneName')) {
+        obj['zoneName'] = ApiClient.convertToType(data['zoneName'], 'String');
+      }
     }
     return obj;
   }
@@ -103,6 +107,11 @@
    * @member {String} zoneDomain
    */
   exports.prototype['zoneDomain'] = undefined;
+  /**
+   * The name of this Onezone cluster. Null before cluster is configured. 
+   * @member {String} zoneName
+   */
+  exports.prototype['zoneName'] = undefined;
 
 
   /**

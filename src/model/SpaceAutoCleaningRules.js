@@ -89,11 +89,11 @@
       if (data.hasOwnProperty('minHoursSinceLastOpen')) {
         obj['minHoursSinceLastOpen'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['minHoursSinceLastOpen']);
       }
-      if (data.hasOwnProperty('minFileSize')) {
-        obj['minFileSize'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['minFileSize']);
+      if (data.hasOwnProperty('lowerFileSizeLimit')) {
+        obj['lowerFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['lowerFileSizeLimit']);
       }
-      if (data.hasOwnProperty('maxFileSize')) {
-        obj['maxFileSize'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxFileSize']);
+      if (data.hasOwnProperty('upperFileSizeLimit')) {
+        obj['upperFileSizeLimit'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['upperFileSizeLimit']);
       }
       if (data.hasOwnProperty('maxHourlyMovingAverage')) {
         obj['maxHourlyMovingAverage'] = SpaceAutoCleaningRuleSetting.constructFromObject(data['maxHourlyMovingAverage']);
@@ -125,21 +125,21 @@
   exports.prototype['minHoursSinceLastOpen'] = undefined;
   /**
    * Only files which size [b] is greater than given value may be cleaned. The default value is `1`. 
-   * @member {module:model/SpaceAutoCleaningRuleSetting} minFileSize
+   * @member {module:model/SpaceAutoCleaningRuleSetting} lowerFileSizeLimit
    */
-  exports.prototype['minFileSize'] = undefined;
+  exports.prototype['lowerFileSizeLimit'] = undefined;
   /**
    * Only files which size [b] is less than given value may be cleaned. The default value is `1125899906842624 (1 PiB)`. 
-   * @member {module:model/SpaceAutoCleaningRuleSetting} maxFileSize
+   * @member {module:model/SpaceAutoCleaningRuleSetting} upperFileSizeLimit
    */
-  exports.prototype['maxFileSize'] = undefined;
+  exports.prototype['upperFileSizeLimit'] = undefined;
   /**
    * Files that have moving average of open operations count per hour less than given value may be cleaned. The average is calculated in 24 hours window. The default value is `9007199254740991 (2^53-1)`. 
    * @member {module:model/SpaceAutoCleaningRuleSetting} maxHourlyMovingAverage
    */
   exports.prototype['maxHourlyMovingAverage'] = undefined;
   /**
-   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 30 days window. The default value is `9007199254740991 (2^53-1)`. 
+   * Files that have moving average of open operations count per day less than given value may be cleaned. The average is calculated in 31 days window. The default value is `9007199254740991 (2^53-1)`. 
    * @member {module:model/SpaceAutoCleaningRuleSetting} maxDailyMovingAverage
    */
   exports.prototype['maxDailyMovingAverage'] = undefined;

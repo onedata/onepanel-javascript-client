@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | 
 **username** | **String** | The username of the Ceph cluster administrator. | 
 **key** | **String** | The admin key to access the Ceph cluster. | 
 **monitorHostname** | **String** | The monitor host name. | 

@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Cephrados);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.Cephrados();
+      //expect(instance).to.be();
+    });
+
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
       //var instane = new Onepanel.Cephrados();

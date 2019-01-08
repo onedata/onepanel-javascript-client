@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | 
 **endpoint** | **String** | Full URL of the WebDAV server, including scheme (http or https) and path.  | 
 **verifyServerCertificate** | **Boolean** | Determines whether Oneprovider should verify the certificate of the WebDAV server.  | [optional] [default to true]
 **credentialsType** | **String** | Determines the types of credentials provided in the credentials field.  | [optional] [default to &#39;none&#39;]

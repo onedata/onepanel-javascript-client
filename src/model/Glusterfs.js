@@ -46,13 +46,14 @@
    * @alias module:model/Glusterfs
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
   var exports = function(type, volume, hostname) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
     _this['volume'] = volume;
     _this['hostname'] = hostname;
 
@@ -86,6 +87,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('volume')) {
         obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
@@ -123,6 +127,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * The name of the volume to use as a storage backend.
    * @member {String} volume

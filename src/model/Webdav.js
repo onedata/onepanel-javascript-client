@@ -46,12 +46,13 @@
    * @alias module:model/Webdav
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
     _this['endpoint'] = endpoint;
 
 
@@ -87,6 +88,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('endpoint')) {
         obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
       }
@@ -130,6 +134,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * Full URL of the WebDAV server, including scheme (http or https) and path. 
    * @member {String} endpoint

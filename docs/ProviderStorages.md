@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **[String]** | The list of Ids of cluster storage resources. | 
+**ids** | **[String]** | The list of IDs of cluster storage resources. | 
 
 

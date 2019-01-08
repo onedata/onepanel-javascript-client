@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.S3();
+    instance = new Onepanel.OpConfiguration();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,34 @@
       object[property] = value;
   }
 
-  describe('S3', function() {
-    it('should create an instance of S3', function() {
-      // uncomment below and update the code to test S3
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be.a(Onepanel.S3);
+  describe('OpConfiguration', function() {
+    it('should create an instance of OpConfiguration', function() {
+      // uncomment below and update the code to test OpConfiguration
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be.a(Onepanel.OpConfiguration);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.S3();
+    it('should have the property serviceType (base name: "serviceType")', function() {
+      // uncomment below and update the code to test the property serviceType
+      //var instane = new Onepanel.OpConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.S3();
+    it('should have the property providerId (base name: "providerId")', function() {
+      // uncomment below and update the code to test the property providerId
+      //var instane = new Onepanel.OpConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property bucketName (base name: "bucketName")', function() {
-      // uncomment below and update the code to test the property bucketName
-      //var instane = new Onepanel.S3();
+    it('should have the property zoneDomain (base name: "zoneDomain")', function() {
+      // uncomment below and update the code to test the property zoneDomain
+      //var instane = new Onepanel.OpConfiguration();
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
-      // uncomment below and update the code to test the property signatureVersion
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockSize (base name: "blockSize")', function() {
-      // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.S3();
+    it('should have the property isRegistered (base name: "isRegistered")', function() {
+      // uncomment below and update the code to test the property isRegistered
+      //var instane = new Onepanel.OpConfiguration();
       //expect(instance).to.be();
     });
 

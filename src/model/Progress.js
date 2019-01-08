@@ -53,6 +53,7 @@
 
 
 
+
   };
 
   /**
@@ -82,11 +83,14 @@
       if (data.hasOwnProperty('clusterIPs')) {
         obj['clusterIPs'] = ApiClient.convertToType(data['clusterIPs'], 'Boolean');
       }
-      if (data.hasOwnProperty('letsencrypt')) {
-        obj['letsencrypt'] = ApiClient.convertToType(data['letsencrypt'], 'Boolean');
+      if (data.hasOwnProperty('webCertificate')) {
+        obj['webCertificate'] = ApiClient.convertToType(data['webCertificate'], 'Boolean');
       }
-      if (data.hasOwnProperty('dnsCheckAcknowledged')) {
-        obj['dnsCheckAcknowledged'] = ApiClient.convertToType(data['dnsCheckAcknowledged'], 'Boolean');
+      if (data.hasOwnProperty('dnsCheck')) {
+        obj['dnsCheck'] = ApiClient.convertToType(data['dnsCheck'], 'Boolean');
+      }
+      if (data.hasOwnProperty('storageSetup')) {
+        obj['storageSetup'] = ApiClient.convertToType(data['storageSetup'], 'Boolean');
       }
     }
     return obj;
@@ -104,14 +108,19 @@
   exports.prototype['clusterIPs'] = undefined;
   /**
    * True after user decided whether to use Let's Encrypt certificates or if interactiveDeployment was disabled.
-   * @member {Boolean} letsencrypt
+   * @member {Boolean} webCertificate
    */
-  exports.prototype['letsencrypt'] = undefined;
+  exports.prototype['webCertificate'] = undefined;
   /**
    * True after user reviewed results of DNS check or if interactiveDeployment was disabled.
-   * @member {Boolean} dnsCheckAcknowledged
+   * @member {Boolean} dnsCheck
    */
-  exports.prototype['dnsCheckAcknowledged'] = undefined;
+  exports.prototype['dnsCheck'] = undefined;
+  /**
+   * True after at least one storage was added to op_worker. Omitted in Onezone panel.
+   * @member {Boolean} storageSetup
+   */
+  exports.prototype['storageSetup'] = undefined;
 
 
 

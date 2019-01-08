@@ -69,14 +69,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property letsencrypt (base name: "letsencrypt")', function() {
-      // uncomment below and update the code to test the property letsencrypt
+    it('should have the property webCertificate (base name: "webCertificate")', function() {
+      // uncomment below and update the code to test the property webCertificate
       //var instane = new Onepanel.Progress();
       //expect(instance).to.be();
     });
 
-    it('should have the property dnsCheckAcknowledged (base name: "dnsCheckAcknowledged")', function() {
-      // uncomment below and update the code to test the property dnsCheckAcknowledged
+    it('should have the property dnsCheck (base name: "dnsCheck")', function() {
+      // uncomment below and update the code to test the property dnsCheck
+      //var instane = new Onepanel.Progress();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageSetup (base name: "storageSetup")', function() {
+      // uncomment below and update the code to test the property storageSetup
       //var instane = new Onepanel.Progress();
       //expect(instance).to.be();
     });

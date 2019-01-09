@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/TimeStatsCollection'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, TimeStatsCollection) {
   'use strict';
 
 
@@ -51,6 +51,7 @@
     var _this = this;
 
     _this['importStatus'] = importStatus;
+
 
   };
 
@@ -81,6 +82,9 @@
       if (data.hasOwnProperty('updateStatus')) {
         obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
       }
+      if (data.hasOwnProperty('stats')) {
+        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
+      }
     }
     return obj;
   }
@@ -95,6 +99,11 @@
    * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
    */
   exports.prototype['updateStatus'] = undefined;
+  /**
+   * Collection of statistics for requested metrics.
+   * @member {module:model/TimeStatsCollection} stats
+   */
+  exports.prototype['stats'] = undefined;
 
 
   /**

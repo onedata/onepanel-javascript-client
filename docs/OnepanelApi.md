@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+[**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
@@ -151,7 +152,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnepanelApi();
 
 var opts = { 
-  'forceCheck': false // Boolean | If true the DNS check cache is overriden and check is performed during handling of the request.
+  'forceCheck': false // Boolean | If true the DNS check cache is overridden and check is performed during handling of the request.
 };
 
 var callback = function(error, data, response) {
@@ -168,7 +169,7 @@ apiInstance.checkDns(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **forceCheck** | **Boolean**| If true the DNS check cache is overriden and check is performed during handling of the request. | [optional] [default to false]
+ **forceCheck** | **Boolean**| If true the DNS check cache is overridden and check is performed during handling of the request. | [optional] [default to false]
 
 ### Return type
 
@@ -311,6 +312,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 **[&#39;String&#39;]**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getConfiguration"></a>
+# **getConfiguration**
+> Configuration getConfiguration()
+
+Get public configuration
+
+Returns public configuration details.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getConfiguration(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Configuration**](Configuration.md)
 
 ### Authorization
 

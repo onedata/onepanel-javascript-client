@@ -161,6 +161,16 @@
         done();
       });
     });
+    describe('getConfiguration', function() {
+      it('should call getConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getConfiguration
+        //instance.getConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCurrentCluster', function() {
       it('should call getCurrentCluster successfully', function(done) {
         //uncomment below and update the code to test getCurrentCluster

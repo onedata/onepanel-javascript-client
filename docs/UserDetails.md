@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **String** | The user ID. | 
+**userId** | **String** | The user Id. | 
 **username** | **String** | The user name. | 
 **userRole** | **String** | The user role, one of &#x60;admin&#x60; or &#x60;regular&#x60;. | 
 

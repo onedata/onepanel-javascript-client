@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Webdav);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
     it('should have the property endpoint (base name: "endpoint")', function() {
       // uncomment below and update the code to test the property endpoint
       //var instane = new Onepanel.Webdav();

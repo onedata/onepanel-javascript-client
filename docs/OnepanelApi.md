@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getClusterUser**](OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
 [**getClusterUsers**](OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
+[**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
@@ -165,7 +166,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnepanelApi();
 
 var opts = { 
-  'forceCheck': false // Boolean | If true the DNS check cache is overriden and check is performed during handling of the request.
+  'forceCheck': false // Boolean | If true the DNS check cache is overridden and check is performed during handling of the request.
 };
 
 var callback = function(error, data, response) {
@@ -182,7 +183,7 @@ apiInstance.checkDns(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **forceCheck** | **Boolean**| If true the DNS check cache is overriden and check is performed during handling of the request. | [optional] [default to false]
+ **forceCheck** | **Boolean**| If true the DNS check cache is overridden and check is performed during handling of the request. | [optional] [default to false]
 
 ### Return type
 
@@ -591,6 +592,52 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
+<a name="getConfiguration"></a>
+# **getConfiguration**
+> Configuration getConfiguration()
+
+Get public configuration
+
+Returns public configuration details.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getConfiguration(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Configuration**](Configuration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getCurrentCluster"></a>
 # **getCurrentCluster**

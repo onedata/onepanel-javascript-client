@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.S3);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
     it('should have the property hostname (base name: "hostname")', function() {
       // uncomment below and update the code to test the property hostname
       //var instane = new Onepanel.S3();

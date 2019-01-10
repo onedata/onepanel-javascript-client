@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property stats (base name: "stats")', function() {
-      // uncomment below and update the code to test the property stats
-      //var instane = new Onepanel.SpaceSyncStats();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

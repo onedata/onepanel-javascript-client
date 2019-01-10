@@ -47,7 +47,7 @@
    * @class
    * @param token {String} The token for space creation or support.
    * @param size {Number} The storage space size in bytes that provider is willing to assign to the space. 
-   * @param storageId {String} The ID of the storage resource where the space data should be stored. 
+   * @param storageId {String} The Id of the storage resource where the space data should be stored. 
    */
   var exports = function(token, size, storageId) {
     var _this = this;
@@ -114,7 +114,7 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * The ID of the storage resource where the space data should be stored. 
+   * The Id of the storage resource where the space data should be stored. 
    * @member {String} storageId
    */
   exports.prototype['storageId'] = undefined;

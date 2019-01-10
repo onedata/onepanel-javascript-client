@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>ZoneConfiguration</code>.
-   * The zone deployment configuration.
+   * The Onezone deployment configuration.
    * @alias module:model/ZoneConfiguration
    * @class
    * @param cluster {module:model/ZoneClusterConfiguration} 

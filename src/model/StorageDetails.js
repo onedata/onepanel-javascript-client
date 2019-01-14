@@ -45,16 +45,14 @@
    * The cluster storage configuration.
    * @alias module:model/StorageDetails
    * @class
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
    */
-  var exports = function(type) {
+  var exports = function() {
     var _this = this;
 
 
 
 
 
-    _this['type'] = type;
 
 
 
@@ -93,9 +91,6 @@
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
       if (data.hasOwnProperty('lumaEnabled')) {
         obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
       }
@@ -132,11 +127,6 @@
    */
   exports.prototype['readonly'] = false;
   /**
-   * The type of storage.
-   * @member {module:model/StorageDetails.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
    * If true LUMA and reverse LUMA services will be enabled.
    * @member {Boolean} lumaEnabled
    * @default false
@@ -153,53 +143,6 @@
    */
   exports.prototype['lumaApiKey'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "posix"
-     * @const
-     */
-    "posix": "posix",
-    /**
-     * value: "s3"
-     * @const
-     */
-    "s3": "s3",
-    /**
-     * value: "ceph"
-     * @const
-     */
-    "ceph": "ceph",
-    /**
-     * value: "cephrados"
-     * @const
-     */
-    "cephrados": "cephrados",
-    /**
-     * value: "swift"
-     * @const
-     */
-    "swift": "swift",
-    /**
-     * value: "glusterfs"
-     * @const
-     */
-    "glusterfs": "glusterfs",
-    /**
-     * value: "nulldevice"
-     * @const
-     */
-    "nulldevice": "nulldevice",
-    /**
-     * value: "webdav"
-     * @const
-     */
-    "webdav": "webdav"  };
 
 
   return exports;

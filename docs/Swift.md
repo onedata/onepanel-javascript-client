@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | 
 **authUrl** | **String** | The URL to OpenStack Keystone identity service. | 
 **tenantName** | **String** | The name of the tenant to which the user belongs. | 
 **containerName** | **String** | The name of the Swift storage container. | 

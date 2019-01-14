@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Nulldevice);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.Nulldevice();
+      //expect(instance).to.be();
+    });
+
     it('should have the property latencyMin (base name: "latencyMin")', function() {
       // uncomment below and update the code to test the property latencyMin
       //var instane = new Onepanel.Nulldevice();

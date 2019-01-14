@@ -17,177 +17,96 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Configuration = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The Swift model module.
-   * @module model/Swift
+   * The Configuration model module.
+   * @module model/Configuration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Swift</code>.
-   * The OpenStack Swift configuration.
-   * @alias module:model/Swift
+   * Constructs a new <code>Configuration</code>.
+   * Public service configuration details
+   * @alias module:model/Configuration
    * @class
-   * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
-   * @param authUrl {String} The URL to OpenStack Keystone identity service.
-   * @param tenantName {String} The name of the tenant to which the user belongs.
-   * @param containerName {String} The name of the Swift storage container.
-   * @param username {String} The Keystone authentication username.
-   * @param password {String} The Keystone authentication password.
+   * @param version {String} Version of this Onepanel
+   * @param build {String} Build number of this Onepanel
+   * @param deployed {Boolean} True when cluster deployment is finished
    */
-  var exports = function(type, authUrl, tenantName, containerName, username, password) {
+  var exports = function(version, build, deployed) {
     var _this = this;
-    StorageDetails.call(_this);
-    _this['type'] = type;
-    _this['authUrl'] = authUrl;
-    _this['tenantName'] = tenantName;
-    _this['containerName'] = containerName;
-    _this['username'] = username;
-    _this['password'] = password;
 
-
-
-
-
+    _this['version'] = version;
+    _this['build'] = build;
+    _this['deployed'] = deployed;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Swift} The value of 'discriminator' field or undefined.
+   * @return {module:model/Configuration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    ;
+    return 'serviceType';
   };
 
   /**
-   * Constructs a <code>Swift</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Configuration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Swift} obj Optional instance to populate.
-   * @return {module:model/Swift} The populated <code>Swift</code> instance.
+   * @param {module:model/Configuration} obj Optional instance to populate.
+   * @return {module:model/Configuration} The populated <code>Configuration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+
+      if (data.hasOwnProperty('version')) {
+        obj['version'] = ApiClient.convertToType(data['version'], 'String');
       }
-      if (data.hasOwnProperty('authUrl')) {
-        obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
+      if (data.hasOwnProperty('build')) {
+        obj['build'] = ApiClient.convertToType(data['build'], 'String');
       }
-      if (data.hasOwnProperty('tenantName')) {
-        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
-      }
-      if (data.hasOwnProperty('containerName')) {
-        obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('blockSize')) {
-        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      if (data.hasOwnProperty('deployed')) {
+        obj['deployed'] = ApiClient.convertToType(data['deployed'], 'Boolean');
       }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
-  exports.prototype.constructor = exports;
-
   /**
-   * The type of storage.
-   * @member {String} type
+   * Version of this Onepanel
+   * @member {String} version
    */
-  exports.prototype['type'] = undefined;
+  exports.prototype['version'] = undefined;
   /**
-   * The URL to OpenStack Keystone identity service.
-   * @member {String} authUrl
+   * Build number of this Onepanel
+   * @member {String} build
    */
-  exports.prototype['authUrl'] = undefined;
+  exports.prototype['build'] = undefined;
   /**
-   * The name of the tenant to which the user belongs.
-   * @member {String} tenantName
+   * True when cluster deployment is finished
+   * @member {Boolean} deployed
+   * @default true
    */
-  exports.prototype['tenantName'] = undefined;
-  /**
-   * The name of the Swift storage container.
-   * @member {String} containerName
-   */
-  exports.prototype['containerName'] = undefined;
-  /**
-   * The Keystone authentication username.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The Keystone authentication password.
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Storage block size in bytes.
-   * @member {Number} blockSize
-   */
-  exports.prototype['blockSize'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-  exports.prototype['storagePathType'] = 'flat';
+  exports.prototype['deployed'] = true;
 
 
 

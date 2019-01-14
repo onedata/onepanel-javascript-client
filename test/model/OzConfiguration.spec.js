@@ -16,118 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.SpaceFilePopularityConfiguration = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.OzConfiguration();
+  });
 
-
-  /**
-   * The SpaceFilePopularityConfiguration model module.
-   * @module model/SpaceFilePopularityConfiguration
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>SpaceFilePopularityConfiguration</code>.
-   * Configuration of the file-popularity mechanism in the space.
-   * @alias module:model/SpaceFilePopularityConfiguration
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceFilePopularityConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceFilePopularityConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceFilePopularityConfiguration} obj Optional instance to populate.
-   * @return {module:model/SpaceFilePopularityConfiguration} The populated <code>SpaceFilePopularityConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('enabled')) {
-        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('exampleQuery')) {
-        obj['exampleQuery'] = ApiClient.convertToType(data['exampleQuery'], 'String');
-      }
-      if (data.hasOwnProperty('lastOpenHourWeight')) {
-        obj['lastOpenHourWeight'] = ApiClient.convertToType(data['lastOpenHourWeight'], 'Number');
-      }
-      if (data.hasOwnProperty('avgOpenCountPerDayWeight')) {
-        obj['avgOpenCountPerDayWeight'] = ApiClient.convertToType(data['avgOpenCountPerDayWeight'], 'Number');
-      }
-      if (data.hasOwnProperty('maxAvgOpenCountPerDay')) {
-        obj['maxAvgOpenCountPerDay'] = ApiClient.convertToType(data['maxAvgOpenCountPerDay'], 'Number');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * If true, collecting file-popularity mechanism in the space is enabled
-   * @member {Boolean} enabled
-   */
-  exports.prototype['enabled'] = undefined;
-  /**
-   * Example `curl` command that can be executed to query the file-popularity view in the space. 
-   * @member {String} exampleQuery
-   */
-  exports.prototype['exampleQuery'] = undefined;
-  /**
-   * Weight of `lastOpenHour` parameter. 
-   * @member {Number} lastOpenHourWeight
-   * @default 1.0
-   */
-  exports.prototype['lastOpenHourWeight'] = 1.0;
-  /**
-   * Weight of `avgOpenCountPerDayWeight` parameter. 
-   * @member {Number} avgOpenCountPerDayWeight
-   * @default 20.0
-   */
-  exports.prototype['avgOpenCountPerDayWeight'] = 20.0;
-  /**
-   * Maximal value of average open count per day taken to calculate the value of popularity function. 
-   * @member {Number} maxAvgOpenCountPerDay
-   * @default 100.0
-   */
-  exports.prototype['maxAvgOpenCountPerDay'] = 100.0;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('OzConfiguration', function() {
+    it('should create an instance of OzConfiguration', function() {
+      // uncomment below and update the code to test OzConfiguration
+      //var instane = new Onepanel.OzConfiguration();
+      //expect(instance).to.be.a(Onepanel.OzConfiguration);
+    });
 
+    it('should have the property serviceType (base name: "serviceType")', function() {
+      // uncomment below and update the code to test the property serviceType
+      //var instane = new Onepanel.OzConfiguration();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property zoneDomain (base name: "zoneDomain")', function() {
+      // uncomment below and update the code to test the property zoneDomain
+      //var instane = new Onepanel.OzConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property zoneName (base name: "zoneName")', function() {
+      // uncomment below and update the code to test the property zoneName
+      //var instane = new Onepanel.OzConfiguration();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

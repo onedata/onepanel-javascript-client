@@ -45,12 +45,11 @@
    * Configuration of the file-popularity mechanism in the space.
    * @alias module:model/SpaceFilePopularityConfiguration
    * @class
-   * @param enabled {Boolean} If true, collecting file-popularity mechanism in the space is enabled
    */
-  var exports = function(enabled) {
+  var exports = function() {
     var _this = this;
 
-    _this['enabled'] = enabled;
+
 
 
 

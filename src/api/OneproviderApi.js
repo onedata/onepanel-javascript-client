@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningReportCollection', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningReportCollection'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningReportCollection, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
   }
-}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningReportCollection, SpaceAutoCleaningStatus, SpaceDetails, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
   'use strict';
 
   /**
@@ -269,6 +269,57 @@
     }
 
     /**
+     * Callback function to receive the result of the configureFilePopularity operation.
+     * @callback module:api/OneproviderApi~configureFilePopularityCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Configure file-popularity mechanism in the space.
+     * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
+     * @param {String} id The Id of a space.
+     * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
+     * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
+      var postBody = spaceFilePopularityConfiguration;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling configureFilePopularity");
+      }
+
+      // verify the required parameter 'spaceFilePopularityConfiguration' is set
+      if (spaceFilePopularityConfiguration === undefined || spaceFilePopularityConfiguration === null) {
+        throw new Error("Missing the required parameter 'spaceFilePopularityConfiguration' when calling configureFilePopularity");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/file-popularity/configuration', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the configureProvider operation.
      * @callback module:api/OneproviderApi~configureProviderCallback
      * @param {String} error Error message, if any.
@@ -307,6 +358,103 @@
 
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the configureSpaceAutoCleaning operation.
+     * @callback module:api/OneproviderApi~configureSpaceAutoCleaningCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Configure space auto-cleaning mechanism
+     * Configures space auto-cleaning mechanism in the space. 
+     * @param {String} id The Id of a space
+     * @param {module:model/SpaceAutoCleaningConfiguration} spaceAutoCleaningConfiguration New configuration of space auto-cleaning mechanism. 
+     * @param {module:api/OneproviderApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.configureSpaceAutoCleaning = function(id, spaceAutoCleaningConfiguration, callback) {
+      var postBody = spaceAutoCleaningConfiguration;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling configureSpaceAutoCleaning");
+      }
+
+      // verify the required parameter 'spaceAutoCleaningConfiguration' is set
+      if (spaceAutoCleaningConfiguration === undefined || spaceAutoCleaningConfiguration === null) {
+        throw new Error("Missing the required parameter 'spaceAutoCleaningConfiguration' when calling configureSpaceAutoCleaning");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/auto-cleaning/configuration', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getFilePopularityConfiguration operation.
+     * @callback module:api/OneproviderApi~getFilePopularityConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SpaceFilePopularityConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get file-popularity configuration
+     * Returns configuration of file-popularity mechanism in the space specified by space Id in the path. 
+     * @param {String} id The Id of a space of which file-popularity configuration should be returned.
+     * @param {module:api/OneproviderApi~getFilePopularityConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceFilePopularityConfiguration}
+     */
+    this.getFilePopularityConfiguration = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getFilePopularityConfiguration");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SpaceFilePopularityConfiguration;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/file-popularity/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -638,40 +786,40 @@
     }
 
     /**
-     * Callback function to receive the result of the getProviderSpaceAutoCleaningReports operation.
-     * @callback module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback
+     * Callback function to receive the result of the getProviderSpaceAutoCleaningReport operation.
+     * @callback module:api/OneproviderApi~getProviderSpaceAutoCleaningReportCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/SpaceAutoCleaningReportCollection} data The data returned by the service call.
+     * @param {module:model/SpaceAutoCleaningReport} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get reports of space auto cleaning
-     * Returns collection of reports of auto cleaning for the space 
-     * @param {String} id The ID of a space
-     * @param {String} startedAfter Fetch only reports that started after this date (ISO 8601)
-     * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SpaceAutoCleaningReportCollection}
+     * Get the report from a space auto-cleaning run
+     * Returns the details of a specific auto-cleaning run. 
+     * @param {String} id The Id of a space
+     * @param {String} reportId The Id of an auto-cleaning report.
+     * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceAutoCleaningReport}
      */
-    this.getProviderSpaceAutoCleaningReports = function(id, startedAfter, callback) {
+    this.getProviderSpaceAutoCleaningReport = function(id, reportId, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getProviderSpaceAutoCleaningReports");
+        throw new Error("Missing the required parameter 'id' when calling getProviderSpaceAutoCleaningReport");
       }
 
-      // verify the required parameter 'startedAfter' is set
-      if (startedAfter === undefined || startedAfter === null) {
-        throw new Error("Missing the required parameter 'startedAfter' when calling getProviderSpaceAutoCleaningReports");
+      // verify the required parameter 'reportId' is set
+      if (reportId === undefined || reportId === null) {
+        throw new Error("Missing the required parameter 'reportId' when calling getProviderSpaceAutoCleaningReport");
       }
 
 
       var pathParams = {
-        'id': id
+        'id': id,
+        'report_id': reportId
       };
       var queryParams = {
-        'started_after': startedAfter
       };
       var headerParams = {
       };
@@ -681,10 +829,64 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = SpaceAutoCleaningReportCollection;
+      var returnType = SpaceAutoCleaningReport;
 
       return this.apiClient.callApi(
-        '/provider/spaces/{id}/auto_cleaning_reports', 'GET',
+        '/provider/spaces/{id}/auto-cleaning/reports/{report_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getProviderSpaceAutoCleaningReports operation.
+     * @callback module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SpaceAutoCleaningReports} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Ids of of the space auto-cleaning reports
+     * Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
+     * @param {String} id The Id of a space
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.offset Allows to skip N first report Ids. (default to 0)
+     * @param {Number} opts.limit Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
+     * @param {String} opts.index Allows to list the report Ids starting from the specific report. 
+     * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceAutoCleaningReports}
+     */
+    this.getProviderSpaceAutoCleaningReports = function(id, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getProviderSpaceAutoCleaningReports");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+        'offset': opts['offset'],
+        'limit': opts['limit'],
+        'index': opts['index']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SpaceAutoCleaningReports;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/auto-cleaning/reports', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -699,9 +901,9 @@
      */
 
     /**
-     * Get status of space auto cleaning
-     * Returns status of current process of auto cleaning for the space 
-     * @param {String} id The ID of a space
+     * Get status of space auto-cleaning mechanism
+     * Returns status of current process of auto-cleaning for the space. 
+     * @param {String} id The Id of a space
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningStatus}
      */
@@ -730,7 +932,7 @@
       var returnType = SpaceAutoCleaningStatus;
 
       return this.apiClient.callApi(
-        '/provider/spaces/{id}/auto_cleaning_status', 'GET',
+        '/provider/spaces/{id}/auto-cleaning/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -747,7 +949,7 @@
     /**
      * Get statistics of storage synchronization
      * Returns requested statistics of storage synchronization for given space on this provider. 
-     * @param {String} id The ID of a space for which sync stats should be returned.
+     * @param {String} id The Id of a space for which sync stats should be returned.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
      * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma
@@ -913,6 +1115,52 @@
     }
 
     /**
+     * Callback function to receive the result of the getSpaceAutoCleaningConfiguration operation.
+     * @callback module:api/OneproviderApi~getSpaceAutoCleaningConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SpaceAutoCleaningConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get space auto-cleaning configuration
+     * Returns configuration of auto-cleaning mechanism in the space specified by space Id in the path. 
+     * @param {String} id The Id of a space of which auto-cleaning configuration should be returned.
+     * @param {module:api/OneproviderApi~getSpaceAutoCleaningConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceAutoCleaningConfiguration}
+     */
+    this.getSpaceAutoCleaningConfiguration = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getSpaceAutoCleaningConfiguration");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SpaceAutoCleaningConfiguration;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/auto-cleaning/configuration', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getSpaceDetails operation.
      * @callback module:api/OneproviderApi~getSpaceDetailsCallback
      * @param {String} error Error message, if any.
@@ -923,7 +1171,7 @@
     /**
      * Get space details
      * Returns details of space specified by space Id in the path. 
-     * @param {String} id The ID of a space which details should be returned.
+     * @param {String} id The Id of a space which details should be returned.
      * @param {module:api/OneproviderApi~getSpaceDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceDetails}
      */
@@ -969,7 +1217,7 @@
     /**
      * Get storage details
      * Returns the details of the selected storage.
-     * @param {String} id The ID of a storage resource, which details should be returned. 
+     * @param {String} id The Id of a storage resource, which details should be returned. 
      * @param {module:api/OneproviderApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageDetails}
      */
@@ -1054,7 +1302,7 @@
     /**
      * Invalidate LUMA cache
      * Invalidates LUMA cache in provider for given storage.
-     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * @param {String} id The Id of a storage resource, which details should be modified. 
      * @param {module:api/OneproviderApi~invalidateLumaCacheCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.invalidateLumaCache = function(id, callback) {
@@ -1187,7 +1435,7 @@
     /**
      * Modify space details
      * Modifies the space import/update strategies.
-     * @param {String} id The ID of a space which details should be modified.
+     * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/OneproviderApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceId}
@@ -1239,7 +1487,7 @@
     /**
      * Modify storage details
      * Modifies basic storage details, such as operation timeout.
-     * @param {String} id The ID of a storage resource, which details should be modified. 
+     * @param {String} id The Id of a storage resource, which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -1274,51 +1522,6 @@
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the providerSpaceStartCleaning operation.
-     * @callback module:api/OneproviderApi~providerSpaceStartCleaningCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Start space cleaning
-     * Starts cleaning of space with current configuration.
-     * @param {String} id The ID of a space
-     * @param {module:api/OneproviderApi~providerSpaceStartCleaningCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.providerSpaceStartCleaning = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling providerSpaceStartCleaning");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/start_cleaning', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1373,7 +1576,7 @@
     /**
      * Revoke space support for a space
      * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider. 
-     * @param {String} id The ID of a space to be removed.
+     * @param {String} id The Id of a space to be removed.
      * @param {module:api/OneproviderApi~revokeSpaceSupportCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.revokeSpaceSupport = function(id, callback) {
@@ -1719,6 +1922,51 @@
 
       return this.apiClient.callApi(
         '/provider/spaces', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the triggerAutoCleaning operation.
+     * @callback module:api/OneproviderApi~triggerAutoCleaningCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Triggers space auto-cleaning
+     * Triggers one run of auto-cleaning mechanism for given space.
+     * @param {String} id The Id of a space
+     * @param {module:api/OneproviderApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.triggerAutoCleaning = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling triggerAutoCleaning");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/auto-cleaning/start', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

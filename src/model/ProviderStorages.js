@@ -45,7 +45,7 @@
    * The cluster storage resources.
    * @alias module:model/ProviderStorages
    * @class
-   * @param ids {Array.<String>} The list of IDs of cluster storage resources.
+   * @param ids {Array.<String>} The list of Ids of cluster storage resources.
    */
   var exports = function(ids) {
     var _this = this;
@@ -82,7 +82,7 @@
   }
 
   /**
-   * The list of IDs of cluster storage resources.
+   * The list of Ids of cluster storage resources.
    * @member {Array.<String>} ids
    */
   exports.prototype['ids'] = undefined;

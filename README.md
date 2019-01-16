@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+*Onepanel.OnepanelApi* | [**getConfiguration**](docs/OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
@@ -125,7 +126,10 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+*Onepanel.OneproviderApi* | [**configureFilePopularity**](docs/OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+*Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+*Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -134,12 +138,14 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderManagerStatus**](docs/OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderApi* | [**getProviderManagersStatus**](docs/OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderApi* | [**getProviderNagiosReport**](docs/OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto_cleaning_reports | Get reports of space auto cleaning
-*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto_cleaning_status | Get status of space auto cleaning
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReport**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+*Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 *Onepanel.OneproviderApi* | [**getProviderSpaceSyncStats**](docs/OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 *Onepanel.OneproviderApi* | [**getProviderSpaces**](docs/OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderApi* | [**getProviderWorkersStatus**](docs/OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
+*Onepanel.OneproviderApi* | [**getSpaceAutoCleaningConfiguration**](docs/OneproviderApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
 *Onepanel.OneproviderApi* | [**getSpaceDetails**](docs/OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
@@ -148,7 +154,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
-*Onepanel.OneproviderApi* | [**providerSpaceStartCleaning**](docs/OneproviderApi.md#providerSpaceStartCleaning) | **POST** /provider/spaces/{id}/start_cleaning | Start space cleaning
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
@@ -158,6 +163,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**startStopProviderWorker**](docs/OneproviderApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 *Onepanel.OneproviderApi* | [**startStopProviderWorkers**](docs/OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
 *Onepanel.OneproviderApi* | [**supportSpace**](docs/OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
+*Onepanel.OneproviderApi* | [**triggerAutoCleaning**](docs/OneproviderApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Triggers space auto-cleaning
 *Onepanel.OnezoneApi* | [**addZoneDatabases**](docs/OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 *Onepanel.OnezoneApi* | [**addZoneManagers**](docs/OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
@@ -189,6 +195,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterIps](docs/ClusterIps.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
+ - [Onepanel.Configuration](docs/Configuration.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
  - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
@@ -219,13 +226,14 @@ Class | Method | HTTP request | Description
  - [Onepanel.ServiceStatus](docs/ServiceStatus.md)
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
  - [Onepanel.SessionDetails](docs/SessionDetails.md)
- - [Onepanel.SpaceAutoCleaning](docs/SpaceAutoCleaning.md)
+ - [Onepanel.SpaceAutoCleaningConfiguration](docs/SpaceAutoCleaningConfiguration.md)
  - [Onepanel.SpaceAutoCleaningReport](docs/SpaceAutoCleaningReport.md)
- - [Onepanel.SpaceAutoCleaningReportCollection](docs/SpaceAutoCleaningReportCollection.md)
- - [Onepanel.SpaceAutoCleaningSettings](docs/SpaceAutoCleaningSettings.md)
+ - [Onepanel.SpaceAutoCleaningReports](docs/SpaceAutoCleaningReports.md)
+ - [Onepanel.SpaceAutoCleaningRuleSetting](docs/SpaceAutoCleaningRuleSetting.md)
+ - [Onepanel.SpaceAutoCleaningRules](docs/SpaceAutoCleaningRules.md)
  - [Onepanel.SpaceAutoCleaningStatus](docs/SpaceAutoCleaningStatus.md)
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
- - [Onepanel.SpaceFilesPopularity](docs/SpaceFilesPopularity.md)
+ - [Onepanel.SpaceFilePopularityConfiguration](docs/SpaceFilePopularityConfiguration.md)
  - [Onepanel.SpaceId](docs/SpaceId.md)
  - [Onepanel.SpaceModifyRequest](docs/SpaceModifyRequest.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
@@ -257,6 +265,8 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
+ - [Onepanel.OpConfiguration](docs/OpConfiguration.md)
+ - [Onepanel.OzConfiguration](docs/OzConfiguration.md)
  - [Onepanel.Posix](docs/Posix.md)
  - [Onepanel.S3](docs/S3.md)
  - [Onepanel.Swift](docs/Swift.md)

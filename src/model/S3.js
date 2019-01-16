@@ -46,7 +46,7 @@
    * @alias module:model/S3
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    * @param accessKey {String} The access key to the S3 storage.
@@ -54,7 +54,8 @@
    */
   var exports = function(type, hostname, bucketName, accessKey, secretKey) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
     _this['accessKey'] = accessKey;
@@ -88,6 +89,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
@@ -125,6 +129,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * The hostname of a machine where S3 storage is installed.
    * @member {String} hostname

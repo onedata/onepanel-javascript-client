@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Swift);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.Swift();
+      //expect(instance).to.be();
+    });
+
     it('should have the property authUrl (base name: "authUrl")', function() {
       // uncomment below and update the code to test the property authUrl
       //var instane = new Onepanel.Swift();

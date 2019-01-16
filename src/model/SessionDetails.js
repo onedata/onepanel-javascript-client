@@ -45,7 +45,7 @@
    * The user session details.
    * @alias module:model/SessionDetails
    * @class
-   * @param sessionId {String} The session ID.
+   * @param sessionId {String} The session Id.
    * @param username {String} The name of a user associated with the session.
    */
   var exports = function(sessionId, username) {
@@ -87,7 +87,7 @@
   }
 
   /**
-   * The session ID.
+   * The session Id.
    * @member {String} sessionId
    */
   exports.prototype['sessionId'] = undefined;

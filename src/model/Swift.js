@@ -46,7 +46,7 @@
    * @alias module:model/Swift
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/StorageDetails.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
    * @param tenantName {String} The name of the tenant to which the user belongs.
    * @param containerName {String} The name of the Swift storage container.
@@ -55,7 +55,8 @@
    */
   var exports = function(type, authUrl, tenantName, containerName, username, password) {
     var _this = this;
-    StorageDetails.call(_this, type);
+    StorageDetails.call(_this);
+    _this['type'] = type;
     _this['authUrl'] = authUrl;
     _this['tenantName'] = tenantName;
     _this['containerName'] = containerName;
@@ -89,6 +90,9 @@
     if (data) {
       obj = obj || new exports();
       StorageDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('authUrl')) {
         obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
       }
@@ -126,6 +130,11 @@
   exports.prototype = Object.create(StorageDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * The URL to OpenStack Keystone identity service.
    * @member {String} authUrl

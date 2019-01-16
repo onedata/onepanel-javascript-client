@@ -81,12 +81,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
       // uncomment below and update the code to test the property lumaEnabled
       //var instane = new Onepanel.StorageDetails();

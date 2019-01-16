@@ -42,18 +42,22 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningReport</code>.
-   * Autocleaning report
+   * Report from an auto-cleaning run.
    * @alias module:model/SpaceAutoCleaningReport
    * @class
-   * @param startedAt {String} Start time of autocleaning procedure in ISO 8601 format
-   * @param stoppedAt {String} Finish time of autocleaning procedure in ISO 8601 format
-   * @param releasedBytes {Number} Number of bytes deleted during autocleaning procedure.
+   * @param id {String} Id of an auto-cleaning report.
+   * @param index {String} Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
+   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format
+   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format
+   * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
    */
-  var exports = function(startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
+  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
     var _this = this;
 
+    _this['id'] = id;
+    _this['index'] = index;
     _this['startedAt'] = startedAt;
     _this['stoppedAt'] = stoppedAt;
     _this['releasedBytes'] = releasedBytes;
@@ -82,6 +86,12 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('index')) {
+        obj['index'] = ApiClient.convertToType(data['index'], 'String');
+      }
       if (data.hasOwnProperty('startedAt')) {
         obj['startedAt'] = ApiClient.convertToType(data['startedAt'], 'String');
       }
@@ -102,17 +112,27 @@
   }
 
   /**
-   * Start time of autocleaning procedure in ISO 8601 format
+   * Id of an auto-cleaning report.
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
+   * Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
+   * @member {String} index
+   */
+  exports.prototype['index'] = undefined;
+  /**
+   * Start time of an auto-cleaning run in ISO 8601 format
    * @member {String} startedAt
    */
   exports.prototype['startedAt'] = undefined;
   /**
-   * Finish time of autocleaning procedure in ISO 8601 format
+   * Finish time of an auto-cleaning run in ISO 8601 format
    * @member {String} stoppedAt
    */
   exports.prototype['stoppedAt'] = undefined;
   /**
-   * Number of bytes deleted during autocleaning procedure.
+   * Number of bytes deleted during an auto-cleaning run.
    * @member {Number} releasedBytes
    */
   exports.prototype['releasedBytes'] = undefined;

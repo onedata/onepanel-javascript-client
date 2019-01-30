@@ -101,10 +101,10 @@
         done();
       });
     });
-    describe('configureFilesPopularity', function() {
-      it('should call configureFilesPopularity successfully', function(done) {
-        //uncomment below and update the code to test configureFilesPopularity
-        //instance.configureFilesPopularity(function(error) {
+    describe('configureFilePopularity', function() {
+      it('should call configureFilePopularity successfully', function(done) {
+        //uncomment below and update the code to test configureFilePopularity
+        //instance.configureFilePopularity(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -131,10 +131,10 @@
         done();
       });
     });
-    describe('getFilesPopularityConfiguration', function() {
-      it('should call getFilesPopularityConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getFilesPopularityConfiguration
-        //instance.getFilesPopularityConfiguration(function(error) {
+    describe('getFilePopularityConfiguration', function() {
+      it('should call getFilePopularityConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getFilePopularityConfiguration
+        //instance.getFilePopularityConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -225,6 +225,16 @@
       it('should call getProviderNagiosReport successfully', function(done) {
         //uncomment below and update the code to test getProviderNagiosReport
         //instance.getProviderNagiosReport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningReport', function() {
+      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
+        //instance.getProviderSpaceAutoCleaningReport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

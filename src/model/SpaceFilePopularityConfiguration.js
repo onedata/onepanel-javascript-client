@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningReport = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceFilePopularityConfiguration = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,117 +35,95 @@
 
 
   /**
-   * The SpaceAutoCleaningReport model module.
-   * @module model/SpaceAutoCleaningReport
+   * The SpaceFilePopularityConfiguration model module.
+   * @module model/SpaceFilePopularityConfiguration
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>SpaceAutoCleaningReport</code>.
-   * Report from an auto-cleaning run.
-   * @alias module:model/SpaceAutoCleaningReport
+   * Constructs a new <code>SpaceFilePopularityConfiguration</code>.
+   * Configuration of the file-popularity mechanism in the space.
+   * @alias module:model/SpaceFilePopularityConfiguration
    * @class
-   * @param id {String} Id of an auto-cleaning report.
-   * @param index {String} Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format
-   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format
-   * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
-   * @param bytesToRelease {Number} Number of bytes that should be deleted.
-   * @param filesNumber {Number} Number of deleted files.
    */
-  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
+  var exports = function() {
     var _this = this;
 
-    _this['id'] = id;
-    _this['index'] = index;
-    _this['startedAt'] = startedAt;
-    _this['stoppedAt'] = stoppedAt;
-    _this['releasedBytes'] = releasedBytes;
-    _this['bytesToRelease'] = bytesToRelease;
-    _this['filesNumber'] = filesNumber;
+
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceAutoCleaningReport} The value of 'discriminator' field or undefined.
+   * @return {module:model/SpaceFilePopularityConfiguration} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceAutoCleaningReport</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpaceFilePopularityConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceAutoCleaningReport} obj Optional instance to populate.
-   * @return {module:model/SpaceAutoCleaningReport} The populated <code>SpaceAutoCleaningReport</code> instance.
+   * @param {module:model/SpaceFilePopularityConfiguration} obj Optional instance to populate.
+   * @return {module:model/SpaceFilePopularityConfiguration} The populated <code>SpaceFilePopularityConfiguration</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      if (data.hasOwnProperty('enabled')) {
+        obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
       }
-      if (data.hasOwnProperty('index')) {
-        obj['index'] = ApiClient.convertToType(data['index'], 'String');
+      if (data.hasOwnProperty('exampleQuery')) {
+        obj['exampleQuery'] = ApiClient.convertToType(data['exampleQuery'], 'String');
       }
-      if (data.hasOwnProperty('startedAt')) {
-        obj['startedAt'] = ApiClient.convertToType(data['startedAt'], 'String');
+      if (data.hasOwnProperty('lastOpenHourWeight')) {
+        obj['lastOpenHourWeight'] = ApiClient.convertToType(data['lastOpenHourWeight'], 'Number');
       }
-      if (data.hasOwnProperty('stoppedAt')) {
-        obj['stoppedAt'] = ApiClient.convertToType(data['stoppedAt'], 'String');
+      if (data.hasOwnProperty('avgOpenCountPerDayWeight')) {
+        obj['avgOpenCountPerDayWeight'] = ApiClient.convertToType(data['avgOpenCountPerDayWeight'], 'Number');
       }
-      if (data.hasOwnProperty('releasedBytes')) {
-        obj['releasedBytes'] = ApiClient.convertToType(data['releasedBytes'], 'Number');
-      }
-      if (data.hasOwnProperty('bytesToRelease')) {
-        obj['bytesToRelease'] = ApiClient.convertToType(data['bytesToRelease'], 'Number');
-      }
-      if (data.hasOwnProperty('filesNumber')) {
-        obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
+      if (data.hasOwnProperty('maxAvgOpenCountPerDay')) {
+        obj['maxAvgOpenCountPerDay'] = ApiClient.convertToType(data['maxAvgOpenCountPerDay'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * Id of an auto-cleaning report.
-   * @member {String} id
+   * If true, collecting file-popularity mechanism in the space is enabled
+   * @member {Boolean} enabled
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['enabled'] = undefined;
   /**
-   * Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @member {String} index
+   * Example `curl` command that can be executed to query the file-popularity view in the space. 
+   * @member {String} exampleQuery
    */
-  exports.prototype['index'] = undefined;
+  exports.prototype['exampleQuery'] = undefined;
   /**
-   * Start time of an auto-cleaning run in ISO 8601 format
-   * @member {String} startedAt
+   * Weight of `lastOpenHour` parameter. 
+   * @member {Number} lastOpenHourWeight
+   * @default 1.0
    */
-  exports.prototype['startedAt'] = undefined;
+  exports.prototype['lastOpenHourWeight'] = 1.0;
   /**
-   * Finish time of an auto-cleaning run in ISO 8601 format
-   * @member {String} stoppedAt
+   * Weight of `avgOpenCountPerDayWeight` parameter. 
+   * @member {Number} avgOpenCountPerDayWeight
+   * @default 20.0
    */
-  exports.prototype['stoppedAt'] = undefined;
+  exports.prototype['avgOpenCountPerDayWeight'] = 20.0;
   /**
-   * Number of bytes deleted during an auto-cleaning run.
-   * @member {Number} releasedBytes
+   * Maximal value of average open count per day taken to calculate the value of popularity function. 
+   * @member {Number} maxAvgOpenCountPerDay
+   * @default 100.0
    */
-  exports.prototype['releasedBytes'] = undefined;
-  /**
-   * Number of bytes that should be deleted.
-   * @member {Number} bytesToRelease
-   */
-  exports.prototype['bytesToRelease'] = undefined;
-  /**
-   * Number of deleted files.
-   * @member {Number} filesNumber
-   */
-  exports.prototype['filesNumber'] = undefined;
+  exports.prototype['maxAvgOpenCountPerDay'] = 100.0;
 
 
 

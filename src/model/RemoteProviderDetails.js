@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Progress = factory(root.Onepanel.ApiClient);
+    root.Onepanel.RemoteProviderDetails = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,101 +35,117 @@
 
 
   /**
-   * The Progress model module.
-   * @module model/Progress
+   * The RemoteProviderDetails model module.
+   * @module model/RemoteProviderDetails
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Progress</code>.
-   * The panel configuration.
-   * @alias module:model/Progress
+   * Constructs a new <code>RemoteProviderDetails</code>.
+   * Oneprovider details.
+   * @alias module:model/RemoteProviderDetails
    * @class
+   * @param id {String} The Id assigned by a zone.
+   * @param name {String} The name under which the provider has been registered in a zone.
+   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @param geoLongitude {Number} The geographical longitude of the provider.
+   * @param geoLatitude {Number} The geographical latitude of the provider.
+   * @param cluster {String} The Id of the corresponding cluster record.
+   * @param online {Boolean} Indicates if the provider is currently online.
    */
-  var exports = function() {
+  var exports = function(id, name, domain, geoLongitude, geoLatitude, cluster, online) {
     var _this = this;
 
-
-
-
-
-
-
+    _this['id'] = id;
+    _this['name'] = name;
+    _this['domain'] = domain;
+    _this['geoLongitude'] = geoLongitude;
+    _this['geoLatitude'] = geoLatitude;
+    _this['cluster'] = cluster;
+    _this['online'] = online;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Progress} The value of 'discriminator' field or undefined.
+   * @return {module:model/RemoteProviderDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Progress</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>RemoteProviderDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Progress} obj Optional instance to populate.
-   * @return {module:model/Progress} The populated <code>Progress</code> instance.
+   * @param {module:model/RemoteProviderDetails} obj Optional instance to populate.
+   * @return {module:model/RemoteProviderDetails} The populated <code>RemoteProviderDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('clusterNodes')) {
-        obj['clusterNodes'] = ApiClient.convertToType(data['clusterNodes'], 'Boolean');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('clusterIps')) {
-        obj['clusterIps'] = ApiClient.convertToType(data['clusterIps'], 'Boolean');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('webCertificate')) {
-        obj['webCertificate'] = ApiClient.convertToType(data['webCertificate'], 'Boolean');
+      if (data.hasOwnProperty('domain')) {
+        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('dnsCheck')) {
-        obj['dnsCheck'] = ApiClient.convertToType(data['dnsCheck'], 'Boolean');
+      if (data.hasOwnProperty('geoLongitude')) {
+        obj['geoLongitude'] = ApiClient.convertToType(data['geoLongitude'], 'Number');
       }
-      if (data.hasOwnProperty('storageSetup')) {
-        obj['storageSetup'] = ApiClient.convertToType(data['storageSetup'], 'Boolean');
+      if (data.hasOwnProperty('geoLatitude')) {
+        obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
       }
-      if (data.hasOwnProperty('isRegistered')) {
-        obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
+      if (data.hasOwnProperty('cluster')) {
+        obj['cluster'] = ApiClient.convertToType(data['cluster'], 'String');
+      }
+      if (data.hasOwnProperty('online')) {
+        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * True after user assigned services to cluster nodes and they were deployed.
-   * @member {Boolean} clusterNodes
+   * The Id assigned by a zone.
+   * @member {String} id
    */
-  exports.prototype['clusterNodes'] = undefined;
+  exports.prototype['id'] = undefined;
   /**
-   * True after user confirmed detected external IPs or if interactiveDeployment was disabled.
-   * @member {Boolean} clusterIps
+   * The name under which the provider has been registered in a zone.
+   * @member {String} name
    */
-  exports.prototype['clusterIps'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
-   * True after user decided whether to use Let's Encrypt certificates or if interactiveDeployment was disabled.
-   * @member {Boolean} webCertificate
+   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @member {String} domain
    */
-  exports.prototype['webCertificate'] = undefined;
+  exports.prototype['domain'] = undefined;
   /**
-   * True after user reviewed results of DNS check or if interactiveDeployment was disabled.
-   * @member {Boolean} dnsCheck
+   * The geographical longitude of the provider.
+   * @member {Number} geoLongitude
    */
-  exports.prototype['dnsCheck'] = undefined;
+  exports.prototype['geoLongitude'] = undefined;
   /**
-   * True after at least one storage was added to op_worker. Omitted in Onezone panel.
-   * @member {Boolean} storageSetup
+   * The geographical latitude of the provider.
+   * @member {Number} geoLatitude
    */
-  exports.prototype['storageSetup'] = undefined;
+  exports.prototype['geoLatitude'] = undefined;
   /**
-   * True if the Oneprovider is registered at Onezone. Omitted in Onezone panel.
-   * @member {Boolean} isRegistered
+   * The Id of the corresponding cluster record.
+   * @member {String} cluster
    */
-  exports.prototype['isRegistered'] = undefined;
+  exports.prototype['cluster'] = undefined;
+  /**
+   * Indicates if the provider is currently online.
+   * @member {Boolean} online
+   */
+  exports.prototype['online'] = undefined;
 
 
 

@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Progress = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ProgressModify = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,19 @@
 
 
   /**
-   * The Progress model module.
-   * @module model/Progress
+   * The ProgressModify model module.
+   * @module model/ProgressModify
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>Progress</code>.
+   * Constructs a new <code>ProgressModify</code>.
    * The panel configuration.
-   * @alias module:model/Progress
+   * @alias module:model/ProgressModify
    * @class
    */
   var exports = function() {
     var _this = this;
-
-
-
 
 
 
@@ -61,26 +58,23 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Progress} The value of 'discriminator' field or undefined.
+   * @return {module:model/ProgressModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Progress</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ProgressModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Progress} obj Optional instance to populate.
-   * @return {module:model/Progress} The populated <code>Progress</code> instance.
+   * @param {module:model/ProgressModify} obj Optional instance to populate.
+   * @return {module:model/ProgressModify} The populated <code>ProgressModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('clusterNodes')) {
-        obj['clusterNodes'] = ApiClient.convertToType(data['clusterNodes'], 'Boolean');
-      }
       if (data.hasOwnProperty('clusterIps')) {
         obj['clusterIps'] = ApiClient.convertToType(data['clusterIps'], 'Boolean');
       }
@@ -90,21 +84,10 @@
       if (data.hasOwnProperty('dnsCheck')) {
         obj['dnsCheck'] = ApiClient.convertToType(data['dnsCheck'], 'Boolean');
       }
-      if (data.hasOwnProperty('storageSetup')) {
-        obj['storageSetup'] = ApiClient.convertToType(data['storageSetup'], 'Boolean');
-      }
-      if (data.hasOwnProperty('isRegistered')) {
-        obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
-      }
     }
     return obj;
   }
 
-  /**
-   * True after user assigned services to cluster nodes and they were deployed.
-   * @member {Boolean} clusterNodes
-   */
-  exports.prototype['clusterNodes'] = undefined;
   /**
    * True after user confirmed detected external IPs or if interactiveDeployment was disabled.
    * @member {Boolean} clusterIps
@@ -120,16 +103,6 @@
    * @member {Boolean} dnsCheck
    */
   exports.prototype['dnsCheck'] = undefined;
-  /**
-   * True after at least one storage was added to op_worker. Omitted in Onezone panel.
-   * @member {Boolean} storageSetup
-   */
-  exports.prototype['storageSetup'] = undefined;
-  /**
-   * True if the Oneprovider is registered at Onezone. Omitted in Onezone panel.
-   * @member {Boolean} isRegistered
-   */
-  exports.prototype['isRegistered'] = undefined;
 
 
 

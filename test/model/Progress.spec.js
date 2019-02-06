@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property clusterIPs (base name: "clusterIPs")', function() {
-      // uncomment below and update the code to test the property clusterIPs
+    it('should have the property clusterIps (base name: "clusterIps")', function() {
+      // uncomment below and update the code to test the property clusterIps
       //var instane = new Onepanel.Progress();
       //expect(instance).to.be();
     });

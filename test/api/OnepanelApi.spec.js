@@ -81,26 +81,6 @@
         done();
       });
     });
-    describe('createSession', function() {
-      it('should call createSession successfully', function(done) {
-        //uncomment below and update the code to test createSession
-        //instance.createSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAnyProvider', function() {
-      it('should call getAnyProvider successfully', function(done) {
-        //uncomment below and update the code to test getAnyProvider
-        //instance.getAnyProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getCluster', function() {
       it('should call getCluster successfully', function(done) {
         //uncomment below and update the code to test getCluster
@@ -211,16 +191,6 @@
         done();
       });
     });
-    describe('getOnezoneLogin', function() {
-      it('should call getOnezoneLogin successfully', function(done) {
-        //uncomment below and update the code to test getOnezoneLogin
-        //instance.getOnezoneLogin(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getProgress', function() {
       it('should call getProgress successfully', function(done) {
         //uncomment below and update the code to test getProgress
@@ -231,10 +201,10 @@
         done();
       });
     });
-    describe('getSession', function() {
-      it('should call getSession successfully', function(done) {
-        //uncomment below and update the code to test getSession
-        //instance.getSession(function(error) {
+    describe('getRemoteProvider', function() {
+      it('should call getRemoteProvider successfully', function(done) {
+        //uncomment below and update the code to test getRemoteProvider
+        //instance.getRemoteProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -255,16 +225,6 @@
       it('should call getUser successfully', function(done) {
         //uncomment below and update the code to test getUser
         //instance.getUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getUserLink', function() {
-      it('should call getUserLink successfully', function(done) {
-        //uncomment below and update the code to test getUserLink
-        //instance.getUserLink(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -371,30 +331,10 @@
         done();
       });
     });
-    describe('removeSession', function() {
-      it('should call removeSession successfully', function(done) {
-        //uncomment below and update the code to test removeSession
-        //instance.removeSession(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('removeUser', function() {
       it('should call removeUser successfully', function(done) {
         //uncomment below and update the code to test removeUser
         //instance.removeUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeUserLink', function() {
-      it('should call removeUserLink successfully', function(done) {
-        //uncomment below and update the code to test removeUserLink
-        //instance.removeUserLink(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

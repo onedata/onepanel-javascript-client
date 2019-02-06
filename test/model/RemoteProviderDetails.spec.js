@@ -16,124 +16,89 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.Progress = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.RemoteProviderDetails();
+  });
 
-
-  /**
-   * The Progress model module.
-   * @module model/Progress
-   * @version 18.02.0-rc13
-   */
-
-  /**
-   * Constructs a new <code>Progress</code>.
-   * The panel configuration.
-   * @alias module:model/Progress
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/Progress} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>Progress</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Progress} obj Optional instance to populate.
-   * @return {module:model/Progress} The populated <code>Progress</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('clusterNodes')) {
-        obj['clusterNodes'] = ApiClient.convertToType(data['clusterNodes'], 'Boolean');
-      }
-      if (data.hasOwnProperty('clusterIps')) {
-        obj['clusterIps'] = ApiClient.convertToType(data['clusterIps'], 'Boolean');
-      }
-      if (data.hasOwnProperty('webCertificate')) {
-        obj['webCertificate'] = ApiClient.convertToType(data['webCertificate'], 'Boolean');
-      }
-      if (data.hasOwnProperty('dnsCheck')) {
-        obj['dnsCheck'] = ApiClient.convertToType(data['dnsCheck'], 'Boolean');
-      }
-      if (data.hasOwnProperty('storageSetup')) {
-        obj['storageSetup'] = ApiClient.convertToType(data['storageSetup'], 'Boolean');
-      }
-      if (data.hasOwnProperty('isRegistered')) {
-        obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * True after user assigned services to cluster nodes and they were deployed.
-   * @member {Boolean} clusterNodes
-   */
-  exports.prototype['clusterNodes'] = undefined;
-  /**
-   * True after user confirmed detected external IPs or if interactiveDeployment was disabled.
-   * @member {Boolean} clusterIps
-   */
-  exports.prototype['clusterIps'] = undefined;
-  /**
-   * True after user decided whether to use Let's Encrypt certificates or if interactiveDeployment was disabled.
-   * @member {Boolean} webCertificate
-   */
-  exports.prototype['webCertificate'] = undefined;
-  /**
-   * True after user reviewed results of DNS check or if interactiveDeployment was disabled.
-   * @member {Boolean} dnsCheck
-   */
-  exports.prototype['dnsCheck'] = undefined;
-  /**
-   * True after at least one storage was added to op_worker. Omitted in Onezone panel.
-   * @member {Boolean} storageSetup
-   */
-  exports.prototype['storageSetup'] = undefined;
-  /**
-   * True if the Oneprovider is registered at Onezone. Omitted in Onezone panel.
-   * @member {Boolean} isRegistered
-   */
-  exports.prototype['isRegistered'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('RemoteProviderDetails', function() {
+    it('should create an instance of RemoteProviderDetails', function() {
+      // uncomment below and update the code to test RemoteProviderDetails
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be.a(Onepanel.RemoteProviderDetails);
+    });
 
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property geoLongitude (base name: "geoLongitude")', function() {
+      // uncomment below and update the code to test the property geoLongitude
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property geoLatitude (base name: "geoLatitude")', function() {
+      // uncomment below and update the code to test the property geoLatitude
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cluster (base name: "cluster")', function() {
+      // uncomment below and update the code to test the property cluster
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property online (base name: "online")', function() {
+      // uncomment below and update the code to test the property online
+      //var instane = new Onepanel.RemoteProviderDetails();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

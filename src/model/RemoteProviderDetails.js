@@ -45,13 +45,13 @@
    * Oneprovider details.
    * @alias module:model/RemoteProviderDetails
    * @class
-   * @param id {String} The Id assigned by a zone.
-   * @param name {String} The name under which the provider has been registered in a zone.
-   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @param id {String} The Oneprovider Id assigned by Onezone.
+   * @param name {String} The name under which the Oneprovider has been registered in Onezone.
+   * @param domain {String} The fully qualified domain name of the Oneprovider. 
    * @param geoLongitude {Number} The geographical longitude of the provider.
    * @param geoLatitude {Number} The geographical latitude of the provider.
    * @param cluster {String} The Id of the corresponding cluster record.
-   * @param online {Boolean} Indicates if the provider is currently online.
+   * @param online {Boolean} Indicates if the Oneprovider is currently online.
    */
   var exports = function(id, name, domain, geoLongitude, geoLatitude, cluster, online) {
     var _this = this;
@@ -112,17 +112,17 @@
   }
 
   /**
-   * The Id assigned by a zone.
+   * The Oneprovider Id assigned by Onezone.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
-   * The name under which the provider has been registered in a zone.
+   * The name under which the Oneprovider has been registered in Onezone.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * The fully qualified domain name of the Oneprovider. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
@@ -142,7 +142,7 @@
    */
   exports.prototype['cluster'] = undefined;
   /**
-   * Indicates if the provider is currently online.
+   * Indicates if the Oneprovider is currently online.
    * @member {Boolean} online
    */
   exports.prototype['online'] = undefined;

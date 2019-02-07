@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **version** | **String** | Onezone cluster version. | [optional] 
 **domain** | **String** | Domain of the Onezone. | 
 **name** | **String** | Name of the Onezone cluster. | [optional] 
-**compatible** | **Boolean** | True if versions of this Oneprovider and the Onezone are compatible.  | [optional] 
+**compatible** | **Boolean** | True if versions of this Oneprovider and the Onezone are compatible. | [optional] 
 **subdomainDelegationSupported** | **Boolean** | Whether given Onezone allows subdomain delegation. | [optional] 
 
 

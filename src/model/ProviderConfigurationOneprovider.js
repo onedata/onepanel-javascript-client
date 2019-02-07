@@ -125,7 +125,7 @@
    */
   exports.prototype['register'] = undefined;
   /**
-   * Registration token obtained from Onezone service. This token identifies Onezone to be used and authorizes the registration request. 
+   * Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
    * @member {String} token
    */
   exports.prototype['token'] = undefined;

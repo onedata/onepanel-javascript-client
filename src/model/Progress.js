@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Progress</code>.
-   * The panel configuration.
+   * Progress marks indicating which steps of interactive deployment were reached by the admin performing cluster setup.
    * @alias module:model/Progress
    * @class
    */

@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
-[**getClusterUser**](OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
-[**getClusterUsers**](OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
+[**getClusterUser**](OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get remote cluster&#39;s user info
+[**getClusterUsers**](OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List users belonging to a cluster.
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
-[**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a provider in another cluster.
+[**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
@@ -340,9 +340,9 @@ This endpoint does not need any parameter.
 # **getClusterUser**
 > OnezoneUser getClusterUser(id, userId)
 
-Get info about Onezone user linked to cluster
+Get remote cluster&#39;s user info
 
-@fixme
+Returns information about user belonging to another of current user&#39;s clusters.
 
 ### Example
 ```javascript
@@ -356,7 +356,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var id = "id_example"; // String | Cluster id which users should be returned.
+var id = "id_example"; // String | Cluster Id
 
 var userId = "userId_example"; // String | Id of the user.
 
@@ -375,7 +375,7 @@ apiInstance.getClusterUser(id, userId, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Cluster id which users should be returned. | 
+ **id** | **String**| Cluster Id | 
  **userId** | **String**| Id of the user. | 
 
 ### Return type
@@ -395,9 +395,9 @@ Name | Type | Description  | Notes
 # **getClusterUsers**
 > Ids getClusterUsers(id)
 
-List Onezone users linked to a cluster
+List users belonging to a cluster.
 
-@fixme
+Lists Ids of user belonging to given cluster.
 
 ### Example
 ```javascript
@@ -769,9 +769,9 @@ This endpoint does not need any parameter.
 # **getRemoteProvider**
 > RemoteProviderDetails getRemoteProvider(id)
 
-Get details of a provider in another cluster.
+Get details of a remote Oneprovider.
 
-Returns the details of given provider. 
+Returns the details of given provider. Only users belonging to that Oneprovider&#39;s cluster can fetch its details. 
 
 ### Example
 ```javascript
@@ -785,7 +785,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var id = "id_example"; // String | Provider Id which details should be returned.
+var id = "id_example"; // String | Id of requested Oneprovider.
 
 
 var callback = function(error, data, response) {
@@ -802,7 +802,7 @@ apiInstance.getRemoteProvider(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Provider Id which details should be returned. | 
+ **id** | **String**| Id of requested Oneprovider. | 
 
 ### Return type
 

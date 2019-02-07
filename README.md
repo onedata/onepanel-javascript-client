@@ -106,8 +106,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
-*Onepanel.OnepanelApi* | [**getClusterUser**](docs/OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get info about Onezone user linked to cluster
-*Onepanel.OnepanelApi* | [**getClusterUsers**](docs/OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List Onezone users linked to a cluster
+*Onepanel.OnepanelApi* | [**getClusterUser**](docs/OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get remote cluster&#39;s user info
+*Onepanel.OnepanelApi* | [**getClusterUsers**](docs/OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List users belonging to a cluster.
 *Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.OnepanelApi* | [**getConfiguration**](docs/OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 *Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -115,7 +115,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getProgress**](docs/OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
-*Onepanel.OnepanelApi* | [**getRemoteProvider**](docs/OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a provider in another cluster.
+*Onepanel.OnepanelApi* | [**getRemoteProvider**](docs/OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 *Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
@@ -219,7 +219,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.OnezoneInfo](docs/OnezoneInfo.md)
- - [Onepanel.OnezoneRedirect](docs/OnezoneRedirect.md)
  - [Onepanel.OnezoneUser](docs/OnezoneUser.md)
  - [Onepanel.OpPanelConfiguration](docs/OpPanelConfiguration.md)
  - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)

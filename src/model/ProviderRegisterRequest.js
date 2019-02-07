@@ -46,9 +46,9 @@
    * @alias module:model/ProviderRegisterRequest
    * @class
    * @param name {String} The name under which the provider should be registered in a zone. 
-   * @param token {String} Registration token obtained from Onezone service. This token identifies Onezone to be used and authorizes the registration request. 
+   * @param token {String} Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
    * @param subdomainDelegation {Boolean} If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @param adminEmail {String} Email address of the oneprovider administrator.
+   * @param adminEmail {String} Email address of the Oneprovider administrator.
    */
   var exports = function(name, token, subdomainDelegation, adminEmail) {
     var _this = this;
@@ -118,7 +118,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Registration token obtained from Onezone service. This token identifies Onezone to be used and authorizes the registration request. 
+   * Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
    * @member {String} token
    */
   exports.prototype['token'] = undefined;
@@ -149,7 +149,7 @@
    */
   exports.prototype['geoLatitude'] = undefined;
   /**
-   * Email address of the oneprovider administrator.
+   * Email address of the Oneprovider administrator.
    * @member {String} adminEmail
    */
   exports.prototype['adminEmail'] = undefined;

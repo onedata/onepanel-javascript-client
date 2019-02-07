@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>ProgressModify</code>.
-   * The panel configuration.
+   * Progress marks which can be modified by the GUI.
    * @alias module:model/ProgressModify
    * @class
    */

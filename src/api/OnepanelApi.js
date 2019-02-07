@@ -313,9 +313,9 @@
      */
 
     /**
-     * Get info about Onezone user linked to cluster
-     * @fixme
-     * @param {String} id Cluster id which users should be returned.
+     * Get remote cluster&#39;s user info
+     * Returns information about user belonging to another of current user&#39;s clusters.
+     * @param {String} id Cluster Id
      * @param {String} userId Id of the user.
      * @param {module:api/OnepanelApi~getClusterUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OnezoneUser}
@@ -366,8 +366,8 @@
      */
 
     /**
-     * List Onezone users linked to a cluster
-     * @fixme
+     * List users belonging to a cluster.
+     * Lists Ids of user belonging to given cluster.
      * @param {String} id Cluster id.
      * @param {module:api/OnepanelApi~getClusterUsersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Ids}
@@ -685,9 +685,9 @@
      */
 
     /**
-     * Get details of a provider in another cluster.
-     * Returns the details of given provider. 
-     * @param {String} id Provider Id which details should be returned.
+     * Get details of a remote Oneprovider.
+     * Returns the details of given provider. Only users belonging to that Oneprovider&#39;s cluster can fetch its details. 
+     * @param {String} id Id of requested Oneprovider.
      * @param {module:api/OnepanelApi~getRemoteProviderCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/RemoteProviderDetails}
      */

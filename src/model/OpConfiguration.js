@@ -46,7 +46,7 @@
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
-   * @param clusterId {String} The Id of cluster recod for this cluster. Null if the cluster is not registered or worker is offline.
+   * @param clusterId {String} The Id of cluster record for this cluster. Null if the cluster is not registered.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished

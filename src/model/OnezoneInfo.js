@@ -123,7 +123,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * True if versions of this Oneprovider and the Onezone are compatible. 
+   * True if versions of this Oneprovider and the Onezone are compatible.
    * @member {Boolean} compatible
    */
   exports.prototype['compatible'] = undefined;

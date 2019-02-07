@@ -45,7 +45,7 @@
    * Public service configuration details
    * @alias module:model/Configuration
    * @class
-   * @param clusterId {String} The Id of cluster recod for this cluster. Null if the cluster is not registered or worker is offline.
+   * @param clusterId {String} The Id of cluster record for this cluster. Null if the cluster is not registered.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
@@ -97,7 +97,7 @@
   }
 
   /**
-   * The Id of cluster recod for this cluster. Null if the cluster is not registered or worker is offline.
+   * The Id of cluster record for this cluster. Null if the cluster is not registered.
    * @member {String} clusterId
    */
   exports.prototype['clusterId'] = undefined;

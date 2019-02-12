@@ -165,7 +165,7 @@
    */
   exports.prototype['credentialsType'] = 'none';
   /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
+   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth` this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
    * @member {String} credentials
    */
   exports.prototype['credentials'] = undefined;

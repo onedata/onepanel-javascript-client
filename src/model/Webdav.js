@@ -228,7 +228,12 @@
      * value: "token"
      * @const
      */
-    "token": "token"  };
+    "token": "token",
+    /**
+     * value: "B2ACCESS"
+     * @const
+     */
+    "B2ACCESS": "B2ACCESS"  };
 
   /**
    * Allowed values for the <code>rangeWriteSupport</code> property.

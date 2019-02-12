@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 
 * `token` (value: `"token"`)
 
+* `B2ACCESS` (value: `"B2ACCESS"`)
+
 
 
 

@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property onedataAccessToken (base name: "onedataAccessToken")', function() {
+      // uncomment below and update the code to test the property onedataAccessToken
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
     it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
       // uncomment below and update the code to test the property authorizationHeader
       //var instane = new Onepanel.Webdav();

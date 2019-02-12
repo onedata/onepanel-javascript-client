@@ -65,6 +65,7 @@
 
 
 
+
   };
 
   /**
@@ -102,6 +103,9 @@
       }
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('oauth2IdP')) {
+        obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
       }
       if (data.hasOwnProperty('authorizationHeader')) {
         obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
@@ -161,6 +165,11 @@
    * @member {String} credentials
    */
   exports.prototype['credentials'] = undefined;
+  /**
+   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the WebDAV endpoint. 
+   * @member {String} oauth2IdP
+   */
+  exports.prototype['oauth2IdP'] = undefined;
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
@@ -230,10 +239,10 @@
      */
     "token": "token",
     /**
-     * value: "B2ACCESS"
+     * value: "oauth2"
      * @const
      */
-    "B2ACCESS": "B2ACCESS"  };
+    "oauth2": "oauth2"  };
 
   /**
    * Allowed values for the <code>rangeWriteSupport</code> property.

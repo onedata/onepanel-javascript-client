@@ -87,6 +87,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property oauth2IdP (base name: "oauth2IdP")', function() {
+      // uncomment below and update the code to test the property oauth2IdP
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
     it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
       // uncomment below and update the code to test the property authorizationHeader
       //var instane = new Onepanel.Webdav();

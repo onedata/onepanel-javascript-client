@@ -80,17 +80,17 @@ basic.password = 'YOUR PASSWORD'
 
 var api = new Onepanel.OnepanelApi()
 
-var userCreateRequest = new Onepanel.UserCreateRequest(); // {UserCreateRequest} The user configuration details.
+var hostAddRequest = new Onepanel.HostAddRequest(); // {HostAddRequest} 
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addUser(userCreateRequest, callback);
+api.addClusterHost(hostAddRequest, callback);
 
 ```
 
@@ -100,23 +100,34 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 *Onepanel.OnepanelApi* | [**checkDns**](docs/OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
-*Onepanel.OnepanelApi* | [**createCluster**](docs/OnepanelApi.md#createCluster) | **POST** /hosts | Create or join cluster
-*Onepanel.OnepanelApi* | [**createSession**](docs/OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
+*Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
-*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster or discovered hosts
+*Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+*Onepanel.OnepanelApi* | [**getClusterUser**](docs/OnepanelApi.md#getClusterUser) | **GET** /user/clusters/{id}/users/{userId} | Get remote cluster&#39;s user info
+*Onepanel.OnepanelApi* | [**getClusterUsers**](docs/OnepanelApi.md#getClusterUsers) | **GET** /user/clusters/{id}/users | List users belonging to a cluster.
+*Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.OnepanelApi* | [**getConfiguration**](docs/OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
+*Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
+*Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
-*Onepanel.OnepanelApi* | [**getSession**](docs/OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
+*Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
+*Onepanel.OnepanelApi* | [**getProgress**](docs/OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
+*Onepanel.OnepanelApi* | [**getRemoteProvider**](docs/OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
+*Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 *Onepanel.OnepanelApi* | [**getWebCert**](docs/OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
+*Onepanel.OnepanelApi* | [**joinCluster**](docs/OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
+*Onepanel.OnepanelApi* | [**modifyCurrentUser**](docs/OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**modifyDnsCheckConfiguration**](docs/OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
+*Onepanel.OnepanelApi* | [**modifyProgress**](docs/OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress marks
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-*Onepanel.OnepanelApi* | [**removeSession**](docs/OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
+*Onepanel.OnepanelApi* | [**removeCurrentUser**](docs/OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
@@ -127,6 +138,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 *Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+*Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -189,37 +201,47 @@ Class | Method | HTTP request | Description
 
  - [Onepanel.ClusterConfigurationDetails](docs/ClusterConfigurationDetails.md)
  - [Onepanel.ClusterDatabases](docs/ClusterDatabases.md)
+ - [Onepanel.ClusterDetails](docs/ClusterDetails.md)
  - [Onepanel.ClusterIps](docs/ClusterIps.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Configuration](docs/Configuration.md)
- - [Onepanel.Cookie](docs/Cookie.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
  - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
  - [Onepanel.DnsCheckResult](docs/DnsCheckResult.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.Host](docs/Host.md)
+ - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
+ - [Onepanel.Ids](docs/Ids.md)
+ - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
- - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
- - [Onepanel.PanelConfigurationUsers](docs/PanelConfigurationUsers.md)
+ - [Onepanel.Node](docs/Node.md)
+ - [Onepanel.OnezoneInfo](docs/OnezoneInfo.md)
+ - [Onepanel.OnezoneUser](docs/OnezoneUser.md)
+ - [Onepanel.OpPanelConfiguration](docs/OpPanelConfiguration.md)
+ - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)
+ - [Onepanel.OzPanelConfiguration](docs/OzPanelConfiguration.md)
+ - [Onepanel.OzPanelConfigurationUsers](docs/OzPanelConfigurationUsers.md)
+ - [Onepanel.Progress](docs/Progress.md)
+ - [Onepanel.ProgressModify](docs/ProgressModify.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
  - [Onepanel.ProviderConfiguration](docs/ProviderConfiguration.md)
  - [Onepanel.ProviderConfigurationDetails](docs/ProviderConfigurationDetails.md)
  - [Onepanel.ProviderConfigurationDetailsOneprovider](docs/ProviderConfigurationDetailsOneprovider.md)
  - [Onepanel.ProviderConfigurationOneprovider](docs/ProviderConfigurationOneprovider.md)
- - [Onepanel.ProviderConfigurationOnezone](docs/ProviderConfigurationOnezone.md)
  - [Onepanel.ProviderDetails](docs/ProviderDetails.md)
  - [Onepanel.ProviderModifyRequest](docs/ProviderModifyRequest.md)
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
  - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
+ - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)
  - [Onepanel.ServiceStatus](docs/ServiceStatus.md)
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
- - [Onepanel.SessionDetails](docs/SessionDetails.md)
  - [Onepanel.SpaceAutoCleaningConfiguration](docs/SpaceAutoCleaningConfiguration.md)
  - [Onepanel.SpaceAutoCleaningReport](docs/SpaceAutoCleaningReport.md)
  - [Onepanel.SpaceAutoCleaningReports](docs/SpaceAutoCleaningReports.md)
@@ -243,6 +265,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
+ - [Onepanel.Users](docs/Users.md)
  - [Onepanel.WebCert](docs/WebCert.md)
  - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)
  - [Onepanel.WebCertPaths](docs/WebCertPaths.md)

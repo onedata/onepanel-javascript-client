@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
+    define(['ApiClient', 'model/OzPanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
+    module.exports = factory(require('../ApiClient'), require('./OzPanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
+    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.OzPanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
   }
-}(this, function(ApiClient, PanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
+}(this, function(ApiClient, OzPanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
   'use strict';
 
 
@@ -83,7 +83,7 @@
         obj['onezone'] = ZoneConfigurationOnezone.constructFromObject(data['onezone']);
       }
       if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = PanelConfiguration.constructFromObject(data['onepanel']);
+        obj['onepanel'] = OzPanelConfiguration.constructFromObject(data['onepanel']);
       }
     }
     return obj;
@@ -98,7 +98,7 @@
    */
   exports.prototype['onezone'] = undefined;
   /**
-   * @member {module:model/PanelConfiguration} onepanel
+   * @member {module:model/OzPanelConfiguration} onepanel
    */
   exports.prototype['onepanel'] = undefined;
 

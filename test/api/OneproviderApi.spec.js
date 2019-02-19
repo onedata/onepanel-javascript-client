@@ -141,6 +141,16 @@
         done();
       });
     });
+    describe('getOnezoneInfo', function() {
+      it('should call getOnezoneInfo successfully', function(done) {
+        //uncomment below and update the code to test getOnezoneInfo
+        //instance.getOnezoneInfo(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProvider', function() {
       it('should call getProvider successfully', function(done) {
         //uncomment below and update the code to test getProvider

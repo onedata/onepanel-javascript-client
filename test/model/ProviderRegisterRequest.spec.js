@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property token (base name: "token")', function() {
+      // uncomment below and update the code to test the property token
+      //var instane = new Onepanel.ProviderRegisterRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
       // uncomment below and update the code to test the property subdomainDelegation
       //var instane = new Onepanel.ProviderRegisterRequest();
@@ -89,12 +95,6 @@
 
     it('should have the property geoLatitude (base name: "geoLatitude")', function() {
       // uncomment below and update the code to test the property geoLatitude
-      //var instane = new Onepanel.ProviderRegisterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onezoneDomainName (base name: "onezoneDomainName")', function() {
-      // uncomment below and update the code to test the property onezoneDomainName
       //var instane = new Onepanel.ProviderRegisterRequest();
       //expect(instance).to.be();
     });

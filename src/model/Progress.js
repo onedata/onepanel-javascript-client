@@ -106,7 +106,7 @@
    */
   exports.prototype['clusterNodes'] = undefined;
   /**
-   * True after user confirmed detected external IPs or if interactiveDeployment was disabled.
+   * True after provided public IPs of cluster nodes or confirmed autodetected defaults. Also true if interactiveDeployment was disabled.
    * @member {Boolean} clusterIps
    */
   exports.prototype['clusterIps'] = undefined;

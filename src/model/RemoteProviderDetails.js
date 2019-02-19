@@ -42,12 +42,12 @@
 
   /**
    * Constructs a new <code>RemoteProviderDetails</code>.
-   * Oneprovider details.
+   * Information about another Oneprovider.
    * @alias module:model/RemoteProviderDetails
    * @class
    * @param id {String} The Oneprovider Id assigned by Onezone.
    * @param name {String} The name under which the Oneprovider has been registered in Onezone.
-   * @param domain {String} The fully qualified domain name of the Oneprovider. 
+   * @param domain {String} The fully qualified domain name of the Oneprovider.
    * @param geoLongitude {Number} The geographical longitude of the provider.
    * @param geoLatitude {Number} The geographical latitude of the provider.
    * @param cluster {String} The Id of the corresponding cluster record.
@@ -122,7 +122,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * The fully qualified domain name of the Oneprovider. 
+   * The fully qualified domain name of the Oneprovider.
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;

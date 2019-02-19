@@ -212,7 +212,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var id = "id_example"; // String | Cluster id which details should be returned.
+var id = "id_example"; // String | Cluster Id which details should be returned.
 
 
 var callback = function(error, data, response) {
@@ -229,7 +229,7 @@ apiInstance.getCluster(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Cluster id which details should be returned. | 
+ **id** | **String**| Cluster Id which details should be returned. | 
 
 ### Return type
 

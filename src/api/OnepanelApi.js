@@ -191,7 +191,7 @@
     /**
      * Get details of a user&#39;s cluster
      * Lists clusters linked with current user&#39;s account. 
-     * @param {String} id Cluster id which details should be returned.
+     * @param {String} id Cluster Id which details should be returned.
      * @param {module:api/OnepanelApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterDetails}
      */

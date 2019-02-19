@@ -45,9 +45,9 @@
    * Details of a cluster.
    * @alias module:model/ClusterDetails
    * @class
-   * @param id {String} 
+   * @param id {String} Id of the cluster record
    * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster
-   * @param serviceId {String} The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
+   * @param serviceId {String} The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @param version {String} Software version.
    * @param build {String} Software build identifier.
    * @param proxy {Boolean} Is onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
@@ -107,6 +107,7 @@
   }
 
   /**
+   * Id of the cluster record
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
@@ -116,7 +117,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
+   * The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @member {String} serviceId
    */
   exports.prototype['serviceId'] = undefined;

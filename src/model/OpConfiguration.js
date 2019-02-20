@@ -46,7 +46,6 @@
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
-   * @param clusterId {String} The Id of cluster record for this cluster. Null if the cluster is not registered.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
@@ -54,9 +53,9 @@
    * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
    */
-  var exports = function(clusterId, version, build, deployed, serviceType, providerId, zoneDomain) {
+  var exports = function(version, build, deployed, serviceType, providerId, zoneDomain) {
     var _this = this;
-    Configuration.call(_this, clusterId, version, build, deployed);
+    Configuration.call(_this, version, build, deployed);
     _this['serviceType'] = serviceType;
     _this['providerId'] = providerId;
     _this['zoneDomain'] = zoneDomain;

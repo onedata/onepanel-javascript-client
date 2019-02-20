@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property onezone (base name: "onezone")', function() {
+      // uncomment below and update the code to test the property onezone
+      //var instane = new Onepanel.ProviderConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property onepanel (base name: "onepanel")', function() {
       // uncomment below and update the code to test the property onepanel
       //var instane = new Onepanel.ProviderConfiguration();

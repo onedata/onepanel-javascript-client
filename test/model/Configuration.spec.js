@@ -57,12 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Configuration);
     });
 
-    it('should have the property clusterId (base name: "clusterId")', function() {
-      // uncomment below and update the code to test the property clusterId
-      //var instane = new Onepanel.Configuration();
-      //expect(instance).to.be();
-    });
-
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
       //var instane = new Onepanel.Configuration();

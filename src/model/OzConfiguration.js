@@ -46,16 +46,15 @@
    * @alias module:model/OzConfiguration
    * @class
    * @extends module:model/Configuration
-   * @param clusterId {String} The Id of cluster record for this cluster. Null if the cluster is not registered.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
    * @param serviceType {module:model/OzConfiguration.ServiceTypeEnum} Indicates that this is Onezone's panel.
    * @param zoneDomain {String} The domain of this Onezone cluster. Null before cluster is configured. 
    */
-  var exports = function(clusterId, version, build, deployed, serviceType, zoneDomain) {
+  var exports = function(version, build, deployed, serviceType, zoneDomain) {
     var _this = this;
-    Configuration.call(_this, clusterId, version, build, deployed);
+    Configuration.call(_this, version, build, deployed);
     _this['serviceType'] = serviceType;
     _this['zoneDomain'] = zoneDomain;
 

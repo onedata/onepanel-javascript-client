@@ -46,20 +46,20 @@
    * @alias module:model/ProviderRegisterRequest
    * @class
    * @param name {String} The name under which the provider should be registered in a zone. 
-   * @param token {String} Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
    * @param subdomainDelegation {Boolean} If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
-   * @param adminEmail {String} Email address of the Oneprovider administrator.
+   * @param onezoneDomainName {String} The domain name of a zone where this storage provider will be registered. 
+   * @param adminEmail {String} Email address of the oneprovider administrator.
    */
-  var exports = function(name, token, subdomainDelegation, adminEmail) {
+  var exports = function(name, subdomainDelegation, onezoneDomainName, adminEmail) {
     var _this = this;
 
     _this['name'] = name;
-    _this['token'] = token;
     _this['subdomainDelegation'] = subdomainDelegation;
 
 
 
 
+    _this['onezoneDomainName'] = onezoneDomainName;
     _this['adminEmail'] = adminEmail;
   };
 
@@ -87,9 +87,6 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('token')) {
-        obj['token'] = ApiClient.convertToType(data['token'], 'String');
-      }
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
@@ -105,6 +102,9 @@
       if (data.hasOwnProperty('geoLatitude')) {
         obj['geoLatitude'] = ApiClient.convertToType(data['geoLatitude'], 'Number');
       }
+      if (data.hasOwnProperty('onezoneDomainName')) {
+        obj['onezoneDomainName'] = ApiClient.convertToType(data['onezoneDomainName'], 'String');
+      }
       if (data.hasOwnProperty('adminEmail')) {
         obj['adminEmail'] = ApiClient.convertToType(data['adminEmail'], 'String');
       }
@@ -117,11 +117,6 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
-  /**
-   * Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
-   * @member {String} token
-   */
-  exports.prototype['token'] = undefined;
   /**
    * If enabled, the storage provider will be assigned a subdomain in onezone's domain and 'subdomain' property must be provided. If disabled, 'domain' property should be provided. 
    * @member {Boolean} subdomainDelegation
@@ -149,7 +144,12 @@
    */
   exports.prototype['geoLatitude'] = undefined;
   /**
-   * Email address of the Oneprovider administrator.
+   * The domain name of a zone where this storage provider will be registered. 
+   * @member {String} onezoneDomainName
+   */
+  exports.prototype['onezoneDomainName'] = undefined;
+  /**
+   * Email address of the oneprovider administrator.
    * @member {String} adminEmail
    */
   exports.prototype['adminEmail'] = undefined;

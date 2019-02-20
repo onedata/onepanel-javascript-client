@@ -46,7 +46,7 @@
    * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Cephrados.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor host name.
@@ -132,7 +132,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Cephrados.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -189,6 +189,18 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "cephrados"
+     * @const
+     */
+    "cephrados": "cephrados"  };
 
 
   return exports;

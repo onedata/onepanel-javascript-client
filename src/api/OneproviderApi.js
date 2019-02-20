@@ -1480,16 +1480,17 @@
      * Callback function to receive the result of the modifyStorage operation.
      * @callback module:api/OneproviderApi~modifyStorageCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify storage details
-     * Modifies basic storage details, such as operation timeout.
-     * @param {String} id The Id of a storage resource, which details should be modified. 
-     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
+     * Modify storage config
+     * Modifies storage configuration.
+     * @param {String} id The Id of the storage resource which details should be modified. 
+     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StorageDetails}
      */
     this.modifyStorage = function(id, storageModifyRequest, callback) {
       var postBody = storageModifyRequest;
@@ -1518,7 +1519,7 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',
@@ -1560,6 +1561,51 @@
 
       return this.apiClient.callApi(
         '/provider', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeStorage operation.
+     * @callback module:api/OneproviderApi~removeStorageCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove storage
+     * Removes storage from the cluster. Only storage not supporting any spaces can be removed.
+     * @param {String} id The Id of the storage to remove.
+     * @param {module:api/OneproviderApi~removeStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeStorage = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling removeStorage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/storages/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

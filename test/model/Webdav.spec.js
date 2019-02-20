@@ -123,12 +123,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
     it('should have the property storagePathType (base name: "storagePathType")', function() {
       // uncomment below and update the code to test the property storagePathType
       //var instane = new Onepanel.Webdav();

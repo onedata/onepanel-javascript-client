@@ -46,7 +46,7 @@
    * @alias module:model/Ceph
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Ceph.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor host name.
@@ -62,7 +62,6 @@
     _this['monitorHostname'] = monitorHostname;
     _this['clusterName'] = clusterName;
     _this['poolName'] = poolName;
-
 
 
 
@@ -113,9 +112,6 @@
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
@@ -128,7 +124,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Ceph.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -168,18 +164,24 @@
    */
   exports.prototype['insecure'] = false;
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "ceph"
+     * @const
+     */
+    "ceph": "ceph"  };
 
 
   return exports;

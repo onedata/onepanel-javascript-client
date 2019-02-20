@@ -46,7 +46,7 @@
    * @alias module:model/Webdav
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Webdav.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
@@ -54,7 +54,6 @@
     StorageDetails.call(_this);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
-
 
 
 
@@ -121,9 +120,6 @@
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
@@ -136,7 +132,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Webdav.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -195,18 +191,24 @@
    */
   exports.prototype['insecure'] = false;
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "webdav"
+     * @const
+     */
+    "webdav": "webdav"  };
 
   /**
    * Allowed values for the <code>credentialsType</code> property.

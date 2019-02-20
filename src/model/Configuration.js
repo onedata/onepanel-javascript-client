@@ -52,6 +52,7 @@
   var exports = function(version, build, deployed) {
     var _this = this;
 
+
     _this['version'] = version;
     _this['build'] = build;
     _this['deployed'] = deployed;
@@ -78,6 +79,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('serviceType')) {
+        obj['serviceType'] = ApiClient.convertToType(data['serviceType'], 'String');
+      }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'String');
       }
@@ -91,6 +95,11 @@
     return obj;
   }
 
+  /**
+   * Indicates whether this is Oneozne's or Oneprovider's panel.
+   * @member {String} serviceType
+   */
+  exports.prototype['serviceType'] = undefined;
   /**
    * Version of this Onepanel
    * @member {String} version

@@ -56,6 +56,7 @@
 
 
 
+
   };
 
   /**
@@ -79,6 +80,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
@@ -104,6 +108,11 @@
     return obj;
   }
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * The Id of storage.
    * @member {String} id

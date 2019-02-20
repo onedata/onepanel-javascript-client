@@ -46,14 +46,14 @@
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
+   * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
-   * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
    */
-  var exports = function(version, build, deployed, serviceType, providerId, zoneDomain) {
+  var exports = function(serviceType, version, build, deployed, providerId, zoneDomain) {
     var _this = this;
     Configuration.call(_this, version, build, deployed);
     _this['serviceType'] = serviceType;

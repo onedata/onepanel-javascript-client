@@ -96,7 +96,7 @@
   }
 
   /**
-   * Indicates whether this is Oneozne's or Oneprovider's panel.
+   * Indicates whether this is Onezone's or Oneprovider's panel.
    * @member {String} serviceType
    */
   exports.prototype['serviceType'] = undefined;

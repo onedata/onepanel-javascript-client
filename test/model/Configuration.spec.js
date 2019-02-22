@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.Configuration);
     });
 
+    it('should have the property serviceType (base name: "serviceType")', function() {
+      // uncomment below and update the code to test the property serviceType
+      //var instane = new Onepanel.Configuration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
       //var instane = new Onepanel.Configuration();

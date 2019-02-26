@@ -50,7 +50,7 @@
    * @param serviceId {String} The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or null in case of Onezone cluster 
    * @param version {String} Software version.
    * @param build {String} Software build identifier.
-   * @param proxy {Boolean} Is onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
+   * @param proxy {Boolean} Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
    */
   var exports = function(id, type, serviceId, version, build, proxy) {
     var _this = this;
@@ -132,7 +132,7 @@
    */
   exports.prototype['build'] = undefined;
   /**
-   * Is onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
+   * Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
    * @member {Boolean} proxy
    */
   exports.prototype['proxy'] = undefined;

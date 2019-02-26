@@ -111,6 +111,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirMode (base name: "dirMode")', function() {
+      // uncomment below and update the code to test the property dirMode
+      //var instane = new Onepanel.Webdav();
+      //expect(instance).to.be();
+    });
+
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
       //var instane = new Onepanel.Webdav();

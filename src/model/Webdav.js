@@ -65,6 +65,8 @@
 
 
 
+
+
   };
 
   /**
@@ -114,6 +116,12 @@
       }
       if (data.hasOwnProperty('maximumUploadSize')) {
         obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -183,6 +191,18 @@
    * @member {Number} maximumUploadSize
    */
   exports.prototype['maximumUploadSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata.  Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   * @default '420'
+   */
+  exports.prototype['fileMode'] = '420';
+  /**
+   * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   * @default '509'
+   */
+  exports.prototype['dirMode'] = '509';
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout

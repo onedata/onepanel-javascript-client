@@ -50,9 +50,9 @@
    * @param serviceId {String} The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or \"onezone\" in case of Onezone cluster 
    * @param workerVersion {module:model/VersionInfo} 
    * @param onepanelVersion {module:model/VersionInfo} 
-   * @param proxy {Boolean} Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
+   * @param onepanelProxy {Boolean} Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
    */
-  var exports = function(id, type, serviceId, workerVersion, onepanelVersion, proxy) {
+  var exports = function(id, type, serviceId, workerVersion, onepanelVersion, onepanelProxy) {
     var _this = this;
 
     _this['id'] = id;
@@ -60,7 +60,7 @@
     _this['serviceId'] = serviceId;
     _this['workerVersion'] = workerVersion;
     _this['onepanelVersion'] = onepanelVersion;
-    _this['proxy'] = proxy;
+    _this['onepanelProxy'] = onepanelProxy;
   };
 
   /**
@@ -99,8 +99,8 @@
       if (data.hasOwnProperty('onepanelVersion')) {
         obj['onepanelVersion'] = VersionInfo.constructFromObject(data['onepanelVersion']);
       }
-      if (data.hasOwnProperty('proxy')) {
-        obj['proxy'] = ApiClient.convertToType(data['proxy'], 'Boolean');
+      if (data.hasOwnProperty('onepanelProxy')) {
+        obj['onepanelProxy'] = ApiClient.convertToType(data['onepanelProxy'], 'Boolean');
       }
     }
     return obj;
@@ -131,9 +131,9 @@
   exports.prototype['onepanelVersion'] = undefined;
   /**
    * Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster's domain at port 443 (rather than 9443). 
-   * @member {Boolean} proxy
+   * @member {Boolean} onepanelProxy
    */
-  exports.prototype['proxy'] = undefined;
+  exports.prototype['onepanelProxy'] = undefined;
 
 
   /**

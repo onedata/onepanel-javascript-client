@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **serviceId** | **String** | The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or \&quot;onezone\&quot; in case of Onezone cluster  | 
 **workerVersion** | [**VersionInfo**](VersionInfo.md) |  | 
 **onepanelVersion** | [**VersionInfo**](VersionInfo.md) |  | 
-**proxy** | **Boolean** | Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster&#39;s domain at port 443 (rather than 9443).  | 
+**onepanelProxy** | **Boolean** | Is Onepanel proxy enabled - if so, onepanel GUI is served on cluster&#39;s domain at port 443 (rather than 9443).  | 
 
 
 <a name="TypeEnum"></a>

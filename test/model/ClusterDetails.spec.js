@@ -87,8 +87,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property proxy (base name: "proxy")', function() {
-      // uncomment below and update the code to test the property proxy
+    it('should have the property onepanelProxy (base name: "onepanelProxy")', function() {
+      // uncomment below and update the code to test the property onepanelProxy
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });

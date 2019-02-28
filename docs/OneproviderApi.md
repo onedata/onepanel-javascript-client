@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 Get Onezone information
 
-Get information about Onezone. Before registration this endpoint requires a registration token and returns information about Onezone issuing the token. When provider is registered returns information about Onezone at which the provider is registered. 
+Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
 
 ### Example
 ```javascript

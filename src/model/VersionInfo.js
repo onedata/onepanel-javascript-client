@@ -16,83 +16,100 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.VersionInfo = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ClusterDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The VersionInfo model module.
+   * @module model/VersionInfo
+   * @version 18.02.0-rc13
+   */
+
+  /**
+   * Constructs a new <code>VersionInfo</code>.
+   * Service version info.
+   * @alias module:model/VersionInfo
+   * @class
+   * @param release {String} Release version.
+   * @param build {String} Build number.
+   * @param gui {String} GUI version indicated by a SHA256 hash.
+   */
+  var exports = function(release, build, gui) {
+    var _this = this;
+
+    _this['release'] = release;
+    _this['build'] = build;
+    _this['gui'] = gui;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/VersionInfo} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>VersionInfo</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/VersionInfo} obj Optional instance to populate.
+   * @return {module:model/VersionInfo} The populated <code>VersionInfo</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('release')) {
+        obj['release'] = ApiClient.convertToType(data['release'], 'String');
+      }
+      if (data.hasOwnProperty('build')) {
+        obj['build'] = ApiClient.convertToType(data['build'], 'String');
+      }
+      if (data.hasOwnProperty('gui')) {
+        obj['gui'] = ApiClient.convertToType(data['gui'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Release version.
+   * @member {String} release
+   */
+  exports.prototype['release'] = undefined;
+  /**
+   * Build number.
+   * @member {String} build
+   */
+  exports.prototype['build'] = undefined;
+  /**
+   * GUI version indicated by a SHA256 hash.
+   * @member {String} gui
+   */
+  exports.prototype['gui'] = undefined;
 
-  describe('ClusterDetails', function() {
-    it('should create an instance of ClusterDetails', function() {
-      // uncomment below and update the code to test ClusterDetails
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be.a(Onepanel.ClusterDetails);
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property serviceId (base name: "serviceId")', function() {
-      // uncomment below and update the code to test the property serviceId
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workerVersion (base name: "workerVersion")', function() {
-      // uncomment below and update the code to test the property workerVersion
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onepanelVersion (base name: "onepanelVersion")', function() {
-      // uncomment below and update the code to test the property onepanelVersion
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property proxy (base name: "proxy")', function() {
-      // uncomment below and update the code to test the property proxy
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

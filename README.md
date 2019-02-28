@@ -264,6 +264,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
  - [Onepanel.Users](docs/Users.md)
+ - [Onepanel.VersionInfo](docs/VersionInfo.md)
  - [Onepanel.WebCert](docs/WebCert.md)
  - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)
  - [Onepanel.WebCertPaths](docs/WebCertPaths.md)

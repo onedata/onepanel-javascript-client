@@ -101,7 +101,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Oneozne user login.
+   * Onezone user login.
    * @member {String} alias
    */
   exports.prototype['alias'] = undefined;

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ClusterDetails();
+    instance = new Onepanel.VersionInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,46 +50,28 @@
       object[property] = value;
   }
 
-  describe('ClusterDetails', function() {
-    it('should create an instance of ClusterDetails', function() {
-      // uncomment below and update the code to test ClusterDetails
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be.a(Onepanel.ClusterDetails);
+  describe('VersionInfo', function() {
+    it('should create an instance of VersionInfo', function() {
+      // uncomment below and update the code to test VersionInfo
+      //var instane = new Onepanel.VersionInfo();
+      //expect(instance).to.be.a(Onepanel.VersionInfo);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.ClusterDetails();
+    it('should have the property release (base name: "release")', function() {
+      // uncomment below and update the code to test the property release
+      //var instane = new Onepanel.VersionInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.ClusterDetails();
+    it('should have the property build (base name: "build")', function() {
+      // uncomment below and update the code to test the property build
+      //var instane = new Onepanel.VersionInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property serviceId (base name: "serviceId")', function() {
-      // uncomment below and update the code to test the property serviceId
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workerVersion (base name: "workerVersion")', function() {
-      // uncomment below and update the code to test the property workerVersion
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onepanelVersion (base name: "onepanelVersion")', function() {
-      // uncomment below and update the code to test the property onepanelVersion
-      //var instane = new Onepanel.ClusterDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property proxy (base name: "proxy")', function() {
-      // uncomment below and update the code to test the property proxy
-      //var instane = new Onepanel.ClusterDetails();
+    it('should have the property gui (base name: "gui")', function() {
+      // uncomment below and update the code to test the property gui
+      //var instane = new Onepanel.VersionInfo();
       //expect(instance).to.be();
     });
 

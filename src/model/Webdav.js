@@ -210,7 +210,7 @@
    */
   exports.prototype['maximumUploadSize'] = undefined;
   /**
-   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata.  Values should be provided in octal format e.g. `0644`. 
+   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
    * @default '420'
    */

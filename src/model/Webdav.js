@@ -67,6 +67,8 @@
 
 
 
+
+
   };
 
   /**
@@ -104,6 +106,12 @@
       }
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('oauth2IdP')) {
+        obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
+      }
+      if (data.hasOwnProperty('onedataAccessToken')) {
+        obj['onedataAccessToken'] = ApiClient.convertToType(data['onedataAccessToken'], 'String');
       }
       if (data.hasOwnProperty('authorizationHeader')) {
         obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
@@ -165,10 +173,20 @@
    */
   exports.prototype['credentialsType'] = 'none';
   /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
+   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
    * @member {String} credentials
    */
   exports.prototype['credentials'] = undefined;
+  /**
+   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the WebDAV endpoint. If Onezone has only one external IdP, it will be selected automatically. 
+   * @member {String} oauth2IdP
+   */
+  exports.prototype['oauth2IdP'] = undefined;
+  /**
+   * When registering storage in `insecure` mode with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * @member {String} onedataAccessToken
+   */
+  exports.prototype['onedataAccessToken'] = undefined;
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
@@ -248,7 +266,12 @@
      * value: "token"
      * @const
      */
-    "token": "token"  };
+    "token": "token",
+    /**
+     * value: "oauth2"
+     * @const
+     */
+    "oauth2": "oauth2"  };
 
   /**
    * Allowed values for the <code>rangeWriteSupport</code> property.

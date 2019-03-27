@@ -75,20 +75,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property version (base name: "version")', function() {
-      // uncomment below and update the code to test the property version
+    it('should have the property workerVersion (base name: "workerVersion")', function() {
+      // uncomment below and update the code to test the property workerVersion
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property build (base name: "build")', function() {
-      // uncomment below and update the code to test the property build
+    it('should have the property onepanelVersion (base name: "onepanelVersion")', function() {
+      // uncomment below and update the code to test the property onepanelVersion
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property proxy (base name: "proxy")', function() {
-      // uncomment below and update the code to test the property proxy
+    it('should have the property onepanelProxy (base name: "onepanelProxy")', function() {
+      // uncomment below and update the code to test the property onepanelProxy
       //var instane = new Onepanel.ClusterDetails();
       //expect(instance).to.be();
     });

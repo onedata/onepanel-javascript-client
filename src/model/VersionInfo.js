@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageUpdateDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.VersionInfo = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,102 +35,77 @@
 
 
   /**
-   * The StorageUpdateDetails model module.
-   * @module model/StorageUpdateDetails
+   * The VersionInfo model module.
+   * @module model/VersionInfo
    * @version 18.02.0-rc13
    */
 
   /**
-   * Constructs a new <code>StorageUpdateDetails</code>.
-   * The storage update configuration. Storage update ensures that all changes on storage will be reflected in space. 
-   * @alias module:model/StorageUpdateDetails
+   * Constructs a new <code>VersionInfo</code>.
+   * Service version info.
+   * @alias module:model/VersionInfo
    * @class
-   * @param strategy {String} The update strategy. One of no_update, simple_scan.
+   * @param release {String} Release version.
+   * @param build {String} Build number.
+   * @param gui {String} GUI version indicated by a SHA256 hash.
    */
-  var exports = function(strategy) {
+  var exports = function(release, build, gui) {
     var _this = this;
 
-    _this['strategy'] = strategy;
-
-
-
-
-
+    _this['release'] = release;
+    _this['build'] = build;
+    _this['gui'] = gui;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageUpdateDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/VersionInfo} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>StorageUpdateDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>VersionInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageUpdateDetails} obj Optional instance to populate.
-   * @return {module:model/StorageUpdateDetails} The populated <code>StorageUpdateDetails</code> instance.
+   * @param {module:model/VersionInfo} obj Optional instance to populate.
+   * @return {module:model/VersionInfo} The populated <code>VersionInfo</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('strategy')) {
-        obj['strategy'] = ApiClient.convertToType(data['strategy'], 'String');
+      if (data.hasOwnProperty('release')) {
+        obj['release'] = ApiClient.convertToType(data['release'], 'String');
       }
-      if (data.hasOwnProperty('maxDepth')) {
-        obj['maxDepth'] = ApiClient.convertToType(data['maxDepth'], 'Number');
+      if (data.hasOwnProperty('build')) {
+        obj['build'] = ApiClient.convertToType(data['build'], 'String');
       }
-      if (data.hasOwnProperty('scanInterval')) {
-        obj['scanInterval'] = ApiClient.convertToType(data['scanInterval'], 'Number');
-      }
-      if (data.hasOwnProperty('writeOnce')) {
-        obj['writeOnce'] = ApiClient.convertToType(data['writeOnce'], 'Boolean');
-      }
-      if (data.hasOwnProperty('deleteEnable')) {
-        obj['deleteEnable'] = ApiClient.convertToType(data['deleteEnable'], 'Boolean');
-      }
-      if (data.hasOwnProperty('syncAcl')) {
-        obj['syncAcl'] = ApiClient.convertToType(data['syncAcl'], 'Boolean');
+      if (data.hasOwnProperty('gui')) {
+        obj['gui'] = ApiClient.convertToType(data['gui'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The update strategy. One of no_update, simple_scan.
-   * @member {String} strategy
+   * Release version.
+   * @member {String} release
    */
-  exports.prototype['strategy'] = undefined;
+  exports.prototype['release'] = undefined;
   /**
-   * Maximum depth of filesystem tree that will be traversed during storage synchronization. 
-   * @member {Number} maxDepth
+   * Build number.
+   * @member {String} build
    */
-  exports.prototype['maxDepth'] = undefined;
+  exports.prototype['build'] = undefined;
   /**
-   * Period between subsequent scans in seconds (counted from end of one scan till beginning of the following). 
-   * @member {Number} scanInterval
+   * GUI version indicated by a SHA256 hash.
+   * @member {String} gui
    */
-  exports.prototype['scanInterval'] = undefined;
-  /**
-   * Flag determining that synchronized storage will be treated as immutable (only creations and deletions of files on storage will be detected). 
-   * @member {Boolean} writeOnce
-   */
-  exports.prototype['writeOnce'] = undefined;
-  /**
-   * Flag determining that deletions of files will be detected. 
-   * @member {Boolean} deleteEnable
-   */
-  exports.prototype['deleteEnable'] = undefined;
-  /**
-   * Flag that enables synchronization of NFSv4 ACLs. 
-   * @member {Boolean} syncAcl
-   */
-  exports.prototype['syncAcl'] = undefined;
+  exports.prototype['gui'] = undefined;
 
 
 

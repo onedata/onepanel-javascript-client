@@ -46,13 +46,13 @@
    * @alias module:model/Node
    * @class
    * @param hostname {String} Hostname of the node.
-   * @param componentType {module:model/Node.ComponentTypeEnum} Type of Onedata component managed by this onepanel.
+   * @param clusterType {module:model/Node.ClusterTypeEnum} Type of Onedata cluster managed by this onepanel.
    */
-  var exports = function(hostname, componentType) {
+  var exports = function(hostname, clusterType) {
     var _this = this;
 
     _this['hostname'] = hostname;
-    _this['componentType'] = componentType;
+    _this['clusterType'] = clusterType;
   };
 
   /**
@@ -79,8 +79,8 @@
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('componentType')) {
-        obj['componentType'] = ApiClient.convertToType(data['componentType'], 'String');
+      if (data.hasOwnProperty('clusterType')) {
+        obj['clusterType'] = ApiClient.convertToType(data['clusterType'], 'String');
       }
     }
     return obj;
@@ -92,18 +92,18 @@
    */
   exports.prototype['hostname'] = undefined;
   /**
-   * Type of Onedata component managed by this onepanel.
-   * @member {module:model/Node.ComponentTypeEnum} componentType
+   * Type of Onedata cluster managed by this onepanel.
+   * @member {module:model/Node.ClusterTypeEnum} clusterType
    */
-  exports.prototype['componentType'] = undefined;
+  exports.prototype['clusterType'] = undefined;
 
 
   /**
-   * Allowed values for the <code>componentType</code> property.
+   * Allowed values for the <code>clusterType</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.ComponentTypeEnum = {
+  exports.ClusterTypeEnum = {
     /**
      * value: "oneprovider"
      * @const

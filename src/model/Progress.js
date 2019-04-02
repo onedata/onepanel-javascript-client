@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Progress</code>.
-   * Progress marks indicating which steps of interactive deployment were reached by the admin performing cluster setup.
+   * Progress markers indicating which steps of interactive deployment were reached by the admin performing cluster setup.
    * @alias module:model/Progress
    * @class
    */

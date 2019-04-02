@@ -545,7 +545,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OneproviderApi();
 
 var opts = { 
-  'token': "token_example" // String | Provider registration token obtained be the Onezone's user. Required if provider is not registered at Onezone.
+  'token': "token_example" // String | Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
 };
 
 var callback = function(error, data, response) {
@@ -562,7 +562,7 @@ apiInstance.getOnezoneInfo(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **String**| Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone. | [optional] 
+ **token** | **String**| Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered. | [optional] 
 
 ### Return type
 

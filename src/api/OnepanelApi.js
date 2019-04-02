@@ -190,7 +190,7 @@
 
     /**
      * Get details of a user&#39;s cluster
-     * Lists clusters linked with current user&#39;s account. 
+     * Returns details of the specified cluster. 
      * @param {String} id Cluster Id which details should be returned.
      * @param {module:api/OnepanelApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterDetails}
@@ -314,7 +314,7 @@
 
     /**
      * List user&#39;s clusters
-     * Lists clusters linked with current user&#39;s account. 
+     * Lists clusters to which current user belongs. 
      * @param {module:api/OnepanelApi~getClustersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Ids}
      */
@@ -548,7 +548,7 @@
 
     /**
      * Get deployment progress
-     * Returns status of deployment steps.
+     * Returns deployment markers state.
      * @param {module:api/OnepanelApi~getProgressCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Progress}
      */
@@ -938,8 +938,8 @@
      */
 
     /**
-     * Modify progress marks
-     * Adds or removes completed deployment steps.
+     * Modify progress markers
+     * Sets or unsets markers for completed deployment stages.
      * @param {module:model/ProgressModify} progressModify 
      * @param {module:api/OnepanelApi~modifyProgressCallback} callback The callback function, accepting three arguments: error, data, response
      */

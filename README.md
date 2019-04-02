@@ -121,7 +121,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**joinCluster**](docs/OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
 *Onepanel.OnepanelApi* | [**modifyCurrentUser**](docs/OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**modifyDnsCheckConfiguration**](docs/OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
-*Onepanel.OnepanelApi* | [**modifyProgress**](docs/OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress marks
+*Onepanel.OnepanelApi* | [**modifyProgress**](docs/OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
 *Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster

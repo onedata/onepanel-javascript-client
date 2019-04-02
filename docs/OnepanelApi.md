@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**joinCluster**](OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
 [**modifyCurrentUser**](OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 [**modifyDnsCheckConfiguration**](OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
-[**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress marks
+[**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 Get details of a user&#39;s cluster
 
-Lists clusters linked with current user&#39;s account. 
+Returns details of the specified cluster. 
 
 ### Example
 ```javascript
@@ -340,7 +340,7 @@ This endpoint does not need any parameter.
 
 List user&#39;s clusters
 
-Lists clusters linked with current user&#39;s account. 
+Lists clusters to which current user belongs. 
 
 ### Example
 ```javascript
@@ -616,7 +616,7 @@ This endpoint does not need any parameter.
 
 Get deployment progress
 
-Returns status of deployment steps.
+Returns deployment markers state.
 
 ### Example
 ```javascript
@@ -1071,9 +1071,9 @@ null (empty response body)
 # **modifyProgress**
 > modifyProgress(progressModify)
 
-Modify progress marks
+Modify progress markers
 
-Adds or removes completed deployment steps.
+Sets or unsets markers for completed deployment stages.
 
 ### Example
 ```javascript

@@ -472,7 +472,7 @@
      * Get Onezone information
      * Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.token Provider registration token obtained be the Onezone&#39;s user. Required if provider is not registered at Onezone.
+     * @param {String} opts.token Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
      * @param {module:api/OneproviderApi~getOnezoneInfoCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OnezoneInfo}
      */

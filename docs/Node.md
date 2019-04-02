@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hostname** | **String** | Hostname of the node. | 
-**componentType** | **String** | Type of Onedata component managed by this onepanel. | 
+**clusterType** | **String** | Type of Onedata cluster managed by this onepanel. | 
 
 
-<a name="ComponentTypeEnum"></a>
-## Enum: ComponentTypeEnum
+<a name="ClusterTypeEnum"></a>
+## Enum: ClusterTypeEnum
 
 
 * `oneprovider` (value: `"oneprovider"`)

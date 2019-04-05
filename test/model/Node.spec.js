@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property componentType (base name: "componentType")', function() {
-      // uncomment below and update the code to test the property componentType
+    it('should have the property clusterType (base name: "clusterType")', function() {
+      // uncomment below and update the code to test the property clusterType
       //var instane = new Onepanel.Node();
       //expect(instance).to.be();
     });

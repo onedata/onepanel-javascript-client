@@ -81,10 +81,10 @@
         done();
       });
     });
-    describe('createSession', function() {
-      it('should call createSession successfully', function(done) {
-        //uncomment below and update the code to test createSession
-        //instance.createSession(function(error) {
+    describe('getCluster', function() {
+      it('should call getCluster successfully', function(done) {
+        //uncomment below and update the code to test getCluster
+        //instance.getCluster(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -111,10 +111,40 @@
         done();
       });
     });
+    describe('getClusters', function() {
+      it('should call getClusters successfully', function(done) {
+        //uncomment below and update the code to test getClusters
+        //instance.getClusters(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getConfiguration', function() {
       it('should call getConfiguration successfully', function(done) {
         //uncomment below and update the code to test getConfiguration
         //instance.getConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCurrentCluster', function() {
+      it('should call getCurrentCluster successfully', function(done) {
+        //uncomment below and update the code to test getCurrentCluster
+        //instance.getCurrentCluster(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCurrentUser', function() {
+      it('should call getCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test getCurrentUser
+        //instance.getCurrentUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -141,10 +171,20 @@
         done();
       });
     });
-    describe('getSession', function() {
-      it('should call getSession successfully', function(done) {
-        //uncomment below and update the code to test getSession
-        //instance.getSession(function(error) {
+    describe('getProgress', function() {
+      it('should call getProgress successfully', function(done) {
+        //uncomment below and update the code to test getProgress
+        //instance.getProgress(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getRemoteProvider', function() {
+      it('should call getRemoteProvider successfully', function(done) {
+        //uncomment below and update the code to test getRemoteProvider
+        //instance.getRemoteProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -201,10 +241,30 @@
         done();
       });
     });
+    describe('modifyCurrentUser', function() {
+      it('should call modifyCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test modifyCurrentUser
+        //instance.modifyCurrentUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('modifyDnsCheckConfiguration', function() {
       it('should call modifyDnsCheckConfiguration successfully', function(done) {
         //uncomment below and update the code to test modifyDnsCheckConfiguration
         //instance.modifyDnsCheckConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyProgress', function() {
+      it('should call modifyProgress successfully', function(done) {
+        //uncomment below and update the code to test modifyProgress
+        //instance.modifyProgress(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -241,10 +301,10 @@
         done();
       });
     });
-    describe('removeSession', function() {
-      it('should call removeSession successfully', function(done) {
-        //uncomment below and update the code to test removeSession
-        //instance.removeSession(function(error) {
+    describe('removeCurrentUser', function() {
+      it('should call removeCurrentUser successfully', function(done) {
+        //uncomment below and update the code to test removeCurrentUser
+        //instance.removeCurrentUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -7,23 +7,29 @@ Method | HTTP request | Description
 [**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 [**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
-[**createSession**](OnepanelApi.md#createSession) | **POST** /session | Create Onepanel user session
+[**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+[**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
+[**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
+[**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
-[**getSession**](OnepanelApi.md#getSession) | **GET** /session | Get Onepanel user session
+[**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
+[**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 [**getWebCert**](OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
 [**joinCluster**](OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
+[**modifyCurrentUser**](OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 [**modifyDnsCheckConfiguration**](OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
+[**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
 [**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-[**removeSession**](OnepanelApi.md#removeSession) | **DELETE** /session | Remove Onepanel user session
+[**removeCurrentUser**](OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 
 
@@ -184,13 +190,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="createSession"></a>
-# **createSession**
-> SessionDetails createSession()
+<a name="getCluster"></a>
+# **getCluster**
+> ClusterDetails getCluster(id)
 
-Create Onepanel user session
+Get details of a user&#39;s cluster
 
-Creates a new Onepanel user session.
+Returns details of the specified cluster. 
 
 ### Example
 ```javascript
@@ -204,6 +210,9 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
+var id = "id_example"; // String | Cluster Id which details should be returned.
+
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -211,15 +220,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createSession(callback);
+apiInstance.getCluster(id, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Cluster Id which details should be returned. | 
 
 ### Return type
 
-[**SessionDetails**](SessionDetails.md)
+[**ClusterDetails**](ClusterDetails.md)
 
 ### Authorization
 
@@ -322,6 +334,52 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getClusters"></a>
+# **getClusters**
+> Ids getClusters()
+
+List user&#39;s clusters
+
+Lists clusters to which current user belongs. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getClusters(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Ids**](Ids.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="getConfiguration"></a>
 # **getConfiguration**
 > Configuration getConfiguration()
@@ -358,6 +416,98 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Configuration**](Configuration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getCurrentCluster"></a>
+# **getCurrentCluster**
+> ClusterDetails getCurrentCluster()
+
+Get details of this cluster
+
+Returns details of this cluster. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCurrentCluster(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterDetails**](ClusterDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getCurrentUser"></a>
+# **getCurrentUser**
+> UserDetails getCurrentUser()
+
+Get Onepanel user details of currently logged in user.
+
+Returns the configuration information of the Onepanel user performing the query. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCurrentUser(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**UserDetails**](UserDetails.md)
 
 ### Authorization
 
@@ -460,13 +610,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getSession"></a>
-# **getSession**
-> SessionDetails getSession()
+<a name="getProgress"></a>
+# **getProgress**
+> Progress getProgress()
 
-Get Onepanel user session
+Get deployment progress
 
-Returns details of a Onepanel user session associated with the request. 
+Returns deployment markers state.
 
 ### Example
 ```javascript
@@ -487,7 +637,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getSession(callback);
+apiInstance.getProgress(callback);
 ```
 
 ### Parameters
@@ -495,7 +645,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SessionDetails**](SessionDetails.md)
+[**Progress**](Progress.md)
 
 ### Authorization
 
@@ -505,6 +655,58 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="getRemoteProvider"></a>
+# **getRemoteProvider**
+> RemoteProviderDetails getRemoteProvider(id)
+
+Get details of a remote Oneprovider.
+
+Returns the details of given provider. Only users belonging to that Oneprovider&#39;s cluster can fetch its details. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var id = "id_example"; // String | Id of requested Oneprovider.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getRemoteProvider(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Id of requested Oneprovider. | 
+
+### Return type
+
+[**RemoteProviderDetails**](RemoteProviderDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getTaskStatus"></a>
 # **getTaskStatus**
@@ -761,6 +963,58 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="modifyCurrentUser"></a>
+# **modifyCurrentUser**
+> modifyCurrentUser(userModifyRequest)
+
+Modify Onepanel user details of currently logged in user.
+
+Modifies the Onepanel user password. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyCurrentUser(userModifyRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userModifyRequest** | [**UserModifyRequest**](UserModifyRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="modifyDnsCheckConfiguration"></a>
 # **modifyDnsCheckConfiguration**
 > modifyDnsCheckConfiguration(dnsCheckConfiguration)
@@ -811,6 +1065,58 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="modifyProgress"></a>
+# **modifyProgress**
+> modifyProgress(progressModify)
+
+Modify progress markers
+
+Sets or unsets markers for completed deployment stages.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var progressModify = new Onepanel.ProgressModify(); // ProgressModify | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyProgress(progressModify, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **progressModify** | [**ProgressModify**](ProgressModify.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="modifyUser"></a>
@@ -972,13 +1278,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="removeSession"></a>
-# **removeSession**
-> removeSession()
+<a name="removeCurrentUser"></a>
+# **removeCurrentUser**
+> removeCurrentUser()
 
-Remove Onepanel user session
+Remove the currently logged in Onepanel user
 
-Removes the Onepanel user session. 
+Removes the Onepanel user account. 
 
 ### Example
 ```javascript
@@ -999,7 +1305,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.removeSession(callback);
+apiInstance.removeCurrentUser(callback);
 ```
 
 ### Parameters

@@ -81,6 +81,26 @@
         done();
       });
     });
+    describe('createGroupInviteToken', function() {
+      it('should call createGroupInviteToken successfully', function(done) {
+        //uncomment below and update the code to test createGroupInviteToken
+        //instance.createGroupInviteToken(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('createUserInviteToken', function() {
+      it('should call createUserInviteToken successfully', function(done) {
+        //uncomment below and update the code to test createUserInviteToken
+        //instance.createUserInviteToken(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCluster', function() {
       it('should call getCluster successfully', function(done) {
         //uncomment below and update the code to test getCluster
@@ -105,6 +125,16 @@
       it('should call getClusterHosts successfully', function(done) {
         //uncomment below and update the code to test getClusterHosts
         //instance.getClusterHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getClusterMembership', function() {
+      it('should call getClusterMembership successfully', function(done) {
+        //uncomment below and update the code to test getClusterMembership
+        //instance.getClusterMembership(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

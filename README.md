@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
-*Onepanel.OnepanelApi* | [**getClusterMembership**](docs/OnepanelApi.md#getClusterMembership) | **GET** /cluster/membership | Get summary of memberships in this cluster
+*Onepanel.OnepanelApi* | [**getClusterMembers**](docs/OnepanelApi.md#getClusterMembers) | **GET** /cluster/members | Get summary of memberss in this cluster
 *Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.OnepanelApi* | [**getConfiguration**](docs/OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 *Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -205,7 +205,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterDetails](docs/ClusterDetails.md)
  - [Onepanel.ClusterIps](docs/ClusterIps.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
- - [Onepanel.ClusterMembership](docs/ClusterMembership.md)
+ - [Onepanel.ClusterMembers](docs/ClusterMembers.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Configuration](docs/Configuration.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)

@@ -131,10 +131,10 @@
         done();
       });
     });
-    describe('getClusterMembership', function() {
-      it('should call getClusterMembership successfully', function(done) {
-        //uncomment below and update the code to test getClusterMembership
-        //instance.getClusterMembership(function(error) {
+    describe('getClusterMembers', function() {
+      it('should call getClusterMembers successfully', function(done) {
+        //uncomment below and update the code to test getClusterMembers
+        //instance.getClusterMembers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
-[**getClusterMembership**](OnepanelApi.md#getClusterMembership) | **GET** /cluster/membership | Get summary of memberships in this cluster
+[**getClusterMembers**](OnepanelApi.md#getClusterMembers) | **GET** /cluster/members | Get summary of memberss in this cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -429,11 +429,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getClusterMembership"></a>
-# **getClusterMembership**
-> ClusterMembership getClusterMembership()
+<a name="getClusterMembers"></a>
+# **getClusterMembers**
+> ClusterMembers getClusterMembers()
 
-Get summary of memberships in this cluster
+Get summary of memberss in this cluster
 
 Returns aggregated counts of users and groups belonging to this cluster. 
 
@@ -456,7 +456,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getClusterMembership(callback);
+apiInstance.getClusterMembers(callback);
 ```
 
 ### Parameters
@@ -464,7 +464,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ClusterMembership**](ClusterMembership.md)
+[**ClusterMembers**](ClusterMembers.md)
 
 ### Authorization
 

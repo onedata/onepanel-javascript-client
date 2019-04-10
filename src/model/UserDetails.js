@@ -111,7 +111,7 @@
    */
   exports.prototype['userRole'] = undefined;
   /**
-   * List of cluster privileges possessed by the user. This field is returned only to a Onezone user fetching information about himself.
+   * List of cluster privileges held by the user. This field is returned only to a Onezone user fetching information about himself.
    * @member {Array.<module:model/UserDetails.ClusterPrivilegesEnum>} clusterPrivileges
    */
   exports.prototype['clusterPrivileges'] = undefined;

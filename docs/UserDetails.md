@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **userId** | **String** | The user Id. | 
 **username** | **String** | The user name. | 
 **userRole** | **String** | The user role, one of &#x60;admin&#x60; or &#x60;regular&#x60;. | 
-**clusterPrivileges** | **[String]** | List of cluster privileges possessed by the user. This field is returned only to a Onezone user fetching information about himself. | [optional] 
+**clusterPrivileges** | **[String]** | List of cluster privileges held by the user. This field is returned only to a Onezone user fetching information about himself. | [optional] 
 
 
 <a name="UserRoleEnum"></a>

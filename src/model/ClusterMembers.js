@@ -76,17 +76,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('users')) {
-        obj['users'] = ApiClient.convertToType(data['users'], 'Number');
+      if (data.hasOwnProperty('usersCount')) {
+        obj['usersCount'] = ApiClient.convertToType(data['usersCount'], 'Number');
       }
-      if (data.hasOwnProperty('effectiveUsers')) {
-        obj['effectiveUsers'] = ApiClient.convertToType(data['effectiveUsers'], 'Number');
+      if (data.hasOwnProperty('effectiveUsersCount')) {
+        obj['effectiveUsersCount'] = ApiClient.convertToType(data['effectiveUsersCount'], 'Number');
       }
-      if (data.hasOwnProperty('groups')) {
-        obj['groups'] = ApiClient.convertToType(data['groups'], 'Number');
+      if (data.hasOwnProperty('groupsCount')) {
+        obj['groupsCount'] = ApiClient.convertToType(data['groupsCount'], 'Number');
       }
-      if (data.hasOwnProperty('effectiveGroups')) {
-        obj['effectiveGroups'] = ApiClient.convertToType(data['effectiveGroups'], 'Number');
+      if (data.hasOwnProperty('effectiveGroupsCount')) {
+        obj['effectiveGroupsCount'] = ApiClient.convertToType(data['effectiveGroupsCount'], 'Number');
       }
     }
     return obj;
@@ -94,24 +94,24 @@
 
   /**
    * Number of users belonging directly to the cluster.
-   * @member {Number} users
+   * @member {Number} usersCount
    */
-  exports.prototype['users'] = undefined;
+  exports.prototype['usersCount'] = undefined;
   /**
    * Number of users belonging directly and indirectly to the cluster.
-   * @member {Number} effectiveUsers
+   * @member {Number} effectiveUsersCount
    */
-  exports.prototype['effectiveUsers'] = undefined;
+  exports.prototype['effectiveUsersCount'] = undefined;
   /**
    * Number of groups belonging directly to the cluster.
-   * @member {Number} groups
+   * @member {Number} groupsCount
    */
-  exports.prototype['groups'] = undefined;
+  exports.prototype['groupsCount'] = undefined;
   /**
    * Number of groups belonging directly and indirectly to the cluster.
-   * @member {Number} effectiveGroups
+   * @member {Number} effectiveGroupsCount
    */
-  exports.prototype['effectiveGroups'] = undefined;
+  exports.prototype['effectiveGroupsCount'] = undefined;
 
 
 

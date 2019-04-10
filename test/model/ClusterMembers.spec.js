@@ -57,26 +57,26 @@
       //expect(instance).to.be.a(Onepanel.ClusterMembers);
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
+    it('should have the property usersCount (base name: "usersCount")', function() {
+      // uncomment below and update the code to test the property usersCount
       //var instane = new Onepanel.ClusterMembers();
       //expect(instance).to.be();
     });
 
-    it('should have the property effectiveUsers (base name: "effectiveUsers")', function() {
-      // uncomment below and update the code to test the property effectiveUsers
+    it('should have the property effectiveUsersCount (base name: "effectiveUsersCount")', function() {
+      // uncomment below and update the code to test the property effectiveUsersCount
       //var instane = new Onepanel.ClusterMembers();
       //expect(instance).to.be();
     });
 
-    it('should have the property groups (base name: "groups")', function() {
-      // uncomment below and update the code to test the property groups
+    it('should have the property groupsCount (base name: "groupsCount")', function() {
+      // uncomment below and update the code to test the property groupsCount
       //var instane = new Onepanel.ClusterMembers();
       //expect(instance).to.be();
     });
 
-    it('should have the property effectiveGroups (base name: "effectiveGroups")', function() {
-      // uncomment below and update the code to test the property effectiveGroups
+    it('should have the property effectiveGroupsCount (base name: "effectiveGroupsCount")', function() {
+      // uncomment below and update the code to test the property effectiveGroupsCount
       //var instane = new Onepanel.ClusterMembers();
       //expect(instance).to.be();
     });

@@ -391,7 +391,7 @@
      */
 
     /**
-     * Get summary of memberss in this cluster
+     * Get summary of members in this cluster
      * Returns aggregated counts of users and groups belonging to this cluster. 
      * @param {module:api/OnepanelApi~getClusterMembersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterMembers}

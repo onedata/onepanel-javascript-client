@@ -55,6 +55,7 @@
     _this['userId'] = userId;
     _this['username'] = username;
     _this['userRole'] = userRole;
+
   };
 
   /**
@@ -87,6 +88,9 @@
       if (data.hasOwnProperty('userRole')) {
         obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
       }
+      if (data.hasOwnProperty('clusterPrivileges')) {
+        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
+      }
     }
     return obj;
   }
@@ -106,6 +110,11 @@
    * @member {module:model/UserDetails.UserRoleEnum} userRole
    */
   exports.prototype['userRole'] = undefined;
+  /**
+   * List of cluster privileges possessed by the user. This field is returned only to a Onezone user fetching information about himself.
+   * @member {Array.<module:model/UserDetails.ClusterPrivilegesEnum>} clusterPrivileges
+   */
+  exports.prototype['clusterPrivileges'] = undefined;
 
 
   /**
@@ -124,6 +133,58 @@
      * @const
      */
     "regular": "regular"  };
+
+  /**
+   * Allowed values for the <code>clusterPrivileges</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ClusterPrivilegesEnum = {
+    /**
+     * value: "cluster_view"
+     * @const
+     */
+    "view": "cluster_view",
+    /**
+     * value: "cluster_update"
+     * @const
+     */
+    "update": "cluster_update",
+    /**
+     * value: "cluster_delete"
+     * @const
+     */
+    "delete": "cluster_delete",
+    /**
+     * value: "cluster_view_privileges"
+     * @const
+     */
+    "view_privileges": "cluster_view_privileges",
+    /**
+     * value: "cluster_set_privileges"
+     * @const
+     */
+    "set_privileges": "cluster_set_privileges",
+    /**
+     * value: "cluster_add_user"
+     * @const
+     */
+    "add_user": "cluster_add_user",
+    /**
+     * value: "cluster_remove_user"
+     * @const
+     */
+    "remove_user": "cluster_remove_user",
+    /**
+     * value: "cluster_add_group"
+     * @const
+     */
+    "add_group": "cluster_add_group",
+    /**
+     * value: "cluster_remove_group"
+     * @const
+     */
+    "remove_group": "cluster_remove_group"  };
 
 
   return exports;

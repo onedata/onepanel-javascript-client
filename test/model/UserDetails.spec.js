@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property clusterPrivileges (base name: "clusterPrivileges")', function() {
+      // uncomment below and update the code to test the property clusterPrivileges
+      //var instane = new Onepanel.UserDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -81,16 +81,6 @@
         done();
       });
     });
-    describe('createGroupInviteToken', function() {
-      it('should call createGroupInviteToken successfully', function(done) {
-        //uncomment below and update the code to test createGroupInviteToken
-        //instance.createGroupInviteToken(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('createUserInviteToken', function() {
       it('should call createUserInviteToken successfully', function(done) {
         //uncomment below and update the code to test createUserInviteToken

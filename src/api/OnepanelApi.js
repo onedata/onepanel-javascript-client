@@ -181,45 +181,6 @@
     }
 
     /**
-     * Callback function to receive the result of the createGroupInviteToken operation.
-     * @callback module:api/OnepanelApi~createGroupInviteTokenCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Token} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Generate cluster invitation token for a group
-     * Returns a token which can be used to add a Onezone group as a member of this cluster. 
-     * @param {module:api/OnepanelApi~createGroupInviteTokenCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Token}
-     */
-    this.createGroupInviteToken = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Token;
-
-      return this.apiClient.callApi(
-        '/cluster/invite_group_token', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the createUserInviteToken operation.
      * @callback module:api/OnepanelApi~createUserInviteTokenCallback
      * @param {String} error Error message, if any.

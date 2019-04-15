@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reportEntries** | **[Object]** |  | [optional] 
+**ids** | **[String]** | The list of Ids of space auto-cleaning reports. | 
 
 

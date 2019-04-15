@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | 
 **volume** | **String** | The name of the volume to use as a storage backend. | 
 **hostname** | **String** | The hostname (IP address or FQDN) of GlusterFS volume server. | 
 **port** | **Number** | The GlusterFS port on volume server. | [optional] 

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | [optional] 
 **name** | **String** | Name of the storage and corresponding Ceph pool. | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to true]
 **blockSize** | **Number** | Storage block size in bytes. | [optional] 

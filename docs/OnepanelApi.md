@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
-[**getClusterMembers**](OnepanelApi.md#getClusterMembers) | **GET** /cluster/members | Get summary of members in this cluster
+[**getClusterMembersSummary**](OnepanelApi.md#getClusterMembersSummary) | **GET** /cluster/members_summary | Get summary of members in this cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -382,9 +382,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getClusterMembers"></a>
-# **getClusterMembers**
-> ClusterMembers getClusterMembers()
+<a name="getClusterMembersSummary"></a>
+# **getClusterMembersSummary**
+> ClusterMembersSummary getClusterMembersSummary()
 
 Get summary of members in this cluster
 
@@ -409,7 +409,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getClusterMembers(callback);
+apiInstance.getClusterMembersSummary(callback);
 ```
 
 ### Parameters
@@ -417,7 +417,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ClusterMembers**](ClusterMembers.md)
+[**ClusterMembersSummary**](ClusterMembersSummary.md)
 
 ### Authorization
 

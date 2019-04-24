@@ -103,9 +103,11 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 *Onepanel.OnepanelApi* | [**checkDns**](docs/OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+*Onepanel.OnepanelApi* | [**createUserInviteToken**](docs/OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 *Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 *Onepanel.OnepanelApi* | [**getClusterHosts**](docs/OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+*Onepanel.OnepanelApi* | [**getClusterMembersSummary**](docs/OnepanelApi.md#getClusterMembersSummary) | **GET** /cluster/members_summary | Get summary of members in this cluster
 *Onepanel.OnepanelApi* | [**getClusters**](docs/OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.OnepanelApi* | [**getConfiguration**](docs/OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 *Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
@@ -202,6 +204,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterDetails](docs/ClusterDetails.md)
  - [Onepanel.ClusterIps](docs/ClusterIps.md)
  - [Onepanel.ClusterManagers](docs/ClusterManagers.md)
+ - [Onepanel.ClusterMembersSummary](docs/ClusterMembersSummary.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Configuration](docs/Configuration.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
@@ -260,6 +263,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
  - [Onepanel.TimeStats](docs/TimeStats.md)
  - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
+ - [Onepanel.Token](docs/Token.md)
  - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
  - [Onepanel.UserDetails](docs/UserDetails.md)
  - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)

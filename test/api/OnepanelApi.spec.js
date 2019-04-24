@@ -81,6 +81,16 @@
         done();
       });
     });
+    describe('createUserInviteToken', function() {
+      it('should call createUserInviteToken successfully', function(done) {
+        //uncomment below and update the code to test createUserInviteToken
+        //instance.createUserInviteToken(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCluster', function() {
       it('should call getCluster successfully', function(done) {
         //uncomment below and update the code to test getCluster
@@ -105,6 +115,16 @@
       it('should call getClusterHosts successfully', function(done) {
         //uncomment below and update the code to test getClusterHosts
         //instance.getClusterHosts(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getClusterMembersSummary', function() {
+      it('should call getClusterMembersSummary successfully', function(done) {
+        //uncomment below and update the code to test getClusterMembersSummary
+        //instance.getClusterMembersSummary(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/RootPassword', 'model/ServiceError', 'model/TaskStatus', 'model/Token', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/RootPasswordChangeRequest', 'model/RootPasswordStatus', 'model/ServiceError', 'model/TaskStatus', 'model/Token', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/RootPassword'), require('../model/ServiceError'), require('../model/TaskStatus'), require('../model/Token'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/RootPasswordChangeRequest'), require('../model/RootPasswordStatus'), require('../model/ServiceError'), require('../model/TaskStatus'), require('../model/Token'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.RootPassword, root.Onepanel.ServiceError, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.RootPasswordChangeRequest, root.Onepanel.RootPasswordStatus, root.Onepanel.ServiceError, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, RootPassword, ServiceError, TaskStatus, Token, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, DnsCheck, DnsCheckConfiguration, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, RootPasswordChangeRequest, RootPasswordStatus, ServiceError, TaskStatus, Token, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -702,6 +702,45 @@
     }
 
     /**
+     * Callback function to receive the result of the getRootPasswordStatus operation.
+     * @callback module:api/OnepanelApi~getRootPasswordStatusCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/RootPasswordStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get root password status
+     * Returns information whether root password is set.
+     * @param {module:api/OnepanelApi~getRootPasswordStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/RootPasswordStatus}
+     */
+    this.getRootPasswordStatus = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = RootPasswordStatus;
+
+      return this.apiClient.callApi(
+        '/root_password', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getTaskStatus operation.
      * @callback module:api/OnepanelApi~getTaskStatusCallback
      * @param {String} error Error message, if any.
@@ -1285,7 +1324,7 @@
     /**
      * Set root password
      * Sets password which can be used to access the Onepanel REST api and emergency Onepanel gui.
-     * @param {module:model/RootPassword} rootPassword 
+     * @param {module:model/RootPasswordChangeRequest} rootPassword 
      * @param {module:api/OnepanelApi~setRootPasswordCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.setRootPassword = function(rootPassword, callback) {
@@ -1312,7 +1351,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/password', 'PUT',
+        '/root_password', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

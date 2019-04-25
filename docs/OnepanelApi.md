@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 [**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
+[**getRootPasswordStatus**](OnepanelApi.md#getRootPasswordStatus) | **GET** /root_password | Get root password status
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
@@ -33,7 +34,7 @@ Method | HTTP request | Description
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 [**removeCurrentUser**](OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
-[**setRootPassword**](OnepanelApi.md#setRootPassword) | **PUT** /password | Set root password
+[**setRootPassword**](OnepanelApi.md#setRootPassword) | **PUT** /root_password | Set root password
 
 
 <a name="addClusterHost"></a>
@@ -803,6 +804,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="getRootPasswordStatus"></a>
+# **getRootPasswordStatus**
+> RootPasswordStatus getRootPasswordStatus()
+
+Get root password status
+
+Returns information whether root password is set.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getRootPasswordStatus(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RootPasswordStatus**](RootPasswordStatus.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="getTaskStatus"></a>
 # **getTaskStatus**
 > TaskStatus getTaskStatus(id)
@@ -1491,7 +1538,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var rootPassword = new Onepanel.RootPassword(); // RootPassword | 
+var rootPassword = new Onepanel.RootPasswordChangeRequest(); // RootPasswordChangeRequest | 
 
 
 var callback = function(error, data, response) {
@@ -1508,7 +1555,7 @@ apiInstance.setRootPassword(rootPassword, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rootPassword** | [**RootPassword**](RootPassword.md)|  | 
+ **rootPassword** | [**RootPasswordChangeRequest**](RootPasswordChangeRequest.md)|  | 
 
 ### Return type
 

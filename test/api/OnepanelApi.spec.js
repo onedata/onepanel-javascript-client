@@ -211,6 +211,16 @@
         done();
       });
     });
+    describe('getRootPasswordStatus', function() {
+      it('should call getRootPasswordStatus successfully', function(done) {
+        //uncomment below and update the code to test getRootPasswordStatus
+        //instance.getRootPasswordStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getTaskStatus', function() {
       it('should call getTaskStatus successfully', function(done) {
         //uncomment below and update the code to test getTaskStatus

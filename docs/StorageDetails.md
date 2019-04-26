@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of storage. | [optional] 
 **id** | **String** | The Id of storage. | [optional] 
 **name** | **String** | The name of storage. | [optional] 
 **verificationPassed** | **Boolean** | Result of storage verification (reading and writing a file). Returned only on PATCH requests for read/write storages. | [optional] 

@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**configureFilesPopularity**](OneproviderApi.md#configureFilesPopularity) | **PATCH** /provider/spaces/{id}/files-popularity/configuration | Configure files-popularity in the space.
+[**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
-[**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism.
-[**getFilesPopularityConfiguration**](OneproviderApi.md#getFilesPopularityConfiguration) | **GET** /provider/spaces/{id}/files-popularity/configuration | Get files-popularity configuration
+[**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+[**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+[**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -21,8 +22,9 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get reports of space auto-cleaning
-[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning
+[**getProviderSpaceAutoCleaningReport**](OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
+[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 [**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
@@ -309,13 +311,13 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="configureFilesPopularity"></a>
-# **configureFilesPopularity**
-> configureFilesPopularity(id, enabled)
+<a name="configureFilePopularity"></a>
+# **configureFilePopularity**
+> configureFilePopularity(id, spaceFilePopularityConfiguration)
 
-Configure files-popularity in the space.
+Configure file-popularity mechanism in the space.
 
-Enables or disables collecting files-popularity statistics in the space.
+Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript
@@ -331,7 +333,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space.
 
-var enabled = new Onepanel.SpaceFilesPopularityConfiguration(); // SpaceFilesPopularityConfiguration | Value informing whether collecting files-popularity statistics in the space should be turned on or off.
+var spaceFilePopularityConfiguration = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Configuration of the file-popularity mechanism in the space.
 
 
 var callback = function(error, data, response) {
@@ -341,7 +343,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.configureFilesPopularity(id, enabled, callback);
+apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callback);
 ```
 
 ### Parameters
@@ -349,7 +351,7 @@ apiInstance.configureFilesPopularity(id, enabled, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
- **enabled** | [**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)| Value informing whether collecting files-popularity statistics in the space should be turned on or off. | 
+ **spaceFilePopularityConfiguration** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Configuration of the file-popularity mechanism in the space. | 
 
 ### Return type
 
@@ -420,7 +422,7 @@ null (empty response body)
 # **configureSpaceAutoCleaning**
 > configureSpaceAutoCleaning(id, spaceAutoCleaningConfiguration)
 
-Configure space auto-cleaning mechanism.
+Configure space auto-cleaning mechanism
 
 Configures space auto-cleaning mechanism in the space. 
 
@@ -471,13 +473,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getFilesPopularityConfiguration"></a>
-# **getFilesPopularityConfiguration**
-> SpaceFilesPopularityConfiguration getFilesPopularityConfiguration(id)
+<a name="getFilePopularityConfiguration"></a>
+# **getFilePopularityConfiguration**
+> SpaceFilePopularityConfiguration getFilePopularityConfiguration(id)
 
-Get files-popularity configuration
+Get file-popularity configuration
 
-Returns configuration of files-popularity mechanism in the space specified by space Id in the path. 
+Returns configuration of file-popularity mechanism in the space specified by space Id in the path. 
 
 ### Example
 ```javascript
@@ -491,7 +493,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space of which files-popularity configuration should be returned.
+var id = "id_example"; // String | The Id of a space of which file-popularity configuration should be returned.
 
 
 var callback = function(error, data, response) {
@@ -501,18 +503,71 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getFilesPopularityConfiguration(id, callback);
+apiInstance.getFilePopularityConfiguration(id, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space of which files-popularity configuration should be returned. | 
+ **id** | **String**| The Id of a space of which file-popularity configuration should be returned. | 
 
 ### Return type
 
-[**SpaceFilesPopularityConfiguration**](SpaceFilesPopularityConfiguration.md)
+[**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getOnezoneInfo"></a>
+# **getOnezoneInfo**
+> OnezoneInfo getOnezoneInfo(opts)
+
+Get Onezone information
+
+Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var opts = { 
+  'token': "token_example" // String | Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnezoneInfo(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**| Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered. | [optional] 
+
+### Return type
+
+[**OnezoneInfo**](OnezoneInfo.md)
 
 ### Authorization
 
@@ -903,13 +958,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: text/xml
 
-<a name="getProviderSpaceAutoCleaningReports"></a>
-# **getProviderSpaceAutoCleaningReports**
-> SpaceAutoCleaningReportCollection getProviderSpaceAutoCleaningReports(id, startedAfter)
+<a name="getProviderSpaceAutoCleaningReport"></a>
+# **getProviderSpaceAutoCleaningReport**
+> SpaceAutoCleaningReport getProviderSpaceAutoCleaningReport(id, reportId)
 
-Get reports of space auto-cleaning
+Get the report from a space auto-cleaning run
 
-Returns collection of reports of auto-cleaning for the space. 
+Returns the details of a specific auto-cleaning run. 
 
 ### Example
 ```javascript
@@ -925,7 +980,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space
 
-var startedAfter = "startedAfter_example"; // String | Fetch only reports that started after this date (ISO 8601)
+var reportId = "reportId_example"; // String | The Id of an auto-cleaning report.
 
 
 var callback = function(error, data, response) {
@@ -935,7 +990,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
+apiInstance.getProviderSpaceAutoCleaningReport(id, reportId, callback);
 ```
 
 ### Parameters
@@ -943,11 +998,71 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, startedAfter, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space | 
- **startedAfter** | **String**| Fetch only reports that started after this date (ISO 8601) | 
+ **reportId** | **String**| The Id of an auto-cleaning report. | 
 
 ### Return type
 
-[**SpaceAutoCleaningReportCollection**](SpaceAutoCleaningReportCollection.md)
+[**SpaceAutoCleaningReport**](SpaceAutoCleaningReport.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderSpaceAutoCleaningReports"></a>
+# **getProviderSpaceAutoCleaningReports**
+> SpaceAutoCleaningReports getProviderSpaceAutoCleaningReports(id, opts)
+
+Get Ids of of the space auto-cleaning reports
+
+Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+var opts = { 
+  'offset': 0, // Number | Allows to skip N first report Ids.
+  'limit': 56, // Number | Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
+  'index': "index_example" // String | Allows to list the report Ids starting from the specific report. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaceAutoCleaningReports(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+ **offset** | **Number**| Allows to skip N first report Ids. | [optional] [default to 0]
+ **limit** | **Number**| Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned.  | [optional] 
+ **index** | **String**| Allows to list the report Ids starting from the specific report.  | [optional] 
+
+### Return type
+
+[**SpaceAutoCleaningReports**](SpaceAutoCleaningReports.md)
 
 ### Authorization
 
@@ -962,7 +1077,7 @@ Name | Type | Description  | Notes
 # **getProviderSpaceAutoCleaningStatus**
 > SpaceAutoCleaningStatus getProviderSpaceAutoCleaningStatus(id)
 
-Get status of space auto-cleaning
+Get status of space auto-cleaning mechanism
 
 Returns status of current process of auto-cleaning for the space. 
 

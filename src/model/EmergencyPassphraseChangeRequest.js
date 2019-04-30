@@ -17,40 +17,38 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
+    root.Onepanel.EmergencyPassphraseChangeRequest = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, PanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ZoneConfiguration model module.
-   * @module model/ZoneConfiguration
+   * The EmergencyPassphraseChangeRequest model module.
+   * @module model/EmergencyPassphraseChangeRequest
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>ZoneConfiguration</code>.
-   * The Onezone deployment configuration.
-   * @alias module:model/ZoneConfiguration
+   * Constructs a new <code>EmergencyPassphraseChangeRequest</code>.
+   * Emergency passphrase to set and old passphrase to authenticate the change.
+   * @alias module:model/EmergencyPassphraseChangeRequest
    * @class
-   * @param cluster {module:model/ZoneClusterConfiguration} 
    */
-  var exports = function(cluster) {
+  var exports = function() {
     var _this = this;
 
-    _this['cluster'] = cluster;
 
 
   };
@@ -59,48 +57,43 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/EmergencyPassphraseChangeRequest} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>EmergencyPassphraseChangeRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneConfiguration} The populated <code>ZoneConfiguration</code> instance.
+   * @param {module:model/EmergencyPassphraseChangeRequest} obj Optional instance to populate.
+   * @return {module:model/EmergencyPassphraseChangeRequest} The populated <code>EmergencyPassphraseChangeRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ZoneClusterConfiguration.constructFromObject(data['cluster']);
+      if (data.hasOwnProperty('newPassphrase')) {
+        obj['newPassphrase'] = ApiClient.convertToType(data['newPassphrase'], 'String');
       }
-      if (data.hasOwnProperty('onezone')) {
-        obj['onezone'] = ZoneConfigurationOnezone.constructFromObject(data['onezone']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = PanelConfiguration.constructFromObject(data['onepanel']);
+      if (data.hasOwnProperty('currentPassphrase')) {
+        obj['currentPassphrase'] = ApiClient.convertToType(data['currentPassphrase'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ZoneClusterConfiguration} cluster
+   * New passphrase to be set.
+   * @member {String} newPassphrase
    */
-  exports.prototype['cluster'] = undefined;
+  exports.prototype['newPassphrase'] = undefined;
   /**
-   * @member {module:model/ZoneConfigurationOnezone} onezone
+   * Currently set passphrase.
+   * @member {String} currentPassphrase
    */
-  exports.prototype['onezone'] = undefined;
-  /**
-   * @member {module:model/PanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  exports.prototype['currentPassphrase'] = undefined;
 
 
 

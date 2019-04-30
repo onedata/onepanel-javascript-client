@@ -181,6 +181,16 @@
         done();
       });
     });
+    describe('getEmergencyPassphraseStatus', function() {
+      it('should call getEmergencyPassphraseStatus successfully', function(done) {
+        //uncomment below and update the code to test getEmergencyPassphraseStatus
+        //instance.getEmergencyPassphraseStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getNode', function() {
       it('should call getNode successfully', function(done) {
         //uncomment below and update the code to test getNode
@@ -205,16 +215,6 @@
       it('should call getRemoteProvider successfully', function(done) {
         //uncomment below and update the code to test getRemoteProvider
         //instance.getRemoteProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getRootPasswordStatus', function() {
-      it('should call getRootPasswordStatus successfully', function(done) {
-        //uncomment below and update the code to test getRootPasswordStatus
-        //instance.getRootPasswordStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -351,10 +351,10 @@
         done();
       });
     });
-    describe('setRootPassword', function() {
-      it('should call setRootPassword successfully', function(done) {
-        //uncomment below and update the code to test setRootPassword
-        //instance.setRootPassword(function(error) {
+    describe('setEmergencyPassphrase', function() {
+      it('should call setEmergencyPassphrase successfully', function(done) {
+        //uncomment below and update the code to test setEmergencyPassphrase
+        //instance.setEmergencyPassphrase(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

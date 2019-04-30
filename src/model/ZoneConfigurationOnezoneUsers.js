@@ -17,41 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
+    root.Onepanel.ZoneConfigurationOnezoneUsers = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, PanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ZoneConfiguration model module.
-   * @module model/ZoneConfiguration
+   * The ZoneConfigurationOnezoneUsers model module.
+   * @module model/ZoneConfigurationOnezoneUsers
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>ZoneConfiguration</code>.
-   * The Onezone deployment configuration.
-   * @alias module:model/ZoneConfiguration
+   * Constructs a new <code>ZoneConfigurationOnezoneUsers</code>.
+   * @alias module:model/ZoneConfigurationOnezoneUsers
    * @class
-   * @param cluster {module:model/ZoneClusterConfiguration} 
+   * @param username {String} 
+   * @param password {String} 
    */
-  var exports = function(cluster) {
+  var exports = function(username, password) {
     var _this = this;
 
-    _this['cluster'] = cluster;
-
+    _this['username'] = username;
+    _this['password'] = password;
 
   };
 
@@ -59,48 +59,49 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/ZoneConfigurationOnezoneUsers} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ZoneConfigurationOnezoneUsers</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneConfiguration} The populated <code>ZoneConfiguration</code> instance.
+   * @param {module:model/ZoneConfigurationOnezoneUsers} obj Optional instance to populate.
+   * @return {module:model/ZoneConfigurationOnezoneUsers} The populated <code>ZoneConfigurationOnezoneUsers</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ZoneClusterConfiguration.constructFromObject(data['cluster']);
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
       }
-      if (data.hasOwnProperty('onezone')) {
-        obj['onezone'] = ZoneConfigurationOnezone.constructFromObject(data['onezone']);
+      if (data.hasOwnProperty('password')) {
+        obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = PanelConfiguration.constructFromObject(data['onepanel']);
+      if (data.hasOwnProperty('groups')) {
+        obj['groups'] = ApiClient.convertToType(data['groups'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ZoneClusterConfiguration} cluster
+   * @member {String} username
    */
-  exports.prototype['cluster'] = undefined;
+  exports.prototype['username'] = undefined;
   /**
-   * @member {module:model/ZoneConfigurationOnezone} onezone
+   * @member {String} password
    */
-  exports.prototype['onezone'] = undefined;
+  exports.prototype['password'] = undefined;
   /**
-   * @member {module:model/PanelConfiguration} onepanel
+   * Group Ids.
+   * @member {Array.<String>} groups
    */
-  exports.prototype['onepanel'] = undefined;
+  exports.prototype['groups'] = undefined;
 
 
 

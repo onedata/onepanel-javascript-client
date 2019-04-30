@@ -113,10 +113,10 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 *Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
+*Onepanel.OnepanelApi* | [**getEmergencyPassphraseStatus**](docs/OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /passphrase | Get emergency passphrase status
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getProgress**](docs/OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 *Onepanel.OnepanelApi* | [**getRemoteProvider**](docs/OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
-*Onepanel.OnepanelApi* | [**getRootPasswordStatus**](docs/OnepanelApi.md#getRootPasswordStatus) | **GET** /root_password | Get root password status
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 *Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 *Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
@@ -130,7 +130,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**removeCurrentUser**](docs/OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
 *Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
-*Onepanel.OnepanelApi* | [**setRootPassword**](docs/OnepanelApi.md#setRootPassword) | **PUT** /root_password | Set root password
+*Onepanel.OnepanelApi* | [**setEmergencyPassphrase**](docs/OnepanelApi.md#setEmergencyPassphrase) | **PUT** /passphrase | Set emergency passphrase
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -213,6 +213,8 @@ Class | Method | HTTP request | Description
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
  - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
  - [Onepanel.DnsCheckResult](docs/DnsCheckResult.md)
+ - [Onepanel.EmergencyPassphraseChangeRequest](docs/EmergencyPassphraseChangeRequest.md)
+ - [Onepanel.EmergencyPassphraseStatus](docs/EmergencyPassphraseStatus.md)
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
@@ -223,10 +225,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.OnezoneInfo](docs/OnezoneInfo.md)
  - [Onepanel.OnezoneUser](docs/OnezoneUser.md)
- - [Onepanel.OpPanelConfiguration](docs/OpPanelConfiguration.md)
- - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)
- - [Onepanel.OzPanelConfiguration](docs/OzPanelConfiguration.md)
- - [Onepanel.OzPanelConfigurationUsers](docs/OzPanelConfigurationUsers.md)
+ - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.Progress](docs/Progress.md)
  - [Onepanel.ProgressModify](docs/ProgressModify.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
@@ -240,8 +239,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
  - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
  - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
- - [Onepanel.RootPasswordChangeRequest](docs/RootPasswordChangeRequest.md)
- - [Onepanel.RootPasswordStatus](docs/RootPasswordStatus.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)
@@ -283,6 +280,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetails](docs/ZoneConfigurationDetails.md)
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
+ - [Onepanel.ZoneConfigurationOnezoneUsers](docs/ZoneConfigurationOnezoneUsers.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)

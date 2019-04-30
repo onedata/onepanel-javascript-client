@@ -16,95 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, PanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ZoneConfigurationOnezoneUsers();
+  });
 
-
-  /**
-   * The ZoneConfiguration model module.
-   * @module model/ZoneConfiguration
-   * @version 18.02.1
-   */
-
-  /**
-   * Constructs a new <code>ZoneConfiguration</code>.
-   * The Onezone deployment configuration.
-   * @alias module:model/ZoneConfiguration
-   * @class
-   * @param cluster {module:model/ZoneClusterConfiguration} 
-   */
-  var exports = function(cluster) {
-    var _this = this;
-
-    _this['cluster'] = cluster;
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ZoneConfiguration} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ZoneConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneConfiguration} The populated <code>ZoneConfiguration</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ZoneClusterConfiguration.constructFromObject(data['cluster']);
-      }
-      if (data.hasOwnProperty('onezone')) {
-        obj['onezone'] = ZoneConfigurationOnezone.constructFromObject(data['onezone']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = PanelConfiguration.constructFromObject(data['onepanel']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {module:model/ZoneClusterConfiguration} cluster
-   */
-  exports.prototype['cluster'] = undefined;
-  /**
-   * @member {module:model/ZoneConfigurationOnezone} onezone
-   */
-  exports.prototype['onezone'] = undefined;
-  /**
-   * @member {module:model/PanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ZoneConfigurationOnezoneUsers', function() {
+    it('should create an instance of ZoneConfigurationOnezoneUsers', function() {
+      // uncomment below and update the code to test ZoneConfigurationOnezoneUsers
+      //var instane = new Onepanel.ZoneConfigurationOnezoneUsers();
+      //expect(instance).to.be.a(Onepanel.ZoneConfigurationOnezoneUsers);
+    });
 
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.ZoneConfigurationOnezoneUsers();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instane = new Onepanel.ZoneConfigurationOnezoneUsers();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property groups (base name: "groups")', function() {
+      // uncomment below and update the code to test the property groups
+      //var instane = new Onepanel.ZoneConfigurationOnezoneUsers();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

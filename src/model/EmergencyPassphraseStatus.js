@@ -17,40 +17,37 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ZoneClusterConfiguration', 'model/ZoneConfigurationOnezone'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ZoneClusterConfiguration'), require('./ZoneConfigurationOnezone'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ZoneClusterConfiguration, root.Onepanel.ZoneConfigurationOnezone);
+    root.Onepanel.EmergencyPassphraseStatus = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, PanelConfiguration, ZoneClusterConfiguration, ZoneConfigurationOnezone) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ZoneConfiguration model module.
-   * @module model/ZoneConfiguration
+   * The EmergencyPassphraseStatus model module.
+   * @module model/EmergencyPassphraseStatus
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>ZoneConfiguration</code>.
-   * The Onezone deployment configuration.
-   * @alias module:model/ZoneConfiguration
+   * Constructs a new <code>EmergencyPassphraseStatus</code>.
+   * Emergency passphrase status.
+   * @alias module:model/EmergencyPassphraseStatus
    * @class
-   * @param cluster {module:model/ZoneClusterConfiguration} 
    */
-  var exports = function(cluster) {
+  var exports = function() {
     var _this = this;
-
-    _this['cluster'] = cluster;
 
 
   };
@@ -59,48 +56,35 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZoneConfiguration} The value of 'discriminator' field or undefined.
+   * @return {module:model/EmergencyPassphraseStatus} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZoneConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>EmergencyPassphraseStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZoneConfiguration} obj Optional instance to populate.
-   * @return {module:model/ZoneConfiguration} The populated <code>ZoneConfiguration</code> instance.
+   * @param {module:model/EmergencyPassphraseStatus} obj Optional instance to populate.
+   * @return {module:model/EmergencyPassphraseStatus} The populated <code>EmergencyPassphraseStatus</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ZoneClusterConfiguration.constructFromObject(data['cluster']);
-      }
-      if (data.hasOwnProperty('onezone')) {
-        obj['onezone'] = ZoneConfigurationOnezone.constructFromObject(data['onezone']);
-      }
-      if (data.hasOwnProperty('onepanel')) {
-        obj['onepanel'] = PanelConfiguration.constructFromObject(data['onepanel']);
+      if (data.hasOwnProperty('isSet')) {
+        obj['isSet'] = ApiClient.convertToType(data['isSet'], 'Boolean');
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ZoneClusterConfiguration} cluster
+   * True if the passphrase is set.
+   * @member {Boolean} isSet
    */
-  exports.prototype['cluster'] = undefined;
-  /**
-   * @member {module:model/ZoneConfigurationOnezone} onezone
-   */
-  exports.prototype['onezone'] = undefined;
-  /**
-   * @member {module:model/PanelConfiguration} onepanel
-   */
-  exports.prototype['onepanel'] = undefined;
+  exports.prototype['isSet'] = undefined;
 
 
 

@@ -17,10 +17,10 @@ Method | HTTP request | Description
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
+[**getEmergencyPassphraseStatus**](OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /passphrase | Get emergency passphrase status
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 [**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
-[**getRootPasswordStatus**](OnepanelApi.md#getRootPasswordStatus) | **GET** /root_password | Get root password status
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
 [**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
 [**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
@@ -34,7 +34,7 @@ Method | HTTP request | Description
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 [**removeCurrentUser**](OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
 [**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
-[**setRootPassword**](OnepanelApi.md#setRootPassword) | **PUT** /root_password | Set root password
+[**setEmergencyPassphrase**](OnepanelApi.md#setEmergencyPassphrase) | **PUT** /passphrase | Set emergency passphrase
 
 
 <a name="addClusterHost"></a>
@@ -660,6 +660,52 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getEmergencyPassphraseStatus"></a>
+# **getEmergencyPassphraseStatus**
+> EmergencyPassphraseStatus getEmergencyPassphraseStatus()
+
+Get emergency passphrase status
+
+Returns information whether emergency passphrase is set.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getEmergencyPassphraseStatus(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EmergencyPassphraseStatus**](EmergencyPassphraseStatus.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="getNode"></a>
 # **getNode**
 > Node getNode()
@@ -794,52 +840,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RemoteProviderDetails**](RemoteProviderDetails.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="getRootPasswordStatus"></a>
-# **getRootPasswordStatus**
-> RootPasswordStatus getRootPasswordStatus()
-
-Get root password status
-
-Returns information whether root password is set.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getRootPasswordStatus(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**RootPasswordStatus**](RootPasswordStatus.md)
 
 ### Authorization
 
@@ -1518,13 +1518,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="setRootPassword"></a>
-# **setRootPassword**
-> setRootPassword(rootPassword)
+<a name="setEmergencyPassphrase"></a>
+# **setEmergencyPassphrase**
+> setEmergencyPassphrase(emergencyPassphrase)
 
-Set root password
+Set emergency passphrase
 
-Sets password which can be used to access the Onepanel REST api and emergency Onepanel gui.
+Sets passphrase which can be used to access the Onepanel REST api and emergency Onepanel gui.
 
 ### Example
 ```javascript
@@ -1538,7 +1538,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var rootPassword = new Onepanel.RootPasswordChangeRequest(); // RootPasswordChangeRequest | 
+var emergencyPassphrase = new Onepanel.EmergencyPassphraseChangeRequest(); // EmergencyPassphraseChangeRequest | 
 
 
 var callback = function(error, data, response) {
@@ -1548,14 +1548,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.setRootPassword(rootPassword, callback);
+apiInstance.setEmergencyPassphrase(emergencyPassphrase, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rootPassword** | [**RootPasswordChangeRequest**](RootPasswordChangeRequest.md)|  | 
+ **emergencyPassphrase** | [**EmergencyPassphraseChangeRequest**](EmergencyPassphraseChangeRequest.md)|  | 
 
 ### Return type
 

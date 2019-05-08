@@ -5,7 +5,6 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
-[**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
 [**createUserInviteToken**](OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
@@ -22,18 +21,12 @@ Method | HTTP request | Description
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 [**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
-[**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
-[**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 [**getWebCert**](OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
 [**joinCluster**](OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
-[**modifyCurrentUser**](OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 [**modifyDnsCheckConfiguration**](OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 [**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
-[**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-[**removeCurrentUser**](OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
-[**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
 [**setEmergencyPassphrase**](OnepanelApi.md#setEmergencyPassphrase) | **PUT** /passphrase | Set emergency passphrase
 
 
@@ -79,58 +72,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Host**](Host.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="addUser"></a>
-# **addUser**
-> addUser(userCreateRequest)
-
-Create Onepanel user
-
-Creates a new Onepanel user account.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var userCreateRequest = new Onepanel.UserCreateRequest(); // UserCreateRequest | The user configuration details.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.addUser(userCreateRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userCreateRequest** | [**UserCreateRequest**](UserCreateRequest.md)| The user configuration details. | 
-
-### Return type
-
-null (empty response body)
 
 ### Authorization
 
@@ -902,111 +843,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getUser"></a>
-# **getUser**
-> UserDetails getUser(username)
-
-Get Onepanel user details
-
-Returns the configuration information of the Onepanel user. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The name of the user whose details should be returned.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUser(username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The name of the user whose details should be returned. | 
-
-### Return type
-
-[**UserDetails**](UserDetails.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getUsers"></a>
-# **getUsers**
-> Users getUsers(opts)
-
-List onepanel users
-
-Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var opts = { 
-  'role': "role_example" // String | If present, query returns only users with specified role.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUsers(opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **role** | **String**| If present, query returns only users with specified role. | [optional] 
-
-### Return type
-
-[**Users**](Users.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
 <a name="getWebCert"></a>
 # **getWebCert**
 > WebCert getWebCert()
@@ -1091,58 +927,6 @@ apiInstance.joinCluster(joinClusterRequest, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **joinClusterRequest** | [**JoinClusterRequest**](JoinClusterRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="modifyCurrentUser"></a>
-# **modifyCurrentUser**
-> modifyCurrentUser(userModifyRequest)
-
-Modify Onepanel user details of currently logged in user.
-
-Modifies the Onepanel user password. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyCurrentUser(userModifyRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userModifyRequest** | [**UserModifyRequest**](UserModifyRequest.md)|  | 
 
 ### Return type
 
@@ -1261,61 +1045,6 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="modifyUser"></a>
-# **modifyUser**
-> modifyUser(username, userModifyRequest)
-
-Modify Onepanel user details
-
-Modifies the Onepanel user password. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The user name.
-
-var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyUser(username, userModifyRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The user name. | 
- **userModifyRequest** | [**UserModifyRequest**](UserModifyRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
 <a name="modifyWebCert"></a>
 # **modifyWebCert**
 > modifyWebCert(webCertModifyRequest)
@@ -1420,111 +1149,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="removeCurrentUser"></a>
-# **removeCurrentUser**
-> removeCurrentUser()
-
-Remove the currently logged in Onepanel user
-
-Removes the Onepanel user account. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeCurrentUser(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="removeUser"></a>
-# **removeUser**
-> removeUser(username)
-
-Remove Onepanel user
-
-Removes the Onepanel user account. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The name of the user to be removed.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeUser(username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The name of the user to be removed. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
 <a name="setEmergencyPassphrase"></a>
 # **setEmergencyPassphrase**
 > setEmergencyPassphrase(emergencyPassphrase)
 
 Set emergency passphrase
 
-Sets passphrase which can be used to access the Onepanel REST api and emergency Onepanel gui.
+Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
 
 ### Example
 ```javascript

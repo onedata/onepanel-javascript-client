@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**newPassphrase** | **String** | New passphrase to be set. | [optional] 
-**currentPassphrase** | **String** | Currently set passphrase. | [optional] 
+**newPassphrase** | **String** | New passphrase to be set. | 
+**currentPassphrase** | **String** | Currently set passphrase. Not required if the passphrae is set for the first time. | [optional] 
 
 

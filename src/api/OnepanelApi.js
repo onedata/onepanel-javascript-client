@@ -1,6 +1,6 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X PUT -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
  * OpenAPI spec version: 18.02.1
  * Contact: info@onedata.org
@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/ServiceError', 'model/TaskStatus', 'model/Token', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/Users', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/ServiceError', 'model/TaskStatus', 'model/Token', 'model/UserDetails', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/ServiceError'), require('../model/TaskStatus'), require('../model/Token'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/Users'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/ServiceError'), require('../model/TaskStatus'), require('../model/Token'), require('../model/UserDetails'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.ServiceError, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.Users, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.ServiceError, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.UserDetails, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, DnsCheck, DnsCheckConfiguration, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, ServiceError, TaskStatus, Token, UserCreateRequest, UserDetails, UserModifyRequest, Users, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, DnsCheck, DnsCheckConfiguration, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, ServiceError, TaskStatus, Token, UserDetails, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -88,50 +88,6 @@
 
       return this.apiClient.callApi(
         '/hosts', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the addUser operation.
-     * @callback module:api/OnepanelApi~addUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create Onepanel user
-     * Creates a new Onepanel user account.
-     * @param {module:model/UserCreateRequest} userCreateRequest The user configuration details.
-     * @param {module:api/OnepanelApi~addUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.addUser = function(userCreateRequest, callback) {
-      var postBody = userCreateRequest;
-
-      // verify the required parameter 'userCreateRequest' is set
-      if (userCreateRequest === undefined || userCreateRequest === null) {
-        throw new Error("Missing the required parameter 'userCreateRequest' when calling addUser");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/users', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -787,95 +743,6 @@
     }
 
     /**
-     * Callback function to receive the result of the getUser operation.
-     * @callback module:api/OnepanelApi~getUserCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/UserDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Onepanel user details
-     * Returns the configuration information of the Onepanel user. 
-     * @param {String} username The name of the user whose details should be returned.
-     * @param {module:api/OnepanelApi~getUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/UserDetails}
-     */
-    this.getUser = function(username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling getUser");
-      }
-
-
-      var pathParams = {
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = UserDetails;
-
-      return this.apiClient.callApi(
-        '/users/{username}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getUsers operation.
-     * @callback module:api/OnepanelApi~getUsersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Users} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List onepanel users
-     * Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.role If present, query returns only users with specified role.
-     * @param {module:api/OnepanelApi~getUsersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Users}
-     */
-    this.getUsers = function(opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'role': opts['role']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Users;
-
-      return this.apiClient.callApi(
-        '/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getWebCert operation.
      * @callback module:api/OnepanelApi~getWebCertCallback
      * @param {String} error Error message, if any.
@@ -953,50 +820,6 @@
 
       return this.apiClient.callApi(
         '/join_cluster', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the modifyCurrentUser operation.
-     * @callback module:api/OnepanelApi~modifyCurrentUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify Onepanel user details of currently logged in user.
-     * Modifies the Onepanel user password. 
-     * @param {module:model/UserModifyRequest} userModifyRequest 
-     * @param {module:api/OnepanelApi~modifyCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyCurrentUser = function(userModifyRequest, callback) {
-      var postBody = userModifyRequest;
-
-      // verify the required parameter 'userModifyRequest' is set
-      if (userModifyRequest === undefined || userModifyRequest === null) {
-        throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyCurrentUser");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/user', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1085,57 +908,6 @@
 
       return this.apiClient.callApi(
         '/progress', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the modifyUser operation.
-     * @callback module:api/OnepanelApi~modifyUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify Onepanel user details
-     * Modifies the Onepanel user password. 
-     * @param {String} username The user name.
-     * @param {module:model/UserModifyRequest} userModifyRequest 
-     * @param {module:api/OnepanelApi~modifyUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyUser = function(username, userModifyRequest, callback) {
-      var postBody = userModifyRequest;
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling modifyUser");
-      }
-
-      // verify the required parameter 'userModifyRequest' is set
-      if (userModifyRequest === undefined || userModifyRequest === null) {
-        throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyUser");
-      }
-
-
-      var pathParams = {
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/users/{username}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1231,89 +1003,6 @@
     }
 
     /**
-     * Callback function to receive the result of the removeCurrentUser operation.
-     * @callback module:api/OnepanelApi~removeCurrentUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove the currently logged in Onepanel user
-     * Removes the Onepanel user account. 
-     * @param {module:api/OnepanelApi~removeCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeCurrentUser = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/user', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the removeUser operation.
-     * @callback module:api/OnepanelApi~removeUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove Onepanel user
-     * Removes the Onepanel user account. 
-     * @param {String} username The name of the user to be removed.
-     * @param {module:api/OnepanelApi~removeUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeUser = function(username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling removeUser");
-      }
-
-
-      var pathParams = {
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/users/{username}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the setEmergencyPassphrase operation.
      * @callback module:api/OnepanelApi~setEmergencyPassphraseCallback
      * @param {String} error Error message, if any.
@@ -1323,7 +1012,7 @@
 
     /**
      * Set emergency passphrase
-     * Sets passphrase which can be used to access the Onepanel REST api and emergency Onepanel gui.
+     * Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
      * @param {module:model/EmergencyPassphraseChangeRequest} emergencyPassphrase 
      * @param {module:api/OnepanelApi~setEmergencyPassphraseCallback} callback The callback function, accepting three arguments: error, data, response
      */

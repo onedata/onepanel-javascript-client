@@ -46,13 +46,14 @@
    * @alias module:model/UserDetails
    * @class
    * @param userId {String} The user Id.
-   * @param userRole {module:model/UserDetails.UserRoleEnum} The user role, one of `admin` or `regular`.
+   * @param username {String} The user name.
    */
-  var exports = function(userId, userRole) {
+  var exports = function(userId, username) {
     var _this = this;
 
     _this['userId'] = userId;
-    _this['userRole'] = userRole;
+    _this['username'] = username;
+
   };
 
   /**
@@ -79,8 +80,11 @@
       if (data.hasOwnProperty('userId')) {
         obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
       }
-      if (data.hasOwnProperty('userRole')) {
-        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('clusterPrivileges')) {
+        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
       }
     }
     return obj;
@@ -92,28 +96,68 @@
    */
   exports.prototype['userId'] = undefined;
   /**
-   * The user role, one of `admin` or `regular`.
-   * @member {module:model/UserDetails.UserRoleEnum} userRole
+   * The user name.
+   * @member {String} username
    */
-  exports.prototype['userRole'] = undefined;
+  exports.prototype['username'] = undefined;
+  /**
+   * List of cluster privileges held by the user.
+   * @member {Array.<module:model/UserDetails.ClusterPrivilegesEnum>} clusterPrivileges
+   */
+  exports.prototype['clusterPrivileges'] = undefined;
 
 
   /**
-   * Allowed values for the <code>userRole</code> property.
+   * Allowed values for the <code>clusterPrivileges</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.UserRoleEnum = {
+  exports.ClusterPrivilegesEnum = {
     /**
-     * value: "admin"
+     * value: "cluster_view"
      * @const
      */
-    "admin": "admin",
+    "view": "cluster_view",
     /**
-     * value: "regular"
+     * value: "cluster_update"
      * @const
      */
-    "regular": "regular"  };
+    "update": "cluster_update",
+    /**
+     * value: "cluster_delete"
+     * @const
+     */
+    "delete": "cluster_delete",
+    /**
+     * value: "cluster_view_privileges"
+     * @const
+     */
+    "view_privileges": "cluster_view_privileges",
+    /**
+     * value: "cluster_set_privileges"
+     * @const
+     */
+    "set_privileges": "cluster_set_privileges",
+    /**
+     * value: "cluster_add_user"
+     * @const
+     */
+    "add_user": "cluster_add_user",
+    /**
+     * value: "cluster_remove_user"
+     * @const
+     */
+    "remove_user": "cluster_remove_user",
+    /**
+     * value: "cluster_add_group"
+     * @const
+     */
+    "add_group": "cluster_add_group",
+    /**
+     * value: "cluster_remove_group"
+     * @const
+     */
+    "remove_group": "cluster_remove_group"  };
 
 
   return exports;

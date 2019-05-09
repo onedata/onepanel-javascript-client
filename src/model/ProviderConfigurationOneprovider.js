@@ -53,6 +53,7 @@
     var _this = this;
 
     _this['register'] = register;
+
     _this['name'] = name;
 
 
@@ -87,6 +88,9 @@
       if (data.hasOwnProperty('register')) {
         obj['register'] = ApiClient.convertToType(data['register'], 'Boolean');
       }
+      if (data.hasOwnProperty('token')) {
+        obj['token'] = ApiClient.convertToType(data['token'], 'String');
+      }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
@@ -120,6 +124,11 @@
    * @member {Boolean} register
    */
   exports.prototype['register'] = undefined;
+  /**
+   * Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
+   * @member {String} token
+   */
+  exports.prototype['token'] = undefined;
   /**
    * The name under which the provider will be registered in a zone.
    * @member {String} name

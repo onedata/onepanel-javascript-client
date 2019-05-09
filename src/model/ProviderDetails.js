@@ -42,19 +42,18 @@
 
   /**
    * Constructs a new <code>ProviderDetails</code>.
-   * The provider configuration details.
+   * The Oneprovider configuration details.
    * @alias module:model/ProviderDetails
    * @class
    * @param id {String} The Id assigned by a zone.
-   * @param name {String} The name under which the provider has been registered in a zone.
-   * @param subdomainDelegation {Boolean} If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
-   * @param domain {String} The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
-   * @param adminEmail {String} Email address of the oneprovider administrator.
-   * @param geoLongitude {Number} The geographical longitude of the provider.
-   * @param geoLatitude {Number} The geographical latitude of the provider.
-   * @param onezoneDomainName {String} The domain name of a zone where this storage provider is registered.
+   * @param name {String} The name under which the Oneprovider has been registered in a zone.
+   * @param subdomainDelegation {Boolean} If enabled, the storage Oneprovider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
+   * @param domain {String} The fully qualified domain name of the Oneprovider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * @param geoLongitude {Number} The geographical longitude of the Oneprovider.
+   * @param geoLatitude {Number} The geographical latitude of the Oneprovider.
+   * @param onezoneDomainName {String} The domain name of a zone where this storage Oneprovider is registered.
    */
-  var exports = function(id, name, subdomainDelegation, domain, adminEmail, geoLongitude, geoLatitude, onezoneDomainName) {
+  var exports = function(id, name, subdomainDelegation, domain, geoLongitude, geoLatitude, onezoneDomainName) {
     var _this = this;
 
     _this['id'] = id;
@@ -62,7 +61,7 @@
     _this['subdomainDelegation'] = subdomainDelegation;
 
     _this['domain'] = domain;
-    _this['adminEmail'] = adminEmail;
+
     _this['geoLongitude'] = geoLongitude;
     _this['geoLatitude'] = geoLatitude;
     _this['onezoneDomainName'] = onezoneDomainName;
@@ -126,42 +125,42 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * The name under which the provider has been registered in a zone.
+   * The name under which the Oneprovider has been registered in a zone.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * If enabled, the storage provider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
+   * If enabled, the storage Oneprovider has a subdomain in onezone's domain and 'subdomain' property must be provided. 
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * Unique subdomain in onezone's domain for the provider. Required if subdomain delegation is enabled. 
+   * Unique subdomain in onezone's domain for the Oneprovider. Required if subdomain delegation is enabled. 
    * @member {String} subdomain
    */
   exports.prototype['subdomain'] = undefined;
   /**
-   * The fully qualified domain name of the provider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
+   * The fully qualified domain name of the Oneprovider or its IP address (only for single-node deployments or clusters with a reverse proxy). 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
   /**
-   * Email address of the oneprovider administrator.
+   * Email address of the Oneprovider administrator. Omitted if it could not be retrievied.
    * @member {String} adminEmail
    */
   exports.prototype['adminEmail'] = undefined;
   /**
-   * The geographical longitude of the provider.
+   * The geographical longitude of the Oneprovider.
    * @member {Number} geoLongitude
    */
   exports.prototype['geoLongitude'] = undefined;
   /**
-   * The geographical latitude of the provider.
+   * The geographical latitude of the Oneprovider.
    * @member {Number} geoLatitude
    */
   exports.prototype['geoLatitude'] = undefined;
   /**
-   * The domain name of a zone where this storage provider is registered.
+   * The domain name of a zone where this storage Oneprovider is registered.
    * @member {String} onezoneDomainName
    */
   exports.prototype['onezoneDomainName'] = undefined;

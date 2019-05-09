@@ -45,7 +45,7 @@
    * The provider custom configuration.
    * @alias module:model/ProviderConfigurationDetailsOneprovider
    * @class
-   * @param name {String} The name of a provider. Null if not registered.
+   * @param name {String} The name of a provider. `null` if not registered.
    * @param configured {Boolean} True if all steps of cluster deployment and configuration have been performed.
    */
   var exports = function(name, configured) {
@@ -87,7 +87,7 @@
   }
 
   /**
-   * The name of a provider. Null if not registered.
+   * The name of a provider. `null` if not registered.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;

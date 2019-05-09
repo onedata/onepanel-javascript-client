@@ -63,12 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property users (base name: "users")', function() {
-      // uncomment below and update the code to test the property users
-      //var instane = new Onepanel.PanelConfiguration();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

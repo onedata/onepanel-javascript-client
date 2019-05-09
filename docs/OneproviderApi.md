@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 [**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+[**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
@@ -513,6 +514,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getOnezoneInfo"></a>
+# **getOnezoneInfo**
+> OnezoneInfo getOnezoneInfo(opts)
+
+Get Onezone information
+
+Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var opts = { 
+  'token': "token_example" // String | Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnezoneInfo(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**| Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered. | [optional] 
+
+### Return type
+
+[**OnezoneInfo**](OnezoneInfo.md)
 
 ### Authorization
 

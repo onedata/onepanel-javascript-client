@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Configuration', 'model/Cookie', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error', 'model/ServiceError', 'model/SessionDetails', 'model/TaskStatus', 'model/UserCreateRequest', 'model/UserDetails', 'model/UserModifyRequest', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/ServiceError', 'model/TaskStatus', 'model/Token', 'model/UserDetails', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Configuration'), require('../model/Cookie'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'), require('../model/ServiceError'), require('../model/SessionDetails'), require('../model/TaskStatus'), require('../model/UserCreateRequest'), require('../model/UserDetails'), require('../model/UserModifyRequest'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/ServiceError'), require('../model/TaskStatus'), require('../model/Token'), require('../model/UserDetails'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.Configuration, root.Onepanel.Cookie, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.ServiceError, root.Onepanel.SessionDetails, root.Onepanel.TaskStatus, root.Onepanel.UserCreateRequest, root.Onepanel.UserDetails, root.Onepanel.UserModifyRequest, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.ServiceError, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.UserDetails, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, Configuration, Cookie, DnsCheck, DnsCheckConfiguration, Error, ServiceError, SessionDetails, TaskStatus, UserCreateRequest, UserDetails, UserModifyRequest, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, DnsCheck, DnsCheckConfiguration, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, ServiceError, TaskStatus, Token, UserDetails, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -49,25 +49,26 @@
 
 
     /**
-     * Callback function to receive the result of the addUser operation.
-     * @callback module:api/OnepanelApi~addUserCallback
+     * Callback function to receive the result of the addClusterHost operation.
+     * @callback module:api/OnepanelApi~addClusterHostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/Host} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Create Onepanel user
-     * Creates a new Onepanel user account.
-     * @param {module:model/UserCreateRequest} userCreateRequest The user configuration details.
-     * @param {module:api/OnepanelApi~addUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * Adds given host to the cluster
+     * Adds given host to the current cluster. The host can be specified by any address by which it is reachable. Upon success returns proper hostname used to address the new host in cluster management. 
+     * @param {module:model/HostAddRequest} hostAddRequest 
+     * @param {module:api/OnepanelApi~addClusterHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Host}
      */
-    this.addUser = function(userCreateRequest, callback) {
-      var postBody = userCreateRequest;
+    this.addClusterHost = function(hostAddRequest, callback) {
+      var postBody = hostAddRequest;
 
-      // verify the required parameter 'userCreateRequest' is set
-      if (userCreateRequest === undefined || userCreateRequest === null) {
-        throw new Error("Missing the required parameter 'userCreateRequest' when calling addUser");
+      // verify the required parameter 'hostAddRequest' is set
+      if (hostAddRequest === undefined || hostAddRequest === null) {
+        throw new Error("Missing the required parameter 'hostAddRequest' when calling addClusterHost");
       }
 
 
@@ -83,10 +84,10 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = Host;
 
       return this.apiClient.callApi(
-        '/users', 'POST',
+        '/hosts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -136,63 +137,20 @@
     }
 
     /**
-     * Callback function to receive the result of the createCluster operation.
-     * @callback module:api/OnepanelApi~createClusterCallback
+     * Callback function to receive the result of the createUserInviteToken operation.
+     * @callback module:api/OnepanelApi~createUserInviteTokenCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/Token} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Create or join cluster
-     * Initializes administrative cluster or if &#x60;clusterHost&#x60; parameter has been provided in the query string adds this host to an existing cluster. In both cases the host handling this request has to be newly started or removed from previous cluster. It cannot contain any configuration data. This request can be executed by unauthorized users as long as there are no admin users. 
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.clusterHost Hostname of an existing cluster node.
-     * @param {module:model/Cookie} opts.cookie The cookie used for cluster authentication.
-     * @param {module:api/OnepanelApi~createClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * Generate cluster invitation token for a user
+     * Returns a token which can be used to add a Onezone user as a member of this cluster. 
+     * @param {module:api/OnepanelApi~createUserInviteTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Token}
      */
-    this.createCluster = function(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['cookie'];
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'clusterHost': opts['clusterHost']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/hosts', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the createSession operation.
-     * @callback module:api/OnepanelApi~createSessionCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SessionDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create Onepanel user session
-     * Creates a new Onepanel user session.
-     * @param {module:api/OnepanelApi~createSessionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SessionDetails}
-     */
-    this.createSession = function(callback) {
+    this.createUserInviteToken = function(callback) {
       var postBody = null;
 
 
@@ -208,10 +166,56 @@
       var authNames = ['basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = SessionDetails;
+      var returnType = Token;
 
       return this.apiClient.callApi(
-        '/session', 'POST',
+        '/cluster/invite_user_token', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCluster operation.
+     * @callback module:api/OnepanelApi~getClusterCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of a user&#39;s cluster
+     * Returns details of the specified cluster. 
+     * @param {String} id Cluster Id which details should be returned.
+     * @param {module:api/OnepanelApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getCluster = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getCluster");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -265,22 +269,18 @@
      */
 
     /**
-     * Get cluster or discovered hosts
-     * Returns the list of administrative cluster hosts. It is also possible to return the list of hosts that have been discovered using multicast advertisment. In order to retrieve discovered hosts set the &#x60;discovered&#x60; query string to &#x60;true&#x60;. This request can be executed by unauthorized users only if there are no admin users in the system. 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.discovered Defines whether to return cluster or discovered hosts. (default to false)
+     * Get cluster hosts
+     * Returns the list of administrative cluster hosts. 
      * @param {module:api/OnepanelApi~getClusterHostsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<'String'>}
      */
-    this.getClusterHosts = function(opts, callback) {
-      opts = opts || {};
+    this.getClusterHosts = function(callback) {
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
-        'discovered': opts['discovered']
       };
       var headerParams = {
       };
@@ -294,6 +294,84 @@
 
       return this.apiClient.callApi(
         '/hosts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClusterMembersSummary operation.
+     * @callback module:api/OnepanelApi~getClusterMembersSummaryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterMembersSummary} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get summary of members in this cluster
+     * Returns aggregated counts of users and groups belonging to this cluster. 
+     * @param {module:api/OnepanelApi~getClusterMembersSummaryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterMembersSummary}
+     */
+    this.getClusterMembersSummary = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ClusterMembersSummary;
+
+      return this.apiClient.callApi(
+        '/cluster/members_summary', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getClusters operation.
+     * @callback module:api/OnepanelApi~getClustersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Ids} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List user&#39;s clusters
+     * Lists clusters to which current user belongs. 
+     * @param {module:api/OnepanelApi~getClustersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Ids}
+     */
+    this.getClusters = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = Ids;
+
+      return this.apiClient.callApi(
+        '/user/clusters', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -339,6 +417,84 @@
     }
 
     /**
+     * Callback function to receive the result of the getCurrentCluster operation.
+     * @callback module:api/OnepanelApi~getCurrentClusterCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of this cluster
+     * Returns details of this cluster. 
+     * @param {module:api/OnepanelApi~getCurrentClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getCurrentCluster = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/cluster', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCurrentUser operation.
+     * @callback module:api/OnepanelApi~getCurrentUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/UserDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Onepanel user details of currently logged in user.
+     * Returns the configuration information of the Onepanel user performing the query. 
+     * @param {module:api/OnepanelApi~getCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/UserDetails}
+     */
+    this.getCurrentUser = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = UserDetails;
+
+      return this.apiClient.callApi(
+        '/user', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getDnsCheckConfiguration operation.
      * @callback module:api/OnepanelApi~getDnsCheckConfigurationCallback
      * @param {String} error Error message, if any.
@@ -378,20 +534,59 @@
     }
 
     /**
-     * Callback function to receive the result of the getSession operation.
-     * @callback module:api/OnepanelApi~getSessionCallback
+     * Callback function to receive the result of the getEmergencyPassphraseStatus operation.
+     * @callback module:api/OnepanelApi~getEmergencyPassphraseStatusCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/SessionDetails} data The data returned by the service call.
+     * @param {module:model/EmergencyPassphraseStatus} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get Onepanel user session
-     * Returns details of a Onepanel user session associated with the request. 
-     * @param {module:api/OnepanelApi~getSessionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SessionDetails}
+     * Get emergency passphrase status
+     * Returns information whether emergency passphrase is set.
+     * @param {module:api/OnepanelApi~getEmergencyPassphraseStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/EmergencyPassphraseStatus}
      */
-    this.getSession = function(callback) {
+    this.getEmergencyPassphraseStatus = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = EmergencyPassphraseStatus;
+
+      return this.apiClient.callApi(
+        '/passphrase', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getNode operation.
+     * @callback module:api/OnepanelApi~getNodeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Node} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get information about current onepanel node.
+     * Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+     * @param {module:api/OnepanelApi~getNodeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Node}
+     */
+    this.getNode = function(callback) {
       var postBody = null;
 
 
@@ -407,10 +602,95 @@
       var authNames = ['basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = SessionDetails;
+      var returnType = Node;
 
       return this.apiClient.callApi(
-        '/session', 'GET',
+        '/node', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getProgress operation.
+     * @callback module:api/OnepanelApi~getProgressCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Progress} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get deployment progress
+     * Returns deployment markers state.
+     * @param {module:api/OnepanelApi~getProgressCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Progress}
+     */
+    this.getProgress = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Progress;
+
+      return this.apiClient.callApi(
+        '/progress', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getRemoteProvider operation.
+     * @callback module:api/OnepanelApi~getRemoteProviderCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/RemoteProviderDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of a remote Oneprovider.
+     * Returns the details of given provider. Only users belonging to that Oneprovider&#39;s cluster can fetch its details. 
+     * @param {String} id Id of requested Oneprovider.
+     * @param {module:api/OnepanelApi~getRemoteProviderCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/RemoteProviderDetails}
+     */
+    this.getRemoteProvider = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getRemoteProvider");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = RemoteProviderDetails;
+
+      return this.apiClient.callApi(
+        '/providers/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -463,52 +743,6 @@
     }
 
     /**
-     * Callback function to receive the result of the getUser operation.
-     * @callback module:api/OnepanelApi~getUserCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/UserDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Onepanel user details
-     * Returns the configuration information of the Onepanel user. 
-     * @param {String} username The name of the user whose details should be returned.
-     * @param {module:api/OnepanelApi~getUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/UserDetails}
-     */
-    this.getUser = function(username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling getUser");
-      }
-
-
-      var pathParams = {
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = UserDetails;
-
-      return this.apiClient.callApi(
-        '/users/{username}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getWebCert operation.
      * @callback module:api/OnepanelApi~getWebCertCallback
      * @param {String} error Error message, if any.
@@ -542,6 +776,50 @@
 
       return this.apiClient.callApi(
         '/web_cert', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the joinCluster operation.
+     * @callback module:api/OnepanelApi~joinClusterCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Join existing cluster
+     * Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
+     * @param {module:model/JoinClusterRequest} joinClusterRequest 
+     * @param {module:api/OnepanelApi~joinClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.joinCluster = function(joinClusterRequest, callback) {
+      var postBody = joinClusterRequest;
+
+      // verify the required parameter 'joinClusterRequest' is set
+      if (joinClusterRequest === undefined || joinClusterRequest === null) {
+        throw new Error("Missing the required parameter 'joinClusterRequest' when calling joinCluster");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/join_cluster', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -592,36 +870,29 @@
     }
 
     /**
-     * Callback function to receive the result of the modifyUser operation.
-     * @callback module:api/OnepanelApi~modifyUserCallback
+     * Callback function to receive the result of the modifyProgress operation.
+     * @callback module:api/OnepanelApi~modifyProgressCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify Onepanel user details
-     * Modifies the Onepanel user password. 
-     * @param {String} username The user name.
-     * @param {module:model/UserModifyRequest} userModifyRequest 
-     * @param {module:api/OnepanelApi~modifyUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * Modify progress markers
+     * Sets or unsets markers for completed deployment stages.
+     * @param {module:model/ProgressModify} progressModify 
+     * @param {module:api/OnepanelApi~modifyProgressCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifyUser = function(username, userModifyRequest, callback) {
-      var postBody = userModifyRequest;
+    this.modifyProgress = function(progressModify, callback) {
+      var postBody = progressModify;
 
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling modifyUser");
-      }
-
-      // verify the required parameter 'userModifyRequest' is set
-      if (userModifyRequest === undefined || userModifyRequest === null) {
-        throw new Error("Missing the required parameter 'userModifyRequest' when calling modifyUser");
+      // verify the required parameter 'progressModify' is set
+      if (progressModify === undefined || progressModify === null) {
+        throw new Error("Missing the required parameter 'progressModify' when calling modifyProgress");
       }
 
 
       var pathParams = {
-        'username': username
       };
       var queryParams = {
       };
@@ -636,7 +907,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/users/{username}', 'PATCH',
+        '/progress', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -696,7 +967,7 @@
 
     /**
      * Remove host from cluster
-     * Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. It also removes the host from each service cluster it belonged to. 
+     * Removes a node from the administrative cluster. This operation removes all user and configuration data from the host. 
      * @param {String} host Hostname of a node to be removed from the cluster.
      * @param {module:api/OnepanelApi~removeClusterHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -732,68 +1003,29 @@
     }
 
     /**
-     * Callback function to receive the result of the removeSession operation.
-     * @callback module:api/OnepanelApi~removeSessionCallback
+     * Callback function to receive the result of the setEmergencyPassphrase operation.
+     * @callback module:api/OnepanelApi~setEmergencyPassphraseCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Remove Onepanel user session
-     * Removes the Onepanel user session. 
-     * @param {module:api/OnepanelApi~removeSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * Set emergency passphrase
+     * Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
+     * @param {module:model/EmergencyPassphraseChangeRequest} emergencyPassphrase 
+     * @param {module:api/OnepanelApi~setEmergencyPassphraseCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.removeSession = function(callback) {
-      var postBody = null;
+    this.setEmergencyPassphrase = function(emergencyPassphrase, callback) {
+      var postBody = emergencyPassphrase;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/session', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the removeUser operation.
-     * @callback module:api/OnepanelApi~removeUserCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove Onepanel user
-     * Removes the Onepanel user account. 
-     * @param {String} username The name of the user to be removed.
-     * @param {module:api/OnepanelApi~removeUserCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeUser = function(username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling removeUser");
+      // verify the required parameter 'emergencyPassphrase' is set
+      if (emergencyPassphrase === undefined || emergencyPassphrase === null) {
+        throw new Error("Missing the required parameter 'emergencyPassphrase' when calling setEmergencyPassphrase");
       }
 
 
       var pathParams = {
-        'username': username
       };
       var queryParams = {
       };
@@ -803,12 +1035,12 @@
       };
 
       var authNames = ['basic'];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/users/{username}', 'DELETE',
+        '/passphrase', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -121,6 +121,16 @@
         done();
       });
     });
+    describe('getOnezoneUsers', function() {
+      it('should call getOnezoneUsers successfully', function(done) {
+        //uncomment below and update the code to test getOnezoneUsers
+        //instance.getOnezoneUsers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getZoneClusterIps', function() {
       it('should call getZoneClusterIps successfully', function(done) {
         //uncomment below and update the code to test getZoneClusterIps

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
   }
-}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
+}(this, function(ApiClient, ClusterIps, Error, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
   'use strict';
 
   /**
@@ -235,16 +235,16 @@
     /**
      * Set password for Onezone user
      * Sets new password for a Onezone user using Basic authentication. 
-     * @param {String} alias Alias of the user whose password is changed.
+     * @param {String} id Id of the user whose password is changed.
      * @param {module:model/PasswordChangeRequest} passwordChangeRequest 
      * @param {module:api/OnezoneApi~changeUserPasswordCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.changeUserPassword = function(alias, passwordChangeRequest, callback) {
+    this.changeUserPassword = function(id, passwordChangeRequest, callback) {
       var postBody = passwordChangeRequest;
 
-      // verify the required parameter 'alias' is set
-      if (alias === undefined || alias === null) {
-        throw new Error("Missing the required parameter 'alias' when calling changeUserPassword");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling changeUserPassword");
       }
 
       // verify the required parameter 'passwordChangeRequest' is set
@@ -254,7 +254,7 @@
 
 
       var pathParams = {
-        'alias': alias
+        'id': id
       };
       var queryParams = {
       };
@@ -269,7 +269,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/zone/users/{alias}', 'PATCH',
+        '/zone/users/{id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -330,21 +330,21 @@
     /**
      * Get Onezone user details
      * Returns the configuration information of the Onezone user. 
-     * @param {String} alias Alias of the user to be described.
+     * @param {String} id Id of the user to be described.
      * @param {module:api/OnezoneApi~getOnezoneUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OnezoneUser}
      */
-    this.getOnezoneUser = function(alias, callback) {
+    this.getOnezoneUser = function(id, callback) {
       var postBody = null;
 
-      // verify the required parameter 'alias' is set
-      if (alias === undefined || alias === null) {
-        throw new Error("Missing the required parameter 'alias' when calling getOnezoneUser");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getOnezoneUser");
       }
 
 
       var pathParams = {
-        'alias': alias
+        'id': id
       };
       var queryParams = {
       };
@@ -359,7 +359,46 @@
       var returnType = OnezoneUser;
 
       return this.apiClient.callApi(
-        '/zone/users/{alias}', 'GET',
+        '/zone/users/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getOnezoneUsers operation.
+     * @callback module:api/OnezoneApi~getOnezoneUsersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Ids} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Onezone users
+     * List Ids of Onezone users. 
+     * @param {module:api/OnezoneApi~getOnezoneUsersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Ids}
+     */
+    this.getOnezoneUsers = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = Ids;
+
+      return this.apiClient.callApi(
+        '/zone/users', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

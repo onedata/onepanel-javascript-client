@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
-[**getEmergencyPassphraseStatus**](OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /passphrase | Get emergency passphrase status
+[**getEmergencyPassphraseStatus**](OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /emergency_passphrase | Get emergency passphrase status
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 [**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
@@ -27,7 +27,7 @@ Method | HTTP request | Description
 [**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-[**setEmergencyPassphrase**](OnepanelApi.md#setEmergencyPassphrase) | **PUT** /passphrase | Set emergency passphrase
+[**setEmergencyPassphrase**](OnepanelApi.md#setEmergencyPassphrase) | **PUT** /emergency_passphrase | Set emergency passphrase
 
 
 <a name="addClusterHost"></a>
@@ -511,7 +511,7 @@ This endpoint does not need any parameter.
 
 <a name="getCurrentUser"></a>
 # **getCurrentUser**
-> UserDetails getCurrentUser()
+> CurrentUser getCurrentUser()
 
 Get Onepanel user details of currently logged in user.
 
@@ -544,7 +544,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**UserDetails**](UserDetails.md)
+[**CurrentUser**](CurrentUser.md)
 
 ### Authorization
 

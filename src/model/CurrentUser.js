@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.EmergencyPassphraseChangeRequest = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,24 @@
 
 
   /**
-   * The EmergencyPassphraseChangeRequest model module.
-   * @module model/EmergencyPassphraseChangeRequest
+   * The CurrentUser model module.
+   * @module model/CurrentUser
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>EmergencyPassphraseChangeRequest</code>.
-   * Emergency passphrase to set and old passphrase to authenticate the change.
-   * @alias module:model/EmergencyPassphraseChangeRequest
+   * Constructs a new <code>CurrentUser</code>.
+   * Information about the authenticated user.
+   * @alias module:model/CurrentUser
    * @class
-   * @param newPassphrase {String} New passphrase to be set.
+   * @param userId {String} The user Id.
+   * @param username {String} The user name.
    */
-  var exports = function(newPassphrase) {
+  var exports = function(userId, username) {
     var _this = this;
 
-    _this['newPassphrase'] = newPassphrase;
+    _this['userId'] = userId;
+    _this['username'] = username;
 
   };
 
@@ -58,44 +60,104 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/EmergencyPassphraseChangeRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>EmergencyPassphraseChangeRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/EmergencyPassphraseChangeRequest} obj Optional instance to populate.
-   * @return {module:model/EmergencyPassphraseChangeRequest} The populated <code>EmergencyPassphraseChangeRequest</code> instance.
+   * @param {module:model/CurrentUser} obj Optional instance to populate.
+   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('newPassphrase')) {
-        obj['newPassphrase'] = ApiClient.convertToType(data['newPassphrase'], 'String');
+      if (data.hasOwnProperty('userId')) {
+        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
       }
-      if (data.hasOwnProperty('currentPassphrase')) {
-        obj['currentPassphrase'] = ApiClient.convertToType(data['currentPassphrase'], 'String');
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('clusterPrivileges')) {
+        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * New passphrase to be set.
-   * @member {String} newPassphrase
+   * The user Id.
+   * @member {String} userId
    */
-  exports.prototype['newPassphrase'] = undefined;
+  exports.prototype['userId'] = undefined;
   /**
-   * Currently set passphrase. Not required if the passphrase is set for the first time.
-   * @member {String} currentPassphrase
+   * The user name.
+   * @member {String} username
    */
-  exports.prototype['currentPassphrase'] = undefined;
+  exports.prototype['username'] = undefined;
+  /**
+   * List of cluster privileges held by the user in the current cluster. 
+   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
+   */
+  exports.prototype['clusterPrivileges'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>clusterPrivileges</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ClusterPrivilegesEnum = {
+    /**
+     * value: "cluster_view"
+     * @const
+     */
+    "view": "cluster_view",
+    /**
+     * value: "cluster_update"
+     * @const
+     */
+    "update": "cluster_update",
+    /**
+     * value: "cluster_delete"
+     * @const
+     */
+    "delete": "cluster_delete",
+    /**
+     * value: "cluster_view_privileges"
+     * @const
+     */
+    "view_privileges": "cluster_view_privileges",
+    /**
+     * value: "cluster_set_privileges"
+     * @const
+     */
+    "set_privileges": "cluster_set_privileges",
+    /**
+     * value: "cluster_add_user"
+     * @const
+     */
+    "add_user": "cluster_add_user",
+    /**
+     * value: "cluster_remove_user"
+     * @const
+     */
+    "remove_user": "cluster_remove_user",
+    /**
+     * value: "cluster_add_group"
+     * @const
+     */
+    "add_group": "cluster_add_group",
+    /**
+     * value: "cluster_remove_group"
+     * @const
+     */
+    "remove_group": "cluster_remove_group"  };
 
 
   return exports;

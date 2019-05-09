@@ -99,7 +99,7 @@
    */
   exports.prototype['password'] = undefined;
   /**
-   * Group Ids.
+   * Ids of Onezone groups to which the user should be added. The groups must already exist.
    * @member {Array.<String>} groups
    */
   exports.prototype['groups'] = undefined;

@@ -16,89 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.EmergencyPassphraseChangeRequest = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.CurrentUser();
+  });
 
-
-  /**
-   * The EmergencyPassphraseChangeRequest model module.
-   * @module model/EmergencyPassphraseChangeRequest
-   * @version 18.02.1
-   */
-
-  /**
-   * Constructs a new <code>EmergencyPassphraseChangeRequest</code>.
-   * Emergency passphrase to set and old passphrase to authenticate the change.
-   * @alias module:model/EmergencyPassphraseChangeRequest
-   * @class
-   * @param newPassphrase {String} New passphrase to be set.
-   */
-  var exports = function(newPassphrase) {
-    var _this = this;
-
-    _this['newPassphrase'] = newPassphrase;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/EmergencyPassphraseChangeRequest} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>EmergencyPassphraseChangeRequest</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/EmergencyPassphraseChangeRequest} obj Optional instance to populate.
-   * @return {module:model/EmergencyPassphraseChangeRequest} The populated <code>EmergencyPassphraseChangeRequest</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('newPassphrase')) {
-        obj['newPassphrase'] = ApiClient.convertToType(data['newPassphrase'], 'String');
-      }
-      if (data.hasOwnProperty('currentPassphrase')) {
-        obj['currentPassphrase'] = ApiClient.convertToType(data['currentPassphrase'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * New passphrase to be set.
-   * @member {String} newPassphrase
-   */
-  exports.prototype['newPassphrase'] = undefined;
-  /**
-   * Currently set passphrase. Not required if the passphrase is set for the first time.
-   * @member {String} currentPassphrase
-   */
-  exports.prototype['currentPassphrase'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('CurrentUser', function() {
+    it('should create an instance of CurrentUser', function() {
+      // uncomment below and update the code to test CurrentUser
+      //var instane = new Onepanel.CurrentUser();
+      //expect(instance).to.be.a(Onepanel.CurrentUser);
+    });
 
+    it('should have the property userId (base name: "userId")', function() {
+      // uncomment below and update the code to test the property userId
+      //var instane = new Onepanel.CurrentUser();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.CurrentUser();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clusterPrivileges (base name: "clusterPrivileges")', function() {
+      // uncomment below and update the code to test the property clusterPrivileges
+      //var instane = new Onepanel.CurrentUser();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

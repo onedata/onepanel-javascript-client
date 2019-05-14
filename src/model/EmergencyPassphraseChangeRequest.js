@@ -91,7 +91,7 @@
    */
   exports.prototype['newPassphrase'] = undefined;
   /**
-   * Currently set passphrase. Not required if the passphrase is set for the first time.
+   * Currently set passphrase. Not required when setting the passphrase for the first time.
    * @member {String} currentPassphrase
    */
   exports.prototype['currentPassphrase'] = undefined;

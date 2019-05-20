@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 Create Onezone user
 
-Creates a new Onezone user account with Basic (login and password) authentication enabled.
+Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.
 
 ### Example
 ```javascript

@@ -4,10 +4,14 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addOnezoneUser**](OnezoneApi.md#addOnezoneUser) | **POST** /zone/users | Create Onezone user
 [**addZoneDatabases**](OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
+[**changeUserPassword**](OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+[**getOnezoneUser**](OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
+[**getOnezoneUsers**](OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
 [**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 [**getZoneDatabaseStatus**](OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
@@ -27,6 +31,58 @@ Method | HTTP request | Description
 [**startStopZoneWorker**](OnezoneApi.md#startStopZoneWorker) | **PATCH** /zone/workers/{host} | Start/stop zone cluster worker
 [**startStopZoneWorkers**](OnezoneApi.md#startStopZoneWorkers) | **PATCH** /zone/workers | Start/stop zone cluster workers
 
+
+<a name="addOnezoneUser"></a>
+# **addOnezoneUser**
+> addOnezoneUser(userCreateRequest)
+
+Create Onezone user
+
+Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var userCreateRequest = new Onepanel.OnezoneUserCreateRequest(); // OnezoneUserCreateRequest | The user configuration details.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addOnezoneUser(userCreateRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userCreateRequest** | [**OnezoneUserCreateRequest**](OnezoneUserCreateRequest.md)| The user configuration details. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="addZoneDatabases"></a>
 # **addZoneDatabases**
@@ -184,6 +240,61 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="changeUserPassword"></a>
+# **changeUserPassword**
+> changeUserPassword(id, passwordChangeRequest)
+
+Set password for Onezone user
+
+Sets new password for a Onezone user using Basic authentication. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var id = "id_example"; // String | Id of the user whose password is changed.
+
+var passwordChangeRequest = new Onepanel.PasswordChangeRequest(); // PasswordChangeRequest | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.changeUserPassword(id, passwordChangeRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Id of the user whose password is changed. | 
+ **passwordChangeRequest** | [**PasswordChangeRequest**](PasswordChangeRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="configureZone"></a>
 # **configureZone**
 > configureZone(zoneConfiguration)
@@ -234,6 +345,104 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="getOnezoneUser"></a>
+# **getOnezoneUser**
+> OnezoneUser getOnezoneUser(id)
+
+Get Onezone user details
+
+Returns the configuration information of the Onezone user. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var id = "id_example"; // String | Id of the user to be described.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnezoneUser(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Id of the user to be described. | 
+
+### Return type
+
+[**OnezoneUser**](OnezoneUser.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getOnezoneUsers"></a>
+# **getOnezoneUsers**
+> Ids getOnezoneUsers()
+
+List Onezone users
+
+List Ids of Onezone users. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnezoneUsers(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Ids**](Ids.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="getZoneClusterIps"></a>

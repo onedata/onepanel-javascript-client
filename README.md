@@ -101,7 +101,6 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
-*Onepanel.OnepanelApi* | [**addUser**](docs/OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 *Onepanel.OnepanelApi* | [**checkDns**](docs/OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
 *Onepanel.OnepanelApi* | [**createUserInviteToken**](docs/OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 *Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
@@ -113,22 +112,18 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**getCurrentCluster**](docs/OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 *Onepanel.OnepanelApi* | [**getCurrentUser**](docs/OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**getDnsCheckConfiguration**](docs/OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
+*Onepanel.OnepanelApi* | [**getEmergencyPassphraseStatus**](docs/OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /emergency_passphrase | Get emergency passphrase status
 *Onepanel.OnepanelApi* | [**getNode**](docs/OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 *Onepanel.OnepanelApi* | [**getProgress**](docs/OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 *Onepanel.OnepanelApi* | [**getRemoteProvider**](docs/OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 *Onepanel.OnepanelApi* | [**getTaskStatus**](docs/OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
-*Onepanel.OnepanelApi* | [**getUser**](docs/OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
-*Onepanel.OnepanelApi* | [**getUsers**](docs/OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 *Onepanel.OnepanelApi* | [**getWebCert**](docs/OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
 *Onepanel.OnepanelApi* | [**joinCluster**](docs/OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
-*Onepanel.OnepanelApi* | [**modifyCurrentUser**](docs/OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 *Onepanel.OnepanelApi* | [**modifyDnsCheckConfiguration**](docs/OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 *Onepanel.OnepanelApi* | [**modifyProgress**](docs/OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
-*Onepanel.OnepanelApi* | [**modifyUser**](docs/OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 *Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-*Onepanel.OnepanelApi* | [**removeCurrentUser**](docs/OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
-*Onepanel.OnepanelApi* | [**removeUser**](docs/OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
+*Onepanel.OnepanelApi* | [**setEmergencyPassphrase**](docs/OnepanelApi.md#setEmergencyPassphrase) | **PUT** /emergency_passphrase | Set emergency passphrase
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
@@ -173,10 +168,14 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**startStopProviderWorkers**](docs/OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
 *Onepanel.OneproviderApi* | [**supportSpace**](docs/OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
 *Onepanel.OneproviderApi* | [**triggerAutoCleaning**](docs/OneproviderApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Triggers space auto-cleaning
+*Onepanel.OnezoneApi* | [**addOnezoneUser**](docs/OnezoneApi.md#addOnezoneUser) | **POST** /zone/users | Create Onezone user
 *Onepanel.OnezoneApi* | [**addZoneDatabases**](docs/OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 *Onepanel.OnezoneApi* | [**addZoneManagers**](docs/OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
+*Onepanel.OnezoneApi* | [**changeUserPassword**](docs/OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
 *Onepanel.OnezoneApi* | [**configureZone**](docs/OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+*Onepanel.OnezoneApi* | [**getOnezoneUser**](docs/OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
+*Onepanel.OnezoneApi* | [**getOnezoneUsers**](docs/OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
 *Onepanel.OnezoneApi* | [**getZoneClusterIps**](docs/OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 *Onepanel.OnezoneApi* | [**getZoneConfiguration**](docs/OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 *Onepanel.OnezoneApi* | [**getZoneDatabaseStatus**](docs/OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
@@ -207,10 +206,13 @@ Class | Method | HTTP request | Description
  - [Onepanel.ClusterMembersSummary](docs/ClusterMembersSummary.md)
  - [Onepanel.ClusterWorkers](docs/ClusterWorkers.md)
  - [Onepanel.Configuration](docs/Configuration.md)
+ - [Onepanel.CurrentUser](docs/CurrentUser.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
  - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
  - [Onepanel.DnsCheckResult](docs/DnsCheckResult.md)
+ - [Onepanel.EmergencyPassphraseChangeRequest](docs/EmergencyPassphraseChangeRequest.md)
+ - [Onepanel.EmergencyPassphraseStatus](docs/EmergencyPassphraseStatus.md)
  - [Onepanel.Error](docs/Error.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
@@ -221,10 +223,9 @@ Class | Method | HTTP request | Description
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.OnezoneInfo](docs/OnezoneInfo.md)
  - [Onepanel.OnezoneUser](docs/OnezoneUser.md)
- - [Onepanel.OpPanelConfiguration](docs/OpPanelConfiguration.md)
- - [Onepanel.OpPanelConfigurationAdmin](docs/OpPanelConfigurationAdmin.md)
- - [Onepanel.OzPanelConfiguration](docs/OzPanelConfiguration.md)
- - [Onepanel.OzPanelConfigurationUsers](docs/OzPanelConfigurationUsers.md)
+ - [Onepanel.OnezoneUserCreateRequest](docs/OnezoneUserCreateRequest.md)
+ - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
+ - [Onepanel.PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [Onepanel.Progress](docs/Progress.md)
  - [Onepanel.ProgressModify](docs/ProgressModify.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
@@ -264,10 +265,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.TimeStats](docs/TimeStats.md)
  - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.Token](docs/Token.md)
- - [Onepanel.UserCreateRequest](docs/UserCreateRequest.md)
- - [Onepanel.UserDetails](docs/UserDetails.md)
- - [Onepanel.UserModifyRequest](docs/UserModifyRequest.md)
- - [Onepanel.Users](docs/Users.md)
  - [Onepanel.VersionInfo](docs/VersionInfo.md)
  - [Onepanel.WebCert](docs/WebCert.md)
  - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)

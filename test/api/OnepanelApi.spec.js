@@ -51,10 +51,10 @@
   }
 
   describe('OnepanelApi', function() {
-    describe('addClusterHost', function() {
-      it('should call addClusterHost successfully', function(done) {
-        //uncomment below and update the code to test addClusterHost
-        //instance.addClusterHost(function(error) {
+    describe('addUser', function() {
+      it('should call addUser successfully', function(done) {
+        //uncomment below and update the code to test addUser
+        //instance.addUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -71,20 +71,20 @@
         done();
       });
     });
-    describe('createUserInviteToken', function() {
-      it('should call createUserInviteToken successfully', function(done) {
-        //uncomment below and update the code to test createUserInviteToken
-        //instance.createUserInviteToken(function(error) {
+    describe('createCluster', function() {
+      it('should call createCluster successfully', function(done) {
+        //uncomment below and update the code to test createCluster
+        //instance.createCluster(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getCluster', function() {
-      it('should call getCluster successfully', function(done) {
-        //uncomment below and update the code to test getCluster
-        //instance.getCluster(function(error) {
+    describe('createSession', function() {
+      it('should call createSession successfully', function(done) {
+        //uncomment below and update the code to test createSession
+        //instance.createSession(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -111,50 +111,10 @@
         done();
       });
     });
-    describe('getClusterMembersSummary', function() {
-      it('should call getClusterMembersSummary successfully', function(done) {
-        //uncomment below and update the code to test getClusterMembersSummary
-        //instance.getClusterMembersSummary(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getClusters', function() {
-      it('should call getClusters successfully', function(done) {
-        //uncomment below and update the code to test getClusters
-        //instance.getClusters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getConfiguration', function() {
       it('should call getConfiguration successfully', function(done) {
         //uncomment below and update the code to test getConfiguration
         //instance.getConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getCurrentCluster', function() {
-      it('should call getCurrentCluster successfully', function(done) {
-        //uncomment below and update the code to test getCurrentCluster
-        //instance.getCurrentCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getCurrentUser', function() {
-      it('should call getCurrentUser successfully', function(done) {
-        //uncomment below and update the code to test getCurrentUser
-        //instance.getCurrentUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -171,40 +131,10 @@
         done();
       });
     });
-    describe('getEmergencyPassphraseStatus', function() {
-      it('should call getEmergencyPassphraseStatus successfully', function(done) {
-        //uncomment below and update the code to test getEmergencyPassphraseStatus
-        //instance.getEmergencyPassphraseStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getNode', function() {
-      it('should call getNode successfully', function(done) {
-        //uncomment below and update the code to test getNode
-        //instance.getNode(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProgress', function() {
-      it('should call getProgress successfully', function(done) {
-        //uncomment below and update the code to test getProgress
-        //instance.getProgress(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getRemoteProvider', function() {
-      it('should call getRemoteProvider successfully', function(done) {
-        //uncomment below and update the code to test getRemoteProvider
-        //instance.getRemoteProvider(function(error) {
+    describe('getSession', function() {
+      it('should call getSession successfully', function(done) {
+        //uncomment below and update the code to test getSession
+        //instance.getSession(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -221,20 +151,20 @@
         done();
       });
     });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
+    describe('getUser', function() {
+      it('should call getUser successfully', function(done) {
+        //uncomment below and update the code to test getUser
+        //instance.getUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('joinCluster', function() {
-      it('should call joinCluster successfully', function(done) {
-        //uncomment below and update the code to test joinCluster
-        //instance.joinCluster(function(error) {
+    describe('getWebCert', function() {
+      it('should call getWebCert successfully', function(done) {
+        //uncomment below and update the code to test getWebCert
+        //instance.getWebCert(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -251,10 +181,10 @@
         done();
       });
     });
-    describe('modifyProgress', function() {
-      it('should call modifyProgress successfully', function(done) {
-        //uncomment below and update the code to test modifyProgress
-        //instance.modifyProgress(function(error) {
+    describe('modifyUser', function() {
+      it('should call modifyUser successfully', function(done) {
+        //uncomment below and update the code to test modifyUser
+        //instance.modifyUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -281,10 +211,20 @@
         done();
       });
     });
-    describe('setEmergencyPassphrase', function() {
-      it('should call setEmergencyPassphrase successfully', function(done) {
-        //uncomment below and update the code to test setEmergencyPassphrase
-        //instance.setEmergencyPassphrase(function(error) {
+    describe('removeSession', function() {
+      it('should call removeSession successfully', function(done) {
+        //uncomment below and update the code to test removeSession
+        //instance.removeSession(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('removeUser', function() {
+      it('should call removeUser successfully', function(done) {
+        //uncomment below and update the code to test removeUser
+        //instance.removeUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

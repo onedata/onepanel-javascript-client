@@ -95,15 +95,10 @@
    */
   exports.StatusEnum = {
     /**
-     * value: "healthy"
+     * value: "running"
      * @const
      */
-    "healthy": "healthy",
-    /**
-     * value: "unhealthy"
-     * @const
-     */
-    "unhealthy": "unhealthy",
+    "running": "running",
     /**
      * value: "stopped"
      * @const

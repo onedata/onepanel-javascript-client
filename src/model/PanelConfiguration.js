@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/PanelConfigurationUsers'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./PanelConfigurationUsers'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.PanelConfiguration = factory(root.Onepanel.ApiClient);
+    root.Onepanel.PanelConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfigurationUsers);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, PanelConfigurationUsers) {
   'use strict';
 
 
@@ -48,6 +48,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
   };
@@ -76,16 +77,24 @@
       if (data.hasOwnProperty('interactiveDeployment')) {
         obj['interactiveDeployment'] = ApiClient.convertToType(data['interactiveDeployment'], 'Boolean');
       }
+      if (data.hasOwnProperty('users')) {
+        obj['users'] = ApiClient.convertToType(data['users'], {'String': PanelConfigurationUsers});
+      }
     }
     return obj;
   }
 
   /**
-   * Indicates that interactive deployment is being performed. If false, users entering GUI will not be asked to complete the configuration. In that case default values will be used, available for change later via appropriate Onepanel GUI pages or REST. 
+   * Indicates that interactive deployment is performed. If false, users entering GUI will not be asked to complete the configuration. In that case default values will be used, available for change later via appropriate onepanel GUI pages or REST. 
    * @member {Boolean} interactiveDeployment
    * @default true
    */
   exports.prototype['interactiveDeployment'] = true;
+  /**
+   * The collection of user names associated with users properties.
+   * @member {Object.<String, module:model/PanelConfigurationUsers>} users
+   */
+  exports.prototype['users'] = undefined;
 
 
 

@@ -46,17 +46,16 @@
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
-   * @param clusterId {String} The Id of cluster record for this cluster. `null` if the cluster is not registered.
+   * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
-   * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
-   * @param providerId {String} This cluster's Oneprovider Id. `null` if the Oneprovider is not registered or Oneprovider worker is down. 
-   * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
+   * @param providerId {String} This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
+   * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
    */
-  var exports = function(clusterId, version, build, deployed, serviceType, providerId, zoneDomain) {
+  var exports = function(serviceType, version, build, deployed, providerId, zoneDomain) {
     var _this = this;
-    Configuration.call(_this, clusterId, version, build, deployed);
+    Configuration.call(_this, version, build, deployed);
     _this['serviceType'] = serviceType;
     _this['providerId'] = providerId;
     _this['zoneDomain'] = zoneDomain;
@@ -109,12 +108,12 @@
    */
   exports.prototype['serviceType'] = undefined;
   /**
-   * This cluster's Oneprovider Id. `null` if the Oneprovider is not registered or Oneprovider worker is down. 
+   * This cluster's Oneprovider Id. Null if the Oneprovider is not registered or Oneprovider worker is down. 
    * @member {String} providerId
    */
   exports.prototype['providerId'] = undefined;
   /**
-   * The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
+   * The domain of the Onezone where this Oneprovider is registered. Null if the Oneprovider is not registered. 
    * @member {String} zoneDomain
    */
   exports.prototype['zoneDomain'] = undefined;

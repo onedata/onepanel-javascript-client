@@ -63,14 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.UserDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property clusterPrivileges (base name: "clusterPrivileges")', function() {
-      // uncomment below and update the code to test the property clusterPrivileges
+    it('should have the property userRole (base name: "userRole")', function() {
+      // uncomment below and update the code to test the property userRole
       //var instane = new Onepanel.UserDetails();
       //expect(instance).to.be();
     });

@@ -45,15 +45,14 @@
    * Public service configuration details
    * @alias module:model/Configuration
    * @class
-   * @param clusterId {String} The Id of cluster record for this cluster. `null` if the cluster is not registered.
    * @param version {String} Version of this Onepanel
    * @param build {String} Build number of this Onepanel
    * @param deployed {Boolean} True when cluster deployment is finished
    */
-  var exports = function(clusterId, version, build, deployed) {
+  var exports = function(version, build, deployed) {
     var _this = this;
 
-    _this['clusterId'] = clusterId;
+
     _this['version'] = version;
     _this['build'] = build;
     _this['deployed'] = deployed;
@@ -80,8 +79,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('clusterId')) {
-        obj['clusterId'] = ApiClient.convertToType(data['clusterId'], 'String');
+      if (data.hasOwnProperty('serviceType')) {
+        obj['serviceType'] = ApiClient.convertToType(data['serviceType'], 'String');
       }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'String');
@@ -97,10 +96,10 @@
   }
 
   /**
-   * The Id of cluster record for this cluster. `null` if the cluster is not registered.
-   * @member {String} clusterId
+   * Indicates whether this is Onezone's or Oneprovider's panel.
+   * @member {String} serviceType
    */
-  exports.prototype['clusterId'] = undefined;
+  exports.prototype['serviceType'] = undefined;
   /**
    * Version of this Onepanel
    * @member {String} version

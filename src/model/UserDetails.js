@@ -46,14 +46,13 @@
    * @alias module:model/UserDetails
    * @class
    * @param userId {String} The user Id.
-   * @param username {String} The user name.
+   * @param userRole {module:model/UserDetails.UserRoleEnum} The user role, one of `admin` or `regular`.
    */
-  var exports = function(userId, username) {
+  var exports = function(userId, userRole) {
     var _this = this;
 
     _this['userId'] = userId;
-    _this['username'] = username;
-
+    _this['userRole'] = userRole;
   };
 
   /**
@@ -80,11 +79,8 @@
       if (data.hasOwnProperty('userId')) {
         obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
+      if (data.hasOwnProperty('userRole')) {
+        obj['userRole'] = ApiClient.convertToType(data['userRole'], 'String');
       }
     }
     return obj;
@@ -96,68 +92,28 @@
    */
   exports.prototype['userId'] = undefined;
   /**
-   * The user name.
-   * @member {String} username
+   * The user role, one of `admin` or `regular`.
+   * @member {module:model/UserDetails.UserRoleEnum} userRole
    */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user.
-   * @member {Array.<module:model/UserDetails.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+  exports.prototype['userRole'] = undefined;
 
 
   /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
+   * Allowed values for the <code>userRole</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.ClusterPrivilegesEnum = {
+  exports.UserRoleEnum = {
     /**
-     * value: "cluster_view"
+     * value: "admin"
      * @const
      */
-    "view": "cluster_view",
+    "admin": "admin",
     /**
-     * value: "cluster_update"
+     * value: "regular"
      * @const
      */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
+    "regular": "regular"  };
 
 
   return exports;

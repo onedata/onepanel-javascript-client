@@ -4,31 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **String** | The user Id. | 
-**username** | **String** | The user name. | 
-**clusterPrivileges** | **[String]** | List of cluster privileges held by the user. | [optional] 
+**userRole** | **String** | The user role, one of &#x60;admin&#x60; or &#x60;regular&#x60;. | 
 
 
-<a name="[ClusterPrivilegesEnum]"></a>
-## Enum: [ClusterPrivilegesEnum]
+<a name="UserRoleEnum"></a>
+## Enum: UserRoleEnum
 
 
-* `view` (value: `"cluster_view"`)
+* `admin` (value: `"admin"`)
 
-* `update` (value: `"cluster_update"`)
-
-* `delete` (value: `"cluster_delete"`)
-
-* `view_privileges` (value: `"cluster_view_privileges"`)
-
-* `set_privileges` (value: `"cluster_set_privileges"`)
-
-* `add_user` (value: `"cluster_add_user"`)
-
-* `remove_user` (value: `"cluster_remove_user"`)
-
-* `add_group` (value: `"cluster_add_group"`)
-
-* `remove_group` (value: `"cluster_remove_group"`)
+* `regular` (value: `"regular"`)
 
 
 

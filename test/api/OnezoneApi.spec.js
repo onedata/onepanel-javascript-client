@@ -51,16 +51,6 @@
   }
 
   describe('OnezoneApi', function() {
-    describe('addOnezoneUser', function() {
-      it('should call addOnezoneUser successfully', function(done) {
-        //uncomment below and update the code to test addOnezoneUser
-        //instance.addOnezoneUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addZoneDatabases', function() {
       it('should call addZoneDatabases successfully', function(done) {
         //uncomment below and update the code to test addZoneDatabases
@@ -91,30 +81,10 @@
         done();
       });
     });
-    describe('changeUserPassword', function() {
-      it('should call changeUserPassword successfully', function(done) {
-        //uncomment below and update the code to test changeUserPassword
-        //instance.changeUserPassword(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureZone', function() {
       it('should call configureZone successfully', function(done) {
         //uncomment below and update the code to test configureZone
         //instance.configureZone(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getOnezoneUser', function() {
-      it('should call getOnezoneUser successfully', function(done) {
-        //uncomment below and update the code to test getOnezoneUser
-        //instance.getOnezoneUser(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

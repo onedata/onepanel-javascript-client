@@ -9,22 +9,32 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+[**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+[**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
+[**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 [**getProviderDatabaseStatus**](OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
 [**getProviderDatabasesStatus**](OneproviderApi.md#getProviderDatabasesStatus) | **GET** /provider/databases | Get provider databases status
 [**getProviderManagerStatus**](OneproviderApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
+[**getProviderSpaceAutoCleaningReport**](OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
+[**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+[**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 [**getProviderSpaceSyncStats**](OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
+[**getSpaceAutoCleaningConfiguration**](OneproviderApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
 [**getSpaceDetails**](OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
+[**invalidateLumaCache**](OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
+[**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
@@ -35,7 +45,8 @@ Method | HTTP request | Description
 [**startStopProviderManagers**](OneproviderApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
 [**startStopProviderWorker**](OneproviderApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 [**startStopProviderWorkers**](OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
-[**supportSpace**](OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Create or support space
+[**supportSpace**](OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
+[**triggerAutoCleaning**](OneproviderApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Triggers space auto-cleaning
 
 
 <a name="addProvider"></a>
@@ -298,6 +309,61 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="configureFilePopularity"></a>
+# **configureFilePopularity**
+> configureFilePopularity(id, spaceFilePopularityConfiguration)
+
+Configure file-popularity mechanism in the space.
+
+Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space.
+
+var spaceFilePopularityConfiguration = new Onepanel.SpaceFilePopularityConfiguration(); // SpaceFilePopularityConfiguration | Configuration of the file-popularity mechanism in the space.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space. | 
+ **spaceFilePopularityConfiguration** | [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)| Configuration of the file-popularity mechanism in the space. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="configureProvider"></a>
 # **configureProvider**
 > configureProvider(providerConfiguration)
@@ -350,6 +416,113 @@ null (empty response body)
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
+<a name="configureSpaceAutoCleaning"></a>
+# **configureSpaceAutoCleaning**
+> configureSpaceAutoCleaning(id, spaceAutoCleaningConfiguration)
+
+Configure space auto-cleaning mechanism
+
+Configures space auto-cleaning mechanism in the space. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+var spaceAutoCleaningConfiguration = new Onepanel.SpaceAutoCleaningConfiguration(); // SpaceAutoCleaningConfiguration | New configuration of space auto-cleaning mechanism. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.configureSpaceAutoCleaning(id, spaceAutoCleaningConfiguration, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+ **spaceAutoCleaningConfiguration** | [**SpaceAutoCleaningConfiguration**](SpaceAutoCleaningConfiguration.md)| New configuration of space auto-cleaning mechanism.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getFilePopularityConfiguration"></a>
+# **getFilePopularityConfiguration**
+> SpaceFilePopularityConfiguration getFilePopularityConfiguration(id)
+
+Get file-popularity configuration
+
+Returns configuration of file-popularity mechanism in the space specified by space Id in the path. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space of which file-popularity configuration should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getFilePopularityConfiguration(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space of which file-popularity configuration should be returned. | 
+
+### Return type
+
+[**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getProvider"></a>
 # **getProvider**
 > ProviderDetails getProvider()
@@ -386,6 +559,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ProviderDetails**](ProviderDetails.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderClusterIps"></a>
+# **getProviderClusterIps**
+> ClusterIps getProviderClusterIps()
+
+Get provider cluster nodes IPs
+
+Returns IPs of nodes in provider cluster
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderClusterIps(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterIps**](ClusterIps.md)
 
 ### Authorization
 
@@ -684,6 +903,173 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: text/xml
 
+<a name="getProviderSpaceAutoCleaningReport"></a>
+# **getProviderSpaceAutoCleaningReport**
+> SpaceAutoCleaningReport getProviderSpaceAutoCleaningReport(id, reportId)
+
+Get the report from a space auto-cleaning run
+
+Returns the details of a specific auto-cleaning run. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+var reportId = "reportId_example"; // String | The Id of an auto-cleaning report.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaceAutoCleaningReport(id, reportId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+ **reportId** | **String**| The Id of an auto-cleaning report. | 
+
+### Return type
+
+[**SpaceAutoCleaningReport**](SpaceAutoCleaningReport.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderSpaceAutoCleaningReports"></a>
+# **getProviderSpaceAutoCleaningReports**
+> SpaceAutoCleaningReports getProviderSpaceAutoCleaningReports(id, opts)
+
+Get Ids of of the space auto-cleaning reports
+
+Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+var opts = { 
+  'offset': 0, // Number | Allows to skip N first report Ids.
+  'limit': 56, // Number | Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
+  'index': "index_example" // String | Allows to list the report Ids starting from the specific report. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaceAutoCleaningReports(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+ **offset** | **Number**| Allows to skip N first report Ids. | [optional] [default to 0]
+ **limit** | **Number**| Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned.  | [optional] 
+ **index** | **String**| Allows to list the report Ids starting from the specific report.  | [optional] 
+
+### Return type
+
+[**SpaceAutoCleaningReports**](SpaceAutoCleaningReports.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getProviderSpaceAutoCleaningStatus"></a>
+# **getProviderSpaceAutoCleaningStatus**
+> SpaceAutoCleaningStatus getProviderSpaceAutoCleaningStatus(id)
+
+Get status of space auto-cleaning mechanism
+
+Returns status of current process of auto-cleaning for the space. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderSpaceAutoCleaningStatus(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
+
+### Return type
+
+[**SpaceAutoCleaningStatus**](SpaceAutoCleaningStatus.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getProviderSpaceSyncStats"></a>
 # **getProviderSpaceSyncStats**
 > SpaceSyncStats getProviderSpaceSyncStats(id, opts)
@@ -704,7 +1090,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space for which sync stats should be returned.
+var id = "id_example"; // String | The Id of a space for which sync stats should be returned.
 
 var opts = { 
   'period': "period_example", // String | Predefined time period for which the statistics should be fetched
@@ -725,7 +1111,7 @@ apiInstance.getProviderSpaceSyncStats(id, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space for which sync stats should be returned. | 
+ **id** | **String**| The Id of a space for which sync stats should be returned. | 
  **period** | **String**| Predefined time period for which the statistics should be fetched | [optional] 
  **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma | [optional] 
 
@@ -808,7 +1194,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be  returned. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -825,7 +1211,7 @@ apiInstance.getProviderWorkerStatus(host, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be  returned.  | 
+ **host** | **String**| The name of a host for which cluster worker service status should be returned.  | 
 
 ### Return type
 
@@ -846,7 +1232,7 @@ Name | Type | Description  | Notes
 
 Get provider cluster workers status
 
-Returns status of cluster worker service on each host where it has been  deployed. 
+Returns status of cluster worker service on each host where it has been deployed. 
 
 ### Example
 ```javascript
@@ -886,6 +1272,58 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getSpaceAutoCleaningConfiguration"></a>
+# **getSpaceAutoCleaningConfiguration**
+> SpaceAutoCleaningConfiguration getSpaceAutoCleaningConfiguration(id)
+
+Get space auto-cleaning configuration
+
+Returns configuration of auto-cleaning mechanism in the space specified by space Id in the path. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space of which auto-cleaning configuration should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getSpaceAutoCleaningConfiguration(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space of which auto-cleaning configuration should be returned. | 
+
+### Return type
+
+[**SpaceAutoCleaningConfiguration**](SpaceAutoCleaningConfiguration.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getSpaceDetails"></a>
 # **getSpaceDetails**
 > SpaceDetails getSpaceDetails(id)
@@ -906,7 +1344,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space which details should be returned.
+var id = "id_example"; // String | The Id of a space which details should be returned.
 
 
 var callback = function(error, data, response) {
@@ -923,7 +1361,7 @@ apiInstance.getSpaceDetails(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space which details should be returned. | 
+ **id** | **String**| The Id of a space which details should be returned. | 
 
 ### Return type
 
@@ -958,7 +1396,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be returned. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -975,7 +1413,7 @@ apiInstance.getStorageDetails(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be returned.  | 
+ **id** | **String**| The Id of a storage resource, which details should be returned.  | 
 
 ### Return type
 
@@ -1036,6 +1474,58 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="invalidateLumaCache"></a>
+# **invalidateLumaCache**
+> invalidateLumaCache(id)
+
+Invalidate LUMA cache
+
+Invalidates LUMA cache in provider for given storage.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage resource, which details should be modified. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.invalidateLumaCache(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage resource, which details should be modified.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="modifyProvider"></a>
 # **modifyProvider**
 > modifyProvider(providerModifyRequest)
@@ -1088,9 +1578,61 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="modifyProviderClusterIps"></a>
+# **modifyProviderClusterIps**
+> modifyProviderClusterIps(clusterIps)
+
+Set external IPs of nodes in application config
+
+Informs cluster nodes about external IPs which can be used to access them by other providers. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var clusterIps = new Onepanel.ModifyClusterIps(); // ModifyClusterIps | The provider configuration description.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyProviderClusterIps(clusterIps, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterIps** | [**ModifyClusterIps**](ModifyClusterIps.md)| The provider configuration description. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
 <a name="modifySpace"></a>
 # **modifySpace**
-> modifySpace(id, spaceModifyRequest)
+> SpaceId modifySpace(id, spaceModifyRequest)
 
 Modify space details
 
@@ -1108,7 +1650,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space which details should be modified.
+var id = "id_example"; // String | The Id of a space which details should be modified.
 
 var spaceModifyRequest = new Onepanel.SpaceModifyRequest(); // SpaceModifyRequest | 
 
@@ -1117,7 +1659,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.modifySpace(id, spaceModifyRequest, callback);
@@ -1127,12 +1669,12 @@ apiInstance.modifySpace(id, spaceModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space which details should be modified. | 
+ **id** | **String**| The Id of a space which details should be modified. | 
  **spaceModifyRequest** | [**SpaceModifyRequest**](SpaceModifyRequest.md)|  | 
 
 ### Return type
 
-null (empty response body)
+[**SpaceId**](SpaceId.md)
 
 ### Authorization
 
@@ -1163,7 +1705,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a storage resource, which details should be modified. 
+var id = "id_example"; // String | The Id of a storage resource, which details should be modified. 
 
 var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
 
@@ -1182,7 +1724,7 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a storage resource, which details should be modified.  | 
+ **id** | **String**| The Id of a storage resource, which details should be modified.  | 
  **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
 
 ### Return type
@@ -1264,7 +1806,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The ID of a space to be removed.
+var id = "id_example"; // String | The Id of a space to be removed.
 
 
 var callback = function(error, data, response) {
@@ -1281,7 +1823,7 @@ apiInstance.revokeSpaceSupport(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The ID of a space to be removed. | 
+ **id** | **String**| The Id of a space to be removed. | 
 
 ### Return type
 
@@ -1411,7 +1953,7 @@ null (empty response body)
 
 Start/stop provider cluster manager
 
-Starts or stops cluster manager service on the selected hosts in the local  deployment. 
+Starts or stops cluster manager service on the selected hosts in the local deployment. 
 
 ### Example
 ```javascript
@@ -1428,7 +1970,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1446,7 +1988,7 @@ apiInstance.startStopProviderManager(host, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | **String**| The name of a host for which cluster manager service status should be changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -1520,7 +2062,7 @@ null (empty response body)
 
 Start/stop provider cluster worker
 
-Starts or stops cluster worker service on the selected host in the  local deployment. 
+Starts or stops cluster worker service on the selected host in the local deployment. 
 
 ### Example
 ```javascript
@@ -1534,10 +2076,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be  changed. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will  be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1554,8 +2096,8 @@ apiInstance.startStopProviderWorker(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be  changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will  be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **host** | **String**| The name of a host for which cluster worker service status should be changed.  | 
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -1591,7 +2133,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OneproviderApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1608,7 +2150,7 @@ apiInstance.startStopProviderWorkers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -1627,9 +2169,9 @@ null (empty response body)
 # **supportSpace**
 > supportSpace(spaceSupportRequest)
 
-Create or support space
+Support space
 
-Supports an existing space or creates a new space and automatically supports it. 
+Supports an existing space. 
 
 ### Example
 ```javascript
@@ -1643,7 +2185,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var spaceSupportRequest = new Onepanel.SpaceSupportRequest(); // SpaceSupportRequest | Specification of the space support request including name of the space, size and support token. 
+var spaceSupportRequest = new Onepanel.SpaceSupportRequest(); // SpaceSupportRequest | Specification of the space support request including support size and token. 
 
 
 var callback = function(error, data, response) {
@@ -1660,7 +2202,59 @@ apiInstance.supportSpace(spaceSupportRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **spaceSupportRequest** | [**SpaceSupportRequest**](SpaceSupportRequest.md)| Specification of the space support request including name of the space, size and support token.  | 
+ **spaceSupportRequest** | [**SpaceSupportRequest**](SpaceSupportRequest.md)| Specification of the space support request including support size and token.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="triggerAutoCleaning"></a>
+# **triggerAutoCleaning**
+> triggerAutoCleaning(id)
+
+Triggers space auto-cleaning
+
+Triggers one run of auto-cleaning mechanism for given space.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.triggerAutoCleaning(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space | 
 
 ### Return type
 

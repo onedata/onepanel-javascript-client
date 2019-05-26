@@ -8,14 +8,18 @@ Method | HTTP request | Description
 [**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+[**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
 [**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
 [**getZoneDatabaseStatus**](OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
 [**getZoneDatabasesStatus**](OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status
 [**getZoneManagerStatus**](OnezoneApi.md#getZoneManagerStatus) | **GET** /zone/managers/{host} | Get zone cluster manager status
 [**getZoneManagersStatus**](OnezoneApi.md#getZoneManagersStatus) | **GET** /zone/managers | Get zone cluster managers status
 [**getZoneNagiosReport**](OnezoneApi.md#getZoneNagiosReport) | **GET** /zone/nagios | Get zone nagios report
+[**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+[**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
+[**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
 [**startStopZoneDatabasesHost**](OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
 [**startStopZoneManager**](OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager
@@ -232,6 +236,52 @@ null (empty response body)
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
+<a name="getZoneClusterIps"></a>
+# **getZoneClusterIps**
+> ClusterIps getZoneClusterIps()
+
+Get zone cluster nodes IPs
+
+Returns IPs of nodes in zone cluster
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZoneClusterIps(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterIps**](ClusterIps.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getZoneConfiguration"></a>
 # **getZoneConfiguration**
 > ZoneConfigurationDetails getZoneConfiguration()
@@ -396,7 +446,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster manager service status should be  returned. 
+var host = "host_example"; // String | The name of a host for which cluster manager service status should be returned. 
 
 
 var callback = function(error, data, response) {
@@ -413,7 +463,7 @@ apiInstance.getZoneManagerStatus(host, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster manager service status should be  returned.  | 
+ **host** | **String**| The name of a host for which cluster manager service status should be returned.  | 
 
 ### Return type
 
@@ -434,7 +484,7 @@ Name | Type | Description  | Notes
 
 Get zone cluster managers status
 
-Returns status of cluster manager service on each host where it has been  eployed. 
+Returns status of cluster manager service on each host where it has been eployed. 
 
 ### Example
 ```javascript
@@ -519,6 +569,52 @@ null (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: text/xml
+
+<a name="getZonePolicies"></a>
+# **getZonePolicies**
+> ZonePolicies getZonePolicies()
+
+Get Onezone policies.
+
+Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getZonePolicies(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ZonePolicies**](ZonePolicies.md)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getZoneWorkerStatus"></a>
 # **getZoneWorkerStatus**
@@ -618,6 +714,110 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="modifyZoneClusterIps"></a>
+# **modifyZoneClusterIps**
+> modifyZoneClusterIps(clusterIps)
+
+Set external IPs of nodes in application config
+
+Informs cluster nodes about external IPs which can be used to access them by other zones. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var clusterIps = new Onepanel.ModifyClusterIps(); // ModifyClusterIps | The zone configuration description.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyZoneClusterIps(clusterIps, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clusterIps** | [**ModifyClusterIps**](ModifyClusterIps.md)| The zone configuration description. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="modifyZonePolicies"></a>
+# **modifyZonePolicies**
+> modifyZonePolicies(zonePolicies)
+
+Modify current Onezone policies
+
+Modifies restrictions placed on Onezone operations such as registering providers. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var zonePolicies = new Onepanel.ZonePolicies(); // ZonePolicies | New values for Onezone policies.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyZonePolicies(zonePolicies, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **zonePolicies** | [**ZonePolicies**](ZonePolicies.md)| New values for Onezone policies. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="startStopZoneDatabases"></a>
 # **startStopZoneDatabases**
 > startStopZoneDatabases(opts)
@@ -677,7 +877,7 @@ null (empty response body)
 
 Start/stop zone database
 
-Starts or stops database service on the selected hosts in the local  deployment. 
+Starts or stops database service on the selected hosts in the local deployment. 
 
 ### Example
 ```javascript
@@ -733,7 +933,7 @@ null (empty response body)
 
 Start/stop zone cluster manager
 
-Starts or stops cluster manager service on the selected hosts in the local  deployment. 
+Starts or stops cluster manager service on the selected hosts in the local deployment. 
 
 ### Example
 ```javascript
@@ -747,10 +947,10 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster manager service status should be  changed. 
+var host = "host_example"; // String | The name of a host for which cluster manager service status should be changed. 
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -767,8 +967,8 @@ apiInstance.startStopZoneManager(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster manager service status should be  changed.  | 
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **host** | **String**| The name of a host for which cluster manager service status should be changed.  | 
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -804,7 +1004,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnezoneApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -821,7 +1021,7 @@ apiInstance.startStopZoneManagers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster manager service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 
@@ -842,7 +1042,7 @@ null (empty response body)
 
 Start/stop zone cluster worker
 
-Starts or stops cluster worker service on the selected hosts in the local  deployment. 
+Starts or stops cluster worker service on the selected hosts in the local deployment. 
 
 ### Example
 ```javascript
@@ -856,7 +1056,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnezoneApi();
 
-var host = "host_example"; // String | The name of a host for which cluster worker service status should be  changed. 
+var host = "host_example"; // String | The name of a host for which cluster worker service status should be changed. 
 
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
@@ -876,7 +1076,7 @@ apiInstance.startStopZoneWorker(host, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The name of a host for which cluster worker service status should be  changed.  | 
+ **host** | **String**| The name of a host for which cluster worker service status should be changed.  | 
  **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
@@ -913,7 +1113,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OnezoneApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -930,7 +1130,7 @@ apiInstance.startStopZoneWorkers(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the cluster worker service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 

@@ -62,7 +62,6 @@
 
 
 
-
   };
 
   /**
@@ -112,9 +111,6 @@
       }
       if (data.hasOwnProperty('maximumUploadSize')) {
         obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -174,11 +170,6 @@
    * @member {Number} maximumUploadSize
    */
   exports.prototype['maximumUploadSize'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

@@ -55,6 +55,7 @@
 
 
 
+
   };
 
   /**
@@ -84,6 +85,9 @@
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
@@ -110,6 +114,11 @@
    * @member {Boolean} insecure
    */
   exports.prototype['insecure'] = undefined;
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly

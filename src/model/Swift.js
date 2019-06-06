@@ -65,7 +65,6 @@
 
 
 
-
   };
 
   /**
@@ -106,9 +105,6 @@
       }
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
@@ -156,11 +152,6 @@
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Storage block size in bytes.
    * @member {Number} blockSize

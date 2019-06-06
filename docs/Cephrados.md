@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **monitorHostname** | **String** | The monitor host name. | 
 **clusterName** | **String** | The Ceph cluster name. | 
 **poolName** | **String** | The Ceph pool name. | 
-**timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
 **blockSize** | **Number** | Storage block size in bytes. | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] [default to false]
 **readonly** | **Boolean** | Defines whether storage is readonly. | [optional] [default to false]

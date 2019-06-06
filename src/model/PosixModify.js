@@ -54,7 +54,6 @@
     _this['type'] = type;
 
 
-
   };
 
   /**
@@ -84,9 +83,6 @@
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
@@ -107,11 +103,6 @@
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage is readonly.
    * @member {Boolean} readonly

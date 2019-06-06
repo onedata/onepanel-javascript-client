@@ -64,7 +64,6 @@
     _this['poolName'] = poolName;
 
 
-
   };
 
   /**
@@ -105,9 +104,6 @@
       }
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -152,11 +148,6 @@
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

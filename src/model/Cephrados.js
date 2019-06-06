@@ -66,7 +66,6 @@
 
 
 
-
   };
 
   /**
@@ -107,9 +106,6 @@
       }
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
@@ -160,11 +156,6 @@
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Storage block size in bytes.
    * @member {Number} blockSize

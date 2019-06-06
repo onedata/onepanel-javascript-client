@@ -59,7 +59,6 @@
 
 
 
-
   };
 
   /**
@@ -100,9 +99,6 @@
       }
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -147,11 +143,6 @@
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

@@ -64,7 +64,6 @@
 
 
 
-
   };
 
   /**
@@ -105,9 +104,6 @@
       }
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
@@ -155,11 +151,6 @@
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Storage block size in bytes.
    * @member {Number} blockSize

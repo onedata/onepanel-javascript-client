@@ -58,7 +58,6 @@
 
 
 
-
   };
 
   /**
@@ -96,9 +95,6 @@
       }
       if (data.hasOwnProperty('filter')) {
         obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('simulatedFilesystemParameters')) {
         obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
@@ -138,11 +134,6 @@
    * @member {String} filter
    */
   exports.prototype['filter'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
    * @member {String} simulatedFilesystemParameters

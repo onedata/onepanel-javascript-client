@@ -55,7 +55,6 @@
     _this['type'] = type;
     _this['mountPoint'] = mountPoint;
 
-
   };
 
   /**
@@ -85,9 +84,6 @@
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
@@ -108,11 +104,6 @@
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType

@@ -62,7 +62,6 @@
 
 
 
-
   };
 
   /**
@@ -106,9 +105,6 @@
       }
       if (data.hasOwnProperty('xlatorOptions')) {
         obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -161,11 +157,6 @@
    * @default ''
    */
   exports.prototype['xlatorOptions'] = '';
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

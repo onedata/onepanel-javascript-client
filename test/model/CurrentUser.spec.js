@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.WebCert();
+    instance = new Onepanel.CurrentUser();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,64 +50,28 @@
       object[property] = value;
   }
 
-  describe('WebCert', function() {
-    it('should create an instance of WebCert', function() {
-      // uncomment below and update the code to test WebCert
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be.a(Onepanel.WebCert);
+  describe('CurrentUser', function() {
+    it('should create an instance of CurrentUser', function() {
+      // uncomment below and update the code to test CurrentUser
+      //var instane = new Onepanel.CurrentUser();
+      //expect(instance).to.be.a(Onepanel.CurrentUser);
     });
 
-    it('should have the property letsEncrypt (base name: "letsEncrypt")', function() {
-      // uncomment below and update the code to test the property letsEncrypt
-      //var instane = new Onepanel.WebCert();
+    it('should have the property userId (base name: "userId")', function() {
+      // uncomment below and update the code to test the property userId
+      //var instane = new Onepanel.CurrentUser();
       //expect(instance).to.be();
     });
 
-    it('should have the property expirationTime (base name: "expirationTime")', function() {
-      // uncomment below and update the code to test the property expirationTime
-      //var instane = new Onepanel.WebCert();
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.CurrentUser();
       //expect(instance).to.be();
     });
 
-    it('should have the property creationTime (base name: "creationTime")', function() {
-      // uncomment below and update the code to test the property creationTime
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property paths (base name: "paths")', function() {
-      // uncomment below and update the code to test the property paths
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property issuer (base name: "issuer")', function() {
-      // uncomment below and update the code to test the property issuer
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lastRenewalSuccess (base name: "lastRenewalSuccess")', function() {
-      // uncomment below and update the code to test the property lastRenewalSuccess
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lastRenewalFailure (base name: "lastRenewalFailure")', function() {
-      // uncomment below and update the code to test the property lastRenewalFailure
-      //var instane = new Onepanel.WebCert();
+    it('should have the property clusterPrivileges (base name: "clusterPrivileges")', function() {
+      // uncomment below and update the code to test the property clusterPrivileges
+      //var instane = new Onepanel.CurrentUser();
       //expect(instance).to.be();
     });
 

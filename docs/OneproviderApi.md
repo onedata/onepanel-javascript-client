@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
+[**modifyStorageQosParameters**](OneproviderApi.md#modifyStorageQosParameters) | **PATCH** /provider/storages/{id}/qos_parameters | Set storage QoS params
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
@@ -1780,6 +1781,61 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a storage resource, which details should be modified.  | 
  **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="modifyStorageQosParameters"></a>
+# **modifyStorageQosParameters**
+> modifyStorageQosParameters(id, qosParametersChangeRequest)
+
+Set storage QoS params
+
+Modifies parameters describing the storage which can be used in QoS requirements configuration.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | Id of the storage which params are modified.
+
+var qosParametersChangeRequest = new Onepanel.QosParametersChangeRequest(); // QosParametersChangeRequest | Changes to be made in the parameters.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyStorageQosParameters(id, qosParametersChangeRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Id of the storage which params are modified. | 
+ **qosParametersChangeRequest** | [**QosParametersChangeRequest**](QosParametersChangeRequest.md)| Changes to be made in the parameters. | 
 
 ### Return type
 

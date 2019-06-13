@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
+*Onepanel.OneproviderApi* | [**modifyStorageQosParameters**](docs/OneproviderApi.md#modifyStorageQosParameters) | **PATCH** /provider/storages/{id}/qos_parameters | Set storage QoS params
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
@@ -238,6 +239,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
  - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
+ - [Onepanel.QosParametersChangeRequest](docs/QosParametersChangeRequest.md)
  - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)

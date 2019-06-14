@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property guiDebugMode (base name: "guiDebugMode")', function() {
+      // uncomment below and update the code to test the property guiDebugMode
+      //var instane = new Onepanel.PanelConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -50,6 +50,7 @@
     var _this = this;
 
 
+
   };
 
   /**
@@ -76,6 +77,9 @@
       if (data.hasOwnProperty('interactiveDeployment')) {
         obj['interactiveDeployment'] = ApiClient.convertToType(data['interactiveDeployment'], 'Boolean');
       }
+      if (data.hasOwnProperty('guiDebugMode')) {
+        obj['guiDebugMode'] = ApiClient.convertToType(data['guiDebugMode'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -86,6 +90,12 @@
    * @default true
    */
   exports.prototype['interactiveDeployment'] = true;
+  /**
+   * When true, all GUIs hosted in this cluster will print debug logs to browser console. 
+   * @member {Boolean} guiDebugMode
+   * @default false
+   */
+  exports.prototype['guiDebugMode'] = false;
 
 
 

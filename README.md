@@ -157,8 +157,10 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
-*Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
+*Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage config
+*Onepanel.OneproviderApi* | [**modifyStorageQosParameters**](docs/OneproviderApi.md#modifyStorageQosParameters) | **PATCH** /provider/storages/{id}/qos_parameters | Set storage QoS params
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
+*Onepanel.OneproviderApi* | [**removeStorage**](docs/OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 *Onepanel.OneproviderApi* | [**startStopProviderDatabases**](docs/OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
@@ -238,6 +240,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ProviderRegisterRequest](docs/ProviderRegisterRequest.md)
  - [Onepanel.ProviderSpaces](docs/ProviderSpaces.md)
  - [Onepanel.ProviderStorages](docs/ProviderStorages.md)
+ - [Onepanel.QosParametersChangeRequest](docs/QosParametersChangeRequest.md)
  - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceError](docs/ServiceError.md)
@@ -258,6 +261,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceSyncStats](docs/SpaceSyncStats.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
  - [Onepanel.StorageDetails](docs/StorageDetails.md)
+ - [Onepanel.StorageDetailsModify](docs/StorageDetailsModify.md)
  - [Onepanel.StorageImportDetails](docs/StorageImportDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
  - [Onepanel.StorageUpdateDetails](docs/StorageUpdateDetails.md)
@@ -278,15 +282,23 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
  - [Onepanel.Ceph](docs/Ceph.md)
+ - [Onepanel.CephModify](docs/CephModify.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
+ - [Onepanel.CephradosModify](docs/CephradosModify.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
+ - [Onepanel.GlusterfsModify](docs/GlusterfsModify.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
+ - [Onepanel.NulldeviceModify](docs/NulldeviceModify.md)
  - [Onepanel.OpConfiguration](docs/OpConfiguration.md)
  - [Onepanel.OzConfiguration](docs/OzConfiguration.md)
  - [Onepanel.Posix](docs/Posix.md)
+ - [Onepanel.PosixModify](docs/PosixModify.md)
  - [Onepanel.S3](docs/S3.md)
+ - [Onepanel.S3Modify](docs/S3Modify.md)
  - [Onepanel.Swift](docs/Swift.md)
+ - [Onepanel.SwiftModify](docs/SwiftModify.md)
  - [Onepanel.Webdav](docs/Webdav.md)
+ - [Onepanel.WebdavModify](docs/WebdavModify.md)
 
 
 ## Documentation for Authorization

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
+    instance = new Onepanel.GlusterfsModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,64 @@
       object[property] = value;
   }
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
+  describe('GlusterfsModify', function() {
+    it('should create an instance of GlusterfsModify', function() {
+      // uncomment below and update the code to test GlusterfsModify
+      //var instane = new Onepanel.GlusterfsModify();
+      //expect(instance).to.be.a(Onepanel.GlusterfsModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property volume (base name: "volume")', function() {
+      // uncomment below and update the code to test the property volume
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property hostname (base name: "hostname")', function() {
+      // uncomment below and update the code to test the property hostname
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.GlusterfsModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transport (base name: "transport")', function() {
+      // uncomment below and update the code to test the property transport
+      //var instane = new Onepanel.GlusterfsModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.GlusterfsModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property xlatorOptions (base name: "xlatorOptions")', function() {
+      // uncomment below and update the code to test the property xlatorOptions
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property qosParameters (base name: "qosParameters")', function() {
-      // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.GlusterfsModify();
       //expect(instance).to.be();
     });
 

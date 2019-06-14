@@ -16,113 +16,159 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.CephModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The CephModify model module.
+   * @module model/CephModify
+   * @version 18.02.1
+   */
+
+  /**
+   * Constructs a new <code>CephModify</code>.
+   * The Ceph storage configuration (uses libradosstriper).
+   * @alias module:model/CephModify
+   * @class
+   * @extends module:model/StorageDetailsModify
+   * @param type {module:model/CephModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   */
+  var exports = function(type) {
+    var _this = this;
+    StorageDetailsModify.call(_this);
+    _this['type'] = type;
+
+
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/CephModify} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>CephModify</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/CephModify} obj Optional instance to populate.
+   * @return {module:model/CephModify} The populated <code>CephModify</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      StorageDetailsModify.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      }
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
+      }
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
+      }
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      }
+      if (data.hasOwnProperty('insecure')) {
+        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
-    });
+  /**
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/CephModify.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
+   */
+  exports.prototype['username'] = undefined;
+  /**
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
+   */
+  exports.prototype['key'] = undefined;
+  /**
+   * The monitor host name.
+   * @member {String} monitorHostname
+   */
+  exports.prototype['monitorHostname'] = undefined;
+  /**
+   * The Ceph cluster name.
+   * @member {String} clusterName
+   */
+  exports.prototype['clusterName'] = undefined;
+  /**
+   * The Ceph pool name.
+   * @member {String} poolName
+   */
+  exports.prototype['poolName'] = undefined;
+  /**
+   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
+   * @member {Boolean} insecure
+   */
+  exports.prototype['insecure'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   */
+  exports.prototype['readonly'] = undefined;
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "ceph"
+     * @const
+     */
+    "ceph": "ceph"  };
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property qosParameters (base name: "qosParameters")', function() {
-      // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

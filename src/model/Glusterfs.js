@@ -46,7 +46,7 @@
    * @alias module:model/Glusterfs
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/Glusterfs.TypeEnum} The type of storage.
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
@@ -56,8 +56,6 @@
     _this['type'] = type;
     _this['volume'] = volume;
     _this['hostname'] = hostname;
-
-
 
 
 
@@ -108,14 +106,8 @@
       if (data.hasOwnProperty('xlatorOptions')) {
         obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -129,7 +121,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/Glusterfs.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -166,22 +158,11 @@
    */
   exports.prototype['xlatorOptions'] = '';
   /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
    * @default false
    */
   exports.prototype['insecure'] = false;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
@@ -189,6 +170,18 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "glusterfs"
+     * @const
+     */
+    "glusterfs": "glusterfs"  };
 
   /**
    * Allowed values for the <code>transport</code> property.

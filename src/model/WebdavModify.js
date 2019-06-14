@@ -17,46 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Webdav model module.
-   * @module model/Webdav
+   * The WebdavModify model module.
+   * @module model/WebdavModify
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>Webdav</code>.
+   * Constructs a new <code>WebdavModify</code>.
    * The WebDAV storage configuration.
-   * @alias module:model/Webdav
+   * @alias module:model/WebdavModify
    * @class
-   * @extends module:model/StorageDetails
-   * @param type {module:model/Webdav.TypeEnum} The type of storage.
-   * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
+   * @extends module:model/StorageDetailsModify
+   * @param type {module:model/WebdavModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
-  var exports = function(type, endpoint) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-    _this['endpoint'] = endpoint;
-
-
-
 
 
 
@@ -73,23 +68,23 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Webdav} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebdavModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Webdav</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebdavModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Webdav} obj Optional instance to populate.
-   * @return {module:model/Webdav} The populated <code>Webdav</code> instance.
+   * @param {module:model/WebdavModify} obj Optional instance to populate.
+   * @return {module:model/WebdavModify} The populated <code>WebdavModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -105,12 +100,6 @@
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
       }
-      if (data.hasOwnProperty('oauth2IdP')) {
-        obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
-      }
-      if (data.hasOwnProperty('onedataAccessToken')) {
-        obj['onedataAccessToken'] = ApiClient.convertToType(data['onedataAccessToken'], 'String');
-      }
       if (data.hasOwnProperty('authorizationHeader')) {
         obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
       }
@@ -123,28 +112,22 @@
       if (data.hasOwnProperty('maximumUploadSize')) {
         obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
       }
-      if (data.hasOwnProperty('fileMode')) {
-        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
-      }
-      if (data.hasOwnProperty('dirMode')) {
-        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {module:model/Webdav.TypeEnum} type
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/WebdavModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -155,42 +138,28 @@
   /**
    * Determines whether Oneprovider should verify the certificate of the WebDAV server. 
    * @member {Boolean} verifyServerCertificate
-   * @default true
    */
-  exports.prototype['verifyServerCertificate'] = true;
+  exports.prototype['verifyServerCertificate'] = undefined;
   /**
    * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
-   * @default 'none'
+   * @member {module:model/WebdavModify.CredentialsTypeEnum} credentialsType
    */
-  exports.prototype['credentialsType'] = 'none';
+  exports.prototype['credentialsType'] = undefined;
   /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
+   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
    * @member {String} credentials
    */
   exports.prototype['credentials'] = undefined;
   /**
-   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the WebDAV endpoint. If Onezone has only one external IdP, it will be selected automatically. 
-   * @member {String} oauth2IdP
-   */
-  exports.prototype['oauth2IdP'] = undefined;
-  /**
-   * When registering storage in `insecure` mode with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
-   * @member {String} onedataAccessToken
-   */
-  exports.prototype['onedataAccessToken'] = undefined;
-  /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer {}'
    */
-  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
+  exports.prototype['authorizationHeader'] = undefined;
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
-   * @default 'none'
+   * @member {module:model/WebdavModify.RangeWriteSupportEnum} rangeWriteSupport
    */
-  exports.prototype['rangeWriteSupport'] = 'none';
+  exports.prototype['rangeWriteSupport'] = undefined;
   /**
    * Defines the maximum number of parallel connections for a single WebDAV storage. 
    * @member {Number} connectionPoolSize
@@ -202,29 +171,15 @@
    */
   exports.prototype['maximumUploadSize'] = undefined;
   /**
-   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
-   * @member {String} fileMode
-   * @default '420'
-   */
-  exports.prototype['fileMode'] = '420';
-  /**
-   * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
-   * @member {String} dirMode
-   * @default '509'
-   */
-  exports.prototype['dirMode'] = '509';
-  /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
-   * @default false
    */
-  exports.prototype['insecure'] = false;
+  exports.prototype['insecure'] = undefined;
   /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'canonical'
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
    */
-  exports.prototype['storagePathType'] = 'canonical';
+  exports.prototype['readonly'] = undefined;
 
 
   /**
@@ -259,12 +214,7 @@
      * value: "token"
      * @const
      */
-    "token": "token",
-    /**
-     * value: "oauth2"
-     * @const
-     */
-    "oauth2": "oauth2"  };
+    "token": "token"  };
 
   /**
    * Allowed values for the <code>rangeWriteSupport</code> property.

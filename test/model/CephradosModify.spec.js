@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
+    instance = new Onepanel.CephradosModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,58 @@
       object[property] = value;
   }
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
+  describe('CephradosModify', function() {
+    it('should create an instance of CephradosModify', function() {
+      // uncomment below and update the code to test CephradosModify
+      //var instane = new Onepanel.CephradosModify();
+      //expect(instance).to.be.a(Onepanel.CephradosModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property key (base name: "key")', function() {
+      // uncomment below and update the code to test the property key
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
+      // uncomment below and update the code to test the property monitorHostname
+      //var instane = new Onepanel.CephradosModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property clusterName (base name: "clusterName")', function() {
+      // uncomment below and update the code to test the property clusterName
+      //var instane = new Onepanel.CephradosModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property poolName (base name: "poolName")', function() {
+      // uncomment below and update the code to test the property poolName
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property qosParameters (base name: "qosParameters")', function() {
-      // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.CephradosModify();
       //expect(instance).to.be();
     });
 

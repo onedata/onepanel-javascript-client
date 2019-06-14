@@ -17,51 +17,47 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.GlusterfsModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Ceph model module.
-   * @module model/Ceph
+   * The GlusterfsModify model module.
+   * @module model/GlusterfsModify
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>Ceph</code>.
-   * The Ceph storage configuration (uses libradosstriper).
-   * @alias module:model/Ceph
+   * Constructs a new <code>GlusterfsModify</code>.
+   * The GlusterFS storage configuration.
+   * @alias module:model/GlusterfsModify
    * @class
-   * @extends module:model/StorageDetails
-   * @param type {module:model/Ceph.TypeEnum} The type of storage.
-   * @param username {String} The username of the Ceph cluster administrator.
-   * @param key {String} The admin key to access the Ceph cluster.
-   * @param monitorHostname {String} The monitor host name.
-   * @param clusterName {String} The Ceph cluster name.
-   * @param poolName {String} The Ceph pool name.
+   * @extends module:model/StorageDetailsModify
+   * @param type {module:model/GlusterfsModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
-  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-    _this['username'] = username;
-    _this['key'] = key;
-    _this['monitorHostname'] = monitorHostname;
-    _this['clusterName'] = clusterName;
-    _this['poolName'] = poolName;
+
+
+
+
+
+
 
 
   };
@@ -70,96 +66,102 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Ceph} The value of 'discriminator' field or undefined.
+   * @return {module:model/GlusterfsModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Ceph</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>GlusterfsModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Ceph} obj Optional instance to populate.
-   * @return {module:model/Ceph} The populated <code>Ceph</code> instance.
+   * @param {module:model/GlusterfsModify} obj Optional instance to populate.
+   * @return {module:model/GlusterfsModify} The populated <code>GlusterfsModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('monitorHostname')) {
-        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
       }
-      if (data.hasOwnProperty('clusterName')) {
-        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
       }
-      if (data.hasOwnProperty('poolName')) {
-        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {module:model/Ceph.TypeEnum} type
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/GlusterfsModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * The username of the Ceph cluster administrator.
-   * @member {String} username
+   * The name of the volume to use as a storage backend.
+   * @member {String} volume
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['volume'] = undefined;
   /**
-   * The admin key to access the Ceph cluster.
-   * @member {String} key
+   * The hostname (IP address or FQDN) of GlusterFS volume server.
+   * @member {String} hostname
    */
-  exports.prototype['key'] = undefined;
+  exports.prototype['hostname'] = undefined;
   /**
-   * The monitor host name.
-   * @member {String} monitorHostname
+   * The GlusterFS port on volume server.
+   * @member {Number} port
    */
-  exports.prototype['monitorHostname'] = undefined;
+  exports.prototype['port'] = undefined;
   /**
-   * The Ceph cluster name.
-   * @member {String} clusterName
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/GlusterfsModify.TransportEnum} transport
    */
-  exports.prototype['clusterName'] = undefined;
+  exports.prototype['transport'] = undefined;
   /**
-   * The Ceph pool name.
-   * @member {String} poolName
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
    */
-  exports.prototype['poolName'] = undefined;
+  exports.prototype['mountPoint'] = undefined;
+  /**
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   */
+  exports.prototype['xlatorOptions'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
-   * @default false
    */
-  exports.prototype['insecure'] = false;
+  exports.prototype['insecure'] = undefined;
   /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
    */
-  exports.prototype['storagePathType'] = 'flat';
+  exports.prototype['readonly'] = undefined;
 
 
   /**
@@ -169,10 +171,32 @@
    */
   exports.TypeEnum = {
     /**
-     * value: "ceph"
+     * value: "glusterfs"
      * @const
      */
-    "ceph": "ceph"  };
+    "glusterfs": "glusterfs"  };
+
+  /**
+   * Allowed values for the <code>transport</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TransportEnum = {
+    /**
+     * value: "tcp"
+     * @const
+     */
+    "tcp": "tcp",
+    /**
+     * value: "rdma"
+     * @const
+     */
+    "rdma": "rdma",
+    /**
+     * value: "socket"
+     * @const
+     */
+    "socket": "socket"  };
 
 
   return exports;

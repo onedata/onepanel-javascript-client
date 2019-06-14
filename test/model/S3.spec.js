@@ -93,12 +93,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
       //var instane = new Onepanel.S3();
@@ -107,12 +101,6 @@
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
       //var instane = new Onepanel.S3();
       //expect(instance).to.be();
     });

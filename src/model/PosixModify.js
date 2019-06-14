@@ -16,113 +16,114 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.PosixModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The PosixModify model module.
+   * @module model/PosixModify
+   * @version 18.02.1
+   */
+
+  /**
+   * Constructs a new <code>PosixModify</code>.
+   * The POSIX storage configuration.
+   * @alias module:model/PosixModify
+   * @class
+   * @extends module:model/StorageDetailsModify
+   * @param type {module:model/PosixModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   */
+  var exports = function(type) {
+    var _this = this;
+    StorageDetailsModify.call(_this);
+    _this['type'] = type;
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/PosixModify} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>PosixModify</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/PosixModify} obj Optional instance to populate.
+   * @return {module:model/PosixModify} The populated <code>PosixModify</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+      StorageDetailsModify.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
+  exports.prototype.constructor = exports;
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
-    });
+  /**
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/PosixModify.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * @member {String} mountPoint
+   */
+  exports.prototype['mountPoint'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   */
+  exports.prototype['readonly'] = undefined;
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "posix"
+     * @const
+     */
+    "posix": "posix"  };
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property qosParameters (base name: "qosParameters")', function() {
-      // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

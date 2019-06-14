@@ -17,51 +17,45 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.NulldeviceModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The Ceph model module.
-   * @module model/Ceph
+   * The NulldeviceModify model module.
+   * @module model/NulldeviceModify
    * @version 18.02.1
    */
 
   /**
-   * Constructs a new <code>Ceph</code>.
-   * The Ceph storage configuration (uses libradosstriper).
-   * @alias module:model/Ceph
+   * Constructs a new <code>NulldeviceModify</code>.
+   * The Null Device storage configuration.
+   * @alias module:model/NulldeviceModify
    * @class
-   * @extends module:model/StorageDetails
-   * @param type {module:model/Ceph.TypeEnum} The type of storage.
-   * @param username {String} The username of the Ceph cluster administrator.
-   * @param key {String} The admin key to access the Ceph cluster.
-   * @param monitorHostname {String} The monitor host name.
-   * @param clusterName {String} The Ceph cluster name.
-   * @param poolName {String} The Ceph pool name.
+   * @extends module:model/StorageDetailsModify
+   * @param type {module:model/NulldeviceModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
-  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
+  var exports = function(type) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-    _this['username'] = username;
-    _this['key'] = key;
-    _this['monitorHostname'] = monitorHostname;
-    _this['clusterName'] = clusterName;
-    _this['poolName'] = poolName;
+
+
+
+
 
 
   };
@@ -70,96 +64,86 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Ceph} The value of 'discriminator' field or undefined.
+   * @return {module:model/NulldeviceModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Ceph</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>NulldeviceModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Ceph} obj Optional instance to populate.
-   * @return {module:model/Ceph} The populated <code>Ceph</code> instance.
+   * @param {module:model/NulldeviceModify} obj Optional instance to populate.
+   * @return {module:model/NulldeviceModify} The populated <code>NulldeviceModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('latencyMin')) {
+        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
       }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      if (data.hasOwnProperty('latencyMax')) {
+        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
       }
-      if (data.hasOwnProperty('monitorHostname')) {
-        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
+      if (data.hasOwnProperty('timeoutProbability')) {
+        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
       }
-      if (data.hasOwnProperty('clusterName')) {
-        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
+      if (data.hasOwnProperty('filter')) {
+        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
       }
-      if (data.hasOwnProperty('poolName')) {
-        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      if (data.hasOwnProperty('simulatedFilesystemParameters')) {
+        obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      if (data.hasOwnProperty('simulatedFilesystemGrowSpeed')) {
+        obj['simulatedFilesystemGrowSpeed'] = ApiClient.convertToType(data['simulatedFilesystemGrowSpeed'], 'Number');
       }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {module:model/Ceph.TypeEnum} type
+   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @member {module:model/NulldeviceModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * The username of the Ceph cluster administrator.
-   * @member {String} username
+   * Minimum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMin
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['latencyMin'] = undefined;
   /**
-   * The admin key to access the Ceph cluster.
-   * @member {String} key
+   * Maximum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMax
    */
-  exports.prototype['key'] = undefined;
+  exports.prototype['latencyMax'] = undefined;
   /**
-   * The monitor host name.
-   * @member {String} monitorHostname
+   * Probability (0.0, 1.0), with which an operation should return a timeout error. 
+   * @member {Number} timeoutProbability
    */
-  exports.prototype['monitorHostname'] = undefined;
+  exports.prototype['timeoutProbability'] = undefined;
   /**
-   * The Ceph cluster name.
-   * @member {String} clusterName
+   * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
+   * @member {String} filter
    */
-  exports.prototype['clusterName'] = undefined;
+  exports.prototype['filter'] = undefined;
   /**
-   * The Ceph pool name.
-   * @member {String} poolName
+   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
+   * @member {String} simulatedFilesystemParameters
    */
-  exports.prototype['poolName'] = undefined;
+  exports.prototype['simulatedFilesystemParameters'] = undefined;
   /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
+   * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
+   * @member {Number} simulatedFilesystemGrowSpeed
    */
-  exports.prototype['insecure'] = false;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-  exports.prototype['storagePathType'] = 'flat';
+  exports.prototype['simulatedFilesystemGrowSpeed'] = undefined;
 
 
   /**
@@ -169,10 +153,10 @@
    */
   exports.TypeEnum = {
     /**
-     * value: "ceph"
+     * value: "nulldevice"
      * @const
      */
-    "ceph": "ceph"  };
+    "nulldevice": "nulldevice"  };
 
 
   return exports;

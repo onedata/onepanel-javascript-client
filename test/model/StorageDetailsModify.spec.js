@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
+    instance = new Onepanel.StorageDetailsModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,58 @@
       object[property] = value;
   }
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
+  describe('StorageDetailsModify', function() {
+    it('should create an instance of StorageDetailsModify', function() {
+      // uncomment below and update the code to test StorageDetailsModify
+      //var instane = new Onepanel.StorageDetailsModify();
+      //expect(instance).to.be.a(Onepanel.StorageDetailsModify);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
       // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property lumaUrl (base name: "lumaUrl")', function() {
       // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
       // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 
     it('should have the property qosParameters (base name: "qosParameters")', function() {
       // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.StorageDetailsModify();
       //expect(instance).to.be();
     });
 

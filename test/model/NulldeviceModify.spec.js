@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageDetails();
+    instance = new Onepanel.NulldeviceModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,76 +50,52 @@
       object[property] = value;
   }
 
-  describe('StorageDetails', function() {
-    it('should create an instance of StorageDetails', function() {
-      // uncomment below and update the code to test StorageDetails
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be.a(Onepanel.StorageDetails);
+  describe('NulldeviceModify', function() {
+    it('should create an instance of NulldeviceModify', function() {
+      // uncomment below and update the code to test NulldeviceModify
+      //var instane = new Onepanel.NulldeviceModify();
+      //expect(instance).to.be.a(Onepanel.NulldeviceModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.StorageDetails();
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property latencyMin (base name: "latencyMin")', function() {
+      // uncomment below and update the code to test the property latencyMin
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property latencyMax (base name: "latencyMax")', function() {
+      // uncomment below and update the code to test the property latencyMax
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property timeoutProbability (base name: "timeoutProbability")', function() {
+      // uncomment below and update the code to test the property timeoutProbability
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property filter (base name: "filter")', function() {
+      // uncomment below and update the code to test the property filter
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemParameters
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.StorageDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property qosParameters (base name: "qosParameters")', function() {
-      // uncomment below and update the code to test the property qosParameters
-      //var instane = new Onepanel.StorageDetails();
+    it('should have the property simulatedFilesystemGrowSpeed (base name: "simulatedFilesystemGrowSpeed")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemGrowSpeed
+      //var instane = new Onepanel.NulldeviceModify();
       //expect(instance).to.be();
     });
 

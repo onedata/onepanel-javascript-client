@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetailsModify'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
+    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, StorageDetailsModify) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -42,15 +42,14 @@
 
   /**
    * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value. If changing the storage name, use old name as dictionary key and provide new name among the changed params.
+   * The storage configuration details that can be modified.
    * @alias module:model/StorageModifyRequest
    * @class
-   * @extends Object
    */
   var exports = function() {
     var _this = this;
 
-    return _this;
+
   };
 
   /**
@@ -73,12 +72,19 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'StorageDetailsModify');
 
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
     }
     return obj;
   }
 
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
 
 
 

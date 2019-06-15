@@ -46,7 +46,7 @@
    * @alias module:model/Swift
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/Swift.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
    * @param tenantName {String} The name of the tenant to which the user belongs.
    * @param containerName {String} The name of the Swift storage container.
@@ -62,6 +62,8 @@
     _this['containerName'] = containerName;
     _this['username'] = username;
     _this['password'] = password;
+
+
 
 
 
@@ -106,11 +108,17 @@
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -124,7 +132,7 @@
 
   /**
    * The type of storage.
-   * @member {module:model/Swift.TypeEnum} type
+   * @member {String} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -153,6 +161,11 @@
    */
   exports.prototype['password'] = undefined;
   /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
@@ -164,24 +177,18 @@
    */
   exports.prototype['insecure'] = false;
   /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+  exports.prototype['readonly'] = false;
+  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "swift"
-     * @const
-     */
-    "swift": "swift"  };
 
 
   return exports;

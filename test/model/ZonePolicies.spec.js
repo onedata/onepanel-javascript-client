@@ -63,6 +63,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property guiPackageVerification (base name: "guiPackageVerification")', function() {
+      // uncomment below and update the code to test the property guiPackageVerification
+      //var instane = new Onepanel.ZonePolicies();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property harvesterGuiPackageVerification (base name: "harvesterGuiPackageVerification")', function() {
+      // uncomment below and update the code to test the property harvesterGuiPackageVerification
+      //var instane = new Onepanel.ZonePolicies();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

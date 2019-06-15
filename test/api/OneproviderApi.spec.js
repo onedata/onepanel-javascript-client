@@ -391,30 +391,10 @@
         done();
       });
     });
-    describe('modifyStorageQosParameters', function() {
-      it('should call modifyStorageQosParameters successfully', function(done) {
-        //uncomment below and update the code to test modifyStorageQosParameters
-        //instance.modifyStorageQosParameters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('removeProvider', function() {
       it('should call removeProvider successfully', function(done) {
         //uncomment below and update the code to test removeProvider
         //instance.removeProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeStorage', function() {
-      it('should call removeStorage successfully', function(done) {
-        //uncomment below and update the code to test removeStorage
-        //instance.removeStorage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -46,7 +46,7 @@
    * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageDetails
-   * @param type {module:model/Cephrados.TypeEnum} The type of storage.
+   * @param type {String} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor host name.
@@ -62,6 +62,7 @@
     _this['monitorHostname'] = monitorHostname;
     _this['clusterName'] = clusterName;
     _this['poolName'] = poolName;
+
 
 
 
@@ -107,6 +108,9 @@
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
@@ -128,7 +132,7 @@
 
   /**
    * The type of storage.
-   * @member {module:model/Cephrados.TypeEnum} type
+   * @member {String} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -157,6 +161,11 @@
    */
   exports.prototype['poolName'] = undefined;
   /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
@@ -180,18 +189,6 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "cephrados"
-     * @const
-     */
-    "cephrados": "cephrados"  };
 
 
   return exports;

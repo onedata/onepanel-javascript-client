@@ -58,8 +58,6 @@
 
 
 
-
-
   };
 
   /**
@@ -104,12 +102,6 @@
       if (data.hasOwnProperty('xlatorOptions')) {
         obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
     }
     return obj;
   }
@@ -152,16 +144,6 @@
    * @member {String} xlatorOptions
    */
   exports.prototype['xlatorOptions'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   */
-  exports.prototype['insecure'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   */
-  exports.prototype['readonly'] = undefined;
 
 
   /**

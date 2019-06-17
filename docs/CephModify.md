@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **clusterName** | **String** | The Ceph cluster name. | [optional] 
 **poolName** | **String** | The Ceph pool name. | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] 
-**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] 
 
 
 <a name="TypeEnum"></a>

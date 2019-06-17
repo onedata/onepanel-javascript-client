@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **secretKey** | **String** | The secret key to the S3 storage. | [optional] 
 **signatureVersion** | **Number** | The version of signature used to sign requests. One of: 2, 4. Default: 4.  | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] 
-**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] 
 
 
 <a name="TypeEnum"></a>

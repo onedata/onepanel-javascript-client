@@ -53,7 +53,6 @@
     StorageDetailsModify.call(_this);
     _this['type'] = type;
 
-
   };
 
   /**
@@ -83,9 +82,6 @@
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
     }
     return obj;
   }
@@ -103,11 +99,6 @@
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   */
-  exports.prototype['readonly'] = undefined;
 
 
   /**

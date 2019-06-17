@@ -56,7 +56,6 @@
 
 
 
-
   };
 
   /**
@@ -82,9 +81,6 @@
 
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
@@ -113,11 +109,6 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   */
-  exports.prototype['insecure'] = undefined;
   /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout

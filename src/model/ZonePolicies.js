@@ -50,6 +50,8 @@
     var _this = this;
 
 
+
+
   };
 
   /**
@@ -76,6 +78,12 @@
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
+      if (data.hasOwnProperty('guiPackageVerification')) {
+        obj['guiPackageVerification'] = ApiClient.convertToType(data['guiPackageVerification'], 'Boolean');
+      }
+      if (data.hasOwnProperty('harvesterGuiPackageVerification')) {
+        obj['harvesterGuiPackageVerification'] = ApiClient.convertToType(data['harvesterGuiPackageVerification'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -85,6 +93,18 @@
    * @member {Boolean} subdomainDelegation
    */
   exports.prototype['subdomainDelegation'] = undefined;
+  /**
+   * When this value is true, GUI packages uploaded by services operating under Onezone or by harvester admins are checked against known SHA-256 check-sums using the compatibility registry. Setting this value to false disables the verification. WARNING: disabling GUI package verification poses a severe security threat, allowing Oneprovider owners to upload arbitrary GUI to Onezone (which is then hosted in Onezone's domain). 
+   * @member {Boolean} guiPackageVerification
+   * @default true
+   */
+  exports.prototype['guiPackageVerification'] = true;
+  /**
+   * This policy can be used to disable GUI package verification for harvester plugins only. See \"guiPackageVerification\" for detailed description. This setting has no effect if \"guiPackageVerification\" is set to false. 
+   * @member {Boolean} harvesterGuiPackageVerification
+   * @default true
+   */
+  exports.prototype['harvesterGuiPackageVerification'] = true;
 
 
 

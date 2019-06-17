@@ -58,7 +58,6 @@
 
 
 
-
   };
 
   /**
@@ -103,9 +102,6 @@
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
     }
     return obj;
   }
@@ -148,11 +144,6 @@
    * @member {Boolean} insecure
    */
   exports.prototype['insecure'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   */
-  exports.prototype['readonly'] = undefined;
 
 
   /**

@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **connectionPoolSize** | **Number** | Defines the maximum number of parallel connections for a single WebDAV storage.  | [optional] 
 **maximumUploadSize** | **Number** | Defines the maximum upload size for a single &#x60;PUT&#x60; or &#x60;PATCH&#x60; request. If set to 0, assumes that the WebDAV server has no upload limit.  | [optional] 
 **insecure** | **Boolean** | Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode.  | [optional] 
-**readonly** | **Boolean** | Defines whether storage is readonly. | [optional] 
 
 
 <a name="TypeEnum"></a>

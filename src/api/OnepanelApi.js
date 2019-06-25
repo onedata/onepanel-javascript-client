@@ -81,7 +81,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = Host;
@@ -124,7 +124,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = DnsCheck;
@@ -163,7 +163,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = Token;
@@ -209,7 +209,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = ClusterDetails;
@@ -248,7 +248,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = 'String';
@@ -287,7 +287,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ['String'];
@@ -326,7 +326,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ClusterMembersSummary;
@@ -365,7 +365,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = Ids;
@@ -404,7 +404,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Configuration;
@@ -443,7 +443,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ClusterDetails;
@@ -482,7 +482,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CurrentUser;
@@ -521,7 +521,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = DnsCheckConfiguration;
@@ -560,7 +560,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = EmergencyPassphraseStatus;
@@ -599,7 +599,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Node;
@@ -638,7 +638,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Progress;
@@ -684,7 +684,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = RemoteProviderDetails;
@@ -730,7 +730,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = TaskStatus;
@@ -769,7 +769,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = WebCert;
@@ -813,7 +813,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -857,7 +857,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -901,7 +901,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -945,7 +945,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -990,7 +990,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1034,7 +1034,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;

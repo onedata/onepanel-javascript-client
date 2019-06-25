@@ -80,7 +80,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -124,7 +124,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -168,7 +168,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -212,7 +212,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -256,7 +256,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -307,7 +307,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -351,7 +351,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -402,7 +402,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = null;
@@ -448,7 +448,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceFilePopularityConfiguration;
@@ -491,7 +491,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = OnezoneInfo;
@@ -530,7 +530,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderDetails;
@@ -569,7 +569,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ClusterIps;
@@ -608,7 +608,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderConfigurationDetails;
@@ -654,7 +654,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -693,7 +693,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -739,7 +739,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -778,7 +778,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -816,7 +816,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['text/xml'];
       var returnType = null;
@@ -869,7 +869,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReport;
@@ -923,7 +923,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReports;
@@ -969,7 +969,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningStatus;
@@ -1021,7 +1021,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceSyncStats;
@@ -1060,7 +1060,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderSpaces;
@@ -1106,7 +1106,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -1145,7 +1145,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -1191,7 +1191,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningConfiguration;
@@ -1237,7 +1237,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceDetails;
@@ -1283,7 +1283,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = StorageDetails;
@@ -1322,7 +1322,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderStorages;
@@ -1367,7 +1367,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1411,7 +1411,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1455,7 +1455,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -1507,7 +1507,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = SpaceId;
@@ -1558,7 +1558,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1596,7 +1596,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1641,7 +1641,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1690,7 +1690,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1732,7 +1732,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1781,7 +1781,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1823,7 +1823,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1872,7 +1872,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1914,7 +1914,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1958,7 +1958,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -2003,7 +2003,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;

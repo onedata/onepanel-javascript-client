@@ -37,8 +37,9 @@ Method | HTTP request | Description
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
-[**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage details
+[**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage config
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
+[**removeStorage**](OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
@@ -62,6 +63,18 @@ Registers provider in the zone.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -95,7 +108,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -114,6 +127,18 @@ Deploys a database service on provided hosts.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -147,7 +172,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -166,6 +191,18 @@ Deploys a cluster manager service on provided hosts.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -199,7 +236,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -218,6 +255,18 @@ Deploys cluster worker services on provided hosts.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -251,7 +300,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -270,6 +319,18 @@ Adds additional storage resources to the provider.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -303,7 +364,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -322,6 +383,18 @@ Configures the file-popularity mechanism in the space. The mechanism is responsi
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -358,7 +431,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -377,6 +450,18 @@ Configures and starts provider services, such as database, cluster manager and c
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -410,7 +495,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -429,6 +514,18 @@ Configures space auto-cleaning mechanism in the space.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -465,7 +562,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -484,6 +581,18 @@ Returns configuration of file-popularity mechanism in the space specified by spa
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -517,7 +626,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -536,6 +645,18 @@ Get information about a Onezone. Before registration this endpoint requires a re
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -570,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -589,6 +710,18 @@ Returns the basic configuration information of the provider.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -616,7 +749,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -635,6 +768,18 @@ Returns IPs of nodes in provider cluster
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -662,7 +807,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -681,6 +826,18 @@ Returns the provider cluster configuration.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -708,7 +865,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -727,6 +884,18 @@ Returns status of database service on the selected host.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -760,7 +929,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -779,6 +948,18 @@ Returns status of database service on each host where it has been deployed.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -806,7 +987,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -825,6 +1006,18 @@ Returns status of cluster manager service on the selected host.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -858,7 +1051,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -877,6 +1070,18 @@ Returns status of cluster manager service on each host where it has been deploye
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -904,7 +1109,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -923,6 +1128,18 @@ Returns the provider nagios report.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -950,7 +1167,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -969,6 +1186,18 @@ Returns the details of a specific auto-cleaning run.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1005,7 +1234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1024,6 +1253,18 @@ Returns the list of Ids of space auto-cleaning reports. The list is sorted desce
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1065,7 +1306,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1084,6 +1325,18 @@ Returns status of current process of auto-cleaning for the space.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1117,7 +1370,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1136,6 +1389,18 @@ Returns requested statistics of storage synchronization for given space on this 
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1175,7 +1440,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1194,6 +1459,18 @@ Returns the list of spaces supported by the provider.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1221,7 +1498,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1240,6 +1517,18 @@ Returns status of cluster worker service on the selected host.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1273,7 +1562,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1292,6 +1581,18 @@ Returns status of cluster worker service on each host where it has been deployed
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1319,7 +1620,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1338,6 +1639,18 @@ Returns configuration of auto-cleaning mechanism in the space specified by space
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1371,7 +1684,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1390,6 +1703,18 @@ Returns details of space specified by space Id in the path.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1423,7 +1748,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1442,6 +1767,18 @@ Returns the details of the selected storage.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1475,7 +1812,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1494,6 +1831,18 @@ Returns the list of provider storage resources and their details.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1521,7 +1870,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1540,6 +1889,18 @@ Invalidates LUMA cache in provider for given storage.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1573,7 +1934,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1592,6 +1953,18 @@ Modifies basic provider details in the zone.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1625,7 +1998,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1644,6 +2017,18 @@ Informs cluster nodes about external IPs which can be used to access them by oth
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1677,7 +2062,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1696,6 +2081,18 @@ Modifies the space import/update strategies.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1732,7 +2129,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1741,16 +2138,28 @@ Name | Type | Description  | Notes
 
 <a name="modifyStorage"></a>
 # **modifyStorage**
-> modifyStorage(id, storageModifyRequest)
+> StorageDetails modifyStorage(id, storageModifyRequest)
 
-Modify storage details
+Modify storage config
 
-Modifies basic storage details, such as operation timeout.
+Modifies storage configuration.
 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1759,16 +2168,16 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a storage resource, which details should be modified. 
+var id = "id_example"; // String | The Id of the storage resource which details should be modified. 
 
-var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. 
+var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.modifyStorage(id, storageModifyRequest, callback);
@@ -1778,16 +2187,16 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage resource, which details should be modified.  | 
- **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed.  | 
+ **id** | **String**| The Id of the storage resource which details should be modified.  | 
+ **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed. Must contain the current type of the storage.  | 
 
 ### Return type
 
-null (empty response body)
+[**StorageDetails**](StorageDetails.md)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1806,6 +2215,18 @@ Unregisters provider from the zone.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1833,11 +2254,75 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="removeStorage"></a>
+# **removeStorage**
+> removeStorage(id)
+
+Remove storage
+
+Removes storage from the cluster. Only storage not supporting any spaces can be removed.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of the storage to remove.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.removeStorage(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of the storage to remove. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="revokeSpaceSupport"></a>
@@ -1852,6 +2337,18 @@ Allows provider to revoke storage support for a specific space. Users with acces
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1885,7 +2382,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1904,6 +2401,18 @@ Starts or stops database service on the selected hosts in the local deployment.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1941,7 +2450,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1960,6 +2469,18 @@ Starts or stops database service on all hosts in the local deployment.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1994,7 +2515,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2013,6 +2534,18 @@ Starts or stops cluster manager service on the selected hosts in the local deplo
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2050,7 +2583,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2069,6 +2602,18 @@ Starts or stops cluster manager service on all hosts in the local deployment.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2103,7 +2648,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2122,6 +2667,18 @@ Starts or stops cluster worker service on the selected host in the local deploym
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2159,7 +2716,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2178,6 +2735,18 @@ Starts or stops cluster worker service on all hosts in the local deployment.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2212,7 +2781,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2231,6 +2800,18 @@ Supports an existing space.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2264,7 +2845,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -2283,6 +2864,18 @@ Triggers one run of auto-cleaning mechanism for given space.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -2316,7 +2909,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 

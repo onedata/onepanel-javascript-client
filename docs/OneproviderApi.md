@@ -2269,7 +2269,7 @@ Name | Type | Description  | Notes
 
 Modify transfers mock
 
-Toggle transfers mocking. This makes all transfers finish successfully without actually transfering data. WARNING: this is a debugging functionality disrupting normal Oneprovider operation. 
+Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging functionality disrupting normal Oneprovider operation. 
 
 ### Example
 ```javascript

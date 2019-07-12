@@ -1620,7 +1620,7 @@
 
     /**
      * Modify transfers mock
-     * Toggle transfers mocking. This makes all transfers finish successfully without actually transfering data. WARNING: this is a debugging functionality disrupting normal Oneprovider operation. 
+     * Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging functionality disrupting normal Oneprovider operation. 
      * @param {module:model/TransfersMock} transfersMock New value for the mock setting.
      * @param {module:api/OneproviderApi~modifyTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
      */

@@ -33,11 +33,13 @@ Method | HTTP request | Description
 [**getSpaceDetails**](OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
+[**getTransfersMock**](OneproviderApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
 [**invalidateLumaCache**](OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage config
+[**modifyTransfersMock**](OneproviderApi.md#modifyTransfersMock) | **PATCH** /provider/debug/transfers_mock | Modify transfers mock
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**removeStorage**](OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
@@ -1877,6 +1879,64 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getTransfersMock"></a>
+# **getTransfersMock**
+> TransfersMock getTransfersMock()
+
+Get transfers mock status
+
+Returns information whether transfers mocking is enabled. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getTransfersMock(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TransfersMock**](TransfersMock.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="invalidateLumaCache"></a>
 # **invalidateLumaCache**
 > invalidateLumaCache(id)
@@ -2193,6 +2253,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StorageDetails**](StorageDetails.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="modifyTransfersMock"></a>
+# **modifyTransfersMock**
+> modifyTransfersMock(transfersMock)
+
+Modify transfers mock
+
+Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging feature disrupting normal Oneprovider operation. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var transfersMock = new Onepanel.TransfersMock(); // TransfersMock | New value for the mock setting.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyTransfersMock(transfersMock, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transfersMock** | [**TransfersMock**](TransfersMock.md)| New value for the mock setting. | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

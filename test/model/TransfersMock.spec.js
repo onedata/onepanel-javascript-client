@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ZonePolicies();
+    instance = new Onepanel.TransfersMock();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,16 @@
       object[property] = value;
   }
 
-  describe('ZonePolicies', function() {
-    it('should create an instance of ZonePolicies', function() {
-      // uncomment below and update the code to test ZonePolicies
-      //var instane = new Onepanel.ZonePolicies();
-      //expect(instance).to.be.a(Onepanel.ZonePolicies);
+  describe('TransfersMock', function() {
+    it('should create an instance of TransfersMock', function() {
+      // uncomment below and update the code to test TransfersMock
+      //var instane = new Onepanel.TransfersMock();
+      //expect(instance).to.be.a(Onepanel.TransfersMock);
     });
 
-    it('should have the property oneproviderRegistration (base name: "oneproviderRegistration")', function() {
-      // uncomment below and update the code to test the property oneproviderRegistration
-      //var instane = new Onepanel.ZonePolicies();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subdomainDelegation (base name: "subdomainDelegation")', function() {
-      // uncomment below and update the code to test the property subdomainDelegation
-      //var instane = new Onepanel.ZonePolicies();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property guiPackageVerification (base name: "guiPackageVerification")', function() {
-      // uncomment below and update the code to test the property guiPackageVerification
-      //var instane = new Onepanel.ZonePolicies();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property harvesterGuiPackageVerification (base name: "harvesterGuiPackageVerification")', function() {
-      // uncomment below and update the code to test the property harvesterGuiPackageVerification
-      //var instane = new Onepanel.ZonePolicies();
+    it('should have the property transfersMock (base name: "transfersMock")', function() {
+      // uncomment below and update the code to test the property transfersMock
+      //var instane = new Onepanel.TransfersMock();
       //expect(instance).to.be();
     });
 

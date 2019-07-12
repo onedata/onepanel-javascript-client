@@ -965,7 +965,7 @@ null (empty response body)
 
 Get Onezone policies.
 
-Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
+Returns restrictions placed on Onezone operations such as registering Oneproviders. 
 
 ### Example
 ```javascript

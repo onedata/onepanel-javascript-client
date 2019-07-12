@@ -700,7 +700,7 @@
 
     /**
      * Get Onezone policies.
-     * Returns restrictions placed on Onezone functionality such as registering Oneproviders. 
+     * Returns restrictions placed on Onezone operations such as registering Oneproviders. 
      * @param {module:api/OnezoneApi~getZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ZonePolicies}
      */

@@ -52,6 +52,7 @@
 
 
 
+
   };
 
   /**
@@ -75,6 +76,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('oneproviderRegistration')) {
+        obj['oneproviderRegistration'] = ApiClient.convertToType(data['oneproviderRegistration'], 'String');
+      }
       if (data.hasOwnProperty('subdomainDelegation')) {
         obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
       }
@@ -88,6 +92,11 @@
     return obj;
   }
 
+  /**
+   * Indicates policy enforced during provider registration. Possible options are: open - anyone can acquire a registration token and register a new Oneprovider restricted - requires an administrative privilege 'oz_providers_invite'              to generate a Oneprovider registration token. The token              can be issued for someone else. 
+   * @member {module:model/ZonePolicies.OneproviderRegistrationEnum} oneproviderRegistration
+   */
+  exports.prototype['oneproviderRegistration'] = undefined;
   /**
    * If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
    * @member {Boolean} subdomainDelegation
@@ -106,6 +115,23 @@
    */
   exports.prototype['harvesterGuiPackageVerification'] = true;
 
+
+  /**
+   * Allowed values for the <code>oneproviderRegistration</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.OneproviderRegistrationEnum = {
+    /**
+     * value: "open"
+     * @const
+     */
+    "open": "open",
+    /**
+     * value: "restricted"
+     * @const
+     */
+    "restricted": "restricted"  };
 
 
   return exports;

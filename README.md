@@ -165,11 +165,13 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getSpaceDetails**](docs/OneproviderApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
+*Onepanel.OneproviderApi* | [**getTransfersMock**](docs/OneproviderApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
 *Onepanel.OneproviderApi* | [**invalidateLumaCache**](docs/OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OneproviderApi* | [**modifySpace**](docs/OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.OneproviderApi* | [**modifyStorage**](docs/OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage config
+*Onepanel.OneproviderApi* | [**modifyTransfersMock**](docs/OneproviderApi.md#modifyTransfersMock) | **PATCH** /provider/debug/transfers_mock | Modify transfers mock
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**removeStorage**](docs/OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
@@ -279,6 +281,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.TimeStats](docs/TimeStats.md)
  - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.Token](docs/Token.md)
+ - [Onepanel.TransfersMock](docs/TransfersMock.md)
  - [Onepanel.VersionInfo](docs/VersionInfo.md)
  - [Onepanel.WebCert](docs/WebCert.md)
  - [Onepanel.WebCertModifyRequest](docs/WebCertModifyRequest.md)

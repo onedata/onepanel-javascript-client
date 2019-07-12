@@ -341,6 +341,16 @@
         done();
       });
     });
+    describe('getTransfersMock', function() {
+      it('should call getTransfersMock successfully', function(done) {
+        //uncomment below and update the code to test getTransfersMock
+        //instance.getTransfersMock(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('invalidateLumaCache', function() {
       it('should call invalidateLumaCache successfully', function(done) {
         //uncomment below and update the code to test invalidateLumaCache
@@ -385,6 +395,16 @@
       it('should call modifyStorage successfully', function(done) {
         //uncomment below and update the code to test modifyStorage
         //instance.modifyStorage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyTransfersMock', function() {
+      it('should call modifyTransfersMock successfully', function(done) {
+        //uncomment below and update the code to test modifyTransfersMock
+        //instance.modifyTransfersMock(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

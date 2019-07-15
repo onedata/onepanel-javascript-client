@@ -1045,6 +1045,44 @@
         authNames, contentTypes, accepts, returnType, callback
       );
     }
+
+    /**
+     * Callback function to receive the result of the testImage operation.
+     * @callback module:api/OnepanelApi~testImageCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get test image
+     * This endpoint is used internally by browser to check connectivity. 
+     * @param {module:api/OnepanelApi~testImageCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.testImage = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['image/png'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/test_image', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
   };
 
   return exports;

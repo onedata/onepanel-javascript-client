@@ -291,6 +291,16 @@
         done();
       });
     });
+    describe('testImage', function() {
+      it('should call testImage successfully', function(done) {
+        //uncomment below and update the code to test testImage
+        //instance.testImage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
   });
 
 }));

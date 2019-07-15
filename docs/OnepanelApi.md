@@ -1496,7 +1496,7 @@ null (empty response body)
 
 Get test image
 
-This endpoint is used internally by browser to check connectivity. 
+This endpoint returns a dummy image in &#x60;.png&#x60; format. It is used internally by web applications across Onedata to check connectivity with certain services. This endpoint does not require authentication. 
 
 ### Example
 ```javascript

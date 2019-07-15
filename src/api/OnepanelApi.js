@@ -1056,7 +1056,7 @@
 
     /**
      * Get test image
-     * This endpoint is used internally by browser to check connectivity. 
+     * This endpoint returns a dummy image in &#x60;.png&#x60; format. It is used internally by web applications across Onedata to check connectivity with certain services. This endpoint does not require authentication. 
      * @param {module:api/OnepanelApi~testImageCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.testImage = function(callback) {

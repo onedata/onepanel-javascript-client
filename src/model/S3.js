@@ -64,6 +64,9 @@
 
 
 
+
+
+
   };
 
   /**
@@ -107,6 +110,15 @@
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
+        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -152,10 +164,27 @@
    */
   exports.prototype['signatureVersion'] = undefined;
   /**
-   * Storage block size in bytes.
+   * Storage block size in bytes. In case the block size is `0` and `canonical` path type is selected, each file is stored in a single S3 object. This value must be set to `0` to enable data import from an existing S3 bucket. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
+  /**
+   * Defines the maximum upload size for for objects which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * @member {Number} maximumCanonicalObjectSize
+   */
+  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   * @default '0644'
+   */
+  exports.prototype['fileMode'] = '0644';
+  /**
+   * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   * @default '0775'
+   */
+  exports.prototype['dirMode'] = '0775';
   /**
    * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

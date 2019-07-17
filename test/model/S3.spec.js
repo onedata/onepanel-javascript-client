@@ -99,6 +99,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property maximumCanonicalObjectSize (base name: "maximumCanonicalObjectSize")', function() {
+      // uncomment below and update the code to test the property maximumCanonicalObjectSize
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirMode (base name: "dirMode")', function() {
+      // uncomment below and update the code to test the property dirMode
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
     it('should have the property insecure (base name: "insecure")', function() {
       // uncomment below and update the code to test the property insecure
       //var instane = new Onepanel.S3();

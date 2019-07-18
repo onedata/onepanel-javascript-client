@@ -136,6 +136,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnepanelApi* | [**modifyWebCert**](docs/OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.OnepanelApi* | [**removeClusterHost**](docs/OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.OnepanelApi* | [**setEmergencyPassphrase**](docs/OnepanelApi.md#setEmergencyPassphrase) | **PUT** /emergency_passphrase | Set emergency passphrase
+*Onepanel.OnepanelApi* | [**testImage**](docs/OnepanelApi.md#testImage) | **GET** /test_image | Get test image
 *Onepanel.OneproviderApi* | [**addProvider**](docs/OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 *Onepanel.OneproviderApi* | [**addProviderDatabases**](docs/OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers

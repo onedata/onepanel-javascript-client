@@ -58,6 +58,9 @@
 
 
 
+
+
+
   };
 
   /**
@@ -99,6 +102,15 @@
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
       }
+      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
+        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
+      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
@@ -139,6 +151,21 @@
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;
+  /**
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * @member {Number} maximumCanonicalObjectSize
+   */
+  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   */
+  exports.prototype['fileMode'] = undefined;
+  /**
+   * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   */
+  exports.prototype['dirMode'] = undefined;
   /**
    * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

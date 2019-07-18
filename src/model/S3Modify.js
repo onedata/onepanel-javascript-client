@@ -152,22 +152,20 @@
    */
   exports.prototype['signatureVersion'] = undefined;
   /**
-   * Defines the maximum upload size for for objects which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
    * @member {Number} maximumCanonicalObjectSize
    */
   exports.prototype['maximumCanonicalObjectSize'] = undefined;
   /**
    * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
-   * @default '0644'
    */
-  exports.prototype['fileMode'] = '0644';
+  exports.prototype['fileMode'] = undefined;
   /**
    * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode
-   * @default '0775'
    */
-  exports.prototype['dirMode'] = '0775';
+  exports.prototype['dirMode'] = undefined;
   /**
    * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

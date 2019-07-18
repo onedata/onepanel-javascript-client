@@ -169,7 +169,7 @@
    */
   exports.prototype['blockSize'] = undefined;
   /**
-   * Defines the maximum upload size for for objects which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
    * @member {Number} maximumCanonicalObjectSize
    */
   exports.prototype['maximumCanonicalObjectSize'] = undefined;

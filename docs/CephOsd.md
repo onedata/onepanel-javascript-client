@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | **String** | Host on which given osd should be deployed | 
-**id** | **Number** | Id of the OSD. OSD ids should be contiguous integers starting at 0. | 
+**host** | **String** | Host on which given OSD should be deployed. It must be the full host name and not an \&quot;alias\&quot; as used in Oneprovider cluster deployment. | 
+**id** | **Number** | Id of the OSD. OSD Ids should be continous integers starting at 0. | 
 
 

@@ -1,8 +1,8 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
- * OpenAPI spec version: 18.02.1
+ * OpenAPI spec version: 19.02.0-beta1
  * Contact: info@onedata.org
  *
  * NOTE: This class is auto generated by the swagger code generator program.
@@ -37,7 +37,7 @@
   /**
    * The S3 model module.
    * @module model/S3
-   * @version 18.02.1
+   * @version 19.02.0-beta1
    */
 
   /**
@@ -46,7 +46,7 @@
    * @alias module:model/S3
    * @class
    * @extends module:model/StorageDetails
-   * @param type {String} The type of storage.
+   * @param type {module:model/S3.TypeEnum} The type of storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    * @param accessKey {String} The access key to the S3 storage.
@@ -60,6 +60,7 @@
     _this['bucketName'] = bucketName;
     _this['accessKey'] = accessKey;
     _this['secretKey'] = secretKey;
+
 
 
 
@@ -107,17 +108,20 @@
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
+      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
+        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
+      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -131,7 +135,7 @@
 
   /**
    * The type of storage.
-   * @member {String} type
+   * @member {module:model/S3.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -160,15 +164,27 @@
    */
   exports.prototype['signatureVersion'] = undefined;
   /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Storage block size in bytes.
+   * Storage block size in bytes. In case the block size is `0` and `canonical` path type is selected, each file is stored in a single S3 object. This value must be set to `0` to enable data import from an existing S3 bucket. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
+  /**
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * @member {Number} maximumCanonicalObjectSize
+   */
+  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   * @default '0644'
+   */
+  exports.prototype['fileMode'] = '0644';
+  /**
+   * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   * @default '0775'
+   */
+  exports.prototype['dirMode'] = '0775';
   /**
    * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
@@ -176,18 +192,24 @@
    */
   exports.prototype['insecure'] = false;
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "s3"
+     * @const
+     */
+    "s3": "s3"  };
 
 
   return exports;

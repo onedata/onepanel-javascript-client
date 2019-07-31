@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | @fixme | 
-**device** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph. | 
-**dbDevice** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph database. Must be a faster storage than the main device, otherwise use just the main storage.  | [optional] 
-**walDevice** | **String** | Relevant only for bluestore. Specifies block device to be ERASED and FORMATTED for use with ceph Write Ahead Log. Must be a faster storage than the main device, otherwise use just the main storage.  | [optional] 
+**type** | **String** | Type of the OSD. Available types are: - filestore - stores all files on an existing filesystem - bluestore - formats a raw block device to store the data  | 
+**device** | **String** | Specifies block device to be ERASED and FORMATTED for use as the main data store of this OSD.  | 
+**dbDevice** | **String** | Specifies block device to be ERASED and FORMATTED to be used for this OSD&#39;s database. It should be used when a storage faster than \&quot;device\&quot; is available, otherwise it is sufficient to specify just the \&quot;device\&quot;.  | [optional] 
+**walDevice** | **String** | Specifies block device to be ERASED and FORMATTED for use as the Write Ahead Log. It should be used when a storage faster than \&quot;device\&quot; is available, otherwise it is sufficient to specify just the \&quot;device\&quot;.  | [optional] 
 
 
 <a name="TypeEnum"></a>

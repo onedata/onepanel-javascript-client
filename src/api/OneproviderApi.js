@@ -1,8 +1,8 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://www.onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  Onepanel supports only HTTP basic authentication, i.e. using `username` and `password`, which were set when creating users.  Onepanel users can have 2 roles:   * **admin** - Onepanel administrator, there can be multiple administrators     and all have equal rights in terms of Onedata deployment management,   * **regular** - this role allows manual creation of user accounts, using     which users can login to Onezone service using HTTP Basic authentication     without OpenID. This role makes sense only on Onepanel which manages     Onezone deployment.  The first user account which is created in Onepanel is always an `admin` account.  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Create new user** ```bash curl -X POST -k -vvv -H \"content-type: application/json\" \\ -d '{\"username\": \"admin\", \"password\": \"Password1\", \"userRole\": \"admin\"}' \\ https://172.17.0.6:9443/api/v3/onepanel/users ```  **Add storage resource to provider** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u admin:Password1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
- * OpenAPI spec version: 18.02.1
+ * OpenAPI spec version: 19.02.0-beta1
  * Contact: info@onedata.org
  *
  * NOTE: This class is auto generated by the swagger code generator program.
@@ -17,24 +17,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
+}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest, TransfersMock) {
   'use strict';
 
   /**
    * Oneprovider service.
    * @module api/OneproviderApi
-   * @version 18.02.1
+   * @version 19.02.0-beta1
    */
 
   /**
@@ -59,15 +59,15 @@
     /**
      * Add managers to ceph cluster
      * Deploys ceph manager services on given hosts.
-     * @param {module:model/CephManagers} serviceHosts The service hosts configuration where managers should be deployed. 
+     * @param {module:model/CephManagers} cephManagers Object with list of Ceph Manager configurations. 
      * @param {module:api/OneproviderApi~addCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addCephManagers = function(serviceHosts, callback) {
-      var postBody = serviceHosts;
+    this.addCephManagers = function(cephManagers, callback) {
+      var postBody = cephManagers;
 
-      // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts === undefined || serviceHosts === null) {
-        throw new Error("Missing the required parameter 'serviceHosts' when calling addCephManagers");
+      // verify the required parameter 'cephManagers' is set
+      if (cephManagers === undefined || cephManagers === null) {
+        throw new Error("Missing the required parameter 'cephManagers' when calling addCephManagers");
       }
 
 
@@ -80,7 +80,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -101,17 +101,17 @@
      */
 
     /**
-     * Add monitors to ceph cluster
-     * Deploys ceph monitor services on given hosts.
-     * @param {module:model/CephMonitors} serviceHosts List of Ceph Monitor specifications.
+     * Add monitors to Ceph cluster
+     * Deploys Ceph Monitor services on given hosts.
+     * @param {module:model/CephMonitors} cephMonitors List of Ceph Monitor specifications.
      * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addCephMonitors = function(serviceHosts, callback) {
-      var postBody = serviceHosts;
+    this.addCephMonitors = function(cephMonitors, callback) {
+      var postBody = cephMonitors;
 
-      // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts === undefined || serviceHosts === null) {
-        throw new Error("Missing the required parameter 'serviceHosts' when calling addCephMonitors");
+      // verify the required parameter 'cephMonitors' is set
+      if (cephMonitors === undefined || cephMonitors === null) {
+        throw new Error("Missing the required parameter 'cephMonitors' when calling addCephMonitors");
       }
 
 
@@ -124,7 +124,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -147,15 +147,15 @@
     /**
      * Add OSDs to Ceph cluster
      * Deploys Ceph OSD services in the cluster.
-     * @param {module:model/CephOsds} osds List of OSD specifications
+     * @param {module:model/CephOsds} cephOsds List of OSD specifications
      * @param {module:api/OneproviderApi~addCephOsdsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.addCephOsds = function(osds, callback) {
-      var postBody = osds;
+    this.addCephOsds = function(cephOsds, callback) {
+      var postBody = cephOsds;
 
-      // verify the required parameter 'osds' is set
-      if (osds === undefined || osds === null) {
-        throw new Error("Missing the required parameter 'osds' when calling addCephOsds");
+      // verify the required parameter 'cephOsds' is set
+      if (cephOsds === undefined || cephOsds === null) {
+        throw new Error("Missing the required parameter 'cephOsds' when calling addCephOsds");
       }
 
 
@@ -168,7 +168,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -212,7 +212,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -256,7 +256,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -300,7 +300,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -344,7 +344,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -388,7 +388,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -432,7 +432,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -483,7 +483,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -527,7 +527,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -578,7 +578,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = null;
@@ -600,7 +600,7 @@
 
     /**
      * Get block devices for Ceph OSD
-     * 
+     * Lists block devices available at a given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
      * @param {String} host Host for which block devices should be returned.
      * @param {module:api/OneproviderApi~getBlockDevicesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/BlockDevices}
@@ -624,7 +624,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = BlockDevices;
@@ -646,8 +646,8 @@
 
     /**
      * Get ceph manager
-     * 
-     * @param {String} id @fixme
+     * Returns Ceph Manager Daemon configuration.
+     * @param {String} id Id of the Ceph Manager to be described.
      * @param {module:api/OneproviderApi~getCephManagerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephManager}
      */
@@ -670,7 +670,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephManager;
@@ -691,8 +691,8 @@
      */
 
     /**
-     * Get ceph manager
-     * 
+     * List Ceph Managers
+     * Returns object with a list of Ceph Manager instances.
      * @param {module:api/OneproviderApi~getCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephManagers}
      */
@@ -709,7 +709,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephManagers;
@@ -730,9 +730,9 @@
      */
 
     /**
-     * Get ceph monitor
-     * 
-     * @param {String} id @fixme
+     * Get Ceph Monitor
+     * Returns details of a Ceph Monitor instance.
+     * @param {String} id Id of the Ceph Monitor to describe.
      * @param {module:api/OneproviderApi~getCephMonitorCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephMonitor}
      */
@@ -755,7 +755,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephMonitor;
@@ -776,8 +776,8 @@
      */
 
     /**
-     * Get Ceph monitor
-     * 
+     * List Ceph Monitors
+     * Returns object with a list of Ceph Monitor instances.
      * @param {module:api/OneproviderApi~getCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephMonitors}
      */
@@ -794,7 +794,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephMonitors;
@@ -815,9 +815,9 @@
      */
 
     /**
-     * Get ceph OSD
-     * 
-     * @param {String} id @fixme
+     * Get Ceph OSD
+     * Returns details of a Ceph OSD instance.
+     * @param {String} id Id of the Ceph OSD to describe.
      * @param {module:api/OneproviderApi~getCephOsdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephOsd}
      */
@@ -840,7 +840,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephOsd;
@@ -862,7 +862,7 @@
 
     /**
      * Get space usage details for specific osd.
-     * @fixme
+     * Returns data usage statistics of given Ceph OSD.
      * @param {String} id The id of the OSD for usage check.
      * @param {module:api/OneproviderApi~getCephOsdUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DataUsage}
@@ -886,7 +886,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = DataUsage;
@@ -925,7 +925,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephOsds;
@@ -946,8 +946,8 @@
      */
 
     /**
-     * Get global params
-     * @fixme
+     * Get global Ceph params
+     * Returns Ceph settings global to the Ceph cluster.
      * @param {module:api/OneproviderApi~getCephParamsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephGlobalParams}
      */
@@ -964,7 +964,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = CephGlobalParams;
@@ -986,7 +986,7 @@
 
     /**
      * Get details of a Ceph pool.
-     * @fixme
+     * Returns object describng single Ceph pool specified by name.
      * @param {String} name The name of the pool to describe.
      * @param {module:api/OneproviderApi~getCephPoolCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephPool}
@@ -1010,7 +1010,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephPool;
@@ -1032,7 +1032,7 @@
 
     /**
      * Get space usage details for specific pool.
-     * @fixme
+     * Returns data usage statistics of given Ceph pool.
      * @param {String} name The name of the pool for usage check.
      * @param {module:api/OneproviderApi~getCephPoolUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephPoolUsage}
@@ -1056,7 +1056,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephPoolUsage;
@@ -1077,8 +1077,8 @@
      */
 
     /**
-     * Get list of ceph pools
-     * @fixme
+     * List Ceph pools
+     * Returns object containing list of Ceph pool details.
      * @param {module:api/OneproviderApi~getCephPoolsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephPools}
      */
@@ -1095,7 +1095,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephPools;
@@ -1117,7 +1117,7 @@
 
     /**
      * Get Ceph cluster health
-     * @fixme
+     * Returns Ceph cluster health
      * @param {module:api/OneproviderApi~getCephStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephStatus}
      */
@@ -1134,7 +1134,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephStatus;
@@ -1156,7 +1156,7 @@
 
     /**
      * Get Ceph storage space usage.
-     * @fixme
+     * Returns summary of storage space usage in the Ceph cluster.
      * @param {module:api/OneproviderApi~getCephUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephUsage}
      */
@@ -1173,7 +1173,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = CephUsage;
@@ -1219,7 +1219,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceFilePopularityConfiguration;
@@ -1240,8 +1240,8 @@
      */
 
     /**
-     * @fixme
-     * @fixme
+     * Returns next available OSD Id.
+     * Returns next available OSD Id, considering already used Ids and the recommendation that Ids are continous integers.
      * @param {module:api/OneproviderApi~getNextOsdIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'Number'}
      */
@@ -1258,7 +1258,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = 'Number';
@@ -1301,7 +1301,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = OnezoneInfo;
@@ -1340,7 +1340,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderDetails;
@@ -1379,7 +1379,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ClusterIps;
@@ -1418,7 +1418,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderConfigurationDetails;
@@ -1464,7 +1464,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -1503,7 +1503,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -1549,7 +1549,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -1588,7 +1588,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -1626,7 +1626,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['text/xml'];
       var returnType = null;
@@ -1679,7 +1679,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReport;
@@ -1733,7 +1733,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReports;
@@ -1779,7 +1779,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningStatus;
@@ -1831,7 +1831,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceSyncStats;
@@ -1870,7 +1870,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderSpaces;
@@ -1916,7 +1916,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -1955,7 +1955,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -2001,7 +2001,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningConfiguration;
@@ -2047,7 +2047,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceDetails;
@@ -2093,7 +2093,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = StorageDetails;
@@ -2132,13 +2132,52 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderStorages;
 
       return this.apiClient.callApi(
         '/provider/storages', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getTransfersMock operation.
+     * @callback module:api/OneproviderApi~getTransfersMockCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/TransfersMock} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get transfers mock status
+     * Returns information whether transfers mocking is enabled. 
+     * @param {module:api/OneproviderApi~getTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TransfersMock}
+     */
+    this.getTransfersMock = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = TransfersMock;
+
+      return this.apiClient.callApi(
+        '/provider/debug/transfers_mock', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2177,13 +2216,64 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}/invalidate_luma', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyCephPool operation.
+     * @callback module:api/OneproviderApi~modifyCephPoolCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify pool params
+     * Modifies the pool redundancy settings.
+     * @param {String} name The name of the pool to describe.
+     * @param {module:model/CephPool} poolModifyRequest 
+     * @param {module:api/OneproviderApi~modifyCephPoolCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyCephPool = function(name, poolModifyRequest, callback) {
+      var postBody = poolModifyRequest;
+
+      // verify the required parameter 'name' is set
+      if (name === undefined || name === null) {
+        throw new Error("Missing the required parameter 'name' when calling modifyCephPool");
+      }
+
+      // verify the required parameter 'poolModifyRequest' is set
+      if (poolModifyRequest === undefined || poolModifyRequest === null) {
+        throw new Error("Missing the required parameter 'poolModifyRequest' when calling modifyCephPool");
+      }
+
+
+      var pathParams = {
+        'name': name
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/ceph/pools/{name}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2221,7 +2311,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -2265,7 +2355,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -2317,7 +2407,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = SpaceId;
@@ -2333,16 +2423,17 @@
      * Callback function to receive the result of the modifyStorage operation.
      * @callback module:api/OneproviderApi~modifyStorageCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify storage details
-     * Modifies basic storage details, such as operation timeout.
-     * @param {String} id The Id of a storage resource, which details should be modified. 
-     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. 
+     * Modify storage config
+     * Modifies storage configuration.
+     * @param {String} id The Id of the storage resource which details should be modified. 
+     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StorageDetails}
      */
     this.modifyStorage = function(id, storageModifyRequest, callback) {
       var postBody = storageModifyRequest;
@@ -2368,10 +2459,10 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',
@@ -2381,30 +2472,29 @@
     }
 
     /**
-     * Callback function to receive the result of the removeCephManager operation.
-     * @callback module:api/OneproviderApi~removeCephManagerCallback
+     * Callback function to receive the result of the modifyTransfersMock operation.
+     * @callback module:api/OneproviderApi~modifyTransfersMockCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Purge Ceph manager.
-     * @fixme
-     * @param {String} id @fixme
-     * @param {module:api/OneproviderApi~removeCephManagerCallback} callback The callback function, accepting three arguments: error, data, response
+     * Modify transfers mock
+     * Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging feature disrupting normal Oneprovider operation. 
+     * @param {module:model/TransfersMock} transfersMock New value for the mock setting.
+     * @param {module:api/OneproviderApi~modifyTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.removeCephManager = function(id, callback) {
-      var postBody = null;
+    this.modifyTransfersMock = function(transfersMock, callback) {
+      var postBody = transfersMock;
 
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling removeCephManager");
+      // verify the required parameter 'transfersMock' is set
+      if (transfersMock === undefined || transfersMock === null) {
+        throw new Error("Missing the required parameter 'transfersMock' when calling modifyTransfersMock");
       }
 
 
       var pathParams = {
-        'id': id
       };
       var queryParams = {
       };
@@ -2413,103 +2503,13 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
-      var contentTypes = [];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/ceph/managers/{id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the removeCephMonitor operation.
-     * @callback module:api/OneproviderApi~removeCephMonitorCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Purge Ceph monitor.
-     * @fixme
-     * @param {String} id @fixme
-     * @param {module:api/OneproviderApi~removeCephMonitorCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeCephMonitor = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling removeCephMonitor");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/monitors/{id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the removeCephOsd operation.
-     * @callback module:api/OneproviderApi~removeCephOsdCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Purge Ceph OSD.
-     * @fixme
-     * @param {String} id @fixme
-     * @param {module:api/OneproviderApi~removeCephOsdCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeCephOsd = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling removeCephOsd");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/osds/{id}', 'DELETE',
+        '/provider/debug/transfers_mock', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2541,13 +2541,58 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
 
       return this.apiClient.callApi(
         '/provider', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeStorage operation.
+     * @callback module:api/OneproviderApi~removeStorageCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove storage
+     * Removes storage from the cluster. Only storage not supporting any spaces can be removed.
+     * @param {String} id The Id of the storage to remove.
+     * @param {module:api/OneproviderApi~removeStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.removeStorage = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling removeStorage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/storages/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2586,7 +2631,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2635,7 +2680,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2677,7 +2722,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2726,7 +2771,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2768,7 +2813,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2817,7 +2862,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2859,7 +2904,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2903,7 +2948,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -2948,7 +2993,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;

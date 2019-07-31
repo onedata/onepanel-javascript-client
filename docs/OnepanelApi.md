@@ -5,32 +5,30 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
-[**addUser**](OnepanelApi.md#addUser) | **POST** /users | Create Onepanel user
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+[**createUserInviteToken**](OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
 [**getClusterHosts**](OnepanelApi.md#getClusterHosts) | **GET** /hosts | Get cluster hosts
+[**getClusterMembersSummary**](OnepanelApi.md#getClusterMembersSummary) | **GET** /cluster/members_summary | Get summary of members in this cluster
 [**getClusters**](OnepanelApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 [**getConfiguration**](OnepanelApi.md#getConfiguration) | **GET** /configuration | Get public configuration
 [**getCurrentCluster**](OnepanelApi.md#getCurrentCluster) | **GET** /cluster | Get details of this cluster
 [**getCurrentUser**](OnepanelApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user.
 [**getDnsCheckConfiguration**](OnepanelApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check.
+[**getEmergencyPassphraseStatus**](OnepanelApi.md#getEmergencyPassphraseStatus) | **GET** /emergency_passphrase | Get emergency passphrase status
 [**getNode**](OnepanelApi.md#getNode) | **GET** /node | Get information about current onepanel node.
 [**getProgress**](OnepanelApi.md#getProgress) | **GET** /progress | Get deployment progress
 [**getRemoteProvider**](OnepanelApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider.
 [**getTaskStatus**](OnepanelApi.md#getTaskStatus) | **GET** /tasks/{id} | Get background task result
-[**getUser**](OnepanelApi.md#getUser) | **GET** /users/{username} | Get Onepanel user details
-[**getUsers**](OnepanelApi.md#getUsers) | **GET** /users | List onepanel users
 [**getWebCert**](OnepanelApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
 [**joinCluster**](OnepanelApi.md#joinCluster) | **POST** /join_cluster | Join existing cluster
-[**modifyCurrentUser**](OnepanelApi.md#modifyCurrentUser) | **PATCH** /user | Modify Onepanel user details of currently logged in user.
 [**modifyDnsCheckConfiguration**](OnepanelApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 [**modifyProgress**](OnepanelApi.md#modifyProgress) | **PATCH** /progress | Modify progress markers
-[**modifyUser**](OnepanelApi.md#modifyUser) | **PATCH** /users/{username} | Modify Onepanel user details
 [**modifyWebCert**](OnepanelApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 [**removeClusterHost**](OnepanelApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
-[**removeCurrentUser**](OnepanelApi.md#removeCurrentUser) | **DELETE** /user | Remove the currently logged in Onepanel user
-[**removeUser**](OnepanelApi.md#removeUser) | **DELETE** /users/{username} | Remove Onepanel user
+[**setEmergencyPassphrase**](OnepanelApi.md#setEmergencyPassphrase) | **PUT** /emergency_passphrase | Set emergency passphrase
+[**testImage**](OnepanelApi.md#testImage) | **GET** /test_image | Get test image
 
 
 <a name="addClusterHost"></a>
@@ -45,6 +43,18 @@ Adds given host to the current cluster. The host can be specified by any address
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -78,59 +88,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="addUser"></a>
-# **addUser**
-> addUser(userCreateRequest)
-
-Create Onepanel user
-
-Creates a new Onepanel user account.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var userCreateRequest = new Onepanel.UserCreateRequest(); // UserCreateRequest | The user configuration details.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.addUser(userCreateRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userCreateRequest** | [**UserCreateRequest**](UserCreateRequest.md)| The user configuration details. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -149,6 +107,18 @@ Returns results of the last DNS check, verifying validity of DNS configuration f
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -183,12 +153,70 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="createUserInviteToken"></a>
+# **createUserInviteToken**
+> Token createUserInviteToken()
+
+Generate cluster invitation token for a user
+
+Returns a token which can be used to add a Onezone user as a member of this cluster. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createUserInviteToken(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getCluster"></a>
 # **getCluster**
@@ -202,6 +230,18 @@ Returns details of the specified cluster.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -235,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -254,6 +294,18 @@ Returns cookie of a cluster this host belongs to. The cookie is a character sequ
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -281,7 +333,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -300,6 +352,18 @@ Returns the list of administrative cluster hosts.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -327,7 +391,65 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getClusterMembersSummary"></a>
+# **getClusterMembersSummary**
+> ClusterMembersSummary getClusterMembersSummary()
+
+Get summary of members in this cluster
+
+Returns aggregated counts of users and groups belonging to this cluster. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getClusterMembersSummary(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ClusterMembersSummary**](ClusterMembersSummary.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -346,6 +468,18 @@ Lists clusters to which current user belongs.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -373,7 +507,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -392,6 +526,18 @@ Returns public configuration details.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -419,7 +565,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -438,6 +584,18 @@ Returns details of this cluster.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -465,7 +623,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -474,7 +632,7 @@ This endpoint does not need any parameter.
 
 <a name="getCurrentUser"></a>
 # **getCurrentUser**
-> UserDetails getCurrentUser()
+> CurrentUser getCurrentUser()
 
 Get Onepanel user details of currently logged in user.
 
@@ -484,6 +642,18 @@ Returns the configuration information of the Onepanel user performing the query.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -507,11 +677,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**UserDetails**](UserDetails.md)
+[**CurrentUser**](CurrentUser.md)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -530,6 +700,18 @@ Returns servers queried to check DNS configuration correctness.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -557,12 +739,70 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="getEmergencyPassphraseStatus"></a>
+# **getEmergencyPassphraseStatus**
+> EmergencyPassphraseStatus getEmergencyPassphraseStatus()
+
+Get emergency passphrase status
+
+Returns information whether emergency passphrase is set.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getEmergencyPassphraseStatus(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EmergencyPassphraseStatus**](EmergencyPassphraseStatus.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getNode"></a>
 # **getNode**
@@ -576,6 +816,18 @@ Returns information about current onepanel node. This request can be executed by
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -603,7 +855,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -622,6 +874,18 @@ Returns deployment markers state.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -649,7 +913,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -668,6 +932,18 @@ Returns the details of given provider. Only users belonging to that Oneprovider&
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -701,7 +977,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -720,6 +996,18 @@ Returns result of an asynchronous operation, e.g. database service configuration
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -753,117 +1041,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-<a name="getUser"></a>
-# **getUser**
-> UserDetails getUser(username)
-
-Get Onepanel user details
-
-Returns the configuration information of the Onepanel user. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The name of the user whose details should be returned.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUser(username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The name of the user whose details should be returned. | 
-
-### Return type
-
-[**UserDetails**](UserDetails.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getUsers"></a>
-# **getUsers**
-> Users getUsers(opts)
-
-List onepanel users
-
-Lists all usernames. This request can be executed by unauthorized users only if there are no admin users in the system. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var opts = { 
-  'role': "role_example" // String | If present, query returns only users with specified role.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getUsers(opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **role** | **String**| If present, query returns only users with specified role. | [optional] 
-
-### Return type
-
-[**Users**](Users.md)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
 
 <a name="getWebCert"></a>
 # **getWebCert**
@@ -877,6 +1060,18 @@ Returns information about SSL certificate status and renewal configuration.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -904,7 +1099,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -923,6 +1118,18 @@ Adds this host to adminstrative cluster. The host handling this request has to b
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -956,59 +1163,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="modifyCurrentUser"></a>
-# **modifyCurrentUser**
-> modifyCurrentUser(userModifyRequest)
-
-Modify Onepanel user details of currently logged in user.
-
-Modifies the Onepanel user password. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyCurrentUser(userModifyRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userModifyRequest** | [**UserModifyRequest**](UserModifyRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1027,6 +1182,18 @@ Informs what DNS servers to use for checking external DNS records validity.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1060,7 +1227,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1079,6 +1246,18 @@ Sets or unsets markers for completed deployment stages.
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1112,62 +1291,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="modifyUser"></a>
-# **modifyUser**
-> modifyUser(username, userModifyRequest)
-
-Modify Onepanel user details
-
-Modifies the Onepanel user password. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The user name.
-
-var userModifyRequest = new Onepanel.UserModifyRequest(); // UserModifyRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyUser(username, userModifyRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The user name. | 
- **userModifyRequest** | [**UserModifyRequest**](UserModifyRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1186,6 +1310,18 @@ Modifies configuration regarding certificate management. Allows enabling or disa
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1219,7 +1355,7 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
@@ -1238,6 +1374,18 @@ Removes a node from the administrative cluster. This operation removes all user 
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1271,25 +1419,101 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="removeCurrentUser"></a>
-# **removeCurrentUser**
-> removeCurrentUser()
+<a name="setEmergencyPassphrase"></a>
+# **setEmergencyPassphrase**
+> setEmergencyPassphrase(emergencyPassphrase)
 
-Remove the currently logged in Onepanel user
+Set emergency passphrase
 
-Removes the Onepanel user account. 
+Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
 
 ### Example
 ```javascript
 var Onepanel = require('onepanel');
 var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var emergencyPassphrase = new Onepanel.EmergencyPassphraseChangeRequest(); // EmergencyPassphraseChangeRequest | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.setEmergencyPassphrase(emergencyPassphrase, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emergencyPassphrase** | [**EmergencyPassphraseChangeRequest**](EmergencyPassphraseChangeRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="testImage"></a>
+# **testImage**
+> testImage()
+
+Get test image
+
+This endpoint returns a dummy image in &#x60;.png&#x60; format. It is used internally by web applications across Onedata to check connectivity with certain services. This endpoint does not require authentication. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -1305,7 +1529,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.removeCurrentUser(callback);
+apiInstance.testImage(callback);
 ```
 
 ### Parameters
@@ -1317,62 +1541,10 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="removeUser"></a>
-# **removeUser**
-> removeUser(username)
-
-Remove Onepanel user
-
-Removes the Onepanel user account. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var username = "username_example"; // String | The name of the user to be removed.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeUser(username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| The name of the user to be removed. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: image/png
 

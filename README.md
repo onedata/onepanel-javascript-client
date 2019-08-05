@@ -155,11 +155,11 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph Monitor
 *Onepanel.OneproviderApi* | [**getCephMonitors**](docs/OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph Monitors
 *Onepanel.OneproviderApi* | [**getCephOsd**](docs/OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
-*Onepanel.OneproviderApi* | [**getCephOsdUsage**](docs/OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get space usage details for specific osd.
+*Onepanel.OneproviderApi* | [**getCephOsdUsage**](docs/OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific osd.
 *Onepanel.OneproviderApi* | [**getCephOsds**](docs/OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 *Onepanel.OneproviderApi* | [**getCephParams**](docs/OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
 *Onepanel.OneproviderApi* | [**getCephPool**](docs/OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
-*Onepanel.OneproviderApi* | [**getCephPoolUsage**](docs/OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get space usage details for specific pool.
+*Onepanel.OneproviderApi* | [**getCephPoolUsage**](docs/OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get storage space usage details for specific pool.
 *Onepanel.OneproviderApi* | [**getCephPools**](docs/OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | List Ceph pools
 *Onepanel.OneproviderApi* | [**getCephStatus**](docs/OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 *Onepanel.OneproviderApi* | [**getCephUsage**](docs/OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.

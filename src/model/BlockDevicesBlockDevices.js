@@ -44,7 +44,7 @@
    * Constructs a new <code>BlockDevicesBlockDevices</code>.
    * @alias module:model/BlockDevicesBlockDevices
    * @class
-   * @param host {String} Host on which the device is available
+   * @param host {String} Host on which the device is available.
    * @param path {String} 
    * @param size {Number} Device size in bytes.
    * @param mounted {Boolean} Result of heuristic attempt to detect whether a device or any of its children is mounted.
@@ -96,7 +96,7 @@
   }
 
   /**
-   * Host on which the device is available
+   * Host on which the device is available.
    * @member {String} host
    */
   exports.prototype['host'] = undefined;

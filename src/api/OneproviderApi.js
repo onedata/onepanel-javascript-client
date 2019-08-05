@@ -147,7 +147,7 @@
     /**
      * Add OSDs to Ceph cluster
      * Deploys Ceph OSD services in the cluster.
-     * @param {module:model/CephOsds} cephOsds List of OSD specifications
+     * @param {module:model/CephOsds} cephOsds List of OSD specifications.
      * @param {module:api/OneproviderApi~addCephOsdsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addCephOsds = function(cephOsds, callback) {
@@ -550,7 +550,7 @@
     /**
      * Configure space auto-cleaning mechanism
      * Configures space auto-cleaning mechanism in the space. 
-     * @param {String} id The Id of a space
+     * @param {String} id The Id of a space.
      * @param {module:model/SpaceAutoCleaningConfiguration} spaceAutoCleaningConfiguration New configuration of space auto-cleaning mechanism. 
      * @param {module:api/OneproviderApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -600,7 +600,7 @@
 
     /**
      * Get block devices for Ceph OSD
-     * Lists block devices available at a given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
+     * Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
      * @param {String} host Host for which block devices should be returned.
      * @param {module:api/OneproviderApi~getBlockDevicesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/BlockDevices}
@@ -861,8 +861,8 @@
      */
 
     /**
-     * Get space usage details for specific osd.
-     * Returns data usage statistics of given Ceph OSD.
+     * Get storage space usage details for specific osd.
+     * Returns storage space usage statistics of given Ceph OSD.
      * @param {String} id The id of the OSD for usage check.
      * @param {module:api/OneproviderApi~getCephOsdUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DataUsage}
@@ -1031,8 +1031,8 @@
      */
 
     /**
-     * Get space usage details for specific pool.
-     * Returns data usage statistics of given Ceph pool.
+     * Get storage space usage details for specific pool.
+     * Returns storage space usage statistics of given Ceph pool.
      * @param {String} name The name of the pool for usage check.
      * @param {module:api/OneproviderApi~getCephPoolUsageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephPoolUsage}
@@ -1117,7 +1117,7 @@
 
     /**
      * Get Ceph cluster health
-     * Returns Ceph cluster health
+     * Returns Ceph cluster health.
      * @param {module:api/OneproviderApi~getCephStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephStatus}
      */
@@ -1362,7 +1362,7 @@
 
     /**
      * Get provider cluster nodes IPs
-     * Returns IPs of nodes in provider cluster
+     * Returns IPs of nodes in provider cluster.
      * @param {module:api/OneproviderApi~getProviderClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterIps}
      */
@@ -1649,7 +1649,7 @@
     /**
      * Get the report from a space auto-cleaning run
      * Returns the details of a specific auto-cleaning run. 
-     * @param {String} id The Id of a space
+     * @param {String} id The Id of a space.
      * @param {String} reportId The Id of an auto-cleaning report.
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReport}
@@ -1702,7 +1702,7 @@
     /**
      * Get Ids of of the space auto-cleaning reports
      * Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
-     * @param {String} id The Id of a space
+     * @param {String} id The Id of a space.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Allows to skip N first report Ids. (default to 0)
      * @param {Number} opts.limit Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
@@ -1756,7 +1756,7 @@
     /**
      * Get status of space auto-cleaning mechanism
      * Returns status of current process of auto-cleaning for the space. 
-     * @param {String} id The Id of a space
+     * @param {String} id The Id of a space.
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningStatus}
      */
@@ -1804,8 +1804,8 @@
      * Returns requested statistics of storage synchronization for given space on this provider. 
      * @param {String} id The Id of a space for which sync stats should be returned.
      * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
-     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma
+     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
+     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma.
      * @param {module:api/OneproviderApi~getProviderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceSyncStats}
      */
@@ -2971,7 +2971,7 @@
     /**
      * Triggers space auto-cleaning
      * Triggers one run of auto-cleaning mechanism for given space.
-     * @param {String} id The Id of a space
+     * @param {String} id The Id of a space.
      * @param {module:api/OneproviderApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.triggerAutoCleaning = function(id, callback) {

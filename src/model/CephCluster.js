@@ -112,14 +112,14 @@ exports.prototype['osds'] = undefined;
 
   // Implement CephMonitors interface:
   /**
-   * List of Ceph Monitor specifications
+   * List of Ceph Monitor specifications.
    * @member {Array.<module:model/CephMonitor>} monitors
    */
 exports.prototype['monitors'] = undefined;
 
   // Implement CephManagers interface:
   /**
-   * List of Ceph Manager configurations
+   * List of Ceph Manager configurations.
    * @member {Array.<module:model/CephManager>} managers
    */
 exports.prototype['managers'] = undefined;

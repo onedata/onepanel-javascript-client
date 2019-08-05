@@ -42,10 +42,10 @@
 
   /**
    * Constructs a new <code>CephMonitor</code>.
-   * Ceph Monitor specification
+   * Ceph Monitor specification.
    * @alias module:model/CephMonitor
    * @class
-   * @param host {String} Host on which given mon should be deployed. There may be only one monitor per host. Attempts at creating additional monitors at the same host will be skipped.
+   * @param host {String} Host on which given Monitor should be deployed. There may be only one monitor per host. Attempts at creating additional monitors at the same host will be skipped.
    */
   var exports = function(host) {
     var _this = this;
@@ -90,7 +90,7 @@
   }
 
   /**
-   * Host on which given mon should be deployed. There may be only one monitor per host. Attempts at creating additional monitors at the same host will be skipped.
+   * Host on which given Monitor should be deployed. There may be only one monitor per host. Attempts at creating additional monitors at the same host will be skipped.
    * @member {String} host
    */
   exports.prototype['host'] = undefined;

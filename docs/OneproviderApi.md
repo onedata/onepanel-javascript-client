@@ -22,11 +22,11 @@ Method | HTTP request | Description
 [**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph Monitor
 [**getCephMonitors**](OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph Monitors
 [**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
-[**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get space usage details for specific osd.
+[**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific osd.
 [**getCephOsds**](OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 [**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
-[**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get space usage details for specific pool.
+[**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get storage space usage details for specific pool.
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | List Ceph pools
 [**getCephStatus**](OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 [**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
@@ -233,7 +233,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var cephOsds = new Onepanel.CephOsds(); // CephOsds | List of OSD specifications
+var cephOsds = new Onepanel.CephOsds(); // CephOsds | List of OSD specifications.
 
 
 var callback = function(error, data, response) {
@@ -250,7 +250,7 @@ apiInstance.addCephOsds(cephOsds, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cephOsds** | [**CephOsds**](CephOsds.md)| List of OSD specifications | 
+ **cephOsds** | [**CephOsds**](CephOsds.md)| List of OSD specifications. | 
 
 ### Return type
 
@@ -812,7 +812,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space
+var id = "id_example"; // String | The Id of a space.
 
 var spaceAutoCleaningConfiguration = new Onepanel.SpaceAutoCleaningConfiguration(); // SpaceAutoCleaningConfiguration | New configuration of space auto-cleaning mechanism. 
 
@@ -831,7 +831,7 @@ apiInstance.configureSpaceAutoCleaning(id, spaceAutoCleaningConfiguration, callb
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space | 
+ **id** | **String**| The Id of a space. | 
  **spaceAutoCleaningConfiguration** | [**SpaceAutoCleaningConfiguration**](SpaceAutoCleaningConfiguration.md)| New configuration of space auto-cleaning mechanism.  | 
 
 ### Return type
@@ -853,7 +853,7 @@ null (empty response body)
 
 Get block devices for Ceph OSD
 
-Lists block devices available at a given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
+Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
 
 ### Example
 ```javascript
@@ -1223,9 +1223,9 @@ Name | Type | Description  | Notes
 # **getCephOsdUsage**
 > DataUsage getCephOsdUsage(id)
 
-Get space usage details for specific osd.
+Get storage space usage details for specific osd.
 
-Returns data usage statistics of given Ceph OSD.
+Returns storage space usage statistics of given Ceph OSD.
 
 ### Example
 ```javascript
@@ -1467,9 +1467,9 @@ Name | Type | Description  | Notes
 # **getCephPoolUsage**
 > CephPoolUsage getCephPoolUsage(name)
 
-Get space usage details for specific pool.
+Get storage space usage details for specific pool.
 
-Returns data usage statistics of given Ceph pool.
+Returns storage space usage statistics of given Ceph pool.
 
 ### Example
 ```javascript
@@ -1591,7 +1591,7 @@ This endpoint does not need any parameter.
 
 Get Ceph cluster health
 
-Returns Ceph cluster health
+Returns Ceph cluster health.
 
 ### Example
 ```javascript
@@ -1952,7 +1952,7 @@ This endpoint does not need any parameter.
 
 Get provider cluster nodes IPs
 
-Returns IPs of nodes in provider cluster
+Returns IPs of nodes in provider cluster.
 
 ### Example
 ```javascript
@@ -2396,7 +2396,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space
+var id = "id_example"; // String | The Id of a space.
 
 var reportId = "reportId_example"; // String | The Id of an auto-cleaning report.
 
@@ -2415,7 +2415,7 @@ apiInstance.getProviderSpaceAutoCleaningReport(id, reportId, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space | 
+ **id** | **String**| The Id of a space. | 
  **reportId** | **String**| The Id of an auto-cleaning report. | 
 
 ### Return type
@@ -2463,7 +2463,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space
+var id = "id_example"; // String | The Id of a space.
 
 var opts = { 
   'offset': 0, // Number | Allows to skip N first report Ids.
@@ -2485,7 +2485,7 @@ apiInstance.getProviderSpaceAutoCleaningReports(id, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space | 
+ **id** | **String**| The Id of a space. | 
  **offset** | **Number**| Allows to skip N first report Ids. | [optional] [default to 0]
  **limit** | **Number**| Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned.  | [optional] 
  **index** | **String**| Allows to list the report Ids starting from the specific report.  | [optional] 
@@ -2535,7 +2535,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space
+var id = "id_example"; // String | The Id of a space.
 
 
 var callback = function(error, data, response) {
@@ -2552,7 +2552,7 @@ apiInstance.getProviderSpaceAutoCleaningStatus(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space | 
+ **id** | **String**| The Id of a space. | 
 
 ### Return type
 
@@ -2602,8 +2602,8 @@ var apiInstance = new Onepanel.OneproviderApi();
 var id = "id_example"; // String | The Id of a space for which sync stats should be returned.
 
 var opts = { 
-  'period': "period_example", // String | Predefined time period for which the statistics should be fetched
-  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma
+  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
+  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma.
 };
 
 var callback = function(error, data, response) {
@@ -2621,8 +2621,8 @@ apiInstance.getProviderSpaceSyncStats(id, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space for which sync stats should be returned. | 
- **period** | **String**| Predefined time period for which the statistics should be fetched | [optional] 
- **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma | [optional] 
+ **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. | [optional] 
 
 ### Return type
 
@@ -4263,7 +4263,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | The Id of a space
+var id = "id_example"; // String | The Id of a space.
 
 
 var callback = function(error, data, response) {
@@ -4280,7 +4280,7 @@ apiInstance.triggerAutoCleaning(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space | 
+ **id** | **String**| The Id of a space. | 
 
 ### Return type
 

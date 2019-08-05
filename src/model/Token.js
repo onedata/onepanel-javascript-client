@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>Token</code>.
-   * A token
+   * A token.
    * @alias module:model/Token
    * @class
    * @param token {String} 

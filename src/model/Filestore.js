@@ -97,7 +97,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Path were OSD will store the data. If omitted, default location based on OSD id will be used.
+   * Path were OSD will store the data. If omitted, default location based on OSD id will be used. The path should be located on an XFS or (unrecommended) ext4 filesystem.
    * @member {String} path
    */
   exports.prototype['path'] = undefined;

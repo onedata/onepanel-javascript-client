@@ -81,7 +81,7 @@
   }
 
   /**
-   * List of Ceph Manager configurations
+   * List of Ceph Manager configurations.
    * @member {Array.<module:model/CephManager>} managers
    */
   exports.prototype['managers'] = undefined;

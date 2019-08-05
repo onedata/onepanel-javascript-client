@@ -89,7 +89,7 @@
   }
 
   /**
-   * Name of the pool
+   * Name of the pool.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;

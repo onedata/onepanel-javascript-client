@@ -81,7 +81,7 @@
   }
 
   /**
-   * List of Ceph Monitor specifications
+   * List of Ceph Monitor specifications.
    * @member {Array.<module:model/CephMonitor>} monitors
    */
   exports.prototype['monitors'] = undefined;

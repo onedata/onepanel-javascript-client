@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephManagers</code>.
-   * Object containing a list of Ceph Manager Daemons.
+   * Object containing a list of Ceph manager daemons.
    * @alias module:model/CephManagers
    * @class
    */
@@ -81,7 +81,7 @@
   }
 
   /**
-   * List of Ceph Manager configurations.
+   * List of Ceph manager configurations.
    * @member {Array.<module:model/CephManager>} managers
    */
   exports.prototype['managers'] = undefined;

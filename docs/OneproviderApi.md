@@ -17,12 +17,12 @@ Method | HTTP request | Description
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 [**getBlockDevices**](OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
-[**getCephManager**](OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get ceph manager
-[**getCephManagers**](OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph Managers
-[**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph Monitor
-[**getCephMonitors**](OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph Monitors
+[**getCephManager**](OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
+[**getCephManagers**](OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph managers
+[**getCephMonitor**](OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph monitor
+[**getCephMonitors**](OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph monitors
 [**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
-[**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific osd.
+[**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific OSD.
 [**getCephOsds**](OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 [**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
@@ -79,7 +79,7 @@ Method | HTTP request | Description
 
 Add managers to ceph cluster
 
-Deploys ceph manager services on given hosts.
+Deploys Ceph manager services on given hosts.
 
 ### Example
 ```javascript
@@ -105,7 +105,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with list of Ceph Manager configurations. 
+var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with list of Ceph manager configurations. 
 
 
 var callback = function(error, data, response) {
@@ -122,7 +122,7 @@ apiInstance.addCephManagers(cephManagers, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cephManagers** | [**CephManagers**](CephManagers.md)| Object with list of Ceph Manager configurations.  | 
+ **cephManagers** | [**CephManagers**](CephManagers.md)| Object with list of Ceph manager configurations.  | 
 
 ### Return type
 
@@ -143,7 +143,7 @@ null (empty response body)
 
 Add monitors to Ceph cluster
 
-Deploys Ceph Monitor services on given hosts.
+Deploys Ceph monitor services on given hosts.
 
 ### Example
 ```javascript
@@ -169,7 +169,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var cephMonitors = new Onepanel.CephMonitors(); // CephMonitors | List of Ceph Monitor specifications.
+var cephMonitors = new Onepanel.CephMonitors(); // CephMonitors | List of Ceph monitor specifications.
 
 
 var callback = function(error, data, response) {
@@ -186,7 +186,7 @@ apiInstance.addCephMonitors(cephMonitors, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cephMonitors** | [**CephMonitors**](CephMonitors.md)| List of Ceph Monitor specifications. | 
+ **cephMonitors** | [**CephMonitors**](CephMonitors.md)| List of Ceph monitor specifications. | 
 
 ### Return type
 
@@ -915,9 +915,9 @@ Name | Type | Description  | Notes
 # **getCephManager**
 > CephManager getCephManager(id)
 
-Get ceph manager
+Get Ceph manager
 
-Returns Ceph Manager Daemon configuration.
+Returns Ceph manager configuration.
 
 ### Example
 ```javascript
@@ -943,7 +943,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | Id of the Ceph Manager to be described.
+var id = "id_example"; // String | Id of the Ceph manager to be described.
 
 
 var callback = function(error, data, response) {
@@ -960,7 +960,7 @@ apiInstance.getCephManager(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Id of the Ceph Manager to be described. | 
+ **id** | **String**| Id of the Ceph manager to be described. | 
 
 ### Return type
 
@@ -979,9 +979,9 @@ Name | Type | Description  | Notes
 # **getCephManagers**
 > CephManagers getCephManagers()
 
-List Ceph Managers
+List Ceph managers
 
-Returns object with a list of Ceph Manager instances.
+Returns object with a list of Ceph manager instances.
 
 ### Example
 ```javascript
@@ -1037,9 +1037,9 @@ This endpoint does not need any parameter.
 # **getCephMonitor**
 > CephMonitor getCephMonitor(id)
 
-Get Ceph Monitor
+Get Ceph monitor
 
-Returns details of a Ceph Monitor instance.
+Returns details of a Ceph monitor instance.
 
 ### Example
 ```javascript
@@ -1065,7 +1065,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var id = "id_example"; // String | Id of the Ceph Monitor to describe.
+var id = "id_example"; // String | Id of the Ceph monitor to describe.
 
 
 var callback = function(error, data, response) {
@@ -1082,7 +1082,7 @@ apiInstance.getCephMonitor(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Id of the Ceph Monitor to describe. | 
+ **id** | **String**| Id of the Ceph monitor to describe. | 
 
 ### Return type
 
@@ -1101,9 +1101,9 @@ Name | Type | Description  | Notes
 # **getCephMonitors**
 > CephMonitors getCephMonitors()
 
-List Ceph Monitors
+List Ceph monitors
 
-Returns object with a list of Ceph Monitor instances.
+Returns object with a list of Ceph monitor instances.
 
 ### Example
 ```javascript
@@ -1223,7 +1223,7 @@ Name | Type | Description  | Notes
 # **getCephOsdUsage**
 > DataUsage getCephOsdUsage(id)
 
-Get storage space usage details for specific osd.
+Get storage space usage details for specific OSD.
 
 Returns storage space usage statistics of given Ceph OSD.
 
@@ -1347,7 +1347,7 @@ This endpoint does not need any parameter.
 
 Get global Ceph params
 
-Returns Ceph settings global to the Ceph cluster.
+Returns settings global for the Ceph cluster.
 
 ### Example
 ```javascript

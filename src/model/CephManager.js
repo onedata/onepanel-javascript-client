@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephManager</code>.
-   * Ceph Manager specification.
+   * Ceph manager specification.
    * @alias module:model/CephManager
    * @class
    */

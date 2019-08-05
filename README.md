@@ -150,12 +150,12 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
 *Onepanel.OneproviderApi* | [**getBlockDevices**](docs/OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
-*Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get ceph manager
-*Onepanel.OneproviderApi* | [**getCephManagers**](docs/OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph Managers
-*Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph Monitor
-*Onepanel.OneproviderApi* | [**getCephMonitors**](docs/OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph Monitors
+*Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
+*Onepanel.OneproviderApi* | [**getCephManagers**](docs/OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph managers
+*Onepanel.OneproviderApi* | [**getCephMonitor**](docs/OneproviderApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph monitor
+*Onepanel.OneproviderApi* | [**getCephMonitors**](docs/OneproviderApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph monitors
 *Onepanel.OneproviderApi* | [**getCephOsd**](docs/OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
-*Onepanel.OneproviderApi* | [**getCephOsdUsage**](docs/OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific osd.
+*Onepanel.OneproviderApi* | [**getCephOsdUsage**](docs/OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific OSD.
 *Onepanel.OneproviderApi* | [**getCephOsds**](docs/OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
 *Onepanel.OneproviderApi* | [**getCephParams**](docs/OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
 *Onepanel.OneproviderApi* | [**getCephPool**](docs/OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.

@@ -58,8 +58,8 @@
 
     /**
      * Add managers to ceph cluster
-     * Deploys ceph manager services on given hosts.
-     * @param {module:model/CephManagers} cephManagers Object with list of Ceph Manager configurations. 
+     * Deploys Ceph manager services on given hosts.
+     * @param {module:model/CephManagers} cephManagers Object with list of Ceph manager configurations. 
      * @param {module:api/OneproviderApi~addCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addCephManagers = function(cephManagers, callback) {
@@ -102,8 +102,8 @@
 
     /**
      * Add monitors to Ceph cluster
-     * Deploys Ceph Monitor services on given hosts.
-     * @param {module:model/CephMonitors} cephMonitors List of Ceph Monitor specifications.
+     * Deploys Ceph monitor services on given hosts.
+     * @param {module:model/CephMonitors} cephMonitors List of Ceph monitor specifications.
      * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addCephMonitors = function(cephMonitors, callback) {
@@ -645,9 +645,9 @@
      */
 
     /**
-     * Get ceph manager
-     * Returns Ceph Manager Daemon configuration.
-     * @param {String} id Id of the Ceph Manager to be described.
+     * Get Ceph manager
+     * Returns Ceph manager configuration.
+     * @param {String} id Id of the Ceph manager to be described.
      * @param {module:api/OneproviderApi~getCephManagerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephManager}
      */
@@ -691,8 +691,8 @@
      */
 
     /**
-     * List Ceph Managers
-     * Returns object with a list of Ceph Manager instances.
+     * List Ceph managers
+     * Returns object with a list of Ceph manager instances.
      * @param {module:api/OneproviderApi~getCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephManagers}
      */
@@ -730,9 +730,9 @@
      */
 
     /**
-     * Get Ceph Monitor
-     * Returns details of a Ceph Monitor instance.
-     * @param {String} id Id of the Ceph Monitor to describe.
+     * Get Ceph monitor
+     * Returns details of a Ceph monitor instance.
+     * @param {String} id Id of the Ceph monitor to describe.
      * @param {module:api/OneproviderApi~getCephMonitorCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephMonitor}
      */
@@ -776,8 +776,8 @@
      */
 
     /**
-     * List Ceph Monitors
-     * Returns object with a list of Ceph Monitor instances.
+     * List Ceph monitors
+     * Returns object with a list of Ceph monitor instances.
      * @param {module:api/OneproviderApi~getCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephMonitors}
      */
@@ -861,7 +861,7 @@
      */
 
     /**
-     * Get storage space usage details for specific osd.
+     * Get storage space usage details for specific OSD.
      * Returns storage space usage statistics of given Ceph OSD.
      * @param {String} id The id of the OSD for usage check.
      * @param {module:api/OneproviderApi~getCephOsdUsageCallback} callback The callback function, accepting three arguments: error, data, response
@@ -947,7 +947,7 @@
 
     /**
      * Get global Ceph params
-     * Returns Ceph settings global to the Ceph cluster.
+     * Returns settings global for the Ceph cluster.
      * @param {module:api/OneproviderApi~getCephParamsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CephGlobalParams}
      */

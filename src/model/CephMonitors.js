@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephMonitors</code>.
-   * Object containing a list of Ceph Monitor Daemons.
+   * Object containing a list of Ceph monitor daemons.
    * @alias module:model/CephMonitors
    * @class
    */
@@ -81,7 +81,7 @@
   }
 
   /**
-   * List of Ceph Monitor specifications.
+   * List of Ceph monitor specifications.
    * @member {Array.<module:model/CephMonitor>} monitors
    */
   exports.prototype['monitors'] = undefined;

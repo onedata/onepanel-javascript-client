@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephMonitor</code>.
-   * Ceph Monitor specification.
+   * Ceph monitor specification.
    * @alias module:model/CephMonitor
    * @class
    * @param host {String} Host on which given Monitor should be deployed. There may be only one monitor per host. Attempts at creating additional monitors at the same host will be skipped.

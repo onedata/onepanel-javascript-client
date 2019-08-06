@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | [**CephUsageTotal**](CephUsageTotal.md) |  | [optional] 
-**pools** | [**{String: CephPoolUsage}**](CephPoolUsage.md) | The collection of pools with associated usage data. | 
+**total** | [**DataUsage**](DataUsage.md) |  | 
+**osds** | [**{String: DataUsage}**](DataUsage.md) | Dictionary of OSDs with associated usage data. | 
+**pools** | [**{String: CephPoolUsage}**](CephPoolUsage.md) | Dictionary of pools with associated usage data. | 
 
 

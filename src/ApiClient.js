@@ -512,6 +512,10 @@
           if(type.__swaggerDiscriminator() !== undefined) {
             var polymorphicType;
 
+            if('bluestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Bluestore");
+            }
+
             if('Ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Ceph");
             }
@@ -526,6 +530,18 @@
 
             if('CephradosModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/CephradosModify");
+            }
+
+            if('Embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Embeddedceph");
+            }
+
+            if('EmbeddedcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/EmbeddedcephModify");
+            }
+
+            if('filestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Filestore");
             }
 
             if('Glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PanelConfiguration', 'model/ProviderClusterConfiguration', 'model/ProviderConfigurationOneprovider'], factory);
+    define(['ApiClient', 'model/CephCluster', 'model/PanelConfiguration', 'model/ProviderClusterConfiguration', 'model/ProviderConfigurationOneprovider'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PanelConfiguration'), require('./ProviderClusterConfiguration'), require('./ProviderConfigurationOneprovider'));
+    module.exports = factory(require('../ApiClient'), require('./CephCluster'), require('./PanelConfiguration'), require('./ProviderClusterConfiguration'), require('./ProviderConfigurationOneprovider'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.PanelConfiguration, root.Onepanel.ProviderClusterConfiguration, root.Onepanel.ProviderConfigurationOneprovider);
+    root.Onepanel.ProviderConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.CephCluster, root.Onepanel.PanelConfiguration, root.Onepanel.ProviderClusterConfiguration, root.Onepanel.ProviderConfigurationOneprovider);
   }
-}(this, function(ApiClient, PanelConfiguration, ProviderClusterConfiguration, ProviderConfigurationOneprovider) {
+}(this, function(ApiClient, CephCluster, PanelConfiguration, ProviderClusterConfiguration, ProviderConfigurationOneprovider) {
   'use strict';
 
 
@@ -51,6 +51,7 @@
     var _this = this;
 
     _this['cluster'] = cluster;
+
 
 
   };
@@ -79,6 +80,9 @@
       if (data.hasOwnProperty('cluster')) {
         obj['cluster'] = ProviderClusterConfiguration.constructFromObject(data['cluster']);
       }
+      if (data.hasOwnProperty('ceph')) {
+        obj['ceph'] = CephCluster.constructFromObject(data['ceph']);
+      }
       if (data.hasOwnProperty('oneprovider')) {
         obj['oneprovider'] = ProviderConfigurationOneprovider.constructFromObject(data['oneprovider']);
       }
@@ -93,6 +97,10 @@
    * @member {module:model/ProviderClusterConfiguration} cluster
    */
   exports.prototype['cluster'] = undefined;
+  /**
+   * @member {module:model/CephCluster} ceph
+   */
+  exports.prototype['ceph'] = undefined;
   /**
    * @member {module:model/ProviderConfigurationOneprovider} oneprovider
    */

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Id of the cluster record | 
-**type** | **String** | Type of the cluster | 
+**id** | **String** | Id of the cluster record. | 
+**type** | **String** | Type of the cluster. | 
 **serviceId** | **String** | The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or \&quot;onezone\&quot; in case of Onezone cluster  | 
 **workerVersion** | [**VersionInfo**](VersionInfo.md) |  | 
 **onepanelVersion** | [**VersionInfo**](VersionInfo.md) |  | 

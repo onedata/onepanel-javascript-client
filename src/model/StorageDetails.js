@@ -150,7 +150,7 @@
    */
   exports.prototype['lumaEnabled'] = false;
   /**
-   * URL of external LUMA service
+   * URL of external LUMA service.
    * @member {String} lumaUrl
    */
   exports.prototype['lumaUrl'] = undefined;

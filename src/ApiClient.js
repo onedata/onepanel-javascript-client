@@ -532,8 +532,12 @@
               polymorphicType = require("./model/CephradosModify");
             }
 
-            if('embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+            if('Embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Embeddedceph");
+            }
+
+            if('EmbeddedcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/EmbeddedcephModify");
             }
 
             if('filestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

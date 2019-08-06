@@ -337,6 +337,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.CephradosModify](docs/CephradosModify.md)
  - [Onepanel.Embeddedceph](docs/Embeddedceph.md)
+ - [Onepanel.EmbeddedcephModify](docs/EmbeddedcephModify.md)
  - [Onepanel.Filestore](docs/Filestore.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.GlusterfsModify](docs/GlusterfsModify.md)

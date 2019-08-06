@@ -75,36 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
-      //var instane = new Onepanel.Embeddedceph();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
-      //var instane = new Onepanel.Embeddedceph();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
-      //var instane = new Onepanel.Embeddedceph();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
-      //var instane = new Onepanel.Embeddedceph();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeout (base name: "timeout")', function() {
-      // uncomment below and update the code to test the property timeout
-      //var instane = new Onepanel.Embeddedceph();
-      //expect(instance).to.be();
-    });
-
     it('should have the property storagePathType (base name: "storagePathType")', function() {
       // uncomment below and update the code to test the property storagePathType
       //var instane = new Onepanel.Embeddedceph();

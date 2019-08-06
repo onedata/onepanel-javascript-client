@@ -17,40 +17,42 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/CephPool', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephPoolUsage = factory(root.Onepanel.ApiClient);
+    root.Onepanel.EmbeddedcephModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, CephPool, StorageDetailsModify) {
   'use strict';
 
 
 
 
   /**
-   * The CephPoolUsage model module.
-   * @module model/CephPoolUsage
+   * The EmbeddedcephModify model module.
+   * @module model/EmbeddedcephModify
    * @version 19.02.0-beta1
    */
 
   /**
-   * Constructs a new <code>CephPoolUsage</code>.
-   * Space usage of a single Ceph pool.
-   * @alias module:model/CephPoolUsage
+   * Constructs a new <code>EmbeddedcephModify</code>.
+   * Modifiable fields of a Ceph storage backed by a local pool.
+   * @alias module:model/EmbeddedcephModify
    * @class
-   * @param used {Number} Total size of objects in the pool in bytes.
+   * @extends module:model/StorageDetailsModify
+   * @implements module:model/CephPool
    */
-  var exports = function(used) {
+  var exports = function() {
     var _this = this;
+    StorageDetailsModify.call(_this);
+    CephPool.call(_this);
 
-    _this['used'] = used;
 
   };
 
@@ -58,43 +60,66 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/CephPoolUsage} The value of 'discriminator' field or undefined.
+   * @return {module:model/EmbeddedcephModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>CephPoolUsage</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>EmbeddedcephModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephPoolUsage} obj Optional instance to populate.
-   * @return {module:model/CephPoolUsage} The populated <code>CephPoolUsage</code> instance.
+   * @param {module:model/EmbeddedcephModify} obj Optional instance to populate.
+   * @return {module:model/EmbeddedcephModify} The populated <code>EmbeddedcephModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('used')) {
-        obj['used'] = ApiClient.convertToType(data['used'], 'Number');
+      StorageDetailsModify.constructFromObject(data, obj);
+      CephPool.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('maxAvailable')) {
-        obj['maxAvailable'] = ApiClient.convertToType(data['maxAvailable'], 'Number');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * Total size of objects in the pool in bytes.
-   * @member {Number} used
+   * The type of storage.
+   * @member {String} type
    */
-  exports.prototype['used'] = undefined;
+  exports.prototype['type'] = undefined;
   /**
-   * Projected size in bytes of data which may be written to the pool. See \"Checking a Cluster’s Usage Stats\" in the Ceph documentation.
-   * @member {Number} maxAvailable
+   * Name of the storage and corresponding Ceph pool.
+   * @member {String} name
    */
-  exports.prototype['maxAvailable'] = undefined;
+  exports.prototype['name'] = undefined;
+
+  // Implement CephPool interface:
+  /**
+   * Name of the pool.
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
+
+  /**
+   * Desired number of object replicas in the pool. When below this number the pool still may be used in 'degraded' mode. Defaults to `2` if there are at least 2 OSDs, `1` otherwise.
+   * @member {Number} copiesNumber
+   */
+exports.prototype['copiesNumber'] = undefined;
+
+  /**
+   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is disabled. Must be lower or equal to 'copiesNumber'. Defaults to `min(2, copiesNumber)` if there are at least 2 OSDs, `1` otherwise.
+   * @member {Number} minCopiesNumber
+   */
+exports.prototype['minCopiesNumber'] = undefined;
 
 
 

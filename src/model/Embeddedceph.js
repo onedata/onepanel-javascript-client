@@ -56,11 +56,6 @@
 
 
 
-
-
-
-
-
   };
 
   /**
@@ -94,21 +89,6 @@
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
@@ -135,33 +115,6 @@
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
-   */
-  exports.prototype['lumaEnabled'] = false;
-  /**
-   * URL of external LUMA service.
-   * @member {String} lumaUrl
-   */
-  exports.prototype['lumaUrl'] = undefined;
-  /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
-   * @member {String} lumaApiKey
-   */
-  exports.prototype['lumaApiKey'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType

@@ -47,14 +47,12 @@
    * @class
    * @param status {module:model/TaskStatus.StatusEnum} The operation status.
    * @param steps {Array.<String>} The list of operation steps that have been executed successfully.
-   * @param totalSteps {Number} Total number of steps to be executed.
    */
-  var exports = function(status, steps, totalSteps) {
+  var exports = function(status, steps) {
     var _this = this;
 
     _this['status'] = status;
     _this['steps'] = steps;
-    _this['totalSteps'] = totalSteps;
 
 
 
@@ -89,9 +87,6 @@
       if (data.hasOwnProperty('steps')) {
         obj['steps'] = ApiClient.convertToType(data['steps'], ['String']);
       }
-      if (data.hasOwnProperty('totalSteps')) {
-        obj['totalSteps'] = ApiClient.convertToType(data['totalSteps'], 'Number');
-      }
       if (data.hasOwnProperty('error')) {
         obj['error'] = ApiClient.convertToType(data['error'], 'String');
       }
@@ -121,11 +116,6 @@
    * @member {Array.<String>} steps
    */
   exports.prototype['steps'] = undefined;
-  /**
-   * Total number of steps to be executed.
-   * @member {Number} totalSteps
-   */
-  exports.prototype['totalSteps'] = undefined;
   /**
    * The name of an error type.
    * @member {String} error

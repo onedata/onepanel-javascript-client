@@ -42,14 +42,14 @@
 
   /**
    * Constructs a new <code>OpConfiguration</code>.
-   * Public Oneprovider configuration details.
+   * Public Oneprovider configuration details
    * @alias module:model/OpConfiguration
    * @class
    * @extends module:model/Configuration
    * @param clusterId {String} The Id of cluster record for this cluster. `null` if the cluster is not registered.
-   * @param version {String} Version of this Onepanel.
-   * @param build {String} Build number of this Onepanel.
-   * @param deployed {Boolean} True when cluster deployment is finished.
+   * @param version {String} Version of this Onepanel
+   * @param build {String} Build number of this Onepanel
+   * @param deployed {Boolean} True when cluster deployment is finished
    * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param providerId {String} This cluster's Oneprovider Id. `null` if the Oneprovider is not registered or Oneprovider worker is down. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 

@@ -547,7 +547,7 @@ This endpoint does not need any parameter.
 
 Get zone cluster nodes IPs
 
-Returns IPs of nodes in zone cluster.
+Returns IPs of nodes in zone cluster
 
 ### Example
 ```javascript

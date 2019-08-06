@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>OnezoneUserCreateRequest</code>.
-   * The new Onezone user account details.
+   * The new Onezone user account details
    * @alias module:model/OnezoneUserCreateRequest
    * @class
    * @param username {String} 

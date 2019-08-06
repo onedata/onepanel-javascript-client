@@ -414,7 +414,7 @@
 
     /**
      * Get zone cluster nodes IPs
-     * Returns IPs of nodes in zone cluster.
+     * Returns IPs of nodes in zone cluster
      * @param {module:api/OnezoneApi~getZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterIps}
      */

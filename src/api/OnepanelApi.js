@@ -210,8 +210,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = ClusterDetails;
 
       return this.apiClient.callApi(
@@ -366,8 +366,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = Ids;
 
       return this.apiClient.callApi(
@@ -561,8 +561,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = EmergencyPassphraseStatus;
 
       return this.apiClient.callApi(
@@ -685,8 +685,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = RemoteProviderDetails;
 
       return this.apiClient.callApi(

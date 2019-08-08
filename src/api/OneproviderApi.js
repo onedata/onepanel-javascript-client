@@ -965,8 +965,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json', 'application/x-yaml'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = CephGlobalParams;
 
       return this.apiClient.callApi(

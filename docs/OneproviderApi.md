@@ -1396,8 +1396,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-yaml
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getCephPool"></a>
 # **getCephPool**

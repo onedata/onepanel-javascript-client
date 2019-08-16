@@ -90,7 +90,7 @@
    */
   exports.prototype['host'] = undefined;
   /**
-   * Manager identifier. Be default the hostname is used.
+   * Manager identifier. By default the hostname is used.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;

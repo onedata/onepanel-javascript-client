@@ -2947,7 +2947,7 @@ Name | Type | Description  | Notes
 
 <a name="getStorageDetails"></a>
 # **getStorageDetails**
-> StorageDetails getStorageDetails(id)
+> StorageGetDetails getStorageDetails(id)
 
 Get storage details
 
@@ -2998,7 +2998,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StorageDetails**](StorageDetails.md)
+[**StorageGetDetails**](StorageGetDetails.md)
 
 ### Authorization
 
@@ -3453,7 +3453,7 @@ Name | Type | Description  | Notes
 
 <a name="modifyStorage"></a>
 # **modifyStorage**
-> StorageDetails modifyStorage(id, storageModifyRequest)
+> StorageModifyDetails modifyStorage(id, storageModifyRequest)
 
 Modify storage config
 
@@ -3507,7 +3507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StorageDetails**](StorageDetails.md)
+[**StorageModifyDetails**](StorageModifyDetails.md)
 
 ### Authorization
 

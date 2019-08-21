@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Posix = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Posix = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageGetDetails) {
   'use strict';
 
 
@@ -45,13 +45,13 @@
    * The POSIX storage configuration.
    * @alias module:model/Posix
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageGetDetails
    * @param type {module:model/Posix.TypeEnum} The type of storage.
    * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    */
   var exports = function(type, mountPoint) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageGetDetails.call(_this);
     _this['type'] = type;
     _this['mountPoint'] = mountPoint;
 
@@ -77,7 +77,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageGetDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -91,7 +91,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

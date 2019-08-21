@@ -17,68 +17,119 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.StorageModifyDetails = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The StorageModifyRequest model module.
-   * @module model/StorageModifyRequest
+   * The StorageModifyDetails model module.
+   * @module model/StorageModifyDetails
    * @version 19.02.0-beta1
    */
 
   /**
-   * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value. If changing the storage name, use old name as dictionary key and provide new name among the changed params.
-   * @alias module:model/StorageModifyRequest
+   * Constructs a new <code>StorageModifyDetails</code>.
+   * The part of storage configuration which can be modified after storage creation.
+   * @alias module:model/StorageModifyDetails
    * @class
-   * @extends Object
    */
   var exports = function() {
     var _this = this;
 
-    return _this;
+
+
+
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/StorageModifyDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    ;
+    return 'type';
   };
 
   /**
-   * Constructs a <code>StorageModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StorageModifyDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageModifyRequest} obj Optional instance to populate.
-   * @return {module:model/StorageModifyRequest} The populated <code>StorageModifyRequest</code> instance.
+   * @param {module:model/StorageModifyDetails} obj Optional instance to populate.
+   * @return {module:model/StorageModifyDetails} The populated <code>StorageModifyDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'StorageModifyDetails');
 
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('timeout')) {
+        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
+      if (data.hasOwnProperty('lumaEnabled')) {
+        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('lumaUrl')) {
+        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
+      }
+      if (data.hasOwnProperty('lumaApiKey')) {
+        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      }
     }
     return obj;
   }
 
+  /**
+   * The name of storage.
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+  exports.prototype['timeout'] = undefined;
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   */
+  exports.prototype['readonly'] = undefined;
+  /**
+   * If true LUMA and reverse LUMA services will be enabled.
+   * @member {Boolean} lumaEnabled
+   */
+  exports.prototype['lumaEnabled'] = undefined;
+  /**
+   * URL of external LUMA service.
+   * @member {String} lumaUrl
+   */
+  exports.prototype['lumaUrl'] = undefined;
+  /**
+   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * @member {String} lumaApiKey
+   */
+  exports.prototype['lumaApiKey'] = undefined;
 
 
 

@@ -17,68 +17,109 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/CephPool', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.LocalcephModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, CephPool, StorageModifyDetails) {
   'use strict';
 
 
 
 
   /**
-   * The StorageModifyRequest model module.
-   * @module model/StorageModifyRequest
+   * The LocalcephModify model module.
+   * @module model/LocalcephModify
    * @version 19.02.0-beta1
    */
 
   /**
-   * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value. If changing the storage name, use old name as dictionary key and provide new name among the changed params.
-   * @alias module:model/StorageModifyRequest
+   * Constructs a new <code>LocalcephModify</code>.
+   * Modifiable fields of a Ceph storage backed by a local pool.
+   * @alias module:model/LocalcephModify
    * @class
-   * @extends Object
+   * @extends module:model/StorageModifyDetails
+   * @implements module:model/CephPool
    */
   var exports = function() {
     var _this = this;
+    StorageModifyDetails.call(_this);
+    CephPool.call(_this);
 
-    return _this;
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageModifyRequest} The value of 'discriminator' field or undefined.
+   * @return {module:model/LocalcephModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>StorageModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>LocalcephModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageModifyRequest} obj Optional instance to populate.
-   * @return {module:model/StorageModifyRequest} The populated <code>StorageModifyRequest</code> instance.
+   * @param {module:model/LocalcephModify} obj Optional instance to populate.
+   * @return {module:model/LocalcephModify} The populated <code>LocalcephModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'StorageModifyDetails');
-
+      StorageModifyDetails.constructFromObject(data, obj);
+      CephPool.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageModifyDetails.prototype);
+  exports.prototype.constructor = exports;
+
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * Name of the storage and corresponding Ceph pool.
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+
+  // Implement CephPool interface:
+  /**
+   * Name of the pool.
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
+
+  /**
+   * Desired number of object replicas in the pool. When below this number the pool still may be used in 'degraded' mode. Defaults to `2` if there are at least 2 OSDs, `1` otherwise.
+   * @member {Number} copiesNumber
+   */
+exports.prototype['copiesNumber'] = undefined;
+
+  /**
+   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is disabled. Must be lower or equal to 'copiesNumber'. Defaults to `min(2, copiesNumber)` if there are at least 2 OSDs, `1` otherwise.
+   * @member {Number} minCopiesNumber
+   */
+exports.prototype['minCopiesNumber'] = undefined;
 
 
 

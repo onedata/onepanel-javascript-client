@@ -16,73 +16,83 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.StorageModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.StorageCreateDetails();
+  });
 
-
-  /**
-   * The StorageModifyRequest model module.
-   * @module model/StorageModifyRequest
-   * @version 19.02.0-beta1
-   */
-
-  /**
-   * Constructs a new <code>StorageModifyRequest</code>.
-   * The storage parameters to be changed. Should be a single-valued dictionary with storage name as the key and parameters to be changed as the value. If changing the storage name, use old name as dictionary key and provide new name among the changed params.
-   * @alias module:model/StorageModifyRequest
-   * @class
-   * @extends Object
-   */
-  var exports = function() {
-    var _this = this;
-
-    return _this;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/StorageModifyRequest} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>StorageModifyRequest</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageModifyRequest} obj Optional instance to populate.
-   * @return {module:model/StorageModifyRequest} The populated <code>StorageModifyRequest</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'StorageModifyDetails');
-
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('StorageCreateDetails', function() {
+    it('should create an instance of StorageCreateDetails', function() {
+      // uncomment below and update the code to test StorageCreateDetails
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be.a(Onepanel.StorageCreateDetails);
+    });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
+      // uncomment below and update the code to test the property lumaEnabled
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
+      // uncomment below and update the code to test the property lumaUrl
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.StorageCreateDetails();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

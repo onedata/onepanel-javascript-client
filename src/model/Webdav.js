@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageGetDetails) {
   'use strict';
 
 
@@ -45,13 +45,13 @@
    * The WebDAV storage configuration.
    * @alias module:model/Webdav
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageGetDetails
    * @param type {module:model/Webdav.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageGetDetails.call(_this);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
 
@@ -89,7 +89,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageGetDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -139,7 +139,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

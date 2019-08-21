@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageGetDetails) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * The Ceph storage configuration (uses libradosstriper).
    * @alias module:model/Ceph
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageGetDetails
    * @param type {module:model/Ceph.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
@@ -55,7 +55,7 @@
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageGetDetails.call(_this);
     _this['type'] = type;
     _this['username'] = username;
     _this['key'] = key;
@@ -86,7 +86,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageGetDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -115,7 +115,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

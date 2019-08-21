@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property ceph (base name: "ceph")', function() {
+      // uncomment below and update the code to test the property ceph
+      //var instane = new Onepanel.ProviderConfigurationDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageGetDetails) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * The Simple Storage Service configuration.
    * @alias module:model/S3
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageGetDetails
    * @param type {module:model/S3.TypeEnum} The type of storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
@@ -54,7 +54,7 @@
    */
   var exports = function(type, hostname, bucketName, accessKey, secretKey) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageGetDetails.call(_this);
     _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
@@ -89,7 +89,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageGetDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -130,7 +130,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**

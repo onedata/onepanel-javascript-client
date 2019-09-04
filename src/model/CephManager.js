@@ -85,12 +85,12 @@
   }
 
   /**
-   * Host on which given Manager should be deployed.
+   * Host on which given manager should be deployed.
    * @member {String} host
    */
   exports.prototype['host'] = undefined;
   /**
-   * Manager identifier. By default the hostname is used.
+   * Manager identifier. Equal to the hostname.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;

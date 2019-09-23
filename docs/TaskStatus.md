@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | The operation status. | 
 **steps** | **[String]** | The list of operation steps that have been executed successfully. | 
+**totalSteps** | **Number** | Total number of steps to be executed. | 
 **error** | **String** | The name of an error type. | [optional] 
 **description** | **String** | The detailed error description. | [optional] 
 **module** | **String** | The name of a module containing function that returned error. | [optional] 

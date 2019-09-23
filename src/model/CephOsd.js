@@ -46,13 +46,14 @@
    * @alias module:model/CephOsd
    * @class
    * @param host {String} Host on which given OSD should be deployed. It must be the full host name and not an \"alias\" as used in Oneprovider cluster deployment.
-   * @param id {Number} Id of the OSD. OSD Ids should be continous integers starting at 0.
+   * @param id {Number} Id of the OSD.
    */
   var exports = function(host, id) {
     var _this = this;
 
     _this['host'] = host;
     _this['id'] = id;
+
   };
 
   /**
@@ -82,6 +83,9 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'Number');
       }
+      if (data.hasOwnProperty('uuid')) {
+        obj['uuid'] = ApiClient.convertToType(data['uuid'], 'String');
+      }
     }
     return obj;
   }
@@ -92,10 +96,15 @@
    */
   exports.prototype['host'] = undefined;
   /**
-   * Id of the OSD. OSD Ids should be continous integers starting at 0.
+   * Id of the OSD.
    * @member {Number} id
    */
   exports.prototype['id'] = undefined;
+  /**
+   * UUID of the OSD daemon. If provided, will be used to skip deployment of existing OSDs (identified by the UUID). Must be a 32-character hex string. By default will be generated automatically.
+   * @member {String} uuid
+   */
+  exports.prototype['uuid'] = undefined;
 
 
 

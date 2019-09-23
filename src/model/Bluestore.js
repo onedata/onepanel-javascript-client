@@ -47,8 +47,8 @@
    * @class
    * @extends module:model/CephOsd
    * @param host {String} Host on which given OSD should be deployed. It must be the full host name and not an \"alias\" as used in Oneprovider cluster deployment.
-   * @param id {Number} Id of the OSD. OSD Ids should be continous integers starting at 0.
-   * @param type {module:model/Bluestore.TypeEnum} Type of the OSD. Available types are: - filestore - stores all files on an existing filesystem - bluestore - formats a raw block device to store the data 
+   * @param id {Number} Id of the OSD.
+   * @param type {module:model/Bluestore.TypeEnum} Type of the OSD. Available types are: - bluestore - formats a raw block device to store the data - loopdevice - stores data in a file mounted as loop device 
    * @param device {String} Specifies block device to be ERASED and FORMATTED for use as the main data store of this OSD. 
    */
   var exports = function(host, id, type, device) {
@@ -101,7 +101,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the OSD. Available types are: - filestore - stores all files on an existing filesystem - bluestore - formats a raw block device to store the data 
+   * Type of the OSD. Available types are: - bluestore - formats a raw block device to store the data - loopdevice - stores data in a file mounted as loop device 
    * @member {module:model/Bluestore.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

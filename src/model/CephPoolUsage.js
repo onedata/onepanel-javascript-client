@@ -91,7 +91,7 @@
    */
   exports.prototype['used'] = undefined;
   /**
-   * Projected size in bytes of data which may be written to the poool. See \"Checking a Cluster’s Usage Stats\" in the Ceph documentation.
+   * Projected size in bytes of data which may be written to the pool. See \"Checking a Cluster’s Usage Stats\" in the Ceph documentation.
    * @member {Number} maxAvailable
    */
   exports.prototype['maxAvailable'] = undefined;

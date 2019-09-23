@@ -52,6 +52,7 @@
   var exports = function(host, path, size, mounted) {
     var _this = this;
 
+
     _this['host'] = host;
     _this['path'] = path;
     _this['size'] = size;
@@ -79,6 +80,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
       if (data.hasOwnProperty('host')) {
         obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
@@ -95,6 +99,11 @@
     return obj;
   }
 
+  /**
+   * Device type, as returned by lsblk.
+   * @member {module:model/BlockDevicesBlockDevices.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
   /**
    * Host on which the device is available.
    * @member {String} host
@@ -115,6 +124,23 @@
    */
   exports.prototype['mounted'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "disk"
+     * @const
+     */
+    "disk": "disk",
+    /**
+     * value: "part"
+     * @const
+     */
+    "part": "part"  };
 
 
   return exports;

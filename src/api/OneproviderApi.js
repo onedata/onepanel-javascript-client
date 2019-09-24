@@ -600,7 +600,7 @@
 
     /**
      * Get block devices for Ceph OSD
-     * Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
+     * Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Blockdevice OSD.
      * @param {String} host Host for which block devices should be returned.
      * @param {module:api/OneproviderApi~getBlockDevicesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/BlockDevices}
@@ -1226,45 +1226,6 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/file-popularity/configuration', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getNextOsdId operation.
-     * @callback module:api/OneproviderApi~getNextOsdIdCallback
-     * @param {String} error Error message, if any.
-     * @param {'Number'} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Returns next available OSD Id.
-     * Returns next available OSD Id, considering already used Ids and the recommendation that Ids are continous integers.
-     * @param {module:api/OneproviderApi~getNextOsdIdCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link 'Number'}
-     */
-    this.getNextOsdId = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = 'Number';
-
-      return this.apiClient.callApi(
-        '/provider/ceph/preflight/next_osd_id', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -512,8 +512,8 @@
           if(type.__swaggerDiscriminator() !== undefined) {
             var polymorphicType;
 
-            if('bluestore'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Bluestore");
+            if('blockdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Blockdevice");
             }
 
             if('Ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

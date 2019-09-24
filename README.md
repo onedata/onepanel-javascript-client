@@ -164,7 +164,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getCephStatus**](docs/OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 *Onepanel.OneproviderApi* | [**getCephUsage**](docs/OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 *Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
-*Onepanel.OneproviderApi* | [**getNextOsdId**](docs/OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd_id | Returns next available OSD Id.
 *Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -331,7 +330,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
- - [Onepanel.Bluestore](docs/Bluestore.md)
+ - [Onepanel.Blockdevice](docs/Blockdevice.md)
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.CephCluster](docs/CephCluster.md)
  - [Onepanel.CephModify](docs/CephModify.md)

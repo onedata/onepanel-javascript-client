@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Loopdevice = factory(root.Onepanel.ApiClient, root.Onepanel.CephOsd);
+    root.Onepanel.Blockdevice = factory(root.Onepanel.ApiClient, root.Onepanel.CephOsd);
   }
 }(this, function(ApiClient, CephOsd) {
   'use strict';
@@ -35,46 +35,45 @@
 
 
   /**
-   * The Loopdevice model module.
-   * @module model/Loopdevice
+   * The Blockdevice model module.
+   * @module model/Blockdevice
    * @version 19.02.0-beta1
    */
 
   /**
-   * Constructs a new <code>Loopdevice</code>.
-   * Loopdevice OSD specification. This is a Blockdevice OSD backed by a loopdevice backed by a file in given directory.
-   * @alias module:model/Loopdevice
+   * Constructs a new <code>Blockdevice</code>.
+   * Blockdevice OSD specification. Blockdevice means OSD is backed by a whole block device formatted to its needs.
+   * @alias module:model/Blockdevice
    * @class
    * @extends module:model/CephOsd
    * @param host {String} Host on which given OSD should be deployed. It must be the full host name and not an \"alias\" as used in Oneprovider cluster deployment.
    * @param id {Number} Id of the OSD.
-   * @param type {module:model/Loopdevice.TypeEnum} Type of the OSD. Available types are: - blockdevice - formats a raw block device to store the data - loopdevice - stores data in a file mounted as loop device 
-   * @param size {Number} Size in bytes of the loopdevice file.
+   * @param type {module:model/Blockdevice.TypeEnum} Type of the OSD. Available types are: - blockdevice - formats a raw block device to store the data - loopdevice - stores data in a file mounted as loop device 
+   * @param device {String} Specifies block device to be ERASED and FORMATTED for use as the main data store of this OSD. 
    */
-  var exports = function(host, id, type, size) {
+  var exports = function(host, id, type, device) {
     var _this = this;
     CephOsd.call(_this, host, id);
     _this['type'] = type;
-
-    _this['size'] = size;
+    _this['device'] = device;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Loopdevice} The value of 'discriminator' field or undefined.
+   * @return {module:model/Blockdevice} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Loopdevice</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Blockdevice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Loopdevice} obj Optional instance to populate.
-   * @return {module:model/Loopdevice} The populated <code>Loopdevice</code> instance.
+   * @param {module:model/Blockdevice} obj Optional instance to populate.
+   * @return {module:model/Blockdevice} The populated <code>Blockdevice</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -83,11 +82,8 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('path')) {
-        obj['path'] = ApiClient.convertToType(data['path'], 'String');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      if (data.hasOwnProperty('device')) {
+        obj['device'] = ApiClient.convertToType(data['device'], 'String');
       }
     }
     return obj;
@@ -98,19 +94,14 @@
 
   /**
    * Type of the OSD. Available types are: - blockdevice - formats a raw block device to store the data - loopdevice - stores data in a file mounted as loop device 
-   * @member {module:model/Loopdevice.TypeEnum} type
+   * @member {module:model/Blockdevice.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * Path of the loopdevice file to be created. If omitted, default path will be generated according to following template: /var/lib/ceph/loopdevices/osd-{uuid}.loop 
-   * @member {String} path
+   * Specifies block device to be ERASED and FORMATTED for use as the main data store of this OSD. 
+   * @member {String} device
    */
-  exports.prototype['path'] = undefined;
-  /**
-   * Size in bytes of the loopdevice file.
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
+  exports.prototype['device'] = undefined;
 
 
   /**
@@ -120,10 +111,10 @@
    */
   exports.TypeEnum = {
     /**
-     * value: "loopdevice"
+     * value: "blockdevice"
      * @const
      */
-    "loopdevice": "loopdevice"  };
+    "blockdevice": "blockdevice"  };
 
 
   return exports;

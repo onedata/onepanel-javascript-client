@@ -321,16 +321,6 @@
         done();
       });
     });
-    describe('getNextOsdId', function() {
-      it('should call getNextOsdId successfully', function(done) {
-        //uncomment below and update the code to test getNextOsdId
-        //instance.getNextOsdId(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getOnezoneInfo', function() {
       it('should call getOnezoneInfo successfully', function(done) {
         //uncomment below and update the code to test getOnezoneInfo

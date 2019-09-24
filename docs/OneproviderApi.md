@@ -31,7 +31,6 @@ Method | HTTP request | Description
 [**getCephStatus**](OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 [**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 [**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
-[**getNextOsdId**](OneproviderApi.md#getNextOsdId) | **GET** /provider/ceph/preflight/next_osd_id | Returns next available OSD Id.
 [**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -853,7 +852,7 @@ null (empty response body)
 
 Get block devices for Ceph OSD
 
-Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Bluestore OSD.
+Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Blockdevice OSD.
 
 ### Example
 ```javascript
@@ -1755,64 +1754,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getNextOsdId"></a>
-# **getNextOsdId**
-> &#39;Number&#39; getNextOsdId()
-
-Returns next available OSD Id.
-
-Returns next available OSD Id, considering already used Ids and the recommendation that Ids are continous integers.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getNextOsdId(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**&#39;Number&#39;**
 
 ### Authorization
 

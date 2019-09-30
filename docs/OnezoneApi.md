@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 [**changeUserPassword**](OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
-[**getGuiMessage**](OnezoneApi.md#getGuiMessage) | **GET** /zone/gui_message/{id} | Get settings of a Onezone GUI message.
+[**getGuiMessage**](OnezoneApi.md#getGuiMessage) | **GET** /zone/gui_messages/{id} | Get settings of a Onezone GUI message.
 [**getOnezoneUser**](OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
 [**getOnezoneUsers**](OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
 [**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 [**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
-[**modifyGuiMessage**](OnezoneApi.md#modifyGuiMessage) | **PATCH** /zone/gui_message/{id} | Modify settings of a Onezone GUI message.
+[**modifyGuiMessage**](OnezoneApi.md#modifyGuiMessage) | **PATCH** /zone/gui_messages/{id} | Modify settings of a Onezone GUI message.
 [**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 [**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases

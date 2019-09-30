@@ -359,7 +359,7 @@
       var returnType = GuiMessage;
 
       return this.apiClient.callApi(
-        '/zone/gui_message/{id}', 'GET',
+        '/zone/gui_messages/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -905,7 +905,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/zone/gui_message/{id}', 'PATCH',
+        '/zone/gui_messages/{id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -330,7 +330,7 @@
     /**
      * Get settings of a Onezone GUI message.
      * Returns settings of a message displayed in Onezone GUI.
-     * @param {module:model/String} id Possible values are:   - cookie_consent - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
      * @param {module:api/OnezoneApi~getGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/GuiMessage}
      */
@@ -871,7 +871,7 @@
     /**
      * Modify settings of a Onezone GUI message.
      * Enables, disables or modifies a message displayed in Onezone GUI.
-     * @param {module:model/String} id Possible values are:   - cookie_consent - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
      * @param {module:model/GuiMessage} messageChange 
      * @param {module:api/OnezoneApi~modifyGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
      */

@@ -111,6 +111,16 @@
         done();
       });
     });
+    describe('getGuiMessage', function() {
+      it('should call getGuiMessage successfully', function(done) {
+        //uncomment below and update the code to test getGuiMessage
+        //instance.getGuiMessage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getOnezoneUser', function() {
       it('should call getOnezoneUser successfully', function(done) {
         //uncomment below and update the code to test getOnezoneUser
@@ -225,6 +235,16 @@
       it('should call getZoneWorkersStatus successfully', function(done) {
         //uncomment below and update the code to test getZoneWorkersStatus
         //instance.getZoneWorkersStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyGuiMessage', function() {
+      it('should call modifyGuiMessage successfully', function(done) {
+        //uncomment below and update the code to test modifyGuiMessage
+        //instance.modifyGuiMessage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

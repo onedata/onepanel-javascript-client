@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>GuiMessage</code>.
-   * Settings of a message displayed in Onezone GUIj
+   * Settings of a message displayed in Onezone GUI.
    * @alias module:model/GuiMessage
    * @class
    */

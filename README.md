@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**addZoneWorkers**](docs/OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 *Onepanel.OnezoneApi* | [**changeUserPassword**](docs/OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
 *Onepanel.OnezoneApi* | [**configureZone**](docs/OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+*Onepanel.OnezoneApi* | [**getGuiMessage**](docs/OnezoneApi.md#getGuiMessage) | **GET** /zone/gui_messages/{id} | Get settings of a Onezone GUI message.
 *Onepanel.OnezoneApi* | [**getOnezoneUser**](docs/OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
 *Onepanel.OnezoneApi* | [**getOnezoneUsers**](docs/OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
 *Onepanel.OnezoneApi* | [**getZoneClusterIps**](docs/OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
@@ -202,6 +203,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneApi* | [**getZonePolicies**](docs/OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 *Onepanel.OnezoneApi* | [**getZoneWorkerStatus**](docs/OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 *Onepanel.OnezoneApi* | [**getZoneWorkersStatus**](docs/OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+*Onepanel.OnezoneApi* | [**modifyGuiMessage**](docs/OnezoneApi.md#modifyGuiMessage) | **PATCH** /zone/gui_messages/{id} | Modify settings of a Onezone GUI message.
 *Onepanel.OnezoneApi* | [**modifyZoneClusterIps**](docs/OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 *Onepanel.OnezoneApi* | [**modifyZonePolicies**](docs/OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 *Onepanel.OnezoneApi* | [**startStopZoneDatabases**](docs/OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
@@ -230,6 +232,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.EmergencyPassphraseChangeRequest](docs/EmergencyPassphraseChangeRequest.md)
  - [Onepanel.EmergencyPassphraseStatus](docs/EmergencyPassphraseStatus.md)
  - [Onepanel.Error](docs/Error.md)
+ - [Onepanel.GuiMessage](docs/GuiMessage.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
  - [Onepanel.Ids](docs/Ids.md)

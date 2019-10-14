@@ -1,8 +1,8 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in one of `X-Auth-Token`, `Macaroon` or `Authorization: Bearer` headers. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H 'X-Auth-Token: $TOKEN' https://$HOST:9443/api/v3/onepanel/... curl -H 'Macaroon: $TOKEN' https://$HOST:9443/api/v3/onepanel/... curl -H 'Authorization: Bearer $TOKEN' https://$HOST:9443/api/v3/onepanel/... ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
- * OpenAPI spec version: 18.02.1
+ * OpenAPI spec version: 19.02.0-rc1
  * Contact: info@onedata.org
  *
  * NOTE: This class is auto generated by the swagger code generator program.
@@ -17,24 +17,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest, TransfersMock) {
   'use strict';
 
   /**
    * Oneprovider service.
    * @module api/OneproviderApi
-   * @version 18.02.1
+   * @version 19.02.0-rc1
    */
 
   /**
@@ -80,7 +80,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -124,7 +124,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -168,7 +168,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -212,7 +212,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -256,7 +256,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -278,7 +278,7 @@
 
     /**
      * Configure file-popularity mechanism in the space.
-     * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view index which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
+     * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space.
      * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
      * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
@@ -307,7 +307,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -351,7 +351,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -402,7 +402,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = null;
@@ -448,7 +448,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceFilePopularityConfiguration;
@@ -491,7 +491,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = OnezoneInfo;
@@ -530,7 +530,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderDetails;
@@ -569,7 +569,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ClusterIps;
@@ -608,7 +608,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderConfigurationDetails;
@@ -654,7 +654,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -693,7 +693,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -739,7 +739,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -778,7 +778,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -816,7 +816,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['text/xml'];
       var returnType = null;
@@ -869,7 +869,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReport;
@@ -923,7 +923,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningReports;
@@ -969,7 +969,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningStatus;
@@ -1021,7 +1021,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceSyncStats;
@@ -1060,7 +1060,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderSpaces;
@@ -1106,7 +1106,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatusHost;
@@ -1145,7 +1145,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ServiceStatus;
@@ -1191,7 +1191,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceAutoCleaningConfiguration;
@@ -1237,7 +1237,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = SpaceDetails;
@@ -1283,7 +1283,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = StorageDetails;
@@ -1322,13 +1322,52 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = ProviderStorages;
 
       return this.apiClient.callApi(
         '/provider/storages', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getTransfersMock operation.
+     * @callback module:api/OneproviderApi~getTransfersMockCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/TransfersMock} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get transfers mock status
+     * Returns information whether transfers mocking is enabled. 
+     * @param {module:api/OneproviderApi~getTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TransfersMock}
+     */
+    this.getTransfersMock = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = TransfersMock;
+
+      return this.apiClient.callApi(
+        '/provider/debug/transfers_mock', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1367,7 +1406,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1411,7 +1450,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1455,7 +1494,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
@@ -1507,7 +1546,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = SpaceId;
@@ -1559,13 +1598,57 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyTransfersMock operation.
+     * @callback module:api/OneproviderApi~modifyTransfersMockCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify transfers mock
+     * Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging feature disrupting normal Oneprovider operation. 
+     * @param {module:model/TransfersMock} transfersMock New value for the mock setting.
+     * @param {module:api/OneproviderApi~modifyTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyTransfersMock = function(transfersMock, callback) {
+      var postBody = transfersMock;
+
+      // verify the required parameter 'transfersMock' is set
+      if (transfersMock === undefined || transfersMock === null) {
+        throw new Error("Missing the required parameter 'transfersMock' when calling modifyTransfersMock");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/debug/transfers_mock', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1597,7 +1680,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1642,7 +1725,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -1687,7 +1770,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1736,7 +1819,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1778,7 +1861,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1827,7 +1910,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1869,7 +1952,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1918,7 +2001,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -1960,7 +2043,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
@@ -2004,7 +2087,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -2049,7 +2132,7 @@
       var formParams = {
       };
 
-      var authNames = ['basic'];
+      var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;

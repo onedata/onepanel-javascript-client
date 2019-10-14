@@ -16,89 +16,79 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.TransfersMock = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.CephradosModify();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The TransfersMock model module.
+   * @module model/TransfersMock
+   * @version 19.02.0-rc1
+   */
+
+  /**
+   * Constructs a new <code>TransfersMock</code>.
+   * State of transfers mock.
+   * @alias module:model/TransfersMock
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/TransfersMock} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>TransfersMock</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/TransfersMock} obj Optional instance to populate.
+   * @return {module:model/TransfersMock} The populated <code>TransfersMock</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('transfersMock')) {
+        obj['transfersMock'] = ApiClient.convertToType(data['transfersMock'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * If true, transfers are marked as successful without actually transmiting any data.
+   * @member {Boolean} transfersMock
+   */
+  exports.prototype['transfersMock'] = undefined;
 
-  describe('CephradosModify', function() {
-    it('should create an instance of CephradosModify', function() {
-      // uncomment below and update the code to test CephradosModify
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be.a(Onepanel.CephradosModify);
-    });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property key (base name: "key")', function() {
-      // uncomment below and update the code to test the property key
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
-      // uncomment below and update the code to test the property monitorHostname
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property clusterName (base name: "clusterName")', function() {
-      // uncomment below and update the code to test the property clusterName
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property poolName (base name: "poolName")', function() {
-      // uncomment below and update the code to test the property poolName
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.CephradosModify();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

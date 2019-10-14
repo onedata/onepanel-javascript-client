@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ZoneConfigurationDetailsOnezone();
+    instance = new Onepanel.GuiMessage();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,22 @@
       object[property] = value;
   }
 
-  describe('ZoneConfigurationDetailsOnezone', function() {
-    it('should create an instance of ZoneConfigurationDetailsOnezone', function() {
-      // uncomment below and update the code to test ZoneConfigurationDetailsOnezone
-      //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
-      //expect(instance).to.be.a(Onepanel.ZoneConfigurationDetailsOnezone);
+  describe('GuiMessage', function() {
+    it('should create an instance of GuiMessage', function() {
+      // uncomment below and update the code to test GuiMessage
+      //var instane = new Onepanel.GuiMessage();
+      //expect(instance).to.be.a(Onepanel.GuiMessage);
     });
 
-    it('should have the property domainName (base name: "domainName")', function() {
-      // uncomment below and update the code to test the property domainName
-      //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
+    it('should have the property enabled (base name: "enabled")', function() {
+      // uncomment below and update the code to test the property enabled
+      //var instane = new Onepanel.GuiMessage();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property configured (base name: "configured")', function() {
-      // uncomment below and update the code to test the property configured
-      //var instane = new Onepanel.ZoneConfigurationDetailsOnezone();
+    it('should have the property body (base name: "body")', function() {
+      // uncomment below and update the code to test the property body
+      //var instane = new Onepanel.GuiMessage();
       //expect(instance).to.be();
     });
 

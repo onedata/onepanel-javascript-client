@@ -102,7 +102,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Path of the loopdevice file to be created. If omitted, default path will be generated according to following template: /var/lib/ceph/loopdevices/osd-{uuid}.loop 
+   * Path of the loopdevice file to be created. If omitted, default path will be generated according to following template: /volumes/persistence/ceph-loopdevices/osd-{uuid}.loop 
    * @member {String} path
    */
   exports.prototype['path'] = undefined;

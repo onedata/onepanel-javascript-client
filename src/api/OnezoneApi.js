@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/GuiMessage', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/GuiMessage'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.GuiMessage, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
   }
-}(this, function(ApiClient, ClusterIps, Error, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
+}(this, function(ApiClient, ClusterIps, Error, GuiMessage, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
   'use strict';
 
   /**
@@ -314,6 +314,52 @@
 
       return this.apiClient.callApi(
         '/zone/configuration', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getGuiMessage operation.
+     * @callback module:api/OnezoneApi~getGuiMessageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GuiMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get settings of a Onezone GUI message.
+     * Returns settings of a message displayed in Onezone GUI.
+     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+     * @param {module:api/OnezoneApi~getGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/GuiMessage}
+     */
+    this.getGuiMessage = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getGuiMessage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = GuiMessage;
+
+      return this.apiClient.callApi(
+        '/zone/gui_messages/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -809,6 +855,57 @@
 
       return this.apiClient.callApi(
         '/zone/workers', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyGuiMessage operation.
+     * @callback module:api/OnezoneApi~modifyGuiMessageCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify settings of a Onezone GUI message.
+     * Enables, disables or modifies a message displayed in Onezone GUI.
+     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+     * @param {module:model/GuiMessage} messageChange 
+     * @param {module:api/OnezoneApi~modifyGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyGuiMessage = function(id, messageChange, callback) {
+      var postBody = messageChange;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling modifyGuiMessage");
+      }
+
+      // verify the required parameter 'messageChange' is set
+      if (messageChange === undefined || messageChange === null) {
+        throw new Error("Missing the required parameter 'messageChange' when calling modifyGuiMessage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/zone/gui_messages/{id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

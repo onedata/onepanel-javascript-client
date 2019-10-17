@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
 [**changeUserPassword**](OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
 [**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
+[**getGuiMessage**](OnezoneApi.md#getGuiMessage) | **GET** /zone/gui_messages/{id} | Get settings of a Onezone GUI message.
 [**getOnezoneUser**](OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
 [**getOnezoneUsers**](OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
 [**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
@@ -22,6 +23,7 @@ Method | HTTP request | Description
 [**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
 [**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
 [**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
+[**modifyGuiMessage**](OnezoneApi.md#modifyGuiMessage) | **PATCH** /zone/gui_messages/{id} | Modify settings of a Onezone GUI message.
 [**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
 [**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
 [**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
@@ -418,6 +420,70 @@ null (empty response body)
 
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
+
+<a name="getGuiMessage"></a>
+# **getGuiMessage**
+> GuiMessage getGuiMessage(id)
+
+Get settings of a Onezone GUI message.
+
+Returns settings of a message displayed in Onezone GUI.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getGuiMessage(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
+
+### Return type
+
+[**GuiMessage**](GuiMessage.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getOnezoneUser"></a>
 # **getOnezoneUser**
@@ -1138,6 +1204,73 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="modifyGuiMessage"></a>
+# **modifyGuiMessage**
+> modifyGuiMessage(id, messageChange)
+
+Modify settings of a Onezone GUI message.
+
+Enables, disables or modifies a message displayed in Onezone GUI.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnezoneApi();
+
+var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+
+var messageChange = new Onepanel.GuiMessage(); // GuiMessage | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.modifyGuiMessage(id, messageChange, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
+ **messageChange** | [**GuiMessage**](GuiMessage.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="modifyZoneClusterIps"></a>
 # **modifyZoneClusterIps**

@@ -164,7 +164,7 @@
    */
   exports.prototype['lumaApiKey'] = undefined;
   /**
-   * Map with key-value pairs used for describing QoS requirements.
+   * Map with key-value pairs used for describing storage QoS parameters.
    * @member {Object.<String, String>} qosParameters
    */
   exports.prototype['qosParameters'] = undefined;

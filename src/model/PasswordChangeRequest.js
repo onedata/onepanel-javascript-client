@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>PasswordChangeRequest</code>.
-   * Request to change user&#39;s password
+   * Request to change user&#39;s password.
    * @alias module:model/PasswordChangeRequest
    * @class
    * @param newPassword {String} The new user password.

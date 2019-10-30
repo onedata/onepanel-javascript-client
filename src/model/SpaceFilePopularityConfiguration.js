@@ -97,7 +97,7 @@
   }
 
   /**
-   * If true, collecting file-popularity mechanism in the space is enabled
+   * If true, collecting file-popularity mechanism in the space is enabled.
    * @member {Boolean} enabled
    */
   exports.prototype['enabled'] = undefined;

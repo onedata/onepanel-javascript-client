@@ -16,124 +16,83 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.StorageDetailsModify = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.StorageModifyDetails();
+  });
 
-
-  /**
-   * The StorageDetailsModify model module.
-   * @module model/StorageDetailsModify
-   * @version 19.02.0-rc1
-   */
-
-  /**
-   * Constructs a new <code>StorageDetailsModify</code>.
-   * The part of storage configuration which can be modified after storage creation.
-   * @alias module:model/StorageDetailsModify
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/StorageDetailsModify} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    return 'type';
-  };
-
-  /**
-   * Constructs a <code>StorageDetailsModify</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetailsModify} obj Optional instance to populate.
-   * @return {module:model/StorageDetailsModify} The populated <code>StorageDetailsModify</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   */
-  exports.prototype['readonly'] = undefined;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   */
-  exports.prototype['lumaEnabled'] = undefined;
-  /**
-   * URL of external LUMA service
-   * @member {String} lumaUrl
-   */
-  exports.prototype['lumaUrl'] = undefined;
-  /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
-   * @member {String} lumaApiKey
-   */
-  exports.prototype['lumaApiKey'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('StorageModifyDetails', function() {
+    it('should create an instance of StorageModifyDetails', function() {
+      // uncomment below and update the code to test StorageModifyDetails
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be.a(Onepanel.StorageModifyDetails);
+    });
 
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property timeout (base name: "timeout")', function() {
+      // uncomment below and update the code to test the property timeout
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readonly (base name: "readonly")', function() {
+      // uncomment below and update the code to test the property readonly
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
+      // uncomment below and update the code to test the property lumaEnabled
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
+      // uncomment below and update the code to test the property lumaUrl
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
+      // uncomment below and update the code to test the property lumaApiKey
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

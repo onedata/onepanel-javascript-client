@@ -45,8 +45,8 @@
    * Details of a cluster.
    * @alias module:model/ClusterDetails
    * @class
-   * @param id {String} Id of the cluster record
-   * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster
+   * @param id {String} Id of the cluster record.
+   * @param type {module:model/ClusterDetails.TypeEnum} Type of the cluster.
    * @param serviceId {String} The Id of the service hosted on this cluster - depending on the type equal to the Oneprovider Id or \"onezone\" in case of Onezone cluster 
    * @param workerVersion {module:model/VersionInfo} 
    * @param onepanelVersion {module:model/VersionInfo} 
@@ -107,12 +107,12 @@
   }
 
   /**
-   * Id of the cluster record
+   * Id of the cluster record.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
-   * Type of the cluster
+   * Type of the cluster.
    * @member {module:model/ClusterDetails.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

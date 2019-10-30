@@ -17,45 +17,37 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/BlockDevicesBlockDevices'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./BlockDevicesBlockDevices'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.BlockDevices = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevicesBlockDevices);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, BlockDevicesBlockDevices) {
   'use strict';
 
 
 
 
   /**
-   * The StorageDetails model module.
-   * @module model/StorageDetails
+   * The BlockDevices model module.
+   * @module model/BlockDevices
    * @version 19.02.0-rc1
    */
 
   /**
-   * Constructs a new <code>StorageDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageDetails
+   * Constructs a new <code>BlockDevices</code>.
+   * List of block device descriptions.
+   * @alias module:model/BlockDevices
    * @class
    */
   var exports = function() {
     var _this = this;
-
-
-
-
-
-
-
-
 
 
   };
@@ -64,101 +56,35 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/BlockDevices} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>StorageDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>BlockDevices</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetails} obj Optional instance to populate.
-   * @return {module:model/StorageDetails} The populated <code>StorageDetails</code> instance.
+   * @param {module:model/BlockDevices} obj Optional instance to populate.
+   * @return {module:model/BlockDevices} The populated <code>BlockDevices</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('verificationPassed')) {
-        obj['verificationPassed'] = ApiClient.convertToType(data['verificationPassed'], 'Boolean');
-      }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      if (data.hasOwnProperty('blockDevices')) {
+        obj['blockDevices'] = ApiClient.convertToType(data['blockDevices'], [BlockDevicesBlockDevices]);
       }
     }
     return obj;
   }
 
   /**
-   * The type of storage.
-   * @member {String} type
+   * List of available block devices.
+   * @member {Array.<module:model/BlockDevicesBlockDevices>} blockDevices
    */
-  exports.prototype['type'] = undefined;
-  /**
-   * The Id of storage.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
-   * @member {Boolean} verificationPassed
-   */
-  exports.prototype['verificationPassed'] = undefined;
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-  exports.prototype['timeout'] = undefined;
-  /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
-   */
-  exports.prototype['readonly'] = false;
-  /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
-   */
-  exports.prototype['lumaEnabled'] = false;
-  /**
-   * URL of external LUMA service
-   * @member {String} lumaUrl
-   */
-  exports.prototype['lumaUrl'] = undefined;
-  /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
-   * @member {String} lumaApiKey
-   */
-  exports.prototype['lumaApiKey'] = undefined;
+  exports.prototype['blockDevices'] = undefined;
 
 
 

@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property qosParameters (base name: "qosParameters")', function() {
+      // uncomment below and update the code to test the property qosParameters
+      //var instane = new Onepanel.StorageDetailsModify();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

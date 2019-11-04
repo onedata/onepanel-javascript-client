@@ -55,6 +55,7 @@
 
 
 
+
   };
 
   /**
@@ -96,6 +97,9 @@
       if (data.hasOwnProperty('lumaApiKey')) {
         obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
       }
+      if (data.hasOwnProperty('qosParameters')) {
+        obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
+      }
     }
     return obj;
   }
@@ -132,6 +136,11 @@
    * @member {String} lumaApiKey
    */
   exports.prototype['lumaApiKey'] = undefined;
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+  exports.prototype['qosParameters'] = undefined;
 
 
 

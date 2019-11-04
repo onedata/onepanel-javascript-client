@@ -42,13 +42,13 @@
 
   /**
    * Constructs a new <code>Configuration</code>.
-   * Public service configuration details.
+   * Public service configuration details
    * @alias module:model/Configuration
    * @class
    * @param clusterId {String} The Id of cluster record for this cluster. `null` if the cluster is not registered.
-   * @param version {String} Version of this Onepanel.
-   * @param build {String} Build number of this Onepanel.
-   * @param deployed {Boolean} True when cluster deployment is finished.
+   * @param version {String} Version of this Onepanel
+   * @param build {String} Build number of this Onepanel
+   * @param deployed {Boolean} True when cluster deployment is finished
    */
   var exports = function(clusterId, version, build, deployed) {
     var _this = this;
@@ -102,17 +102,17 @@
    */
   exports.prototype['clusterId'] = undefined;
   /**
-   * Version of this Onepanel.
+   * Version of this Onepanel
    * @member {String} version
    */
   exports.prototype['version'] = undefined;
   /**
-   * Build number of this Onepanel.
+   * Build number of this Onepanel
    * @member {String} build
    */
   exports.prototype['build'] = undefined;
   /**
-   * True when cluster deployment is finished.
+   * True when cluster deployment is finished
    * @member {Boolean} deployed
    * @default true
    */

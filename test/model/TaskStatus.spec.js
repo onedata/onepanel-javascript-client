@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property totalSteps (base name: "totalSteps")', function() {
-      // uncomment below and update the code to test the property totalSteps
-      //var instane = new Onepanel.TaskStatus();
-      //expect(instance).to.be();
-    });
-
     it('should have the property error (base name: "error")', function() {
       // uncomment below and update the code to test the property error
       //var instane = new Onepanel.TaskStatus();

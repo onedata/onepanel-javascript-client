@@ -17,12 +17,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BlockDevices', 'model/BlockDevicesBlockDevices', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterDetails', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterMembersSummary', 'model/ClusterWorkers', 'model/Configuration', 'model/CurrentUser', 'model/DataUsage', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/GuiMessage', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Node', 'model/OnezoneInfo', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PanelConfiguration', 'model/PasswordChangeRequest', 'model/Progress', 'model/ProgressModify', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/RemoteProviderDetails', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningRuleSetting', 'model/SpaceAutoCleaningRules', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateDetails', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageImportDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/Token', 'model/TransfersMock', 'model/VersionInfo', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Blockdevice', 'model/Ceph', 'model/CephCluster', 'model/CephModify', 'model/Cephrados', 'model/CephradosModify', 'model/Glusterfs', 'model/GlusterfsModify', 'model/Localceph', 'model/LocalcephModify', 'model/Loopdevice', 'model/Nulldevice', 'model/NulldeviceModify', 'model/OpConfiguration', 'model/OzConfiguration', 'model/Posix', 'model/PosixModify', 'model/S3', 'model/S3Modify', 'model/Swift', 'model/SwiftModify', 'model/Webdav', 'model/WebdavModify', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
+    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ClusterDatabases', 'model/ClusterDetails', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterMembersSummary', 'model/ClusterWorkers', 'model/Configuration', 'model/CurrentUser', 'model/DatabaseHosts', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/GuiMessage', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/Node', 'model/OnezoneInfo', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PanelConfiguration', 'model/PasswordChangeRequest', 'model/Progress', 'model/ProgressModify', 'model/ProviderClusterConfiguration', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/RemoteProviderDetails', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningRuleSetting', 'model/SpaceAutoCleaningRules', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageDetailsModify', 'model/StorageImportDetails', 'model/StorageModifyRequest', 'model/StorageUpdateDetails', 'model/TaskStatus', 'model/TimeStats', 'model/TimeStatsCollection', 'model/Token', 'model/TransfersMock', 'model/VersionInfo', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/CephModify', 'model/Cephrados', 'model/CephradosModify', 'model/Glusterfs', 'model/GlusterfsModify', 'model/Nulldevice', 'model/NulldeviceModify', 'model/OpConfiguration', 'model/OzConfiguration', 'model/Posix', 'model/PosixModify', 'model/S3', 'model/S3Modify', 'model/Swift', 'model/SwiftModify', 'model/Webdav', 'model/WebdavModify', 'api/OnepanelApi', 'api/OneproviderApi', 'api/OnezoneApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/BlockDevices'), require('./model/BlockDevicesBlockDevices'), require('./model/CephGlobalParams'), require('./model/CephManager'), require('./model/CephManagers'), require('./model/CephMonitor'), require('./model/CephMonitors'), require('./model/CephOsd'), require('./model/CephOsds'), require('./model/CephPool'), require('./model/CephPoolUsage'), require('./model/CephPools'), require('./model/CephStatus'), require('./model/CephUsage'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterDetails'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterMembersSummary'), require('./model/ClusterWorkers'), require('./model/Configuration'), require('./model/CurrentUser'), require('./model/DataUsage'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/EmergencyPassphraseChangeRequest'), require('./model/EmergencyPassphraseStatus'), require('./model/Error'), require('./model/GuiMessage'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/Ids'), require('./model/JoinClusterRequest'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/OnezoneInfo'), require('./model/OnezoneUser'), require('./model/OnezoneUserCreateRequest'), require('./model/PanelConfiguration'), require('./model/PasswordChangeRequest'), require('./model/Progress'), require('./model/ProgressModify'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/RemoteProviderDetails'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SpaceAutoCleaningConfiguration'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReports'), require('./model/SpaceAutoCleaningRuleSetting'), require('./model/SpaceAutoCleaningRules'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilePopularityConfiguration'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateDetails'), require('./model/StorageCreateRequest'), require('./model/StorageGetDetails'), require('./model/StorageImportDetails'), require('./model/StorageModifyDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/Token'), require('./model/TransfersMock'), require('./model/VersionInfo'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Blockdevice'), require('./model/Ceph'), require('./model/CephCluster'), require('./model/CephModify'), require('./model/Cephrados'), require('./model/CephradosModify'), require('./model/Glusterfs'), require('./model/GlusterfsModify'), require('./model/Localceph'), require('./model/LocalcephModify'), require('./model/Loopdevice'), require('./model/Nulldevice'), require('./model/NulldeviceModify'), require('./model/OpConfiguration'), require('./model/OzConfiguration'), require('./model/Posix'), require('./model/PosixModify'), require('./model/S3'), require('./model/S3Modify'), require('./model/Swift'), require('./model/SwiftModify'), require('./model/Webdav'), require('./model/WebdavModify'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/ClusterConfigurationDetails'), require('./model/ClusterDatabases'), require('./model/ClusterDetails'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterMembersSummary'), require('./model/ClusterWorkers'), require('./model/Configuration'), require('./model/CurrentUser'), require('./model/DatabaseHosts'), require('./model/DnsCheck'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/EmergencyPassphraseChangeRequest'), require('./model/EmergencyPassphraseStatus'), require('./model/Error'), require('./model/GuiMessage'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/Ids'), require('./model/JoinClusterRequest'), require('./model/ManagerHosts'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/OnezoneInfo'), require('./model/OnezoneUser'), require('./model/OnezoneUserCreateRequest'), require('./model/PanelConfiguration'), require('./model/PasswordChangeRequest'), require('./model/Progress'), require('./model/ProgressModify'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/RemoteProviderDetails'), require('./model/ServiceDatabases'), require('./model/ServiceError'), require('./model/ServiceHosts'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SpaceAutoCleaningConfiguration'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReports'), require('./model/SpaceAutoCleaningRuleSetting'), require('./model/SpaceAutoCleaningRules'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilePopularityConfiguration'), require('./model/SpaceId'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/SpaceSyncStats'), require('./model/StorageCreateRequest'), require('./model/StorageDetails'), require('./model/StorageDetailsModify'), require('./model/StorageImportDetails'), require('./model/StorageModifyRequest'), require('./model/StorageUpdateDetails'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/TimeStatsCollection'), require('./model/Token'), require('./model/TransfersMock'), require('./model/VersionInfo'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/CephModify'), require('./model/Cephrados'), require('./model/CephradosModify'), require('./model/Glusterfs'), require('./model/GlusterfsModify'), require('./model/Nulldevice'), require('./model/NulldeviceModify'), require('./model/OpConfiguration'), require('./model/OzConfiguration'), require('./model/Posix'), require('./model/PosixModify'), require('./model/S3'), require('./model/S3Modify'), require('./model/Swift'), require('./model/SwiftModify'), require('./model/Webdav'), require('./model/WebdavModify'), require('./api/OnepanelApi'), require('./api/OneproviderApi'), require('./api/OnezoneApi'));
   }
-}(function(ApiClient, BlockDevices, BlockDevicesBlockDevices, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterConfigurationDetails, ClusterDatabases, ClusterDetails, ClusterIps, ClusterManagers, ClusterMembersSummary, ClusterWorkers, Configuration, CurrentUser, DataUsage, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, GuiMessage, Host, HostAddRequest, Ids, JoinClusterRequest, ManagerHosts, ModifyClusterIps, Node, OnezoneInfo, OnezoneUser, OnezoneUserCreateRequest, PanelConfiguration, PasswordChangeRequest, Progress, ProgressModify, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, RemoteProviderDetails, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningRuleSetting, SpaceAutoCleaningRules, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateDetails, StorageCreateRequest, StorageGetDetails, StorageImportDetails, StorageModifyDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, Token, TransfersMock, VersionInfo, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Blockdevice, Ceph, CephCluster, CephModify, Cephrados, CephradosModify, Glusterfs, GlusterfsModify, Localceph, LocalcephModify, Loopdevice, Nulldevice, NulldeviceModify, OpConfiguration, OzConfiguration, Posix, PosixModify, S3, S3Modify, Swift, SwiftModify, Webdav, WebdavModify, OnepanelApi, OneproviderApi, OnezoneApi) {
+}(function(ApiClient, ClusterConfigurationDetails, ClusterDatabases, ClusterDetails, ClusterIps, ClusterManagers, ClusterMembersSummary, ClusterWorkers, Configuration, CurrentUser, DatabaseHosts, DnsCheck, DnsCheckConfiguration, DnsCheckResult, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, GuiMessage, Host, HostAddRequest, Ids, JoinClusterRequest, ManagerHosts, ModifyClusterIps, Node, OnezoneInfo, OnezoneUser, OnezoneUserCreateRequest, PanelConfiguration, PasswordChangeRequest, Progress, ProgressModify, ProviderClusterConfiguration, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, RemoteProviderDetails, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningRuleSetting, SpaceAutoCleaningRules, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageDetailsModify, StorageImportDetails, StorageModifyRequest, StorageUpdateDetails, TaskStatus, TimeStats, TimeStatsCollection, Token, TransfersMock, VersionInfo, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, CephModify, Cephrados, CephradosModify, Glusterfs, GlusterfsModify, Nulldevice, NulldeviceModify, OpConfiguration, OzConfiguration, Posix, PosixModify, S3, S3Modify, Swift, SwiftModify, Webdav, WebdavModify, OnepanelApi, OneproviderApi, OnezoneApi) {
   'use strict';
 
   /**
@@ -62,76 +62,6 @@
      * @property {module:ApiClient}
      */
     ApiClient: ApiClient,
-    /**
-     * The BlockDevices model constructor.
-     * @property {module:model/BlockDevices}
-     */
-    BlockDevices: BlockDevices,
-    /**
-     * The BlockDevicesBlockDevices model constructor.
-     * @property {module:model/BlockDevicesBlockDevices}
-     */
-    BlockDevicesBlockDevices: BlockDevicesBlockDevices,
-    /**
-     * The CephGlobalParams model constructor.
-     * @property {module:model/CephGlobalParams}
-     */
-    CephGlobalParams: CephGlobalParams,
-    /**
-     * The CephManager model constructor.
-     * @property {module:model/CephManager}
-     */
-    CephManager: CephManager,
-    /**
-     * The CephManagers model constructor.
-     * @property {module:model/CephManagers}
-     */
-    CephManagers: CephManagers,
-    /**
-     * The CephMonitor model constructor.
-     * @property {module:model/CephMonitor}
-     */
-    CephMonitor: CephMonitor,
-    /**
-     * The CephMonitors model constructor.
-     * @property {module:model/CephMonitors}
-     */
-    CephMonitors: CephMonitors,
-    /**
-     * The CephOsd model constructor.
-     * @property {module:model/CephOsd}
-     */
-    CephOsd: CephOsd,
-    /**
-     * The CephOsds model constructor.
-     * @property {module:model/CephOsds}
-     */
-    CephOsds: CephOsds,
-    /**
-     * The CephPool model constructor.
-     * @property {module:model/CephPool}
-     */
-    CephPool: CephPool,
-    /**
-     * The CephPoolUsage model constructor.
-     * @property {module:model/CephPoolUsage}
-     */
-    CephPoolUsage: CephPoolUsage,
-    /**
-     * The CephPools model constructor.
-     * @property {module:model/CephPools}
-     */
-    CephPools: CephPools,
-    /**
-     * The CephStatus model constructor.
-     * @property {module:model/CephStatus}
-     */
-    CephStatus: CephStatus,
-    /**
-     * The CephUsage model constructor.
-     * @property {module:model/CephUsage}
-     */
-    CephUsage: CephUsage,
     /**
      * The ClusterConfigurationDetails model constructor.
      * @property {module:model/ClusterConfigurationDetails}
@@ -177,11 +107,6 @@
      * @property {module:model/CurrentUser}
      */
     CurrentUser: CurrentUser,
-    /**
-     * The DataUsage model constructor.
-     * @property {module:model/DataUsage}
-     */
-    DataUsage: DataUsage,
     /**
      * The DatabaseHosts model constructor.
      * @property {module:model/DatabaseHosts}
@@ -433,30 +358,25 @@
      */
     SpaceSyncStats: SpaceSyncStats,
     /**
-     * The StorageCreateDetails model constructor.
-     * @property {module:model/StorageCreateDetails}
-     */
-    StorageCreateDetails: StorageCreateDetails,
-    /**
      * The StorageCreateRequest model constructor.
      * @property {module:model/StorageCreateRequest}
      */
     StorageCreateRequest: StorageCreateRequest,
     /**
-     * The StorageGetDetails model constructor.
-     * @property {module:model/StorageGetDetails}
+     * The StorageDetails model constructor.
+     * @property {module:model/StorageDetails}
      */
-    StorageGetDetails: StorageGetDetails,
+    StorageDetails: StorageDetails,
+    /**
+     * The StorageDetailsModify model constructor.
+     * @property {module:model/StorageDetailsModify}
+     */
+    StorageDetailsModify: StorageDetailsModify,
     /**
      * The StorageImportDetails model constructor.
      * @property {module:model/StorageImportDetails}
      */
     StorageImportDetails: StorageImportDetails,
-    /**
-     * The StorageModifyDetails model constructor.
-     * @property {module:model/StorageModifyDetails}
-     */
-    StorageModifyDetails: StorageModifyDetails,
     /**
      * The StorageModifyRequest model constructor.
      * @property {module:model/StorageModifyRequest}
@@ -553,20 +473,10 @@
      */
     ZonePolicies: ZonePolicies,
     /**
-     * The Blockdevice model constructor.
-     * @property {module:model/Blockdevice}
-     */
-    Blockdevice: Blockdevice,
-    /**
      * The Ceph model constructor.
      * @property {module:model/Ceph}
      */
     Ceph: Ceph,
-    /**
-     * The CephCluster model constructor.
-     * @property {module:model/CephCluster}
-     */
-    CephCluster: CephCluster,
     /**
      * The CephModify model constructor.
      * @property {module:model/CephModify}
@@ -592,21 +502,6 @@
      * @property {module:model/GlusterfsModify}
      */
     GlusterfsModify: GlusterfsModify,
-    /**
-     * The Localceph model constructor.
-     * @property {module:model/Localceph}
-     */
-    Localceph: Localceph,
-    /**
-     * The LocalcephModify model constructor.
-     * @property {module:model/LocalcephModify}
-     */
-    LocalcephModify: LocalcephModify,
-    /**
-     * The Loopdevice model constructor.
-     * @property {module:model/Loopdevice}
-     */
-    Loopdevice: Loopdevice,
     /**
      * The Nulldevice model constructor.
      * @property {module:model/Nulldevice}

@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageDetailsModify = factory(root.Onepanel.ApiClient);
+    root.Onepanel.StorageModifyDetails = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,15 +35,15 @@
 
 
   /**
-   * The StorageDetailsModify model module.
-   * @module model/StorageDetailsModify
+   * The StorageModifyDetails model module.
+   * @module model/StorageModifyDetails
    * @version 19.02.0-rc1
    */
 
   /**
-   * Constructs a new <code>StorageDetailsModify</code>.
+   * Constructs a new <code>StorageModifyDetails</code>.
    * The part of storage configuration which can be modified after storage creation.
-   * @alias module:model/StorageDetailsModify
+   * @alias module:model/StorageModifyDetails
    * @class
    */
   var exports = function() {
@@ -62,18 +62,18 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageDetailsModify} The value of 'discriminator' field or undefined.
+   * @return {module:model/StorageModifyDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     return 'type';
   };
 
   /**
-   * Constructs a <code>StorageDetailsModify</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StorageModifyDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageDetailsModify} obj Optional instance to populate.
-   * @return {module:model/StorageDetailsModify} The populated <code>StorageDetailsModify</code> instance.
+   * @param {module:model/StorageModifyDetails} obj Optional instance to populate.
+   * @return {module:model/StorageModifyDetails} The populated <code>StorageModifyDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -125,7 +125,7 @@
    */
   exports.prototype['lumaEnabled'] = undefined;
   /**
-   * URL of external LUMA service
+   * URL of external LUMA service.
    * @member {String} lumaUrl
    */
   exports.prototype['lumaUrl'] = undefined;

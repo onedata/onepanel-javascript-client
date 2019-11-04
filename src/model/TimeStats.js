@@ -46,7 +46,7 @@
    * @alias module:model/TimeStats
    * @class
    * @param name {module:model/TimeStats.NameEnum} Name of metric for which this object holds statistics.
-   * @param lastValueDate {String} Date of last measurement value in this object in ISO 8601 format
+   * @param lastValueDate {String} Date of last measurement value in this object in ISO 8601 format.
    * @param values {Array.<Number>} List of sample values for given metric. The used period is divided into array-length number of parts. E.g. if the used period is an hour, and if there are 12 values in this array, every value is a value for 1/12 of day, which gives value for every hour of the day. If the value is null, there is no sample for given time part. 
    */
   var exports = function(name, lastValueDate, values) {
@@ -101,12 +101,12 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Date of last measurement value in this object in ISO 8601 format
+   * Date of last measurement value in this object in ISO 8601 format.
    * @member {String} lastValueDate
    */
   exports.prototype['lastValueDate'] = undefined;
   /**
-   * Predefined time period for which the statistics were fetched
+   * Predefined time period for which the statistics were fetched.
    * @member {module:model/TimeStats.PeriodEnum} period
    */
   exports.prototype['period'] = undefined;

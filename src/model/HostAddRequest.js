@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>HostAddRequest</code>.
-   * Details of host added to cluster
+   * Details of host added to cluster.
    * @alias module:model/HostAddRequest
    * @class
    * @param address {String} Address at which the host is available, IP or hostname. 

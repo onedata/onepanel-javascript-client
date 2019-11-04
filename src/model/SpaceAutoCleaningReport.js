@@ -47,8 +47,8 @@
    * @class
    * @param id {String} Id of an auto-cleaning report.
    * @param index {String} Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format
-   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format
+   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format.
+   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format.
    * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
@@ -122,12 +122,12 @@
    */
   exports.prototype['index'] = undefined;
   /**
-   * Start time of an auto-cleaning run in ISO 8601 format
+   * Start time of an auto-cleaning run in ISO 8601 format.
    * @member {String} startedAt
    */
   exports.prototype['startedAt'] = undefined;
   /**
-   * Finish time of an auto-cleaning run in ISO 8601 format
+   * Finish time of an auto-cleaning run in ISO 8601 format.
    * @member {String} stoppedAt
    */
   exports.prototype['stoppedAt'] = undefined;

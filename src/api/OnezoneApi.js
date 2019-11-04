@@ -439,8 +439,8 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
       var returnType = Ids;
 
       return this.apiClient.callApi(
@@ -460,7 +460,7 @@
 
     /**
      * Get zone cluster nodes IPs
-     * Returns IPs of nodes in zone cluster
+     * Returns IPs of nodes in zone cluster.
      * @param {module:api/OnezoneApi~getZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterIps}
      */

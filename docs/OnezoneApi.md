@@ -604,8 +604,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getZoneClusterIps"></a>
 # **getZoneClusterIps**
@@ -613,7 +613,7 @@ This endpoint does not need any parameter.
 
 Get zone cluster nodes IPs
 
-Returns IPs of nodes in zone cluster
+Returns IPs of nodes in zone cluster.
 
 ### Example
 ```javascript

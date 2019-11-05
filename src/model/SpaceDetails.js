@@ -47,7 +47,7 @@
    * @class
    * @param id {String} The Id of the space.
    * @param name {String} The name of the space.
-   * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
+   * @param storageId {String} Id of storage that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
@@ -129,7 +129,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Id of StorageDetails that supports this space on provider that is associated with this panel. 
+   * Id of storage that supports this space on provider that is associated with this panel. 
    * @member {String} storageId
    */
   exports.prototype['storageId'] = undefined;

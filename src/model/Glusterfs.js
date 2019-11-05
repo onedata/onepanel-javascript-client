@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Glusterfs = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetails);
+    root.Onepanel.Glusterfs = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageDetails) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
   'use strict';
 
 
@@ -45,14 +45,16 @@
    * The GlusterFS storage configuration.
    * @alias module:model/Glusterfs
    * @class
-   * @extends module:model/StorageDetails
+   * @extends module:model/StorageCreateDetails
+   * @implements module:model/StorageGetDetails
    * @param type {module:model/Glusterfs.TypeEnum} The type of storage.
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
   var exports = function(type, volume, hostname) {
     var _this = this;
-    StorageDetails.call(_this);
+    StorageCreateDetails.call(_this);
+    StorageGetDetails.call(_this);
     _this['type'] = type;
     _this['volume'] = volume;
     _this['hostname'] = hostname;
@@ -83,7 +85,8 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
+      StorageGetDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -112,7 +115,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageDetails.prototype);
+  exports.prototype = Object.create(StorageCreateDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -159,6 +162,63 @@
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
+
+  // Implement StorageGetDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The Id of storage.
+   * @member {String} id
+   */
+exports.prototype['id'] = undefined;
+
+  /**
+   * The name of storage.
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
+
+  /**
+   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
+   * @member {Boolean} verificationPassed
+   */
+exports.prototype['verificationPassed'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * Defines whether storage is readonly.
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
+  /**
+   * If true LUMA and reverse LUMA services will be enabled.
+   * @member {Boolean} lumaEnabled
+   * @default false
+   */
+exports.prototype['lumaEnabled'] = false;
+
+  /**
+   * URL of external LUMA service.
+   * @member {String} lumaUrl
+   */
+exports.prototype['lumaUrl'] = undefined;
+
+  /**
+   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * @member {String} lumaApiKey
+   */
+exports.prototype['lumaApiKey'] = undefined;
 
 
   /**

@@ -55,6 +55,8 @@
 
 
 
+
+
   };
 
   /**
@@ -96,6 +98,12 @@
       if (data.hasOwnProperty('lumaApiKey')) {
         obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
       }
+      if (data.hasOwnProperty('qosParameters')) {
+        obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
+      }
+      if (data.hasOwnProperty('mountInRoot')) {
+        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -132,6 +140,17 @@
    * @member {String} lumaApiKey
    */
   exports.prototype['lumaApiKey'] = undefined;
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+  exports.prototype['qosParameters'] = undefined;
+  /**
+   * Defines whether space will be mounted in / or /{SpaceId}/ path. 
+   * @member {Boolean} mountInRoot
+   * @default false
+   */
+  exports.prototype['mountInRoot'] = false;
 
 
 

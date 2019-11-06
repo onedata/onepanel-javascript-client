@@ -93,6 +93,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property qosParameters (base name: "qosParameters")', function() {
+      // uncomment below and update the code to test the property qosParameters
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
+      // uncomment below and update the code to test the property mountInRoot
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

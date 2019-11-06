@@ -146,9 +146,8 @@
   /**
    * Defines whether space will be mounted in / or /{SpaceId}/ path. 
    * @member {Boolean} mountInRoot
-   * @default false
    */
-  exports.prototype['mountInRoot'] = false;
+  exports.prototype['mountInRoot'] = undefined;
 
 
 

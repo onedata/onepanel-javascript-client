@@ -258,6 +258,13 @@ exports.prototype['lumaUrl'] = undefined;
    */
 exports.prototype['lumaApiKey'] = undefined;
 
+  /**
+   * Defines whether space will be mounted in / or /{SpaceId}/ path.
+   * @member {Boolean} mountInRoot
+   * @default false
+   */
+exports.prototype['mountInRoot'] = false;
+
 
   /**
    * Allowed values for the <code>type</code> property.

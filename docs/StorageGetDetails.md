@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **lumaEnabled** | **Boolean** | If true LUMA and reverse LUMA services will be enabled. | [optional] [default to false]
 **lumaUrl** | **String** | URL of external LUMA service. | [optional] 
 **lumaApiKey** | **String** | LUMA API Key, must be identical with API Key in external LUMA service. | [optional] 
+**mountInRoot** | **Boolean** | Defines whether space will be mounted in / or /{SpaceId}/ path. | [optional] [default to false]
 
 

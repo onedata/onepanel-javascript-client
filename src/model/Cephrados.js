@@ -231,11 +231,17 @@ exports.prototype['lumaUrl'] = undefined;
 exports.prototype['lumaApiKey'] = undefined;
 
   /**
-   * Defines whether space will be mounted in / or /{SpaceId}/ path.
-   * @member {Boolean} mountInRoot
+   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported.
+   * @member {Boolean} importedStorage
    * @default false
    */
-exports.prototype['mountInRoot'] = false;
+exports.prototype['importedStorage'] = false;
 
 
   /**

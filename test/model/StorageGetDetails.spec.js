@@ -111,8 +111,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
-      // uncomment below and update the code to test the property mountInRoot
+    it('should have the property qosParameters (base name: "qosParameters")', function() {
+      // uncomment below and update the code to test the property qosParameters
+      //var instane = new Onepanel.StorageGetDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property importedStorage (base name: "importedStorage")', function() {
+      // uncomment below and update the code to test the property importedStorage
       //var instane = new Onepanel.StorageGetDetails();
       //expect(instance).to.be();
     });

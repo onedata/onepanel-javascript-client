@@ -59,6 +59,7 @@
 
 
 
+
   };
 
   /**
@@ -109,8 +110,11 @@
       if (data.hasOwnProperty('lumaApiKey')) {
         obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
       }
-      if (data.hasOwnProperty('mountInRoot')) {
-        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
+      if (data.hasOwnProperty('qosParameters')) {
+        obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
+      }
+      if (data.hasOwnProperty('importedStorage')) {
+        obj['importedStorage'] = ApiClient.convertToType(data['importedStorage'], 'Boolean');
       }
     }
     return obj;
@@ -164,11 +168,16 @@
    */
   exports.prototype['lumaApiKey'] = undefined;
   /**
-   * Defines whether space will be mounted in / or /{SpaceId}/ path.
-   * @member {Boolean} mountInRoot
+   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+  exports.prototype['qosParameters'] = undefined;
+  /**
+   * Defines whether storage contains existing data to be imported.
+   * @member {Boolean} importedStorage
    * @default false
    */
-  exports.prototype['mountInRoot'] = false;
+  exports.prototype['importedStorage'] = false;
 
 
 

@@ -101,8 +101,8 @@
       if (data.hasOwnProperty('qosParameters')) {
         obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
       }
-      if (data.hasOwnProperty('mountInRoot')) {
-        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
+      if (data.hasOwnProperty('importedStorage')) {
+        obj['importedStorage'] = ApiClient.convertToType(data['importedStorage'], 'Boolean');
       }
     }
     return obj;
@@ -144,10 +144,10 @@
    */
   exports.prototype['qosParameters'] = undefined;
   /**
-   * Defines whether space will be mounted in / or /{SpaceId}/ path. 
-   * @member {Boolean} mountInRoot
+   * Defines whether storage contains existing data to be imported. 
+   * @member {Boolean} importedStorage
    */
-  exports.prototype['mountInRoot'] = undefined;
+  exports.prototype['importedStorage'] = undefined;
 
 
 

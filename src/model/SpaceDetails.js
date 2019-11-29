@@ -62,7 +62,6 @@
     _this['supportingProviders'] = supportingProviders;
 
 
-
     _this['spaceOccupancy'] = spaceOccupancy;
   };
 
@@ -102,9 +101,6 @@
       if (data.hasOwnProperty('supportingProviders')) {
         obj['supportingProviders'] = ApiClient.convertToType(data['supportingProviders'], {'String': 'Number'});
       }
-      if (data.hasOwnProperty('mountInRoot')) {
-        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
-      }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
       }
@@ -143,12 +139,6 @@
    * @member {Object.<String, Number>} supportingProviders
    */
   exports.prototype['supportingProviders'] = undefined;
-  /**
-   * Defines whether space will be mounted in / or /{SpaceId}/ path. 
-   * @member {Boolean} mountInRoot
-   * @default false
-   */
-  exports.prototype['mountInRoot'] = false;
   /**
    * @member {module:model/StorageImportDetails} storageImport
    */

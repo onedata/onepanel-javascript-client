@@ -182,6 +182,19 @@ exports.prototype['lumaUrl'] = undefined;
    */
 exports.prototype['lumaApiKey'] = undefined;
 
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported.
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
   // Implement CephPool interface:
   /**
    * Name of the pool.

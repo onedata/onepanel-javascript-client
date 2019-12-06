@@ -17,44 +17,42 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Error'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ServiceError = factory(root.Onepanel.ApiClient, root.Onepanel.Error);
+    root.Onepanel.ErrorError = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, Error) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ServiceError model module.
-   * @module model/ServiceError
+   * The ErrorError model module.
+   * @module model/ErrorError
    * @version 19.02.0-rc1
    */
 
   /**
-   * Constructs a new <code>ServiceError</code>.
-   * The service error model for REST requests.
-   * @alias module:model/ServiceError
+   * Constructs a new <code>ErrorError</code>.
+   * Object describing an error.
+   * @alias module:model/ErrorError
    * @class
-   * @param error {String} The name of an error type.
-   * @param description {String} The detailed error description.
+   * @param id {String} String identifying the error type. Does not change between error instances.
+   * @param description {String} Human readable error description. May contain information specific to given error instance.
    */
-  var exports = function(error, description) {
+  var exports = function(id, description) {
     var _this = this;
 
-    _this['error'] = error;
+    _this['id'] = id;
     _this['description'] = description;
-
-
 
   };
 
@@ -62,67 +60,51 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ServiceError} The value of 'discriminator' field or undefined.
+   * @return {module:model/ErrorError} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ServiceError</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ErrorError</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ServiceError} obj Optional instance to populate.
-   * @return {module:model/ServiceError} The populated <code>ServiceError</code> instance.
+   * @param {module:model/ErrorError} obj Optional instance to populate.
+   * @return {module:model/ErrorError} The populated <code>ErrorError</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
       if (data.hasOwnProperty('description')) {
         obj['description'] = ApiClient.convertToType(data['description'], 'String');
       }
-      if (data.hasOwnProperty('module')) {
-        obj['module'] = ApiClient.convertToType(data['module'], 'String');
-      }
-      if (data.hasOwnProperty('function')) {
-        obj['function'] = ApiClient.convertToType(data['function'], 'String');
-      }
-      if (data.hasOwnProperty('hosts')) {
-        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': Error});
+      if (data.hasOwnProperty('details')) {
+        obj['details'] = ApiClient.convertToType(data['details'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * The name of an error type.
-   * @member {String} error
+   * String identifying the error type. Does not change between error instances.
+   * @member {String} id
    */
-  exports.prototype['error'] = undefined;
+  exports.prototype['id'] = undefined;
   /**
-   * The detailed error description.
+   * Human readable error description. May contain information specific to given error instance.
    * @member {String} description
    */
   exports.prototype['description'] = undefined;
   /**
-   * The name of a module containing function that returned error.
-   * @member {String} module
+   * Details about the error instance. The object schema is specific to each error type.
+   * @member {Object} details
    */
-  exports.prototype['module'] = undefined;
-  /**
-   * The name of a function that returned error.
-   * @member {String} function
-   */
-  exports.prototype['function'] = undefined;
-  /**
-   * The collection of hosts with associated error description.
-   * @member {Object.<String, module:model/Error>} hosts
-   */
-  exports.prototype['hosts'] = undefined;
+  exports.prototype['details'] = undefined;
 
 
 

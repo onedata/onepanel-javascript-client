@@ -56,10 +56,6 @@
     _this['steps'] = steps;
     _this['totalSteps'] = totalSteps;
 
-
-
-
-
   };
 
   /**
@@ -93,19 +89,7 @@
         obj['totalSteps'] = ApiClient.convertToType(data['totalSteps'], 'Number');
       }
       if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
-      }
-      if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
-      }
-      if (data.hasOwnProperty('module')) {
-        obj['module'] = ApiClient.convertToType(data['module'], 'String');
-      }
-      if (data.hasOwnProperty('function')) {
-        obj['function'] = ApiClient.convertToType(data['function'], 'String');
-      }
-      if (data.hasOwnProperty('hosts')) {
-        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': Error});
+        obj['error'] = Error.constructFromObject(data['error']);
       }
     }
     return obj;
@@ -127,30 +111,9 @@
    */
   exports.prototype['totalSteps'] = undefined;
   /**
-   * The name of an error type.
-   * @member {String} error
+   * @member {module:model/Error} error
    */
   exports.prototype['error'] = undefined;
-  /**
-   * The detailed error description.
-   * @member {String} description
-   */
-  exports.prototype['description'] = undefined;
-  /**
-   * The name of a module containing function that returned error.
-   * @member {String} module
-   */
-  exports.prototype['module'] = undefined;
-  /**
-   * The name of a function that returned error.
-   * @member {String} function
-   */
-  exports.prototype['function'] = undefined;
-  /**
-   * The collection of hosts with associated error description.
-   * @member {Object.<String, module:model/Error>} hosts
-   */
-  exports.prototype['hosts'] = undefined;
 
 
   /**

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ServiceError();
+    instance = new Onepanel.ErrorError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,40 +50,28 @@
       object[property] = value;
   }
 
-  describe('ServiceError', function() {
-    it('should create an instance of ServiceError', function() {
-      // uncomment below and update the code to test ServiceError
-      //var instane = new Onepanel.ServiceError();
-      //expect(instance).to.be.a(Onepanel.ServiceError);
+  describe('ErrorError', function() {
+    it('should create an instance of ErrorError', function() {
+      // uncomment below and update the code to test ErrorError
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be.a(Onepanel.ErrorError);
     });
 
-    it('should have the property error (base name: "error")', function() {
-      // uncomment below and update the code to test the property error
-      //var instane = new Onepanel.ServiceError();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instane = new Onepanel.ServiceError();
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property module (base name: "module")', function() {
-      // uncomment below and update the code to test the property module
-      //var instane = new Onepanel.ServiceError();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property _function (base name: "function")', function() {
-      // uncomment below and update the code to test the property _function
-      //var instane = new Onepanel.ServiceError();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property hosts (base name: "hosts")', function() {
-      // uncomment below and update the code to test the property hosts
-      //var instane = new Onepanel.ServiceError();
+    it('should have the property details (base name: "details")', function() {
+      // uncomment below and update the code to test the property details
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 

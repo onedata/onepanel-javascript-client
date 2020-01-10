@@ -74,7 +74,7 @@ Method | HTTP request | Description
 
 <a name="addCephManagers"></a>
 # **addCephManagers**
-> addCephManagers(cephManagers)
+> TaskId addCephManagers(cephManagers)
 
 Add managers to ceph cluster
 
@@ -111,7 +111,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephManagers(cephManagers, callback);
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ null (empty response body)
 
 <a name="addCephMonitors"></a>
 # **addCephMonitors**
-> addCephMonitors(cephMonitors)
+> TaskId addCephMonitors(cephMonitors)
 
 Add monitors to Ceph cluster
 
@@ -175,7 +175,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephMonitors(cephMonitors, callback);
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ null (empty response body)
 
 <a name="addCephOsds"></a>
 # **addCephOsds**
-> addCephOsds(cephOsds)
+> TaskId addCephOsds(cephOsds)
 
 Add OSDs to Ceph cluster
 
@@ -239,7 +239,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephOsds(cephOsds, callback);
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -330,7 +330,7 @@ null (empty response body)
 
 <a name="addProviderDatabases"></a>
 # **addProviderDatabases**
-> addProviderDatabases(serviceHosts)
+> TaskId addProviderDatabases(serviceHosts)
 
 Deploy provider databases
 
@@ -367,7 +367,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderDatabases(serviceHosts, callback);
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -394,7 +394,7 @@ null (empty response body)
 
 <a name="addProviderManagers"></a>
 # **addProviderManagers**
-> addProviderManagers(managerHosts)
+> TaskId addProviderManagers(managerHosts)
 
 Add provider cluster managers
 
@@ -431,7 +431,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderManagers(managerHosts, callback);
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -458,7 +458,7 @@ null (empty response body)
 
 <a name="addProviderWorkers"></a>
 # **addProviderWorkers**
-> addProviderWorkers(serviceHosts)
+> TaskId addProviderWorkers(serviceHosts)
 
 Add provider cluster workers
 
@@ -495,7 +495,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderWorkers(serviceHosts, callback);
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -586,7 +586,7 @@ null (empty response body)
 
 <a name="configureCeph"></a>
 # **configureCeph**
-> configureCeph(cephCluster)
+> TaskId configureCeph(cephCluster)
 
 Configure Ceph cluster
 
@@ -623,7 +623,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureCeph(cephCluster, callback);
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -650,7 +650,7 @@ null (empty response body)
 
 <a name="configureFilePopularity"></a>
 # **configureFilePopularity**
-> configureFilePopularity(id, spaceFilePopularityConfiguration)
+> TaskId configureFilePopularity(id, spaceFilePopularityConfiguration)
 
 Configure file-popularity mechanism in the space.
 
@@ -689,7 +689,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callback);
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -717,7 +717,7 @@ null (empty response body)
 
 <a name="configureProvider"></a>
 # **configureProvider**
-> configureProvider(providerConfiguration)
+> TaskId configureProvider(providerConfiguration)
 
 Configure provider deployment
 
@@ -754,7 +754,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureProvider(providerConfiguration, callback);
@@ -768,7 +768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -4110,7 +4110,7 @@ null (empty response body)
 
 <a name="supportSpace"></a>
 # **supportSpace**
-> supportSpace(spaceSupportRequest)
+> TaskId supportSpace(spaceSupportRequest)
 
 Support space
 
@@ -4147,7 +4147,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.supportSpace(spaceSupportRequest, callback);
@@ -4161,7 +4161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 

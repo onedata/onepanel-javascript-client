@@ -100,7 +100,7 @@ null (empty response body)
 
 <a name="addZoneDatabases"></a>
 # **addZoneDatabases**
-> addZoneDatabases(serviceHosts)
+> TaskId addZoneDatabases(serviceHosts)
 
 Add zone databases
 
@@ -137,7 +137,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addZoneDatabases(serviceHosts, callback);
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ null (empty response body)
 
 <a name="addZoneManagers"></a>
 # **addZoneManagers**
-> addZoneManagers(managerHosts)
+> TaskId addZoneManagers(managerHosts)
 
 Add zone cluster managers
 
@@ -201,7 +201,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addZoneManagers(managerHosts, callback);
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ null (empty response body)
 
 <a name="addZoneWorkers"></a>
 # **addZoneWorkers**
-> addZoneWorkers(serviceHosts)
+> TaskId addZoneWorkers(serviceHosts)
 
 Add zone cluster workers
 
@@ -265,7 +265,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addZoneWorkers(serviceHosts, callback);
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -359,7 +359,7 @@ null (empty response body)
 
 <a name="configureZone"></a>
 # **configureZone**
-> configureZone(zoneConfiguration)
+> TaskId configureZone(zoneConfiguration)
 
 Configure zone deployment
 
@@ -396,7 +396,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureZone(zoneConfiguration, callback);
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 

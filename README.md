@@ -316,6 +316,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.StorageModifyDetails](docs/StorageModifyDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
  - [Onepanel.StorageUpdateDetails](docs/StorageUpdateDetails.md)
+ - [Onepanel.TaskId](docs/TaskId.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
  - [Onepanel.TimeStats](docs/TimeStats.md)
  - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)

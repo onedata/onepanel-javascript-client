@@ -810,7 +810,7 @@ This endpoint does not need any parameter.
 
 Get information about current onepanel node.
 
-Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+Returns information about current onepanel node. 
 
 ### Example
 ```javascript
@@ -1112,7 +1112,7 @@ This endpoint does not need any parameter.
 
 Join existing cluster
 
-Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
+Adds this host to administrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot have emergency passphrase or other configuration data set. Therefore this request does not need authorization. 
 
 ### Example
 ```javascript

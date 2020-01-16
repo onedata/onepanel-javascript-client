@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/GuiMessage', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/GuiMessage', 'model/Id', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/GuiMessage'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/GuiMessage'), require('../model/Id'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.GuiMessage, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
+    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.GuiMessage, root.Onepanel.Id, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
   }
-}(this, function(ApiClient, ClusterIps, Error, GuiMessage, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, TaskId, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
+}(this, function(ApiClient, ClusterIps, Error, GuiMessage, Id, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, TaskId, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
   'use strict';
 
   /**
@@ -52,7 +52,7 @@
      * Callback function to receive the result of the addOnezoneUser operation.
      * @callback module:api/OnezoneApi~addOnezoneUserCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/Id} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -61,6 +61,7 @@
      * Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.
      * @param {module:model/OnezoneUserCreateRequest} userCreateRequest The user configuration details.
      * @param {module:api/OnezoneApi~addOnezoneUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Id}
      */
     this.addOnezoneUser = function(userCreateRequest, callback) {
       var postBody = userCreateRequest;
@@ -83,7 +84,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = Id;
 
       return this.apiClient.callApi(
         '/zone/users', 'POST',
@@ -237,7 +238,7 @@
 
     /**
      * Set password for Onezone user
-     * Sets new password for a Onezone user using Basic authentication. 
+     * Sets a new password for a Onezone user using Basic authentication. 
      * @param {String} id Id of the user whose password is changed.
      * @param {module:model/PasswordChangeRequest} passwordChangeRequest 
      * @param {module:api/OnezoneApi~changeUserPasswordCallback} callback The callback function, accepting three arguments: error, data, response

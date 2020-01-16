@@ -270,6 +270,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.GuiMessage](docs/GuiMessage.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)
+ - [Onepanel.Id](docs/Id.md)
  - [Onepanel.Ids](docs/Ids.md)
  - [Onepanel.JoinClusterRequest](docs/JoinClusterRequest.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)

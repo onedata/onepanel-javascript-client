@@ -1770,7 +1770,7 @@ Name | Type | Description  | Notes
 
 Get Onezone information
 
-Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
+Get information about a Onezone. Before registration, this endpoint requires a registration token and returns information about the Onezone which issued the token. If the Oneprovider is registered, returns information about the Onezone at which the provider is registered. 
 
 ### Example
 ```javascript
@@ -3327,7 +3327,7 @@ null (empty response body)
 
 <a name="modifySpace"></a>
 # **modifySpace**
-> SpaceId modifySpace(id, spaceModifyRequest)
+> modifySpace(id, spaceModifyRequest)
 
 Modify space details
 
@@ -3366,7 +3366,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.modifySpace(id, spaceModifyRequest, callback);
@@ -3381,7 +3381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpaceId**](SpaceId.md)
+null (empty response body)
 
 ### Authorization
 

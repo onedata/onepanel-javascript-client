@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="addOnezoneUser"></a>
 # **addOnezoneUser**
-> addOnezoneUser(userCreateRequest)
+> Id addOnezoneUser(userCreateRequest)
 
 Create Onezone user
 
@@ -73,7 +73,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addOnezoneUser(userCreateRequest, callback);
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Id**](Id.md)
 
 ### Authorization
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 Set password for Onezone user
 
-Sets new password for a Onezone user using Basic authentication. 
+Sets a new password for a Onezone user using Basic authentication. 
 
 ### Example
 ```javascript

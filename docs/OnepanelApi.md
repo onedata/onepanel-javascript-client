@@ -1432,7 +1432,7 @@ null (empty response body)
 
 Set emergency passphrase
 
-Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
+Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI. May be invoked without credentials when no passphrase is set. 
 
 ### Example
 ```javascript

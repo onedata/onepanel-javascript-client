@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
+[**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph | Configure Ceph cluster
 [**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
 [**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific OSD.
 [**getCephOsds**](OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
-[**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
+[**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph | Get global Ceph params
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
 [**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get storage space usage details for specific pool.
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | List Ceph pools
@@ -104,7 +104,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with list of Ceph manager configurations. 
+var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with a list of Ceph manager configurations.
 
 
 var callback = function(error, data, response) {
@@ -121,7 +121,7 @@ apiInstance.addCephManagers(cephManagers, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cephManagers** | [**CephManagers**](CephManagers.md)| Object with list of Ceph manager configurations.  | 
+ **cephManagers** | [**CephManagers**](CephManagers.md)| Object with a list of Ceph manager configurations. | 
 
 ### Return type
 

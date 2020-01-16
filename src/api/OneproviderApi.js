@@ -59,7 +59,7 @@
     /**
      * Add managers to ceph cluster
      * Deploys Ceph manager services on given hosts.
-     * @param {module:model/CephManagers} cephManagers Object with list of Ceph manager configurations. 
+     * @param {module:model/CephManagers} cephManagers Object with a list of Ceph manager configurations.
      * @param {module:api/OneproviderApi~addCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
@@ -445,7 +445,7 @@
       var returnType = TaskId;
 
       return this.apiClient.callApi(
-        '/provider/ceph/', 'POST',
+        '/provider/ceph', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -979,7 +979,7 @@
       var returnType = CephGlobalParams;
 
       return this.apiClient.callApi(
-        '/provider/ceph/', 'GET',
+        '/provider/ceph', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

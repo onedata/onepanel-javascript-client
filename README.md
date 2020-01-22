@@ -145,6 +145,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderManagers**](docs/OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
+*Onepanel.OneproviderApi* | [**cancelAutoCleaning**](docs/OneproviderApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancels space auto-cleaning
 *Onepanel.OneproviderApi* | [**configureCeph**](docs/OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
 *Onepanel.OneproviderApi* | [**configureFilePopularity**](docs/OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment

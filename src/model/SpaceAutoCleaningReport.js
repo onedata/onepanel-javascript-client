@@ -42,18 +42,19 @@
 
   /**
    * Constructs a new <code>SpaceAutoCleaningReport</code>.
-   * Report from an auto-cleaning run.
+   * Report from a auto-cleaning run.
    * @alias module:model/SpaceAutoCleaningReport
    * @class
-   * @param id {String} Id of an auto-cleaning report.
-   * @param index {String} Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format.
-   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format.
-   * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
+   * @param id {String} Id of a auto-cleaning report.
+   * @param index {String} Index of a auto-cleaning report. It can be used to list report Ids starting from given report. 
+   * @param startedAt {String} Start time of a auto-cleaning run in ISO 8601 format.
+   * @param stoppedAt {String} Finish time of a auto-cleaning run in ISO 8601 format.
+   * @param releasedBytes {Number} Number of bytes deleted during a auto-cleaning run.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
+   * @param status {module:model/SpaceAutoCleaningReport.StatusEnum} Status of a auto-cleaning run.
    */
-  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
+  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber, status) {
     var _this = this;
 
     _this['id'] = id;
@@ -63,6 +64,7 @@
     _this['releasedBytes'] = releasedBytes;
     _this['bytesToRelease'] = bytesToRelease;
     _this['filesNumber'] = filesNumber;
+    _this['status'] = status;
   };
 
   /**
@@ -107,32 +109,35 @@
       if (data.hasOwnProperty('filesNumber')) {
         obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
       }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
     }
     return obj;
   }
 
   /**
-   * Id of an auto-cleaning report.
+   * Id of a auto-cleaning report.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
-   * Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
+   * Index of a auto-cleaning report. It can be used to list report Ids starting from given report. 
    * @member {String} index
    */
   exports.prototype['index'] = undefined;
   /**
-   * Start time of an auto-cleaning run in ISO 8601 format.
+   * Start time of a auto-cleaning run in ISO 8601 format.
    * @member {String} startedAt
    */
   exports.prototype['startedAt'] = undefined;
   /**
-   * Finish time of an auto-cleaning run in ISO 8601 format.
+   * Finish time of a auto-cleaning run in ISO 8601 format.
    * @member {String} stoppedAt
    */
   exports.prototype['stoppedAt'] = undefined;
   /**
-   * Number of bytes deleted during an auto-cleaning run.
+   * Number of bytes deleted during a auto-cleaning run.
    * @member {Number} releasedBytes
    */
   exports.prototype['releasedBytes'] = undefined;
@@ -146,7 +151,44 @@
    * @member {Number} filesNumber
    */
   exports.prototype['filesNumber'] = undefined;
+  /**
+   * Status of a auto-cleaning run.
+   * @member {module:model/SpaceAutoCleaningReport.StatusEnum} status
+   */
+  exports.prototype['status'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
 
   return exports;

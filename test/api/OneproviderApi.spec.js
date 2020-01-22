@@ -131,6 +131,16 @@
         done();
       });
     });
+    describe('cancelAutoCleaning', function() {
+      it('should call cancelAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test cancelAutoCleaning
+        //instance.cancelAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('configureCeph', function() {
       it('should call configureCeph successfully', function(done) {
         //uncomment below and update the code to test configureCeph

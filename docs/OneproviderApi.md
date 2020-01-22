@@ -4174,7 +4174,7 @@ Name | Type | Description  | Notes
 
 <a name="triggerAutoCleaning"></a>
 # **triggerAutoCleaning**
-> triggerAutoCleaning(id)
+> InlineResponse202 triggerAutoCleaning(id)
 
 Triggers space auto-cleaning
 
@@ -4211,7 +4211,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.triggerAutoCleaning(id, callback);
@@ -4225,7 +4225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

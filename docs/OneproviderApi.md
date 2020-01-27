@@ -4110,7 +4110,7 @@ null (empty response body)
 
 <a name="supportSpace"></a>
 # **supportSpace**
-> TaskId supportSpace(spaceSupportRequest)
+> Id supportSpace(spaceSupportRequest)
 
 Support space
 
@@ -4161,7 +4161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaskId**](TaskId.md)
+[**Id**](Id.md)
 
 ### Authorization
 

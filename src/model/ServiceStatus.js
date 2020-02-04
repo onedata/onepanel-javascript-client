@@ -42,15 +42,15 @@
 
   /**
    * Constructs a new <code>ServiceStatus</code>.
-   * The generic model for service status.
+   * The collection of hosts with associated service status, for each host where given service has been deployed. 
    * @alias module:model/ServiceStatus
    * @class
-   * @param hosts {Object.<String, module:model/ServiceStatusHost>} The collection of hosts with associated service status, for each host where given service has been deployed. 
+   * @extends Object
    */
-  var exports = function(hosts) {
+  var exports = function() {
     var _this = this;
 
-    _this['hosts'] = hosts;
+    return _this;
   };
 
   /**
@@ -73,19 +73,12 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
+      ApiClient.constructFromObject(data, obj, 'ServiceStatusHost');
 
-      if (data.hasOwnProperty('hosts')) {
-        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': ServiceStatusHost});
-      }
     }
     return obj;
   }
 
-  /**
-   * The collection of hosts with associated service status, for each host where given service has been deployed. 
-   * @member {Object.<String, module:model/ServiceStatusHost>} hosts
-   */
-  exports.prototype['hosts'] = undefined;
 
 
 

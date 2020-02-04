@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
-[**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph/ | Configure Ceph cluster
+[**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph | Configure Ceph cluster
 [**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**getCephOsd**](OneproviderApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
 [**getCephOsdUsage**](OneproviderApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific OSD.
 [**getCephOsds**](OneproviderApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list.
-[**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph/ | Get global Ceph params
+[**getCephParams**](OneproviderApi.md#getCephParams) | **GET** /provider/ceph | Get global Ceph params
 [**getCephPool**](OneproviderApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool.
 [**getCephPoolUsage**](OneproviderApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get storage space usage details for specific pool.
 [**getCephPools**](OneproviderApi.md#getCephPools) | **GET** /provider/ceph/pools | List Ceph pools
@@ -74,7 +74,7 @@ Method | HTTP request | Description
 
 <a name="addCephManagers"></a>
 # **addCephManagers**
-> addCephManagers(cephManagers)
+> TaskId addCephManagers(cephManagers)
 
 Add managers to ceph cluster
 
@@ -104,14 +104,14 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with list of Ceph manager configurations. 
+var cephManagers = new Onepanel.CephManagers(); // CephManagers | Object with a list of Ceph manager configurations.
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephManagers(cephManagers, callback);
@@ -121,11 +121,11 @@ apiInstance.addCephManagers(cephManagers, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cephManagers** | [**CephManagers**](CephManagers.md)| Object with list of Ceph manager configurations.  | 
+ **cephManagers** | [**CephManagers**](CephManagers.md)| Object with a list of Ceph manager configurations. | 
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ null (empty response body)
 
 <a name="addCephMonitors"></a>
 # **addCephMonitors**
-> addCephMonitors(cephMonitors)
+> TaskId addCephMonitors(cephMonitors)
 
 Add monitors to Ceph cluster
 
@@ -175,7 +175,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephMonitors(cephMonitors, callback);
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ null (empty response body)
 
 <a name="addCephOsds"></a>
 # **addCephOsds**
-> addCephOsds(cephOsds)
+> TaskId addCephOsds(cephOsds)
 
 Add OSDs to Ceph cluster
 
@@ -239,7 +239,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addCephOsds(cephOsds, callback);
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -330,7 +330,7 @@ null (empty response body)
 
 <a name="addProviderDatabases"></a>
 # **addProviderDatabases**
-> addProviderDatabases(serviceHosts)
+> TaskId addProviderDatabases(serviceHosts)
 
 Deploy provider databases
 
@@ -367,7 +367,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderDatabases(serviceHosts, callback);
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -394,7 +394,7 @@ null (empty response body)
 
 <a name="addProviderManagers"></a>
 # **addProviderManagers**
-> addProviderManagers(managerHosts)
+> TaskId addProviderManagers(managerHosts)
 
 Add provider cluster managers
 
@@ -431,7 +431,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderManagers(managerHosts, callback);
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -458,7 +458,7 @@ null (empty response body)
 
 <a name="addProviderWorkers"></a>
 # **addProviderWorkers**
-> addProviderWorkers(serviceHosts)
+> TaskId addProviderWorkers(serviceHosts)
 
 Add provider cluster workers
 
@@ -495,7 +495,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addProviderWorkers(serviceHosts, callback);
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -586,7 +586,7 @@ null (empty response body)
 
 <a name="configureCeph"></a>
 # **configureCeph**
-> configureCeph(cephCluster)
+> TaskId configureCeph(cephCluster)
 
 Configure Ceph cluster
 
@@ -623,7 +623,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureCeph(cephCluster, callback);
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -650,7 +650,7 @@ null (empty response body)
 
 <a name="configureFilePopularity"></a>
 # **configureFilePopularity**
-> configureFilePopularity(id, spaceFilePopularityConfiguration)
+> TaskId configureFilePopularity(id, spaceFilePopularityConfiguration)
 
 Configure file-popularity mechanism in the space.
 
@@ -689,7 +689,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureFilePopularity(id, spaceFilePopularityConfiguration, callback);
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -717,7 +717,7 @@ null (empty response body)
 
 <a name="configureProvider"></a>
 # **configureProvider**
-> configureProvider(providerConfiguration)
+> TaskId configureProvider(providerConfiguration)
 
 Configure provider deployment
 
@@ -754,7 +754,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.configureProvider(providerConfiguration, callback);
@@ -768,7 +768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**TaskId**](TaskId.md)
 
 ### Authorization
 
@@ -1770,7 +1770,7 @@ Name | Type | Description  | Notes
 
 Get Onezone information
 
-Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
+Get information about a Onezone. Before registration, this endpoint requires a registration token and returns information about the Onezone which issued the token. If the Oneprovider is registered, returns information about the Onezone at which the provider is registered. 
 
 ### Example
 ```javascript
@@ -3327,7 +3327,7 @@ null (empty response body)
 
 <a name="modifySpace"></a>
 # **modifySpace**
-> SpaceId modifySpace(id, spaceModifyRequest)
+> modifySpace(id, spaceModifyRequest)
 
 Modify space details
 
@@ -3366,7 +3366,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.modifySpace(id, spaceModifyRequest, callback);
@@ -3381,7 +3381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpaceId**](SpaceId.md)
+null (empty response body)
 
 ### Authorization
 
@@ -4110,7 +4110,7 @@ null (empty response body)
 
 <a name="supportSpace"></a>
 # **supportSpace**
-> supportSpace(spaceSupportRequest)
+> Id supportSpace(spaceSupportRequest)
 
 Support space
 
@@ -4147,7 +4147,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.supportSpace(spaceSupportRequest, callback);
@@ -4161,7 +4161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Id**](Id.md)
 
 ### Authorization
 
@@ -4174,7 +4174,7 @@ null (empty response body)
 
 <a name="triggerAutoCleaning"></a>
 # **triggerAutoCleaning**
-> triggerAutoCleaning(id)
+> InlineResponse202 triggerAutoCleaning(id)
 
 Triggers space auto-cleaning
 
@@ -4211,7 +4211,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.triggerAutoCleaning(id, callback);
@@ -4225,7 +4225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

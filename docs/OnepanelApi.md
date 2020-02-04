@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 Check correctness of DNS entries for the cluster&#39;s domain.
 
-Returns results of the last DNS check, verifying validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
 
 ### Example
 ```javascript
@@ -810,7 +810,7 @@ This endpoint does not need any parameter.
 
 Get information about current onepanel node.
 
-Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+Returns information about current onepanel node. 
 
 ### Example
 ```javascript
@@ -1112,7 +1112,7 @@ This endpoint does not need any parameter.
 
 Join existing cluster
 
-Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
+Adds this host to administrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot have emergency passphrase or other configuration data set. Therefore this request does not need authorization. 
 
 ### Example
 ```javascript
@@ -1432,7 +1432,7 @@ null (empty response body)
 
 Set emergency passphrase
 
-Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
+Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI. May be invoked without credentials when no passphrase is set. 
 
 ### Example
 ```javascript

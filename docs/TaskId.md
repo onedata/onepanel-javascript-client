@@ -1,8 +1,8 @@
-# Onepanel.SpaceId
+# Onepanel.TaskId
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The Id of the space. | 
+**taskId** | **String** |  | [optional] 
 
 

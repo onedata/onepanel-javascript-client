@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZonePolicies = factory(root.Onepanel.ApiClient);
+    root.Onepanel.TaskId = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,19 @@
 
 
   /**
-   * The ZonePolicies model module.
-   * @module model/ZonePolicies
+   * The TaskId model module.
+   * @module model/TaskId
    * @version 19.02.1
    */
 
   /**
-   * Constructs a new <code>ZonePolicies</code>.
-   * State of Onezone operation policies.
-   * @alias module:model/ZonePolicies
+   * Constructs a new <code>TaskId</code>.
+   * Object providing task Id of the started task.
+   * @alias module:model/TaskId
    * @class
    */
   var exports = function() {
     var _this = this;
-
-
-
 
 
   };
@@ -59,79 +56,35 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ZonePolicies} The value of 'discriminator' field or undefined.
+   * @return {module:model/TaskId} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ZonePolicies</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>TaskId</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ZonePolicies} obj Optional instance to populate.
-   * @return {module:model/ZonePolicies} The populated <code>ZonePolicies</code> instance.
+   * @param {module:model/TaskId} obj Optional instance to populate.
+   * @return {module:model/TaskId} The populated <code>TaskId</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('oneproviderRegistration')) {
-        obj['oneproviderRegistration'] = ApiClient.convertToType(data['oneproviderRegistration'], 'String');
-      }
-      if (data.hasOwnProperty('subdomainDelegation')) {
-        obj['subdomainDelegation'] = ApiClient.convertToType(data['subdomainDelegation'], 'Boolean');
-      }
-      if (data.hasOwnProperty('guiPackageVerification')) {
-        obj['guiPackageVerification'] = ApiClient.convertToType(data['guiPackageVerification'], 'Boolean');
-      }
-      if (data.hasOwnProperty('harvesterGuiPackageVerification')) {
-        obj['harvesterGuiPackageVerification'] = ApiClient.convertToType(data['harvesterGuiPackageVerification'], 'Boolean');
+      if (data.hasOwnProperty('taskId')) {
+        obj['taskId'] = ApiClient.convertToType(data['taskId'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Indicates policy enforced during provider registration. Possible options are: open - anyone can acquire a registration token and register a new Oneprovider restricted - requires an administrative privilege 'oz_providers_invite'              to generate a Oneprovider registration token. The token              can be issued for someone else. 
-   * @member {module:model/ZonePolicies.OneproviderRegistrationEnum} oneproviderRegistration
+   * @member {String} taskId
    */
-  exports.prototype['oneproviderRegistration'] = undefined;
-  /**
-   * If true, Oneproviders are allowed to request subdomains of the Onezone domain for use as their domains.
-   * @member {Boolean} subdomainDelegation
-   */
-  exports.prototype['subdomainDelegation'] = undefined;
-  /**
-   * When this value is true, GUI packages uploaded by services operating under Onezone or by harvester admins are checked against known SHA-256 checksums using the compatibility registry. Setting this value to false disables the verification. WARNING: disabling GUI package verification poses a severe security threat, allowing Oneprovider owners to upload arbitrary GUI to Onezone (which is then hosted in Onezone's domain). 
-   * @member {Boolean} guiPackageVerification
-   * @default true
-   */
-  exports.prototype['guiPackageVerification'] = true;
-  /**
-   * This policy can be used to disable GUI package verification for harvester plugins only. See \"guiPackageVerification\" for detailed description. This setting has no effect if \"guiPackageVerification\" is set to false. 
-   * @member {Boolean} harvesterGuiPackageVerification
-   * @default true
-   */
-  exports.prototype['harvesterGuiPackageVerification'] = true;
+  exports.prototype['taskId'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>oneproviderRegistration</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.OneproviderRegistrationEnum = {
-    /**
-     * value: "open"
-     * @const
-     */
-    "open": "open",
-    /**
-     * value: "restricted"
-     * @const
-     */
-    "restricted": "restricted"  };
 
 
   return exports;

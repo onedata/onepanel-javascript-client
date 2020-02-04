@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TransfersMock'], factory);
+    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/Id', 'model/InlineResponse202', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'), require('../model/TransfersMock'));
+    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/Id'), require('../model/InlineResponse202'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'), require('../model/TaskId'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TransfersMock);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.Id, root.Onepanel.InlineResponse202, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TaskId, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest, TransfersMock) {
+}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, Id, InlineResponse202, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest, TaskId, TransfersMock) {
   'use strict';
 
   /**
@@ -52,15 +52,16 @@
      * Callback function to receive the result of the addCephManagers operation.
      * @callback module:api/OneproviderApi~addCephManagersCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Add managers to ceph cluster
      * Deploys Ceph manager services on given hosts.
-     * @param {module:model/CephManagers} cephManagers Object with list of Ceph manager configurations. 
+     * @param {module:model/CephManagers} cephManagers Object with a list of Ceph manager configurations.
      * @param {module:api/OneproviderApi~addCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addCephManagers = function(cephManagers, callback) {
       var postBody = cephManagers;
@@ -83,7 +84,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/ceph/managers', 'POST',
@@ -96,7 +97,7 @@
      * Callback function to receive the result of the addCephMonitors operation.
      * @callback module:api/OneproviderApi~addCephMonitorsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -105,6 +106,7 @@
      * Deploys Ceph monitor services on given hosts.
      * @param {module:model/CephMonitors} cephMonitors List of Ceph monitor specifications.
      * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addCephMonitors = function(cephMonitors, callback) {
       var postBody = cephMonitors;
@@ -127,7 +129,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/ceph/monitors', 'POST',
@@ -140,7 +142,7 @@
      * Callback function to receive the result of the addCephOsds operation.
      * @callback module:api/OneproviderApi~addCephOsdsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -149,6 +151,7 @@
      * Deploys Ceph OSD services in the cluster.
      * @param {module:model/CephOsds} cephOsds List of OSD specifications.
      * @param {module:api/OneproviderApi~addCephOsdsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addCephOsds = function(cephOsds, callback) {
       var postBody = cephOsds;
@@ -171,7 +174,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/ceph/osds', 'POST',
@@ -228,7 +231,7 @@
      * Callback function to receive the result of the addProviderDatabases operation.
      * @callback module:api/OneproviderApi~addProviderDatabasesCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -237,6 +240,7 @@
      * Deploys a database service on provided hosts.
      * @param {module:model/ServiceDatabases} serviceHosts The service hosts configuration where databases should be deployed. 
      * @param {module:api/OneproviderApi~addProviderDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderDatabases = function(serviceHosts, callback) {
       var postBody = serviceHosts;
@@ -259,7 +263,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/databases', 'POST',
@@ -272,7 +276,7 @@
      * Callback function to receive the result of the addProviderManagers operation.
      * @callback module:api/OneproviderApi~addProviderManagersCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -281,6 +285,7 @@
      * Deploys a cluster manager service on provided hosts.
      * @param {module:model/ManagerHosts} managerHosts The cluster manager service hosts configuration.
      * @param {module:api/OneproviderApi~addProviderManagersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderManagers = function(managerHosts, callback) {
       var postBody = managerHosts;
@@ -303,7 +308,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/managers', 'POST',
@@ -316,7 +321,7 @@
      * Callback function to receive the result of the addProviderWorkers operation.
      * @callback module:api/OneproviderApi~addProviderWorkersCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -325,6 +330,7 @@
      * Deploys cluster worker services on provided hosts.
      * @param {module:model/ServiceHosts} serviceHosts The service hosts configuration where workers should be deployed. 
      * @param {module:api/OneproviderApi~addProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderWorkers = function(serviceHosts, callback) {
       var postBody = serviceHosts;
@@ -347,7 +353,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/workers', 'POST',
@@ -404,7 +410,7 @@
      * Callback function to receive the result of the configureCeph operation.
      * @callback module:api/OneproviderApi~configureCephCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -413,6 +419,7 @@
      * Configures Ceph services. Any services and pools specified in the request are deployed. This request IS NOT idempotent.
      * @param {module:model/CephCluster} cephCluster The Ceph cluster specification.
      * @param {module:api/OneproviderApi~configureCephCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.configureCeph = function(cephCluster, callback) {
       var postBody = cephCluster;
@@ -435,10 +442,10 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
-        '/provider/ceph/', 'POST',
+        '/provider/ceph', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -448,7 +455,7 @@
      * Callback function to receive the result of the configureFilePopularity operation.
      * @callback module:api/OneproviderApi~configureFilePopularityCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -458,6 +465,7 @@
      * @param {String} id The Id of a space.
      * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
      * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
       var postBody = spaceFilePopularityConfiguration;
@@ -486,7 +494,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/file-popularity/configuration', 'PATCH',
@@ -499,7 +507,7 @@
      * Callback function to receive the result of the configureProvider operation.
      * @callback module:api/OneproviderApi~configureProviderCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -508,6 +516,7 @@
      * Configures and starts provider services, such as database, cluster manager and cluster worker. Depending on the configuration, sets up provider storage and registers in the zone. This request can be executed unauthorized as long as there are no admin users. 
      * @param {module:model/ProviderConfiguration} providerConfiguration The provider configuration description.
      * @param {module:api/OneproviderApi~configureProviderCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
     this.configureProvider = function(providerConfiguration, callback) {
       var postBody = providerConfiguration;
@@ -530,7 +539,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
@@ -970,7 +979,7 @@
       var returnType = CephGlobalParams;
 
       return this.apiClient.callApi(
-        '/provider/ceph/', 'GET',
+        '/provider/ceph', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1241,7 +1250,7 @@
 
     /**
      * Get Onezone information
-     * Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
+     * Get information about a Onezone. Before registration, this endpoint requires a registration token and returns information about the Onezone which issued the token. If the Oneprovider is registered, returns information about the Onezone at which the provider is registered. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.token Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
      * @param {module:api/OneproviderApi~getOnezoneInfoCallback} callback The callback function, accepting three arguments: error, data, response
@@ -2332,7 +2341,7 @@
      * Callback function to receive the result of the modifySpace operation.
      * @callback module:api/OneproviderApi~modifySpaceCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/SpaceId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2342,7 +2351,6 @@
      * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/OneproviderApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SpaceId}
      */
     this.modifySpace = function(id, spaceModifyRequest, callback) {
       var postBody = spaceModifyRequest;
@@ -2371,7 +2379,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = SpaceId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}', 'PATCH',
@@ -2881,7 +2889,7 @@
      * Callback function to receive the result of the supportSpace operation.
      * @callback module:api/OneproviderApi~supportSpaceCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/Id} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2890,6 +2898,7 @@
      * Supports an existing space. 
      * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
      * @param {module:api/OneproviderApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Id}
      */
     this.supportSpace = function(spaceSupportRequest, callback) {
       var postBody = spaceSupportRequest;
@@ -2912,7 +2921,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = Id;
 
       return this.apiClient.callApi(
         '/provider/spaces', 'POST',
@@ -2925,7 +2934,7 @@
      * Callback function to receive the result of the triggerAutoCleaning operation.
      * @callback module:api/OneproviderApi~triggerAutoCleaningCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/InlineResponse202} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2934,6 +2943,7 @@
      * Triggers one run of auto-cleaning mechanism for given space.
      * @param {String} id The Id of a space.
      * @param {module:api/OneproviderApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InlineResponse202}
      */
     this.triggerAutoCleaning = function(id, callback) {
       var postBody = null;
@@ -2957,7 +2967,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = InlineResponse202;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto-cleaning/start', 'POST',

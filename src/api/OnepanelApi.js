@@ -103,7 +103,7 @@
 
     /**
      * Check correctness of DNS entries for the cluster&#39;s domain.
-     * Returns results of the last DNS check, verifying validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+     * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
      * @param {module:api/OnepanelApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -582,7 +582,7 @@
 
     /**
      * Get information about current onepanel node.
-     * Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
+     * Returns information about current onepanel node. 
      * @param {module:api/OnepanelApi~getNodeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Node}
      */
@@ -791,7 +791,7 @@
 
     /**
      * Join existing cluster
-     * Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
+     * Adds this host to administrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot have emergency passphrase or other configuration data set. Therefore this request does not need authorization. 
      * @param {module:model/JoinClusterRequest} joinClusterRequest 
      * @param {module:api/OnepanelApi~joinClusterCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -1012,7 +1012,7 @@
 
     /**
      * Set emergency passphrase
-     * Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
+     * Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI. May be invoked without credentials when no passphrase is set. 
      * @param {module:model/EmergencyPassphraseChangeRequest} emergencyPassphrase 
      * @param {module:api/OnepanelApi~setEmergencyPassphraseCallback} callback The callback function, accepting three arguments: error, data, response
      */

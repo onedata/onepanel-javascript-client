@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+[**createInviteToken**](OnepanelApi.md#createInviteToken) | **POST** /invite_token | Create invite token
 [**createUserInviteToken**](OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
@@ -150,6 +151,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DnsCheck**](DnsCheck.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="createInviteToken"></a>
+# **createInviteToken**
+> InviteToken createInviteToken()
+
+Create invite token
+
+Creates invite token. The token can be used by other nodes to [join cluster](#operation/join_cluster). 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OnepanelApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createInviteToken(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InviteToken**](InviteToken.md)
 
 ### Authorization
 
@@ -1108,7 +1167,7 @@ This endpoint does not need any parameter.
 
 <a name="joinCluster"></a>
 # **joinCluster**
-> joinCluster(joinClusterRequest)
+> joinCluster(inviteToken)
 
 Join existing cluster
 
@@ -1138,7 +1197,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var joinClusterRequest = new Onepanel.JoinClusterRequest(); // JoinClusterRequest | 
+var inviteToken = new Onepanel.InviteToken(); // InviteToken | 
 
 
 var callback = function(error, data, response) {
@@ -1148,14 +1207,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.joinCluster(joinClusterRequest, callback);
+apiInstance.joinCluster(inviteToken, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **joinClusterRequest** | [**JoinClusterRequest**](JoinClusterRequest.md)|  | 
+ **inviteToken** | [**InviteToken**](InviteToken.md)|  | 
 
 ### Return type
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/CurrentUser', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/JoinClusterRequest', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/TaskStatus', 'model/Token', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/ClusterMembersSummary', 'model/Configuration', 'model/CurrentUser', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/Host', 'model/HostAddRequest', 'model/Ids', 'model/InviteToken', 'model/Node', 'model/Progress', 'model/ProgressModify', 'model/RemoteProviderDetails', 'model/TaskStatus', 'model/Token', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/CurrentUser'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/JoinClusterRequest'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/TaskStatus'), require('../model/Token'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/ClusterMembersSummary'), require('../model/Configuration'), require('../model/CurrentUser'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/Host'), require('../model/HostAddRequest'), require('../model/Ids'), require('../model/InviteToken'), require('../model/Node'), require('../model/Progress'), require('../model/ProgressModify'), require('../model/RemoteProviderDetails'), require('../model/TaskStatus'), require('../model/Token'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.CurrentUser, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.JoinClusterRequest, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.OnepanelApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.ClusterMembersSummary, root.Onepanel.Configuration, root.Onepanel.CurrentUser, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.Host, root.Onepanel.HostAddRequest, root.Onepanel.Ids, root.Onepanel.InviteToken, root.Onepanel.Node, root.Onepanel.Progress, root.Onepanel.ProgressModify, root.Onepanel.RemoteProviderDetails, root.Onepanel.TaskStatus, root.Onepanel.Token, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
-}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, CurrentUser, DnsCheck, DnsCheckConfiguration, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, Host, HostAddRequest, Ids, JoinClusterRequest, Node, Progress, ProgressModify, RemoteProviderDetails, TaskStatus, Token, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, ClusterDetails, ClusterMembersSummary, Configuration, CurrentUser, DnsCheck, DnsCheckConfiguration, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, Host, HostAddRequest, Ids, InviteToken, Node, Progress, ProgressModify, RemoteProviderDetails, TaskStatus, Token, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
@@ -131,6 +131,45 @@
 
       return this.apiClient.callApi(
         '/dns_check', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createInviteToken operation.
+     * @callback module:api/OnepanelApi~createInviteTokenCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/InviteToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create invite token
+     * Creates invite token. The token can be used by other nodes to [join cluster](#operation/join_cluster). 
+     * @param {module:api/OnepanelApi~createInviteTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/InviteToken}
+     */
+    this.createInviteToken = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InviteToken;
+
+      return this.apiClient.callApi(
+        '/invite_token', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -792,15 +831,15 @@
     /**
      * Join existing cluster
      * Adds this host to administrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot have emergency passphrase or other configuration data set. Therefore this request does not need authorization. 
-     * @param {module:model/JoinClusterRequest} joinClusterRequest 
+     * @param {module:model/InviteToken} inviteToken 
      * @param {module:api/OnepanelApi~joinClusterCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.joinCluster = function(joinClusterRequest, callback) {
-      var postBody = joinClusterRequest;
+    this.joinCluster = function(inviteToken, callback) {
+      var postBody = inviteToken;
 
-      // verify the required parameter 'joinClusterRequest' is set
-      if (joinClusterRequest === undefined || joinClusterRequest === null) {
-        throw new Error("Missing the required parameter 'joinClusterRequest' when calling joinCluster");
+      // verify the required parameter 'inviteToken' is set
+      if (inviteToken === undefined || inviteToken === null) {
+        throw new Error("Missing the required parameter 'inviteToken' when calling joinCluster");
       }
 
 

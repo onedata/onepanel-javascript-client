@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.JoinClusterRequest();
+    instance = new Onepanel.InviteToken();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,16 @@
       object[property] = value;
   }
 
-  describe('JoinClusterRequest', function() {
-    it('should create an instance of JoinClusterRequest', function() {
-      // uncomment below and update the code to test JoinClusterRequest
-      //var instane = new Onepanel.JoinClusterRequest();
-      //expect(instance).to.be.a(Onepanel.JoinClusterRequest);
+  describe('InviteToken', function() {
+    it('should create an instance of InviteToken', function() {
+      // uncomment below and update the code to test InviteToken
+      //var instane = new Onepanel.InviteToken();
+      //expect(instance).to.be.a(Onepanel.InviteToken);
     });
 
-    it('should have the property clusterHost (base name: "clusterHost")', function() {
-      // uncomment below and update the code to test the property clusterHost
-      //var instane = new Onepanel.JoinClusterRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cookie (base name: "cookie")', function() {
-      // uncomment below and update the code to test the property cookie
-      //var instane = new Onepanel.JoinClusterRequest();
+    it('should have the property inviteToken (base name: "inviteToken")', function() {
+      // uncomment below and update the code to test the property inviteToken
+      //var instane = new Onepanel.InviteToken();
       //expect(instance).to.be();
     });
 

@@ -169,7 +169,7 @@
       var returnType = InviteToken;
 
       return this.apiClient.callApi(
-        '/invite_token', 'POST',
+        '/invite_tokens', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

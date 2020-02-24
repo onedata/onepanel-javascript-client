@@ -114,7 +114,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**checkDns**](docs/OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
-*Onepanel.OnepanelApi* | [**createInviteToken**](docs/OnepanelApi.md#createInviteToken) | **POST** /invite_token | Create node invite token
+*Onepanel.OnepanelApi* | [**createInviteToken**](docs/OnepanelApi.md#createInviteToken) | **POST** /invite_tokens | Create node invite token
 *Onepanel.OnepanelApi* | [**createUserInviteToken**](docs/OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 *Onepanel.OnepanelApi* | [**getCluster**](docs/OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.OnepanelApi* | [**getClusterCookie**](docs/OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie

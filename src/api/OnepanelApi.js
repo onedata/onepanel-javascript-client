@@ -145,8 +145,8 @@
      */
 
     /**
-     * Create invite token
-     * Creates invite token. The token can be used by other nodes to [join cluster](#operation/join_cluster). 
+     * Create node invite token
+     * Creates node invite token. The token can be used by other nodes to [join cluster](#operation/join_cluster). 
      * @param {module:api/OnepanelApi~createInviteTokenCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InviteToken}
      */

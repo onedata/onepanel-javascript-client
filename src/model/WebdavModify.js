@@ -61,6 +61,8 @@
 
 
 
+
+
   };
 
   /**
@@ -110,6 +112,12 @@
       }
       if (data.hasOwnProperty('maximumUploadSize')) {
         obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -166,6 +174,16 @@
    * @member {Number} maximumUploadSize
    */
   exports.prototype['maximumUploadSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   */
+  exports.prototype['fileMode'] = undefined;
+  /**
+   * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   */
+  exports.prototype['dirMode'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

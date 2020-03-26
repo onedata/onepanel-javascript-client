@@ -407,6 +407,51 @@
     }
 
     /**
+     * Callback function to receive the result of the cancelAutoCleaning operation.
+     * @callback module:api/OneproviderApi~cancelAutoCleaningCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Cancels space auto-cleaning
+     * Cancels current run of auto-cleaning mechanism for given space.
+     * @param {String} id The Id of a space.
+     * @param {module:api/OneproviderApi~cancelAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.cancelAutoCleaning = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling cancelAutoCleaning");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/auto-cleaning/cancel', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the configureCeph operation.
      * @callback module:api/OneproviderApi~configureCephCallback
      * @param {String} error Error message, if any.

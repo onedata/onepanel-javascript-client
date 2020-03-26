@@ -52,8 +52,9 @@
    * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
+   * @param status {module:model/SpaceAutoCleaningReport.StatusEnum} Status of an auto-cleaning run.
    */
-  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber) {
+  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber, status) {
     var _this = this;
 
     _this['id'] = id;
@@ -63,6 +64,7 @@
     _this['releasedBytes'] = releasedBytes;
     _this['bytesToRelease'] = bytesToRelease;
     _this['filesNumber'] = filesNumber;
+    _this['status'] = status;
   };
 
   /**
@@ -107,6 +109,9 @@
       if (data.hasOwnProperty('filesNumber')) {
         obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
       }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
     }
     return obj;
   }
@@ -146,7 +151,44 @@
    * @member {Number} filesNumber
    */
   exports.prototype['filesNumber'] = undefined;
+  /**
+   * Status of an auto-cleaning run.
+   * @member {module:model/SpaceAutoCleaningReport.StatusEnum} status
+   */
+  exports.prototype['status'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
 
   return exports;

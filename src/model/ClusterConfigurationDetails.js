@@ -46,14 +46,16 @@
    * @alias module:model/ClusterConfigurationDetails
    * @class
    * @param master {String} Host responsible for deploying cluster and coordinating cluster restarts.
+   * @param hosts {Array.<String>} List of hosts belonging to the Onepanel cluster.
    * @param databases {module:model/DatabaseHosts} 
    * @param managers {module:model/ManagerHosts} 
    * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(master, databases, managers, workers) {
+  var exports = function(master, hosts, databases, managers, workers) {
     var _this = this;
 
     _this['master'] = master;
+    _this['hosts'] = hosts;
     _this['databases'] = databases;
     _this['managers'] = managers;
     _this['workers'] = workers;
@@ -83,6 +85,9 @@
       if (data.hasOwnProperty('master')) {
         obj['master'] = ApiClient.convertToType(data['master'], 'String');
       }
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
+      }
       if (data.hasOwnProperty('databases')) {
         obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
       }
@@ -101,6 +106,11 @@
    * @member {String} master
    */
   exports.prototype['master'] = undefined;
+  /**
+   * List of hosts belonging to the Onepanel cluster.
+   * @member {Array.<String>} hosts
+   */
+  exports.prototype['hosts'] = undefined;
   /**
    * @member {module:model/DatabaseHosts} databases
    */

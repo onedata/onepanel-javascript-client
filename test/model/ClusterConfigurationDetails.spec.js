@@ -63,12 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property hosts (base name: "hosts")', function() {
-      // uncomment below and update the code to test the property hosts
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property databases (base name: "databases")', function() {
       // uncomment below and update the code to test the property databases
       //var instane = new Onepanel.ClusterConfigurationDetails();

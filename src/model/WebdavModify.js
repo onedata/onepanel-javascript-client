@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageDetailsModify'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageDetailsModify'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageDetailsModify);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, StorageDetailsModify) {
   'use strict';
 
 
@@ -45,15 +45,13 @@
    * The WebDAV storage configuration.
    * @alias module:model/WebdavModify
    * @class
-   * @extends module:model/StorageModifyDetails
+   * @extends module:model/StorageDetailsModify
    * @param type {module:model/WebdavModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
    */
   var exports = function(type) {
     var _this = this;
-    StorageModifyDetails.call(_this);
+    StorageDetailsModify.call(_this);
     _this['type'] = type;
-
-
 
 
 
@@ -85,7 +83,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageModifyDetails.constructFromObject(data, obj);
+      StorageDetailsModify.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -113,12 +111,6 @@
       if (data.hasOwnProperty('maximumUploadSize')) {
         obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
       }
-      if (data.hasOwnProperty('fileMode')) {
-        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
-      }
-      if (data.hasOwnProperty('dirMode')) {
-        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
@@ -126,7 +118,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageModifyDetails.prototype);
+  exports.prototype = Object.create(StorageDetailsModify.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -174,16 +166,6 @@
    * @member {Number} maximumUploadSize
    */
   exports.prototype['maximumUploadSize'] = undefined;
-  /**
-   * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
-   * @member {String} fileMode
-   */
-  exports.prototype['fileMode'] = undefined;
-  /**
-   * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
-   * @member {String} dirMode
-   */
-  exports.prototype['dirMode'] = undefined;
   /**
    * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure

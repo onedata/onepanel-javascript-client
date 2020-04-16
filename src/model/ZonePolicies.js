@@ -103,7 +103,7 @@
    */
   exports.prototype['subdomainDelegation'] = undefined;
   /**
-   * When this value is true, GUI packages uploaded by services operating under Onezone or by harvester admins are checked against known SHA-256 checksums using the compatibility registry. Setting this value to false disables the verification. WARNING: disabling GUI package verification poses a severe security threat, allowing Oneprovider owners to upload arbitrary GUI to Onezone (which is then hosted in Onezone's domain). 
+   * When this value is true, GUI packages uploaded by services operating under Onezone or by harvester admins are checked against known SHA-256 check-sums using the compatibility registry. Setting this value to false disables the verification. WARNING: disabling GUI package verification poses a severe security threat, allowing Oneprovider owners to upload arbitrary GUI to Onezone (which is then hosted in Onezone's domain). 
    * @member {Boolean} guiPackageVerification
    * @default true
    */

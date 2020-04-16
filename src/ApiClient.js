@@ -56,8 +56,8 @@
      * @type {Array.<String>}
      */
     this.authentications = {
-      'api_key1': {type: 'apiKey', 'in': 'header', name: 'X-Auth-Token'},
-      'api_key2': {type: 'apiKey', 'in': 'header', name: 'Authorization: Bearer'},
+      'api_key1': {type: 'apiKey', 'in': 'header', name: 'Authorization'},
+      'api_key2': {type: 'apiKey', 'in': 'header', name: 'X-Auth-Token'},
       'basic': {type: 'basic'}
     };
     /**
@@ -512,10 +512,6 @@
           if(type.__swaggerDiscriminator() !== undefined) {
             var polymorphicType;
 
-            if('blockdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Blockdevice");
-            }
-
             if('Ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Ceph");
             }
@@ -538,18 +534,6 @@
 
             if('GlusterfsModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/GlusterfsModify");
-            }
-
-            if('Localceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Localceph");
-            }
-
-            if('LocalcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/LocalcephModify");
-            }
-
-            if('loopdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Loopdevice");
             }
 
             if('Nulldevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

@@ -87,6 +87,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property mountInRoot (base name: "mountInRoot")', function() {
+      // uncomment below and update the code to test the property mountInRoot
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property storageImport (base name: "storageImport")', function() {
       // uncomment below and update the code to test the property storageImport
       //var instane = new Onepanel.SpaceDetails();

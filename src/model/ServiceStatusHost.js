@@ -32,12 +32,68 @@
   'use strict';
 
 
+
+
   /**
-   * Enum class ServiceStatusHost.
-   * @enum {}
+   * The ServiceStatusHost model module.
+   * @module model/ServiceStatusHost
+   * @version 19.02.1
+   */
+
+  /**
+   * Constructs a new <code>ServiceStatusHost</code>.
+   * The service status.
+   * @alias module:model/ServiceStatusHost
+   * @class
+   * @param status {module:model/ServiceStatusHost.StatusEnum} The service status.
+   */
+  var exports = function(status) {
+    var _this = this;
+
+    _this['status'] = status;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/ServiceStatusHost} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>ServiceStatusHost</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ServiceStatusHost} obj Optional instance to populate.
+   * @return {module:model/ServiceStatusHost} The populated <code>ServiceStatusHost</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
+    }
+    return obj;
+  }
+
+  /**
+   * The service status.
+   * @member {module:model/ServiceStatusHost.StatusEnum} status
+   */
+  exports.prototype['status'] = undefined;
+
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
    * @readonly
    */
-  var exports = {
+  exports.StatusEnum = {
     /**
      * value: "healthy"
      * @const
@@ -59,14 +115,6 @@
      */
     "missing": "missing"  };
 
-  /**
-   * Returns a <code>ServiceStatusHost</code> enum value from a Javascript object name.
-   * @param {Object} data The plain JavaScript object containing the name of the enum value.
-   * @return {module:model/ServiceStatusHost} The enum <code>ServiceStatusHost</code> value.
-   */
-  exports.constructFromObject = function(object) {
-    return object;
-  }
 
   return exports;
 }));

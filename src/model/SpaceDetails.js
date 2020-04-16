@@ -47,7 +47,7 @@
    * @class
    * @param id {String} The Id of the space.
    * @param name {String} The name of the space.
-   * @param storageId {String} Id of storage that supports this space on provider that is associated with this panel. 
+   * @param storageId {String} Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
@@ -60,6 +60,7 @@
     _this['storageId'] = storageId;
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
+
 
 
     _this['spaceOccupancy'] = spaceOccupancy;
@@ -101,6 +102,9 @@
       if (data.hasOwnProperty('supportingProviders')) {
         obj['supportingProviders'] = ApiClient.convertToType(data['supportingProviders'], {'String': 'Number'});
       }
+      if (data.hasOwnProperty('mountInRoot')) {
+        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
+      }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
       }
@@ -125,7 +129,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Id of storage that supports this space on provider that is associated with this panel. 
+   * Id of StorageDetails that supports this space on provider that is associated with this panel. 
    * @member {String} storageId
    */
   exports.prototype['storageId'] = undefined;
@@ -139,6 +143,12 @@
    * @member {Object.<String, Number>} supportingProviders
    */
   exports.prototype['supportingProviders'] = undefined;
+  /**
+   * Defines whether space will be mounted in / or /{SpaceId}/ path. 
+   * @member {Boolean} mountInRoot
+   * @default false
+   */
+  exports.prototype['mountInRoot'] = false;
   /**
    * @member {module:model/StorageImportDetails} storageImport
    */

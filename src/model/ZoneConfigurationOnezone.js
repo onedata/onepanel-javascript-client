@@ -45,14 +45,12 @@
    * The Onezone custom configuration.
    * @alias module:model/ZoneConfigurationOnezone
    * @class
-   * @param domainName {String} The domain of Onezone cluster.
-   * @param name {String} The Onezone cluster name.
    */
-  var exports = function(domainName, name) {
+  var exports = function() {
     var _this = this;
 
-    _this['domainName'] = domainName;
-    _this['name'] = name;
+
+
 
 
 

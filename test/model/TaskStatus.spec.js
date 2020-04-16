@@ -69,14 +69,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property totalSteps (base name: "totalSteps")', function() {
-      // uncomment below and update the code to test the property totalSteps
+    it('should have the property error (base name: "error")', function() {
+      // uncomment below and update the code to test the property error
       //var instane = new Onepanel.TaskStatus();
       //expect(instance).to.be();
     });
 
-    it('should have the property error (base name: "error")', function() {
-      // uncomment below and update the code to test the property error
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instane = new Onepanel.TaskStatus();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property module (base name: "module")', function() {
+      // uncomment below and update the code to test the property module
+      //var instane = new Onepanel.TaskStatus();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property _function (base name: "function")', function() {
+      // uncomment below and update the code to test the property _function
+      //var instane = new Onepanel.TaskStatus();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
       //var instane = new Onepanel.TaskStatus();
       //expect(instance).to.be();
     });

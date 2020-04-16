@@ -57,6 +57,7 @@
     _this['storageId'] = storageId;
 
 
+
   };
 
   /**
@@ -89,6 +90,9 @@
       if (data.hasOwnProperty('storageId')) {
         obj['storageId'] = ApiClient.convertToType(data['storageId'], 'String');
       }
+      if (data.hasOwnProperty('mountInRoot')) {
+        obj['mountInRoot'] = ApiClient.convertToType(data['mountInRoot'], 'Boolean');
+      }
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
       }
@@ -114,6 +118,12 @@
    * @member {String} storageId
    */
   exports.prototype['storageId'] = undefined;
+  /**
+   * Defines whether space will be mounted in / or /{SpaceId}/ path. 
+   * @member {Boolean} mountInRoot
+   * @default false
+   */
+  exports.prototype['mountInRoot'] = false;
   /**
    * @member {module:model/StorageImportDetails} storageImport
    */

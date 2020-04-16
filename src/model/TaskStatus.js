@@ -47,14 +47,16 @@
    * @class
    * @param status {module:model/TaskStatus.StatusEnum} The operation status.
    * @param steps {Array.<String>} The list of operation steps that have been executed successfully.
-   * @param totalSteps {Number} Total number of steps to be executed.
    */
-  var exports = function(status, steps, totalSteps) {
+  var exports = function(status, steps) {
     var _this = this;
 
     _this['status'] = status;
     _this['steps'] = steps;
-    _this['totalSteps'] = totalSteps;
+
+
+
+
 
   };
 
@@ -85,11 +87,20 @@
       if (data.hasOwnProperty('steps')) {
         obj['steps'] = ApiClient.convertToType(data['steps'], ['String']);
       }
-      if (data.hasOwnProperty('totalSteps')) {
-        obj['totalSteps'] = ApiClient.convertToType(data['totalSteps'], 'Number');
-      }
       if (data.hasOwnProperty('error')) {
-        obj['error'] = Error.constructFromObject(data['error']);
+        obj['error'] = ApiClient.convertToType(data['error'], 'String');
+      }
+      if (data.hasOwnProperty('description')) {
+        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+      }
+      if (data.hasOwnProperty('module')) {
+        obj['module'] = ApiClient.convertToType(data['module'], 'String');
+      }
+      if (data.hasOwnProperty('function')) {
+        obj['function'] = ApiClient.convertToType(data['function'], 'String');
+      }
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], {'String': Error});
       }
     }
     return obj;
@@ -106,14 +117,30 @@
    */
   exports.prototype['steps'] = undefined;
   /**
-   * Total number of steps to be executed.
-   * @member {Number} totalSteps
-   */
-  exports.prototype['totalSteps'] = undefined;
-  /**
-   * @member {module:model/Error} error
+   * The name of an error type.
+   * @member {String} error
    */
   exports.prototype['error'] = undefined;
+  /**
+   * The detailed error description.
+   * @member {String} description
+   */
+  exports.prototype['description'] = undefined;
+  /**
+   * The name of a module containing function that returned error.
+   * @member {String} module
+   */
+  exports.prototype['module'] = undefined;
+  /**
+   * The name of a function that returned error.
+   * @member {String} function
+   */
+  exports.prototype['function'] = undefined;
+  /**
+   * The collection of hosts with associated error description.
+   * @member {Object.<String, module:model/Error>} hosts
+   */
+  exports.prototype['hosts'] = undefined;
 
 
   /**

@@ -57,6 +57,12 @@
       //expect(instance).to.be.a(Onepanel.ServiceStatus);
     });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.ServiceStatus();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

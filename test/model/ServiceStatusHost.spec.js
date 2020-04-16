@@ -31,6 +31,7 @@
   var instance;
 
   beforeEach(function() {
+    instance = new Onepanel.ServiceStatusHost();
   });
 
   var getProperty = function(object, getter, property) {
@@ -54,6 +55,12 @@
       // uncomment below and update the code to test ServiceStatusHost
       //var instane = new Onepanel.ServiceStatusHost();
       //expect(instance).to.be.a(Onepanel.ServiceStatusHost);
+    });
+
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instane = new Onepanel.ServiceStatusHost();
+      //expect(instance).to.be();
     });
 
   });

@@ -56,8 +56,8 @@
      * @type {Array.<String>}
      */
     this.authentications = {
-      'api_key1': {type: 'apiKey', 'in': 'header', name: 'X-Auth-Token'},
-      'api_key2': {type: 'apiKey', 'in': 'header', name: 'Authorization: Bearer'},
+      'api_key1': {type: 'apiKey', 'in': 'header', name: 'Authorization'},
+      'api_key2': {type: 'apiKey', 'in': 'header', name: 'X-Auth-Token'},
       'basic': {type: 'basic'}
     };
     /**

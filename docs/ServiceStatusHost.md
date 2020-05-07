@@ -1,6 +1,13 @@
 # Onepanel.ServiceStatusHost
 
-## Enum
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**status** | **String** | The service status. | 
+
+
+<a name="StatusEnum"></a>
+## Enum: StatusEnum
 
 
 * `healthy` (value: `"healthy"`)
@@ -10,5 +17,7 @@
 * `stopped` (value: `"stopped"`)
 
 * `missing` (value: `"missing"`)
+
+
 
 

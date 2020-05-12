@@ -77,13 +77,13 @@ var defaultClient = Onepanel.ApiClient.instance;
 var api_key1 = defaultClient.authentications['api_key1'];
 api_key1.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix['Authorization'] = "Token"
+//api_key1.apiKeyPrefix['X-Auth-Token'] = "Token"
 
 // Configure API key authorization: api_key2
 var api_key2 = defaultClient.authentications['api_key2'];
 api_key2.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix['X-Auth-Token'] = "Token"
+//api_key2.apiKeyPrefix['Authorization'] = "Token"
 
 // Configure HTTP basic authorization: basic
 var basic = defaultClient.authentications['basic'];
@@ -368,13 +368,13 @@ Class | Method | HTTP request | Description
 ### api_key1
 
 - **Type**: API key
-- **API key parameter name**: Authorization
+- **API key parameter name**: X-Auth-Token
 - **Location**: HTTP header
 
 ### api_key2
 
 - **Type**: API key
-- **API key parameter name**: X-Auth-Token
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
 ### basic

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/S3Credentials', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./S3Credentials'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.S3 = factory(root.Onepanel.ApiClient, root.Onepanel.S3Credentials, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, S3Credentials, StorageCreateDetails, StorageGetDetails) {
   'use strict';
 
 
@@ -47,22 +47,21 @@
    * @class
    * @extends module:model/StorageCreateDetails
    * @implements module:model/StorageGetDetails
+   * @implements module:model/S3Credentials
    * @param type {module:model/S3.TypeEnum} The type of storage.
-   * @param hostname {String} The hostname of a machine where S3 storage is installed.
-   * @param bucketName {String} The storage bucket name.
    * @param accessKey {String} The access key to the S3 storage.
    * @param secretKey {String} The secret key to the S3 storage.
+   * @param hostname {String} The hostname of a machine where S3 storage is installed.
+   * @param bucketName {String} The storage bucket name.
    */
-  var exports = function(type, hostname, bucketName, accessKey, secretKey) {
+  var exports = function(type, accessKey, secretKey, hostname, bucketName) {
     var _this = this;
     StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    S3Credentials.call(_this, type, accessKey, secretKey);
     _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
-    _this['accessKey'] = accessKey;
-    _this['secretKey'] = secretKey;
-
 
 
 
@@ -93,6 +92,7 @@
       obj = obj || new exports();
       StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      S3Credentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -101,12 +101,6 @@
       }
       if (data.hasOwnProperty('bucketName')) {
         obj['bucketName'] = ApiClient.convertToType(data['bucketName'], 'String');
-      }
-      if (data.hasOwnProperty('accessKey')) {
-        obj['accessKey'] = ApiClient.convertToType(data['accessKey'], 'String');
-      }
-      if (data.hasOwnProperty('secretKey')) {
-        obj['secretKey'] = ApiClient.convertToType(data['secretKey'], 'String');
       }
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
@@ -122,9 +116,6 @@
       }
       if (data.hasOwnProperty('dirMode')) {
         obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -152,16 +143,6 @@
    */
   exports.prototype['bucketName'] = undefined;
   /**
-   * The access key to the S3 storage.
-   * @member {String} accessKey
-   */
-  exports.prototype['accessKey'] = undefined;
-  /**
-   * The secret key to the S3 storage.
-   * @member {String} secretKey
-   */
-  exports.prototype['secretKey'] = undefined;
-  /**
    * The version of signature used to sign requests. One of: 2, 4. Default: 4. 
    * @member {Number} signatureVersion
    */
@@ -188,12 +169,6 @@
    * @default '0775'
    */
   exports.prototype['dirMode'] = '0775';
-  /**
-   * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
@@ -233,27 +208,25 @@ exports.prototype['verificationPassed'] = undefined;
 exports.prototype['timeout'] = undefined;
 
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-exports.prototype['readonly'] = false;
+exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
-exports.prototype['lumaEnabled'] = false;
+exports.prototype['lumaFeed'] = undefined;
 
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
 exports.prototype['lumaUrl'] = undefined;
 
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
 exports.prototype['lumaApiKey'] = undefined;
@@ -270,6 +243,25 @@ exports.prototype['qosParameters'] = undefined;
    * @default false
    */
 exports.prototype['importedStorage'] = false;
+
+  // Implement S3Credentials interface:
+  /**
+   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @member {module:model/S3Credentials.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The access key to the S3 storage.
+   * @member {String} accessKey
+   */
+exports.prototype['accessKey'] = undefined;
+
+  /**
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
+   */
+exports.prototype['secretKey'] = undefined;
 
 
   /**

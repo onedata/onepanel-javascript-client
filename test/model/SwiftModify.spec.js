@@ -93,12 +93,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.SwiftModify();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

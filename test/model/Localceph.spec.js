@@ -63,12 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
-      //var instane = new Onepanel.Localceph();
-      //expect(instance).to.be();
-    });
-
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
       //var instane = new Onepanel.Localceph();

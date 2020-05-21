@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails', 'model/WebdavCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'), require('./WebdavCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails, root.Onepanel.WebdavCredentials);
   }
-}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails, WebdavCredentials) {
   'use strict';
 
 
@@ -47,6 +47,7 @@
    * @class
    * @extends module:model/StorageCreateDetails
    * @implements module:model/StorageGetDetails
+   * @implements module:model/WebdavCredentials
    * @param type {module:model/Webdav.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
@@ -54,13 +55,9 @@
     var _this = this;
     StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    WebdavCredentials.call(_this, type);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
-
-
-
-
-
 
 
 
@@ -93,6 +90,7 @@
       obj = obj || new exports();
       StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      WebdavCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -101,18 +99,6 @@
       }
       if (data.hasOwnProperty('verifyServerCertificate')) {
         obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
-      }
-      if (data.hasOwnProperty('credentialsType')) {
-        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
-      }
-      if (data.hasOwnProperty('credentials')) {
-        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
-      }
-      if (data.hasOwnProperty('oauth2IdP')) {
-        obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
-      }
-      if (data.hasOwnProperty('onedataAccessToken')) {
-        obj['onedataAccessToken'] = ApiClient.convertToType(data['onedataAccessToken'], 'String');
       }
       if (data.hasOwnProperty('authorizationHeader')) {
         obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
@@ -131,9 +117,6 @@
       }
       if (data.hasOwnProperty('dirMode')) {
         obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -161,27 +144,6 @@
    * @default true
    */
   exports.prototype['verifyServerCertificate'] = true;
-  /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
-   * @default 'none'
-   */
-  exports.prototype['credentialsType'] = 'none';
-  /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
-   * @member {String} credentials
-   */
-  exports.prototype['credentials'] = undefined;
-  /**
-   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the WebDAV endpoint. If Onezone has only one external IdP, it will be selected automatically. 
-   * @member {String} oauth2IdP
-   */
-  exports.prototype['oauth2IdP'] = undefined;
-  /**
-   * When registering storage in `insecure` mode with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
-   * @member {String} onedataAccessToken
-   */
-  exports.prototype['onedataAccessToken'] = undefined;
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
@@ -216,12 +178,6 @@
    * @default '0775'
    */
   exports.prototype['dirMode'] = '0775';
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
@@ -261,27 +217,25 @@ exports.prototype['verificationPassed'] = undefined;
 exports.prototype['timeout'] = undefined;
 
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-exports.prototype['readonly'] = false;
+exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
-exports.prototype['lumaEnabled'] = false;
+exports.prototype['lumaFeed'] = undefined;
 
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
 exports.prototype['lumaUrl'] = undefined;
 
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
 exports.prototype['lumaApiKey'] = undefined;
@@ -299,6 +253,38 @@ exports.prototype['qosParameters'] = undefined;
    */
 exports.prototype['importedStorage'] = false;
 
+  // Implement WebdavCredentials interface:
+  /**
+   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @member {module:model/WebdavCredentials.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/WebdavCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+exports.prototype['credentialsType'] = 'none';
+
+  /**
+   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+exports.prototype['credentials'] = undefined;
+
+  /**
+   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the WebDAV endpoint. If Onezone has only one external IdP, it will be selected automatically. 
+   * @member {String} oauth2IdP
+   */
+exports.prototype['oauth2IdP'] = undefined;
+
+  /**
+   * When registering storage with disabled LUMA service with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * @member {String} onedataAccessToken
+   */
+exports.prototype['onedataAccessToken'] = undefined;
+
 
   /**
    * Allowed values for the <code>type</code> property.
@@ -311,33 +297,6 @@ exports.prototype['importedStorage'] = false;
      * @const
      */
     "webdav": "webdav"  };
-
-  /**
-   * Allowed values for the <code>credentialsType</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.CredentialsTypeEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "basic"
-     * @const
-     */
-    "basic": "basic",
-    /**
-     * value: "token"
-     * @const
-     */
-    "token": "token",
-    /**
-     * value: "oauth2"
-     * @const
-     */
-    "oauth2": "oauth2"  };
 
   /**
    * Allowed values for the <code>rangeWriteSupport</code> property.

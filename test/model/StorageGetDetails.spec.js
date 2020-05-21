@@ -87,14 +87,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property readonly (base name: "readonly")', function() {
-      // uncomment below and update the code to test the property readonly
+    it('should have the property skipStorageDetection (base name: "skipStorageDetection")', function() {
+      // uncomment below and update the code to test the property skipStorageDetection
       //var instane = new Onepanel.StorageGetDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property lumaEnabled (base name: "lumaEnabled")', function() {
-      // uncomment below and update the code to test the property lumaEnabled
+    it('should have the property lumaFeed (base name: "lumaFeed")', function() {
+      // uncomment below and update the code to test the property lumaFeed
       //var instane = new Onepanel.StorageGetDetails();
       //expect(instance).to.be();
     });

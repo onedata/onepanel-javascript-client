@@ -63,18 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.Cephrados();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property key (base name: "key")', function() {
-      // uncomment below and update the code to test the property key
-      //var instane = new Onepanel.Cephrados();
-      //expect(instance).to.be();
-    });
-
     it('should have the property monitorHostname (base name: "monitorHostname")', function() {
       // uncomment below and update the code to test the property monitorHostname
       //var instane = new Onepanel.Cephrados();
@@ -95,12 +83,6 @@
 
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.Cephrados();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
       //var instane = new Onepanel.Cephrados();
       //expect(instance).to.be();
     });

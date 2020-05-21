@@ -57,7 +57,6 @@
 
 
 
-
   };
 
   /**
@@ -86,9 +85,6 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
       }
@@ -107,12 +103,6 @@
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default true
-   */
-  exports.prototype['insecure'] = true;
   /**
    * Storage block size in bytes.
    * @member {Number} blockSize
@@ -157,27 +147,25 @@ exports.prototype['verificationPassed'] = undefined;
 exports.prototype['timeout'] = undefined;
 
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-exports.prototype['readonly'] = false;
+exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
-exports.prototype['lumaEnabled'] = false;
+exports.prototype['lumaFeed'] = undefined;
 
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
 exports.prototype['lumaUrl'] = undefined;
 
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
 exports.prototype['lumaApiKey'] = undefined;

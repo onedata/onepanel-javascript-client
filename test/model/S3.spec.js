@@ -75,18 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
     it('should have the property signatureVersion (base name: "signatureVersion")', function() {
       // uncomment below and update the code to test the property signatureVersion
       //var instane = new Onepanel.S3();
@@ -113,12 +101,6 @@
 
     it('should have the property dirMode (base name: "dirMode")', function() {
       // uncomment below and update the code to test the property dirMode
-      //var instane = new Onepanel.S3();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
       //var instane = new Onepanel.S3();
       //expect(instance).to.be();
     });

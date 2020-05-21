@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/CephCredentials', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephCredentials'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephCredentials, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageGetDetails) {
+}(this, function(ApiClient, CephCredentials, StorageCreateDetails, StorageGetDetails) {
   'use strict';
 
 
@@ -45,7 +45,9 @@
    * The Ceph storage configuration (uses libradosstriper).
    * @alias module:model/Ceph
    * @class
-   * @extends module:model/StorageGetDetails
+   * @extends module:model/StorageCreateDetails
+   * @implements module:model/StorageGetDetails
+   * @implements module:model/CephCredentials
    * @param type {module:model/Ceph.TypeEnum} The type of storage.
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
@@ -55,14 +57,13 @@
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
+    StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    CephCredentials.call(_this, type, username, key);
     _this['type'] = type;
-    _this['username'] = username;
-    _this['key'] = key;
     _this['monitorHostname'] = monitorHostname;
     _this['clusterName'] = clusterName;
     _this['poolName'] = poolName;
-
 
   };
 
@@ -86,15 +87,11 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
+      StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      CephCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
       if (data.hasOwnProperty('monitorHostname')) {
         obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
@@ -105,9 +102,6 @@
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
@@ -115,7 +109,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageGetDetails.prototype);
+  exports.prototype = Object.create(StorageCreateDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -123,16 +117,6 @@
    * @member {module:model/Ceph.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
-  /**
-   * The username of the Ceph cluster administrator.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The admin key to access the Ceph cluster.
-   * @member {String} key
-   */
-  exports.prototype['key'] = undefined;
   /**
    * The monitor hostname.
    * @member {String} monitorHostname
@@ -149,17 +133,98 @@
    */
   exports.prototype['poolName'] = undefined;
   /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
-  /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
+
+  // Implement StorageGetDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The Id of storage.
+   * @member {String} id
+   */
+exports.prototype['id'] = undefined;
+
+  /**
+   * The name of storage.
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
+
+  /**
+   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
+   * @member {Boolean} verificationPassed
+   */
+exports.prototype['verificationPassed'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
+   */
+exports.prototype['skipStorageDetection'] = undefined;
+
+  /**
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
+   */
+exports.prototype['lumaFeed'] = undefined;
+
+  /**
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
+   * @member {String} lumaUrl
+   */
+exports.prototype['lumaUrl'] = undefined;
+
+  /**
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
+   * @member {String} lumaApiKey
+   */
+exports.prototype['lumaApiKey'] = undefined;
+
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported.
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
+  // Implement CephCredentials interface:
+  /**
+   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @member {module:model/CephCredentials.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
+   */
+exports.prototype['username'] = undefined;
+
+  /**
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
+   */
+exports.prototype['key'] = undefined;
 
 
   /**

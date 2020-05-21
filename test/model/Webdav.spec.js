@@ -75,30 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property credentialsType (base name: "credentialsType")', function() {
-      // uncomment below and update the code to test the property credentialsType
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property credentials (base name: "credentials")', function() {
-      // uncomment below and update the code to test the property credentials
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oauth2IdP (base name: "oauth2IdP")', function() {
-      // uncomment below and update the code to test the property oauth2IdP
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onedataAccessToken (base name: "onedataAccessToken")', function() {
-      // uncomment below and update the code to test the property onedataAccessToken
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
     it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
       // uncomment below and update the code to test the property authorizationHeader
       //var instane = new Onepanel.Webdav();
@@ -131,12 +107,6 @@
 
     it('should have the property dirMode (base name: "dirMode")', function() {
       // uncomment below and update the code to test the property dirMode
-      //var instane = new Onepanel.Webdav();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
       //var instane = new Onepanel.Webdav();
       //expect(instance).to.be();
     });

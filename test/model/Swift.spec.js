@@ -81,26 +81,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property password (base name: "password")', function() {
-      // uncomment below and update the code to test the property password
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property insecure (base name: "insecure")', function() {
-      // uncomment below and update the code to test the property insecure
       //var instane = new Onepanel.Swift();
       //expect(instance).to.be();
     });

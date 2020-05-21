@@ -194,27 +194,25 @@ exports.prototype['verificationPassed'] = undefined;
 exports.prototype['timeout'] = undefined;
 
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-exports.prototype['readonly'] = false;
+exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
-exports.prototype['lumaEnabled'] = false;
+exports.prototype['lumaFeed'] = undefined;
 
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
 exports.prototype['lumaUrl'] = undefined;
 
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
 exports.prototype['lumaApiKey'] = undefined;

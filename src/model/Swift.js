@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails', 'model/SwiftCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'), require('./SwiftCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails, root.Onepanel.SwiftCredentials);
   }
-}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails, SwiftCredentials) {
   'use strict';
 
 
@@ -47,24 +47,23 @@
    * @class
    * @extends module:model/StorageCreateDetails
    * @implements module:model/StorageGetDetails
+   * @implements module:model/SwiftCredentials
    * @param type {module:model/Swift.TypeEnum} The type of storage.
+   * @param username {String} The Keystone authentication username.
+   * @param password {String} The Keystone authentication password.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
    * @param tenantName {String} The name of the tenant to which the user belongs.
    * @param containerName {String} The name of the Swift storage container.
-   * @param username {String} The Keystone authentication username.
-   * @param password {String} The Keystone authentication password.
    */
-  var exports = function(type, authUrl, tenantName, containerName, username, password) {
+  var exports = function(type, username, password, authUrl, tenantName, containerName) {
     var _this = this;
     StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    SwiftCredentials.call(_this, type, username, password);
     _this['type'] = type;
     _this['authUrl'] = authUrl;
     _this['tenantName'] = tenantName;
     _this['containerName'] = containerName;
-    _this['username'] = username;
-    _this['password'] = password;
-
 
 
   };
@@ -91,6 +90,7 @@
       obj = obj || new exports();
       StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      SwiftCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -103,17 +103,8 @@
       if (data.hasOwnProperty('containerName')) {
         obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -146,26 +137,10 @@
    */
   exports.prototype['containerName'] = undefined;
   /**
-   * The Keystone authentication username.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The Keystone authentication password.
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default false
-   */
-  exports.prototype['insecure'] = false;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
@@ -205,27 +180,25 @@ exports.prototype['verificationPassed'] = undefined;
 exports.prototype['timeout'] = undefined;
 
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
-   * @default false
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-exports.prototype['readonly'] = false;
+exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
-   * @default false
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
-exports.prototype['lumaEnabled'] = false;
+exports.prototype['lumaFeed'] = undefined;
 
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
 exports.prototype['lumaUrl'] = undefined;
 
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
 exports.prototype['lumaApiKey'] = undefined;
@@ -242,6 +215,25 @@ exports.prototype['qosParameters'] = undefined;
    * @default false
    */
 exports.prototype['importedStorage'] = false;
+
+  // Implement SwiftCredentials interface:
+  /**
+   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @member {module:model/SwiftCredentials.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The Keystone authentication username.
+   * @member {String} username
+   */
+exports.prototype['username'] = undefined;
+
+  /**
+   * The Keystone authentication password.
+   * @member {String} password
+   */
+exports.prototype['password'] = undefined;
 
 
   /**

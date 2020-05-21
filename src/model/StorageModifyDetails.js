@@ -86,11 +86,11 @@
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
-      if (data.hasOwnProperty('readonly')) {
-        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      if (data.hasOwnProperty('skipStorageDetection')) {
+        obj['skipStorageDetection'] = ApiClient.convertToType(data['skipStorageDetection'], 'Boolean');
       }
-      if (data.hasOwnProperty('lumaEnabled')) {
-        obj['lumaEnabled'] = ApiClient.convertToType(data['lumaEnabled'], 'Boolean');
+      if (data.hasOwnProperty('lumaFeed')) {
+        obj['lumaFeed'] = ApiClient.convertToType(data['lumaFeed'], 'String');
       }
       if (data.hasOwnProperty('lumaUrl')) {
         obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
@@ -119,22 +119,22 @@
    */
   exports.prototype['timeout'] = undefined;
   /**
-   * Defines whether storage is readonly.
-   * @member {Boolean} readonly
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
    */
-  exports.prototype['readonly'] = undefined;
+  exports.prototype['skipStorageDetection'] = undefined;
   /**
-   * If true LUMA and reverse LUMA services will be enabled.
-   * @member {Boolean} lumaEnabled
+   * Type of feed for Local User Mapping (LUMA) database.
+   * @member {module:model/StorageModifyDetails.LumaFeedEnum} lumaFeed
    */
-  exports.prototype['lumaEnabled'] = undefined;
+  exports.prototype['lumaFeed'] = undefined;
   /**
-   * URL of external LUMA service.
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
    * @member {String} lumaUrl
    */
   exports.prototype['lumaUrl'] = undefined;
   /**
-   * LUMA API Key, must be identical with API Key in external LUMA service.
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
    * @member {String} lumaApiKey
    */
   exports.prototype['lumaApiKey'] = undefined;
@@ -144,11 +144,33 @@
    */
   exports.prototype['qosParameters'] = undefined;
   /**
-   * Defines whether storage contains existing data to be imported. 
+   * Defines whether storage contains existing data to be imported.
    * @member {Boolean} importedStorage
    */
   exports.prototype['importedStorage'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>lumaFeed</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.LumaFeedEnum = {
+    /**
+     * value: "auto"
+     * @const
+     */
+    "auto": "auto",
+    /**
+     * value: "local"
+     * @const
+     */
+    "local": "local",
+    /**
+     * value: "external"
+     * @const
+     */
+    "external": "external"  };
 
 
   return exports;

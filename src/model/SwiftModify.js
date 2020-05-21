@@ -57,7 +57,6 @@
 
 
 
-
   };
 
   /**
@@ -99,9 +98,6 @@
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
     }
     return obj;
   }
@@ -139,11 +135,6 @@
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   */
-  exports.prototype['insecure'] = undefined;
 
 
   /**

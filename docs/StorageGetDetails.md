@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **lumaFeed** | **String** | Type of feed for Local User Mapping (LUMA) database. | [optional] 
 **lumaUrl** | **String** | URL of external feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;. | [optional] 
 **lumaApiKey** | **String** | API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;.  | [optional] 
-**qosParameters** | **{String: String}** | Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters. | [optional] 
+**qosParameters** | **{String: String}** | Map with key-value pairs used for describing storage QoS parameters. | [optional] 
 **importedStorage** | **Boolean** | Defines whether storage contains existing data to be imported. | [optional] [default to false]
 
 

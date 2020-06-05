@@ -148,6 +148,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**addProviderWorkers**](docs/OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderApi* | [**addStorage**](docs/OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.OneproviderApi* | [**cancelAutoCleaning**](docs/OneproviderApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancels space auto-cleaning
+*Onepanel.OneproviderApi* | [**clearLumaDb**](docs/OneproviderApi.md#clearLumaDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
 *Onepanel.OneproviderApi* | [**configureCeph**](docs/OneproviderApi.md#configureCeph) | **POST** /provider/ceph | Configure Ceph cluster
 *Onepanel.OneproviderApi* | [**configureFilePopularity**](docs/OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
@@ -201,7 +202,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**getTransfersMock**](docs/OneproviderApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
-*Onepanel.OneproviderApi* | [**invalidateLumaDb**](docs/OneproviderApi.md#invalidateLumaDb) | **DELETE** /provider/storages/{id}/luma/db | Invalidate LUMA DB
 *Onepanel.OneproviderApi* | [**modifyCephPool**](docs/OneproviderApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify pool params
 *Onepanel.OneproviderApi* | [**modifyLocalFeedLumaOnedataUserToCredentialsMapping**](docs/OneproviderApi.md#modifyLocalFeedLumaOnedataUserToCredentialsMapping) | **PATCH** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Modify local feed LUMA Onedata user to credentials mapping.
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details

@@ -151,6 +151,16 @@
         done();
       });
     });
+    describe('clearLumaDb', function() {
+      it('should call clearLumaDb successfully', function(done) {
+        //uncomment below and update the code to test clearLumaDb
+        //instance.clearLumaDb(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('configureCeph', function() {
       it('should call configureCeph successfully', function(done) {
         //uncomment below and update the code to test configureCeph
@@ -675,16 +685,6 @@
       it('should call getTransfersMock successfully', function(done) {
         //uncomment below and update the code to test getTransfersMock
         //instance.getTransfersMock(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('invalidateLumaDb', function() {
-      it('should call invalidateLumaDb successfully', function(done) {
-        //uncomment below and update the code to test invalidateLumaDb
-        //instance.invalidateLumaDb(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

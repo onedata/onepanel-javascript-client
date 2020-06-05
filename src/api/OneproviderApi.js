@@ -503,6 +503,51 @@
     }
 
     /**
+     * Callback function to receive the result of the clearLumaDb operation.
+     * @callback module:api/OneproviderApi~clearLumaDbCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Clear LUMA DB
+     * Clears all LUMA DB entries for given storage.
+     * @param {String} id The Id of a storage for which LUMA DB will be cleared
+     * @param {module:api/OneproviderApi~clearLumaDbCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.clearLumaDb = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling clearLumaDb");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/storages/{id}/luma/db', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the configureCeph operation.
      * @callback module:api/OneproviderApi~configureCephCallback
      * @param {String} error Error message, if any.
@@ -2926,51 +2971,6 @@
 
       return this.apiClient.callApi(
         '/provider/debug/transfers_mock', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the invalidateLumaDb operation.
-     * @callback module:api/OneproviderApi~invalidateLumaDbCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Invalidate LUMA DB
-     * Invalidates all LUMA DB entries for given storage.
-     * @param {String} id The Id of a storage for which LUMA DB will be invalidated
-     * @param {module:api/OneproviderApi~invalidateLumaDbCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.invalidateLumaDb = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling invalidateLumaDb");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

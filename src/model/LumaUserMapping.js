@@ -45,14 +45,14 @@
    * Mapping that will be stored in LUMA DB.
    * @alias module:model/LumaUserMapping
    * @class
-   * @param onedata {module:model/LumaOnedataUser} 
-   * @param storage {module:model/LumaStorageUser} 
+   * @param onedataUser {module:model/LumaOnedataUser} 
+   * @param storageUser {module:model/LumaStorageUser} 
    */
-  var exports = function(onedata, storage) {
+  var exports = function(onedataUser, storageUser) {
     var _this = this;
 
-    _this['onedata'] = onedata;
-    _this['storage'] = storage;
+    _this['onedataUser'] = onedataUser;
+    _this['storageUser'] = storageUser;
   };
 
   /**
@@ -76,24 +76,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('onedata')) {
-        obj['onedata'] = LumaOnedataUser.constructFromObject(data['onedata']);
+      if (data.hasOwnProperty('onedataUser')) {
+        obj['onedataUser'] = LumaOnedataUser.constructFromObject(data['onedataUser']);
       }
-      if (data.hasOwnProperty('storage')) {
-        obj['storage'] = LumaStorageUser.constructFromObject(data['storage']);
+      if (data.hasOwnProperty('storageUser')) {
+        obj['storageUser'] = LumaStorageUser.constructFromObject(data['storageUser']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/LumaOnedataUser} onedata
+   * @member {module:model/LumaOnedataUser} onedataUser
    */
-  exports.prototype['onedata'] = undefined;
+  exports.prototype['onedataUser'] = undefined;
   /**
-   * @member {module:model/LumaStorageUser} storage
+   * @member {module:model/LumaStorageUser} storageUser
    */
-  exports.prototype['storage'] = undefined;
+  exports.prototype['storageUser'] = undefined;
 
 
 

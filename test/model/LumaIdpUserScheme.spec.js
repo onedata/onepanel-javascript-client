@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property onedataUserId (base name: "onedataUserId")', function() {
+      // uncomment below and update the code to test the property onedataUserId
+      //var instane = new Onepanel.LumaIdpUserScheme();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

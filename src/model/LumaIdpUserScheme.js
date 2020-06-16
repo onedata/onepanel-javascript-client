@@ -56,6 +56,7 @@
     _this['mappingScheme'] = mappingScheme;
     _this['idp'] = idp;
     _this['subjectId'] = subjectId;
+
   };
 
   /**
@@ -88,6 +89,9 @@
       if (data.hasOwnProperty('subjectId')) {
         obj['subjectId'] = ApiClient.convertToType(data['subjectId'], 'String');
       }
+      if (data.hasOwnProperty('onedataUserId')) {
+        obj['onedataUserId'] = ApiClient.convertToType(data['onedataUserId'], 'String');
+      }
     }
     return obj;
   }
@@ -110,6 +114,11 @@
    * @member {String} subjectId
    */
   exports.prototype['subjectId'] = undefined;
+  /**
+   * The id of user in Onedata system.
+   * @member {String} onedataUserId
+   */
+  exports.prototype['onedataUserId'] = undefined;
 
 
   /**

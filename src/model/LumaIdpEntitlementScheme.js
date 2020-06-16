@@ -56,6 +56,7 @@
     _this['mappingScheme'] = mappingScheme;
     _this['idp'] = idp;
     _this['idpEntitlement'] = idpEntitlement;
+
   };
 
   /**
@@ -88,6 +89,9 @@
       if (data.hasOwnProperty('idpEntitlement')) {
         obj['idpEntitlement'] = ApiClient.convertToType(data['idpEntitlement'], 'String');
       }
+      if (data.hasOwnProperty('onedataGroupId')) {
+        obj['onedataGroupId'] = ApiClient.convertToType(data['onedataGroupId'], 'String');
+      }
     }
     return obj;
   }
@@ -110,6 +114,11 @@
    * @member {String} idpEntitlement
    */
   exports.prototype['idpEntitlement'] = undefined;
+  /**
+   * The id of group in the Onedata system.
+   * @member {String} onedataGroupId
+   */
+  exports.prototype['onedataGroupId'] = undefined;
 
 
   /**

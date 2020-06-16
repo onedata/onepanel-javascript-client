@@ -57,14 +57,14 @@
       //expect(instance).to.be.a(Onepanel.LumaUserMapping);
     });
 
-    it('should have the property onedata (base name: "onedata")', function() {
-      // uncomment below and update the code to test the property onedata
+    it('should have the property onedataUser (base name: "onedataUser")', function() {
+      // uncomment below and update the code to test the property onedataUser
       //var instane = new Onepanel.LumaUserMapping();
       //expect(instance).to.be();
     });
 
-    it('should have the property storage (base name: "storage")', function() {
-      // uncomment below and update the code to test the property storage
+    it('should have the property storageUser (base name: "storageUser")', function() {
+      // uncomment below and update the code to test the property storageUser
       //var instane = new Onepanel.LumaUserMapping();
       //expect(instance).to.be();
     });

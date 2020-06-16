@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**onedata** | [**LumaOnedataUser**](LumaOnedataUser.md) |  | 
-**storage** | [**LumaStorageUser**](LumaStorageUser.md) |  | 
+**onedataUser** | [**LumaOnedataUser**](LumaOnedataUser.md) |  | 
+**storageUser** | [**LumaStorageUser**](LumaStorageUser.md) |  | 
 
 

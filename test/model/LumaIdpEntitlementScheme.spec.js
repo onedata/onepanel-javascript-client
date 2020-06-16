@@ -75,6 +75,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property onedataGroupId (base name: "onedataGroupId")', function() {
+      // uncomment below and update the code to test the property onedataGroupId
+      //var instane = new Onepanel.LumaIdpEntitlementScheme();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -17,41 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Webdav = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
+    root.Onepanel.WebdavCreate = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails);
   }
-}(this, function(ApiClient, StorageGetDetails) {
+}(this, function(ApiClient, StorageCreateDetails) {
   'use strict';
 
 
 
 
   /**
-   * The Webdav model module.
-   * @module model/Webdav
+   * The WebdavCreate model module.
+   * @module model/WebdavCreate
    * @version 20.02.0-beta4
    */
 
   /**
-   * Constructs a new <code>Webdav</code>.
+   * Constructs a new <code>WebdavCreate</code>.
    * The WebDAV storage configuration.
-   * @alias module:model/Webdav
+   * @alias module:model/WebdavCreate
    * @class
-   * @extends module:model/StorageGetDetails
-   * @param type {module:model/Webdav.TypeEnum} The type of storage.
+   * @extends module:model/StorageCreateDetails
+   * @param type {module:model/WebdavCreate.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
     var _this = this;
-    StorageGetDetails.call(_this);
+    StorageCreateDetails.call(_this);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
 
@@ -73,23 +73,23 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Webdav} The value of 'discriminator' field or undefined.
+   * @return {module:model/WebdavCreate} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Webdav</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>WebdavCreate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Webdav} obj Optional instance to populate.
-   * @return {module:model/Webdav} The populated <code>Webdav</code> instance.
+   * @param {module:model/WebdavCreate} obj Optional instance to populate.
+   * @return {module:model/WebdavCreate} The populated <code>WebdavCreate</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageGetDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
@@ -139,12 +139,12 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageGetDetails.prototype);
+  exports.prototype = Object.create(StorageCreateDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
    * The type of storage.
-   * @member {module:model/Webdav.TypeEnum} type
+   * @member {module:model/WebdavCreate.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -160,7 +160,7 @@
   exports.prototype['verifyServerCertificate'] = true;
   /**
    * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/Webdav.CredentialsTypeEnum} credentialsType
+   * @member {module:model/WebdavCreate.CredentialsTypeEnum} credentialsType
    * @default 'none'
    */
   exports.prototype['credentialsType'] = 'none';
@@ -187,7 +187,7 @@
   exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
+   * @member {module:model/WebdavCreate.RangeWriteSupportEnum} rangeWriteSupport
    * @default 'none'
    */
   exports.prototype['rangeWriteSupport'] = 'none';

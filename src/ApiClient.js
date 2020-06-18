@@ -528,6 +528,10 @@
               polymorphicType = require("./model/Cephrados");
             }
 
+            if('CephradosCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/CephradosCreate");
+            }
+
             if('CephradosModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/CephradosModify");
             }
@@ -536,12 +540,20 @@
               polymorphicType = require("./model/Glusterfs");
             }
 
+            if('GlusterfsCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/GlusterfsCreate");
+            }
+
             if('GlusterfsModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/GlusterfsModify");
             }
 
             if('Localceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Localceph");
+            }
+
+            if('LocalcephCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/LocalcephCreate");
             }
 
             if('LocalcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
@@ -554,6 +566,10 @@
 
             if('Nulldevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Nulldevice");
+            }
+
+            if('NulldeviceCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/NulldeviceCreate");
             }
 
             if('NulldeviceModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
@@ -572,12 +588,20 @@
               polymorphicType = require("./model/Posix");
             }
 
+            if('PosixCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/PosixCreate");
+            }
+
             if('PosixModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/PosixModify");
             }
 
             if('S3'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/S3");
+            }
+
+            if('S3Create'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/S3Create");
             }
 
             if('S3Modify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
@@ -588,12 +612,20 @@
               polymorphicType = require("./model/Swift");
             }
 
+            if('SwiftCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/SwiftCreate");
+            }
+
             if('SwiftModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/SwiftModify");
             }
 
             if('Webdav'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Webdav");
+            }
+
+            if('WebdavCreate'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/WebdavCreate");
             }
 
             if('WebdavModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

@@ -16,134 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephPool', 'model/StorageGetDetails'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageGetDetails'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.Localceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageGetDetails);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, CephPool, StorageGetDetails) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.PosixCreate();
+  });
 
-
-  /**
-   * The Localceph model module.
-   * @module model/Localceph
-   * @version 20.02.0-beta4
-   */
-
-  /**
-   * Constructs a new <code>Localceph</code>.
-   * Configuration of a Ceph (librados) storage backed by a Ceph pool created in the local Ceph cluster.
-   * @alias module:model/Localceph
-   * @class
-   * @extends module:model/StorageGetDetails
-   * @implements module:model/CephPool
-   */
-  var exports = function() {
-    var _this = this;
-    StorageGetDetails.call(_this);
-    CephPool.call(_this);
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/Localceph} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>Localceph</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Localceph} obj Optional instance to populate.
-   * @return {module:model/Localceph} The populated <code>Localceph</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-      StorageGetDetails.constructFromObject(data, obj);
-      CephPool.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('insecure')) {
-        obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
-      }
-      if (data.hasOwnProperty('blockSize')) {
-        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  exports.prototype = Object.create(StorageGetDetails.prototype);
-  exports.prototype.constructor = exports;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-  /**
-   * The type of storage.
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * Defines whether storage administrator credentials (username and key) may be used by users without storage accounts to access storage in direct IO mode. 
-   * @member {Boolean} insecure
-   * @default true
-   */
-  exports.prototype['insecure'] = true;
-  /**
-   * Storage block size in bytes.
-   * @member {Number} blockSize
-   */
-  exports.prototype['blockSize'] = undefined;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-  exports.prototype['storagePathType'] = 'flat';
+  describe('PosixCreate', function() {
+    it('should create an instance of PosixCreate', function() {
+      // uncomment below and update the code to test PosixCreate
+      //var instane = new Onepanel.PosixCreate();
+      //expect(instance).to.be.a(Onepanel.PosixCreate);
+    });
 
-  // Implement CephPool interface:
-  /**
-   * Name of the pool.
-   * @member {String} name
-   */
-exports.prototype['name'] = undefined;
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.PosixCreate();
+      //expect(instance).to.be();
+    });
 
-  /**
-   * Desired number of object replicas in the pool. When below this number the pool still may be used in 'degraded' mode. Defaults to `2` if there are at least 2 OSDs, `1` otherwise.
-   * @member {Number} copiesNumber
-   */
-exports.prototype['copiesNumber'] = undefined;
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.PosixCreate();
+      //expect(instance).to.be();
+    });
 
-  /**
-   * Minimum number of object replicas in the pool. Below this threshold any I/O for the pool is disabled. Must be lower or equal to 'copiesNumber'. Defaults to `min(2, copiesNumber)` if there are at least 2 OSDs, `1` otherwise.
-   * @member {Number} minCopiesNumber
-   */
-exports.prototype['minCopiesNumber'] = undefined;
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.PosixCreate();
+      //expect(instance).to.be();
+    });
 
+  });
 
-
-  return exports;
 }));
-
-

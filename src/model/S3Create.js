@@ -17,51 +17,53 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageGetDetails);
+    root.Onepanel.S3Create = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails);
   }
-}(this, function(ApiClient, StorageGetDetails) {
+}(this, function(ApiClient, StorageCreateDetails) {
   'use strict';
 
 
 
 
   /**
-   * The Swift model module.
-   * @module model/Swift
+   * The S3Create model module.
+   * @module model/S3Create
    * @version 20.02.0-beta4
    */
 
   /**
-   * Constructs a new <code>Swift</code>.
-   * The OpenStack Swift configuration.
-   * @alias module:model/Swift
+   * Constructs a new <code>S3Create</code>.
+   * The Simple Storage Service configuration.
+   * @alias module:model/S3Create
    * @class
-   * @extends module:model/StorageGetDetails
-   * @param type {module:model/Swift.TypeEnum} The type of storage.
-   * @param authUrl {String} The URL to OpenStack Keystone identity service.
-   * @param tenantName {String} The name of the tenant to which the user belongs.
-   * @param containerName {String} The name of the Swift storage container.
-   * @param username {String} The Keystone authentication username.
-   * @param password {String} The Keystone authentication password.
+   * @extends module:model/StorageCreateDetails
+   * @param type {module:model/S3Create.TypeEnum} The type of storage.
+   * @param hostname {String} The hostname of a machine where S3 storage is installed.
+   * @param bucketName {String} The storage bucket name.
+   * @param accessKey {String} The access key to the S3 storage.
+   * @param secretKey {String} The secret key to the S3 storage.
    */
-  var exports = function(type, authUrl, tenantName, containerName, username, password) {
+  var exports = function(type, hostname, bucketName, accessKey, secretKey) {
     var _this = this;
-    StorageGetDetails.call(_this);
+    StorageCreateDetails.call(_this);
     _this['type'] = type;
-    _this['authUrl'] = authUrl;
-    _this['tenantName'] = tenantName;
-    _this['containerName'] = containerName;
-    _this['username'] = username;
-    _this['password'] = password;
+    _this['hostname'] = hostname;
+    _this['bucketName'] = bucketName;
+    _this['accessKey'] = accessKey;
+    _this['secretKey'] = secretKey;
+
+
+
+
 
 
 
@@ -71,43 +73,52 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Swift} The value of 'discriminator' field or undefined.
+   * @return {module:model/S3Create} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Swift</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>S3Create</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Swift} obj Optional instance to populate.
-   * @return {module:model/Swift} The populated <code>Swift</code> instance.
+   * @param {module:model/S3Create} obj Optional instance to populate.
+   * @return {module:model/S3Create} The populated <code>S3Create</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageGetDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('authUrl')) {
-        obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
-      if (data.hasOwnProperty('tenantName')) {
-        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
+      if (data.hasOwnProperty('bucketName')) {
+        obj['bucketName'] = ApiClient.convertToType(data['bucketName'], 'String');
       }
-      if (data.hasOwnProperty('containerName')) {
-        obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
+      if (data.hasOwnProperty('accessKey')) {
+        obj['accessKey'] = ApiClient.convertToType(data['accessKey'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('secretKey')) {
+        obj['secretKey'] = ApiClient.convertToType(data['secretKey'], 'String');
       }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
+      if (data.hasOwnProperty('signatureVersion')) {
+        obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
+        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
       }
       if (data.hasOwnProperty('insecure')) {
         obj['insecure'] = ApiClient.convertToType(data['insecure'], 'Boolean');
@@ -119,46 +130,63 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageGetDetails.prototype);
+  exports.prototype = Object.create(StorageCreateDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
    * The type of storage.
-   * @member {module:model/Swift.TypeEnum} type
+   * @member {module:model/S3Create.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL to OpenStack Keystone identity service.
-   * @member {String} authUrl
+   * The hostname of a machine where S3 storage is installed.
+   * @member {String} hostname
    */
-  exports.prototype['authUrl'] = undefined;
+  exports.prototype['hostname'] = undefined;
   /**
-   * The name of the tenant to which the user belongs.
-   * @member {String} tenantName
+   * The storage bucket name.
+   * @member {String} bucketName
    */
-  exports.prototype['tenantName'] = undefined;
+  exports.prototype['bucketName'] = undefined;
   /**
-   * The name of the Swift storage container.
-   * @member {String} containerName
+   * The access key to the S3 storage.
+   * @member {String} accessKey
    */
-  exports.prototype['containerName'] = undefined;
+  exports.prototype['accessKey'] = undefined;
   /**
-   * The Keystone authentication username.
-   * @member {String} username
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['secretKey'] = undefined;
   /**
-   * The Keystone authentication password.
-   * @member {String} password
+   * The version of signature used to sign requests. One of: 2, 4. Default: 4. 
+   * @member {Number} signatureVersion
    */
-  exports.prototype['password'] = undefined;
+  exports.prototype['signatureVersion'] = undefined;
   /**
-   * Storage block size in bytes.
+   * Storage block size in bytes. In case the block size is `0` and `canonical` path type is selected, each file is stored in a single S3 object. This value must be set to `0` to enable data import from an existing S3 bucket. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
   /**
-   * Defines whether storage administrator credentials (username and password) may be used by users without storage accounts to access storage in direct IO mode. 
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * @member {Number} maximumCanonicalObjectSize
+   */
+  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   * @default '0644'
+   */
+  exports.prototype['fileMode'] = '0644';
+  /**
+   * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   * @default '0775'
+   */
+  exports.prototype['dirMode'] = '0775';
+  /**
+   * Defines whether storage administrator credentials (accessKey and secretKey) may be used by users without storage accounts to access storage in direct IO mode. 
    * @member {Boolean} insecure
    * @default false
    */
@@ -178,10 +206,10 @@
    */
   exports.TypeEnum = {
     /**
-     * value: "swift"
+     * value: "s3"
      * @const
      */
-    "swift": "swift"  };
+    "s3": "s3"  };
 
 
   return exports;

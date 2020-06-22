@@ -45,14 +45,14 @@
    * Configuration of a Ceph (librados) storage backed by a Ceph pool created in the local Ceph cluster.
    * @alias module:model/Localceph
    * @class
-   * @extends module:model/StorageCreateDetails
-   * @implements module:model/StorageGetDetails
+   * @extends module:model/StorageGetDetails
+   * @implements module:model/StorageCreateDetails
    * @implements module:model/CephPool
    */
   var exports = function() {
     var _this = this;
-    StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    StorageCreateDetails.call(_this);
     CephPool.call(_this);
 
 
@@ -80,8 +80,8 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
       CephPool.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
@@ -99,7 +99,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageCreateDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -125,30 +125,12 @@
    */
   exports.prototype['storagePathType'] = 'flat';
 
-  // Implement StorageGetDetails interface:
+  // Implement StorageCreateDetails interface:
   /**
    * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;
-
-  /**
-   * The Id of storage.
-   * @member {String} id
-   */
-exports.prototype['id'] = undefined;
-
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-exports.prototype['name'] = undefined;
-
-  /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
-   * @member {Boolean} verificationPassed
-   */
-exports.prototype['verificationPassed'] = undefined;
 
   /**
    * Storage operation timeout in milliseconds.
@@ -183,13 +165,13 @@ exports.prototype['lumaUrl'] = undefined;
 exports.prototype['lumaApiKey'] = undefined;
 
   /**
-   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * Map with key-value pairs used for describing storage QoS parameters.
    * @member {Object.<String, String>} qosParameters
    */
 exports.prototype['qosParameters'] = undefined;
 
   /**
-   * Defines whether storage contains existing data to be imported.
+   * Defines whether storage contains existing data to be imported. 
    * @member {Boolean} importedStorage
    * @default false
    */

@@ -1,6 +1,6 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is grouped into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
  * OpenAPI spec version: 20.02.0-beta3
  * Contact: info@onedata.org
@@ -26,20 +26,20 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.LUMAApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.LumaOnedataGroup, root.Onepanel.LumaOnedataUser, root.Onepanel.LumaStorageUser, root.Onepanel.LumaUserMapping, root.Onepanel.PosixCompatibleCredentials);
+    root.Onepanel.LUMADBLocalFeedApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.LumaOnedataGroup, root.Onepanel.LumaOnedataUser, root.Onepanel.LumaStorageUser, root.Onepanel.LumaUserMapping, root.Onepanel.PosixCompatibleCredentials);
   }
 }(this, function(ApiClient, Error, LumaOnedataGroup, LumaOnedataUser, LumaStorageUser, LumaUserMapping, PosixCompatibleCredentials) {
   'use strict';
 
   /**
-   * LUMA service.
-   * @module api/LUMAApi
+   * LUMADBLocalFeed service.
+   * @module api/LUMADBLocalFeedApi
    * @version 20.02.0-beta3
    */
 
   /**
-   * Constructs a new LUMAApi. 
-   * @alias module:api/LUMAApi
+   * Constructs a new LUMADBLocalFeedApi. 
+   * @alias module:api/LUMADBLocalFeedApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -50,7 +50,7 @@
 
     /**
      * Callback function to receive the result of the localFeedAddOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~localFeedAddOnedataUserToCredentialsMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedAddOnedataUserToCredentialsMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -61,7 +61,7 @@
      * Adds mapping of Onedata user to user on the specific storage to local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage for which user mapping should be added. 
      * @param {module:model/LumaUserMapping} userMapping New user mapping 
-     * @param {module:api/LUMAApi~localFeedAddOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedAddOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedAddOnedataUserToCredentialsMapping = function(id, userMapping, callback) {
       var postBody = userMapping;
@@ -101,7 +101,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetAclGroupToOnedataGroupMapping operation.
-     * @callback module:api/LUMAApi~localFeedGetAclGroupToOnedataGroupMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetAclGroupToOnedataGroupMappingCallback
      * @param {String} error Error message, if any.
      * @param {module:model/LumaOnedataGroup} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -112,7 +112,7 @@
      * Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be returned. 
      * @param {Number} groupname The ACL name of the group on the storage. 
-     * @param {module:api/LUMAApi~localFeedGetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/LumaOnedataGroup}
      */
     this.localFeedGetAclGroupToOnedataGroupMapping = function(id, groupname, callback) {
@@ -154,7 +154,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetAclUserToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedGetAclUserToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetAclUserToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param {module:model/LumaOnedataUser} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -165,7 +165,7 @@
      * Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} username The ACL name of the user on the storage. 
-     * @param {module:api/LUMAApi~localFeedGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/LumaOnedataUser}
      */
     this.localFeedGetAclUserToOnedataUserMapping = function(id, username, callback) {
@@ -207,7 +207,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetDefaultPosixCredentials operation.
-     * @callback module:api/LUMAApi~localFeedGetDefaultPosixCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetDefaultPosixCredentialsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/PosixCompatibleCredentials} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -218,7 +218,7 @@
      * Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be returned. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be returned. 
-     * @param {module:api/LUMAApi~localFeedGetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/PosixCompatibleCredentials}
      */
     this.localFeedGetDefaultPosixCredentials = function(id, spaceId, callback) {
@@ -260,7 +260,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetDisplayCredentials operation.
-     * @callback module:api/LUMAApi~localFeedGetDisplayCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetDisplayCredentialsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/PosixCompatibleCredentials} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -271,7 +271,7 @@
      * Returns default display credentials for the space support that are defined in local feed. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of e.g. &#x60;ls&#x60; or &#x60;stat&#x60; operation in Oneclient or when fetching file attributes via REST API. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which default display credentials should be returned. 
      * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be returned. 
-     * @param {module:api/LUMAApi~localFeedGetDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/PosixCompatibleCredentials}
      */
     this.localFeedGetDisplayCredentials = function(id, spaceId, callback) {
@@ -313,7 +313,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~localFeedGetOnedataUserToCredentialsMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetOnedataUserToCredentialsMappingCallback
      * @param {String} error Error message, if any.
      * @param {module:model/LumaStorageUser} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -324,7 +324,7 @@
      * Returns mapping of the Onedata user to user on the specific storage defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage for which user mapping should be returned. 
      * @param {String} onedataUserId The Id of a user for which mapping should be returned. 
-     * @param {module:api/LUMAApi~localFeedGetOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/LumaStorageUser}
      */
     this.localFeedGetOnedataUserToCredentialsMapping = function(id, onedataUserId, callback) {
@@ -366,7 +366,7 @@
 
     /**
      * Callback function to receive the result of the localFeedGetUidToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedGetUidToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedGetUidToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param {module:model/LumaOnedataUser} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -377,7 +377,7 @@
      * Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} uid The UID of the user on the storage. 
-     * @param {module:api/LUMAApi~localFeedGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/LumaOnedataUser}
      */
     this.localFeedGetUidToOnedataUserMapping = function(id, uid, callback) {
@@ -419,7 +419,7 @@
 
     /**
      * Callback function to receive the result of the localFeedModifyOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~localFeedModifyOnedataUserToCredentialsMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedModifyOnedataUserToCredentialsMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -431,7 +431,7 @@
      * @param {String} id The Id of a storage for which user mapping should be updated. 
      * @param {String} onedataUserId The Id of a user for which mapping should be updated. 
      * @param {module:model/LumaStorageUser} storageUser New user mapping 
-     * @param {module:api/LUMAApi~localFeedModifyOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedModifyOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedModifyOnedataUserToCredentialsMapping = function(id, onedataUserId, storageUser, callback) {
       var postBody = storageUser;
@@ -477,7 +477,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveAclGroupToOnedataGroupMapping operation.
-     * @callback module:api/LUMAApi~localFeedRemoveAclGroupToOnedataGroupMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveAclGroupToOnedataGroupMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -488,7 +488,7 @@
      * Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be removed. 
      * @param {Number} groupname The ACL name of the group on the storage. 
-     * @param {module:api/LUMAApi~localFeedRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveAclGroupToOnedataGroupMapping = function(id, groupname, callback) {
       var postBody = null;
@@ -529,7 +529,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveAclUserToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedRemoveAclUserToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveAclUserToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -540,7 +540,7 @@
      * Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} username The ACL name of the user on the storage. 
-     * @param {module:api/LUMAApi~localFeedRemoveAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveAclUserToOnedataUserMapping = function(id, username, callback) {
       var postBody = null;
@@ -581,7 +581,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveDefaultPosixCredentials operation.
-     * @callback module:api/LUMAApi~localFeedRemoveDefaultPosixCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveDefaultPosixCredentialsCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -592,7 +592,7 @@
      * Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be removed. 
-     * @param {module:api/LUMAApi~localFeedRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveDefaultPosixCredentials = function(id, spaceId, callback) {
       var postBody = null;
@@ -633,7 +633,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveDisplayCredentials operation.
-     * @callback module:api/LUMAApi~localFeedRemoveDisplayCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveDisplayCredentialsCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -644,7 +644,7 @@
      * Removes default display credentials for the space support from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which default display credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be removed. 
-     * @param {module:api/LUMAApi~localFeedRemoveDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveDisplayCredentials = function(id, spaceId, callback) {
       var postBody = null;
@@ -685,7 +685,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~localFeedRemoveOnedataUserToCredentialsMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveOnedataUserToCredentialsMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -696,7 +696,7 @@
      * Removes mapping of the Onedata user to user on the specific storage local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage for which user mapping should be removed. 
      * @param {String} onedataUserId The Id of a user for which mapping should be removed. 
-     * @param {module:api/LUMAApi~localFeedRemoveOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveOnedataUserToCredentialsMapping = function(id, onedataUserId, callback) {
       var postBody = null;
@@ -737,7 +737,7 @@
 
     /**
      * Callback function to receive the result of the localFeedRemoveUidToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedRemoveUidToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedRemoveUidToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -748,7 +748,7 @@
      * Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} uid The UID of the user on the storage. 
-     * @param {module:api/LUMAApi~localFeedRemoveUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedRemoveUidToOnedataUserMapping = function(id, uid, callback) {
       var postBody = null;
@@ -789,7 +789,7 @@
 
     /**
      * Callback function to receive the result of the localFeedSetAclGroupToOnedataGroupMapping operation.
-     * @callback module:api/LUMAApi~localFeedSetAclGroupToOnedataGroupMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedSetAclGroupToOnedataGroupMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -801,7 +801,7 @@
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be set. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:model/LumaOnedataGroup} lumaOnedataGroup Credentials identifying group in the Onedata system.
-     * @param {module:api/LUMAApi~localFeedSetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedSetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedSetAclGroupToOnedataGroupMapping = function(id, groupname, lumaOnedataGroup, callback) {
       var postBody = lumaOnedataGroup;
@@ -847,7 +847,7 @@
 
     /**
      * Callback function to receive the result of the localFeedSetAclUserToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedSetAclUserToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedSetAclUserToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -859,7 +859,7 @@
      * @param {String} id The Id of a storage constituting space support for for which onedata user mapping should be set. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:model/LumaOnedataUser} lumaOnedataUser Credentials identifying user in the Onedata system.
-     * @param {module:api/LUMAApi~localFeedSetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedSetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedSetAclUserToOnedataUserMapping = function(id, username, lumaOnedataUser, callback) {
       var postBody = lumaOnedataUser;
@@ -905,7 +905,7 @@
 
     /**
      * Callback function to receive the result of the localFeedSetDefaultPosixCredentials operation.
-     * @callback module:api/LUMAApi~localFeedSetDefaultPosixCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedSetDefaultPosixCredentialsCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -917,7 +917,7 @@
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be set. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be set. 
      * @param {module:model/PosixCompatibleCredentials} posixCredentials New default storage credentials for the space support. 
-     * @param {module:api/LUMAApi~localFeedSetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedSetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedSetDefaultPosixCredentials = function(id, spaceId, posixCredentials, callback) {
       var postBody = posixCredentials;
@@ -963,7 +963,7 @@
 
     /**
      * Callback function to receive the result of the localFeedSetDisplayCredentials operation.
-     * @callback module:api/LUMAApi~localFeedSetDisplayCredentialsCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedSetDisplayCredentialsCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -975,7 +975,7 @@
      * @param {String} id The Id of a storage constituting space support for which default display credentials should be set. 
      * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be set. 
      * @param {module:model/PosixCompatibleCredentials} displayCredentials New default display credentials for the space support. 
-     * @param {module:api/LUMAApi~localFeedSetDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedSetDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedSetDisplayCredentials = function(id, spaceId, displayCredentials, callback) {
       var postBody = displayCredentials;
@@ -1021,7 +1021,7 @@
 
     /**
      * Callback function to receive the result of the localFeedSetUidToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~localFeedSetUidToOnedataUserMappingCallback
+     * @callback module:api/LUMADBLocalFeedApi~localFeedSetUidToOnedataUserMappingCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1033,7 +1033,7 @@
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be set. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:model/LumaOnedataUser} lumaOnedataUser Credentials identifying user in the Onedata system.
-     * @param {module:api/LUMAApi~localFeedSetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/LUMADBLocalFeedApi~localFeedSetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.localFeedSetUidToOnedataUserMapping = function(id, uid, lumaOnedataUser, callback) {
       var postBody = lumaOnedataUser;
@@ -1072,636 +1072,6 @@
 
       return this.apiClient.callApi(
         '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetAclGroupToOnedataGroupMapping operation.
-     * @callback module:api/LUMAApi~lumaGetAclGroupToOnedataGroupMappingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/LumaOnedataGroup} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup mapping of ACL group
-     * Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be returned. 
-     * @param {Number} groupname The ACL name of the group on the storage. 
-     * @param {module:api/LUMAApi~lumaGetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/LumaOnedataGroup}
-     */
-    this.lumaGetAclGroupToOnedataGroupMapping = function(id, groupname, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetAclGroupToOnedataGroupMapping");
-      }
-
-      // verify the required parameter 'groupname' is set
-      if (groupname === undefined || groupname === null) {
-        throw new Error("Missing the required parameter 'groupname' when calling lumaGetAclGroupToOnedataGroupMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'groupname': groupname
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = LumaOnedataGroup;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetAclUserToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~lumaGetAclUserToOnedataUserMappingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/LumaOnedataUser} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup mapping of ACL user
-     * Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
-     * @param {Number} username The ACL name of the user on the storage. 
-     * @param {module:api/LUMAApi~lumaGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/LumaOnedataUser}
-     */
-    this.lumaGetAclUserToOnedataUserMapping = function(id, username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetAclUserToOnedataUserMapping");
-      }
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling lumaGetAclUserToOnedataUserMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = LumaOnedataUser;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetDefaultPosixCredentials operation.
-     * @callback module:api/LUMAApi~lumaGetDefaultPosixCredentialsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/PosixCompatibleCredentials} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup default posix credentials
-     * Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. 
-     * @param {String} id The Id of a storage constituting space support for which default storage credentials should be returned. 
-     * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be returned. 
-     * @param {module:api/LUMAApi~lumaGetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/PosixCompatibleCredentials}
-     */
-    this.lumaGetDefaultPosixCredentials = function(id, spaceId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetDefaultPosixCredentials");
-      }
-
-      // verify the required parameter 'spaceId' is set
-      if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling lumaGetDefaultPosixCredentials");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'space_id': spaceId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = PosixCompatibleCredentials;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetDisplayCredentials operation.
-     * @callback module:api/LUMAApi~lumaGetDisplayCredentialsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/PosixCompatibleCredentials} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup default display credentials
-     * Returns default display credentials for the space support that are stored in LUMA DB. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of e.g. &#x60;ls&#x60; or &#x60;stat&#x60; operation in Oneclient or when fetching file attributes via REST API. 
-     * @param {String} id The Id of a storage constituting space support for which default display credentials should be returned. 
-     * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be returned. 
-     * @param {module:api/LUMAApi~lumaGetDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/PosixCompatibleCredentials}
-     */
-    this.lumaGetDisplayCredentials = function(id, spaceId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetDisplayCredentials");
-      }
-
-      // verify the required parameter 'spaceId' is set
-      if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling lumaGetDisplayCredentials");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'space_id': spaceId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = PosixCompatibleCredentials;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/display_credentials/all/default/{space_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~lumaGetOnedataUserToCredentialsMappingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/LumaStorageUser} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup Onedata user to credentials mapping
-     * Returns mapping of the Onedata user to user on the specific storage stored in LUMA DB. 
-     * @param {String} id The Id of a storage for which user mapping should be returned. 
-     * @param {String} onedataUserId The Id of a user for which mapping should be returned. 
-     * @param {module:api/LUMAApi~lumaGetOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/LumaStorageUser}
-     */
-    this.lumaGetOnedataUserToCredentialsMapping = function(id, onedataUserId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetOnedataUserToCredentialsMapping");
-      }
-
-      // verify the required parameter 'onedataUserId' is set
-      if (onedataUserId === undefined || onedataUserId === null) {
-        throw new Error("Missing the required parameter 'onedataUserId' when calling lumaGetOnedataUserToCredentialsMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'onedata_user_id': onedataUserId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = LumaStorageUser;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaGetUidToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~lumaGetUidToOnedataUserMappingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/LumaOnedataUser} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Lookup mapping of UID
-     * Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
-     * @param {Number} uid The UID of the user on the storage. 
-     * @param {module:api/LUMAApi~lumaGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/LumaOnedataUser}
-     */
-    this.lumaGetUidToOnedataUserMapping = function(id, uid, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaGetUidToOnedataUserMapping");
-      }
-
-      // verify the required parameter 'uid' is set
-      if (uid === undefined || uid === null) {
-        throw new Error("Missing the required parameter 'uid' when calling lumaGetUidToOnedataUserMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'uid': uid
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = LumaOnedataUser;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveAclGroupToOnedataGroupMapping operation.
-     * @callback module:api/LUMAApi~lumaRemoveAclGroupToOnedataGroupMappingCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove mapping of ACL group
-     * Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be removed. 
-     * @param {Number} groupname The ACL name of the group on the storage. 
-     * @param {module:api/LUMAApi~lumaRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveAclGroupToOnedataGroupMapping = function(id, groupname, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveAclGroupToOnedataGroupMapping");
-      }
-
-      // verify the required parameter 'groupname' is set
-      if (groupname === undefined || groupname === null) {
-        throw new Error("Missing the required parameter 'groupname' when calling lumaRemoveAclGroupToOnedataGroupMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'groupname': groupname
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveAclUserToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~lumaRemoveAclUserToOnedataUserMappingCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove mapping of ACL user
-     * Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
-     * @param {Number} username The ACL name of the user on the storage. 
-     * @param {module:api/LUMAApi~lumaRemoveAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveAclUserToOnedataUserMapping = function(id, username, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveAclUserToOnedataUserMapping");
-      }
-
-      // verify the required parameter 'username' is set
-      if (username === undefined || username === null) {
-        throw new Error("Missing the required parameter 'username' when calling lumaRemoveAclUserToOnedataUserMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'username': username
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveDefaultPosixCredentials operation.
-     * @callback module:api/LUMAApi~lumaRemoveDefaultPosixCredentialsCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove default posix credentials
-     * Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which default storage credentials should be removed. 
-     * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be removed. 
-     * @param {module:api/LUMAApi~lumaRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveDefaultPosixCredentials = function(id, spaceId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveDefaultPosixCredentials");
-      }
-
-      // verify the required parameter 'spaceId' is set
-      if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling lumaRemoveDefaultPosixCredentials");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'space_id': spaceId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveDisplayCredentials operation.
-     * @callback module:api/LUMAApi~lumaRemoveDisplayCredentialsCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove default display credentials
-     * Removes default display credentials for the space support from LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which default display credentials should be removed. 
-     * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be removed. 
-     * @param {module:api/LUMAApi~lumaRemoveDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveDisplayCredentials = function(id, spaceId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveDisplayCredentials");
-      }
-
-      // verify the required parameter 'spaceId' is set
-      if (spaceId === undefined || spaceId === null) {
-        throw new Error("Missing the required parameter 'spaceId' when calling lumaRemoveDisplayCredentials");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'space_id': spaceId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/display_credentials/all/default/{space_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveOnedataUserToCredentialsMapping operation.
-     * @callback module:api/LUMAApi~lumaRemoveOnedataUserToCredentialsMappingCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove Onedata user to credentials mapping
-     * Removes mapping of the Onedata user to user on the specific storage from LUMA DB. 
-     * @param {String} id The Id of a storage for which user mapping should be removed. 
-     * @param {String} onedataUserId The Id of a user for which mapping should be removed. 
-     * @param {module:api/LUMAApi~lumaRemoveOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveOnedataUserToCredentialsMapping = function(id, onedataUserId, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveOnedataUserToCredentialsMapping");
-      }
-
-      // verify the required parameter 'onedataUserId' is set
-      if (onedataUserId === undefined || onedataUserId === null) {
-        throw new Error("Missing the required parameter 'onedataUserId' when calling lumaRemoveOnedataUserToCredentialsMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'onedata_user_id': onedataUserId
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the lumaRemoveUidToOnedataUserMapping operation.
-     * @callback module:api/LUMAApi~lumaRemoveUidToOnedataUserMappingCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove mapping of UID
-     * Removes mapping of UID on the specific storage to Onedata user from LUMA DB. 
-     * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
-     * @param {Number} uid The UID of the user on the storage. 
-     * @param {module:api/LUMAApi~lumaRemoveUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.lumaRemoveUidToOnedataUserMapping = function(id, uid, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling lumaRemoveUidToOnedataUserMapping");
-      }
-
-      // verify the required parameter 'uid' is set
-      if (uid === undefined || uid === null) {
-        throw new Error("Missing the required parameter 'uid' when calling lumaRemoveUidToOnedataUserMapping");
-      }
-
-
-      var pathParams = {
-        'id': id,
-        'uid': uid
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>LumaOnedataGroupScheme</code>.
-   * Credentials scheme that stores the Id of a group in the Onedata system.
+   * Representation of Onedata group in the Onedata system.
    * @alias module:model/LumaOnedataGroupScheme
    * @class
    * @extends module:model/LumaOnedataGroup

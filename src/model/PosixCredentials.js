@@ -47,7 +47,7 @@
    * @class
    * @extends module:model/LumaStorageCredentials
    * @implements module:model/PosixCompatibleCredentials
-   * @param type {module:model/PosixCredentials.TypeEnum} Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @param type {module:model/PosixCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
@@ -89,7 +89,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/PosixCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

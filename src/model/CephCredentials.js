@@ -46,9 +46,9 @@
    * @alias module:model/CephCredentials
    * @class
    * @extends module:model/LumaStorageCredentials
-   * @param type {module:model/CephCredentials.TypeEnum} Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
-   * @param username {String} The username of the Ceph cluster administrator.
-   * @param key {String} The admin key to access the Ceph cluster.
+   * @param type {module:model/CephCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
+   * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
    */
   var exports = function(type, username, key) {
     var _this = this;
@@ -96,17 +96,17 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/CephCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * The username of the Ceph cluster administrator.
+   * The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
   /**
-   * The admin key to access the Ceph cluster.
+   * The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
    * @member {String} key
    */
   exports.prototype['key'] = undefined;

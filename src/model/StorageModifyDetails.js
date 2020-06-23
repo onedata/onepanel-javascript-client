@@ -92,11 +92,11 @@
       if (data.hasOwnProperty('lumaFeed')) {
         obj['lumaFeed'] = ApiClient.convertToType(data['lumaFeed'], 'String');
       }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
+      if (data.hasOwnProperty('lumaFeedUrl')) {
+        obj['lumaFeedUrl'] = ApiClient.convertToType(data['lumaFeedUrl'], 'String');
       }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      if (data.hasOwnProperty('lumaFeedApiKey')) {
+        obj['lumaFeedApiKey'] = ApiClient.convertToType(data['lumaFeedApiKey'], 'String');
       }
       if (data.hasOwnProperty('qosParameters')) {
         obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
@@ -124,20 +124,20 @@
    */
   exports.prototype['skipStorageDetection'] = undefined;
   /**
-   * Type of feed for Local User Mapping (LUMA) database.
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/StorageModifyDetails.LumaFeedEnum} lumaFeed
    */
   exports.prototype['lumaFeed'] = undefined;
   /**
    * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaUrl
+   * @member {String} lumaFeedUrl
    */
-  exports.prototype['lumaUrl'] = undefined;
+  exports.prototype['lumaFeedUrl'] = undefined;
   /**
    * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaApiKey
+   * @member {String} lumaFeedApiKey
    */
-  exports.prototype['lumaApiKey'] = undefined;
+  exports.prototype['lumaFeedApiKey'] = undefined;
   /**
    * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
    * @member {Object.<String, String>} qosParameters

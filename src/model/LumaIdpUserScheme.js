@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>LumaIdpUserScheme</code>.
-   * Credentials scheme that stores the Id of a user in an external identity provider.
+   * Representation of Onedata user in an external identity provider.
    * @alias module:model/LumaIdpUserScheme
    * @class
    * @extends module:model/LumaOnedataUser

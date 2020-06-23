@@ -81,14 +81,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property lumaUrl (base name: "lumaUrl")', function() {
-      // uncomment below and update the code to test the property lumaUrl
+    it('should have the property lumaFeedUrl (base name: "lumaFeedUrl")', function() {
+      // uncomment below and update the code to test the property lumaFeedUrl
       //var instane = new Onepanel.StorageCreateDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property lumaApiKey (base name: "lumaApiKey")', function() {
-      // uncomment below and update the code to test the property lumaApiKey
+    it('should have the property lumaFeedApiKey (base name: "lumaFeedApiKey")', function() {
+      // uncomment below and update the code to test the property lumaFeedApiKey
       //var instane = new Onepanel.StorageCreateDetails();
       //expect(instance).to.be();
     });

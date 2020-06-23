@@ -46,7 +46,7 @@
    * @alias module:model/CephradosCredentials
    * @class
    * @extends module:model/LumaStorageCredentials
-   * @param type {module:model/CephradosCredentials.TypeEnum} Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * @param type {module:model/CephradosCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    */
@@ -96,7 +96,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/CephradosCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

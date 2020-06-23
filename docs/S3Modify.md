@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. | 
+**type** | **String** | Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  | 
 **hostname** | **String** | The hostname of a machine where S3 storage is installed. | [optional] 
 **bucketName** | **String** | The storage bucket name. | [optional] 
 **accessKey** | **String** | The access key to the S3 storage. | [optional] 

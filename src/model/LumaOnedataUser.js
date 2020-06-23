@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>LumaOnedataUser</code>.
-   * Credentials identifying user in the Onedata system.
+   * Representation of Onedata user.
    * @alias module:model/LumaOnedataUser
    * @class
    */

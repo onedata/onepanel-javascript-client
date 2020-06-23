@@ -214,22 +214,22 @@ exports.prototype['timeout'] = undefined;
 exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * Type of feed for Local User Mapping (LUMA) database.
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
 exports.prototype['lumaFeed'] = undefined;
 
   /**
    * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaUrl
+   * @member {String} lumaFeedUrl
    */
-exports.prototype['lumaUrl'] = undefined;
+exports.prototype['lumaFeedUrl'] = undefined;
 
   /**
    * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaApiKey
+   * @member {String} lumaFeedApiKey
    */
-exports.prototype['lumaApiKey'] = undefined;
+exports.prototype['lumaFeedApiKey'] = undefined;
 
   /**
    * Map with key-value pairs used for describing storage QoS parameters.
@@ -246,7 +246,7 @@ exports.prototype['importedStorage'] = false;
 
   // Implement S3Credentials interface:
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/S3Credentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;

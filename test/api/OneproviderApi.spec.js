@@ -81,16 +81,6 @@
         done();
       });
     });
-    describe('addLocalFeedLumaOnedataUserToCredentialsMapping', function() {
-      it('should call addLocalFeedLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test addLocalFeedLumaOnedataUserToCredentialsMapping
-        //instance.addLocalFeedLumaOnedataUserToCredentialsMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addProvider', function() {
       it('should call addProvider successfully', function(done) {
         //uncomment below and update the code to test addProvider
@@ -145,16 +135,6 @@
       it('should call cancelAutoCleaning successfully', function(done) {
         //uncomment below and update the code to test cancelAutoCleaning
         //instance.cancelAutoCleaning(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('clearLumaDb', function() {
-      it('should call clearLumaDb successfully', function(done) {
-        //uncomment below and update the code to test clearLumaDb
-        //instance.clearLumaDb(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -345,136 +325,6 @@
       it('should call getFilePopularityConfiguration successfully', function(done) {
         //uncomment below and update the code to test getFilePopularityConfiguration
         //instance.getFilePopularityConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaAclGroupToOnedataGroupMapping', function() {
-      it('should call getLocalFeedLumaAclGroupToOnedataGroupMapping successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaAclGroupToOnedataGroupMapping
-        //instance.getLocalFeedLumaAclGroupToOnedataGroupMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaAclUserToOnedataUserMapping', function() {
-      it('should call getLocalFeedLumaAclUserToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaAclUserToOnedataUserMapping
-        //instance.getLocalFeedLumaAclUserToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaDefaultPosixCredentials', function() {
-      it('should call getLocalFeedLumaDefaultPosixCredentials successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaDefaultPosixCredentials
-        //instance.getLocalFeedLumaDefaultPosixCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaDisplayCredentials', function() {
-      it('should call getLocalFeedLumaDisplayCredentials successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaDisplayCredentials
-        //instance.getLocalFeedLumaDisplayCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaOnedataUserToCredentialsMapping', function() {
-      it('should call getLocalFeedLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaOnedataUserToCredentialsMapping
-        //instance.getLocalFeedLumaOnedataUserToCredentialsMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLocalFeedLumaUidToOnedataUserMapping', function() {
-      it('should call getLocalFeedLumaUidToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test getLocalFeedLumaUidToOnedataUserMapping
-        //instance.getLocalFeedLumaUidToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaAclGroupToOnedataGroupMapping', function() {
-      it('should call getLumaAclGroupToOnedataGroupMapping successfully', function(done) {
-        //uncomment below and update the code to test getLumaAclGroupToOnedataGroupMapping
-        //instance.getLumaAclGroupToOnedataGroupMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaAclUserToOnedataUserMapping', function() {
-      it('should call getLumaAclUserToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test getLumaAclUserToOnedataUserMapping
-        //instance.getLumaAclUserToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaConfig', function() {
-      it('should call getLumaConfig successfully', function(done) {
-        //uncomment below and update the code to test getLumaConfig
-        //instance.getLumaConfig(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaDefaultPosixCredentials', function() {
-      it('should call getLumaDefaultPosixCredentials successfully', function(done) {
-        //uncomment below and update the code to test getLumaDefaultPosixCredentials
-        //instance.getLumaDefaultPosixCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaDisplayCredentials', function() {
-      it('should call getLumaDisplayCredentials successfully', function(done) {
-        //uncomment below and update the code to test getLumaDisplayCredentials
-        //instance.getLumaDisplayCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaOnedataUserToCredentialsMapping', function() {
-      it('should call getLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test getLumaOnedataUserToCredentialsMapping
-        //instance.getLumaOnedataUserToCredentialsMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLumaUidToOnedataUserMapping', function() {
-      it('should call getLumaUidToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test getLumaUidToOnedataUserMapping
-        //instance.getLumaUidToOnedataUserMapping(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -691,20 +541,340 @@
         done();
       });
     });
-    describe('modifyCephPool', function() {
-      it('should call modifyCephPool successfully', function(done) {
-        //uncomment below and update the code to test modifyCephPool
-        //instance.modifyCephPool(function(error) {
+    describe('localFeedAddOnedataUserToCredentialsMapping', function() {
+      it('should call localFeedAddOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedAddOnedataUserToCredentialsMapping
+        //instance.localFeedAddOnedataUserToCredentialsMapping(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('modifyLocalFeedLumaOnedataUserToCredentialsMapping', function() {
-      it('should call modifyLocalFeedLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test modifyLocalFeedLumaOnedataUserToCredentialsMapping
-        //instance.modifyLocalFeedLumaOnedataUserToCredentialsMapping(function(error) {
+    describe('localFeedGetAclGroupToOnedataGroupMapping', function() {
+      it('should call localFeedGetAclGroupToOnedataGroupMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetAclGroupToOnedataGroupMapping
+        //instance.localFeedGetAclGroupToOnedataGroupMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedGetAclUserToOnedataUserMapping', function() {
+      it('should call localFeedGetAclUserToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetAclUserToOnedataUserMapping
+        //instance.localFeedGetAclUserToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedGetDefaultPosixCredentials', function() {
+      it('should call localFeedGetDefaultPosixCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetDefaultPosixCredentials
+        //instance.localFeedGetDefaultPosixCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedGetDisplayCredentials', function() {
+      it('should call localFeedGetDisplayCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetDisplayCredentials
+        //instance.localFeedGetDisplayCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedGetOnedataUserToCredentialsMapping', function() {
+      it('should call localFeedGetOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetOnedataUserToCredentialsMapping
+        //instance.localFeedGetOnedataUserToCredentialsMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedGetUidToOnedataUserMapping', function() {
+      it('should call localFeedGetUidToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedGetUidToOnedataUserMapping
+        //instance.localFeedGetUidToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedModifyOnedataUserToCredentialsMapping', function() {
+      it('should call localFeedModifyOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedModifyOnedataUserToCredentialsMapping
+        //instance.localFeedModifyOnedataUserToCredentialsMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveAclGroupToOnedataGroupMapping', function() {
+      it('should call localFeedRemoveAclGroupToOnedataGroupMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveAclGroupToOnedataGroupMapping
+        //instance.localFeedRemoveAclGroupToOnedataGroupMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveAclUserToOnedataUserMapping', function() {
+      it('should call localFeedRemoveAclUserToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveAclUserToOnedataUserMapping
+        //instance.localFeedRemoveAclUserToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveDefaultPosixCredentials', function() {
+      it('should call localFeedRemoveDefaultPosixCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveDefaultPosixCredentials
+        //instance.localFeedRemoveDefaultPosixCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveDisplayCredentials', function() {
+      it('should call localFeedRemoveDisplayCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveDisplayCredentials
+        //instance.localFeedRemoveDisplayCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveOnedataUserToCredentialsMapping', function() {
+      it('should call localFeedRemoveOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveOnedataUserToCredentialsMapping
+        //instance.localFeedRemoveOnedataUserToCredentialsMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedRemoveUidToOnedataUserMapping', function() {
+      it('should call localFeedRemoveUidToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedRemoveUidToOnedataUserMapping
+        //instance.localFeedRemoveUidToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedSetAclGroupToOnedataGroupMapping', function() {
+      it('should call localFeedSetAclGroupToOnedataGroupMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedSetAclGroupToOnedataGroupMapping
+        //instance.localFeedSetAclGroupToOnedataGroupMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedSetAclUserToOnedataUserMapping', function() {
+      it('should call localFeedSetAclUserToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedSetAclUserToOnedataUserMapping
+        //instance.localFeedSetAclUserToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedSetDefaultPosixCredentials', function() {
+      it('should call localFeedSetDefaultPosixCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedSetDefaultPosixCredentials
+        //instance.localFeedSetDefaultPosixCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedSetDisplayCredentials', function() {
+      it('should call localFeedSetDisplayCredentials successfully', function(done) {
+        //uncomment below and update the code to test localFeedSetDisplayCredentials
+        //instance.localFeedSetDisplayCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('localFeedSetUidToOnedataUserMapping', function() {
+      it('should call localFeedSetUidToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test localFeedSetUidToOnedataUserMapping
+        //instance.localFeedSetUidToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaClearDb', function() {
+      it('should call lumaClearDb successfully', function(done) {
+        //uncomment below and update the code to test lumaClearDb
+        //instance.lumaClearDb(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetAclGroupToOnedataGroupMapping', function() {
+      it('should call lumaGetAclGroupToOnedataGroupMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaGetAclGroupToOnedataGroupMapping
+        //instance.lumaGetAclGroupToOnedataGroupMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetAclUserToOnedataUserMapping', function() {
+      it('should call lumaGetAclUserToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaGetAclUserToOnedataUserMapping
+        //instance.lumaGetAclUserToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetConfig', function() {
+      it('should call lumaGetConfig successfully', function(done) {
+        //uncomment below and update the code to test lumaGetConfig
+        //instance.lumaGetConfig(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetDefaultPosixCredentials', function() {
+      it('should call lumaGetDefaultPosixCredentials successfully', function(done) {
+        //uncomment below and update the code to test lumaGetDefaultPosixCredentials
+        //instance.lumaGetDefaultPosixCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetDisplayCredentials', function() {
+      it('should call lumaGetDisplayCredentials successfully', function(done) {
+        //uncomment below and update the code to test lumaGetDisplayCredentials
+        //instance.lumaGetDisplayCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetOnedataUserToCredentialsMapping', function() {
+      it('should call lumaGetOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaGetOnedataUserToCredentialsMapping
+        //instance.lumaGetOnedataUserToCredentialsMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaGetUidToOnedataUserMapping', function() {
+      it('should call lumaGetUidToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaGetUidToOnedataUserMapping
+        //instance.lumaGetUidToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveAclGroupToOnedataGroupMapping', function() {
+      it('should call lumaRemoveAclGroupToOnedataGroupMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveAclGroupToOnedataGroupMapping
+        //instance.lumaRemoveAclGroupToOnedataGroupMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveAclUserToOnedataUserMapping', function() {
+      it('should call lumaRemoveAclUserToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveAclUserToOnedataUserMapping
+        //instance.lumaRemoveAclUserToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveDefaultPosixCredentials', function() {
+      it('should call lumaRemoveDefaultPosixCredentials successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveDefaultPosixCredentials
+        //instance.lumaRemoveDefaultPosixCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveDisplayCredentials', function() {
+      it('should call lumaRemoveDisplayCredentials successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveDisplayCredentials
+        //instance.lumaRemoveDisplayCredentials(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveOnedataUserToCredentialsMapping', function() {
+      it('should call lumaRemoveOnedataUserToCredentialsMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveOnedataUserToCredentialsMapping
+        //instance.lumaRemoveOnedataUserToCredentialsMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('lumaRemoveUidToOnedataUserMapping', function() {
+      it('should call lumaRemoveUidToOnedataUserMapping successfully', function(done) {
+        //uncomment below and update the code to test lumaRemoveUidToOnedataUserMapping
+        //instance.lumaRemoveUidToOnedataUserMapping(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('modifyCephPool', function() {
+      it('should call modifyCephPool successfully', function(done) {
+        //uncomment below and update the code to test modifyCephPool
+        //instance.modifyCephPool(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -761,116 +931,6 @@
         done();
       });
     });
-    describe('removeLocalFeedLumaAclGroupToOnedataGroupMapping', function() {
-      it('should call removeLocalFeedLumaAclGroupToOnedataGroupMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLocalFeedLumaAclGroupToOnedataGroupMapping
-        //instance.removeLocalFeedLumaAclGroupToOnedataGroupMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLocalFeedLumaAclUserToOnedataUserMapping', function() {
-      it('should call removeLocalFeedLumaAclUserToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLocalFeedLumaAclUserToOnedataUserMapping
-        //instance.removeLocalFeedLumaAclUserToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLocalFeedLumaDefaultPosixCredentials', function() {
-      it('should call removeLocalFeedLumaDefaultPosixCredentials successfully', function(done) {
-        //uncomment below and update the code to test removeLocalFeedLumaDefaultPosixCredentials
-        //instance.removeLocalFeedLumaDefaultPosixCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLocalFeedLumaDisplayCredentials', function() {
-      it('should call removeLocalFeedLumaDisplayCredentials successfully', function(done) {
-        //uncomment below and update the code to test removeLocalFeedLumaDisplayCredentials
-        //instance.removeLocalFeedLumaDisplayCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLocalFeedLumaOnedataUserToCredentialsMapping', function() {
-      it('should call removeLocalFeedLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLocalFeedLumaOnedataUserToCredentialsMapping
-        //instance.removeLocalFeedLumaOnedataUserToCredentialsMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaAclGroupToOnedataGroupMapping', function() {
-      it('should call removeLumaAclGroupToOnedataGroupMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLumaAclGroupToOnedataGroupMapping
-        //instance.removeLumaAclGroupToOnedataGroupMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaAclUserToOnedataUserMapping', function() {
-      it('should call removeLumaAclUserToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLumaAclUserToOnedataUserMapping
-        //instance.removeLumaAclUserToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaDefaultPosixCredentials', function() {
-      it('should call removeLumaDefaultPosixCredentials successfully', function(done) {
-        //uncomment below and update the code to test removeLumaDefaultPosixCredentials
-        //instance.removeLumaDefaultPosixCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaDisplayCredentials', function() {
-      it('should call removeLumaDisplayCredentials successfully', function(done) {
-        //uncomment below and update the code to test removeLumaDisplayCredentials
-        //instance.removeLumaDisplayCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaOnedataUserToCredentialsMapping', function() {
-      it('should call removeLumaOnedataUserToCredentialsMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLumaOnedataUserToCredentialsMapping
-        //instance.removeLumaOnedataUserToCredentialsMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeLumaUidToOnedataUserMapping', function() {
-      it('should call removeLumaUidToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test removeLumaUidToOnedataUserMapping
-        //instance.removeLumaUidToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('removeProvider', function() {
       it('should call removeProvider successfully', function(done) {
         //uncomment below and update the code to test removeProvider
@@ -891,70 +951,10 @@
         done();
       });
     });
-    describe('removeUidToOnedataUserMapping', function() {
-      it('should call removeUidToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test removeUidToOnedataUserMapping
-        //instance.removeUidToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('revokeSpaceSupport', function() {
       it('should call revokeSpaceSupport successfully', function(done) {
         //uncomment below and update the code to test revokeSpaceSupport
         //instance.revokeSpaceSupport(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setLocalFeedLumaAclGroupToOnedataGroupMapping', function() {
-      it('should call setLocalFeedLumaAclGroupToOnedataGroupMapping successfully', function(done) {
-        //uncomment below and update the code to test setLocalFeedLumaAclGroupToOnedataGroupMapping
-        //instance.setLocalFeedLumaAclGroupToOnedataGroupMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setLocalFeedLumaAclUserToOnedataUserMapping', function() {
-      it('should call setLocalFeedLumaAclUserToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test setLocalFeedLumaAclUserToOnedataUserMapping
-        //instance.setLocalFeedLumaAclUserToOnedataUserMapping(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setLocalFeedLumaDefaultPosixCredentials', function() {
-      it('should call setLocalFeedLumaDefaultPosixCredentials successfully', function(done) {
-        //uncomment below and update the code to test setLocalFeedLumaDefaultPosixCredentials
-        //instance.setLocalFeedLumaDefaultPosixCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setLocalFeedLumaDisplayCredentials', function() {
-      it('should call setLocalFeedLumaDisplayCredentials successfully', function(done) {
-        //uncomment below and update the code to test setLocalFeedLumaDisplayCredentials
-        //instance.setLocalFeedLumaDisplayCredentials(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setUidToOnedataUserMapping', function() {
-      it('should call setUidToOnedataUserMapping successfully', function(done) {
-        //uncomment below and update the code to test setUidToOnedataUserMapping
-        //instance.setUidToOnedataUserMapping(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

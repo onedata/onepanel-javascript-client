@@ -42,13 +42,13 @@
 
   /**
    * Constructs a new <code>LumaIdpEntitlementScheme</code>.
-   * Credentials scheme that stores the Id of a group in an external identity provider.
+   * Representation of Onedata group in an external identity provider.
    * @alias module:model/LumaIdpEntitlementScheme
    * @class
    * @extends module:model/LumaOnedataGroup
    * @param mappingScheme {module:model/LumaIdpEntitlementScheme.MappingSchemeEnum} Name of scheme used to represent group identity.
    * @param idp {String} The id of an external identity provider.
-   * @param idpEntitlement {String} The id of the group understood by the external identity provider.
+   * @param idpEntitlement {String} The id of the group understood by the external identity provider, in the same format as received during OIDC/SAML login flow. 
    */
   var exports = function(mappingScheme, idp, idpEntitlement) {
     var _this = this;
@@ -110,7 +110,7 @@
    */
   exports.prototype['idp'] = undefined;
   /**
-   * The id of the group understood by the external identity provider.
+   * The id of the group understood by the external identity provider, in the same format as received during OIDC/SAML login flow. 
    * @member {String} idpEntitlement
    */
   exports.prototype['idpEntitlement'] = undefined;

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. | 
+**type** | **String** | Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  | 
 **authUrl** | **String** | The URL to OpenStack Keystone identity service. | [optional] 
 **tenantName** | **String** | The name of the tenant to which the user belongs. | [optional] 
 **containerName** | **String** | The name of the Swift storage container. | [optional] 

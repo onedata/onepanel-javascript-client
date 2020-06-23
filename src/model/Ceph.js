@@ -49,8 +49,8 @@
    * @implements module:model/StorageGetDetails
    * @implements module:model/CephCredentials
    * @param type {module:model/Ceph.TypeEnum} The type of storage.
-   * @param username {String} The username of the Ceph cluster administrator.
-   * @param key {String} The admin key to access the Ceph cluster.
+   * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
+   * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
    * @param monitorHostname {String} The monitor hostname.
    * @param clusterName {String} The Ceph cluster name.
    * @param poolName {String} The Ceph pool name.
@@ -177,22 +177,22 @@ exports.prototype['timeout'] = undefined;
 exports.prototype['skipStorageDetection'] = undefined;
 
   /**
-   * Type of feed for Local User Mapping (LUMA) database.
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
    */
 exports.prototype['lumaFeed'] = undefined;
 
   /**
    * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaUrl
+   * @member {String} lumaFeedUrl
    */
-exports.prototype['lumaUrl'] = undefined;
+exports.prototype['lumaFeedUrl'] = undefined;
 
   /**
    * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaApiKey
+   * @member {String} lumaFeedApiKey
    */
-exports.prototype['lumaApiKey'] = undefined;
+exports.prototype['lumaFeedApiKey'] = undefined;
 
   /**
    * Map with key-value pairs used for describing storage QoS parameters.
@@ -209,19 +209,19 @@ exports.prototype['importedStorage'] = false;
 
   // Implement CephCredentials interface:
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/CephCredentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
 
   /**
-   * The username of the Ceph cluster administrator.
+   * The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
    * @member {String} username
    */
 exports.prototype['username'] = undefined;
 
   /**
-   * The admin key to access the Ceph cluster.
+   * The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
    * @member {String} key
    */
 exports.prototype['key'] = undefined;

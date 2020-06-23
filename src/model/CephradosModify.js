@@ -46,7 +46,7 @@
    * @alias module:model/CephradosModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/CephradosModify.TypeEnum} Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * @param type {module:model/CephradosModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
@@ -106,7 +106,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @member {module:model/CephradosModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

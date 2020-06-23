@@ -7,14 +7,12 @@ Method | HTTP request | Description
 [**addCephManagers**](OneproviderApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 [**addCephMonitors**](OneproviderApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to Ceph cluster
 [**addCephOsds**](OneproviderApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-[**addLocalFeedLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#addLocalFeedLumaOnedataUserToCredentialsMapping) | **POST** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials | Add local feed LUMA Onedata user to credentials mapping.
 [**addProvider**](OneproviderApi.md#addProvider) | **POST** /provider | Register provider
 [**addProviderDatabases**](OneproviderApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 [**addProviderManagers**](OneproviderApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**addStorage**](OneproviderApi.md#addStorage) | **POST** /provider/storages | Add storage
 [**cancelAutoCleaning**](OneproviderApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancels space auto-cleaning
-[**clearLumaDb**](OneproviderApi.md#clearLumaDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
 [**configureCeph**](OneproviderApi.md#configureCeph) | **POST** /provider/ceph | Configure Ceph cluster
 [**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
@@ -34,19 +32,6 @@ Method | HTTP request | Description
 [**getCephStatus**](OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 [**getCephUsage**](OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 [**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
-[**getLocalFeedLumaAclGroupToOnedataGroupMapping**](OneproviderApi.md#getLocalFeedLumaAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Get mapping of ACL group from LUMA DB with local feed.
-[**getLocalFeedLumaAclUserToOnedataUserMapping**](OneproviderApi.md#getLocalFeedLumaAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Get mapping of ACL user from LUMA DB with local feed.
-[**getLocalFeedLumaDefaultPosixCredentials**](OneproviderApi.md#getLocalFeedLumaDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Get local feed LUMA default posix credentials
-[**getLocalFeedLumaDisplayCredentials**](OneproviderApi.md#getLocalFeedLumaDisplayCredentials) | **GET** /provider/storages/{id}/luma/local_feed/oneclient_display_credentials/all/default/{space_id} | Get local feed LUMA display credentials
-[**getLocalFeedLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#getLocalFeedLumaOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Get local feed LUMA Onedata user to credentials mapping.
-[**getLocalFeedLumaUidToOnedataUserMapping**](OneproviderApi.md#getLocalFeedLumaUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Get mapping of UID from LUMA DB with local feed
-[**getLumaAclGroupToOnedataGroupMapping**](OneproviderApi.md#getLumaAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Get mapping of ACL group from LUMA DB
-[**getLumaAclUserToOnedataUserMapping**](OneproviderApi.md#getLumaAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Get mapping of ACL user from LUMA DB
-[**getLumaConfig**](OneproviderApi.md#getLumaConfig) | **GET** /provider/storages/{id}/luma/config | Get LUMA DB configuration
-[**getLumaDefaultPosixCredentials**](OneproviderApi.md#getLumaDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Get LUMA default posix credentials
-[**getLumaDisplayCredentials**](OneproviderApi.md#getLumaDisplayCredentials) | **GET** /provider/storages/{id}/luma/db/oneclient_display_credentials/all/default/{space_id} | Get LUMA display credentials
-[**getLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#getLumaOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Get LUMA Onedata user to credentials mapping.
-[**getLumaUidToOnedataUserMapping**](OneproviderApi.md#getLumaUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Get mapping of UID from LUMA DB
 [**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -68,33 +53,48 @@ Method | HTTP request | Description
 [**getStorageDetails**](OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 [**getStorages**](OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 [**getTransfersMock**](OneproviderApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
+[**localFeedAddOnedataUserToCredentialsMapping**](OneproviderApi.md#localFeedAddOnedataUserToCredentialsMapping) | **POST** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials | Insert Onedata user to credentials mapping into local feed
+[**localFeedGetAclGroupToOnedataGroupMapping**](OneproviderApi.md#localFeedGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group in local feed
+[**localFeedGetAclUserToOnedataUserMapping**](OneproviderApi.md#localFeedGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user in local feed
+[**localFeedGetDefaultPosixCredentials**](OneproviderApi.md#localFeedGetDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Lookup default posix credentials in local feed
+[**localFeedGetDisplayCredentials**](OneproviderApi.md#localFeedGetDisplayCredentials) | **GET** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Lookup default display credentials in local feed
+[**localFeedGetOnedataUserToCredentialsMapping**](OneproviderApi.md#localFeedGetOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Lookup Onedata user to credentials mapping in local feed
+[**localFeedGetUidToOnedataUserMapping**](OneproviderApi.md#localFeedGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID in local feed
+[**localFeedModifyOnedataUserToCredentialsMapping**](OneproviderApi.md#localFeedModifyOnedataUserToCredentialsMapping) | **PATCH** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Update Onedata user to credentials mapping in local feed
+[**localFeedRemoveAclGroupToOnedataGroupMapping**](OneproviderApi.md#localFeedRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group from local feed
+[**localFeedRemoveAclUserToOnedataUserMapping**](OneproviderApi.md#localFeedRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user from local feed
+[**localFeedRemoveDefaultPosixCredentials**](OneproviderApi.md#localFeedRemoveDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Remove default posix credentials from local feed
+[**localFeedRemoveDisplayCredentials**](OneproviderApi.md#localFeedRemoveDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Remove default display credentials from local feed
+[**localFeedRemoveOnedataUserToCredentialsMapping**](OneproviderApi.md#localFeedRemoveOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove Onedata user to credentials mapping from local feed
+[**localFeedRemoveUidToOnedataUserMapping**](OneproviderApi.md#localFeedRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID from local feed
+[**localFeedSetAclGroupToOnedataGroupMapping**](OneproviderApi.md#localFeedSetAclGroupToOnedataGroupMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Insert mapping of ACL group into local feed
+[**localFeedSetAclUserToOnedataUserMapping**](OneproviderApi.md#localFeedSetAclUserToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Insert mapping of ACL user into local feed
+[**localFeedSetDefaultPosixCredentials**](OneproviderApi.md#localFeedSetDefaultPosixCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Insert default posix credentials into local feed
+[**localFeedSetDisplayCredentials**](OneproviderApi.md#localFeedSetDisplayCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Insert default display credentials into local feed
+[**localFeedSetUidToOnedataUserMapping**](OneproviderApi.md#localFeedSetUidToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Insert mapping of UID into local feed
+[**lumaClearDb**](OneproviderApi.md#lumaClearDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
+[**lumaGetAclGroupToOnedataGroupMapping**](OneproviderApi.md#lumaGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group
+[**lumaGetAclUserToOnedataUserMapping**](OneproviderApi.md#lumaGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user
+[**lumaGetConfig**](OneproviderApi.md#lumaGetConfig) | **GET** /provider/storages/{id}/luma/config | Get LUMA DB configuration
+[**lumaGetDefaultPosixCredentials**](OneproviderApi.md#lumaGetDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Lookup default posix credentials
+[**lumaGetDisplayCredentials**](OneproviderApi.md#lumaGetDisplayCredentials) | **GET** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Lookup default display credentials
+[**lumaGetOnedataUserToCredentialsMapping**](OneproviderApi.md#lumaGetOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Lookup Onedata user to credentials mapping
+[**lumaGetUidToOnedataUserMapping**](OneproviderApi.md#lumaGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID
+[**lumaRemoveAclGroupToOnedataGroupMapping**](OneproviderApi.md#lumaRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group
+[**lumaRemoveAclUserToOnedataUserMapping**](OneproviderApi.md#lumaRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user
+[**lumaRemoveDefaultPosixCredentials**](OneproviderApi.md#lumaRemoveDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Remove default posix credentials
+[**lumaRemoveDisplayCredentials**](OneproviderApi.md#lumaRemoveDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Remove default display credentials
+[**lumaRemoveOnedataUserToCredentialsMapping**](OneproviderApi.md#lumaRemoveOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove Onedata user to credentials mapping
+[**lumaRemoveUidToOnedataUserMapping**](OneproviderApi.md#lumaRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID
 [**modifyCephPool**](OneproviderApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify pool params
-[**modifyLocalFeedLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#modifyLocalFeedLumaOnedataUserToCredentialsMapping) | **PATCH** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Modify local feed LUMA Onedata user to credentials mapping.
 [**modifyProvider**](OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 [**modifyProviderClusterIps**](OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
 [**modifySpace**](OneproviderApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 [**modifyStorage**](OneproviderApi.md#modifyStorage) | **PATCH** /provider/storages/{id} | Modify storage config
 [**modifyTransfersMock**](OneproviderApi.md#modifyTransfersMock) | **PATCH** /provider/debug/transfers_mock | Modify transfers mock
-[**removeLocalFeedLumaAclGroupToOnedataGroupMapping**](OneproviderApi.md#removeLocalFeedLumaAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group from LUMA DB with local feed.
-[**removeLocalFeedLumaAclUserToOnedataUserMapping**](OneproviderApi.md#removeLocalFeedLumaAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user from LUMA DB with local feed.
-[**removeLocalFeedLumaDefaultPosixCredentials**](OneproviderApi.md#removeLocalFeedLumaDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Remove local feed LUMA default posix credentials
-[**removeLocalFeedLumaDisplayCredentials**](OneproviderApi.md#removeLocalFeedLumaDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/oneclient_display_credentials/all/default/{space_id} | Remove local feed LUMA default display credentials
-[**removeLocalFeedLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#removeLocalFeedLumaOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove local feed LUMA Onedata user to credentials mapping.
-[**removeLumaAclGroupToOnedataGroupMapping**](OneproviderApi.md#removeLumaAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group from LUMA DB
-[**removeLumaAclUserToOnedataUserMapping**](OneproviderApi.md#removeLumaAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user from LUMA DB
-[**removeLumaDefaultPosixCredentials**](OneproviderApi.md#removeLumaDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Remove default LUMA posix credentials
-[**removeLumaDisplayCredentials**](OneproviderApi.md#removeLumaDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/db/oneclient_display_credentials/all/default/{space_id} | Remove LUMA default display credentials
-[**removeLumaOnedataUserToCredentialsMapping**](OneproviderApi.md#removeLumaOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove LUMA Onedata user to credentials mapping.
-[**removeLumaUidToOnedataUserMapping**](OneproviderApi.md#removeLumaUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID from LUMA DB
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**removeStorage**](OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
-[**removeUidToOnedataUserMapping**](OneproviderApi.md#removeUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID from LUMA DB with local feed.
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
-[**setLocalFeedLumaAclGroupToOnedataGroupMapping**](OneproviderApi.md#setLocalFeedLumaAclGroupToOnedataGroupMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Set mapping of ACL group in LUMA DB with local feed.
-[**setLocalFeedLumaAclUserToOnedataUserMapping**](OneproviderApi.md#setLocalFeedLumaAclUserToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Set mapping of ACL user in LUMA DB with local feed.
-[**setLocalFeedLumaDefaultPosixCredentials**](OneproviderApi.md#setLocalFeedLumaDefaultPosixCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Set local feed LUMA default posix credentials
-[**setLocalFeedLumaDisplayCredentials**](OneproviderApi.md#setLocalFeedLumaDisplayCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/oneclient_display_credentials/all/default/{space_id} | Set local feed LUMA default display credentials
-[**setUidToOnedataUserMapping**](OneproviderApi.md#setUidToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Set mapping of UID in LUMA DB with local feed
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 [**startStopProviderManager**](OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -296,73 +296,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
-
-<a name="addLocalFeedLumaOnedataUserToCredentialsMapping"></a>
-# **addLocalFeedLumaOnedataUserToCredentialsMapping**
-> addLocalFeedLumaOnedataUserToCredentialsMapping(id, displayCredentials)
-
-Add local feed LUMA Onedata user to credentials mapping.
-
-Adds user mapping stored in LUMA DB with local feed for the storage. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be added. 
-
-var displayCredentials = new Onepanel.LumaUserMapping(); // LumaUserMapping | New user mapping 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.addLocalFeedLumaOnedataUserToCredentialsMapping(id, displayCredentials, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be added.  | 
- **displayCredentials** | [**LumaUserMapping**](LumaUserMapping.md)| New user mapping  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="addProvider"></a>
 # **addProvider**
@@ -734,70 +667,6 @@ apiInstance.cancelAutoCleaning(id, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="clearLumaDb"></a>
-# **clearLumaDb**
-> clearLumaDb(id)
-
-Clear LUMA DB
-
-Clears all LUMA DB entries for given storage.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which LUMA DB will be cleared
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.clearLumaDb(id, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which LUMA DB will be cleared | 
 
 ### Return type
 
@@ -1982,874 +1851,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SpaceFilePopularityConfiguration**](SpaceFilePopularityConfiguration.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaAclGroupToOnedataGroupMapping"></a>
-# **getLocalFeedLumaAclGroupToOnedataGroupMapping**
-> LumaOnedataGroup getLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname)
-
-Get mapping of ACL group from LUMA DB with local feed.
-
-Returns mapping of ACL group on the specific storage to Onedata group The mapping is stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var groupname = 56; // Number | The ACL name of the group on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **groupname** | **Number**| The ACL name of the group on the storage.  | 
-
-### Return type
-
-[**LumaOnedataGroup**](LumaOnedataGroup.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaAclUserToOnedataUserMapping"></a>
-# **getLocalFeedLumaAclUserToOnedataUserMapping**
-> LumaOnedataUser getLocalFeedLumaAclUserToOnedataUserMapping(id, username)
-
-Get mapping of ACL user from LUMA DB with local feed.
-
-Returns mapping of ACL user on the specific storage to Onedata user The mapping is stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var username = 56; // Number | The ACL name of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaAclUserToOnedataUserMapping(id, username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **username** | **Number**| The ACL name of the user on the storage.  | 
-
-### Return type
-
-[**LumaOnedataUser**](LumaOnedataUser.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaDefaultPosixCredentials"></a>
-# **getLocalFeedLumaDefaultPosixCredentials**
-> PosixCompatibleCredentials getLocalFeedLumaDefaultPosixCredentials(id, spaceId)
-
-Get local feed LUMA default posix credentials
-
-Returns default storage credentials for space supported by POSIX-compatible storage that are stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaDefaultPosixCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be returned.  | 
-
-### Return type
-
-[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaDisplayCredentials"></a>
-# **getLocalFeedLumaDisplayCredentials**
-> PosixCompatibleCredentials getLocalFeedLumaDisplayCredentials(id, spaceId)
-
-Get local feed LUMA display credentials
-
-Returns default display credentials for the space support that are stored in LUMA DB with local feed. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of ls operation in Oneclient. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be returned. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaDisplayCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default display credentials should be returned.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be returned.  | 
-
-### Return type
-
-[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaOnedataUserToCredentialsMapping"></a>
-# **getLocalFeedLumaOnedataUserToCredentialsMapping**
-> LumaUserMapping getLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId)
-
-Get local feed LUMA Onedata user to credentials mapping.
-
-Returns user mapping stored in LUMA DB with local feed for the storage. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be returned. 
-
-var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be returned.  | 
- **onedataUserId** | **String**| The Id of a user for which mapping should be returned.  | 
-
-### Return type
-
-[**LumaUserMapping**](LumaUserMapping.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLocalFeedLumaUidToOnedataUserMapping"></a>
-# **getLocalFeedLumaUidToOnedataUserMapping**
-> LumaOnedataUser getLocalFeedLumaUidToOnedataUserMapping(id, uid)
-
-Get mapping of UID from LUMA DB with local feed
-
-Returns mapping of UID on the specific storage to Onedata user The mapping is stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var uid = 56; // Number | The UID of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLocalFeedLumaUidToOnedataUserMapping(id, uid, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **uid** | **Number**| The UID of the user on the storage.  | 
-
-### Return type
-
-[**LumaOnedataUser**](LumaOnedataUser.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaAclGroupToOnedataGroupMapping"></a>
-# **getLumaAclGroupToOnedataGroupMapping**
-> LumaOnedataGroup getLumaAclGroupToOnedataGroupMapping(id, groupname)
-
-Get mapping of ACL group from LUMA DB
-
-Returns mapping of ACL group on the specific storage to Onedata group The mapping is stored in LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var groupname = 56; // Number | The ACL name of the group on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaAclGroupToOnedataGroupMapping(id, groupname, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **groupname** | **Number**| The ACL name of the group on the storage.  | 
-
-### Return type
-
-[**LumaOnedataGroup**](LumaOnedataGroup.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaAclUserToOnedataUserMapping"></a>
-# **getLumaAclUserToOnedataUserMapping**
-> LumaOnedataUser getLumaAclUserToOnedataUserMapping(id, username)
-
-Get mapping of ACL user from LUMA DB
-
-Returns mapping of ACL user on the specific storage to Onedata user The mapping is stored in LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var username = 56; // Number | The ACL name of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaAclUserToOnedataUserMapping(id, username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **username** | **Number**| The ACL name of the user on the storage.  | 
-
-### Return type
-
-[**LumaOnedataUser**](LumaOnedataUser.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaConfig"></a>
-# **getLumaConfig**
-> LumaConfig getLumaConfig(id)
-
-Get LUMA DB configuration
-
-Returns configuration of Local User Mapping database (LUMA DB) for the storage. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which LUMA DB configuration should be returned.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaConfig(id, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which LUMA DB configuration should be returned. | 
-
-### Return type
-
-[**LumaConfig**](LumaConfig.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaDefaultPosixCredentials"></a>
-# **getLumaDefaultPosixCredentials**
-> PosixCompatibleCredentials getLumaDefaultPosixCredentials(id, spaceId)
-
-Get LUMA default posix credentials
-
-Returns default storage credentials for space supported by POSIX-compatible storage that are stored in LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaDefaultPosixCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be returned.  | 
-
-### Return type
-
-[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaDisplayCredentials"></a>
-# **getLumaDisplayCredentials**
-> PosixCompatibleCredentials getLumaDisplayCredentials(id, spaceId)
-
-Get LUMA display credentials
-
-Returns default display credentials for the space support that are stored in LUMA DB. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of ls operation in Oneclient. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be returned. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaDisplayCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default display credentials should be returned.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be returned.  | 
-
-### Return type
-
-[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaOnedataUserToCredentialsMapping"></a>
-# **getLumaOnedataUserToCredentialsMapping**
-> LumaUserMapping getLumaOnedataUserToCredentialsMapping(id, onedataUserId)
-
-Get LUMA Onedata user to credentials mapping.
-
-Returns user mapping stored in LUMA DB for the storage. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be returned. 
-
-var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be returned. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaOnedataUserToCredentialsMapping(id, onedataUserId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be returned.  | 
- **onedataUserId** | **String**| The Id of a user for which mapping should be returned.  | 
-
-### Return type
-
-[**LumaUserMapping**](LumaUserMapping.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getLumaUidToOnedataUserMapping"></a>
-# **getLumaUidToOnedataUserMapping**
-> LumaOnedataUser getLumaUidToOnedataUserMapping(id, uid)
-
-Get mapping of UID from LUMA DB
-
-Returns mapping of UID on the specific storage to Onedata user The mapping is stored in LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
-
-var uid = 56; // Number | The UID of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getLumaUidToOnedataUserMapping(id, uid, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
- **uid** | **Number**| The UID of the user on the storage.  | 
-
-### Return type
-
-[**LumaOnedataUser**](LumaOnedataUser.md)
 
 ### Authorization
 
@@ -4162,6 +3163,2229 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="localFeedAddOnedataUserToCredentialsMapping"></a>
+# **localFeedAddOnedataUserToCredentialsMapping**
+> localFeedAddOnedataUserToCredentialsMapping(id, userMapping)
+
+Insert Onedata user to credentials mapping into local feed
+
+Adds mapping of Onedata user to user on the specific storage to local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be added. 
+
+var userMapping = new Onepanel.LumaUserMapping(); // LumaUserMapping | New user mapping 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedAddOnedataUserToCredentialsMapping(id, userMapping, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be added.  | 
+ **userMapping** | [**LumaUserMapping**](LumaUserMapping.md)| New user mapping  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetAclGroupToOnedataGroupMapping"></a>
+# **localFeedGetAclGroupToOnedataGroupMapping**
+> LumaOnedataGroup localFeedGetAclGroupToOnedataGroupMapping(id, groupname)
+
+Lookup mapping of ACL group in local feed
+
+Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata group mapping should be returned. 
+
+var groupname = 56; // Number | The ACL name of the group on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetAclGroupToOnedataGroupMapping(id, groupname, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata group mapping should be returned.  | 
+ **groupname** | **Number**| The ACL name of the group on the storage.  | 
+
+### Return type
+
+[**LumaOnedataGroup**](LumaOnedataGroup.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetAclUserToOnedataUserMapping"></a>
+# **localFeedGetAclUserToOnedataUserMapping**
+> LumaOnedataUser localFeedGetAclUserToOnedataUserMapping(id, username)
+
+Lookup mapping of ACL user in local feed
+
+Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be returned. 
+
+var username = 56; // Number | The ACL name of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetAclUserToOnedataUserMapping(id, username, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be returned.  | 
+ **username** | **Number**| The ACL name of the user on the storage.  | 
+
+### Return type
+
+[**LumaOnedataUser**](LumaOnedataUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetDefaultPosixCredentials"></a>
+# **localFeedGetDefaultPosixCredentials**
+> PosixCompatibleCredentials localFeedGetDefaultPosixCredentials(id, spaceId)
+
+Lookup default posix credentials in local feed
+
+Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetDefaultPosixCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be returned.  | 
+
+### Return type
+
+[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetDisplayCredentials"></a>
+# **localFeedGetDisplayCredentials**
+> PosixCompatibleCredentials localFeedGetDisplayCredentials(id, spaceId)
+
+Lookup default display credentials in local feed
+
+Returns default display credentials for the space support that are defined in local feed. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of e.g. &#x60;ls&#x60; or &#x60;stat&#x60; operation in Oneclient or when fetching file attributes via REST API. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be returned. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetDisplayCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default display credentials should be returned.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be returned.  | 
+
+### Return type
+
+[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetOnedataUserToCredentialsMapping"></a>
+# **localFeedGetOnedataUserToCredentialsMapping**
+> LumaStorageUser localFeedGetOnedataUserToCredentialsMapping(id, onedataUserId)
+
+Lookup Onedata user to credentials mapping in local feed
+
+Returns mapping of the Onedata user to user on the specific storage defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be returned. 
+
+var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetOnedataUserToCredentialsMapping(id, onedataUserId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be returned.  | 
+ **onedataUserId** | **String**| The Id of a user for which mapping should be returned.  | 
+
+### Return type
+
+[**LumaStorageUser**](LumaStorageUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedGetUidToOnedataUserMapping"></a>
+# **localFeedGetUidToOnedataUserMapping**
+> LumaOnedataUser localFeedGetUidToOnedataUserMapping(id, uid)
+
+Lookup mapping of UID in local feed
+
+Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be returned. 
+
+var uid = 56; // Number | The UID of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.localFeedGetUidToOnedataUserMapping(id, uid, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be returned.  | 
+ **uid** | **Number**| The UID of the user on the storage.  | 
+
+### Return type
+
+[**LumaOnedataUser**](LumaOnedataUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedModifyOnedataUserToCredentialsMapping"></a>
+# **localFeedModifyOnedataUserToCredentialsMapping**
+> localFeedModifyOnedataUserToCredentialsMapping(id, onedataUserId, storageUser)
+
+Update Onedata user to credentials mapping in local feed
+
+Modifies mapping of the Onedata user to user on the specific storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be updated. 
+
+var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be updated. 
+
+var storageUser = new Onepanel.LumaStorageUser(); // LumaStorageUser | New user mapping 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedModifyOnedataUserToCredentialsMapping(id, onedataUserId, storageUser, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be updated.  | 
+ **onedataUserId** | **String**| The Id of a user for which mapping should be updated.  | 
+ **storageUser** | [**LumaStorageUser**](LumaStorageUser.md)| New user mapping  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="localFeedRemoveAclGroupToOnedataGroupMapping"></a>
+# **localFeedRemoveAclGroupToOnedataGroupMapping**
+> localFeedRemoveAclGroupToOnedataGroupMapping(id, groupname)
+
+Remove mapping of ACL group from local feed
+
+Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata group mapping should be removed. 
+
+var groupname = 56; // Number | The ACL name of the group on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveAclGroupToOnedataGroupMapping(id, groupname, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata group mapping should be removed.  | 
+ **groupname** | **Number**| The ACL name of the group on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedRemoveAclUserToOnedataUserMapping"></a>
+# **localFeedRemoveAclUserToOnedataUserMapping**
+> localFeedRemoveAclUserToOnedataUserMapping(id, username)
+
+Remove mapping of ACL user from local feed
+
+Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be removed. 
+
+var username = 56; // Number | The ACL name of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveAclUserToOnedataUserMapping(id, username, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be removed.  | 
+ **username** | **Number**| The ACL name of the user on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedRemoveDefaultPosixCredentials"></a>
+# **localFeedRemoveDefaultPosixCredentials**
+> localFeedRemoveDefaultPosixCredentials(id, spaceId)
+
+Remove default posix credentials from local feed
+
+Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveDefaultPosixCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedRemoveDisplayCredentials"></a>
+# **localFeedRemoveDisplayCredentials**
+> localFeedRemoveDisplayCredentials(id, spaceId)
+
+Remove default display credentials from local feed
+
+Removes default display credentials for the space support from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be removed. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveDisplayCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default display credentials should be removed.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedRemoveOnedataUserToCredentialsMapping"></a>
+# **localFeedRemoveOnedataUserToCredentialsMapping**
+> localFeedRemoveOnedataUserToCredentialsMapping(id, onedataUserId)
+
+Remove Onedata user to credentials mapping from local feed
+
+Removes mapping of the Onedata user to user on the specific storage local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be removed. 
+
+var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveOnedataUserToCredentialsMapping(id, onedataUserId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be removed.  | 
+ **onedataUserId** | **String**| The Id of a user for which mapping should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedRemoveUidToOnedataUserMapping"></a>
+# **localFeedRemoveUidToOnedataUserMapping**
+> localFeedRemoveUidToOnedataUserMapping(id, uid)
+
+Remove mapping of UID from local feed
+
+Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be removed. 
+
+var uid = 56; // Number | The UID of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedRemoveUidToOnedataUserMapping(id, uid, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be removed.  | 
+ **uid** | **Number**| The UID of the user on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedSetAclGroupToOnedataGroupMapping"></a>
+# **localFeedSetAclGroupToOnedataGroupMapping**
+> localFeedSetAclGroupToOnedataGroupMapping(id, groupname, lumaOnedataGroup)
+
+Insert mapping of ACL group into local feed
+
+Sets mapping of ACL group on the specific storage to Onedata group in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata group mapping should be set. 
+
+var groupname = 56; // Number | The ACL name of the group on the storage. 
+
+var lumaOnedataGroup = new Onepanel.LumaOnedataGroup(); // LumaOnedataGroup | Credentials identifying group in the Onedata system.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedSetAclGroupToOnedataGroupMapping(id, groupname, lumaOnedataGroup, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata group mapping should be set.  | 
+ **groupname** | **Number**| The ACL name of the group on the storage.  | 
+ **lumaOnedataGroup** | [**LumaOnedataGroup**](LumaOnedataGroup.md)| Credentials identifying group in the Onedata system. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedSetAclUserToOnedataUserMapping"></a>
+# **localFeedSetAclUserToOnedataUserMapping**
+> localFeedSetAclUserToOnedataUserMapping(id, username, lumaOnedataUser)
+
+Insert mapping of ACL user into local feed
+
+Sets mapping of ACL user on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for for which onedata user mapping should be set. 
+
+var username = 56; // Number | The ACL name of the user on the storage. 
+
+var lumaOnedataUser = new Onepanel.LumaOnedataUser(); // LumaOnedataUser | Credentials identifying user in the Onedata system.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedSetAclUserToOnedataUserMapping(id, username, lumaOnedataUser, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for for which onedata user mapping should be set.  | 
+ **username** | **Number**| The ACL name of the user on the storage.  | 
+ **lumaOnedataUser** | [**LumaOnedataUser**](LumaOnedataUser.md)| Credentials identifying user in the Onedata system. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedSetDefaultPosixCredentials"></a>
+# **localFeedSetDefaultPosixCredentials**
+> localFeedSetDefaultPosixCredentials(id, spaceId, posixCredentials)
+
+Insert default posix credentials into local feed
+
+Sets default storage credentials for the space supported by POSIX-compatible storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be set. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be set. 
+
+var posixCredentials = new Onepanel.PosixCompatibleCredentials(); // PosixCompatibleCredentials | New default storage credentials for the space support. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedSetDefaultPosixCredentials(id, spaceId, posixCredentials, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be set.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be set.  | 
+ **posixCredentials** | [**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)| New default storage credentials for the space support.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedSetDisplayCredentials"></a>
+# **localFeedSetDisplayCredentials**
+> localFeedSetDisplayCredentials(id, spaceId, displayCredentials)
+
+Insert default display credentials into local feed
+
+Sets default display credentials for the space support in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be set. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be set. 
+
+var displayCredentials = new Onepanel.PosixCompatibleCredentials(); // PosixCompatibleCredentials | New default display credentials for the space support. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedSetDisplayCredentials(id, spaceId, displayCredentials, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default display credentials should be set.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be set.  | 
+ **displayCredentials** | [**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)| New default display credentials for the space support.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="localFeedSetUidToOnedataUserMapping"></a>
+# **localFeedSetUidToOnedataUserMapping**
+> localFeedSetUidToOnedataUserMapping(id, uid, lumaOnedataUser)
+
+Insert mapping of UID into local feed
+
+Sets mapping of UID on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be set. 
+
+var uid = 56; // Number | The UID of the user on the storage. 
+
+var lumaOnedataUser = new Onepanel.LumaOnedataUser(); // LumaOnedataUser | Credentials identifying user in the Onedata system.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.localFeedSetUidToOnedataUserMapping(id, uid, lumaOnedataUser, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be set.  | 
+ **uid** | **Number**| The UID of the user on the storage.  | 
+ **lumaOnedataUser** | [**LumaOnedataUser**](LumaOnedataUser.md)| Credentials identifying user in the Onedata system. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaClearDb"></a>
+# **lumaClearDb**
+> lumaClearDb(id)
+
+Clear LUMA DB
+
+Clears all LUMA DB entries for given storage. LUMA DB will be repopulated using currently setup feed. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which LUMA DB will be cleared
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaClearDb(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which LUMA DB will be cleared | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaGetAclGroupToOnedataGroupMapping"></a>
+# **lumaGetAclGroupToOnedataGroupMapping**
+> LumaOnedataGroup lumaGetAclGroupToOnedataGroupMapping(id, groupname)
+
+Lookup mapping of ACL group
+
+Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata group mapping should be returned. 
+
+var groupname = 56; // Number | The ACL name of the group on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetAclGroupToOnedataGroupMapping(id, groupname, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata group mapping should be returned.  | 
+ **groupname** | **Number**| The ACL name of the group on the storage.  | 
+
+### Return type
+
+[**LumaOnedataGroup**](LumaOnedataGroup.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetAclUserToOnedataUserMapping"></a>
+# **lumaGetAclUserToOnedataUserMapping**
+> LumaOnedataUser lumaGetAclUserToOnedataUserMapping(id, username)
+
+Lookup mapping of ACL user
+
+Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be returned. 
+
+var username = 56; // Number | The ACL name of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetAclUserToOnedataUserMapping(id, username, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be returned.  | 
+ **username** | **Number**| The ACL name of the user on the storage.  | 
+
+### Return type
+
+[**LumaOnedataUser**](LumaOnedataUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetConfig"></a>
+# **lumaGetConfig**
+> LumaConfig lumaGetConfig(id)
+
+Get LUMA DB configuration
+
+Returns configuration of Local User Mapping database (LUMA DB) for the storage. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which LUMA DB configuration should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetConfig(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which LUMA DB configuration should be returned. | 
+
+### Return type
+
+[**LumaConfig**](LumaConfig.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetDefaultPosixCredentials"></a>
+# **lumaGetDefaultPosixCredentials**
+> PosixCompatibleCredentials lumaGetDefaultPosixCredentials(id, spaceId)
+
+Lookup default posix credentials
+
+Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be returned. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetDefaultPosixCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be returned.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be returned.  | 
+
+### Return type
+
+[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetDisplayCredentials"></a>
+# **lumaGetDisplayCredentials**
+> PosixCompatibleCredentials lumaGetDisplayCredentials(id, spaceId)
+
+Lookup default display credentials
+
+Returns default display credentials for the space support that are stored in LUMA DB. These are POSIX credentials (UID &amp; GID) which are returned in getattr response. They are used to present file owners in the result of e.g. &#x60;ls&#x60; or &#x60;stat&#x60; operation in Oneclient or when fetching file attributes via REST API. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be returned. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetDisplayCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default display credentials should be returned.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be returned.  | 
+
+### Return type
+
+[**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetOnedataUserToCredentialsMapping"></a>
+# **lumaGetOnedataUserToCredentialsMapping**
+> LumaStorageUser lumaGetOnedataUserToCredentialsMapping(id, onedataUserId)
+
+Lookup Onedata user to credentials mapping
+
+Returns mapping of the Onedata user to user on the specific storage stored in LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be returned. 
+
+var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be returned. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetOnedataUserToCredentialsMapping(id, onedataUserId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be returned.  | 
+ **onedataUserId** | **String**| The Id of a user for which mapping should be returned.  | 
+
+### Return type
+
+[**LumaStorageUser**](LumaStorageUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaGetUidToOnedataUserMapping"></a>
+# **lumaGetUidToOnedataUserMapping**
+> LumaOnedataUser lumaGetUidToOnedataUserMapping(id, uid)
+
+Lookup mapping of UID
+
+Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be returned. 
+
+var uid = 56; // Number | The UID of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.lumaGetUidToOnedataUserMapping(id, uid, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be returned.  | 
+ **uid** | **Number**| The UID of the user on the storage.  | 
+
+### Return type
+
+[**LumaOnedataUser**](LumaOnedataUser.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="lumaRemoveAclGroupToOnedataGroupMapping"></a>
+# **lumaRemoveAclGroupToOnedataGroupMapping**
+> lumaRemoveAclGroupToOnedataGroupMapping(id, groupname)
+
+Remove mapping of ACL group
+
+Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata group mapping should be removed. 
+
+var groupname = 56; // Number | The ACL name of the group on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveAclGroupToOnedataGroupMapping(id, groupname, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata group mapping should be removed.  | 
+ **groupname** | **Number**| The ACL name of the group on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaRemoveAclUserToOnedataUserMapping"></a>
+# **lumaRemoveAclUserToOnedataUserMapping**
+> lumaRemoveAclUserToOnedataUserMapping(id, username)
+
+Remove mapping of ACL user
+
+Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be removed. 
+
+var username = 56; // Number | The ACL name of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveAclUserToOnedataUserMapping(id, username, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be removed.  | 
+ **username** | **Number**| The ACL name of the user on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaRemoveDefaultPosixCredentials"></a>
+# **lumaRemoveDefaultPosixCredentials**
+> lumaRemoveDefaultPosixCredentials(id, spaceId)
+
+Remove default posix credentials
+
+Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveDefaultPosixCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaRemoveDisplayCredentials"></a>
+# **lumaRemoveDisplayCredentials**
+> lumaRemoveDisplayCredentials(id, spaceId)
+
+Remove default display credentials
+
+Removes default display credentials for the space support from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be removed. 
+
+var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveDisplayCredentials(id, spaceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which default display credentials should be removed.  | 
+ **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaRemoveOnedataUserToCredentialsMapping"></a>
+# **lumaRemoveOnedataUserToCredentialsMapping**
+> lumaRemoveOnedataUserToCredentialsMapping(id, onedataUserId)
+
+Remove Onedata user to credentials mapping
+
+Removes mapping of the Onedata user to user on the specific storage from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage for which user mapping should be removed. 
+
+var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be removed. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveOnedataUserToCredentialsMapping(id, onedataUserId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage for which user mapping should be removed.  | 
+ **onedataUserId** | **String**| The Id of a user for which mapping should be removed.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="lumaRemoveUidToOnedataUserMapping"></a>
+# **lumaRemoveUidToOnedataUserMapping**
+> lumaRemoveUidToOnedataUserMapping(id, uid)
+
+Remove mapping of UID
+
+Removes mapping of UID on the specific storage to Onedata user from LUMA DB. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a storage constituting space support for which onedata user mapping should be removed. 
+
+var uid = 56; // Number | The UID of the user on the storage. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.lumaRemoveUidToOnedataUserMapping(id, uid, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a storage constituting space support for which onedata user mapping should be removed.  | 
+ **uid** | **Number**| The UID of the user on the storage.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="modifyCephPool"></a>
 # **modifyCephPool**
 > modifyCephPool(name, poolModifyRequest)
@@ -4228,76 +5452,6 @@ null (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
-
-<a name="modifyLocalFeedLumaOnedataUserToCredentialsMapping"></a>
-# **modifyLocalFeedLumaOnedataUserToCredentialsMapping**
-> modifyLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId, displayCredentials)
-
-Modify local feed LUMA Onedata user to credentials mapping.
-
-Modifies user mapping stored in LUMA DB with local feed for the storage. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be updated. 
-
-var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be updated. 
-
-var displayCredentials = new Onepanel.LumaStorageUser(); // LumaStorageUser | New user mapping 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId, displayCredentials, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be updated.  | 
- **onedataUserId** | **String**| The Id of a user for which mapping should be updated.  | 
- **displayCredentials** | [**LumaStorageUser**](LumaStorageUser.md)| New user mapping  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="modifyProvider"></a>
 # **modifyProvider**
@@ -4625,743 +5779,6 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="removeLocalFeedLumaAclGroupToOnedataGroupMapping"></a>
-# **removeLocalFeedLumaAclGroupToOnedataGroupMapping**
-> removeLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname)
-
-Remove mapping of ACL group from LUMA DB with local feed.
-
-Removes mapping of ACL group on the specific storage to Onedata group. The mapping will be removed from LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var groupname = 56; // Number | The ACL name of the group on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **groupname** | **Number**| The ACL name of the group on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLocalFeedLumaAclUserToOnedataUserMapping"></a>
-# **removeLocalFeedLumaAclUserToOnedataUserMapping**
-> removeLocalFeedLumaAclUserToOnedataUserMapping(id, username)
-
-Remove mapping of ACL user from LUMA DB with local feed.
-
-Removes mapping of ACL user on the specific storage to Onedata user. The mapping will be removed from LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var username = 56; // Number | The ACL name of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLocalFeedLumaAclUserToOnedataUserMapping(id, username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **username** | **Number**| The ACL name of the user on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLocalFeedLumaDefaultPosixCredentials"></a>
-# **removeLocalFeedLumaDefaultPosixCredentials**
-> removeLocalFeedLumaDefaultPosixCredentials(id, spaceId)
-
-Remove local feed LUMA default posix credentials
-
-Removes default storage credentials for space supported by POSIX-compatible storage from LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLocalFeedLumaDefaultPosixCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLocalFeedLumaDisplayCredentials"></a>
-# **removeLocalFeedLumaDisplayCredentials**
-> removeLocalFeedLumaDisplayCredentials(id, spaceId)
-
-Remove local feed LUMA default display credentials
-
-Removes default display credentials for space supported by POSIX-compatible storage in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be removed. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLocalFeedLumaDisplayCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default display credentials should be removed.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLocalFeedLumaOnedataUserToCredentialsMapping"></a>
-# **removeLocalFeedLumaOnedataUserToCredentialsMapping**
-> removeLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId)
-
-Remove local feed LUMA Onedata user to credentials mapping.
-
-Removes Onedata user to credentials mapping from LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be removed. 
-
-var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLocalFeedLumaOnedataUserToCredentialsMapping(id, onedataUserId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be removed.  | 
- **onedataUserId** | **String**| The Id of a user for which mapping should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaAclGroupToOnedataGroupMapping"></a>
-# **removeLumaAclGroupToOnedataGroupMapping**
-> removeLumaAclGroupToOnedataGroupMapping(id, groupname)
-
-Remove mapping of ACL group from LUMA DB
-
-Removes mapping of ACL group on the specific storage to Onedata group. The mapping will be removed from LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var groupname = 56; // Number | The ACL name of the group on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaAclGroupToOnedataGroupMapping(id, groupname, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **groupname** | **Number**| The ACL name of the group on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaAclUserToOnedataUserMapping"></a>
-# **removeLumaAclUserToOnedataUserMapping**
-> removeLumaAclUserToOnedataUserMapping(id, username)
-
-Remove mapping of ACL user from LUMA DB
-
-Removes mapping of ACL user on the specific storage to Onedata user. The mapping will be removed from LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var username = 56; // Number | The ACL name of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaAclUserToOnedataUserMapping(id, username, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **username** | **Number**| The ACL name of the user on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaDefaultPosixCredentials"></a>
-# **removeLumaDefaultPosixCredentials**
-> removeLumaDefaultPosixCredentials(id, spaceId)
-
-Remove default LUMA posix credentials
-
-Removes default storage credentials for space supported by POSIX-compatible storage from LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaDefaultPosixCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaDisplayCredentials"></a>
-# **removeLumaDisplayCredentials**
-> removeLumaDisplayCredentials(id, spaceId)
-
-Remove LUMA default display credentials
-
-Removes default display credentials for space supported by POSIX-compatible storage in LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be removed. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaDisplayCredentials(id, spaceId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default display credentials should be removed.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaOnedataUserToCredentialsMapping"></a>
-# **removeLumaOnedataUserToCredentialsMapping**
-> removeLumaOnedataUserToCredentialsMapping(id, onedataUserId)
-
-Remove LUMA Onedata user to credentials mapping.
-
-Removes Onedata user to credentials mapping from LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage for which user mapping should be removed. 
-
-var onedataUserId = "onedataUserId_example"; // String | The Id of a user for which mapping should be removed. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaOnedataUserToCredentialsMapping(id, onedataUserId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage for which user mapping should be removed.  | 
- **onedataUserId** | **String**| The Id of a user for which mapping should be removed.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="removeLumaUidToOnedataUserMapping"></a>
-# **removeLumaUidToOnedataUserMapping**
-> removeLumaUidToOnedataUserMapping(id, uid)
-
-Remove mapping of UID from LUMA DB
-
-Removes mapping of UID on the specific storage to Onedata user. The mapping will be removed from LUMA DB. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var uid = 56; // Number | The UID of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeLumaUidToOnedataUserMapping(id, uid, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **uid** | **Number**| The UID of the user on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
 <a name="removeProvider"></a>
 # **removeProvider**
 > removeProvider()
@@ -5484,73 +5901,6 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="removeUidToOnedataUserMapping"></a>
-# **removeUidToOnedataUserMapping**
-> removeUidToOnedataUserMapping(id, uid)
-
-Remove mapping of UID from LUMA DB with local feed.
-
-Removes mapping of UID on the specific storage to Onedata user. The mapping will be removed from LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be removed. 
-
-var uid = 56; // Number | The UID of the user on the storage. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.removeUidToOnedataUserMapping(id, uid, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be removed.  | 
- **uid** | **Number**| The UID of the user on the storage.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
 <a name="revokeSpaceSupport"></a>
 # **revokeSpaceSupport**
 > revokeSpaceSupport(id)
@@ -5613,356 +5963,6 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="setLocalFeedLumaAclGroupToOnedataGroupMapping"></a>
-# **setLocalFeedLumaAclGroupToOnedataGroupMapping**
-> setLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname, lumaOnedataGroup)
-
-Set mapping of ACL group in LUMA DB with local feed.
-
-Sets mapping of ACL group on the specific storage to Onedata group. The mapping will be stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be set. 
-
-var groupname = 56; // Number | The ACL name of the group on the storage. 
-
-var lumaOnedataGroup = new Onepanel.LumaOnedataGroup(); // LumaOnedataGroup | Credentials identifying group in the Onedata system.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.setLocalFeedLumaAclGroupToOnedataGroupMapping(id, groupname, lumaOnedataGroup, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be set.  | 
- **groupname** | **Number**| The ACL name of the group on the storage.  | 
- **lumaOnedataGroup** | [**LumaOnedataGroup**](LumaOnedataGroup.md)| Credentials identifying group in the Onedata system. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="setLocalFeedLumaAclUserToOnedataUserMapping"></a>
-# **setLocalFeedLumaAclUserToOnedataUserMapping**
-> setLocalFeedLumaAclUserToOnedataUserMapping(id, username, lumaOnedataUser)
-
-Set mapping of ACL user in LUMA DB with local feed.
-
-Sets mapping of ACL user on the specific storage to Onedata user. The mapping will be stored in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be set. 
-
-var username = 56; // Number | The ACL name of the user on the storage. 
-
-var lumaOnedataUser = new Onepanel.LumaOnedataUser(); // LumaOnedataUser | Credentials identifying user in the Onedata system.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.setLocalFeedLumaAclUserToOnedataUserMapping(id, username, lumaOnedataUser, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be set.  | 
- **username** | **Number**| The ACL name of the user on the storage.  | 
- **lumaOnedataUser** | [**LumaOnedataUser**](LumaOnedataUser.md)| Credentials identifying user in the Onedata system. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="setLocalFeedLumaDefaultPosixCredentials"></a>
-# **setLocalFeedLumaDefaultPosixCredentials**
-> setLocalFeedLumaDefaultPosixCredentials(id, spaceId, posixCredentials)
-
-Set local feed LUMA default posix credentials
-
-Sets default storage credentials for space supported by POSIX-compatible storage in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be set. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default storage credentials should be set. 
-
-var posixCredentials = new Onepanel.PosixCompatibleCredentials(); // PosixCompatibleCredentials | New default storage credentials for the space support. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.setLocalFeedLumaDefaultPosixCredentials(id, spaceId, posixCredentials, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be set.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default storage credentials should be set.  | 
- **posixCredentials** | [**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)| New default storage credentials for the space support.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="setLocalFeedLumaDisplayCredentials"></a>
-# **setLocalFeedLumaDisplayCredentials**
-> setLocalFeedLumaDisplayCredentials(id, spaceId, displayCredentials)
-
-Set local feed LUMA default display credentials
-
-Sets default storage credentials for space supported by POSIX-compatible storage in LUMA DB with local feed. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default display credentials should be set. 
-
-var spaceId = "spaceId_example"; // String | The Id of a space constituting space support for which default display credentials should be set. 
-
-var displayCredentials = new Onepanel.PosixCompatibleCredentials(); // PosixCompatibleCredentials | New default display credentials for the space support. 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.setLocalFeedLumaDisplayCredentials(id, spaceId, displayCredentials, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default display credentials should be set.  | 
- **spaceId** | **String**| The Id of a space constituting space support for which default display credentials should be set.  | 
- **displayCredentials** | [**PosixCompatibleCredentials**](PosixCompatibleCredentials.md)| New default display credentials for the space support.  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="setUidToOnedataUserMapping"></a>
-# **setUidToOnedataUserMapping**
-> setUidToOnedataUserMapping(id, uid, lumaOnedataUser)
-
-Set mapping of UID in LUMA DB with local feed
-
-Sets mapping of UID on the specific storage to Onedata user. The mapping will be stored in LUMA DB with local feed 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a storage constituting space support for which default storage credentials should be set. 
-
-var uid = 56; // Number | The UID of the user on the storage. 
-
-var lumaOnedataUser = new Onepanel.LumaOnedataUser(); // LumaOnedataUser | Credentials identifying user in the Onedata system.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.setUidToOnedataUserMapping(id, uid, lumaOnedataUser, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a storage constituting space support for which default storage credentials should be set.  | 
- **uid** | **Number**| The UID of the user on the storage.  | 
- **lumaOnedataUser** | [**LumaOnedataUser**](LumaOnedataUser.md)| Credentials identifying user in the Onedata system. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="startStopProviderDatabase"></a>

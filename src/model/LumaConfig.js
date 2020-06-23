@@ -45,7 +45,7 @@
    * Configuration of Local User Mapping database (LUMA DB).
    * @alias module:model/LumaConfig
    * @class
-   * @param lumaFeed {module:model/LumaConfig.LumaFeedEnum} Type of feed for LUMA DB.
+   * @param lumaFeed {module:model/LumaConfig.LumaFeedEnum} Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    */
   var exports = function(lumaFeed) {
     var _this = this;
@@ -79,31 +79,31 @@
       if (data.hasOwnProperty('lumaFeed')) {
         obj['lumaFeed'] = ApiClient.convertToType(data['lumaFeed'], 'String');
       }
-      if (data.hasOwnProperty('lumaUrl')) {
-        obj['lumaUrl'] = ApiClient.convertToType(data['lumaUrl'], 'String');
+      if (data.hasOwnProperty('lumaFeedUrl')) {
+        obj['lumaFeedUrl'] = ApiClient.convertToType(data['lumaFeedUrl'], 'String');
       }
-      if (data.hasOwnProperty('lumaApiKey')) {
-        obj['lumaApiKey'] = ApiClient.convertToType(data['lumaApiKey'], 'String');
+      if (data.hasOwnProperty('lumaFeedApiKey')) {
+        obj['lumaFeedApiKey'] = ApiClient.convertToType(data['lumaFeedApiKey'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Type of feed for LUMA DB.
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/LumaConfig.LumaFeedEnum} lumaFeed
    */
   exports.prototype['lumaFeed'] = undefined;
   /**
    * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaUrl
+   * @member {String} lumaFeedUrl
    */
-  exports.prototype['lumaUrl'] = undefined;
+  exports.prototype['lumaFeedUrl'] = undefined;
   /**
    * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaApiKey
+   * @member {String} lumaFeedApiKey
    */
-  exports.prototype['lumaApiKey'] = undefined;
+  exports.prototype['lumaFeedApiKey'] = undefined;
 
 
   /**

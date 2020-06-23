@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>LumaOnedataGroup</code>.
-   * Credentials identifying group in the Onedata system.
+   * Representation of Onedata group.
    * @alias module:model/LumaOnedataGroup
    * @class
    */

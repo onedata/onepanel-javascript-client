@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of ACL user
 
-Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. 
+Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of UID
 
-Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. 
+Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 Remove mapping of ACL group
 
-Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. 
+Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript
@@ -690,7 +690,7 @@ null (empty response body)
 
 Remove default posix credentials
 
-Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. 
+Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript
@@ -757,7 +757,7 @@ null (empty response body)
 
 Remove default display credentials
 
-Removes default display credentials for the space support from LUMA DB. 
+Removes default display credentials for the space support from LUMA DB. Default display credentials will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript
@@ -824,7 +824,7 @@ null (empty response body)
 
 Remove Onedata user to credentials mapping
 
-Removes mapping of the Onedata user to user on the specific storage from LUMA DB. 
+Removes mapping of the Onedata user to user on the specific storage from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
 
 ### Example
 ```javascript

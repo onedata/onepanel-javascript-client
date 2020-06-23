@@ -156,7 +156,7 @@
 
     /**
      * Lookup mapping of ACL user
-     * Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. 
+     * Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -414,7 +414,7 @@
 
     /**
      * Lookup mapping of UID
-     * Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. 
+     * Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -467,7 +467,7 @@
 
     /**
      * Remove mapping of ACL group
-     * Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. 
+     * Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be removed. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:api/LUMADBApi~lumaRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -571,7 +571,7 @@
 
     /**
      * Remove default posix credentials
-     * Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. 
+     * Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be removed. 
      * @param {module:api/LUMADBApi~lumaRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -623,7 +623,7 @@
 
     /**
      * Remove default display credentials
-     * Removes default display credentials for the space support from LUMA DB. 
+     * Removes default display credentials for the space support from LUMA DB. Default display credentials will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage constituting space support for which default display credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default display credentials should be removed. 
      * @param {module:api/LUMADBApi~lumaRemoveDisplayCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -675,7 +675,7 @@
 
     /**
      * Remove Onedata user to credentials mapping
-     * Removes mapping of the Onedata user to user on the specific storage from LUMA DB. 
+     * Removes mapping of the Onedata user to user on the specific storage from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
      * @param {String} id The Id of a storage for which user mapping should be removed. 
      * @param {String} onedataUserId The Id of a user for which mapping should be removed. 
      * @param {module:api/LUMADBApi~lumaRemoveOnedataUserToCredentialsMappingCallback} callback The callback function, accepting three arguments: error, data, response

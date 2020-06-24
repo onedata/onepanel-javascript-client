@@ -5,19 +5,19 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**lumaClearDb**](LUMADBApi.md#lumaClearDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
-[**lumaGetAclGroupToOnedataGroupMapping**](LUMADBApi.md#lumaGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group
-[**lumaGetAclUserToOnedataUserMapping**](LUMADBApi.md#lumaGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user
+[**lumaGetAclGroupToOnedataGroupMapping**](LUMADBApi.md#lumaGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group
+[**lumaGetAclUserToOnedataUserMapping**](LUMADBApi.md#lumaGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user
 [**lumaGetConfig**](LUMADBApi.md#lumaGetConfig) | **GET** /provider/storages/{id}/luma/config | Get LUMA DB configuration
 [**lumaGetDefaultPosixCredentials**](LUMADBApi.md#lumaGetDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Lookup default posix credentials
 [**lumaGetDisplayCredentials**](LUMADBApi.md#lumaGetDisplayCredentials) | **GET** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Lookup default display credentials
 [**lumaGetOnedataUserToCredentialsMapping**](LUMADBApi.md#lumaGetOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Lookup Onedata user to credentials mapping
-[**lumaGetUidToOnedataUserMapping**](LUMADBApi.md#lumaGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID
-[**lumaRemoveAclGroupToOnedataGroupMapping**](LUMADBApi.md#lumaRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group
-[**lumaRemoveAclUserToOnedataUserMapping**](LUMADBApi.md#lumaRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user
+[**lumaGetUidToOnedataUserMapping**](LUMADBApi.md#lumaGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID
+[**lumaRemoveAclGroupToOnedataGroupMapping**](LUMADBApi.md#lumaRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group
+[**lumaRemoveAclUserToOnedataUserMapping**](LUMADBApi.md#lumaRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user
 [**lumaRemoveDefaultPosixCredentials**](LUMADBApi.md#lumaRemoveDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Remove default posix credentials
 [**lumaRemoveDisplayCredentials**](LUMADBApi.md#lumaRemoveDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Remove default display credentials
 [**lumaRemoveOnedataUserToCredentialsMapping**](LUMADBApi.md#lumaRemoveOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove Onedata user to credentials mapping
-[**lumaRemoveUidToOnedataUserMapping**](LUMADBApi.md#lumaRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_sync/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID
+[**lumaRemoveUidToOnedataUserMapping**](LUMADBApi.md#lumaRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID
 
 
 <a name="lumaClearDb"></a>

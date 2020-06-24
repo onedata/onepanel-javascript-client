@@ -146,7 +146,7 @@
       var returnType = LumaOnedataGroup;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname}', 'GET',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -199,7 +199,7 @@
       var returnType = LumaOnedataUser;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username}', 'GET',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -411,7 +411,7 @@
       var returnType = LumaOnedataUser;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'GET',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -521,7 +521,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname}', 'DELETE',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -573,7 +573,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username}', 'DELETE',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -781,7 +781,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'DELETE',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -839,7 +839,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_group_to_onedata_group/{groupname}', 'PUT',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -897,7 +897,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/acl_user_to_onedata_user/{username}', 'PUT',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1071,7 +1071,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/storages/{id}/luma/local_feed/storage_sync/posix_compatible/uid_to_onedata_user/{uid}', 'PUT',
+        '/provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

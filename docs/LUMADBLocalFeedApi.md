@@ -98,7 +98,7 @@ null (empty response body)
 
 Lookup mapping of ACL group in local feed
 
-Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of ACL user in local feed
 
-Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 Lookup default posix credentials in local feed
 
-Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of UID in local feed
 
-Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -570,7 +570,7 @@ null (empty response body)
 
 Remove mapping of ACL group from local feed
 
-Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -637,7 +637,7 @@ null (empty response body)
 
 Remove mapping of ACL user from local feed
 
-Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -704,7 +704,7 @@ null (empty response body)
 
 Remove default posix credentials from local feed
 
-Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -905,7 +905,7 @@ null (empty response body)
 
 Remove mapping of UID from local feed
 
-Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -972,7 +972,7 @@ null (empty response body)
 
 Insert mapping of ACL group into local feed
 
-Sets mapping of ACL group on the specific storage to Onedata group in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Sets mapping of ACL group on the specific storage to Onedata group in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -1042,7 +1042,7 @@ null (empty response body)
 
 Insert mapping of ACL user into local feed
 
-Sets mapping of ACL user on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Sets mapping of ACL user on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -1112,7 +1112,7 @@ null (empty response body)
 
 Insert default posix credentials into local feed
 
-Sets default storage credentials for the space supported by POSIX-compatible storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Sets default storage credentials for the space supported by POSIX-compatible storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -1252,7 +1252,7 @@ null (empty response body)
 
 Insert mapping of UID into local feed
 
-Sets mapping of UID on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+Sets mapping of UID on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript

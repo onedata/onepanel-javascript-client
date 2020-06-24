@@ -109,7 +109,7 @@
 
     /**
      * Lookup mapping of ACL group in local feed
-     * Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Returns mapping of ACL group on the specific storage to Onedata group defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be returned. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedGetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -162,7 +162,7 @@
 
     /**
      * Lookup mapping of ACL user in local feed
-     * Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Returns mapping of ACL user on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -215,7 +215,7 @@
 
     /**
      * Lookup default posix credentials in local feed
-     * Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Returns default storage credentials for the space supported by POSIX-compatible storage that are defined in local feed. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be returned. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be returned. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedGetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -374,7 +374,7 @@
 
     /**
      * Lookup mapping of UID in local feed
-     * Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Returns mapping of UID on the specific storage to Onedata user defined in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -485,7 +485,7 @@
 
     /**
      * Remove mapping of ACL group from local feed
-     * Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Removes mapping of ACL group on the specific storage to Onedata group from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be removed. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -537,7 +537,7 @@
 
     /**
      * Remove mapping of ACL user from local feed
-     * Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Removes mapping of ACL user on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -589,7 +589,7 @@
 
     /**
      * Remove default posix credentials from local feed
-     * Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Removes default storage credentials for the space supported by POSIX-compatible storage from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be removed. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -745,7 +745,7 @@
 
     /**
      * Remove mapping of UID from local feed
-     * Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Removes mapping of UID on the specific storage to Onedata user from local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:api/LUMADBLocalFeedApi~localFeedRemoveUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -797,7 +797,7 @@
 
     /**
      * Insert mapping of ACL group into local feed
-     * Sets mapping of ACL group on the specific storage to Onedata group in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Sets mapping of ACL group on the specific storage to Onedata group in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be set. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:model/LumaOnedataGroup} lumaOnedataGroup Credentials identifying group in the Onedata system.
@@ -855,7 +855,7 @@
 
     /**
      * Insert mapping of ACL user into local feed
-     * Sets mapping of ACL user on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Sets mapping of ACL user on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for for which onedata user mapping should be set. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:model/LumaOnedataUser} lumaOnedataUser Credentials identifying user in the Onedata system.
@@ -913,7 +913,7 @@
 
     /**
      * Insert default posix credentials into local feed
-     * Sets default storage credentials for the space supported by POSIX-compatible storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Sets default storage credentials for the space supported by POSIX-compatible storage in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be set. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be set. 
      * @param {module:model/PosixCompatibleCredentials} posixCredentials New default storage credentials for the space support. 
@@ -1029,7 +1029,7 @@
 
     /**
      * Insert mapping of UID into local feed
-     * Sets mapping of UID on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. 
+     * Sets mapping of UID on the specific storage to Onedata user in local feed. Returns an error if the storage has a different LUMA feed than &#x60;local&#x60;. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be set. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:model/LumaOnedataUser} lumaOnedataUser Credentials identifying user in the Onedata system.

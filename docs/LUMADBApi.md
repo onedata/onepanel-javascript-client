@@ -90,7 +90,7 @@ null (empty response body)
 
 Lookup mapping of ACL group
 
-Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. 
+Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of ACL user
 
-Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 Lookup default posix credentials
 
-Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. 
+Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 Lookup mapping of UID
 
-Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 Remove mapping of ACL group
 
-Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -623,7 +623,7 @@ null (empty response body)
 
 Remove mapping of ACL user
 
-Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. 
+Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -690,7 +690,7 @@ null (empty response body)
 
 Remove default posix credentials
 
-Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. 
+Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript
@@ -891,7 +891,7 @@ null (empty response body)
 
 Remove mapping of UID
 
-Removes mapping of UID on the specific storage to Onedata user from LUMA DB. 
+Removes mapping of UID on the specific storage to Onedata user from LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
 
 ### Example
 ```javascript

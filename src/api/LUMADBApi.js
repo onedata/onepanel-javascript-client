@@ -103,7 +103,7 @@
 
     /**
      * Lookup mapping of ACL group
-     * Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. 
+     * Returns mapping of ACL group on the specific storage to Onedata group stored in LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be returned. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:api/LUMADBApi~lumaGetAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -156,7 +156,7 @@
 
     /**
      * Lookup mapping of ACL user
-     * Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+     * Returns mapping of ACL user on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaGetAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -255,7 +255,7 @@
 
     /**
      * Lookup default posix credentials
-     * Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. 
+     * Returns default storage credentials for the space supported by POSIX-compatible storage that are stored in LUMA DB. GID will be used as a component of storage credentials for each member of the space. Both UID and GID will be used as to represent owner of the space directory on storage. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be returned. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be returned. 
      * @param {module:api/LUMADBApi~lumaGetDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -414,7 +414,7 @@
 
     /**
      * Lookup mapping of UID
-     * Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+     * Returns mapping of UID on the specific storage to Onedata user stored in LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be returned. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaGetUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -467,7 +467,7 @@
 
     /**
      * Remove mapping of ACL group
-     * Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. 
+     * Removes mapping of ACL group on the specific storage to Onedata group from LUMA DB. Mapping will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata group mapping should be removed. 
      * @param {Number} groupname The ACL name of the group on the storage. 
      * @param {module:api/LUMADBApi~lumaRemoveAclGroupToOnedataGroupMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -519,7 +519,7 @@
 
     /**
      * Remove mapping of ACL user
-     * Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. 
+     * Removes mapping of ACL user on the specific storage to Onedata user from LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} username The ACL name of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaRemoveAclUserToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -571,7 +571,7 @@
 
     /**
      * Remove default posix credentials
-     * Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. 
+     * Removes default storage credentials for the space supported by POSIX-compatible storage from LUMA DB. Default storage credentials will be acquired again using currently setup LUMA feed. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which default storage credentials should be removed. 
      * @param {String} spaceId The Id of a space constituting space support for which default storage credentials should be removed. 
      * @param {module:api/LUMADBApi~lumaRemoveDefaultPosixCredentialsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -727,7 +727,7 @@
 
     /**
      * Remove mapping of UID
-     * Removes mapping of UID on the specific storage to Onedata user from LUMA DB. 
+     * Removes mapping of UID on the specific storage to Onedata user from LUMA DB. This endpoint is relevant **only for POSIX compatible storages**. 
      * @param {String} id The Id of a storage constituting space support for which onedata user mapping should be removed. 
      * @param {Number} uid The UID of the user on the storage. 
      * @param {module:api/LUMADBApi~lumaRemoveUidToOnedataUserMappingCallback} callback The callback function, accepting three arguments: error, data, response

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of the modified storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. | 
+**type** | **String** | Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  | 
 **latencyMin** | **Number** | Minimum latency in milliseconds, which should be simulated for selected operations.  | [optional] 
 **latencyMax** | **Number** | Maximum latency in milliseconds, which should be simulated for selected operations.  | [optional] 
 **timeoutProbability** | **Number** | Probability (0.0, 1.0), with which an operation should return a timeout error.  | [optional] 

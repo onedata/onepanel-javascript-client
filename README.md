@@ -90,19 +90,19 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME'
 basic.password = 'YOUR PASSWORD'
 
-var api = new Onepanel.OnepanelApi()
+var api = new Onepanel.LUMADBApi()
 
-var hostAddRequest = new Onepanel.HostAddRequest(); // {HostAddRequest} 
+var id = "id_example"; // {String} The Id of a storage for which LUMA DB will be cleared
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.addClusterHost(hostAddRequest, callback);
+api.lumaClearDb(id, callback);
 
 ```
 
@@ -112,6 +112,39 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Onepanel.LUMADBApi* | [**lumaClearDb**](docs/LUMADBApi.md#lumaClearDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
+*Onepanel.LUMADBApi* | [**lumaGetAclGroupToOnedataGroupMapping**](docs/LUMADBApi.md#lumaGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group
+*Onepanel.LUMADBApi* | [**lumaGetAclUserToOnedataUserMapping**](docs/LUMADBApi.md#lumaGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user
+*Onepanel.LUMADBApi* | [**lumaGetConfig**](docs/LUMADBApi.md#lumaGetConfig) | **GET** /provider/storages/{id}/luma/config | Get LUMA DB configuration
+*Onepanel.LUMADBApi* | [**lumaGetDefaultPosixCredentials**](docs/LUMADBApi.md#lumaGetDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Lookup default posix credentials
+*Onepanel.LUMADBApi* | [**lumaGetDisplayCredentials**](docs/LUMADBApi.md#lumaGetDisplayCredentials) | **GET** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Lookup default display credentials
+*Onepanel.LUMADBApi* | [**lumaGetOnedataUserToCredentialsMapping**](docs/LUMADBApi.md#lumaGetOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Lookup Onedata user to credentials mapping
+*Onepanel.LUMADBApi* | [**lumaGetUidToOnedataUserMapping**](docs/LUMADBApi.md#lumaGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID
+*Onepanel.LUMADBApi* | [**lumaRemoveAclGroupToOnedataGroupMapping**](docs/LUMADBApi.md#lumaRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group
+*Onepanel.LUMADBApi* | [**lumaRemoveAclUserToOnedataUserMapping**](docs/LUMADBApi.md#lumaRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user
+*Onepanel.LUMADBApi* | [**lumaRemoveDefaultPosixCredentials**](docs/LUMADBApi.md#lumaRemoveDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/db/storage_access/posix_compatible/default_credentials/{space_id} | Remove default posix credentials
+*Onepanel.LUMADBApi* | [**lumaRemoveDisplayCredentials**](docs/LUMADBApi.md#lumaRemoveDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/db/display_credentials/all/default/{space_id} | Remove default display credentials
+*Onepanel.LUMADBApi* | [**lumaRemoveOnedataUserToCredentialsMapping**](docs/LUMADBApi.md#lumaRemoveOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove Onedata user to credentials mapping
+*Onepanel.LUMADBApi* | [**lumaRemoveUidToOnedataUserMapping**](docs/LUMADBApi.md#lumaRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/db/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedAddOnedataUserToCredentialsMapping**](docs/LUMADBLocalFeedApi.md#localFeedAddOnedataUserToCredentialsMapping) | **POST** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials | Insert Onedata user to credentials mapping into local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetAclGroupToOnedataGroupMapping**](docs/LUMADBLocalFeedApi.md#localFeedGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetAclUserToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedGetAclUserToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Lookup mapping of ACL user in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetDefaultPosixCredentials**](docs/LUMADBLocalFeedApi.md#localFeedGetDefaultPosixCredentials) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Lookup default posix credentials in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetDisplayCredentials**](docs/LUMADBLocalFeedApi.md#localFeedGetDisplayCredentials) | **GET** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Lookup default display credentials in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetOnedataUserToCredentialsMapping**](docs/LUMADBLocalFeedApi.md#localFeedGetOnedataUserToCredentialsMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Lookup Onedata user to credentials mapping in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedGetUidToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedGetUidToOnedataUserMapping) | **GET** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Lookup mapping of UID in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedModifyOnedataUserToCredentialsMapping**](docs/LUMADBLocalFeedApi.md#localFeedModifyOnedataUserToCredentialsMapping) | **PATCH** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Update Onedata user to credentials mapping in local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveAclGroupToOnedataGroupMapping**](docs/LUMADBLocalFeedApi.md#localFeedRemoveAclGroupToOnedataGroupMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Remove mapping of ACL group from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveAclUserToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedRemoveAclUserToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Remove mapping of ACL user from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveDefaultPosixCredentials**](docs/LUMADBLocalFeedApi.md#localFeedRemoveDefaultPosixCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Remove default posix credentials from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveDisplayCredentials**](docs/LUMADBLocalFeedApi.md#localFeedRemoveDisplayCredentials) | **DELETE** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Remove default display credentials from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveOnedataUserToCredentialsMapping**](docs/LUMADBLocalFeedApi.md#localFeedRemoveOnedataUserToCredentialsMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_access/all/onedata_user_to_credentials/{onedata_user_id} | Remove Onedata user to credentials mapping from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedRemoveUidToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedRemoveUidToOnedataUserMapping) | **DELETE** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Remove mapping of UID from local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedSetAclGroupToOnedataGroupMapping**](docs/LUMADBLocalFeedApi.md#localFeedSetAclGroupToOnedataGroupMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Insert mapping of ACL group into local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedSetAclUserToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedSetAclUserToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/acl_user_to_onedata_user/{username} | Insert mapping of ACL user into local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedSetDefaultPosixCredentials**](docs/LUMADBLocalFeedApi.md#localFeedSetDefaultPosixCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Insert default posix credentials into local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedSetDisplayCredentials**](docs/LUMADBLocalFeedApi.md#localFeedSetDisplayCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Insert default display credentials into local feed
+*Onepanel.LUMADBLocalFeedApi* | [**localFeedSetUidToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedSetUidToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Insert mapping of UID into local feed
 *Onepanel.OnepanelApi* | [**addClusterHost**](docs/OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 *Onepanel.OnepanelApi* | [**checkDns**](docs/OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
 *Onepanel.OnepanelApi* | [**createInviteToken**](docs/OnepanelApi.md#createInviteToken) | **POST** /invite_tokens | Create node invite token
@@ -187,7 +220,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getStorageDetails**](docs/OneproviderApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.OneproviderApi* | [**getStorages**](docs/OneproviderApi.md#getStorages) | **GET** /provider/storages | Get storages
 *Onepanel.OneproviderApi* | [**getTransfersMock**](docs/OneproviderApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
-*Onepanel.OneproviderApi* | [**invalidateLumaCache**](docs/OneproviderApi.md#invalidateLumaCache) | **PATCH** /provider/storages/{id}/invalidate_luma | Invalidate LUMA cache
 *Onepanel.OneproviderApi* | [**modifyCephPool**](docs/OneproviderApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify pool params
 *Onepanel.OneproviderApi* | [**modifyProvider**](docs/OneproviderApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
 *Onepanel.OneproviderApi* | [**modifyProviderClusterIps**](docs/OneproviderApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
@@ -276,6 +308,12 @@ Class | Method | HTTP request | Description
  - [Onepanel.Ids](docs/Ids.md)
  - [Onepanel.InlineResponse202](docs/InlineResponse202.md)
  - [Onepanel.InviteToken](docs/InviteToken.md)
+ - [Onepanel.LumaConfig](docs/LumaConfig.md)
+ - [Onepanel.LumaOnedataGroup](docs/LumaOnedataGroup.md)
+ - [Onepanel.LumaOnedataUser](docs/LumaOnedataUser.md)
+ - [Onepanel.LumaStorageCredentials](docs/LumaStorageCredentials.md)
+ - [Onepanel.LumaStorageUser](docs/LumaStorageUser.md)
+ - [Onepanel.LumaUserMapping](docs/LumaUserMapping.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
@@ -284,6 +322,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.OnezoneUserCreateRequest](docs/OnezoneUserCreateRequest.md)
  - [Onepanel.PanelConfiguration](docs/PanelConfiguration.md)
  - [Onepanel.PasswordChangeRequest](docs/PasswordChangeRequest.md)
+ - [Onepanel.PosixCompatibleCredentials](docs/PosixCompatibleCredentials.md)
  - [Onepanel.Progress](docs/Progress.md)
  - [Onepanel.ProgressModify](docs/ProgressModify.md)
  - [Onepanel.ProviderClusterConfiguration](docs/ProviderClusterConfiguration.md)
@@ -340,25 +379,37 @@ Class | Method | HTTP request | Description
  - [Onepanel.Blockdevice](docs/Blockdevice.md)
  - [Onepanel.Ceph](docs/Ceph.md)
  - [Onepanel.CephCluster](docs/CephCluster.md)
+ - [Onepanel.CephCredentials](docs/CephCredentials.md)
  - [Onepanel.CephModify](docs/CephModify.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
+ - [Onepanel.CephradosCredentials](docs/CephradosCredentials.md)
  - [Onepanel.CephradosModify](docs/CephradosModify.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
+ - [Onepanel.GlusterfsCredentials](docs/GlusterfsCredentials.md)
  - [Onepanel.GlusterfsModify](docs/GlusterfsModify.md)
  - [Onepanel.Localceph](docs/Localceph.md)
  - [Onepanel.LocalcephModify](docs/LocalcephModify.md)
  - [Onepanel.Loopdevice](docs/Loopdevice.md)
+ - [Onepanel.LumaIdpEntitlementScheme](docs/LumaIdpEntitlementScheme.md)
+ - [Onepanel.LumaIdpUserScheme](docs/LumaIdpUserScheme.md)
+ - [Onepanel.LumaOnedataGroupScheme](docs/LumaOnedataGroupScheme.md)
+ - [Onepanel.LumaOnedataUserScheme](docs/LumaOnedataUserScheme.md)
  - [Onepanel.Nulldevice](docs/Nulldevice.md)
+ - [Onepanel.NulldeviceCredentials](docs/NulldeviceCredentials.md)
  - [Onepanel.NulldeviceModify](docs/NulldeviceModify.md)
  - [Onepanel.OpConfiguration](docs/OpConfiguration.md)
  - [Onepanel.OzConfiguration](docs/OzConfiguration.md)
  - [Onepanel.Posix](docs/Posix.md)
+ - [Onepanel.PosixCredentials](docs/PosixCredentials.md)
  - [Onepanel.PosixModify](docs/PosixModify.md)
  - [Onepanel.S3](docs/S3.md)
+ - [Onepanel.S3Credentials](docs/S3Credentials.md)
  - [Onepanel.S3Modify](docs/S3Modify.md)
  - [Onepanel.Swift](docs/Swift.md)
+ - [Onepanel.SwiftCredentials](docs/SwiftCredentials.md)
  - [Onepanel.SwiftModify](docs/SwiftModify.md)
  - [Onepanel.Webdav](docs/Webdav.md)
+ - [Onepanel.WebdavCredentials](docs/WebdavCredentials.md)
  - [Onepanel.WebdavModify](docs/WebdavModify.md)
 
 

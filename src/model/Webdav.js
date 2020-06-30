@@ -45,16 +45,16 @@
    * The WebDAV storage configuration.
    * @alias module:model/Webdav
    * @class
-   * @extends module:model/StorageCreateDetails
-   * @implements module:model/StorageGetDetails
+   * @extends module:model/StorageGetDetails
+   * @implements module:model/StorageCreateDetails
    * @implements module:model/WebdavCredentials
    * @param type {module:model/Webdav.TypeEnum} The type of storage.
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
     var _this = this;
-    StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
+    StorageCreateDetails.call(_this);
     WebdavCredentials.call(_this, type);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
@@ -88,8 +88,8 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
       WebdavCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
@@ -125,7 +125,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(StorageCreateDetails.prototype);
+  exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
   /**
@@ -185,30 +185,12 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
 
-  // Implement StorageGetDetails interface:
+  // Implement StorageCreateDetails interface:
   /**
    * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;
-
-  /**
-   * The Id of storage.
-   * @member {String} id
-   */
-exports.prototype['id'] = undefined;
-
-  /**
-   * The name of storage.
-   * @member {String} name
-   */
-exports.prototype['name'] = undefined;
-
-  /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
-   * @member {Boolean} verificationPassed
-   */
-exports.prototype['verificationPassed'] = undefined;
 
   /**
    * Storage operation timeout in milliseconds.
@@ -219,14 +201,16 @@ exports.prototype['timeout'] = undefined;
   /**
    * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
    * @member {Boolean} skipStorageDetection
+   * @default false
    */
-exports.prototype['skipStorageDetection'] = undefined;
+exports.prototype['skipStorageDetection'] = false;
 
   /**
    * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
-   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
+   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
+   * @default 'auto'
    */
-exports.prototype['lumaFeed'] = undefined;
+exports.prototype['lumaFeed'] = 'auto';
 
   /**
    * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.

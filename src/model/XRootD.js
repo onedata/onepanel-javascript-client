@@ -119,7 +119,7 @@
    */
   exports.prototype['url'] = undefined;
   /**
-   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeble by user and group. 
+   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group. 
    * @member {String} fileModeMask
    * @default '0664'
    */

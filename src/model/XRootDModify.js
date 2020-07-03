@@ -111,7 +111,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. 
+   * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
    * @member {String} url
    */
   exports.prototype['url'] = undefined;

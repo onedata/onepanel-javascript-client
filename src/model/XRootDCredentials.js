@@ -17,37 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/LumaStorageCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./LumaStorageCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.LumaStorageCredentials = factory(root.Onepanel.ApiClient);
+    root.Onepanel.XRootDCredentials = factory(root.Onepanel.ApiClient, root.Onepanel.LumaStorageCredentials);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, LumaStorageCredentials) {
   'use strict';
 
 
 
 
   /**
-   * The LumaStorageCredentials model module.
-   * @module model/LumaStorageCredentials
+   * The XRootDCredentials model module.
+   * @module model/XRootDCredentials
    * @version 20.02.0-beta4
    */
 
   /**
-   * Constructs a new <code>LumaStorageCredentials</code>.
-   * Credentials that will be used to perform actions on the local storage resources in the context of the Onedata user. 
-   * @alias module:model/LumaStorageCredentials
+   * Constructs a new <code>XRootDCredentials</code>.
+   * Credentials on the XRootD storage.
+   * @alias module:model/XRootDCredentials
    * @class
+   * @extends module:model/LumaStorageCredentials
+   * @param type {module:model/XRootDCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
+    LumaStorageCredentials.call(_this);
+    _this['type'] = type;
 
 
   };
@@ -56,36 +60,85 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/LumaStorageCredentials} The value of 'discriminator' field or undefined.
+   * @return {module:model/XRootDCredentials} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>LumaStorageCredentials</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>XRootDCredentials</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/LumaStorageCredentials} obj Optional instance to populate.
-   * @return {module:model/LumaStorageCredentials} The populated <code>LumaStorageCredentials</code> instance.
+   * @param {module:model/XRootDCredentials} obj Optional instance to populate.
+   * @return {module:model/XRootDCredentials} The populated <code>XRootDCredentials</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
+      LumaStorageCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      }
+      if (data.hasOwnProperty('credentials')) {
+        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(LumaStorageCredentials.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
-   * @member {String} type
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/XRootDCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+  exports.prototype['credentialsType'] = 'none';
+  /**
+   * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+  exports.prototype['credentials'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "xrootd"
+     * @const
+     */
+    "xrootd": "xrootd"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
+    /**
+     * value: "none"
+     * @const
+     */
+    "none": "none",
+    /**
+     * value: "pwd"
+     * @const
+     */
+    "pwd": "pwd"  };
 
 
   return exports;

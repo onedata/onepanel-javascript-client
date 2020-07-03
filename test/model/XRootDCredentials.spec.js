@@ -16,79 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.LumaStorageCredentials = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.XRootDCredentials();
+  });
 
-
-  /**
-   * The LumaStorageCredentials model module.
-   * @module model/LumaStorageCredentials
-   * @version 20.02.0-beta4
-   */
-
-  /**
-   * Constructs a new <code>LumaStorageCredentials</code>.
-   * Credentials that will be used to perform actions on the local storage resources in the context of the Onedata user. 
-   * @alias module:model/LumaStorageCredentials
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/LumaStorageCredentials} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    return 'type';
-  };
-
-  /**
-   * Constructs a <code>LumaStorageCredentials</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/LumaStorageCredentials} obj Optional instance to populate.
-   * @return {module:model/LumaStorageCredentials} The populated <code>LumaStorageCredentials</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('XRootDCredentials', function() {
+    it('should create an instance of XRootDCredentials', function() {
+      // uncomment below and update the code to test XRootDCredentials
+      //var instane = new Onepanel.XRootDCredentials();
+      //expect(instance).to.be.a(Onepanel.XRootDCredentials);
+    });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.XRootDCredentials();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.XRootDCredentials();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentials (base name: "credentials")', function() {
+      // uncomment below and update the code to test the property credentials
+      //var instane = new Onepanel.XRootDCredentials();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

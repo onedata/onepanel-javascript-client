@@ -17,37 +17,44 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.LumaStorageCredentials = factory(root.Onepanel.ApiClient);
+    root.Onepanel.XRootDModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
 
 
   /**
-   * The LumaStorageCredentials model module.
-   * @module model/LumaStorageCredentials
+   * The XRootDModify model module.
+   * @module model/XRootDModify
    * @version 20.02.0-beta4
    */
 
   /**
-   * Constructs a new <code>LumaStorageCredentials</code>.
-   * Credentials that will be used to perform actions on the local storage resources in the context of the Onedata user. 
-   * @alias module:model/LumaStorageCredentials
+   * Constructs a new <code>XRootDModify</code>.
+   * The XRootD storage configuration.
+   * @alias module:model/XRootDModify
    * @class
+   * @extends module:model/StorageModifyDetails
+   * @param type {module:model/XRootDModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
+    StorageModifyDetails.call(_this);
+    _this['type'] = type;
+
+
+
 
 
   };
@@ -56,36 +63,108 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/LumaStorageCredentials} The value of 'discriminator' field or undefined.
+   * @return {module:model/XRootDModify} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>LumaStorageCredentials</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>XRootDModify</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/LumaStorageCredentials} obj Optional instance to populate.
-   * @return {module:model/LumaStorageCredentials} The populated <code>LumaStorageCredentials</code> instance.
+   * @param {module:model/XRootDModify} obj Optional instance to populate.
+   * @return {module:model/XRootDModify} The populated <code>XRootDModify</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
+      StorageModifyDetails.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('url')) {
+        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      }
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      }
+      if (data.hasOwnProperty('credentials')) {
+        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('fileModeMask')) {
+        obj['fileModeMask'] = ApiClient.convertToType(data['fileModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('dirModeMask')) {
+        obj['dirModeMask'] = ApiClient.convertToType(data['dirModeMask'], 'String');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(StorageModifyDetails.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
-   * @member {String} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/XRootDModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
+  /**
+   * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. 
+   * @member {String} url
+   */
+  exports.prototype['url'] = undefined;
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDModify.CredentialsTypeEnum} credentialsType
+   */
+  exports.prototype['credentialsType'] = undefined;
+  /**
+   * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+  exports.prototype['credentials'] = undefined;
+  /**
+   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeble by user and group. 
+   * @member {String} fileModeMask
+   */
+  exports.prototype['fileModeMask'] = undefined;
+  /**
+   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0660` for readable file on XRootD would result in a file which is readable for owners and group but not for others. 
+   * @member {String} dirModeMask
+   */
+  exports.prototype['dirModeMask'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "xrootd"
+     * @const
+     */
+    "xrootd": "xrootd"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
+    /**
+     * value: "none"
+     * @const
+     */
+    "none": "none",
+    /**
+     * value: "pwd"
+     * @const
+     */
+    "pwd": "pwd"  };
 
 
   return exports;

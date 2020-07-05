@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **credentialsType** | **String** | Determines the types of credentials provided in the credentials field.  | [optional] 
 **credentials** | **String** | The credentials to authenticate with the XRootD server. For &#x60;pwd&#x60; credentials type, this field should contain simply user and password, e.g. &#x60;admin:password&#x60;. For &#x60;none&#x60; this field is ignored.  | [optional] 
 **fileModeMask** | **String** | Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask &#x60;0664&#x60; for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group.  | [optional] 
-**dirModeMask** | **String** | Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask &#x60;0660&#x60; for readable file on XRootD would result in a file which is readable for owners and group but not for others.  | [optional] 
+**dirModeMask** | **String** | Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask &#x60;0770&#x60; for readable directory on XRootD would result in a directory which is readable for owner and group but not for others.  | [optional] 
 
 
 <a name="TypeEnum"></a>

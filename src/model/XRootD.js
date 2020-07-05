@@ -125,7 +125,7 @@
    */
   exports.prototype['fileModeMask'] = '0664';
   /**
-   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0660` for readable file on XRootD would result in a file which is readable for owners and group but not for others. 
+   * Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask `0770` for readable directory on XRootD would result in a directory which is readable for owner and group but not for others. 
    * @member {String} dirModeMask
    * @default '0775'
    */

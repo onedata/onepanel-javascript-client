@@ -160,7 +160,7 @@ exports.prototype['lumaFeedApiKey'] = undefined;
 exports.prototype['qosParameters'] = undefined;
 
   /**
-   * Defines whether storage contains existing data to be imported.
+   * Defines whether storage contains existing data to be imported. 
    * @member {Boolean} importedStorage
    * @default false
    */

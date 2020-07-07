@@ -411,6 +411,9 @@ Class | Method | HTTP request | Description
  - [Onepanel.Webdav](docs/Webdav.md)
  - [Onepanel.WebdavCredentials](docs/WebdavCredentials.md)
  - [Onepanel.WebdavModify](docs/WebdavModify.md)
+ - [Onepanel.XRootD](docs/XRootD.md)
+ - [Onepanel.XRootDCredentials](docs/XRootDCredentials.md)
+ - [Onepanel.XRootDModify](docs/XRootDModify.md)
 
 
 ## Documentation for Authorization

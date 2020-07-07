@@ -648,6 +648,18 @@
               polymorphicType = require("./model/WebdavModify");
             }
 
+            if('XRootD'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/XRootD");
+            }
+
+            if('XRootDCredentials'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/XRootDCredentials");
+            }
+
+            if('XRootDModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/XRootDModify");
+            }
+
             if(polymorphicType) {
               return polymorphicType.constructFromObject(data);
             }

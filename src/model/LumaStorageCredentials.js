@@ -81,7 +81,7 @@
   }
 
   /**
-   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation.
+   * Type of the storage. Must match the type of existing storage, needed only for OpenAPI polymorphism disambiguation. 
    * @member {String} type
    */
   exports.prototype['type'] = undefined;

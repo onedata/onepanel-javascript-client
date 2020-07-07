@@ -17,44 +17,41 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/LumaStorageCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./LumaStorageCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageCreateDetails = factory(root.Onepanel.ApiClient);
+    root.Onepanel.XRootDCredentials = factory(root.Onepanel.ApiClient, root.Onepanel.LumaStorageCredentials);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, LumaStorageCredentials) {
   'use strict';
 
 
 
 
   /**
-   * The StorageCreateDetails model module.
-   * @module model/StorageCreateDetails
+   * The XRootDCredentials model module.
+   * @module model/XRootDCredentials
    * @version 20.02.0-beta4
    */
 
   /**
-   * Constructs a new <code>StorageCreateDetails</code>.
-   * The cluster storage configuration.
-   * @alias module:model/StorageCreateDetails
+   * Constructs a new <code>XRootDCredentials</code>.
+   * Credentials on the XRootD storage.
+   * @alias module:model/XRootDCredentials
    * @class
+   * @extends module:model/LumaStorageCredentials
+   * @param type {module:model/XRootDCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
-
-
-
-
-
-
-
+    LumaStorageCredentials.call(_this);
+    _this['type'] = type;
 
 
   };
@@ -63,117 +60,85 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageCreateDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/XRootDCredentials} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
-    return 'type';
+    ;
   };
 
   /**
-   * Constructs a <code>StorageCreateDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>XRootDCredentials</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageCreateDetails} obj Optional instance to populate.
-   * @return {module:model/StorageCreateDetails} The populated <code>StorageCreateDetails</code> instance.
+   * @param {module:model/XRootDCredentials} obj Optional instance to populate.
+   * @return {module:model/XRootDCredentials} The populated <code>XRootDCredentials</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-
+      LumaStorageCredentials.constructFromObject(data, obj);
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('timeout')) {
-        obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
       }
-      if (data.hasOwnProperty('skipStorageDetection')) {
-        obj['skipStorageDetection'] = ApiClient.convertToType(data['skipStorageDetection'], 'Boolean');
-      }
-      if (data.hasOwnProperty('lumaFeed')) {
-        obj['lumaFeed'] = ApiClient.convertToType(data['lumaFeed'], 'String');
-      }
-      if (data.hasOwnProperty('lumaFeedUrl')) {
-        obj['lumaFeedUrl'] = ApiClient.convertToType(data['lumaFeedUrl'], 'String');
-      }
-      if (data.hasOwnProperty('lumaFeedApiKey')) {
-        obj['lumaFeedApiKey'] = ApiClient.convertToType(data['lumaFeedApiKey'], 'String');
-      }
-      if (data.hasOwnProperty('qosParameters')) {
-        obj['qosParameters'] = ApiClient.convertToType(data['qosParameters'], {'String': 'String'});
-      }
-      if (data.hasOwnProperty('importedStorage')) {
-        obj['importedStorage'] = ApiClient.convertToType(data['importedStorage'], 'Boolean');
+      if (data.hasOwnProperty('credentials')) {
+        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
       }
     }
     return obj;
   }
 
+  exports.prototype = Object.create(LumaStorageCredentials.prototype);
+  exports.prototype.constructor = exports;
+
   /**
-   * The type of storage.
-   * @member {String} type
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/XRootDCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
    */
-  exports.prototype['timeout'] = undefined;
+  exports.prototype['credentialsType'] = 'none';
   /**
-   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
-   * @member {Boolean} skipStorageDetection
-   * @default false
+   * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
+   * @member {String} credentials
    */
-  exports.prototype['skipStorageDetection'] = false;
-  /**
-   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
-   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
-   * @default 'auto'
-   */
-  exports.prototype['lumaFeed'] = 'auto';
-  /**
-   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaFeedUrl
-   */
-  exports.prototype['lumaFeedUrl'] = undefined;
-  /**
-   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaFeedApiKey
-   */
-  exports.prototype['lumaFeedApiKey'] = undefined;
-  /**
-   * Map with key-value pairs used for describing storage QoS parameters.
-   * @member {Object.<String, String>} qosParameters
-   */
-  exports.prototype['qosParameters'] = undefined;
-  /**
-   * Defines whether storage contains existing data to be imported. 
-   * @member {Boolean} importedStorage
-   * @default false
-   */
-  exports.prototype['importedStorage'] = false;
+  exports.prototype['credentials'] = undefined;
 
 
   /**
-   * Allowed values for the <code>lumaFeed</code> property.
+   * Allowed values for the <code>type</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.LumaFeedEnum = {
+  exports.TypeEnum = {
     /**
-     * value: "auto"
+     * value: "xrootd"
      * @const
      */
-    "auto": "auto",
+    "xrootd": "xrootd"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
     /**
-     * value: "local"
+     * value: "none"
      * @const
      */
-    "local": "local",
+    "none": "none",
     /**
-     * value: "external"
+     * value: "pwd"
      * @const
      */
-    "external": "external"  };
+    "pwd": "pwd"  };
 
 
   return exports;

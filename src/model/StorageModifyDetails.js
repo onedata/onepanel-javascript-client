@@ -144,7 +144,7 @@
    */
   exports.prototype['qosParameters'] = undefined;
   /**
-   * Defines whether storage contains existing data to be imported.
+   * Defines whether storage contains existing data to be imported. 
    * @member {Boolean} importedStorage
    */
   exports.prototype['importedStorage'] = undefined;

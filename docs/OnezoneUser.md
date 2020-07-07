@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **String** | Onezone user ID. | 
-**name** | **String** | User name as registered in Onezone. | 
-**alias** | **String** | Oneozne user login. | [optional] 
+**userId** | **String** | Unique user Id. | 
+**fullName** | **String** | User&#39;s full name (given names + surname). | 
+**username** | **String** | User&#39;s human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password.  | [optional] 
 
 

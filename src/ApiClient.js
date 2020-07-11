@@ -552,6 +552,18 @@
               polymorphicType = require("./model/GlusterfsModify");
             }
 
+            if('HTTP'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/HTTP");
+            }
+
+            if('HTTPCredentials'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/HTTPCredentials");
+            }
+
+            if('HTTPModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/HTTPModify");
+            }
+
             if('Localceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Localceph");
             }

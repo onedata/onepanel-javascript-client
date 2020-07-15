@@ -169,9 +169,9 @@
   /**
    * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
-   * @default '0644'
+   * @default '0664'
    */
-  exports.prototype['fileMode'] = '0644';
+  exports.prototype['fileMode'] = '0664';
   /**
    * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode

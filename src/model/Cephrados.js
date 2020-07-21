@@ -200,6 +200,13 @@ exports.prototype['qosParameters'] = undefined;
    */
 exports.prototype['importedStorage'] = false;
 
+  /**
+   * Defines whether storage is readonly. If set to `true` it is not possible to write, modify or delete data on the storage. Such storage can only be used to import data into space. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
   // Implement CephradosCredentials interface:
   /**
    * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **lumaFeedApiKey** | **String** | API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;.  | [optional] 
 **qosParameters** | **{String: String}** | Map with key-value pairs used for describing storage QoS parameters. | [optional] 
 **importedStorage** | **Boolean** | Defines whether storage contains existing data to be imported.  | [optional] [default to false]
+**readonly** | **Boolean** | Defines whether storage is readonly. If set to &#x60;true&#x60; it is not possible to write, modify or delete data on the storage. Such storage can only be used to import data into space.  | [optional] [default to false]
 
 
 <a name="LumaFeedEnum"></a>

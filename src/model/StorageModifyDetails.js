@@ -57,6 +57,7 @@
 
 
 
+
   };
 
   /**
@@ -104,6 +105,9 @@
       if (data.hasOwnProperty('importedStorage')) {
         obj['importedStorage'] = ApiClient.convertToType(data['importedStorage'], 'Boolean');
       }
+      if (data.hasOwnProperty('readonly')) {
+        obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -148,6 +152,11 @@
    * @member {Boolean} importedStorage
    */
   exports.prototype['importedStorage'] = undefined;
+  /**
+   * Defines whether storage is readonly. If set to `true` it is not possible to write, modify or delete data on the storage. Such storage can only be used to import data into space.
+   * @member {Boolean} readonly
+   */
+  exports.prototype['readonly'] = undefined;
 
 
   /**

@@ -49,16 +49,14 @@
    * @implements module:model/StorageCreateDetails
    * @implements module:model/S3Credentials
    * @param type {module:model/S3.TypeEnum} The type of storage.
-   * @param accessKey {String} The access key to the S3 storage.
-   * @param secretKey {String} The secret key to the S3 storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    */
-  var exports = function(type, accessKey, secretKey, hostname, bucketName) {
+  var exports = function(type, hostname, bucketName) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
-    S3Credentials.call(_this, type, accessKey, secretKey);
+    S3Credentials.call(_this, type);
     _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
@@ -238,14 +236,16 @@ exports.prototype['type'] = undefined;
   /**
    * The access key to the S3 storage.
    * @member {String} accessKey
+   * @default ''
    */
-exports.prototype['accessKey'] = undefined;
+exports.prototype['accessKey'] = '';
 
   /**
    * The secret key to the S3 storage.
    * @member {String} secretKey
+   * @default ''
    */
-exports.prototype['secretKey'] = undefined;
+exports.prototype['secretKey'] = '';
 
 
   /**

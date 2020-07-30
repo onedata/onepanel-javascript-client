@@ -168,7 +168,7 @@ exports.prototype['qosParameters'] = undefined;
 exports.prototype['importedStorage'] = false;
 
   /**
-   * Defines whether storage is readonly. If set to `true` it is not possible to write, modify or delete data on the storage. Such storage can only be used to import data into space. 
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. 
    * @member {Boolean} readonly
    * @default false
    */

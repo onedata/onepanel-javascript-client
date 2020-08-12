@@ -141,16 +141,6 @@
         done();
       });
     });
-    describe('cancelStorageImportScan', function() {
-      it('should call cancelStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test cancelStorageImportScan
-        //instance.cancelStorageImportScan(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureCeph', function() {
       it('should call configureCeph successfully', function(done) {
         //uncomment below and update the code to test configureCeph
@@ -705,6 +695,16 @@
       it('should call startStorageImportScan successfully', function(done) {
         //uncomment below and update the code to test startStorageImportScan
         //instance.startStorageImportScan(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('stopStorageImportScan', function() {
+      it('should call stopStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test stopStorageImportScan
+        //instance.stopStorageImportScan(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

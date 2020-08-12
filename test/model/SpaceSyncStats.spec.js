@@ -57,14 +57,8 @@
       //expect(instance).to.be.a(Onepanel.SpaceSyncStats);
     });
 
-    it('should have the property importStatus (base name: "importStatus")', function() {
-      // uncomment below and update the code to test the property importStatus
-      //var instane = new Onepanel.SpaceSyncStats();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property updateStatus (base name: "updateStatus")', function() {
-      // uncomment below and update the code to test the property updateStatus
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
       //var instane = new Onepanel.SpaceSyncStats();
       //expect(instance).to.be();
     });

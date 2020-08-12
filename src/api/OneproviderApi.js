@@ -452,51 +452,6 @@
     }
 
     /**
-     * Callback function to receive the result of the cancelStorageImportScan operation.
-     * @callback module:api/OneproviderApi~cancelStorageImportScanCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Cancels storage import scan
-     * Cancels current scan of storage import mechanism in given space.
-     * @param {String} id The Id of a space.
-     * @param {module:api/OneproviderApi~cancelStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.cancelStorageImportScan = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling cancelStorageImportScan");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/sync/cancel', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the configureCeph operation.
      * @callback module:api/OneproviderApi~configureCephCallback
      * @param {String} error Error message, if any.
@@ -2970,6 +2925,51 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/sync/start', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the stopStorageImportScan operation.
+     * @callback module:api/OneproviderApi~stopStorageImportScanCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Stops storage import scan
+     * Stops current scan of storage import mechanism in given space.
+     * @param {String} id The Id of a space.
+     * @param {module:api/OneproviderApi~stopStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.stopStorageImportScan = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling stopStorageImportScan");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/sync/stop', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

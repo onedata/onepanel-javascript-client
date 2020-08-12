@@ -3,29 +3,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**importStatus** | **String** | Describes import algorithm run status. | 
-**updateStatus** | **String** | Describes update algorithm run status. | [optional] 
+**status** | **String** | Describes current status of storage import mechanism in given space. | 
 **stats** | [**TimeStatsCollection**](TimeStatsCollection.md) | Collection of statistics for requested metrics. | [optional] 
 
 
-<a name="ImportStatusEnum"></a>
-## Enum: ImportStatusEnum
+<a name="StatusEnum"></a>
+## Enum: StatusEnum
 
 
-* `inProgress` (value: `"inProgress"`)
+* `initializing` (value: `"initializing"`)
+
+* `running` (value: `"running"`)
+
+* `stopping` (value: `"stopping"`)
+
+* `failed` (value: `"failed"`)
 
 * `done` (value: `"done"`)
-
-
-
-
-<a name="UpdateStatusEnum"></a>
-## Enum: UpdateStatusEnum
-
-
-* `waiting` (value: `"waiting"`)
-
-* `inProgress` (value: `"inProgress"`)
 
 
 

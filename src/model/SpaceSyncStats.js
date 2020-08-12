@@ -45,13 +45,12 @@
    * Status and statistics of storage/space synchronization.
    * @alias module:model/SpaceSyncStats
    * @class
-   * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
+   * @param status {module:model/SpaceSyncStats.StatusEnum} Describes current status of storage import mechanism in given space.
    */
-  var exports = function(importStatus) {
+  var exports = function(status) {
     var _this = this;
 
-    _this['importStatus'] = importStatus;
-
+    _this['status'] = status;
 
   };
 
@@ -76,11 +75,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('importStatus')) {
-        obj['importStatus'] = ApiClient.convertToType(data['importStatus'], 'String');
-      }
-      if (data.hasOwnProperty('updateStatus')) {
-        obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
       if (data.hasOwnProperty('stats')) {
         obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
@@ -90,15 +86,10 @@
   }
 
   /**
-   * Describes import algorithm run status.
-   * @member {module:model/SpaceSyncStats.ImportStatusEnum} importStatus
+   * Describes current status of storage import mechanism in given space.
+   * @member {module:model/SpaceSyncStats.StatusEnum} status
    */
-  exports.prototype['importStatus'] = undefined;
-  /**
-   * Describes update algorithm run status.
-   * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
-   */
-  exports.prototype['updateStatus'] = undefined;
+  exports.prototype['status'] = undefined;
   /**
    * Collection of statistics for requested metrics.
    * @member {module:model/TimeStatsCollection} stats
@@ -107,38 +98,36 @@
 
 
   /**
-   * Allowed values for the <code>importStatus</code> property.
+   * Allowed values for the <code>status</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.ImportStatusEnum = {
+  exports.StatusEnum = {
     /**
-     * value: "inProgress"
+     * value: "initializing"
      * @const
      */
-    "inProgress": "inProgress",
+    "initializing": "initializing",
+    /**
+     * value: "running"
+     * @const
+     */
+    "running": "running",
+    /**
+     * value: "stopping"
+     * @const
+     */
+    "stopping": "stopping",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
     /**
      * value: "done"
      * @const
      */
     "done": "done"  };
-
-  /**
-   * Allowed values for the <code>updateStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.UpdateStatusEnum = {
-    /**
-     * value: "waiting"
-     * @const
-     */
-    "waiting": "waiting",
-    /**
-     * value: "inProgress"
-     * @const
-     */
-    "inProgress": "inProgress"  };
 
 
   return exports;

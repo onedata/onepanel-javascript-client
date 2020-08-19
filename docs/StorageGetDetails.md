@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **lumaFeedApiKey** | **String** | API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;.  | [optional] 
 **qosParameters** | **{String: String}** | Map with key-value pairs used for describing storage QoS parameters. | [optional] 
 **importedStorage** | **Boolean** | Defines whether storage contains existing data to be imported. | [optional] [default to false]
+**readonly** | **Boolean** | Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. | [optional] [default to false]
 
 
 <a name="LumaFeedEnum"></a>

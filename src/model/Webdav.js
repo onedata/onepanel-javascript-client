@@ -169,9 +169,9 @@
   /**
    * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
-   * @default '0644'
+   * @default '0664'
    */
-  exports.prototype['fileMode'] = '0644';
+  exports.prototype['fileMode'] = '0664';
   /**
    * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode
@@ -236,6 +236,13 @@ exports.prototype['qosParameters'] = undefined;
    * @default false
    */
 exports.prototype['importedStorage'] = false;
+
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
 
   // Implement WebdavCredentials interface:
   /**

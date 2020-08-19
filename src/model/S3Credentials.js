@@ -47,15 +47,13 @@
    * @class
    * @extends module:model/LumaStorageCredentials
    * @param type {module:model/S3Credentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @param accessKey {String} The access key to the S3 storage.
-   * @param secretKey {String} The secret key to the S3 storage.
    */
-  var exports = function(type, accessKey, secretKey) {
+  var exports = function(type) {
     var _this = this;
     LumaStorageCredentials.call(_this);
     _this['type'] = type;
-    _this['accessKey'] = accessKey;
-    _this['secretKey'] = secretKey;
+
+
   };
 
   /**
@@ -103,13 +101,15 @@
   /**
    * The access key to the S3 storage.
    * @member {String} accessKey
+   * @default ''
    */
-  exports.prototype['accessKey'] = undefined;
+  exports.prototype['accessKey'] = '';
   /**
    * The secret key to the S3 storage.
    * @member {String} secretKey
+   * @default ''
    */
-  exports.prototype['secretKey'] = undefined;
+  exports.prototype['secretKey'] = '';
 
 
   /**

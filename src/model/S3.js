@@ -49,16 +49,14 @@
    * @implements module:model/StorageCreateDetails
    * @implements module:model/S3Credentials
    * @param type {module:model/S3.TypeEnum} The type of storage.
-   * @param accessKey {String} The access key to the S3 storage.
-   * @param secretKey {String} The secret key to the S3 storage.
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    */
-  var exports = function(type, accessKey, secretKey, hostname, bucketName) {
+  var exports = function(type, hostname, bucketName) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
-    S3Credentials.call(_this, type, accessKey, secretKey);
+    S3Credentials.call(_this, type);
     _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
@@ -160,9 +158,9 @@
   /**
    * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
-   * @default '0644'
+   * @default '0664'
    */
-  exports.prototype['fileMode'] = '0644';
+  exports.prototype['fileMode'] = '0664';
   /**
    * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode
@@ -228,6 +226,13 @@ exports.prototype['qosParameters'] = undefined;
    */
 exports.prototype['importedStorage'] = false;
 
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
   // Implement S3Credentials interface:
   /**
    * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
@@ -238,14 +243,16 @@ exports.prototype['type'] = undefined;
   /**
    * The access key to the S3 storage.
    * @member {String} accessKey
+   * @default ''
    */
-exports.prototype['accessKey'] = undefined;
+exports.prototype['accessKey'] = '';
 
   /**
    * The secret key to the S3 storage.
    * @member {String} secretKey
+   * @default ''
    */
-exports.prototype['secretKey'] = undefined;
+exports.prototype['secretKey'] = '';
 
 
   /**

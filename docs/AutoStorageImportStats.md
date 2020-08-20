@@ -1,9 +1,9 @@
-# Onepanel.SpaceSyncStats
+# Onepanel.AutoStorageImportStats
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **String** | Describes current status of storage import mechanism in given space. | 
+**status** | **String** | Describes current status of storage import scan in given space. | 
 **stats** | [**TimeStatsCollection**](TimeStatsCollection.md) | Collection of statistics for requested metrics. | [optional] 
 
 
@@ -15,11 +15,13 @@ Name | Type | Description | Notes
 
 * `running` (value: `"running"`)
 
-* `stopping` (value: `"stopping"`)
+* `aborting` (value: `"aborting"`)
+
+* `done` (value: `"done"`)
 
 * `failed` (value: `"failed"`)
 
-* `done` (value: `"done"`)
+* `aborted` (value: `"aborted"`)
 
 
 

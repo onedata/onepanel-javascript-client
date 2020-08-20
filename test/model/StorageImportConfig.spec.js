@@ -16,121 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/TimeStatsCollection'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, TimeStatsCollection) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.StorageImportConfig();
+  });
 
-
-  /**
-   * The SpaceSyncStats model module.
-   * @module model/SpaceSyncStats
-   * @version 20.02.1
-   */
-
-  /**
-   * Constructs a new <code>SpaceSyncStats</code>.
-   * Status and statistics of storage/space synchronization.
-   * @alias module:model/SpaceSyncStats
-   * @class
-   * @param status {module:model/SpaceSyncStats.StatusEnum} Describes current status of storage import mechanism in given space.
-   */
-  var exports = function(status) {
-    var _this = this;
-
-    _this['status'] = status;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceSyncStats} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceSyncStats</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceSyncStats} obj Optional instance to populate.
-   * @return {module:model/SpaceSyncStats} The populated <code>SpaceSyncStats</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
-      }
-      if (data.hasOwnProperty('stats')) {
-        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Describes current status of storage import mechanism in given space.
-   * @member {module:model/SpaceSyncStats.StatusEnum} status
-   */
-  exports.prototype['status'] = undefined;
-  /**
-   * Collection of statistics for requested metrics.
-   * @member {module:model/TimeStatsCollection} stats
-   */
-  exports.prototype['stats'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('StorageImportConfig', function() {
+    it('should create an instance of StorageImportConfig', function() {
+      // uncomment below and update the code to test StorageImportConfig
+      //var instane = new Onepanel.StorageImportConfig();
+      //expect(instance).to.be.a(Onepanel.StorageImportConfig);
+    });
 
-  /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StatusEnum = {
-    /**
-     * value: "initializing"
-     * @const
-     */
-    "initializing": "initializing",
-    /**
-     * value: "running"
-     * @const
-     */
-    "running": "running",
-    /**
-     * value: "stopping"
-     * @const
-     */
-    "stopping": "stopping",
-    /**
-     * value: "failed"
-     * @const
-     */
-    "failed": "failed",
-    /**
-     * value: "done"
-     * @const
-     */
-    "done": "done"  };
+    it('should have the property mode (base name: "mode")', function() {
+      // uncomment below and update the code to test the property mode
+      //var instane = new Onepanel.StorageImportConfig();
+      //expect(instance).to.be();
+    });
 
+    it('should have the property continuousScan (base name: "continuousScan")', function() {
+      // uncomment below and update the code to test the property continuousScan
+      //var instane = new Onepanel.StorageImportConfig();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property scanConfig (base name: "scanConfig")', function() {
+      // uncomment below and update the code to test the property scanConfig
+      //var instane = new Onepanel.StorageImportConfig();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

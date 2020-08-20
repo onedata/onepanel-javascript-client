@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
-      // uncomment below and update the code to test the property storageUpdate
-      //var instane = new Onepanel.SpaceModifyRequest();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

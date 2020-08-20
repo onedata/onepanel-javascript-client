@@ -16,59 +16,115 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/AutoStorageImportScanConfig'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportScanConfig'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.StorageImportConfig = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportScanConfig);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, AutoStorageImportScanConfig) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceSyncStats();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The StorageImportConfig model module.
+   * @module model/StorageImportConfig
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>StorageImportConfig</code>.
+   * Configuration of the storage import mechanism. 
+   * @alias module:model/StorageImportConfig
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/StorageImportConfig} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>StorageImportConfig</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/StorageImportConfig} obj Optional instance to populate.
+   * @return {module:model/StorageImportConfig} The populated <code>StorageImportConfig</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('mode')) {
+        obj['mode'] = ApiClient.convertToType(data['mode'], 'String');
+      }
+      if (data.hasOwnProperty('continuousScan')) {
+        obj['continuousScan'] = ApiClient.convertToType(data['continuousScan'], 'Boolean');
+      }
+      if (data.hasOwnProperty('scanConfig')) {
+        obj['scanConfig'] = AutoStorageImportScanConfig.constructFromObject(data['scanConfig']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Mode of the storage import mechanism. In case of `auto` mode, the storage will be automatically scanned and data will be imported from storage into the assigned Onedata space without need for copying the data. It is possible to enable periodical scans for automatic detection of changes on the storage (look at option `continousScan`). In case of `manual` mode, the files must be registered manually by calling REST API. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor=tag/File-registration 
+   * @member {module:model/StorageImportConfig.ModeEnum} mode
+   * @default 'auto'
+   */
+  exports.prototype['mode'] = 'auto';
+  /**
+   * This option is relevant only if mode is set to `auto`. With this option enabled the storage will be scanned periodically and direct changes on the storage will be reflected in the assigned Onedata space (upon the consecutive scan). 
+   * @member {Boolean} continuousScan
+   * @default false
+   */
+  exports.prototype['continuousScan'] = false;
+  /**
+   * @member {module:model/AutoStorageImportScanConfig} scanConfig
+   */
+  exports.prototype['scanConfig'] = undefined;
 
-  describe('SpaceSyncStats', function() {
-    it('should create an instance of SpaceSyncStats', function() {
-      // uncomment below and update the code to test SpaceSyncStats
-      //var instane = new Onepanel.SpaceSyncStats();
-      //expect(instance).to.be.a(Onepanel.SpaceSyncStats);
-    });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new Onepanel.SpaceSyncStats();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>mode</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ModeEnum = {
+    /**
+     * value: "auto"
+     * @const
+     */
+    "auto": "auto",
+    /**
+     * value: "manual"
+     * @const
+     */
+    "manual": "manual"  };
 
-    it('should have the property stats (base name: "stats")', function() {
-      // uncomment below and update the code to test the property stats
-      //var instane = new Onepanel.SpaceSyncStats();
-      //expect(instance).to.be();
-    });
 
-  });
-
+  return exports;
 }));
+
+

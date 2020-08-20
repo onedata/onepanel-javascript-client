@@ -16,83 +16,126 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/TimeStatsCollection'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.AutoStorageImportStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, TimeStatsCollection) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.StorageUpdateDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The AutoStorageImportStats model module.
+   * @module model/AutoStorageImportStats
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>AutoStorageImportStats</code>.
+   * Status and statistics of storage import mechanism in given space.
+   * @alias module:model/AutoStorageImportStats
+   * @class
+   * @param status {module:model/AutoStorageImportStats.StatusEnum} Describes current status of storage import scan in given space.
+   */
+  var exports = function(status) {
+    var _this = this;
+
+    _this['status'] = status;
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/AutoStorageImportStats} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>AutoStorageImportStats</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/AutoStorageImportStats} obj Optional instance to populate.
+   * @return {module:model/AutoStorageImportStats} The populated <code>AutoStorageImportStats</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      }
+      if (data.hasOwnProperty('stats')) {
+        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Describes current status of storage import scan in given space.
+   * @member {module:model/AutoStorageImportStats.StatusEnum} status
+   */
+  exports.prototype['status'] = undefined;
+  /**
+   * Collection of statistics for requested metrics.
+   * @member {module:model/TimeStatsCollection} stats
+   */
+  exports.prototype['stats'] = undefined;
 
-  describe('StorageUpdateDetails', function() {
-    it('should create an instance of StorageUpdateDetails', function() {
-      // uncomment below and update the code to test StorageUpdateDetails
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be.a(Onepanel.StorageUpdateDetails);
-    });
 
-    it('should have the property strategy (base name: "strategy")', function() {
-      // uncomment below and update the code to test the property strategy
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "initializing"
+     * @const
+     */
+    "initializing": "initializing",
+    /**
+     * value: "running"
+     * @const
+     */
+    "running": "running",
+    /**
+     * value: "aborting"
+     * @const
+     */
+    "aborting": "aborting",
+    /**
+     * value: "done"
+     * @const
+     */
+    "done": "done",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "aborted"
+     * @const
+     */
+    "aborted": "aborted"  };
 
-    it('should have the property maxDepth (base name: "maxDepth")', function() {
-      // uncomment below and update the code to test the property maxDepth
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property scanInterval (base name: "scanInterval")', function() {
-      // uncomment below and update the code to test the property scanInterval
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property writeOnce (base name: "writeOnce")', function() {
-      // uncomment below and update the code to test the property writeOnce
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property deleteEnable (base name: "deleteEnable")', function() {
-      // uncomment below and update the code to test the property deleteEnable
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property syncAcl (base name: "syncAcl")', function() {
-      // uncomment below and update the code to test the property syncAcl
-      //var instane = new Onepanel.StorageUpdateDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

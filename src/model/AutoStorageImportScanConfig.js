@@ -16,65 +16,115 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.AutoStorageImportScanConfig = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.StorageImportDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The AutoStorageImportScanConfig model module.
+   * @module model/AutoStorageImportScanConfig
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>AutoStorageImportScanConfig</code>.
+   * Configuration of scan of storage import mechanism. 
+   * @alias module:model/AutoStorageImportScanConfig
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/AutoStorageImportScanConfig} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>AutoStorageImportScanConfig</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/AutoStorageImportScanConfig} obj Optional instance to populate.
+   * @return {module:model/AutoStorageImportScanConfig} The populated <code>AutoStorageImportScanConfig</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('maxDepth')) {
+        obj['maxDepth'] = ApiClient.convertToType(data['maxDepth'], 'Number');
+      }
+      if (data.hasOwnProperty('scanInterval')) {
+        obj['scanInterval'] = ApiClient.convertToType(data['scanInterval'], 'Number');
+      }
+      if (data.hasOwnProperty('writeOnce')) {
+        obj['writeOnce'] = ApiClient.convertToType(data['writeOnce'], 'Boolean');
+      }
+      if (data.hasOwnProperty('detectDeletions')) {
+        obj['detectDeletions'] = ApiClient.convertToType(data['detectDeletions'], 'Boolean');
+      }
+      if (data.hasOwnProperty('syncAcl')) {
+        obj['syncAcl'] = ApiClient.convertToType(data['syncAcl'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Maximum depth of filesystem tree that will be traversed during the scan. 
+   * @member {Number} maxDepth
+   */
+  exports.prototype['maxDepth'] = undefined;
+  /**
+   * Period between subsequent scans in seconds (counted from end of one scan till beginning of the following). This parameter is relevant only for continuous scans. 
+   * @member {Number} scanInterval
+   */
+  exports.prototype['scanInterval'] = undefined;
+  /**
+   * Flag determining that synchronized storage will be treated as immutable (only creations and deletions of files on storage will be detected). This parameter is relevant only for continuous scans. 
+   * @member {Boolean} writeOnce
+   */
+  exports.prototype['writeOnce'] = undefined;
+  /**
+   * Flag determining that deletions of files will be detected. This parameter is relevant only for continuous scans. 
+   * @member {Boolean} detectDeletions
+   */
+  exports.prototype['detectDeletions'] = undefined;
+  /**
+   * Flag that enables synchronization of NFSv4 ACLs.
+   * @member {Boolean} syncAcl
+   */
+  exports.prototype['syncAcl'] = undefined;
 
-  describe('StorageImportDetails', function() {
-    it('should create an instance of StorageImportDetails', function() {
-      // uncomment below and update the code to test StorageImportDetails
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be.a(Onepanel.StorageImportDetails);
-    });
 
-    it('should have the property strategy (base name: "strategy")', function() {
-      // uncomment below and update the code to test the property strategy
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property maxDepth (base name: "maxDepth")', function() {
-      // uncomment below and update the code to test the property maxDepth
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property syncAcl (base name: "syncAcl")', function() {
-      // uncomment below and update the code to test the property syncAcl
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

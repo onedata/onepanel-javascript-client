@@ -451,20 +451,20 @@
         done();
       });
     });
-    describe('getProviderSpaceSyncStats', function() {
-      it('should call getProviderSpaceSyncStats successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaceSyncStats
-        //instance.getProviderSpaceSyncStats(function(error) {
+    describe('getProviderSpaces', function() {
+      it('should call getProviderSpaces successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaces
+        //instance.getProviderSpaces(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderSpaces', function() {
-      it('should call getProviderSpaces successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaces
-        //instance.getProviderSpaces(function(error) {
+    describe('getProviderStorageImportStats', function() {
+      it('should call getProviderStorageImportStats successfully', function(done) {
+        //uncomment below and update the code to test getProviderStorageImportStats
+        //instance.getProviderStorageImportStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

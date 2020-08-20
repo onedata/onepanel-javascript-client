@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
+    define(['ApiClient', 'model/StorageImportConfig'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportConfig'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportConfig);
   }
-}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
+}(this, function(ApiClient, StorageImportConfig) {
   'use strict';
 
 
@@ -48,7 +48,6 @@
    */
   var exports = function() {
     var _this = this;
-
 
 
 
@@ -79,10 +78,7 @@
         obj['size'] = ApiClient.convertToType(data['size'], 'Number');
       }
       if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
-      }
-      if (data.hasOwnProperty('storageUpdate')) {
-        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
+        obj['storageImport'] = StorageImportConfig.constructFromObject(data['storageImport']);
       }
     }
     return obj;
@@ -94,13 +90,9 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * @member {module:model/StorageImportDetails} storageImport
+   * @member {module:model/StorageImportConfig} storageImport
    */
   exports.prototype['storageImport'] = undefined;
-  /**
-   * @member {module:model/StorageUpdateDetails} storageUpdate
-   */
-  exports.prototype['storageUpdate'] = undefined;
 
 
 

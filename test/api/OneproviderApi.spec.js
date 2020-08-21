@@ -351,6 +351,16 @@
         done();
       });
     });
+    describe('getProviderAutoStorageImportStats', function() {
+      it('should call getProviderAutoStorageImportStats successfully', function(done) {
+        //uncomment below and update the code to test getProviderAutoStorageImportStats
+        //instance.getProviderAutoStorageImportStats(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderClusterIps', function() {
       it('should call getProviderClusterIps successfully', function(done) {
         //uncomment below and update the code to test getProviderClusterIps
@@ -455,16 +465,6 @@
       it('should call getProviderSpaces successfully', function(done) {
         //uncomment below and update the code to test getProviderSpaces
         //instance.getProviderSpaces(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderStorageImportStats', function() {
-      it('should call getProviderStorageImportStats successfully', function(done) {
-        //uncomment below and update the code to test getProviderStorageImportStats
-        //instance.getProviderStorageImportStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -631,6 +631,16 @@
         done();
       });
     });
+    describe('startAutoStorageImportScan', function() {
+      it('should call startAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test startAutoStorageImportScan
+        //instance.startAutoStorageImportScan(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('startStopProviderDatabase', function() {
       it('should call startStopProviderDatabase successfully', function(done) {
         //uncomment below and update the code to test startStopProviderDatabase
@@ -691,20 +701,10 @@
         done();
       });
     });
-    describe('startStorageImportScan', function() {
-      it('should call startStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test startStorageImportScan
-        //instance.startStorageImportScan(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('stopStorageImportScan', function() {
-      it('should call stopStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test stopStorageImportScan
-        //instance.stopStorageImportScan(function(error) {
+    describe('stopAutoStorageImportScan', function() {
+      it('should call stopAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test stopAutoStorageImportScan
+        //instance.stopAutoStorageImportScan(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

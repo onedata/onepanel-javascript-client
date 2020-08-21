@@ -201,6 +201,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
 *Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
+*Onepanel.OneproviderApi* | [**getProviderAutoStorageImportStats**](docs/OneproviderApi.md#getProviderAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderApi* | [**getProviderConfiguration**](docs/OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 *Onepanel.OneproviderApi* | [**getProviderDatabaseStatus**](docs/OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -212,7 +213,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 *Onepanel.OneproviderApi* | [**getProviderSpaces**](docs/OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
-*Onepanel.OneproviderApi* | [**getProviderStorageImportStats**](docs/OneproviderApi.md#getProviderStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of storage import mechanism.
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderApi* | [**getProviderWorkersStatus**](docs/OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 *Onepanel.OneproviderApi* | [**getSpaceAutoCleaningConfiguration**](docs/OneproviderApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
@@ -229,14 +229,14 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**removeProvider**](docs/OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OneproviderApi* | [**removeStorage**](docs/OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 *Onepanel.OneproviderApi* | [**revokeSpaceSupport**](docs/OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
+*Onepanel.OneproviderApi* | [**startAutoStorageImportScan**](docs/OneproviderApi.md#startAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/start | Start auto storage import scan
 *Onepanel.OneproviderApi* | [**startStopProviderDatabase**](docs/OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 *Onepanel.OneproviderApi* | [**startStopProviderDatabases**](docs/OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 *Onepanel.OneproviderApi* | [**startStopProviderManager**](docs/OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
 *Onepanel.OneproviderApi* | [**startStopProviderManagers**](docs/OneproviderApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
 *Onepanel.OneproviderApi* | [**startStopProviderWorker**](docs/OneproviderApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 *Onepanel.OneproviderApi* | [**startStopProviderWorkers**](docs/OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
-*Onepanel.OneproviderApi* | [**startStorageImportScan**](docs/OneproviderApi.md#startStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/start | Starts storage import scan
-*Onepanel.OneproviderApi* | [**stopStorageImportScan**](docs/OneproviderApi.md#stopStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/stop | Stops storage import scan
+*Onepanel.OneproviderApi* | [**stopAutoStorageImportScan**](docs/OneproviderApi.md#stopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/stop | Stop auto storage import scan
 *Onepanel.OneproviderApi* | [**supportSpace**](docs/OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
 *Onepanel.OneproviderApi* | [**triggerAutoCleaning**](docs/OneproviderApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Triggers space auto-cleaning
 *Onepanel.OnezoneApi* | [**addOnezoneUser**](docs/OnezoneApi.md#addOnezoneUser) | **POST** /zone/users | Create Onezone user
@@ -271,7 +271,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [Onepanel.AutoStorageImportScanConfig](docs/AutoStorageImportScanConfig.md)
+ - [Onepanel.AutoStorageImport](docs/AutoStorageImport.md)
  - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
  - [Onepanel.BlockDevices](docs/BlockDevices.md)
  - [Onepanel.BlockDevicesBlockDevices](docs/BlockDevicesBlockDevices.md)
@@ -357,7 +357,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.StorageCreateDetails](docs/StorageCreateDetails.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
  - [Onepanel.StorageGetDetails](docs/StorageGetDetails.md)
- - [Onepanel.StorageImportConfig](docs/StorageImportConfig.md)
+ - [Onepanel.StorageImport](docs/StorageImport.md)
  - [Onepanel.StorageModifyDetails](docs/StorageModifyDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
  - [Onepanel.TaskId](docs/TaskId.md)

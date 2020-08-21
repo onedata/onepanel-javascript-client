@@ -34,6 +34,7 @@ Method | HTTP request | Description
 [**getFilePopularityConfiguration**](OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
 [**getOnezoneInfo**](OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 [**getProvider**](OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
+[**getProviderAutoStorageImportStats**](OneproviderApi.md#getProviderAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
 [**getProviderClusterIps**](OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 [**getProviderDatabaseStatus**](OneproviderApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -45,7 +46,6 @@ Method | HTTP request | Description
 [**getProviderSpaceAutoCleaningReports**](OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
 [**getProviderSpaceAutoCleaningStatus**](OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 [**getProviderSpaces**](OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
-[**getProviderStorageImportStats**](OneproviderApi.md#getProviderStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of storage import mechanism.
 [**getProviderWorkerStatus**](OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 [**getSpaceAutoCleaningConfiguration**](OneproviderApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
@@ -62,14 +62,14 @@ Method | HTTP request | Description
 [**removeProvider**](OneproviderApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 [**removeStorage**](OneproviderApi.md#removeStorage) | **DELETE** /provider/storages/{id} | Remove storage
 [**revokeSpaceSupport**](OneproviderApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
+[**startAutoStorageImportScan**](OneproviderApi.md#startAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/start | Start auto storage import scan
 [**startStopProviderDatabase**](OneproviderApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 [**startStopProviderManager**](OneproviderApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
 [**startStopProviderManagers**](OneproviderApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
 [**startStopProviderWorker**](OneproviderApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 [**startStopProviderWorkers**](OneproviderApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
-[**startStorageImportScan**](OneproviderApi.md#startStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/start | Starts storage import scan
-[**stopStorageImportScan**](OneproviderApi.md#stopStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/stop | Stops storage import scan
+[**stopAutoStorageImportScan**](OneproviderApi.md#stopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/stop | Stop auto storage import scan
 [**supportSpace**](OneproviderApi.md#supportSpace) | **POST** /provider/spaces | Support space
 [**triggerAutoCleaning**](OneproviderApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Triggers space auto-cleaning
 
@@ -1953,6 +1953,76 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getProviderAutoStorageImportStats"></a>
+# **getProviderAutoStorageImportStats**
+> AutoStorageImportStats getProviderAutoStorageImportStats(id, opts)
+
+Get statistics of auto storage import mechanism.
+
+Returns requested statistics of auto storage import mechanism for given space on this provider. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space for which storage import stats should be returned.
+
+var opts = { 
+  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
+  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getProviderAutoStorageImportStats(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space for which storage import stats should be returned. | 
+ **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. | [optional] 
+
+### Return type
+
+[**AutoStorageImportStats**](AutoStorageImportStats.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getProviderClusterIps"></a>
 # **getProviderClusterIps**
 > ClusterIps getProviderClusterIps()
@@ -2622,76 +2692,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ProviderSpaces**](ProviderSpaces.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getProviderStorageImportStats"></a>
-# **getProviderStorageImportStats**
-> AutoStorageImportStats getProviderStorageImportStats(id, opts)
-
-Get statistics of storage import mechanism.
-
-Returns requested statistics of storage import mechanism for given space on this provider. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a space for which storage import stats should be returned.
-
-var opts = { 
-  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
-  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getProviderStorageImportStats(id, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space for which storage import stats should be returned. | 
- **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
- **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. | [optional] 
-
-### Return type
-
-[**AutoStorageImportStats**](AutoStorageImportStats.md)
 
 ### Authorization
 
@@ -3711,6 +3711,70 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+<a name="startAutoStorageImportScan"></a>
+# **startAutoStorageImportScan**
+> startAutoStorageImportScan(id)
+
+Start auto storage import scan
+
+Starts scan of auto storage import mechanism in given space.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startAutoStorageImportScan(id, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="startStopProviderDatabase"></a>
 # **startStopProviderDatabase**
 > startStopProviderDatabase(host, opts)
@@ -4110,77 +4174,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="startStorageImportScan"></a>
-# **startStorageImportScan**
-> startStorageImportScan(id)
+<a name="stopAutoStorageImportScan"></a>
+# **stopAutoStorageImportScan**
+> stopAutoStorageImportScan(id)
 
-Starts storage import scan
+Stop auto storage import scan
 
-Starts scan of storage import mechanism in given space.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OneproviderApi();
-
-var id = "id_example"; // String | The Id of a space.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.startStorageImportScan(id, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| The Id of a space. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="stopStorageImportScan"></a>
-# **stopStorageImportScan**
-> stopStorageImportScan(id)
-
-Stops storage import scan
-
-Stops current scan of storage import mechanism in given space.
+Stops current scan of auto storage import mechanism in given space.
 
 ### Example
 ```javascript
@@ -4216,7 +4216,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.stopStorageImportScan(id, callback);
+apiInstance.stopAutoStorageImportScan(id, callback);
 ```
 
 ### Parameters

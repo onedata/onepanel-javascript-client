@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>AutoStorageImportStats</code>.
-   * Status and statistics of storage import mechanism in given space.
+   * Status and statistics of auto storage import mechanism in given space.
    * @alias module:model/AutoStorageImportStats
    * @class
    * @param status {module:model/AutoStorageImportStats.StatusEnum} Describes current status of storage import scan in given space.

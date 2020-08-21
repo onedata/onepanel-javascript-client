@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageImportConfig();
+    instance = new Onepanel.AutoStorageImport();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,46 @@
       object[property] = value;
   }
 
-  describe('StorageImportConfig', function() {
-    it('should create an instance of StorageImportConfig', function() {
-      // uncomment below and update the code to test StorageImportConfig
-      //var instane = new Onepanel.StorageImportConfig();
-      //expect(instance).to.be.a(Onepanel.StorageImportConfig);
+  describe('AutoStorageImport', function() {
+    it('should create an instance of AutoStorageImport', function() {
+      // uncomment below and update the code to test AutoStorageImport
+      //var instane = new Onepanel.AutoStorageImport();
+      //expect(instance).to.be.a(Onepanel.AutoStorageImport);
     });
 
-    it('should have the property mode (base name: "mode")', function() {
-      // uncomment below and update the code to test the property mode
-      //var instane = new Onepanel.StorageImportConfig();
+    it('should have the property maxDepth (base name: "maxDepth")', function() {
+      // uncomment below and update the code to test the property maxDepth
+      //var instane = new Onepanel.AutoStorageImport();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property syncAcl (base name: "syncAcl")', function() {
+      // uncomment below and update the code to test the property syncAcl
+      //var instane = new Onepanel.AutoStorageImport();
       //expect(instance).to.be();
     });
 
     it('should have the property continuousScan (base name: "continuousScan")', function() {
       // uncomment below and update the code to test the property continuousScan
-      //var instane = new Onepanel.StorageImportConfig();
+      //var instane = new Onepanel.AutoStorageImport();
       //expect(instance).to.be();
     });
 
-    it('should have the property scanConfig (base name: "scanConfig")', function() {
-      // uncomment below and update the code to test the property scanConfig
-      //var instane = new Onepanel.StorageImportConfig();
+    it('should have the property scanInterval (base name: "scanInterval")', function() {
+      // uncomment below and update the code to test the property scanInterval
+      //var instane = new Onepanel.AutoStorageImport();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property writeOnce (base name: "writeOnce")', function() {
+      // uncomment below and update the code to test the property writeOnce
+      //var instane = new Onepanel.AutoStorageImport();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property detectDeletions (base name: "detectDeletions")', function() {
+      // uncomment below and update the code to test the property detectDeletions
+      //var instane = new Onepanel.AutoStorageImport();
       //expect(instance).to.be();
     });
 

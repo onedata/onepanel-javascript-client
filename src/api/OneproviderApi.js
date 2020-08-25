@@ -1,8 +1,8 @@
 /**
  * Onepanel
- * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is grouped into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
+ * # Overview  This is the RESTful API definition of **Onepanel** component of Onedata data management system [onedata.org](http://onedata.org).  > This API is defined using [Swagger](http://swagger.io/), the JSON specification can be used to automatically generate client libraries -   [swagger.json](../../../swagger/onepanel/swagger.json).  This API allows control and configuration of local Onedata deployment, in particular full control over the **Onezone** and **Oneprovider** services and their distribution and monitoring on the local resources.  The API is group into 3 categories of operations:   * **Onepanel** - for common operations   * **Oneprovider** - for Oneprovider specific administrative operations   * **Onezone** - for Onezone specific administrative operations  Each of these components is composed of the following services:   * **Worker services** - these are available under `/zone/workers` and     `/provider/workers` paths,   * **Databases services** - each Onedata component stores it's metadata in a     Couchbase backend, which can be distributed on any number of nodes, these     are available under `/zone/databases` and `/provider/databases` paths,   * **Cluster manager services** - this is a service which controls other     deployed processes in one site, these are availables under these are     available under `/zone/managers` and `/provider/managers` paths.  **Onezone** and **Oneprovider** components are composed of 3 types of services: **managers**, **databases** and **workers**.  Using this API each of these components can be deployed, configured, started and stopped on a specified host in the local site, in the context of either **Onezone** or **Oneprovider** service.  All paths listed in this documentation are relative to the base Onepanel REST API which is `/api/v3/onepanel`, so complete URL for a request to Onepanel service is:  ``` http://HOSTNAME:PORT/api/v3/onepanel/... ```  ## Authentication  ### Token authentication  The recommended, safest way of authenticating requests to Onepanel API is using the **Onedata access tokens**. The token should be present in `X-Auth-Token` or `Authorization: Bearer` header. See [Onezone documentation](/#/home/api/latest/onezone?anchor=section/Overview/Authentication-and-authorization) for detailed explanation of the token concepts.  Curl examples: ```bash curl -H \"X-Auth-Token: $TOKEN\" [...] curl -H \"Authorization: Bearer $TOKEN\" [...] curl -H \"Macaroon: $TOKEN\" [...]   # DEPRECATED ```   ### Passphrase authentication  The token authentication dependes on the Onezone service. In special cases - during Onezone deployment or its outage - it is necessary to use the local **emergency passphrase**.  The passphrase should be provided in a Basic authentication header with username `onepanel`. For curl users this means ```bash curl -u onepanel:TheEmergencyPassphrase ```  The passphrase can also be sent without any username, as the whole content of base64-encoded string in Basic authorization header, e.g. ```bash curl -H \"Authorization: Basic $(echo -n TheEmergencyPassphrase | base64)\" ```  The passphrase is set during deployment. It can be changed in the Onepanel GUI or with an API request: ```bash curl -X PUT 'https://$HOST:9443/api/v3/onepanel/emergency_passphrase' \\ -u onepanel:TheEmergencyPassphrase -H 'Content-Type: application/json' \\ -d '{\"currentPassphrase\": \"TheEmergencyPassphrase\", \"newPassphrase\": \"TheNewPassphrase\"}' ```  ## API structure  The Onepanel API is structured to reflect that it can either be used to control **Onezone** or **Oneprovider** deployment, each Onedata component deployment has a separate Onepanel instance. In order to make the API calls explicit, **Onezone** or **Oneprovider** specific requests have different paths, i.e.:   * Onezone specific operations start with `/api/v3/onepanel/zone/`   * Oneprovider specific operations start with `/api/v3/onepanel/provider/`   * Common operations paths include `/api/v3/onepanel/users`,     `/api/v3/onepanel/hosts` and `/api/v3/onepanel/tasks`  The overall configuration of each component can be controlled by updating `/api/v3/onepanel/zone/configuration` and `/api/v3/onepanel/provider/configuration` resources.  ## Examples  Below are some example requests to Onepanel using cURL:  **Add storage resource to provider** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"NFS\": {\"type\": \"posix\", \"mountPoint\": \"/mnt/vfs\"}}' \\ https://172.17.0.4:9443/api/v3/onepanel/provider/storages ```  **Add a new Onezone worker** ```bash curl -X POST -u onepanel:Passphrase1 -k -vvv -H \"content-type: application/json\" \\ -d '{\"hosts\": [\"node1.p1.1.dev\"]}' \\ https://172.17.0.4:9443/api/v3/onepanel/zone/workers ``` 
  *
- * OpenAPI spec version: 20.02.1
+ * OpenAPI spec version: 19.02.3
  * Contact: info@onedata.org
  *
  * NOTE: This class is auto generated by the swagger code generator program.
@@ -17,24 +17,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/Id', 'model/InlineResponse202', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TransfersMock'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceError', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceId', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageDetails', 'model/StorageModifyRequest', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/Id'), require('../model/InlineResponse202'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'), require('../model/TaskId'), require('../model/TransfersMock'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceError'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceId'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageDetails'), require('../model/StorageModifyRequest'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.Id, root.Onepanel.InlineResponse202, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TaskId, root.Onepanel.TransfersMock);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceError, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceId, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, Id, InlineResponse202, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest, TaskId, TransfersMock) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceError, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceId, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageDetails, StorageModifyRequest, TransfersMock) {
   'use strict';
 
   /**
    * Oneprovider service.
    * @module api/OneproviderApi
-   * @version 20.02.1
+   * @version 19.02.3
    */
 
   /**
@@ -47,141 +47,6 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
-
-    /**
-     * Callback function to receive the result of the addCephManagers operation.
-     * @callback module:api/OneproviderApi~addCephManagersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add managers to ceph cluster
-     * Deploys Ceph manager services on given hosts.
-     * @param {module:model/CephManagers} cephManagers Object with a list of Ceph manager configurations.
-     * @param {module:api/OneproviderApi~addCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
-     */
-    this.addCephManagers = function(cephManagers, callback) {
-      var postBody = cephManagers;
-
-      // verify the required parameter 'cephManagers' is set
-      if (cephManagers === undefined || cephManagers === null) {
-        throw new Error("Missing the required parameter 'cephManagers' when calling addCephManagers");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = TaskId;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/managers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the addCephMonitors operation.
-     * @callback module:api/OneproviderApi~addCephMonitorsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add monitors to Ceph cluster
-     * Deploys Ceph monitor services on given hosts.
-     * @param {module:model/CephMonitors} cephMonitors List of Ceph monitor specifications.
-     * @param {module:api/OneproviderApi~addCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
-     */
-    this.addCephMonitors = function(cephMonitors, callback) {
-      var postBody = cephMonitors;
-
-      // verify the required parameter 'cephMonitors' is set
-      if (cephMonitors === undefined || cephMonitors === null) {
-        throw new Error("Missing the required parameter 'cephMonitors' when calling addCephMonitors");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = TaskId;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/monitors', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the addCephOsds operation.
-     * @callback module:api/OneproviderApi~addCephOsdsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add OSDs to Ceph cluster
-     * Deploys Ceph OSD services in the cluster.
-     * @param {module:model/CephOsds} cephOsds List of OSD specifications.
-     * @param {module:api/OneproviderApi~addCephOsdsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
-     */
-    this.addCephOsds = function(cephOsds, callback) {
-      var postBody = cephOsds;
-
-      // verify the required parameter 'cephOsds' is set
-      if (cephOsds === undefined || cephOsds === null) {
-        throw new Error("Missing the required parameter 'cephOsds' when calling addCephOsds");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = TaskId;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/osds', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
 
     /**
      * Callback function to receive the result of the addProvider operation.
@@ -231,7 +96,7 @@
      * Callback function to receive the result of the addProviderDatabases operation.
      * @callback module:api/OneproviderApi~addProviderDatabasesCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -240,7 +105,6 @@
      * Deploys a database service on provided hosts.
      * @param {module:model/ServiceDatabases} serviceHosts The service hosts configuration where databases should be deployed. 
      * @param {module:api/OneproviderApi~addProviderDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderDatabases = function(serviceHosts, callback) {
       var postBody = serviceHosts;
@@ -263,7 +127,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = TaskId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/databases', 'POST',
@@ -276,7 +140,7 @@
      * Callback function to receive the result of the addProviderManagers operation.
      * @callback module:api/OneproviderApi~addProviderManagersCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -285,7 +149,6 @@
      * Deploys a cluster manager service on provided hosts.
      * @param {module:model/ManagerHosts} managerHosts The cluster manager service hosts configuration.
      * @param {module:api/OneproviderApi~addProviderManagersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderManagers = function(managerHosts, callback) {
       var postBody = managerHosts;
@@ -308,7 +171,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = TaskId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/managers', 'POST',
@@ -321,7 +184,7 @@
      * Callback function to receive the result of the addProviderWorkers operation.
      * @callback module:api/OneproviderApi~addProviderWorkersCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -330,7 +193,6 @@
      * Deploys cluster worker services on provided hosts.
      * @param {module:model/ServiceHosts} serviceHosts The service hosts configuration where workers should be deployed. 
      * @param {module:api/OneproviderApi~addProviderWorkersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
      */
     this.addProviderWorkers = function(serviceHosts, callback) {
       var postBody = serviceHosts;
@@ -353,7 +215,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = TaskId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/workers', 'POST',
@@ -407,100 +269,10 @@
     }
 
     /**
-     * Callback function to receive the result of the cancelAutoCleaning operation.
-     * @callback module:api/OneproviderApi~cancelAutoCleaningCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Cancels space auto-cleaning
-     * Cancels current run of auto-cleaning mechanism for given space.
-     * @param {String} id The Id of a space.
-     * @param {module:api/OneproviderApi~cancelAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.cancelAutoCleaning = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling cancelAutoCleaning");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/auto-cleaning/cancel', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the configureCeph operation.
-     * @callback module:api/OneproviderApi~configureCephCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Configure Ceph cluster
-     * Configures Ceph services. Any services and pools specified in the request are deployed. This request IS NOT idempotent.
-     * @param {module:model/CephCluster} cephCluster The Ceph cluster specification.
-     * @param {module:api/OneproviderApi~configureCephCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
-     */
-    this.configureCeph = function(cephCluster, callback) {
-      var postBody = cephCluster;
-
-      // verify the required parameter 'cephCluster' is set
-      if (cephCluster === undefined || cephCluster === null) {
-        throw new Error("Missing the required parameter 'cephCluster' when calling configureCeph");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json', 'application/x-yaml'];
-      var accepts = [];
-      var returnType = TaskId;
-
-      return this.apiClient.callApi(
-        '/provider/ceph', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the configureFilePopularity operation.
      * @callback module:api/OneproviderApi~configureFilePopularityCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -510,7 +282,6 @@
      * @param {String} id The Id of a space.
      * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
      * @param {module:api/OneproviderApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
      */
     this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
       var postBody = spaceFilePopularityConfiguration;
@@ -539,7 +310,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = TaskId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/file-popularity/configuration', 'PATCH',
@@ -552,7 +323,7 @@
      * Callback function to receive the result of the configureProvider operation.
      * @callback module:api/OneproviderApi~configureProviderCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -561,7 +332,6 @@
      * Configures and starts provider services, such as database, cluster manager and cluster worker. Depending on the configuration, sets up provider storage and registers in the zone. This request can be executed unauthorized as long as there are no admin users. 
      * @param {module:model/ProviderConfiguration} providerConfiguration The provider configuration description.
      * @param {module:api/OneproviderApi~configureProviderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
      */
     this.configureProvider = function(providerConfiguration, callback) {
       var postBody = providerConfiguration;
@@ -584,7 +354,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
-      var returnType = TaskId;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
@@ -604,7 +374,7 @@
     /**
      * Configure space auto-cleaning mechanism
      * Configures space auto-cleaning mechanism in the space. 
-     * @param {String} id The Id of a space.
+     * @param {String} id The Id of a space
      * @param {module:model/SpaceAutoCleaningConfiguration} spaceAutoCleaningConfiguration New configuration of space auto-cleaning mechanism. 
      * @param {module:api/OneproviderApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -639,601 +409,6 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto-cleaning/configuration', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getBlockDevices operation.
-     * @callback module:api/OneproviderApi~getBlockDevicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BlockDevices} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get block devices for Ceph OSD
-     * Lists block devices available at given host. This list can be used to choose device to be formatted for use by Ceph Blockdevice OSD.
-     * @param {String} host Host for which block devices should be returned.
-     * @param {module:api/OneproviderApi~getBlockDevicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BlockDevices}
-     */
-    this.getBlockDevices = function(host, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'host' is set
-      if (host === undefined || host === null) {
-        throw new Error("Missing the required parameter 'host' when calling getBlockDevices");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'host': host
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = BlockDevices;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/preflight/block_devices', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephManager operation.
-     * @callback module:api/OneproviderApi~getCephManagerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephManager} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph manager
-     * Returns Ceph manager configuration.
-     * @param {String} id Id of the Ceph manager to be described.
-     * @param {module:api/OneproviderApi~getCephManagerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephManager}
-     */
-    this.getCephManager = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCephManager");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephManager;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/managers/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephManagers operation.
-     * @callback module:api/OneproviderApi~getCephManagersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephManagers} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List Ceph managers
-     * Returns object with a list of Ceph manager instances.
-     * @param {module:api/OneproviderApi~getCephManagersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephManagers}
-     */
-    this.getCephManagers = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephManagers;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/managers', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephMonitor operation.
-     * @callback module:api/OneproviderApi~getCephMonitorCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephMonitor} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph monitor
-     * Returns details of a Ceph monitor instance.
-     * @param {String} id Id of the Ceph monitor to describe.
-     * @param {module:api/OneproviderApi~getCephMonitorCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephMonitor}
-     */
-    this.getCephMonitor = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCephMonitor");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephMonitor;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/monitors/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephMonitors operation.
-     * @callback module:api/OneproviderApi~getCephMonitorsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephMonitors} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List Ceph monitors
-     * Returns object with a list of Ceph monitor instances.
-     * @param {module:api/OneproviderApi~getCephMonitorsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephMonitors}
-     */
-    this.getCephMonitors = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephMonitors;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/monitors', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephOsd operation.
-     * @callback module:api/OneproviderApi~getCephOsdCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephOsd} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph OSD
-     * Returns details of a Ceph OSD instance.
-     * @param {String} id Id of the Ceph OSD to describe.
-     * @param {module:api/OneproviderApi~getCephOsdCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephOsd}
-     */
-    this.getCephOsd = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCephOsd");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephOsd;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/osds/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephOsdUsage operation.
-     * @callback module:api/OneproviderApi~getCephOsdUsageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/DataUsage} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get storage space usage details for specific OSD.
-     * Returns storage space usage statistics of given Ceph OSD.
-     * @param {String} id The id of the OSD for usage check.
-     * @param {module:api/OneproviderApi~getCephOsdUsageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DataUsage}
-     */
-    this.getCephOsdUsage = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCephOsdUsage");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = DataUsage;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/osds/{id}/usage', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephOsds operation.
-     * @callback module:api/OneproviderApi~getCephOsdsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephOsds} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph OSDs list.
-     * Return list of Ceph OSD configurations. 
-     * @param {module:api/OneproviderApi~getCephOsdsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephOsds}
-     */
-    this.getCephOsds = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephOsds;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/osds', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephParams operation.
-     * @callback module:api/OneproviderApi~getCephParamsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephGlobalParams} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get global Ceph params
-     * Returns settings global for the Ceph cluster.
-     * @param {module:api/OneproviderApi~getCephParamsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephGlobalParams}
-     */
-    this.getCephParams = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephGlobalParams;
-
-      return this.apiClient.callApi(
-        '/provider/ceph', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephPool operation.
-     * @callback module:api/OneproviderApi~getCephPoolCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephPool} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get details of a Ceph pool.
-     * Returns object describng single Ceph pool specified by name.
-     * @param {String} name The name of the pool to describe.
-     * @param {module:api/OneproviderApi~getCephPoolCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephPool}
-     */
-    this.getCephPool = function(name, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'name' is set
-      if (name === undefined || name === null) {
-        throw new Error("Missing the required parameter 'name' when calling getCephPool");
-      }
-
-
-      var pathParams = {
-        'name': name
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephPool;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/pools/{name}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephPoolUsage operation.
-     * @callback module:api/OneproviderApi~getCephPoolUsageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephPoolUsage} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get storage space usage details for specific pool.
-     * Returns storage space usage statistics of given Ceph pool.
-     * @param {String} name The name of the pool for usage check.
-     * @param {module:api/OneproviderApi~getCephPoolUsageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephPoolUsage}
-     */
-    this.getCephPoolUsage = function(name, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'name' is set
-      if (name === undefined || name === null) {
-        throw new Error("Missing the required parameter 'name' when calling getCephPoolUsage");
-      }
-
-
-      var pathParams = {
-        'name': name
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephPoolUsage;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/pools/{name}/usage', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephPools operation.
-     * @callback module:api/OneproviderApi~getCephPoolsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephPools} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List Ceph pools
-     * Returns object containing list of Ceph pool details.
-     * @param {module:api/OneproviderApi~getCephPoolsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephPools}
-     */
-    this.getCephPools = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephPools;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/pools', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephStatus operation.
-     * @callback module:api/OneproviderApi~getCephStatusCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephStatus} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph cluster health
-     * Returns Ceph cluster health.
-     * @param {module:api/OneproviderApi~getCephStatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephStatus}
-     */
-    this.getCephStatus = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephStatus;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/status', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getCephUsage operation.
-     * @callback module:api/OneproviderApi~getCephUsageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CephUsage} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Ceph storage space usage.
-     * Returns summary of storage space usage in the Ceph cluster.
-     * @param {module:api/OneproviderApi~getCephUsageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CephUsage}
-     */
-    this.getCephUsage = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CephUsage;
-
-      return this.apiClient.callApi(
-        '/provider/ceph/usage', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1295,7 +470,7 @@
 
     /**
      * Get Onezone information
-     * Get information about a Onezone. Before registration, this endpoint requires a registration token and returns information about the Onezone which issued the token. If the Oneprovider is registered, returns information about the Onezone at which the provider is registered. 
+     * Get information about a Onezone. Before registration this endpoint requires a registration token and returns information about the Onezone issuing the token. When provider is registered returns information about the Onezone at which the provider is registered. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.token Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
      * @param {module:api/OneproviderApi~getOnezoneInfoCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1377,7 +552,7 @@
 
     /**
      * Get provider cluster nodes IPs
-     * Returns IPs of nodes in provider cluster.
+     * Returns IPs of nodes in provider cluster
      * @param {module:api/OneproviderApi~getProviderClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterIps}
      */
@@ -1664,7 +839,7 @@
     /**
      * Get the report from a space auto-cleaning run
      * Returns the details of a specific auto-cleaning run. 
-     * @param {String} id The Id of a space.
+     * @param {String} id The Id of a space
      * @param {String} reportId The Id of an auto-cleaning report.
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReport}
@@ -1717,7 +892,7 @@
     /**
      * Get Ids of of the space auto-cleaning reports
      * Returns the list of Ids of space auto-cleaning reports. The list is sorted descending by start time of an auto-cleaning run (the newest report is first). 
-     * @param {String} id The Id of a space.
+     * @param {String} id The Id of a space
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Allows to skip N first report Ids. (default to 0)
      * @param {Number} opts.limit Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
@@ -1771,7 +946,7 @@
     /**
      * Get status of space auto-cleaning mechanism
      * Returns status of current process of auto-cleaning for the space. 
-     * @param {String} id The Id of a space.
+     * @param {String} id The Id of a space
      * @param {module:api/OneproviderApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningStatus}
      */
@@ -1819,8 +994,8 @@
      * Returns requested statistics of storage synchronization for given space on this provider. 
      * @param {String} id The Id of a space for which sync stats should be returned.
      * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
-     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma.
+     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched
+     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma
      * @param {module:api/OneproviderApi~getProviderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceSyncStats}
      */
@@ -2078,7 +1253,7 @@
      * Callback function to receive the result of the getStorageDetails operation.
      * @callback module:api/OneproviderApi~getStorageDetailsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/StorageGetDetails} data The data returned by the service call.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2087,7 +1262,7 @@
      * Returns the details of the selected storage.
      * @param {String} id The Id of a storage resource, which details should be returned. 
      * @param {module:api/OneproviderApi~getStorageDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/StorageGetDetails}
+     * data is of type: {@link module:model/StorageDetails}
      */
     this.getStorageDetails = function(id, callback) {
       var postBody = null;
@@ -2111,7 +1286,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = StorageGetDetails;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'GET',
@@ -2199,36 +1374,30 @@
     }
 
     /**
-     * Callback function to receive the result of the modifyCephPool operation.
-     * @callback module:api/OneproviderApi~modifyCephPoolCallback
+     * Callback function to receive the result of the invalidateLumaCache operation.
+     * @callback module:api/OneproviderApi~invalidateLumaCacheCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify pool params
-     * Modifies the pool redundancy settings.
-     * @param {String} name The name of the pool to describe.
-     * @param {module:model/CephPool} poolModifyRequest 
-     * @param {module:api/OneproviderApi~modifyCephPoolCallback} callback The callback function, accepting three arguments: error, data, response
+     * Invalidate LUMA cache
+     * Invalidates LUMA cache in provider for given storage.
+     * @param {String} id The Id of a storage resource, which details should be modified. 
+     * @param {module:api/OneproviderApi~invalidateLumaCacheCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifyCephPool = function(name, poolModifyRequest, callback) {
-      var postBody = poolModifyRequest;
+    this.invalidateLumaCache = function(id, callback) {
+      var postBody = null;
 
-      // verify the required parameter 'name' is set
-      if (name === undefined || name === null) {
-        throw new Error("Missing the required parameter 'name' when calling modifyCephPool");
-      }
-
-      // verify the required parameter 'poolModifyRequest' is set
-      if (poolModifyRequest === undefined || poolModifyRequest === null) {
-        throw new Error("Missing the required parameter 'poolModifyRequest' when calling modifyCephPool");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling invalidateLumaCache");
       }
 
 
       var pathParams = {
-        'name': name
+        'id': id
       };
       var queryParams = {
       };
@@ -2243,7 +1412,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/ceph/pools/{name}', 'PATCH',
+        '/provider/storages/{id}/invalidate_luma', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2341,7 +1510,7 @@
      * Callback function to receive the result of the modifySpace operation.
      * @callback module:api/OneproviderApi~modifySpaceCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SpaceId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2351,6 +1520,7 @@
      * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/OneproviderApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceId}
      */
     this.modifySpace = function(id, spaceModifyRequest, callback) {
       var postBody = spaceModifyRequest;
@@ -2379,7 +1549,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = SpaceId;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}', 'PATCH',
@@ -2392,7 +1562,7 @@
      * Callback function to receive the result of the modifyStorage operation.
      * @callback module:api/OneproviderApi~modifyStorageCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/StorageModifyDetails} data The data returned by the service call.
+     * @param {module:model/StorageDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2402,7 +1572,7 @@
      * @param {String} id The Id of the storage resource which details should be modified. 
      * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
      * @param {module:api/OneproviderApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/StorageModifyDetails}
+     * data is of type: {@link module:model/StorageDetails}
      */
     this.modifyStorage = function(id, storageModifyRequest, callback) {
       var postBody = storageModifyRequest;
@@ -2431,7 +1601,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = StorageModifyDetails;
+      var returnType = StorageDetails;
 
       return this.apiClient.callApi(
         '/provider/storages/{id}', 'PATCH',
@@ -2889,7 +2059,7 @@
      * Callback function to receive the result of the supportSpace operation.
      * @callback module:api/OneproviderApi~supportSpaceCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/Id} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2898,7 +2068,6 @@
      * Supports an existing space. 
      * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
      * @param {module:api/OneproviderApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Id}
      */
     this.supportSpace = function(spaceSupportRequest, callback) {
       var postBody = spaceSupportRequest;
@@ -2921,7 +2090,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = Id;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/spaces', 'POST',
@@ -2934,16 +2103,15 @@
      * Callback function to receive the result of the triggerAutoCleaning operation.
      * @callback module:api/OneproviderApi~triggerAutoCleaningCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse202} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Triggers space auto-cleaning
      * Triggers one run of auto-cleaning mechanism for given space.
-     * @param {String} id The Id of a space.
+     * @param {String} id The Id of a space
      * @param {module:api/OneproviderApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse202}
      */
     this.triggerAutoCleaning = function(id, callback) {
       var postBody = null;
@@ -2967,7 +2135,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = InlineResponse202;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto-cleaning/start', 'POST',

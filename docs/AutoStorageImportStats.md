@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | Describes current status of storage import scan in given space. | 
+**nextScan** | **Number** | Estimated time at which next scan will be enqueued. | [optional] 
 **stats** | [**TimeStatsCollection**](TimeStatsCollection.md) | Collection of statistics for requested metrics. | [optional] 
 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 ## Enum: StatusEnum
 
 
-* `initializing` (value: `"initializing"`)
+* `enqueued` (value: `"enqueued"`)
 
 * `running` (value: `"running"`)
 

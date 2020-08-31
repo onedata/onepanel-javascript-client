@@ -52,6 +52,7 @@
 
     _this['status'] = status;
 
+
   };
 
   /**
@@ -78,6 +79,9 @@
       if (data.hasOwnProperty('status')) {
         obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
+      if (data.hasOwnProperty('nextScan')) {
+        obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
+      }
       if (data.hasOwnProperty('stats')) {
         obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
       }
@@ -90,6 +94,11 @@
    * @member {module:model/AutoStorageImportStats.StatusEnum} status
    */
   exports.prototype['status'] = undefined;
+  /**
+   * Estimated time at which next scan will be enqueued.
+   * @member {Number} nextScan
+   */
+  exports.prototype['nextScan'] = undefined;
   /**
    * Collection of statistics for requested metrics.
    * @member {module:model/TimeStatsCollection} stats
@@ -104,10 +113,10 @@
    */
   exports.StatusEnum = {
     /**
-     * value: "initializing"
+     * value: "enqueued"
      * @const
      */
-    "initializing": "initializing",
+    "enqueued": "enqueued",
     /**
      * value: "running"
      * @const

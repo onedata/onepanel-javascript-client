@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property nextScan (base name: "nextScan")', function() {
+      // uncomment below and update the code to test the property nextScan
+      //var instane = new Onepanel.AutoStorageImportStats();
+      //expect(instance).to.be();
+    });
+
     it('should have the property stats (base name: "stats")', function() {
       // uncomment below and update the code to test the property stats
       //var instane = new Onepanel.AutoStorageImportStats();

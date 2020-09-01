@@ -81,8 +81,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property writeOnce (base name: "writeOnce")', function() {
-      // uncomment below and update the code to test the property writeOnce
+    it('should have the property detectModifications (base name: "detectModifications")', function() {
+      // uncomment below and update the code to test the property detectModifications
       //var instane = new Onepanel.AutoStorageImport();
       //expect(instance).to.be();
     });

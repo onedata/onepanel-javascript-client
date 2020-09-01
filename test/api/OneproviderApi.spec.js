@@ -181,6 +181,16 @@
         done();
       });
     });
+    describe('getAutoStorageImportStats', function() {
+      it('should call getAutoStorageImportStats successfully', function(done) {
+        //uncomment below and update the code to test getAutoStorageImportStats
+        //instance.getAutoStorageImportStats(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getBlockDevices', function() {
       it('should call getBlockDevices successfully', function(done) {
         //uncomment below and update the code to test getBlockDevices
@@ -345,16 +355,6 @@
       it('should call getProvider successfully', function(done) {
         //uncomment below and update the code to test getProvider
         //instance.getProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderAutoStorageImportStats', function() {
-      it('should call getProviderAutoStorageImportStats successfully', function(done) {
-        //uncomment below and update the code to test getProviderAutoStorageImportStats
-        //instance.getProviderAutoStorageImportStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

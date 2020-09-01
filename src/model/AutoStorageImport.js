@@ -90,8 +90,8 @@
       if (data.hasOwnProperty('scanInterval')) {
         obj['scanInterval'] = ApiClient.convertToType(data['scanInterval'], 'Number');
       }
-      if (data.hasOwnProperty('writeOnce')) {
-        obj['writeOnce'] = ApiClient.convertToType(data['writeOnce'], 'Boolean');
+      if (data.hasOwnProperty('detectModifications')) {
+        obj['detectModifications'] = ApiClient.convertToType(data['detectModifications'], 'Boolean');
       }
       if (data.hasOwnProperty('detectDeletions')) {
         obj['detectDeletions'] = ApiClient.convertToType(data['detectDeletions'], 'Boolean');
@@ -123,16 +123,17 @@
    */
   exports.prototype['scanInterval'] = undefined;
   /**
-   * Flag determining that synchronized storage will be treated as immutable (only creations and deletions of files on storage will be detected). This parameter is relevant only for continuous scans. default: false 
-   * @member {Boolean} writeOnce
+   * Flag determining that modifications of files on the synchronized storage will be detected. If disabled, the storage will be treated as immutable (only creations and deletions of files on storage will be detected). This parameter is relevant only for continuous scans. 
+   * @member {Boolean} detectModifications
+   * @default true
    */
-  exports.prototype['writeOnce'] = undefined;
+  exports.prototype['detectModifications'] = true;
   /**
-   * Flag determining that deletions of files will be detected. This parameter is relevant only for continuous scans. 
+   * Flag determining that deletions of files from the synchronized storage will be detected. This parameter is relevant only for continuous scans. 
    * @member {Boolean} detectDeletions
-   * @default false
+   * @default true
    */
-  exports.prototype['detectDeletions'] = false;
+  exports.prototype['detectDeletions'] = true;
 
 
 

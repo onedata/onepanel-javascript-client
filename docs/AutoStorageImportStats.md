@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 * `aborting` (value: `"aborting"`)
 
-* `done` (value: `"done"`)
+* `completed` (value: `"completed"`)
 
 * `failed` (value: `"failed"`)
 

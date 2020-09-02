@@ -128,10 +128,10 @@
      */
     "aborting": "aborting",
     /**
-     * value: "done"
+     * value: "completed"
      * @const
      */
-    "done": "done",
+    "completed": "completed",
     /**
      * value: "failed"
      * @const

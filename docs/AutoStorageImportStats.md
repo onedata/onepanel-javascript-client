@@ -3,27 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **String** | Describes current status of storage import scan in given space. | 
-**nextScan** | **Number** | Estimated time at which next scan will be enqueued. | [optional] 
-**stats** | [**TimeStatsCollection**](TimeStatsCollection.md) | Collection of statistics for requested metrics. | [optional] 
-
-
-<a name="StatusEnum"></a>
-## Enum: StatusEnum
-
-
-* `enqueued` (value: `"enqueued"`)
-
-* `running` (value: `"running"`)
-
-* `aborting` (value: `"aborting"`)
-
-* `completed` (value: `"completed"`)
-
-* `failed` (value: `"failed"`)
-
-* `aborted` (value: `"aborted"`)
-
-
+**queueLength** | [**TimeStats**](TimeStats.md) | Statistics of auto storage import jobs queue length. | [optional] 
+**insertCount** | [**TimeStats**](TimeStats.md) | Statistics of imported files count by auto storage import. | [optional] 
+**updateCount** | [**TimeStats**](TimeStats.md) | Statistics of updated files count by auto storage import. | [optional] 
+**deleteCount** | [**TimeStats**](TimeStats.md) | Statistics of deleted files count by auto storage import. | [optional] 
 
 

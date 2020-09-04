@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/TimeStatsCollection'], factory);
+    define(['ApiClient', 'model/TimeStats'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStats'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.AutoStorageImportStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
+    root.Onepanel.AutoStorageImportStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStats);
   }
-}(this, function(ApiClient, TimeStatsCollection) {
+}(this, function(ApiClient, TimeStats) {
   'use strict';
 
 
@@ -42,15 +42,15 @@
 
   /**
    * Constructs a new <code>AutoStorageImportStats</code>.
-   * Status and statistics of auto storage import mechanism in given space.
+   * Statistics of auto storage import mechanism in given space over specified time. 
    * @alias module:model/AutoStorageImportStats
    * @class
-   * @param status {module:model/AutoStorageImportStats.StatusEnum} Describes current status of storage import scan in given space.
    */
-  var exports = function(status) {
+  var exports = function() {
     var _this = this;
 
-    _this['status'] = status;
+
+
 
 
   };
@@ -76,72 +76,43 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('queueLength')) {
+        obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
       }
-      if (data.hasOwnProperty('nextScan')) {
-        obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
+      if (data.hasOwnProperty('insertCount')) {
+        obj['insertCount'] = TimeStats.constructFromObject(data['insertCount']);
       }
-      if (data.hasOwnProperty('stats')) {
-        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
+      if (data.hasOwnProperty('updateCount')) {
+        obj['updateCount'] = TimeStats.constructFromObject(data['updateCount']);
+      }
+      if (data.hasOwnProperty('deleteCount')) {
+        obj['deleteCount'] = TimeStats.constructFromObject(data['deleteCount']);
       }
     }
     return obj;
   }
 
   /**
-   * Describes current status of storage import scan in given space.
-   * @member {module:model/AutoStorageImportStats.StatusEnum} status
+   * Statistics of auto storage import jobs queue length.
+   * @member {module:model/TimeStats} queueLength
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['queueLength'] = undefined;
   /**
-   * Estimated time at which next scan will be enqueued.
-   * @member {Number} nextScan
+   * Statistics of imported files count by auto storage import.
+   * @member {module:model/TimeStats} insertCount
    */
-  exports.prototype['nextScan'] = undefined;
+  exports.prototype['insertCount'] = undefined;
   /**
-   * Collection of statistics for requested metrics.
-   * @member {module:model/TimeStatsCollection} stats
+   * Statistics of updated files count by auto storage import.
+   * @member {module:model/TimeStats} updateCount
    */
-  exports.prototype['stats'] = undefined;
+  exports.prototype['updateCount'] = undefined;
+  /**
+   * Statistics of deleted files count by auto storage import.
+   * @member {module:model/TimeStats} deleteCount
+   */
+  exports.prototype['deleteCount'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StatusEnum = {
-    /**
-     * value: "enqueued"
-     * @const
-     */
-    "enqueued": "enqueued",
-    /**
-     * value: "running"
-     * @const
-     */
-    "running": "running",
-    /**
-     * value: "aborting"
-     * @const
-     */
-    "aborting": "aborting",
-    /**
-     * value: "completed"
-     * @const
-     */
-    "completed": "completed",
-    /**
-     * value: "failed"
-     * @const
-     */
-    "failed": "failed",
-    /**
-     * value: "aborted"
-     * @const
-     */
-    "aborted": "aborted"  };
 
 
   return exports;

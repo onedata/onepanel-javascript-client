@@ -184,6 +184,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**configureFilePopularity**](docs/OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+*Onepanel.OneproviderApi* | [**getAutoStorageImportInfo**](docs/OneproviderApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan.
 *Onepanel.OneproviderApi* | [**getAutoStorageImportStats**](docs/OneproviderApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
 *Onepanel.OneproviderApi* | [**getBlockDevices**](docs/OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
 *Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
@@ -272,6 +273,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Onepanel.AutoStorageImport](docs/AutoStorageImport.md)
+ - [Onepanel.AutoStorageImportInfo](docs/AutoStorageImportInfo.md)
  - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
  - [Onepanel.BlockDevices](docs/BlockDevices.md)
  - [Onepanel.BlockDevicesBlockDevices](docs/BlockDevicesBlockDevices.md)
@@ -363,7 +365,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.TaskId](docs/TaskId.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
  - [Onepanel.TimeStats](docs/TimeStats.md)
- - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.Token](docs/Token.md)
  - [Onepanel.TransfersMock](docs/TransfersMock.md)
  - [Onepanel.VersionInfo](docs/VersionInfo.md)

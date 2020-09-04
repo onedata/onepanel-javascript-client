@@ -57,20 +57,26 @@
       //expect(instance).to.be.a(Onepanel.AutoStorageImportStats);
     });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
+    it('should have the property queueLength (base name: "queueLength")', function() {
+      // uncomment below and update the code to test the property queueLength
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property nextScan (base name: "nextScan")', function() {
-      // uncomment below and update the code to test the property nextScan
+    it('should have the property insertCount (base name: "insertCount")', function() {
+      // uncomment below and update the code to test the property insertCount
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property stats (base name: "stats")', function() {
-      // uncomment below and update the code to test the property stats
+    it('should have the property updateCount (base name: "updateCount")', function() {
+      // uncomment below and update the code to test the property updateCount
+      //var instane = new Onepanel.AutoStorageImportStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deleteCount (base name: "deleteCount")', function() {
+      // uncomment below and update the code to test the property deleteCount
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });

@@ -181,6 +181,16 @@
         done();
       });
     });
+    describe('getAutoStorageImportInfo', function() {
+      it('should call getAutoStorageImportInfo successfully', function(done) {
+        //uncomment below and update the code to test getAutoStorageImportInfo
+        //instance.getAutoStorageImportInfo(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getAutoStorageImportStats', function() {
       it('should call getAutoStorageImportStats successfully', function(done) {
         //uncomment below and update the code to test getAutoStorageImportStats

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**configureFilePopularity**](OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 [**configureProvider**](OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 [**configureSpaceAutoCleaning**](OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+[**getAutoStorageImportInfo**](OneproviderApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan.
 [**getAutoStorageImportStats**](OneproviderApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
 [**getBlockDevices**](OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
 [**getCephManager**](OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
@@ -912,13 +913,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getAutoStorageImportStats"></a>
-# **getAutoStorageImportStats**
-> AutoStorageImportStats getAutoStorageImportStats(id, opts)
+<a name="getAutoStorageImportInfo"></a>
+# **getAutoStorageImportInfo**
+> AutoStorageImportInfo getAutoStorageImportInfo(id, opts)
 
-Get statistics of auto storage import mechanism.
+Get information about auto storage import scan.
 
-Returns requested statistics of auto storage import mechanism for given space on this provider. 
+Returns information about current or last finished auto storage import scan.
 
 ### Example
 ```javascript
@@ -958,7 +959,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getAutoStorageImportStats(id, opts, callback);
+apiInstance.getAutoStorageImportInfo(id, opts, callback);
 ```
 
 ### Parameters
@@ -968,6 +969,76 @@ Name | Type | Description  | Notes
  **id** | **String**| The Id of a space for which storage import stats should be returned. | 
  **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
  **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. | [optional] 
+
+### Return type
+
+[**AutoStorageImportInfo**](AutoStorageImportInfo.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getAutoStorageImportStats"></a>
+# **getAutoStorageImportStats**
+> AutoStorageImportStats getAutoStorageImportStats(id, opts)
+
+Get statistics of auto storage import mechanism.
+
+Returns requested statistics of auto storage import mechanism for given space on this provider. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderApi();
+
+var id = "id_example"; // String | The Id of a space for which storage import stats should be returned.
+
+var opts = { 
+  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
+  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: `queueLength`, `insertCount`, `updateCount`, `deleteCount` 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getAutoStorageImportStats(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Id of a space for which storage import stats should be returned. | 
+ **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;insertCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60;  | [optional] 
 
 ### Return type
 

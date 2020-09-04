@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.TimeStatsCollection();
+    instance = new Onepanel.AutoStorageImportInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,52 @@
       object[property] = value;
   }
 
-  describe('TimeStatsCollection', function() {
-    it('should create an instance of TimeStatsCollection', function() {
-      // uncomment below and update the code to test TimeStatsCollection
-      //var instane = new Onepanel.TimeStatsCollection();
-      //expect(instance).to.be.a(Onepanel.TimeStatsCollection);
+  describe('AutoStorageImportInfo', function() {
+    it('should create an instance of AutoStorageImportInfo', function() {
+      // uncomment below and update the code to test AutoStorageImportInfo
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be.a(Onepanel.AutoStorageImportInfo);
     });
 
-    it('should have the property queueLength (base name: "queueLength")', function() {
-      // uncomment below and update the code to test the property queueLength
-      //var instane = new Onepanel.TimeStatsCollection();
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property insertCount (base name: "insertCount")', function() {
-      // uncomment below and update the code to test the property insertCount
-      //var instane = new Onepanel.TimeStatsCollection();
+    it('should have the property start (base name: "start")', function() {
+      // uncomment below and update the code to test the property start
+      //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property updateCount (base name: "updateCount")', function() {
-      // uncomment below and update the code to test the property updateCount
-      //var instane = new Onepanel.TimeStatsCollection();
+    it('should have the property stop (base name: "stop")', function() {
+      // uncomment below and update the code to test the property stop
+      //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property deleteCount (base name: "deleteCount")', function() {
-      // uncomment below and update the code to test the property deleteCount
-      //var instane = new Onepanel.TimeStatsCollection();
+    it('should have the property importedFiles (base name: "importedFiles")', function() {
+      // uncomment below and update the code to test the property importedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updatedFiles (base name: "updatedFiles")', function() {
+      // uncomment below and update the code to test the property updatedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deletedFiles (base name: "deletedFiles")', function() {
+      // uncomment below and update the code to test the property deletedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property nextScan (base name: "nextScan")', function() {
+      // uncomment below and update the code to test the property nextScan
+      //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });
 

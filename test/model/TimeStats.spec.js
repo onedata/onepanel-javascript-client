@@ -57,20 +57,8 @@
       //expect(instance).to.be.a(Onepanel.TimeStats);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.TimeStats();
-      //expect(instance).to.be();
-    });
-
     it('should have the property lastValueDate (base name: "lastValueDate")', function() {
       // uncomment below and update the code to test the property lastValueDate
-      //var instane = new Onepanel.TimeStats();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property period (base name: "period")', function() {
-      // uncomment below and update the code to test the property period
       //var instane = new Onepanel.TimeStats();
       //expect(instance).to.be();
     });

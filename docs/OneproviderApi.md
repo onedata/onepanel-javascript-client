@@ -1019,7 +1019,7 @@ var id = "id_example"; // String | The Id of a space for which storage import st
 
 var opts = { 
   'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
-  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: `queueLength`, `insertCount`, `updateCount`, `deleteCount` 
+  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: `queueLength`, `importCount`, `updateCount`, `deleteCount` 
 };
 
 var callback = function(error, data, response) {
@@ -1038,7 +1038,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space for which storage import stats should be returned. | 
  **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
- **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;insertCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60;  | [optional] 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60;  | [optional] 
 
 ### Return type
 

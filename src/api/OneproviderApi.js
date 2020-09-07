@@ -710,7 +710,7 @@
      * @param {String} id The Id of a space for which storage import stats should be returned.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
-     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;insertCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60; 
+     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60; 
      * @param {module:api/OneproviderApi~getAutoStorageImportStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AutoStorageImportStats}
      */

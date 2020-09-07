@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property insertCount (base name: "insertCount")', function() {
-      // uncomment below and update the code to test the property insertCount
+    it('should have the property importCount (base name: "importCount")', function() {
+      // uncomment below and update the code to test the property importCount
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });

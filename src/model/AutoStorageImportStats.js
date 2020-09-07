@@ -79,8 +79,8 @@
       if (data.hasOwnProperty('queueLength')) {
         obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
       }
-      if (data.hasOwnProperty('insertCount')) {
-        obj['insertCount'] = TimeStats.constructFromObject(data['insertCount']);
+      if (data.hasOwnProperty('importCount')) {
+        obj['importCount'] = TimeStats.constructFromObject(data['importCount']);
       }
       if (data.hasOwnProperty('updateCount')) {
         obj['updateCount'] = TimeStats.constructFromObject(data['updateCount']);
@@ -99,9 +99,9 @@
   exports.prototype['queueLength'] = undefined;
   /**
    * Statistics of imported files count by auto storage import.
-   * @member {module:model/TimeStats} insertCount
+   * @member {module:model/TimeStats} importCount
    */
-  exports.prototype['insertCount'] = undefined;
+  exports.prototype['importCount'] = undefined;
   /**
    * Statistics of updated files count by auto storage import.
    * @member {module:model/TimeStats} updateCount

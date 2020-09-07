@@ -99,6 +99,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property totalScans (base name: "totalScans")', function() {
+      // uncomment below and update the code to test the property totalScans
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -51,8 +51,9 @@
    * @param importedFiles {Number} Counter of files that has been imported during current (or last finished) scan.
    * @param updatedFiles {Number} Counter of files that has been updated during current (or last finished) scan.
    * @param deletedFiles {Number} Counter of files that has been deleted during current (or last finished) scan.
+   * @param totalScans {Number} Total number of performed scans.
    */
-  var exports = function(status, start, stop, importedFiles, updatedFiles, deletedFiles) {
+  var exports = function(status, start, stop, importedFiles, updatedFiles, deletedFiles, totalScans) {
     var _this = this;
 
     _this['status'] = status;
@@ -62,6 +63,7 @@
     _this['updatedFiles'] = updatedFiles;
     _this['deletedFiles'] = deletedFiles;
 
+    _this['totalScans'] = totalScans;
   };
 
   /**
@@ -106,6 +108,9 @@
       if (data.hasOwnProperty('nextScan')) {
         obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
       }
+      if (data.hasOwnProperty('totalScans')) {
+        obj['totalScans'] = ApiClient.convertToType(data['totalScans'], 'Number');
+      }
     }
     return obj;
   }
@@ -145,6 +150,11 @@
    * @member {Number} nextScan
    */
   exports.prototype['nextScan'] = undefined;
+  /**
+   * Total number of performed scans.
+   * @member {Number} totalScans
+   */
+  exports.prototype['totalScans'] = undefined;
 
 
   /**

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **updatedFiles** | **Number** | Counter of files that has been updated during current (or last finished) scan. | 
 **deletedFiles** | **Number** | Counter of files that has been deleted during current (or last finished) scan. | 
 **nextScan** | **Number** | Estimated time at which next scan will be enqueued. | [optional] 
+**totalScans** | **Number** | Total number of performed scans. | 
 
 
 <a name="StatusEnum"></a>

@@ -181,6 +181,26 @@
         done();
       });
     });
+    describe('forceStartAutoStorageImportScan', function() {
+      it('should call forceStartAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test forceStartAutoStorageImportScan
+        //instance.forceStartAutoStorageImportScan(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('forceStopAutoStorageImportScan', function() {
+      it('should call forceStopAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test forceStopAutoStorageImportScan
+        //instance.forceStopAutoStorageImportScan(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getAutoStorageImportInfo', function() {
       it('should call getAutoStorageImportInfo successfully', function(done) {
         //uncomment below and update the code to test getAutoStorageImportInfo
@@ -641,16 +661,6 @@
         done();
       });
     });
-    describe('startAutoStorageImportScan', function() {
-      it('should call startAutoStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test startAutoStorageImportScan
-        //instance.startAutoStorageImportScan(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('startStopProviderDatabase', function() {
       it('should call startStopProviderDatabase successfully', function(done) {
         //uncomment below and update the code to test startStopProviderDatabase
@@ -705,16 +715,6 @@
       it('should call startStopProviderWorkers successfully', function(done) {
         //uncomment below and update the code to test startStopProviderWorkers
         //instance.startStopProviderWorkers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('stopAutoStorageImportScan', function() {
-      it('should call stopAutoStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test stopAutoStorageImportScan
-        //instance.stopAutoStorageImportScan(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

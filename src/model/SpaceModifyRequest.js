@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImport'], factory);
+    define(['ApiClient', 'model/AutoStorageImport'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImport'));
+    module.exports = factory(require('../ApiClient'), require('./AutoStorageImport'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImport);
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImport);
   }
-}(this, function(ApiClient, StorageImport) {
+}(this, function(ApiClient, AutoStorageImport) {
   'use strict';
 
 
@@ -77,8 +77,8 @@
       if (data.hasOwnProperty('size')) {
         obj['size'] = ApiClient.convertToType(data['size'], 'Number');
       }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImport.constructFromObject(data['storageImport']);
+      if (data.hasOwnProperty('scanConfig')) {
+        obj['scanConfig'] = AutoStorageImport.constructFromObject(data['scanConfig']);
       }
     }
     return obj;
@@ -90,9 +90,9 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * @member {module:model/StorageImport} storageImport
+   * @member {module:model/AutoStorageImport} scanConfig
    */
-  exports.prototype['storageImport'] = undefined;
+  exports.prototype['scanConfig'] = undefined;
 
 
 

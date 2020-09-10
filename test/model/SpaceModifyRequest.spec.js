@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property storageImport (base name: "storageImport")', function() {
-      // uncomment below and update the code to test the property storageImport
+    it('should have the property scanConfig (base name: "scanConfig")', function() {
+      // uncomment below and update the code to test the property scanConfig
       //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });

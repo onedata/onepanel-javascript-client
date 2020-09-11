@@ -1043,7 +1043,7 @@ null (empty response body)
 
 <a name="getAutoStorageImportInfo"></a>
 # **getAutoStorageImportInfo**
-> AutoStorageImportInfo getAutoStorageImportInfo(id, opts)
+> AutoStorageImportInfo getAutoStorageImportInfo(id)
 
 Get information about auto storage import scan.
 
@@ -1075,10 +1075,6 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space for which storage import stats should be returned.
 
-var opts = { 
-  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
-  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma.
-};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1087,7 +1083,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getAutoStorageImportInfo(id, opts, callback);
+apiInstance.getAutoStorageImportInfo(id, callback);
 ```
 
 ### Parameters
@@ -1095,8 +1091,6 @@ apiInstance.getAutoStorageImportInfo(id, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space for which storage import stats should be returned. | 
- **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
- **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. | [optional] 
 
 ### Return type
 
@@ -1113,7 +1107,7 @@ Name | Type | Description  | Notes
 
 <a name="getAutoStorageImportStats"></a>
 # **getAutoStorageImportStats**
-> AutoStorageImportStats getAutoStorageImportStats(id, opts)
+> AutoStorageImportStats getAutoStorageImportStats(id, period, metrics)
 
 Get statistics of auto storage import mechanism.
 
@@ -1145,10 +1139,10 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of a space for which storage import stats should be returned.
 
-var opts = { 
-  'period': "period_example", // String | Predefined time period for which the statistics should be fetched.
-  'metrics': "metrics_example" // String | Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: `queueLength`, `importCount`, `updateCount`, `deleteCount` 
-};
+var period = "period_example"; // String | Predefined time period for which the statistics should be fetched.
+
+var metrics = "metrics_example"; // String | Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: `queueLength`, `importCount`, `updateCount`, `deleteCount` 
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1157,7 +1151,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getAutoStorageImportStats(id, opts, callback);
+apiInstance.getAutoStorageImportStats(id, period, metrics, callback);
 ```
 
 ### Parameters
@@ -1165,8 +1159,8 @@ apiInstance.getAutoStorageImportStats(id, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of a space for which storage import stats should be returned. | 
- **period** | **String**| Predefined time period for which the statistics should be fetched. | [optional] 
- **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60;  | [optional] 
+ **period** | **String**| Predefined time period for which the statistics should be fetched. | 
+ **metrics** | **String**| Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60;  | 
 
 ### Return type
 

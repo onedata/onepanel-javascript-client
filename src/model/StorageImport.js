@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImport'], factory);
+    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AutoStorageImport'));
+    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageImport = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImport);
+    root.Onepanel.StorageImport = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
   }
-}(this, function(ApiClient, AutoStorageImport) {
+}(this, function(ApiClient, AutoStorageImportConfig) {
   'use strict';
 
 
@@ -77,23 +77,23 @@
       if (data.hasOwnProperty('mode')) {
         obj['mode'] = ApiClient.convertToType(data['mode'], 'String');
       }
-      if (data.hasOwnProperty('scanConfig')) {
-        obj['scanConfig'] = AutoStorageImport.constructFromObject(data['scanConfig']);
+      if (data.hasOwnProperty('autoStorageImportConfig')) {
+        obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
       }
     }
     return obj;
   }
 
   /**
-   * Mode of the storage import within the space. In case of `auto` mode, the storage will be automatically scanned and data will be imported from storage into the assigned Onedata space without need for copying the data. Configuration of the auto storage import can be passed in the `scanConfig` parameter. It is possible to enable periodical scans for automatic detection of changes on the storage (refer to the option `continuousScan` in the config). In case of `manual` mode, the files must be registered manually by the space users with REST API. Registration of directories is not supported. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor=tag/File-registration 
+   * Mode of the storage import within the space. In case of `auto` mode, the storage will be automatically scanned and data will be imported from storage into the assigned Onedata space without need for copying the data. Configuration of the auto storage import can be passed in the `autoStorageImportConfig` parameter. It is possible to enable periodical scans for automatic detection of changes on the storage (refer to the option `continuousScan` in the config). In case of `manual` mode, the files must be registered manually by the space users with REST API. Registration of directories is not supported. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor=tag/File-registration 
    * @member {module:model/StorageImport.ModeEnum} mode
    * @default 'auto'
    */
   exports.prototype['mode'] = 'auto';
   /**
-   * @member {module:model/AutoStorageImport} scanConfig
+   * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
    */
-  exports.prototype['scanConfig'] = undefined;
+  exports.prototype['autoStorageImportConfig'] = undefined;
 
 
   /**

@@ -746,14 +746,10 @@
      * Get information about auto storage import scan.
      * Returns information about current or last finished auto storage import scan.
      * @param {String} id The Id of a space for which storage import stats should be returned.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
-     * @param {module:model/String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma.
      * @param {module:api/OneproviderApi~getAutoStorageImportInfoCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AutoStorageImportInfo}
      */
-    this.getAutoStorageImportInfo = function(id, opts, callback) {
-      opts = opts || {};
+    this.getAutoStorageImportInfo = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -766,8 +762,6 @@
         'id': id
       };
       var queryParams = {
-        'period': opts['period'],
-        'metrics': opts['metrics']
       };
       var headerParams = {
       };
@@ -798,14 +792,12 @@
      * Get statistics of auto storage import mechanism.
      * Returns requested statistics of auto storage import mechanism for given space on this provider. 
      * @param {String} id The Id of a space for which storage import stats should be returned.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
-     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60; 
+     * @param {module:model/String} period Predefined time period for which the statistics should be fetched.
+     * @param {String} metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;importCount&#x60;, &#x60;updateCount&#x60;, &#x60;deleteCount&#x60; 
      * @param {module:api/OneproviderApi~getAutoStorageImportStatsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/AutoStorageImportStats}
      */
-    this.getAutoStorageImportStats = function(id, opts, callback) {
-      opts = opts || {};
+    this.getAutoStorageImportStats = function(id, period, metrics, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -813,13 +805,23 @@
         throw new Error("Missing the required parameter 'id' when calling getAutoStorageImportStats");
       }
 
+      // verify the required parameter 'period' is set
+      if (period === undefined || period === null) {
+        throw new Error("Missing the required parameter 'period' when calling getAutoStorageImportStats");
+      }
+
+      // verify the required parameter 'metrics' is set
+      if (metrics === undefined || metrics === null) {
+        throw new Error("Missing the required parameter 'metrics' when calling getAutoStorageImportStats");
+      }
+
 
       var pathParams = {
         'id': id
       };
       var queryParams = {
-        'period': opts['period'],
-        'metrics': opts['metrics']
+        'period': period,
+        'metrics': metrics
       };
       var headerParams = {
       };

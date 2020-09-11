@@ -1,4 +1,4 @@
-# Onepanel.AutoStorageImport
+# Onepanel.AutoStorageImportConfig
 
 ## Properties
 Name | Type | Description | Notes

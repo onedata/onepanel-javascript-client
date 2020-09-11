@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property scanConfig (base name: "scanConfig")', function() {
-      // uncomment below and update the code to test the property scanConfig
+    it('should have the property autoStorageImportConfig (base name: "autoStorageImportConfig")', function() {
+      // uncomment below and update the code to test the property autoStorageImportConfig
       //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });

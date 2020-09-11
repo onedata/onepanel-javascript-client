@@ -272,7 +272,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [Onepanel.AutoStorageImport](docs/AutoStorageImport.md)
+ - [Onepanel.AutoStorageImportConfig](docs/AutoStorageImportConfig.md)
  - [Onepanel.AutoStorageImportInfo](docs/AutoStorageImportInfo.md)
  - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
  - [Onepanel.BlockDevices](docs/BlockDevices.md)

@@ -371,6 +371,16 @@
         done();
       });
     });
+    describe('getManualStorageImportExample', function() {
+      it('should call getManualStorageImportExample successfully', function(done) {
+        //uncomment below and update the code to test getManualStorageImportExample
+        //instance.getManualStorageImportExample(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getOnezoneInfo', function() {
       it('should call getOnezoneInfo successfully', function(done) {
         //uncomment below and update the code to test getOnezoneInfo

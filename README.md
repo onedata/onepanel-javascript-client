@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getCephStatus**](docs/OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 *Onepanel.OneproviderApi* | [**getCephUsage**](docs/OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 *Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+*Onepanel.OneproviderApi* | [**getManualStorageImportExample**](docs/OneproviderApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example.
 *Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -321,6 +322,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.LumaStorageUser](docs/LumaStorageUser.md)
  - [Onepanel.LumaUserMapping](docs/LumaUserMapping.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
+ - [Onepanel.ManualStorageImportExample](docs/ManualStorageImportExample.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.OnezoneInfo](docs/OnezoneInfo.md)

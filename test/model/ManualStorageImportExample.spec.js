@@ -16,105 +16,53 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.StorageImport = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, AutoStorageImportConfig) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ManualStorageImportExample();
+  });
 
-
-  /**
-   * The StorageImport model module.
-   * @module model/StorageImport
-   * @version 20.02.1
-   */
-
-  /**
-   * Constructs a new <code>StorageImport</code>.
-   * Configuration of the storage import within the space. 
-   * @alias module:model/StorageImport
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/StorageImport} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>StorageImport</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageImport} obj Optional instance to populate.
-   * @return {module:model/StorageImport} The populated <code>StorageImport</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('mode')) {
-        obj['mode'] = ApiClient.convertToType(data['mode'], 'String');
-      }
-      if (data.hasOwnProperty('autoStorageImportConfig')) {
-        obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Mode of the storage import within the space.  In case of `auto` mode, the storage will be automatically scanned and data will be imported from storage into the assigned Onedata space without need for copying the data.  Configuration of the auto storage import can be passed in the `autoStorageImportConfig` parameter. It is possible to enable periodical scans for automatic detection of changes on the storage (refer to the option `continuousScan` in the config).  In case of `manual` mode, the files must be registered manually by the space users with REST API. Registration of directories is not supported. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor=tag/File-registration 
-   * @member {module:model/StorageImport.ModeEnum} mode
-   * @default 'auto'
-   */
-  exports.prototype['mode'] = 'auto';
-  /**
-   * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
-   */
-  exports.prototype['autoStorageImportConfig'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ManualStorageImportExample', function() {
+    it('should create an instance of ManualStorageImportExample', function() {
+      // uncomment below and update the code to test ManualStorageImportExample
+      //var instane = new Onepanel.ManualStorageImportExample();
+      //expect(instance).to.be.a(Onepanel.ManualStorageImportExample);
+    });
 
-  /**
-   * Allowed values for the <code>mode</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ModeEnum = {
-    /**
-     * value: "auto"
-     * @const
-     */
-    "auto": "auto",
-    /**
-     * value: "manual"
-     * @const
-     */
-    "manual": "manual"  };
+    it('should have the property curl (base name: "curl")', function() {
+      // uncomment below and update the code to test the property curl
+      //var instane = new Onepanel.ManualStorageImportExample();
+      //expect(instance).to.be();
+    });
 
+  });
 
-  return exports;
 }));
-
-

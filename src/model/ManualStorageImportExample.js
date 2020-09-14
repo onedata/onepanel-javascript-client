@@ -17,101 +17,75 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StorageImport = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
+    root.Onepanel.ManualStorageImportExample = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, AutoStorageImportConfig) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The StorageImport model module.
-   * @module model/StorageImport
+   * The ManualStorageImportExample model module.
+   * @module model/ManualStorageImportExample
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new <code>StorageImport</code>.
-   * Configuration of the storage import within the space. 
-   * @alias module:model/StorageImport
+   * Constructs a new <code>ManualStorageImportExample</code>.
+   * Example &#x60;curl&#x60; command that can be executed to manually import (register) file from storage. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor&#x3D;tag/File-registration 
+   * @alias module:model/ManualStorageImportExample
    * @class
+   * @param curl {String} 
    */
-  var exports = function() {
+  var exports = function(curl) {
     var _this = this;
 
-
-
+    _this['curl'] = curl;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/StorageImport} The value of 'discriminator' field or undefined.
+   * @return {module:model/ManualStorageImportExample} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>StorageImport</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ManualStorageImportExample</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StorageImport} obj Optional instance to populate.
-   * @return {module:model/StorageImport} The populated <code>StorageImport</code> instance.
+   * @param {module:model/ManualStorageImportExample} obj Optional instance to populate.
+   * @return {module:model/ManualStorageImportExample} The populated <code>ManualStorageImportExample</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('mode')) {
-        obj['mode'] = ApiClient.convertToType(data['mode'], 'String');
-      }
-      if (data.hasOwnProperty('autoStorageImportConfig')) {
-        obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
+      if (data.hasOwnProperty('curl')) {
+        obj['curl'] = ApiClient.convertToType(data['curl'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Mode of the storage import within the space.  In case of `auto` mode, the storage will be automatically scanned and data will be imported from storage into the assigned Onedata space without need for copying the data.  Configuration of the auto storage import can be passed in the `autoStorageImportConfig` parameter. It is possible to enable periodical scans for automatic detection of changes on the storage (refer to the option `continuousScan` in the config).  In case of `manual` mode, the files must be registered manually by the space users with REST API. Registration of directories is not supported. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor=tag/File-registration 
-   * @member {module:model/StorageImport.ModeEnum} mode
-   * @default 'auto'
+   * @member {String} curl
    */
-  exports.prototype['mode'] = 'auto';
-  /**
-   * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
-   */
-  exports.prototype['autoStorageImportConfig'] = undefined;
+  exports.prototype['curl'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>mode</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ModeEnum = {
-    /**
-     * value: "auto"
-     * @const
-     */
-    "auto": "auto",
-    /**
-     * value: "manual"
-     * @const
-     */
-    "manual": "manual"  };
 
 
   return exports;

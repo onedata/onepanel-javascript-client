@@ -79,14 +79,14 @@
       if (data.hasOwnProperty('queueLength')) {
         obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
       }
-      if (data.hasOwnProperty('importCount')) {
-        obj['importCount'] = TimeStats.constructFromObject(data['importCount']);
+      if (data.hasOwnProperty('createdFiles')) {
+        obj['createdFiles'] = TimeStats.constructFromObject(data['createdFiles']);
       }
-      if (data.hasOwnProperty('updateCount')) {
-        obj['updateCount'] = TimeStats.constructFromObject(data['updateCount']);
+      if (data.hasOwnProperty('modifiedFiles')) {
+        obj['modifiedFiles'] = TimeStats.constructFromObject(data['modifiedFiles']);
       }
-      if (data.hasOwnProperty('deleteCount')) {
-        obj['deleteCount'] = TimeStats.constructFromObject(data['deleteCount']);
+      if (data.hasOwnProperty('deletedFiles')) {
+        obj['deletedFiles'] = TimeStats.constructFromObject(data['deletedFiles']);
       }
     }
     return obj;
@@ -98,20 +98,20 @@
    */
   exports.prototype['queueLength'] = undefined;
   /**
-   * Statistics of imported files count by auto storage import.
-   * @member {module:model/TimeStats} importCount
+   * Statistics of count of created files detected by auto storage import.
+   * @member {module:model/TimeStats} createdFiles
    */
-  exports.prototype['importCount'] = undefined;
+  exports.prototype['createdFiles'] = undefined;
   /**
-   * Statistics of updated files count by auto storage import.
-   * @member {module:model/TimeStats} updateCount
+   * Statistics of count of modified files detected by auto storage import.
+   * @member {module:model/TimeStats} modifiedFiles
    */
-  exports.prototype['updateCount'] = undefined;
+  exports.prototype['modifiedFiles'] = undefined;
   /**
-   * Statistics of deleted files count by auto storage import.
-   * @member {module:model/TimeStats} deleteCount
+   * Statistics of count of deleted files detected by auto storage import.
+   * @member {module:model/TimeStats} deletedFiles
    */
-  exports.prototype['deleteCount'] = undefined;
+  exports.prototype['deletedFiles'] = undefined;
 
 
 

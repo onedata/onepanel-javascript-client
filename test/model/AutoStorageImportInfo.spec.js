@@ -75,14 +75,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property importedFiles (base name: "importedFiles")', function() {
-      // uncomment below and update the code to test the property importedFiles
+    it('should have the property createdFiles (base name: "createdFiles")', function() {
+      // uncomment below and update the code to test the property createdFiles
       //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });
 
-    it('should have the property updatedFiles (base name: "updatedFiles")', function() {
-      // uncomment below and update the code to test the property updatedFiles
+    it('should have the property modifiedFiles (base name: "modifiedFiles")', function() {
+      // uncomment below and update the code to test the property modifiedFiles
       //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });

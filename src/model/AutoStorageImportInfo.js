@@ -48,19 +48,19 @@
    * @param status {module:model/AutoStorageImportInfo.StatusEnum} Describes status of current (or last finished) auto storage import scan in given space.
    * @param start {Number} Time at which current (or last finished) scan has been started.
    * @param stop {Number} Time at which current (or last finished) scan has been stopped.
-   * @param importedFiles {Number} Counter of files that has been imported during current (or last finished) scan.
-   * @param updatedFiles {Number} Counter of files that has been updated during current (or last finished) scan.
-   * @param deletedFiles {Number} Counter of files that has been deleted during current (or last finished) scan.
+   * @param createdFiles {Number} Counter of created files that has been detected during current (or last finished) scan.
+   * @param modifiedFiles {Number} Counter of modified files that has been detected during current (or last finished) scan.
+   * @param deletedFiles {Number} Counter of deleted files that has been detected during current (or last finished) scan.
    * @param totalScans {Number} Total number of performed scans.
    */
-  var exports = function(status, start, stop, importedFiles, updatedFiles, deletedFiles, totalScans) {
+  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, totalScans) {
     var _this = this;
 
     _this['status'] = status;
     _this['start'] = start;
     _this['stop'] = stop;
-    _this['importedFiles'] = importedFiles;
-    _this['updatedFiles'] = updatedFiles;
+    _this['createdFiles'] = createdFiles;
+    _this['modifiedFiles'] = modifiedFiles;
     _this['deletedFiles'] = deletedFiles;
 
     _this['totalScans'] = totalScans;
@@ -96,11 +96,11 @@
       if (data.hasOwnProperty('stop')) {
         obj['stop'] = ApiClient.convertToType(data['stop'], 'Number');
       }
-      if (data.hasOwnProperty('importedFiles')) {
-        obj['importedFiles'] = ApiClient.convertToType(data['importedFiles'], 'Number');
+      if (data.hasOwnProperty('createdFiles')) {
+        obj['createdFiles'] = ApiClient.convertToType(data['createdFiles'], 'Number');
       }
-      if (data.hasOwnProperty('updatedFiles')) {
-        obj['updatedFiles'] = ApiClient.convertToType(data['updatedFiles'], 'Number');
+      if (data.hasOwnProperty('modifiedFiles')) {
+        obj['modifiedFiles'] = ApiClient.convertToType(data['modifiedFiles'], 'Number');
       }
       if (data.hasOwnProperty('deletedFiles')) {
         obj['deletedFiles'] = ApiClient.convertToType(data['deletedFiles'], 'Number');
@@ -131,17 +131,17 @@
    */
   exports.prototype['stop'] = undefined;
   /**
-   * Counter of files that has been imported during current (or last finished) scan.
-   * @member {Number} importedFiles
+   * Counter of created files that has been detected during current (or last finished) scan.
+   * @member {Number} createdFiles
    */
-  exports.prototype['importedFiles'] = undefined;
+  exports.prototype['createdFiles'] = undefined;
   /**
-   * Counter of files that has been updated during current (or last finished) scan.
-   * @member {Number} updatedFiles
+   * Counter of modified files that has been detected during current (or last finished) scan.
+   * @member {Number} modifiedFiles
    */
-  exports.prototype['updatedFiles'] = undefined;
+  exports.prototype['modifiedFiles'] = undefined;
   /**
-   * Counter of files that has been deleted during current (or last finished) scan.
+   * Counter of deleted files that has been detected during current (or last finished) scan.
    * @member {Number} deletedFiles
    */
   exports.prototype['deletedFiles'] = undefined;

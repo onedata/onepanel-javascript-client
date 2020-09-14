@@ -63,20 +63,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property importCount (base name: "importCount")', function() {
-      // uncomment below and update the code to test the property importCount
+    it('should have the property createdFiles (base name: "createdFiles")', function() {
+      // uncomment below and update the code to test the property createdFiles
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property updateCount (base name: "updateCount")', function() {
-      // uncomment below and update the code to test the property updateCount
+    it('should have the property modifiedFiles (base name: "modifiedFiles")', function() {
+      // uncomment below and update the code to test the property modifiedFiles
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property deleteCount (base name: "deleteCount")', function() {
-      // uncomment below and update the code to test the property deleteCount
+    it('should have the property deletedFiles (base name: "deletedFiles")', function() {
+      // uncomment below and update the code to test the property deletedFiles
       //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });

@@ -16,65 +16,106 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/TimeStats'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStats'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.AutoStorageImportStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStats);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, TimeStats) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.StorageImportDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The AutoStorageImportStats model module.
+   * @module model/AutoStorageImportStats
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>AutoStorageImportStats</code>.
+   * Statistics of auto storage import mechanism in given space over specified time. 
+   * @alias module:model/AutoStorageImportStats
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/AutoStorageImportStats} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>AutoStorageImportStats</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/AutoStorageImportStats} obj Optional instance to populate.
+   * @return {module:model/AutoStorageImportStats} The populated <code>AutoStorageImportStats</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('queueLength')) {
+        obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
+      }
+      if (data.hasOwnProperty('createdFiles')) {
+        obj['createdFiles'] = TimeStats.constructFromObject(data['createdFiles']);
+      }
+      if (data.hasOwnProperty('modifiedFiles')) {
+        obj['modifiedFiles'] = TimeStats.constructFromObject(data['modifiedFiles']);
+      }
+      if (data.hasOwnProperty('deletedFiles')) {
+        obj['deletedFiles'] = TimeStats.constructFromObject(data['deletedFiles']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Statistics of auto storage import jobs queue length.
+   * @member {module:model/TimeStats} queueLength
+   */
+  exports.prototype['queueLength'] = undefined;
+  /**
+   * Statistics of count of created files detected by auto storage import.
+   * @member {module:model/TimeStats} createdFiles
+   */
+  exports.prototype['createdFiles'] = undefined;
+  /**
+   * Statistics of count of modified files detected by auto storage import.
+   * @member {module:model/TimeStats} modifiedFiles
+   */
+  exports.prototype['modifiedFiles'] = undefined;
+  /**
+   * Statistics of count of deleted files detected by auto storage import.
+   * @member {module:model/TimeStats} deletedFiles
+   */
+  exports.prototype['deletedFiles'] = undefined;
 
-  describe('StorageImportDetails', function() {
-    it('should create an instance of StorageImportDetails', function() {
-      // uncomment below and update the code to test StorageImportDetails
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be.a(Onepanel.StorageImportDetails);
-    });
 
-    it('should have the property strategy (base name: "strategy")', function() {
-      // uncomment below and update the code to test the property strategy
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property maxDepth (base name: "maxDepth")', function() {
-      // uncomment below and update the code to test the property maxDepth
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property syncAcl (base name: "syncAcl")', function() {
-      // uncomment below and update the code to test the property syncAcl
-      //var instane = new Onepanel.StorageImportDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

@@ -8,8 +8,7 @@ Name | Type | Description | Notes
 **storageId** | **String** | Id of storage that supports this space on provider that is associated with this panel.  | 
 **localStorages** | **[String]** | The list of IDs of cluster storage resources. | 
 **supportingProviders** | **{String: Number}** | The collection of provider IDs with associated supported storage space in bytes.  | 
-**storageImport** | [**StorageImportDetails**](StorageImportDetails.md) |  | [optional] 
-**storageUpdate** | [**StorageUpdateDetails**](StorageUpdateDetails.md) |  | [optional] 
+**storageImport** | [**StorageImport**](StorageImport.md) |  | [optional] 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
 
 

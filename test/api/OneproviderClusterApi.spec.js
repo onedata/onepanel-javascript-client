@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.OnepanelApi();
+    instance = new Onepanel.OneproviderClusterApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,261 +50,201 @@
       object[property] = value;
   }
 
-  describe('OnepanelApi', function() {
-    describe('addClusterHost', function() {
-      it('should call addClusterHost successfully', function(done) {
-        //uncomment below and update the code to test addClusterHost
-        //instance.addClusterHost(function(error) {
+  describe('OneproviderClusterApi', function() {
+    describe('addProviderDatabases', function() {
+      it('should call addProviderDatabases successfully', function(done) {
+        //uncomment below and update the code to test addProviderDatabases
+        //instance.addProviderDatabases(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('checkDns', function() {
-      it('should call checkDns successfully', function(done) {
-        //uncomment below and update the code to test checkDns
-        //instance.checkDns(function(error) {
+    describe('addProviderManagers', function() {
+      it('should call addProviderManagers successfully', function(done) {
+        //uncomment below and update the code to test addProviderManagers
+        //instance.addProviderManagers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('createInviteToken', function() {
-      it('should call createInviteToken successfully', function(done) {
-        //uncomment below and update the code to test createInviteToken
-        //instance.createInviteToken(function(error) {
+    describe('addProviderWorkers', function() {
+      it('should call addProviderWorkers successfully', function(done) {
+        //uncomment below and update the code to test addProviderWorkers
+        //instance.addProviderWorkers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('createUserInviteToken', function() {
-      it('should call createUserInviteToken successfully', function(done) {
-        //uncomment below and update the code to test createUserInviteToken
-        //instance.createUserInviteToken(function(error) {
+    describe('configureProvider', function() {
+      it('should call configureProvider successfully', function(done) {
+        //uncomment below and update the code to test configureProvider
+        //instance.configureProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getCluster', function() {
-      it('should call getCluster successfully', function(done) {
-        //uncomment below and update the code to test getCluster
-        //instance.getCluster(function(error) {
+    describe('getProviderClusterIps', function() {
+      it('should call getProviderClusterIps successfully', function(done) {
+        //uncomment below and update the code to test getProviderClusterIps
+        //instance.getProviderClusterIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getClusterCookie', function() {
-      it('should call getClusterCookie successfully', function(done) {
-        //uncomment below and update the code to test getClusterCookie
-        //instance.getClusterCookie(function(error) {
+    describe('getProviderConfiguration', function() {
+      it('should call getProviderConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getProviderConfiguration
+        //instance.getProviderConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getClusterHosts', function() {
-      it('should call getClusterHosts successfully', function(done) {
-        //uncomment below and update the code to test getClusterHosts
-        //instance.getClusterHosts(function(error) {
+    describe('getProviderDatabaseStatus', function() {
+      it('should call getProviderDatabaseStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderDatabaseStatus
+        //instance.getProviderDatabaseStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getClusterMembersSummary', function() {
-      it('should call getClusterMembersSummary successfully', function(done) {
-        //uncomment below and update the code to test getClusterMembersSummary
-        //instance.getClusterMembersSummary(function(error) {
+    describe('getProviderDatabasesStatus', function() {
+      it('should call getProviderDatabasesStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderDatabasesStatus
+        //instance.getProviderDatabasesStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getClusters', function() {
-      it('should call getClusters successfully', function(done) {
-        //uncomment below and update the code to test getClusters
-        //instance.getClusters(function(error) {
+    describe('getProviderManagerStatus', function() {
+      it('should call getProviderManagerStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderManagerStatus
+        //instance.getProviderManagerStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getConfiguration', function() {
-      it('should call getConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getConfiguration
-        //instance.getConfiguration(function(error) {
+    describe('getProviderManagersStatus', function() {
+      it('should call getProviderManagersStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderManagersStatus
+        //instance.getProviderManagersStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getCurrentCluster', function() {
-      it('should call getCurrentCluster successfully', function(done) {
-        //uncomment below and update the code to test getCurrentCluster
-        //instance.getCurrentCluster(function(error) {
+    describe('getProviderNagiosReport', function() {
+      it('should call getProviderNagiosReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderNagiosReport
+        //instance.getProviderNagiosReport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getCurrentUser', function() {
-      it('should call getCurrentUser successfully', function(done) {
-        //uncomment below and update the code to test getCurrentUser
-        //instance.getCurrentUser(function(error) {
+    describe('getProviderWorkerStatus', function() {
+      it('should call getProviderWorkerStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderWorkerStatus
+        //instance.getProviderWorkerStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getDnsCheckConfiguration', function() {
-      it('should call getDnsCheckConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getDnsCheckConfiguration
-        //instance.getDnsCheckConfiguration(function(error) {
+    describe('getProviderWorkersStatus', function() {
+      it('should call getProviderWorkersStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderWorkersStatus
+        //instance.getProviderWorkersStatus(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getEmergencyPassphraseStatus', function() {
-      it('should call getEmergencyPassphraseStatus successfully', function(done) {
-        //uncomment below and update the code to test getEmergencyPassphraseStatus
-        //instance.getEmergencyPassphraseStatus(function(error) {
+    describe('modifyProviderClusterIps', function() {
+      it('should call modifyProviderClusterIps successfully', function(done) {
+        //uncomment below and update the code to test modifyProviderClusterIps
+        //instance.modifyProviderClusterIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getNode', function() {
-      it('should call getNode successfully', function(done) {
-        //uncomment below and update the code to test getNode
-        //instance.getNode(function(error) {
+    describe('startStopProviderDatabase', function() {
+      it('should call startStopProviderDatabase successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderDatabase
+        //instance.startStopProviderDatabase(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProgress', function() {
-      it('should call getProgress successfully', function(done) {
-        //uncomment below and update the code to test getProgress
-        //instance.getProgress(function(error) {
+    describe('startStopProviderDatabases', function() {
+      it('should call startStopProviderDatabases successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderDatabases
+        //instance.startStopProviderDatabases(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getRemoteProvider', function() {
-      it('should call getRemoteProvider successfully', function(done) {
-        //uncomment below and update the code to test getRemoteProvider
-        //instance.getRemoteProvider(function(error) {
+    describe('startStopProviderManager', function() {
+      it('should call startStopProviderManager successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderManager
+        //instance.startStopProviderManager(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getTaskStatus', function() {
-      it('should call getTaskStatus successfully', function(done) {
-        //uncomment below and update the code to test getTaskStatus
-        //instance.getTaskStatus(function(error) {
+    describe('startStopProviderManagers', function() {
+      it('should call startStopProviderManagers successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderManagers
+        //instance.startStopProviderManagers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
+    describe('startStopProviderWorker', function() {
+      it('should call startStopProviderWorker successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderWorker
+        //instance.startStopProviderWorker(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('joinCluster', function() {
-      it('should call joinCluster successfully', function(done) {
-        //uncomment below and update the code to test joinCluster
-        //instance.joinCluster(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyDnsCheckConfiguration', function() {
-      it('should call modifyDnsCheckConfiguration successfully', function(done) {
-        //uncomment below and update the code to test modifyDnsCheckConfiguration
-        //instance.modifyDnsCheckConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyProgress', function() {
-      it('should call modifyProgress successfully', function(done) {
-        //uncomment below and update the code to test modifyProgress
-        //instance.modifyProgress(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyWebCert', function() {
-      it('should call modifyWebCert successfully', function(done) {
-        //uncomment below and update the code to test modifyWebCert
-        //instance.modifyWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('removeClusterHost', function() {
-      it('should call removeClusterHost successfully', function(done) {
-        //uncomment below and update the code to test removeClusterHost
-        //instance.removeClusterHost(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setEmergencyPassphrase', function() {
-      it('should call setEmergencyPassphrase successfully', function(done) {
-        //uncomment below and update the code to test setEmergencyPassphrase
-        //instance.setEmergencyPassphrase(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('testImage', function() {
-      it('should call testImage successfully', function(done) {
-        //uncomment below and update the code to test testImage
-        //instance.testImage(function(error) {
+    describe('startStopProviderWorkers', function() {
+      it('should call startStopProviderWorkers successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderWorkers
+        //instance.startStopProviderWorkers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DNSWebCertificatesApi();
+    instance = new Onepanel.FilePopularityAndAutocleaningApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,51 +50,91 @@
       object[property] = value;
   }
 
-  describe('DNSWebCertificatesApi', function() {
-    describe('checkDns', function() {
-      it('should call checkDns successfully', function(done) {
-        //uncomment below and update the code to test checkDns
-        //instance.checkDns(function(error) {
+  describe('FilePopularityAndAutocleaningApi', function() {
+    describe('cancelAutoCleaning', function() {
+      it('should call cancelAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test cancelAutoCleaning
+        //instance.cancelAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getDnsCheckConfiguration', function() {
-      it('should call getDnsCheckConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getDnsCheckConfiguration
-        //instance.getDnsCheckConfiguration(function(error) {
+    describe('configureFilePopularity', function() {
+      it('should call configureFilePopularity successfully', function(done) {
+        //uncomment below and update the code to test configureFilePopularity
+        //instance.configureFilePopularity(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
+    describe('configureSpaceAutoCleaning', function() {
+      it('should call configureSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceAutoCleaning
+        //instance.configureSpaceAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('modifyDnsCheckConfiguration', function() {
-      it('should call modifyDnsCheckConfiguration successfully', function(done) {
-        //uncomment below and update the code to test modifyDnsCheckConfiguration
-        //instance.modifyDnsCheckConfiguration(function(error) {
+    describe('getFilePopularityConfiguration', function() {
+      it('should call getFilePopularityConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getFilePopularityConfiguration
+        //instance.getFilePopularityConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('modifyWebCert', function() {
-      it('should call modifyWebCert successfully', function(done) {
-        //uncomment below and update the code to test modifyWebCert
-        //instance.modifyWebCert(function(error) {
+    describe('getProviderSpaceAutoCleaningReport', function() {
+      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
+        //instance.getProviderSpaceAutoCleaningReport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningReports', function() {
+      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
+        //instance.getProviderSpaceAutoCleaningReports(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningStatus', function() {
+      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
+        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getSpaceAutoCleaningConfiguration', function() {
+      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
+        //instance.getSpaceAutoCleaningConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('triggerAutoCleaning', function() {
+      it('should call triggerAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test triggerAutoCleaning
+        //instance.triggerAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

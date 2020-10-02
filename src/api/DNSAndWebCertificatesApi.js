@@ -26,20 +26,20 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DNSWebCertificatesApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.DNSAndWebCertificatesApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
   }
 }(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error, WebCert, WebCertModifyRequest) {
   'use strict';
 
   /**
-   * DNSWebCertificates service.
-   * @module api/DNSWebCertificatesApi
+   * DNSAndWebCertificates service.
+   * @module api/DNSAndWebCertificatesApi
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new DNSWebCertificatesApi. 
-   * @alias module:api/DNSWebCertificatesApi
+   * Constructs a new DNSAndWebCertificatesApi. 
+   * @alias module:api/DNSAndWebCertificatesApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -50,7 +50,7 @@
 
     /**
      * Callback function to receive the result of the checkDns operation.
-     * @callback module:api/DNSWebCertificatesApi~checkDnsCallback
+     * @callback module:api/DNSAndWebCertificatesApi~checkDnsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/DnsCheck} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -61,7 +61,7 @@
      * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
-     * @param {module:api/DNSWebCertificatesApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/DNSAndWebCertificatesApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DnsCheck}
      */
     this.checkDns = function(opts, callback) {
@@ -93,7 +93,7 @@
 
     /**
      * Callback function to receive the result of the getDnsCheckConfiguration operation.
-     * @callback module:api/DNSWebCertificatesApi~getDnsCheckConfigurationCallback
+     * @callback module:api/DNSAndWebCertificatesApi~getDnsCheckConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {module:model/DnsCheckConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -102,7 +102,7 @@
     /**
      * Return settings used when performing the DNS check
      * Returns servers queried to check DNS configuration correctness. 
-     * @param {module:api/DNSWebCertificatesApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/DNSAndWebCertificatesApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DnsCheckConfiguration}
      */
     this.getDnsCheckConfiguration = function(callback) {
@@ -132,7 +132,7 @@
 
     /**
      * Callback function to receive the result of the getWebCert operation.
-     * @callback module:api/DNSWebCertificatesApi~getWebCertCallback
+     * @callback module:api/DNSAndWebCertificatesApi~getWebCertCallback
      * @param {String} error Error message, if any.
      * @param {module:model/WebCert} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -141,7 +141,7 @@
     /**
      * Get information about SSL certificates configuration and status.
      * Returns information about SSL certificate status and renewal configuration. 
-     * @param {module:api/DNSWebCertificatesApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/DNSAndWebCertificatesApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/WebCert}
      */
     this.getWebCert = function(callback) {
@@ -171,7 +171,7 @@
 
     /**
      * Callback function to receive the result of the modifyDnsCheckConfiguration operation.
-     * @callback module:api/DNSWebCertificatesApi~modifyDnsCheckConfigurationCallback
+     * @callback module:api/DNSAndWebCertificatesApi~modifyDnsCheckConfigurationCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -181,7 +181,7 @@
      * Configure dns check
      * Informs what DNS servers to use for checking external DNS records validity. 
      * @param {module:model/DnsCheckConfiguration} dnsCheckConfiguration The configuration changes.
-     * @param {module:api/DNSWebCertificatesApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/DNSAndWebCertificatesApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.modifyDnsCheckConfiguration = function(dnsCheckConfiguration, callback) {
       var postBody = dnsCheckConfiguration;
@@ -215,7 +215,7 @@
 
     /**
      * Callback function to receive the result of the modifyWebCert operation.
-     * @callback module:api/DNSWebCertificatesApi~modifyWebCertCallback
+     * @callback module:api/DNSAndWebCertificatesApi~modifyWebCertCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -225,7 +225,7 @@
      * Modify SSL certificate configuration
      * Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
      * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate management configuration. 
-     * @param {module:api/DNSWebCertificatesApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/DNSAndWebCertificatesApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.modifyWebCert = function(webCertModifyRequest, callback) {
       var postBody = webCertModifyRequest;

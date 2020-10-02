@@ -26,20 +26,20 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.FilePopularityAutocleaningApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.InlineResponse202, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.TaskId);
+    root.Onepanel.FilePopularityAndAutocleaningApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.InlineResponse202, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.TaskId);
   }
 }(this, function(ApiClient, Error, InlineResponse202, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceFilePopularityConfiguration, TaskId) {
   'use strict';
 
   /**
-   * FilePopularityAutocleaning service.
-   * @module api/FilePopularityAutocleaningApi
+   * FilePopularityAndAutocleaning service.
+   * @module api/FilePopularityAndAutocleaningApi
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new FilePopularityAutocleaningApi. 
-   * @alias module:api/FilePopularityAutocleaningApi
+   * Constructs a new FilePopularityAndAutocleaningApi. 
+   * @alias module:api/FilePopularityAndAutocleaningApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -50,7 +50,7 @@
 
     /**
      * Callback function to receive the result of the cancelAutoCleaning operation.
-     * @callback module:api/FilePopularityAutocleaningApi~cancelAutoCleaningCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~cancelAutoCleaningCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -60,7 +60,7 @@
      * Cancel space auto-cleaning
      * Cancel current run of auto-cleaning mechanism for given space.
      * @param {String} id The Id of a space.
-     * @param {module:api/FilePopularityAutocleaningApi~cancelAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~cancelAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.cancelAutoCleaning = function(id, callback) {
       var postBody = null;
@@ -95,7 +95,7 @@
 
     /**
      * Callback function to receive the result of the configureFilePopularity operation.
-     * @callback module:api/FilePopularityAutocleaningApi~configureFilePopularityCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~configureFilePopularityCallback
      * @param {String} error Error message, if any.
      * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -106,7 +106,7 @@
      * Configures the file-popularity mechanism in the space. The mechanism is responsible for collecting file-popularity usage statistics per space support. Creates a view which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space.
      * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
-     * @param {module:api/FilePopularityAutocleaningApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
     this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
@@ -147,7 +147,7 @@
 
     /**
      * Callback function to receive the result of the configureSpaceAutoCleaning operation.
-     * @callback module:api/FilePopularityAutocleaningApi~configureSpaceAutoCleaningCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~configureSpaceAutoCleaningCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -158,7 +158,7 @@
      * Configures space auto-cleaning mechanism in the space. 
      * @param {String} id The Id of a space.
      * @param {module:model/SpaceAutoCleaningConfiguration} spaceAutoCleaningConfiguration New configuration of space auto-cleaning mechanism. 
-     * @param {module:api/FilePopularityAutocleaningApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~configureSpaceAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.configureSpaceAutoCleaning = function(id, spaceAutoCleaningConfiguration, callback) {
       var postBody = spaceAutoCleaningConfiguration;
@@ -198,7 +198,7 @@
 
     /**
      * Callback function to receive the result of the getFilePopularityConfiguration operation.
-     * @callback module:api/FilePopularityAutocleaningApi~getFilePopularityConfigurationCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~getFilePopularityConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceFilePopularityConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -208,7 +208,7 @@
      * Get file-popularity configuration
      * Returns configuration of file popularity mechanism in the space specified by space Id in the path. 
      * @param {String} id The Id of a space of which file-popularity configuration should be returned.
-     * @param {module:api/FilePopularityAutocleaningApi~getFilePopularityConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~getFilePopularityConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceFilePopularityConfiguration}
      */
     this.getFilePopularityConfiguration = function(id, callback) {
@@ -244,7 +244,7 @@
 
     /**
      * Callback function to receive the result of the getProviderSpaceAutoCleaningReport operation.
-     * @callback module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningReportCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningReportCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceAutoCleaningReport} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -255,7 +255,7 @@
      * Returns the details of a specific auto-cleaning run. 
      * @param {String} id The Id of a space.
      * @param {String} reportId The Id of an auto-cleaning report.
-     * @param {module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningReportCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReport}
      */
     this.getProviderSpaceAutoCleaningReport = function(id, reportId, callback) {
@@ -297,7 +297,7 @@
 
     /**
      * Callback function to receive the result of the getProviderSpaceAutoCleaningReports operation.
-     * @callback module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningReportsCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningReportsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceAutoCleaningReports} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -311,7 +311,7 @@
      * @param {Number} opts.offset Allows to skip N first report Ids. (default to 0)
      * @param {Number} opts.limit Allows to limit the number of returned report Ids up to N last reports. By default, all report Ids will be returned. 
      * @param {String} opts.index Allows to list the report Ids starting from the specific report. 
-     * @param {module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningReportsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningReports}
      */
     this.getProviderSpaceAutoCleaningReports = function(id, opts, callback) {
@@ -351,7 +351,7 @@
 
     /**
      * Callback function to receive the result of the getProviderSpaceAutoCleaningStatus operation.
-     * @callback module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningStatusCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceAutoCleaningStatus} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -361,7 +361,7 @@
      * Get status of space auto-cleaning mechanism
      * Returns status of current process of auto-cleaning for the space. 
      * @param {String} id The Id of a space.
-     * @param {module:api/FilePopularityAutocleaningApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~getProviderSpaceAutoCleaningStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningStatus}
      */
     this.getProviderSpaceAutoCleaningStatus = function(id, callback) {
@@ -397,7 +397,7 @@
 
     /**
      * Callback function to receive the result of the getSpaceAutoCleaningConfiguration operation.
-     * @callback module:api/FilePopularityAutocleaningApi~getSpaceAutoCleaningConfigurationCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~getSpaceAutoCleaningConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {module:model/SpaceAutoCleaningConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -407,7 +407,7 @@
      * Get space auto-cleaning configuration
      * Returns configuration of auto-cleaning mechanism in the space specified by space Id in the path. 
      * @param {String} id The Id of a space of which auto-cleaning configuration should be returned.
-     * @param {module:api/FilePopularityAutocleaningApi~getSpaceAutoCleaningConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~getSpaceAutoCleaningConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceAutoCleaningConfiguration}
      */
     this.getSpaceAutoCleaningConfiguration = function(id, callback) {
@@ -443,7 +443,7 @@
 
     /**
      * Callback function to receive the result of the triggerAutoCleaning operation.
-     * @callback module:api/FilePopularityAutocleaningApi~triggerAutoCleaningCallback
+     * @callback module:api/FilePopularityAndAutocleaningApi~triggerAutoCleaningCallback
      * @param {String} error Error message, if any.
      * @param {module:model/InlineResponse202} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -453,7 +453,7 @@
      * Trigger space auto-cleaning
      * Trigger one run of auto-cleaning mechanism for given space.
      * @param {String} id The Id of a space.
-     * @param {module:api/FilePopularityAutocleaningApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/FilePopularityAndAutocleaningApi~triggerAutoCleaningCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse202}
      */
     this.triggerAutoCleaning = function(id, callback) {

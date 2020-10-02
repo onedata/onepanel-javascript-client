@@ -1,14 +1,14 @@
-# Onepanel.DNSWebCertificatesApi
+# Onepanel.DNSAndWebCertificatesApi
 
 All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**checkDns**](DNSWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
-[**getDnsCheckConfiguration**](DNSWebCertificatesApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
-[**getWebCert**](DNSWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
-[**modifyDnsCheckConfiguration**](DNSWebCertificatesApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
-[**modifyWebCert**](DNSWebCertificatesApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
+[**checkDns**](DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+[**getDnsCheckConfiguration**](DNSAndWebCertificatesApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
+[**getWebCert**](DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
+[**modifyDnsCheckConfiguration**](DNSAndWebCertificatesApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
+[**modifyWebCert**](DNSAndWebCertificatesApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 
 
 <a name="checkDns"></a>
@@ -41,7 +41,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.DNSWebCertificatesApi();
+var apiInstance = new Onepanel.DNSAndWebCertificatesApi();
 
 var opts = { 
   'forceCheck': false // Boolean | If true the DNS check cache is overridden and check is performed during handling of the request.
@@ -106,7 +106,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.DNSWebCertificatesApi();
+var apiInstance = new Onepanel.DNSAndWebCertificatesApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -164,7 +164,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.DNSWebCertificatesApi();
+var apiInstance = new Onepanel.DNSAndWebCertificatesApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -222,7 +222,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.DNSWebCertificatesApi();
+var apiInstance = new Onepanel.DNSAndWebCertificatesApi();
 
 var dnsCheckConfiguration = new Onepanel.DnsCheckConfiguration(); // DnsCheckConfiguration | The configuration changes.
 
@@ -286,7 +286,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.DNSWebCertificatesApi();
+var apiInstance = new Onepanel.DNSAndWebCertificatesApi();
 
 var webCertModifyRequest = new Onepanel.WebCertModifyRequest(); // WebCertModifyRequest | New values for certificate management configuration. 
 

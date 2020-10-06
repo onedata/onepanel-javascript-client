@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.FilePopularityAndAutocleaningApi();
+    instance = new Onepanel.FilePopularityAndAutoCleaningApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,7 +50,7 @@
       object[property] = value;
   }
 
-  describe('FilePopularityAndAutocleaningApi', function() {
+  describe('FilePopularityAndAutoCleaningApi', function() {
     describe('cancelAutoCleaning', function() {
       it('should call cancelAutoCleaning successfully', function(done) {
         //uncomment below and update the code to test cancelAutoCleaning

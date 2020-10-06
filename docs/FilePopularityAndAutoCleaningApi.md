@@ -1,18 +1,18 @@
-# Onepanel.FilePopularityAndAutocleaningApi
+# Onepanel.FilePopularityAndAutoCleaningApi
 
 All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelAutoCleaning**](FilePopularityAndAutocleaningApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancel space auto-cleaning
-[**configureFilePopularity**](FilePopularityAndAutocleaningApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
-[**configureSpaceAutoCleaning**](FilePopularityAndAutocleaningApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
-[**getFilePopularityConfiguration**](FilePopularityAndAutocleaningApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
-[**getProviderSpaceAutoCleaningReport**](FilePopularityAndAutocleaningApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
-[**getProviderSpaceAutoCleaningReports**](FilePopularityAndAutocleaningApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
-[**getProviderSpaceAutoCleaningStatus**](FilePopularityAndAutocleaningApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
-[**getSpaceAutoCleaningConfiguration**](FilePopularityAndAutocleaningApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
-[**triggerAutoCleaning**](FilePopularityAndAutocleaningApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Trigger space auto-cleaning
+[**cancelAutoCleaning**](FilePopularityAndAutoCleaningApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancel space auto-cleaning
+[**configureFilePopularity**](FilePopularityAndAutoCleaningApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
+[**configureSpaceAutoCleaning**](FilePopularityAndAutoCleaningApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+[**getFilePopularityConfiguration**](FilePopularityAndAutoCleaningApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+[**getProviderSpaceAutoCleaningReport**](FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
+[**getProviderSpaceAutoCleaningReports**](FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+[**getProviderSpaceAutoCleaningStatus**](FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
+[**getSpaceAutoCleaningConfiguration**](FilePopularityAndAutoCleaningApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
+[**triggerAutoCleaning**](FilePopularityAndAutoCleaningApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Trigger space auto-cleaning
 
 
 <a name="cancelAutoCleaning"></a>
@@ -45,7 +45,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -109,7 +109,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -176,7 +176,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -243,7 +243,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space of which file-popularity configuration should be returned.
 
@@ -307,7 +307,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -374,7 +374,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -446,7 +446,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 
@@ -510,7 +510,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space of which auto-cleaning configuration should be returned.
 
@@ -574,7 +574,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.FilePopularityAndAutocleaningApi();
+var apiInstance = new Onepanel.FilePopularityAndAutoCleaningApi();
 
 var id = "id_example"; // String | The Id of a space.
 

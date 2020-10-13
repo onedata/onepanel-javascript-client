@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/HTTPCommon', 'model/HTTPCredentials', 'model/HTTPCredentialsCreate', 'model/HTTPCredentialsGet', 'model/StorageCommonPathTypeCanonical', 'model/StorageCreateDetails'], factory);
+    define(['ApiClient', 'model/HTTPCommon', 'model/HTTPCredentials', 'model/HTTPCredentialsGet', 'model/StorageCommonPathTypeCanonical', 'model/StorageCreateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./HTTPCommon'), require('./HTTPCredentials'), require('./HTTPCredentialsCreate'), require('./HTTPCredentialsGet'), require('./StorageCommonPathTypeCanonical'), require('./StorageCreateDetails'));
+    module.exports = factory(require('../ApiClient'), require('./HTTPCommon'), require('./HTTPCredentials'), require('./HTTPCredentialsGet'), require('./StorageCommonPathTypeCanonical'), require('./StorageCreateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.HTTPCreate = factory(root.Onepanel.ApiClient, root.Onepanel.HTTPCommon, root.Onepanel.HTTPCredentials, root.Onepanel.HTTPCredentialsCreate, root.Onepanel.HTTPCredentialsGet, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageCreateDetails);
+    root.Onepanel.HTTPCreate = factory(root.Onepanel.ApiClient, root.Onepanel.HTTPCommon, root.Onepanel.HTTPCredentials, root.Onepanel.HTTPCredentialsGet, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageCreateDetails);
   }
-}(this, function(ApiClient, HTTPCommon, HTTPCredentials, HTTPCredentialsCreate, HTTPCredentialsGet, StorageCommonPathTypeCanonical, StorageCreateDetails) {
+}(this, function(ApiClient, HTTPCommon, HTTPCredentials, HTTPCredentialsGet, StorageCommonPathTypeCanonical, StorageCreateDetails) {
   'use strict';
 
 
@@ -48,7 +48,6 @@
    * @extends module:model/StorageCreateDetails
    * @implements module:model/HTTPCredentials
    * @implements module:model/HTTPCredentialsGet
-   * @implements module:model/HTTPCredentialsCreate
    * @implements module:model/HTTPCommon
    * @implements module:model/StorageCommonPathTypeCanonical
    * @param type {String} 
@@ -58,7 +57,6 @@
     StorageCreateDetails.call(_this);
     HTTPCredentials.call(_this, type);
     HTTPCredentialsGet.call(_this);
-    HTTPCredentialsCreate.call(_this);
     HTTPCommon.call(_this);
     StorageCommonPathTypeCanonical.call(_this);
   };
@@ -86,7 +84,6 @@
       StorageCreateDetails.constructFromObject(data, obj);
       HTTPCredentials.constructFromObject(data, obj);
       HTTPCredentialsGet.constructFromObject(data, obj);
-      HTTPCredentialsCreate.constructFromObject(data, obj);
       HTTPCommon.constructFromObject(data, obj);
       StorageCommonPathTypeCanonical.constructFromObject(data, obj);
     }
@@ -136,7 +133,6 @@ exports.prototype['onedataAccessToken'] = undefined;
    */
 exports.prototype['oauth2IdP'] = undefined;
 
-  // Implement HTTPCredentialsCreate interface:
   /**
    * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
    * @member {String} onedataAccessToken

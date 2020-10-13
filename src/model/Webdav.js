@@ -121,6 +121,12 @@ exports.prototype['credentials'] = undefined;
    */
 exports.prototype['oauth2IdP'] = undefined;
 
+  /**
+   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * @member {String} onedataAccessToken
+   */
+exports.prototype['onedataAccessToken'] = undefined;
+
   // Implement WebdavCommon interface:
   /**
    * @member {module:model/WebdavCommon.TypeEnum} type

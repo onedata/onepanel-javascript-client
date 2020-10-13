@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCommonPathTypeCanonical', 'model/StorageCreateDetails', 'model/WebdavCommon', 'model/WebdavCredentials', 'model/WebdavCredentialsCreate', 'model/WebdavCredentialsGet'], factory);
+    define(['ApiClient', 'model/StorageCommonPathTypeCanonical', 'model/StorageCreateDetails', 'model/WebdavCommon', 'model/WebdavCredentials', 'model/WebdavCredentialsGet'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCommonPathTypeCanonical'), require('./StorageCreateDetails'), require('./WebdavCommon'), require('./WebdavCredentials'), require('./WebdavCredentialsCreate'), require('./WebdavCredentialsGet'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCommonPathTypeCanonical'), require('./StorageCreateDetails'), require('./WebdavCommon'), require('./WebdavCredentials'), require('./WebdavCredentialsGet'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebdavCreate = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageCreateDetails, root.Onepanel.WebdavCommon, root.Onepanel.WebdavCredentials, root.Onepanel.WebdavCredentialsCreate, root.Onepanel.WebdavCredentialsGet);
+    root.Onepanel.WebdavCreate = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageCreateDetails, root.Onepanel.WebdavCommon, root.Onepanel.WebdavCredentials, root.Onepanel.WebdavCredentialsGet);
   }
-}(this, function(ApiClient, StorageCommonPathTypeCanonical, StorageCreateDetails, WebdavCommon, WebdavCredentials, WebdavCredentialsCreate, WebdavCredentialsGet) {
+}(this, function(ApiClient, StorageCommonPathTypeCanonical, StorageCreateDetails, WebdavCommon, WebdavCredentials, WebdavCredentialsGet) {
   'use strict';
 
 
@@ -48,7 +48,6 @@
    * @extends module:model/StorageCreateDetails
    * @implements module:model/WebdavCredentials
    * @implements module:model/WebdavCredentialsGet
-   * @implements module:model/WebdavCredentialsCreate
    * @implements module:model/WebdavCommon
    * @implements module:model/StorageCommonPathTypeCanonical
    * @param type {String} 
@@ -58,7 +57,6 @@
     StorageCreateDetails.call(_this);
     WebdavCredentials.call(_this, type);
     WebdavCredentialsGet.call(_this);
-    WebdavCredentialsCreate.call(_this);
     WebdavCommon.call(_this);
     StorageCommonPathTypeCanonical.call(_this);
   };
@@ -86,7 +84,6 @@
       StorageCreateDetails.constructFromObject(data, obj);
       WebdavCredentials.constructFromObject(data, obj);
       WebdavCredentialsGet.constructFromObject(data, obj);
-      WebdavCredentialsCreate.constructFromObject(data, obj);
       WebdavCommon.constructFromObject(data, obj);
       StorageCommonPathTypeCanonical.constructFromObject(data, obj);
     }
@@ -124,7 +121,6 @@ exports.prototype['credentials'] = undefined;
    */
 exports.prototype['oauth2IdP'] = undefined;
 
-  // Implement WebdavCredentialsCreate interface:
   /**
    * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
    * @member {String} onedataAccessToken

@@ -49,6 +49,7 @@
     var _this = this;
 
 
+
   };
 
   /**
@@ -75,6 +76,9 @@
       if (data.hasOwnProperty('oauth2IdP')) {
         obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
       }
+      if (data.hasOwnProperty('onedataAccessToken')) {
+        obj['onedataAccessToken'] = ApiClient.convertToType(data['onedataAccessToken'], 'String');
+      }
     }
     return obj;
   }
@@ -84,6 +88,11 @@
    * @member {String} oauth2IdP
    */
   exports.prototype['oauth2IdP'] = undefined;
+  /**
+   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
+   * @member {String} onedataAccessToken
+   */
+  exports.prototype['onedataAccessToken'] = undefined;
 
 
 

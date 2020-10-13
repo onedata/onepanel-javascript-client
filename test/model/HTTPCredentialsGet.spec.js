@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property onedataAccessToken (base name: "onedataAccessToken")', function() {
+      // uncomment below and update the code to test the property onedataAccessToken
+      //var instane = new Onepanel.HTTPCredentialsGet();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

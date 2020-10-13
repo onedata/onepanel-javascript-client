@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.TimeStats();
+    instance = new Onepanel.AutoStorageImportStats();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,34 @@
       object[property] = value;
   }
 
-  describe('TimeStats', function() {
-    it('should create an instance of TimeStats', function() {
-      // uncomment below and update the code to test TimeStats
-      //var instane = new Onepanel.TimeStats();
-      //expect(instance).to.be.a(Onepanel.TimeStats);
+  describe('AutoStorageImportStats', function() {
+    it('should create an instance of AutoStorageImportStats', function() {
+      // uncomment below and update the code to test AutoStorageImportStats
+      //var instane = new Onepanel.AutoStorageImportStats();
+      //expect(instance).to.be.a(Onepanel.AutoStorageImportStats);
     });
 
-    it('should have the property lastValueDate (base name: "lastValueDate")', function() {
-      // uncomment below and update the code to test the property lastValueDate
-      //var instane = new Onepanel.TimeStats();
+    it('should have the property queueLength (base name: "queueLength")', function() {
+      // uncomment below and update the code to test the property queueLength
+      //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property values (base name: "values")', function() {
-      // uncomment below and update the code to test the property values
-      //var instane = new Onepanel.TimeStats();
+    it('should have the property createdFiles (base name: "createdFiles")', function() {
+      // uncomment below and update the code to test the property createdFiles
+      //var instane = new Onepanel.AutoStorageImportStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property modifiedFiles (base name: "modifiedFiles")', function() {
+      // uncomment below and update the code to test the property modifiedFiles
+      //var instane = new Onepanel.AutoStorageImportStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deletedFiles (base name: "deletedFiles")', function() {
+      // uncomment below and update the code to test the property deletedFiles
+      //var instane = new Onepanel.AutoStorageImportStats();
       //expect(instance).to.be();
     });
 

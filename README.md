@@ -184,6 +184,10 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**configureFilePopularity**](docs/OneproviderApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
 *Onepanel.OneproviderApi* | [**configureProvider**](docs/OneproviderApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
 *Onepanel.OneproviderApi* | [**configureSpaceAutoCleaning**](docs/OneproviderApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+*Onepanel.OneproviderApi* | [**forceStartAutoStorageImportScan**](docs/OneproviderApi.md#forceStartAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-start | Force start auto storage import scan
+*Onepanel.OneproviderApi* | [**forceStopAutoStorageImportScan**](docs/OneproviderApi.md#forceStopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-stop | Force stop auto storage import scan
+*Onepanel.OneproviderApi* | [**getAutoStorageImportInfo**](docs/OneproviderApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan.
+*Onepanel.OneproviderApi* | [**getAutoStorageImportStats**](docs/OneproviderApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
 *Onepanel.OneproviderApi* | [**getBlockDevices**](docs/OneproviderApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
 *Onepanel.OneproviderApi* | [**getCephManager**](docs/OneproviderApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
 *Onepanel.OneproviderApi* | [**getCephManagers**](docs/OneproviderApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph managers
@@ -199,6 +203,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getCephStatus**](docs/OneproviderApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
 *Onepanel.OneproviderApi* | [**getCephUsage**](docs/OneproviderApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
 *Onepanel.OneproviderApi* | [**getFilePopularityConfiguration**](docs/OneproviderApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
+*Onepanel.OneproviderApi* | [**getManualStorageImportExample**](docs/OneproviderApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example.
 *Onepanel.OneproviderApi* | [**getOnezoneInfo**](docs/OneproviderApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
 *Onepanel.OneproviderApi* | [**getProvider**](docs/OneproviderApi.md#getProvider) | **GET** /provider | Get provider details
 *Onepanel.OneproviderApi* | [**getProviderClusterIps**](docs/OneproviderApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
@@ -211,7 +216,6 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReport**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningReports**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
 *Onepanel.OneproviderApi* | [**getProviderSpaceAutoCleaningStatus**](docs/OneproviderApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
-*Onepanel.OneproviderApi* | [**getProviderSpaceSyncStats**](docs/OneproviderApi.md#getProviderSpaceSyncStats) | **GET** /provider/spaces/{id}/sync | Get statistics of storage synchronization
 *Onepanel.OneproviderApi* | [**getProviderSpaces**](docs/OneproviderApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.OneproviderApi* | [**getProviderWorkerStatus**](docs/OneproviderApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderApi* | [**getProviderWorkersStatus**](docs/OneproviderApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
@@ -269,6 +273,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [Onepanel.AutoStorageImportConfig](docs/AutoStorageImportConfig.md)
+ - [Onepanel.AutoStorageImportInfo](docs/AutoStorageImportInfo.md)
+ - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
  - [Onepanel.BlockDevices](docs/BlockDevices.md)
  - [Onepanel.BlockDevicesBlockDevices](docs/BlockDevicesBlockDevices.md)
  - [Onepanel.CephCommon](docs/CephCommon.md)
@@ -321,6 +328,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.LumaStorageUser](docs/LumaStorageUser.md)
  - [Onepanel.LumaUserMapping](docs/LumaUserMapping.md)
  - [Onepanel.ManagerHosts](docs/ManagerHosts.md)
+ - [Onepanel.ManualStorageImportExample](docs/ManualStorageImportExample.md)
  - [Onepanel.ModifyClusterIps](docs/ModifyClusterIps.md)
  - [Onepanel.Node](docs/Node.md)
  - [Onepanel.NulldeviceCommon](docs/NulldeviceCommon.md)
@@ -359,21 +367,18 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceFilePopularityConfiguration](docs/SpaceFilePopularityConfiguration.md)
  - [Onepanel.SpaceModifyRequest](docs/SpaceModifyRequest.md)
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
- - [Onepanel.SpaceSyncStats](docs/SpaceSyncStats.md)
  - [Onepanel.StorageCommonPathTypeCanonical](docs/StorageCommonPathTypeCanonical.md)
  - [Onepanel.StorageCommonPathTypeFlat](docs/StorageCommonPathTypeFlat.md)
  - [Onepanel.StorageCreateDetails](docs/StorageCreateDetails.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
  - [Onepanel.StorageGetDetails](docs/StorageGetDetails.md)
- - [Onepanel.StorageImportDetails](docs/StorageImportDetails.md)
+ - [Onepanel.StorageImport](docs/StorageImport.md)
  - [Onepanel.StorageModifyDetails](docs/StorageModifyDetails.md)
  - [Onepanel.StorageModifyRequest](docs/StorageModifyRequest.md)
- - [Onepanel.StorageUpdateDetails](docs/StorageUpdateDetails.md)
  - [Onepanel.SwiftCommon](docs/SwiftCommon.md)
  - [Onepanel.TaskId](docs/TaskId.md)
  - [Onepanel.TaskStatus](docs/TaskStatus.md)
  - [Onepanel.TimeStats](docs/TimeStats.md)
- - [Onepanel.TimeStatsCollection](docs/TimeStatsCollection.md)
  - [Onepanel.Token](docs/Token.md)
  - [Onepanel.TransfersMock](docs/TransfersMock.md)
  - [Onepanel.VersionInfo](docs/VersionInfo.md)

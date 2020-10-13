@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/LumaStorageCredentials'], factory);
+    define(['ApiClient', 'model/CephCredentialsOptional'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./LumaStorageCredentials'));
+    module.exports = factory(require('../ApiClient'), require('./CephCredentialsOptional'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephCredentials = factory(root.Onepanel.ApiClient, root.Onepanel.LumaStorageCredentials);
+    root.Onepanel.CephCredentials = factory(root.Onepanel.ApiClient, root.Onepanel.CephCredentialsOptional);
   }
-}(this, function(ApiClient, LumaStorageCredentials) {
+}(this, function(ApiClient, CephCredentialsOptional) {
   'use strict';
 
 
@@ -45,17 +45,11 @@
    * Credentials on the CEPH storage.
    * @alias module:model/CephCredentials
    * @class
-   * @extends module:model/LumaStorageCredentials
-   * @param type {module:model/CephCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
-   * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
+   * @extends module:model/CephCredentialsOptional
    */
-  var exports = function(type, username, key) {
+  var exports = function() {
     var _this = this;
-    LumaStorageCredentials.call(_this);
-    _this['type'] = type;
-    _this['username'] = username;
-    _this['key'] = key;
+    CephCredentialsOptional.call(_this);
   };
 
   /**
@@ -78,51 +72,15 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      LumaStorageCredentials.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
+      CephCredentialsOptional.constructFromObject(data, obj);
     }
     return obj;
   }
 
-  exports.prototype = Object.create(LumaStorageCredentials.prototype);
+  exports.prototype = Object.create(CephCredentialsOptional.prototype);
   exports.prototype.constructor = exports;
 
-  /**
-   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/CephCredentials.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
-   * @member {String} key
-   */
-  exports.prototype['key'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "ceph"
-     * @const
-     */
-    "ceph": "ceph"  };
 
 
   return exports;

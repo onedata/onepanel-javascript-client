@@ -552,7 +552,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var storageCreateRequest = new Onepanel.StorageCreateRequest(); // StorageCreateRequest | The configuration details of storage resources to be added to the provider deployment. 
+var storageCreateRequest = new Onepanel.StorageCreateDetails(); // StorageCreateDetails | The configuration details of storage resources to be added to the provider deployment. 
 
 
 var callback = function(error, data, response) {
@@ -569,7 +569,7 @@ apiInstance.addStorage(storageCreateRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storageCreateRequest** | [**StorageCreateRequest**](StorageCreateRequest.md)| The configuration details of storage resources to be added to the provider deployment.  | 
+ **storageCreateRequest** | [**StorageCreateDetails**](StorageCreateDetails.md)| The configuration details of storage resources to be added to the provider deployment.  | 
 
 ### Return type
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephradosCredentials', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/CephradosCommon', 'model/CephradosCredentialsOptional', 'model/StorageCommonPathTypeFlat', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephradosCredentials'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephradosCommon'), require('./CephradosCredentialsOptional'), require('./StorageCommonPathTypeFlat'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Cephrados = factory(root.Onepanel.ApiClient, root.Onepanel.CephradosCredentials, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Cephrados = factory(root.Onepanel.ApiClient, root.Onepanel.CephradosCommon, root.Onepanel.CephradosCredentialsOptional, root.Onepanel.StorageCommonPathTypeFlat, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, CephradosCredentials, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, CephradosCommon, CephradosCredentialsOptional, StorageCommonPathTypeFlat, StorageGetDetails) {
   'use strict';
 
 
@@ -46,25 +46,16 @@
    * @alias module:model/Cephrados
    * @class
    * @extends module:model/StorageGetDetails
-   * @implements module:model/StorageCreateDetails
-   * @implements module:model/CephradosCredentials
-   * @param type {module:model/Cephrados.TypeEnum} The type of storage.
-   * @param username {String} The username of the Ceph cluster administrator.
-   * @param key {String} The admin key to access the Ceph cluster.
-   * @param monitorHostname {String} The monitor hostname.
-   * @param clusterName {String} The Ceph cluster name.
-   * @param poolName {String} The Ceph pool name.
+   * @implements module:model/CephradosCredentialsOptional
+   * @implements module:model/CephradosCommon
+   * @implements module:model/StorageCommonPathTypeFlat
    */
-  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
+  var exports = function() {
     var _this = this;
     StorageGetDetails.call(_this);
-    StorageCreateDetails.call(_this);
-    CephradosCredentials.call(_this, type, username, key);
-    _this['type'] = type;
-    _this['monitorHostname'] = monitorHostname;
-    _this['clusterName'] = clusterName;
-    _this['poolName'] = poolName;
-
+    CephradosCredentialsOptional.call(_this);
+    CephradosCommon.call(_this);
+    StorageCommonPathTypeFlat.call(_this);
 
   };
 
@@ -89,25 +80,11 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
-      StorageCreateDetails.constructFromObject(data, obj);
-      CephradosCredentials.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('monitorHostname')) {
-        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
-      }
-      if (data.hasOwnProperty('clusterName')) {
-        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
-      }
-      if (data.hasOwnProperty('poolName')) {
-        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
-      }
+      CephradosCredentialsOptional.constructFromObject(data, obj);
+      CephradosCommon.constructFromObject(data, obj);
+      StorageCommonPathTypeFlat.constructFromObject(data, obj);
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
@@ -117,100 +94,15 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {module:model/Cephrados.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * The monitor hostname.
-   * @member {String} monitorHostname
-   */
-  exports.prototype['monitorHostname'] = undefined;
-  /**
-   * The Ceph cluster name.
-   * @member {String} clusterName
-   */
-  exports.prototype['clusterName'] = undefined;
-  /**
-   * The Ceph pool name.
-   * @member {String} poolName
-   */
-  exports.prototype['poolName'] = undefined;
-  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-  exports.prototype['storagePathType'] = 'flat';
 
-  // Implement StorageCreateDetails interface:
-  /**
-   * The type of storage.
-   * @member {String} type
-   */
-exports.prototype['type'] = undefined;
-
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-exports.prototype['timeout'] = undefined;
-
-  /**
-   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
-   * @member {Boolean} skipStorageDetection
-   * @default false
-   */
-exports.prototype['skipStorageDetection'] = false;
-
-  /**
-   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
-   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
-   * @default 'auto'
-   */
-exports.prototype['lumaFeed'] = 'auto';
-
-  /**
-   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaFeedUrl
-   */
-exports.prototype['lumaFeedUrl'] = undefined;
-
-  /**
-   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaFeedApiKey
-   */
-exports.prototype['lumaFeedApiKey'] = undefined;
-
-  /**
-   * Map with key-value pairs used for describing storage QoS parameters.
-   * @member {Object.<String, String>} qosParameters
-   */
-exports.prototype['qosParameters'] = undefined;
-
-  /**
-   * Defines whether storage contains existing data to be imported. 
-   * @member {Boolean} importedStorage
-   * @default false
-   */
-exports.prototype['importedStorage'] = false;
-
-  /**
-   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
-   * @member {Boolean} readonly
-   * @default false
-   */
-exports.prototype['readonly'] = false;
-
-  // Implement CephradosCredentials interface:
+  // Implement CephradosCredentialsOptional interface:
   /**
    * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/CephradosCredentials.TypeEnum} type
+   * @member {module:model/CephradosCredentialsOptional.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
 
@@ -226,18 +118,38 @@ exports.prototype['username'] = undefined;
    */
 exports.prototype['key'] = undefined;
 
+  // Implement CephradosCommon interface:
+  /**
+   * @member {module:model/CephradosCommon.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
 
   /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
+   * The monitor hostname.
+   * @member {String} monitorHostname
    */
-  exports.TypeEnum = {
-    /**
-     * value: "cephrados"
-     * @const
-     */
-    "cephrados": "cephrados"  };
+exports.prototype['monitorHostname'] = undefined;
+
+  /**
+   * The Ceph cluster name.
+   * @member {String} clusterName
+   */
+exports.prototype['clusterName'] = undefined;
+
+  /**
+   * The Ceph pool name.
+   * @member {String} poolName
+   */
+exports.prototype['poolName'] = undefined;
+
+  // Implement StorageCommonPathTypeFlat interface:
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+exports.prototype['storagePathType'] = 'flat';
+
 
 
   return exports;

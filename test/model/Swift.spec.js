@@ -57,38 +57,8 @@
       //expect(instance).to.be.a(Onepanel.Swift);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property authUrl (base name: "authUrl")', function() {
-      // uncomment below and update the code to test the property authUrl
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tenantName (base name: "tenantName")', function() {
-      // uncomment below and update the code to test the property tenantName
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property containerName (base name: "containerName")', function() {
-      // uncomment below and update the code to test the property containerName
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
-      //var instane = new Onepanel.Swift();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
       //var instane = new Onepanel.Swift();
       //expect(instance).to.be();
     });

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/CephradosCommon', 'model/CephradosCredentialsOptional', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephradosCommon'), require('./CephradosCredentialsOptional'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephradosModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.CephradosModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephradosCommon, root.Onepanel.CephradosCredentialsOptional, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, CephradosCommon, CephradosCredentialsOptional, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,17 +46,14 @@
    * @alias module:model/CephradosModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/CephradosModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @implements module:model/CephradosCredentialsOptional
+   * @implements module:model/CephradosCommon
    */
-  var exports = function(type) {
+  var exports = function() {
     var _this = this;
     StorageModifyDetails.call(_this);
-    _this['type'] = type;
-
-
-
-
-
+    CephradosCredentialsOptional.call(_this);
+    CephradosCommon.call(_this);
   };
 
   /**
@@ -80,24 +77,8 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
-      if (data.hasOwnProperty('monitorHostname')) {
-        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
-      }
-      if (data.hasOwnProperty('clusterName')) {
-        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
-      }
-      if (data.hasOwnProperty('poolName')) {
-        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
-      }
+      CephradosCredentialsOptional.constructFromObject(data, obj);
+      CephradosCommon.constructFromObject(data, obj);
     }
     return obj;
   }
@@ -105,49 +86,50 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
+
+  // Implement CephradosCredentialsOptional interface:
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/CephradosModify.TypeEnum} type
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/CephradosCredentialsOptional.TypeEnum} type
    */
-  exports.prototype['type'] = undefined;
+exports.prototype['type'] = undefined;
+
   /**
    * The username of the Ceph cluster administrator.
    * @member {String} username
    */
-  exports.prototype['username'] = undefined;
+exports.prototype['username'] = undefined;
+
   /**
    * The admin key to access the Ceph cluster.
    * @member {String} key
    */
-  exports.prototype['key'] = undefined;
+exports.prototype['key'] = undefined;
+
+  // Implement CephradosCommon interface:
+  /**
+   * @member {module:model/CephradosCommon.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
   /**
    * The monitor hostname.
    * @member {String} monitorHostname
    */
-  exports.prototype['monitorHostname'] = undefined;
+exports.prototype['monitorHostname'] = undefined;
+
   /**
    * The Ceph cluster name.
    * @member {String} clusterName
    */
-  exports.prototype['clusterName'] = undefined;
+exports.prototype['clusterName'] = undefined;
+
   /**
    * The Ceph pool name.
    * @member {String} poolName
    */
-  exports.prototype['poolName'] = undefined;
+exports.prototype['poolName'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "cephrados"
-     * @const
-     */
-    "cephrados": "cephrados"  };
 
 
   return exports;

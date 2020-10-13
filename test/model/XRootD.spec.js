@@ -57,36 +57,6 @@
       //expect(instance).to.be.a(Onepanel.XRootD);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.XRootD();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property url (base name: "url")', function() {
-      // uncomment below and update the code to test the property url
-      //var instane = new Onepanel.XRootD();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fileModeMask (base name: "fileModeMask")', function() {
-      // uncomment below and update the code to test the property fileModeMask
-      //var instane = new Onepanel.XRootD();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property dirModeMask (base name: "dirModeMask")', function() {
-      // uncomment below and update the code to test the property dirModeMask
-      //var instane = new Onepanel.XRootD();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.XRootD();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

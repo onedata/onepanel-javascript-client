@@ -57,42 +57,6 @@
       //expect(instance).to.be.a(Onepanel.CephModify);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property key (base name: "key")', function() {
-      // uncomment below and update the code to test the property key
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property monitorHostname (base name: "monitorHostname")', function() {
-      // uncomment below and update the code to test the property monitorHostname
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property clusterName (base name: "clusterName")', function() {
-      // uncomment below and update the code to test the property clusterName
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property poolName (base name: "poolName")', function() {
-      // uncomment below and update the code to test the property poolName
-      //var instane = new Onepanel.CephModify();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

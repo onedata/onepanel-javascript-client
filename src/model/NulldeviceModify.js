@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/NulldeviceCommon', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./NulldeviceCommon'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.NulldeviceModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.NulldeviceModify = factory(root.Onepanel.ApiClient, root.Onepanel.NulldeviceCommon, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, NulldeviceCommon, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,18 +46,13 @@
    * @alias module:model/NulldeviceModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/NulldeviceModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @implements module:model/NulldeviceCommon
+   * @param type {module:model/NulldeviceCommon.TypeEnum} 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    _this['type'] = type;
-
-
-
-
-
-
+    NulldeviceCommon.call(_this, type);
   };
 
   /**
@@ -81,27 +76,7 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('latencyMin')) {
-        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
-      }
-      if (data.hasOwnProperty('latencyMax')) {
-        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
-      }
-      if (data.hasOwnProperty('timeoutProbability')) {
-        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
-      }
-      if (data.hasOwnProperty('filter')) {
-        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
-      }
-      if (data.hasOwnProperty('simulatedFilesystemParameters')) {
-        obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
-      }
-      if (data.hasOwnProperty('simulatedFilesystemGrowSpeed')) {
-        obj['simulatedFilesystemGrowSpeed'] = ApiClient.convertToType(data['simulatedFilesystemGrowSpeed'], 'Number');
-      }
+      NulldeviceCommon.constructFromObject(data, obj);
     }
     return obj;
   }
@@ -109,54 +84,53 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
+
+  // Implement NulldeviceCommon interface:
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/NulldeviceModify.TypeEnum} type
+   * @member {module:model/NulldeviceCommon.TypeEnum} type
    */
-  exports.prototype['type'] = undefined;
+exports.prototype['type'] = undefined;
+
   /**
    * Minimum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMin
    */
-  exports.prototype['latencyMin'] = undefined;
+exports.prototype['latencyMin'] = undefined;
+
   /**
    * Maximum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMax
    */
-  exports.prototype['latencyMax'] = undefined;
+exports.prototype['latencyMax'] = undefined;
+
   /**
    * Probability (0.0, 1.0), with which an operation should return a timeout error. 
    * @member {Number} timeoutProbability
+   * @default 0.0
    */
-  exports.prototype['timeoutProbability'] = undefined;
+exports.prototype['timeoutProbability'] = 0.0;
+
   /**
    * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
    * @member {String} filter
+   * @default '*'
    */
-  exports.prototype['filter'] = undefined;
+exports.prototype['filter'] = '*';
+
   /**
    * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
    * @member {String} simulatedFilesystemParameters
+   * @default ''
    */
-  exports.prototype['simulatedFilesystemParameters'] = undefined;
+exports.prototype['simulatedFilesystemParameters'] = '';
+
   /**
    * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
    * @member {Number} simulatedFilesystemGrowSpeed
+   * @default 0.0
    */
-  exports.prototype['simulatedFilesystemGrowSpeed'] = undefined;
+exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "nulldevice"
-     * @const
-     */
-    "nulldevice": "nulldevice"  };
 
 
   return exports;

@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>StorageGetDetails</code>.
-   * The cluster storage configuration.
+   * The storage configuration.
    * @alias module:model/StorageGetDetails
    * @class
    */

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephPool', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/CephPool', 'model/LocalcephCommon', 'model/StorageCommonPathTypeFlat', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./LocalcephCommon'), require('./StorageCommonPathTypeFlat'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Localceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Localceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.LocalcephCommon, root.Onepanel.StorageCommonPathTypeFlat, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, CephPool, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, CephPool, LocalcephCommon, StorageCommonPathTypeFlat, StorageGetDetails) {
   'use strict';
 
 
@@ -46,16 +46,16 @@
    * @alias module:model/Localceph
    * @class
    * @extends module:model/StorageGetDetails
-   * @implements module:model/StorageCreateDetails
    * @implements module:model/CephPool
+   * @implements module:model/LocalcephCommon
+   * @implements module:model/StorageCommonPathTypeFlat
    */
   var exports = function() {
     var _this = this;
     StorageGetDetails.call(_this);
-    StorageCreateDetails.call(_this);
     CephPool.call(_this);
-
-
+    LocalcephCommon.call(_this);
+    StorageCommonPathTypeFlat.call(_this);
 
   };
 
@@ -80,16 +80,11 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
-      StorageCreateDetails.constructFromObject(data, obj);
       CephPool.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
+      LocalcephCommon.constructFromObject(data, obj);
+      StorageCommonPathTypeFlat.constructFromObject(data, obj);
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
@@ -99,80 +94,10 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-  exports.prototype['storagePathType'] = 'flat';
-
-  // Implement StorageCreateDetails interface:
-  /**
-   * The type of storage.
-   * @member {String} type
-   */
-exports.prototype['type'] = undefined;
-
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-exports.prototype['timeout'] = undefined;
-
-  /**
-   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
-   * @member {Boolean} skipStorageDetection
-   * @default false
-   */
-exports.prototype['skipStorageDetection'] = false;
-
-  /**
-   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
-   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
-   * @default 'auto'
-   */
-exports.prototype['lumaFeed'] = 'auto';
-
-  /**
-   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaFeedUrl
-   */
-exports.prototype['lumaFeedUrl'] = undefined;
-
-  /**
-   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaFeedApiKey
-   */
-exports.prototype['lumaFeedApiKey'] = undefined;
-
-  /**
-   * Map with key-value pairs used for describing storage QoS parameters.
-   * @member {Object.<String, String>} qosParameters
-   */
-exports.prototype['qosParameters'] = undefined;
-
-  /**
-   * Defines whether storage contains existing data to be imported. 
-   * @member {Boolean} importedStorage
-   * @default false
-   */
-exports.prototype['importedStorage'] = false;
-
-  /**
-   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
-   * @member {Boolean} readonly
-   * @default false
-   */
-exports.prototype['readonly'] = false;
 
   // Implement CephPool interface:
   /**
@@ -192,6 +117,20 @@ exports.prototype['copiesNumber'] = undefined;
    * @member {Number} minCopiesNumber
    */
 exports.prototype['minCopiesNumber'] = undefined;
+
+  // Implement LocalcephCommon interface:
+  /**
+   * @member {module:model/LocalcephCommon.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
+  // Implement StorageCommonPathTypeFlat interface:
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+exports.prototype['storagePathType'] = 'flat';
 
 
 

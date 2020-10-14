@@ -42,13 +42,12 @@
 
   /**
    * Constructs a new <code>StorageGetDetails</code>.
-   * The cluster storage configuration.
+   * The storage configuration.
    * @alias module:model/StorageGetDetails
    * @class
    */
   var exports = function() {
     var _this = this;
-
 
 
 
@@ -93,9 +92,6 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('verificationPassed')) {
-        obj['verificationPassed'] = ApiClient.convertToType(data['verificationPassed'], 'Boolean');
-      }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
       }
@@ -125,7 +121,7 @@
   }
 
   /**
-   * The type of storage.
+   * The type of this storage.
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
@@ -140,11 +136,6 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
-   * @member {Boolean} verificationPassed
-   */
-  exports.prototype['verificationPassed'] = undefined;
-  /**
    * Storage operation timeout in milliseconds.
    * @member {Number} timeout
    */
@@ -152,8 +143,9 @@
   /**
    * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
    * @member {Boolean} skipStorageDetection
+   * @default false
    */
-  exports.prototype['skipStorageDetection'] = undefined;
+  exports.prototype['skipStorageDetection'] = false;
   /**
    * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed

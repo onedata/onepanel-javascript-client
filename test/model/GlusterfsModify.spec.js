@@ -57,48 +57,6 @@
       //expect(instance).to.be.a(Onepanel.GlusterfsModify);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property volume (base name: "volume")', function() {
-      // uncomment below and update the code to test the property volume
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property port (base name: "port")', function() {
-      // uncomment below and update the code to test the property port
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property transport (base name: "transport")', function() {
-      // uncomment below and update the code to test the property transport
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property mountPoint (base name: "mountPoint")', function() {
-      // uncomment below and update the code to test the property mountPoint
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property xlatorOptions (base name: "xlatorOptions")', function() {
-      // uncomment below and update the code to test the property xlatorOptions
-      //var instane = new Onepanel.GlusterfsModify();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

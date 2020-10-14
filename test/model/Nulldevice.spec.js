@@ -57,54 +57,6 @@
       //expect(instance).to.be.a(Onepanel.Nulldevice);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property latencyMin (base name: "latencyMin")', function() {
-      // uncomment below and update the code to test the property latencyMin
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property latencyMax (base name: "latencyMax")', function() {
-      // uncomment below and update the code to test the property latencyMax
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timeoutProbability (base name: "timeoutProbability")', function() {
-      // uncomment below and update the code to test the property timeoutProbability
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property filter (base name: "filter")', function() {
-      // uncomment below and update the code to test the property filter
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storagePathType (base name: "storagePathType")', function() {
-      // uncomment below and update the code to test the property storagePathType
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
-      // uncomment below and update the code to test the property simulatedFilesystemParameters
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property simulatedFilesystemGrowSpeed (base name: "simulatedFilesystemGrowSpeed")', function() {
-      // uncomment below and update the code to test the property simulatedFilesystemGrowSpeed
-      //var instane = new Onepanel.Nulldevice();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

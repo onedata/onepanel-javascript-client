@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/PosixCommon', 'model/StorageCommonPathTypeCanonical', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./PosixCommon'), require('./StorageCommonPathTypeCanonical'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Posix = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Posix = factory(root.Onepanel.ApiClient, root.Onepanel.PosixCommon, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
+}(this, function(ApiClient, PosixCommon, StorageCommonPathTypeCanonical, StorageGetDetails) {
   'use strict';
 
 
@@ -46,17 +46,14 @@
    * @alias module:model/Posix
    * @class
    * @extends module:model/StorageGetDetails
-   * @implements module:model/StorageCreateDetails
-   * @param type {module:model/Posix.TypeEnum} The type of storage.
-   * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * @implements module:model/PosixCommon
+   * @implements module:model/StorageCommonPathTypeCanonical
    */
-  var exports = function(type, mountPoint) {
+  var exports = function() {
     var _this = this;
     StorageGetDetails.call(_this);
-    StorageCreateDetails.call(_this);
-    _this['type'] = type;
-    _this['mountPoint'] = mountPoint;
-
+    PosixCommon.call(_this);
+    StorageCommonPathTypeCanonical.call(_this);
   };
 
   /**
@@ -80,16 +77,8 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
-      StorageCreateDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('mountPoint')) {
-        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
-      }
-      if (data.hasOwnProperty('storagePathType')) {
-        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
-      }
+      PosixCommon.constructFromObject(data, obj);
+      StorageCommonPathTypeCanonical.constructFromObject(data, obj);
     }
     return obj;
   }
@@ -97,94 +86,27 @@
   exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
+
+  // Implement PosixCommon interface:
   /**
-   * The type of storage.
-   * @member {module:model/Posix.TypeEnum} type
+   * @member {module:model/PosixCommon.TypeEnum} type
    */
-  exports.prototype['type'] = undefined;
+exports.prototype['type'] = undefined;
+
   /**
    * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    * @member {String} mountPoint
    */
-  exports.prototype['mountPoint'] = undefined;
+exports.prototype['mountPoint'] = undefined;
+
+  // Implement StorageCommonPathTypeCanonical interface:
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'canonical'
    */
-  exports.prototype['storagePathType'] = 'canonical';
+exports.prototype['storagePathType'] = 'canonical';
 
-  // Implement StorageCreateDetails interface:
-  /**
-   * The type of storage.
-   * @member {String} type
-   */
-exports.prototype['type'] = undefined;
-
-  /**
-   * Storage operation timeout in milliseconds.
-   * @member {Number} timeout
-   */
-exports.prototype['timeout'] = undefined;
-
-  /**
-   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
-   * @member {Boolean} skipStorageDetection
-   * @default false
-   */
-exports.prototype['skipStorageDetection'] = false;
-
-  /**
-   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
-   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
-   * @default 'auto'
-   */
-exports.prototype['lumaFeed'] = 'auto';
-
-  /**
-   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
-   * @member {String} lumaFeedUrl
-   */
-exports.prototype['lumaFeedUrl'] = undefined;
-
-  /**
-   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
-   * @member {String} lumaFeedApiKey
-   */
-exports.prototype['lumaFeedApiKey'] = undefined;
-
-  /**
-   * Map with key-value pairs used for describing storage QoS parameters.
-   * @member {Object.<String, String>} qosParameters
-   */
-exports.prototype['qosParameters'] = undefined;
-
-  /**
-   * Defines whether storage contains existing data to be imported. 
-   * @member {Boolean} importedStorage
-   * @default false
-   */
-exports.prototype['importedStorage'] = false;
-
-  /**
-   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
-   * @member {Boolean} readonly
-   * @default false
-   */
-exports.prototype['readonly'] = false;
-
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "posix"
-     * @const
-     */
-    "posix": "posix"  };
 
 
   return exports;

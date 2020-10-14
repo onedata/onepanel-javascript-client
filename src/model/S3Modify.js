@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/S3Common', 'model/S3Credentials', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./S3Common'), require('./S3Credentials'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.S3Modify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.S3Modify = factory(root.Onepanel.ApiClient, root.Onepanel.S3Common, root.Onepanel.S3Credentials, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, S3Common, S3Credentials, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,20 +46,15 @@
    * @alias module:model/S3Modify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/S3Modify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @implements module:model/S3Credentials
+   * @implements module:model/S3Common
+   * @param type {module:model/S3Common.TypeEnum} 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    _this['type'] = type;
-
-
-
-
-
-
-
-
+    S3Credentials.call(_this, type);
+    S3Common.call(_this);
   };
 
   /**
@@ -83,33 +78,8 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('hostname')) {
-        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
-      }
-      if (data.hasOwnProperty('bucketName')) {
-        obj['bucketName'] = ApiClient.convertToType(data['bucketName'], 'String');
-      }
-      if (data.hasOwnProperty('accessKey')) {
-        obj['accessKey'] = ApiClient.convertToType(data['accessKey'], 'String');
-      }
-      if (data.hasOwnProperty('secretKey')) {
-        obj['secretKey'] = ApiClient.convertToType(data['secretKey'], 'String');
-      }
-      if (data.hasOwnProperty('signatureVersion')) {
-        obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
-      }
-      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
-        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
-      }
-      if (data.hasOwnProperty('fileMode')) {
-        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
-      }
-      if (data.hasOwnProperty('dirMode')) {
-        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
+      S3Credentials.constructFromObject(data, obj);
+      S3Common.constructFromObject(data, obj);
     }
     return obj;
   }
@@ -117,64 +87,72 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
+
+  // Implement S3Credentials interface:
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/S3Modify.TypeEnum} type
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/S3Credentials.TypeEnum} type
    */
-  exports.prototype['type'] = undefined;
+exports.prototype['type'] = undefined;
+
+  /**
+   * The access key to the S3 storage.
+   * @member {String} accessKey
+   * @default ''
+   */
+exports.prototype['accessKey'] = '';
+
+  /**
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
+   * @default ''
+   */
+exports.prototype['secretKey'] = '';
+
+  // Implement S3Common interface:
+  /**
+   * @member {module:model/S3Common.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
   /**
    * The hostname of a machine where S3 storage is installed.
    * @member {String} hostname
    */
-  exports.prototype['hostname'] = undefined;
+exports.prototype['hostname'] = undefined;
+
   /**
    * The storage bucket name.
    * @member {String} bucketName
    */
-  exports.prototype['bucketName'] = undefined;
-  /**
-   * The access key to the S3 storage.
-   * @member {String} accessKey
-   */
-  exports.prototype['accessKey'] = undefined;
-  /**
-   * The secret key to the S3 storage.
-   * @member {String} secretKey
-   */
-  exports.prototype['secretKey'] = undefined;
+exports.prototype['bucketName'] = undefined;
+
   /**
    * The version of signature used to sign requests. One of: 2, 4. Default: 4. 
    * @member {Number} signatureVersion
    */
-  exports.prototype['signatureVersion'] = undefined;
+exports.prototype['signatureVersion'] = undefined;
+
   /**
    * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
    * @member {Number} maximumCanonicalObjectSize
    */
-  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+exports.prototype['maximumCanonicalObjectSize'] = undefined;
+
   /**
    * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
+   * @default '0664'
    */
-  exports.prototype['fileMode'] = undefined;
+exports.prototype['fileMode'] = '0664';
+
   /**
    * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode
+   * @default '0775'
    */
-  exports.prototype['dirMode'] = undefined;
+exports.prototype['dirMode'] = '0775';
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "s3"
-     * @const
-     */
-    "s3": "s3"  };
 
 
   return exports;

@@ -75,12 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property verificationPassed (base name: "verificationPassed")', function() {
-      // uncomment below and update the code to test the property verificationPassed
-      //var instane = new Onepanel.StorageGetDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property timeout (base name: "timeout")', function() {
       // uncomment below and update the code to test the property timeout
       //var instane = new Onepanel.StorageGetDetails();

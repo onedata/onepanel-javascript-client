@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails', 'model/WebdavCommon', 'model/WebdavCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'), require('./WebdavCommon'), require('./WebdavCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.WebdavModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails, root.Onepanel.WebdavCommon, root.Onepanel.WebdavCredentials);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(ApiClient, StorageModifyDetails, WebdavCommon, WebdavCredentials) {
   'use strict';
 
 
@@ -46,22 +46,15 @@
    * @alias module:model/WebdavModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/WebdavModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @implements module:model/WebdavCredentials
+   * @implements module:model/WebdavCommon
+   * @param type {module:model/WebdavCommon.TypeEnum} 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    _this['type'] = type;
-
-
-
-
-
-
-
-
-
-
+    WebdavCredentials.call(_this, type);
+    WebdavCommon.call(_this);
   };
 
   /**
@@ -85,39 +78,8 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('endpoint')) {
-        obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
-      }
-      if (data.hasOwnProperty('verifyServerCertificate')) {
-        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
-      }
-      if (data.hasOwnProperty('credentialsType')) {
-        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
-      }
-      if (data.hasOwnProperty('credentials')) {
-        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
-      }
-      if (data.hasOwnProperty('authorizationHeader')) {
-        obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
-      }
-      if (data.hasOwnProperty('rangeWriteSupport')) {
-        obj['rangeWriteSupport'] = ApiClient.convertToType(data['rangeWriteSupport'], 'String');
-      }
-      if (data.hasOwnProperty('connectionPoolSize')) {
-        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
-      }
-      if (data.hasOwnProperty('maximumUploadSize')) {
-        obj['maximumUploadSize'] = ApiClient.convertToType(data['maximumUploadSize'], 'Number');
-      }
-      if (data.hasOwnProperty('fileMode')) {
-        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
-      }
-      if (data.hasOwnProperty('dirMode')) {
-        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
-      }
+      WebdavCredentials.constructFromObject(data, obj);
+      WebdavCommon.constructFromObject(data, obj);
     }
     return obj;
   }
@@ -125,118 +87,86 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
+
+  // Implement WebdavCredentials interface:
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/WebdavModify.TypeEnum} type
+   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/WebdavCredentials.TypeEnum} type
    */
-  exports.prototype['type'] = undefined;
+exports.prototype['type'] = undefined;
+
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/WebdavCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+exports.prototype['credentialsType'] = 'none';
+
+  /**
+   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the WebDAV, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+exports.prototype['credentials'] = undefined;
+
+  // Implement WebdavCommon interface:
+  /**
+   * @member {module:model/WebdavCommon.TypeEnum} type
+   */
+exports.prototype['type'] = undefined;
+
   /**
    * Full URL of the WebDAV server, including scheme (http or https) and path. 
    * @member {String} endpoint
    */
-  exports.prototype['endpoint'] = undefined;
+exports.prototype['endpoint'] = undefined;
+
   /**
    * Determines whether Oneprovider should verify the certificate of the WebDAV server. 
    * @member {Boolean} verifyServerCertificate
+   * @default true
    */
-  exports.prototype['verifyServerCertificate'] = undefined;
-  /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/WebdavModify.CredentialsTypeEnum} credentialsType
-   */
-  exports.prototype['credentialsType'] = undefined;
-  /**
-   * The credentials to authenticate with the WebDAV server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
-   * @member {String} credentials
-   */
-  exports.prototype['credentials'] = undefined;
+exports.prototype['verifyServerCertificate'] = true;
+
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
+   * @default 'Authorization: Bearer {}'
    */
-  exports.prototype['authorizationHeader'] = undefined;
+exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
+
   /**
    * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
-   * @member {module:model/WebdavModify.RangeWriteSupportEnum} rangeWriteSupport
+   * @member {module:model/WebdavCommon.RangeWriteSupportEnum} rangeWriteSupport
+   * @default 'none'
    */
-  exports.prototype['rangeWriteSupport'] = undefined;
+exports.prototype['rangeWriteSupport'] = 'none';
+
   /**
    * Defines the maximum number of parallel connections for a single WebDAV storage. 
    * @member {Number} connectionPoolSize
    */
-  exports.prototype['connectionPoolSize'] = undefined;
+exports.prototype['connectionPoolSize'] = undefined;
+
   /**
    * Defines the maximum upload size for a single `PUT` or `PATCH` request. If set to 0, assumes that the WebDAV server has no upload limit. 
    * @member {Number} maximumUploadSize
    */
-  exports.prototype['maximumUploadSize'] = undefined;
+exports.prototype['maximumUploadSize'] = undefined;
+
   /**
    * Defines the file permissions, which files imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode
+   * @default '0664'
    */
-  exports.prototype['fileMode'] = undefined;
+exports.prototype['fileMode'] = '0664';
+
   /**
    * Defines the directory mode which directories imported from WebDAV storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
    * @member {String} dirMode
+   * @default '0775'
    */
-  exports.prototype['dirMode'] = undefined;
+exports.prototype['dirMode'] = '0775';
 
-
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "webdav"
-     * @const
-     */
-    "webdav": "webdav"  };
-
-  /**
-   * Allowed values for the <code>credentialsType</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.CredentialsTypeEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "basic"
-     * @const
-     */
-    "basic": "basic",
-    /**
-     * value: "token"
-     * @const
-     */
-    "token": "token"  };
-
-  /**
-   * Allowed values for the <code>rangeWriteSupport</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.RangeWriteSupportEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "moddav"
-     * @const
-     */
-    "moddav": "moddav",
-    /**
-     * value: "sabredav"
-     * @const
-     */
-    "sabredav": "sabredav"  };
 
 
   return exports;

@@ -57,18 +57,6 @@
       //expect(instance).to.be.a(Onepanel.LocalcephModify);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.LocalcephModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.LocalcephModify();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

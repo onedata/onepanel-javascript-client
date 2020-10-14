@@ -57,6 +57,54 @@
       //expect(instance).to.be.a(Onepanel.HTTPModify);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property endpoint (base name: "endpoint")', function() {
+      // uncomment below and update the code to test the property endpoint
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property credentials (base name: "credentials")', function() {
+      // uncomment below and update the code to test the property credentials
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

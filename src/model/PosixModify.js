@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/PosixCommon', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./PosixCommon'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.PosixModify = factory(root.Onepanel.ApiClient, root.Onepanel.PosixCommon, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.PosixModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, PosixCommon, StorageModifyDetails) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,12 +46,13 @@
    * @alias module:model/PosixModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/PosixCommon
+   * @param type {module:model/PosixModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    PosixCommon.call(_this);
+    _this['type'] = type;
+
   };
 
   /**
@@ -75,7 +76,12 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      PosixCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
     }
     return obj;
   }
@@ -83,19 +89,29 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement PosixCommon interface:
   /**
-   * @member {module:model/PosixCommon.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/PosixModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    * @member {String} mountPoint
    */
-exports.prototype['mountPoint'] = undefined;
+  exports.prototype['mountPoint'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "posix"
+     * @const
+     */
+    "posix": "posix"  };
 
 
   return exports;

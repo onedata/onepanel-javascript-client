@@ -75,6 +75,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property oauth2IdP (base name: "oauth2IdP")', function() {
+      // uncomment below and update the code to test the property oauth2IdP
+      //var instane = new Onepanel.WebdavCredentials();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property onedataAccessToken (base name: "onedataAccessToken")', function() {
+      // uncomment below and update the code to test the property onedataAccessToken
+      //var instane = new Onepanel.WebdavCredentials();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

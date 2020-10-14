@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>StorageModifyDetails</code>.
-   * An object with new values for storage parameters to be updated.
+   * The part of storage configuration which can be modified after storage creation.
    * @alias module:model/StorageModifyDetails
    * @class
    */
@@ -153,7 +153,7 @@
    */
   exports.prototype['importedStorage'] = undefined;
   /**
-   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages.
    * @member {Boolean} readonly
    */
   exports.prototype['readonly'] = undefined;

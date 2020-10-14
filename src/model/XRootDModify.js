@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails', 'model/XRootDCommon', 'model/XRootDCredentials'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'), require('./XRootDCommon'), require('./XRootDCredentials'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.XRootDModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails, root.Onepanel.XRootDCommon, root.Onepanel.XRootDCredentials);
+    root.Onepanel.XRootDModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails, XRootDCommon, XRootDCredentials) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,15 +46,17 @@
    * @alias module:model/XRootDModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/XRootDCredentials
-   * @implements module:model/XRootDCommon
-   * @param type {module:model/XRootDCommon.TypeEnum} 
+   * @param type {module:model/XRootDModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    XRootDCredentials.call(_this, type);
-    XRootDCommon.call(_this);
+    _this['type'] = type;
+
+
+
+
+
   };
 
   /**
@@ -78,8 +80,24 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      XRootDCredentials.constructFromObject(data, obj);
-      XRootDCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('url')) {
+        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      }
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      }
+      if (data.hasOwnProperty('credentials')) {
+        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('fileModeMask')) {
+        obj['fileModeMask'] = ApiClient.convertToType(data['fileModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('dirModeMask')) {
+        obj['dirModeMask'] = ApiClient.convertToType(data['dirModeMask'], 'String');
+      }
     }
     return obj;
   }
@@ -87,53 +105,66 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement XRootDCredentials interface:
   /**
-   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/XRootDCredentials.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/XRootDModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
-  /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
-   * @default 'none'
-   */
-exports.prototype['credentialsType'] = 'none';
-
-  /**
-   * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
-   * @member {String} credentials
-   */
-exports.prototype['credentials'] = undefined;
-
-  // Implement XRootDCommon interface:
-  /**
-   * @member {module:model/XRootDCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
    * @member {String} url
    */
-exports.prototype['url'] = undefined;
-
+  exports.prototype['url'] = undefined;
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDModify.CredentialsTypeEnum} credentialsType
+   */
+  exports.prototype['credentialsType'] = undefined;
+  /**
+   * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+  exports.prototype['credentials'] = undefined;
   /**
    * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group. 
    * @member {String} fileModeMask
-   * @default '0664'
    */
-exports.prototype['fileModeMask'] = '0664';
-
+  exports.prototype['fileModeMask'] = undefined;
   /**
    * Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask `0770` for readable directory on XRootD would result in a directory which is readable for owner and group but not for others. 
    * @member {String} dirModeMask
-   * @default '0775'
    */
-exports.prototype['dirModeMask'] = '0775';
+  exports.prototype['dirModeMask'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "xrootd"
+     * @const
+     */
+    "xrootd": "xrootd"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
+    /**
+     * value: "none"
+     * @const
+     */
+    "none": "none",
+    /**
+     * value: "pwd"
+     * @const
+     */
+    "pwd": "pwd"  };
 
 
   return exports;

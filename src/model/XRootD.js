@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCommonPathTypeCanonical', 'model/StorageGetDetails', 'model/XRootDCommon', 'model/XRootDCredentials'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails', 'model/XRootDCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCommonPathTypeCanonical'), require('./StorageGetDetails'), require('./XRootDCommon'), require('./XRootDCredentials'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'), require('./XRootDCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.XRootD = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageGetDetails, root.Onepanel.XRootDCommon, root.Onepanel.XRootDCredentials);
+    root.Onepanel.XRootD = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails, root.Onepanel.XRootDCredentials);
   }
-}(this, function(ApiClient, StorageCommonPathTypeCanonical, StorageGetDetails, XRootDCommon, XRootDCredentials) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails, XRootDCredentials) {
   'use strict';
 
 
@@ -46,17 +46,21 @@
    * @alias module:model/XRootD
    * @class
    * @extends module:model/StorageGetDetails
+   * @implements module:model/StorageCreateDetails
    * @implements module:model/XRootDCredentials
-   * @implements module:model/XRootDCommon
-   * @implements module:model/StorageCommonPathTypeCanonical
-   * @param type {String} The type of this storage.
+   * @param type {module:model/XRootD.TypeEnum} The type of storage.
+   * @param url {String} Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
    */
-  var exports = function(type) {
+  var exports = function(type, url) {
     var _this = this;
     StorageGetDetails.call(_this);
+    StorageCreateDetails.call(_this);
     XRootDCredentials.call(_this, type);
-    XRootDCommon.call(_this);
-    StorageCommonPathTypeCanonical.call(_this);
+    _this['type'] = type;
+    _this['url'] = url;
+
+
+
   };
 
   /**
@@ -80,9 +84,23 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
       XRootDCredentials.constructFromObject(data, obj);
-      XRootDCommon.constructFromObject(data, obj);
-      StorageCommonPathTypeCanonical.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('url')) {
+        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      }
+      if (data.hasOwnProperty('fileModeMask')) {
+        obj['fileModeMask'] = ApiClient.convertToType(data['fileModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('dirModeMask')) {
+        obj['dirModeMask'] = ApiClient.convertToType(data['dirModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -90,6 +108,93 @@
   exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {module:model/XRootD.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
+   * @member {String} url
+   */
+  exports.prototype['url'] = undefined;
+  /**
+   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group. 
+   * @member {String} fileModeMask
+   * @default '0664'
+   */
+  exports.prototype['fileModeMask'] = '0664';
+  /**
+   * Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask `0770` for readable directory on XRootD would result in a directory which is readable for owner and group but not for others. 
+   * @member {String} dirModeMask
+   * @default '0775'
+   */
+  exports.prototype['dirModeMask'] = '0775';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
+
+  // Implement StorageCreateDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
+   * @default false
+   */
+exports.prototype['skipStorageDetection'] = false;
+
+  /**
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
+   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
+   * @default 'auto'
+   */
+exports.prototype['lumaFeed'] = 'auto';
+
+  /**
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
+   * @member {String} lumaFeedUrl
+   */
+exports.prototype['lumaFeedUrl'] = undefined;
+
+  /**
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
+   * @member {String} lumaFeedApiKey
+   */
+exports.prototype['lumaFeedApiKey'] = undefined;
+
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported. 
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
 
   // Implement XRootDCredentials interface:
   /**
@@ -111,40 +216,18 @@ exports.prototype['credentialsType'] = 'none';
    */
 exports.prototype['credentials'] = undefined;
 
-  // Implement XRootDCommon interface:
-  /**
-   * @member {module:model/XRootDCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
 
   /**
-   * Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
-   * @member {String} url
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
    */
-exports.prototype['url'] = undefined;
-
-  /**
-   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group. 
-   * @member {String} fileModeMask
-   * @default '0664'
-   */
-exports.prototype['fileModeMask'] = '0664';
-
-  /**
-   * Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask `0770` for readable directory on XRootD would result in a directory which is readable for owner and group but not for others. 
-   * @member {String} dirModeMask
-   * @default '0775'
-   */
-exports.prototype['dirModeMask'] = '0775';
-
-  // Implement StorageCommonPathTypeCanonical interface:
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'canonical'
-   */
-exports.prototype['storagePathType'] = 'canonical';
-
+  exports.TypeEnum = {
+    /**
+     * value: "xrootd"
+     * @const
+     */
+    "xrootd": "xrootd"  };
 
 
   return exports;

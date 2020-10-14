@@ -57,6 +57,60 @@
       //expect(instance).to.be.a(Onepanel.S3Modify);
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hostname (base name: "hostname")', function() {
+      // uncomment below and update the code to test the property hostname
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property bucketName (base name: "bucketName")', function() {
+      // uncomment below and update the code to test the property bucketName
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property accessKey (base name: "accessKey")', function() {
+      // uncomment below and update the code to test the property accessKey
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property secretKey (base name: "secretKey")', function() {
+      // uncomment below and update the code to test the property secretKey
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
+      // uncomment below and update the code to test the property signatureVersion
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumCanonicalObjectSize (base name: "maximumCanonicalObjectSize")', function() {
+      // uncomment below and update the code to test the property maximumCanonicalObjectSize
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirMode (base name: "dirMode")', function() {
+      // uncomment below and update the code to test the property dirMode
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

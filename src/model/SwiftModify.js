@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails', 'model/SwiftCommon', 'model/SwiftCredentialsOptional'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'), require('./SwiftCommon'), require('./SwiftCredentialsOptional'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SwiftModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails, root.Onepanel.SwiftCommon, root.Onepanel.SwiftCredentialsOptional);
+    root.Onepanel.SwiftModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, StorageModifyDetails, SwiftCommon, SwiftCredentialsOptional) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,14 +46,17 @@
    * @alias module:model/SwiftModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/SwiftCredentialsOptional
-   * @implements module:model/SwiftCommon
+   * @param type {module:model/SwiftModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
-  var exports = function() {
+  var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    SwiftCredentialsOptional.call(_this);
-    SwiftCommon.call(_this);
+    _this['type'] = type;
+
+
+
+
+
   };
 
   /**
@@ -77,8 +80,24 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      SwiftCredentialsOptional.constructFromObject(data, obj);
-      SwiftCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('authUrl')) {
+        obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
+      }
+      if (data.hasOwnProperty('tenantName')) {
+        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
+      }
+      if (data.hasOwnProperty('containerName')) {
+        obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
+      }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('password')) {
+        obj['password'] = ApiClient.convertToType(data['password'], 'String');
+      }
     }
     return obj;
   }
@@ -86,50 +105,49 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement SwiftCredentialsOptional interface:
   /**
-   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/SwiftCredentialsOptional.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/SwiftModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
-  /**
-   * The Keystone authentication username.
-   * @member {String} username
-   */
-exports.prototype['username'] = undefined;
-
-  /**
-   * The Keystone authentication password.
-   * @member {String} password
-   */
-exports.prototype['password'] = undefined;
-
-  // Implement SwiftCommon interface:
-  /**
-   * @member {module:model/SwiftCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * The URL to OpenStack Keystone identity service.
    * @member {String} authUrl
    */
-exports.prototype['authUrl'] = undefined;
-
+  exports.prototype['authUrl'] = undefined;
   /**
    * The name of the tenant to which the user belongs.
    * @member {String} tenantName
    */
-exports.prototype['tenantName'] = undefined;
-
+  exports.prototype['tenantName'] = undefined;
   /**
    * The name of the Swift storage container.
    * @member {String} containerName
    */
-exports.prototype['containerName'] = undefined;
+  exports.prototype['containerName'] = undefined;
+  /**
+   * The Keystone authentication username.
+   * @member {String} username
+   */
+  exports.prototype['username'] = undefined;
+  /**
+   * The Keystone authentication password.
+   * @member {String} password
+   */
+  exports.prototype['password'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "swift"
+     * @const
+     */
+    "swift": "swift"  };
 
 
   return exports;

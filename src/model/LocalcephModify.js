@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephPool', 'model/LocalcephCommon', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/CephPool', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./LocalcephCommon'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephPool'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.LocalcephModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.LocalcephCommon, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.LocalcephModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, CephPool, LocalcephCommon, StorageModifyDetails) {
+}(this, function(ApiClient, CephPool, StorageModifyDetails) {
   'use strict';
 
 
@@ -42,18 +42,18 @@
 
   /**
    * Constructs a new <code>LocalcephModify</code>.
-   * Modifiable fields of a Ceph storage backend by a local pool.
+   * Modifiable fields of a Ceph storage backed by a local pool.
    * @alias module:model/LocalcephModify
    * @class
    * @extends module:model/StorageModifyDetails
    * @implements module:model/CephPool
-   * @implements module:model/LocalcephCommon
    */
   var exports = function() {
     var _this = this;
     StorageModifyDetails.call(_this);
     CephPool.call(_this);
-    LocalcephCommon.call(_this);
+
+
   };
 
   /**
@@ -78,7 +78,12 @@
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
       CephPool.constructFromObject(data, obj);
-      LocalcephCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
     }
     return obj;
   }
@@ -86,6 +91,16 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * Name of the storage and corresponding Ceph pool.
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
 
   // Implement CephPool interface:
   /**
@@ -105,12 +120,6 @@ exports.prototype['copiesNumber'] = undefined;
    * @member {Number} minCopiesNumber
    */
 exports.prototype['minCopiesNumber'] = undefined;
-
-  // Implement LocalcephCommon interface:
-  /**
-   * @member {module:model/LocalcephCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
 
 
 

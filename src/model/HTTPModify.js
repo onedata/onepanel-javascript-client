@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/HTTPCommon', 'model/HTTPCredentials', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./HTTPCommon'), require('./HTTPCredentials'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.HTTPModify = factory(root.Onepanel.ApiClient, root.Onepanel.HTTPCommon, root.Onepanel.HTTPCredentials, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.HTTPModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, HTTPCommon, HTTPCredentials, StorageModifyDetails) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,15 +46,19 @@
    * @alias module:model/HTTPModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/HTTPCredentials
-   * @implements module:model/HTTPCommon
-   * @param type {module:model/HTTPCommon.TypeEnum} 
+   * @param type {module:model/HTTPModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    HTTPCredentials.call(_this, type);
-    HTTPCommon.call(_this);
+    _this['type'] = type;
+
+
+
+
+
+
+
   };
 
   /**
@@ -78,8 +82,30 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      HTTPCredentials.constructFromObject(data, obj);
-      HTTPCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('endpoint')) {
+        obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
+      }
+      if (data.hasOwnProperty('verifyServerCertificate')) {
+        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      }
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      }
+      if (data.hasOwnProperty('credentials')) {
+        obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('authorizationHeader')) {
+        obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
+      }
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
     }
     return obj;
   }
@@ -87,78 +113,81 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement HTTPCredentials interface:
   /**
-   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/HTTPCredentials.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/HTTPModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
-  /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/HTTPCredentials.CredentialsTypeEnum} credentialsType
-   * @default 'none'
-   */
-exports.prototype['credentialsType'] = 'none';
-
-  /**
-   * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the HTTP, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
-   * @member {String} credentials
-   */
-exports.prototype['credentials'] = undefined;
-
-  /**
-   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the HTTP endpoint. If Onezone has only one external IdP, it will be selected automatically. 
-   * @member {String} oauth2IdP
-   */
-exports.prototype['oauth2IdP'] = undefined;
-
-  /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
-   * @member {String} onedataAccessToken
-   */
-exports.prototype['onedataAccessToken'] = undefined;
-
-  // Implement HTTPCommon interface:
-  /**
-   * @member {module:model/HTTPCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * Full URL of the HTTP server, including scheme (http or https) and path. 
    * @member {String} endpoint
    */
-exports.prototype['endpoint'] = undefined;
-
+  exports.prototype['endpoint'] = undefined;
   /**
    * Determines whether Oneprovider should verify the certificate of the HTTP server. 
    * @member {Boolean} verifyServerCertificate
-   * @default true
    */
-exports.prototype['verifyServerCertificate'] = true;
-
+  exports.prototype['verifyServerCertificate'] = undefined;
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/HTTPModify.CredentialsTypeEnum} credentialsType
+   */
+  exports.prototype['credentialsType'] = undefined;
+  /**
+   * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
+   * @member {String} credentials
+   */
+  exports.prototype['credentials'] = undefined;
   /**
    * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
    * @member {String} authorizationHeader
-   * @default 'Authorization: Bearer {}'
    */
-exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
-
+  exports.prototype['authorizationHeader'] = undefined;
   /**
    * Defines the maximum number of parallel connections for a single HTTP storage. 
    * @member {Number} connectionPoolSize
    */
-exports.prototype['connectionPoolSize'] = undefined;
-
+  exports.prototype['connectionPoolSize'] = undefined;
   /**
    * Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. `0664`. 
    * @member {String} fileMode
-   * @default '0664'
    */
-exports.prototype['fileMode'] = '0664';
+  exports.prototype['fileMode'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "http"
+     * @const
+     */
+    "http": "http"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
+    /**
+     * value: "none"
+     * @const
+     */
+    "none": "none",
+    /**
+     * value: "basic"
+     * @const
+     */
+    "basic": "basic",
+    /**
+     * value: "token"
+     * @const
+     */
+    "token": "token"  };
 
 
   return exports;

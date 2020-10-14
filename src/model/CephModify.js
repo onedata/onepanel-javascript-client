@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephCommon', 'model/CephCredentials', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephCommon'), require('./CephCredentials'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CephModify = factory(root.Onepanel.ApiClient, root.Onepanel.CephCommon, root.Onepanel.CephCredentials, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.CephModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, CephCommon, CephCredentials, StorageModifyDetails) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,15 +46,17 @@
    * @alias module:model/CephModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/CephCredentials
-   * @implements module:model/CephCommon
-   * @param type {module:model/CephCommon.TypeEnum} 
+   * @param type {module:model/CephModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    CephCredentials.call(_this);
-    CephCommon.call(_this, type);
+    _this['type'] = type;
+
+
+
+
+
   };
 
   /**
@@ -78,8 +80,24 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      CephCredentials.constructFromObject(data, obj);
-      CephCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      }
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
+      }
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
+      }
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      }
     }
     return obj;
   }
@@ -87,50 +105,49 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement CephCredentials interface:
   /**
-   * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/CephCredentialsOptional.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/CephModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
-   * The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
+   * The username of the Ceph cluster administrator.
    * @member {String} username
    */
-exports.prototype['username'] = undefined;
-
+  exports.prototype['username'] = undefined;
   /**
-   * The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
+   * The admin key to access the Ceph cluster.
    * @member {String} key
    */
-exports.prototype['key'] = undefined;
-
-  // Implement CephCommon interface:
-  /**
-   * @member {module:model/CephCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['key'] = undefined;
   /**
    * The monitor hostname.
    * @member {String} monitorHostname
    */
-exports.prototype['monitorHostname'] = undefined;
-
+  exports.prototype['monitorHostname'] = undefined;
   /**
    * The Ceph cluster name.
    * @member {String} clusterName
    */
-exports.prototype['clusterName'] = undefined;
-
+  exports.prototype['clusterName'] = undefined;
   /**
    * The Ceph pool name.
    * @member {String} poolName
    */
-exports.prototype['poolName'] = undefined;
+  exports.prototype['poolName'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "ceph"
+     * @const
+     */
+    "ceph": "ceph"  };
 
 
   return exports;

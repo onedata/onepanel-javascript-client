@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CephCommon', 'model/CephCredentialsOptional', 'model/StorageCommonPathTypeFlat', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/CephCredentials', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CephCommon'), require('./CephCredentialsOptional'), require('./StorageCommonPathTypeFlat'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./CephCredentials'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephCommon, root.Onepanel.CephCredentialsOptional, root.Onepanel.StorageCommonPathTypeFlat, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Ceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephCredentials, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, CephCommon, CephCredentialsOptional, StorageCommonPathTypeFlat, StorageGetDetails) {
+}(this, function(ApiClient, CephCredentials, StorageCreateDetails, StorageGetDetails) {
   'use strict';
 
 
@@ -45,18 +45,26 @@
    * The Ceph storage configuration (uses libradosstriper).
    * @alias module:model/Ceph
    * @class
-   * @extends module:model/StorageGetDetails
-   * @implements module:model/CephCredentialsOptional
-   * @implements module:model/CephCommon
-   * @implements module:model/StorageCommonPathTypeFlat
-   * @param type {String} The type of this storage.
+   * @extends module:model/StorageCreateDetails
+   * @implements module:model/StorageGetDetails
+   * @implements module:model/CephCredentials
+   * @param type {module:model/Ceph.TypeEnum} The type of storage.
+   * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
+   * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
+   * @param monitorHostname {String} The monitor hostname.
+   * @param clusterName {String} The Ceph cluster name.
+   * @param poolName {String} The Ceph pool name.
    */
-  var exports = function(type) {
+  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
+    StorageCreateDetails.call(_this);
     StorageGetDetails.call(_this);
-    CephCredentialsOptional.call(_this);
-    CephCommon.call(_this, type);
-    StorageCommonPathTypeFlat.call(_this);
+    CephCredentials.call(_this, type, username, key);
+    _this['type'] = type;
+    _this['monitorHostname'] = monitorHostname;
+    _this['clusterName'] = clusterName;
+    _this['poolName'] = poolName;
+
   };
 
   /**
@@ -79,22 +87,137 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
+      StorageCreateDetails.constructFromObject(data, obj);
       StorageGetDetails.constructFromObject(data, obj);
-      CephCredentialsOptional.constructFromObject(data, obj);
-      CephCommon.constructFromObject(data, obj);
-      StorageCommonPathTypeFlat.constructFromObject(data, obj);
+      CephCredentials.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('monitorHostname')) {
+        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
+      }
+      if (data.hasOwnProperty('clusterName')) {
+        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
+      }
+      if (data.hasOwnProperty('poolName')) {
+        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
 
-  exports.prototype = Object.create(StorageGetDetails.prototype);
+  exports.prototype = Object.create(StorageCreateDetails.prototype);
   exports.prototype.constructor = exports;
 
+  /**
+   * The type of storage.
+   * @member {module:model/Ceph.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * The monitor hostname.
+   * @member {String} monitorHostname
+   */
+  exports.prototype['monitorHostname'] = undefined;
+  /**
+   * The Ceph cluster name.
+   * @member {String} clusterName
+   */
+  exports.prototype['clusterName'] = undefined;
+  /**
+   * The Ceph pool name.
+   * @member {String} poolName
+   */
+  exports.prototype['poolName'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
-  // Implement CephCredentialsOptional interface:
+  // Implement StorageGetDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * The Id of storage.
+   * @member {String} id
+   */
+exports.prototype['id'] = undefined;
+
+  /**
+   * The name of storage.
+   * @member {String} name
+   */
+exports.prototype['name'] = undefined;
+
+  /**
+   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
+   * @member {Boolean} verificationPassed
+   */
+exports.prototype['verificationPassed'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
+   */
+exports.prototype['skipStorageDetection'] = undefined;
+
+  /**
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
+   * @member {module:model/StorageGetDetails.LumaFeedEnum} lumaFeed
+   */
+exports.prototype['lumaFeed'] = undefined;
+
+  /**
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
+   * @member {String} lumaFeedUrl
+   */
+exports.prototype['lumaFeedUrl'] = undefined;
+
+  /**
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
+   * @member {String} lumaFeedApiKey
+   */
+exports.prototype['lumaFeedApiKey'] = undefined;
+
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported.
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages.
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
+  // Implement CephCredentials interface:
   /**
    * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/CephCredentialsOptional.TypeEnum} type
+   * @member {module:model/CephCredentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
 
@@ -110,38 +233,18 @@ exports.prototype['username'] = undefined;
    */
 exports.prototype['key'] = undefined;
 
-  // Implement CephCommon interface:
-  /**
-   * @member {module:model/CephCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
 
   /**
-   * The monitor hostname.
-   * @member {String} monitorHostname
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
    */
-exports.prototype['monitorHostname'] = undefined;
-
-  /**
-   * The Ceph cluster name.
-   * @member {String} clusterName
-   */
-exports.prototype['clusterName'] = undefined;
-
-  /**
-   * The Ceph pool name.
-   * @member {String} poolName
-   */
-exports.prototype['poolName'] = undefined;
-
-  // Implement StorageCommonPathTypeFlat interface:
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-exports.prototype['storagePathType'] = 'flat';
-
+  exports.TypeEnum = {
+    /**
+     * value: "ceph"
+     * @const
+     */
+    "ceph": "ceph"  };
 
 
   return exports;

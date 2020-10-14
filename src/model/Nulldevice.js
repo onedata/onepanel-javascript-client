@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/NulldeviceCommon', 'model/StorageCommonPathTypeCanonical', 'model/StorageGetDetails'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./NulldeviceCommon'), require('./StorageCommonPathTypeCanonical'), require('./StorageGetDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Nulldevice = factory(root.Onepanel.ApiClient, root.Onepanel.NulldeviceCommon, root.Onepanel.StorageCommonPathTypeCanonical, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Nulldevice = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
-}(this, function(ApiClient, NulldeviceCommon, StorageCommonPathTypeCanonical, StorageGetDetails) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails) {
   'use strict';
 
 
@@ -46,15 +46,21 @@
    * @alias module:model/Nulldevice
    * @class
    * @extends module:model/StorageGetDetails
-   * @implements module:model/NulldeviceCommon
-   * @implements module:model/StorageCommonPathTypeCanonical
-   * @param type {String} The type of this storage.
+   * @implements module:model/StorageCreateDetails
+   * @param type {module:model/Nulldevice.TypeEnum} The type of storage.
    */
   var exports = function(type) {
     var _this = this;
     StorageGetDetails.call(_this);
-    NulldeviceCommon.call(_this, type);
-    StorageCommonPathTypeCanonical.call(_this);
+    StorageCreateDetails.call(_this);
+    _this['type'] = type;
+
+
+
+
+
+
+
   };
 
   /**
@@ -78,8 +84,31 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
-      NulldeviceCommon.constructFromObject(data, obj);
-      StorageCommonPathTypeCanonical.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('latencyMin')) {
+        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
+      }
+      if (data.hasOwnProperty('latencyMax')) {
+        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
+      }
+      if (data.hasOwnProperty('timeoutProbability')) {
+        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
+      }
+      if (data.hasOwnProperty('filter')) {
+        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
+      if (data.hasOwnProperty('simulatedFilesystemParameters')) {
+        obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
+      }
+      if (data.hasOwnProperty('simulatedFilesystemGrowSpeed')) {
+        obj['simulatedFilesystemGrowSpeed'] = ApiClient.convertToType(data['simulatedFilesystemGrowSpeed'], 'Number');
+      }
     }
     return obj;
   }
@@ -87,61 +116,123 @@
   exports.prototype = Object.create(StorageGetDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement NulldeviceCommon interface:
   /**
-   * @member {module:model/NulldeviceCommon.TypeEnum} type
+   * The type of storage.
+   * @member {module:model/Nulldevice.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * Minimum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMin
    */
-exports.prototype['latencyMin'] = undefined;
-
+  exports.prototype['latencyMin'] = undefined;
   /**
    * Maximum latency in milliseconds, which should be simulated for selected operations. 
    * @member {Number} latencyMax
    */
-exports.prototype['latencyMax'] = undefined;
-
+  exports.prototype['latencyMax'] = undefined;
   /**
    * Probability (0.0, 1.0), with which an operation should return a timeout error. 
    * @member {Number} timeoutProbability
    * @default 0.0
    */
-exports.prototype['timeoutProbability'] = 0.0;
-
+  exports.prototype['timeoutProbability'] = 0.0;
   /**
    * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
    * @member {String} filter
    * @default '*'
    */
-exports.prototype['filter'] = '*';
-
-  /**
-   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
-   * @member {String} simulatedFilesystemParameters
-   * @default ''
-   */
-exports.prototype['simulatedFilesystemParameters'] = '';
-
-  /**
-   * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
-   * @member {Number} simulatedFilesystemGrowSpeed
-   * @default 0.0
-   */
-exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
-
-  // Implement StorageCommonPathTypeCanonical interface:
+  exports.prototype['filter'] = '*';
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    * @member {String} storagePathType
    * @default 'canonical'
    */
-exports.prototype['storagePathType'] = 'canonical';
+  exports.prototype['storagePathType'] = 'canonical';
+  /**
+   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
+   * @member {String} simulatedFilesystemParameters
+   * @default ''
+   */
+  exports.prototype['simulatedFilesystemParameters'] = '';
+  /**
+   * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
+   * @member {Number} simulatedFilesystemGrowSpeed
+   * @default 0.0
+   */
+  exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
 
+  // Implement StorageCreateDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
+   * @default false
+   */
+exports.prototype['skipStorageDetection'] = false;
+
+  /**
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
+   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
+   * @default 'auto'
+   */
+exports.prototype['lumaFeed'] = 'auto';
+
+  /**
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
+   * @member {String} lumaFeedUrl
+   */
+exports.prototype['lumaFeedUrl'] = undefined;
+
+  /**
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
+   * @member {String} lumaFeedApiKey
+   */
+exports.prototype['lumaFeedApiKey'] = undefined;
+
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported. 
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "nulldevice"
+     * @const
+     */
+    "nulldevice": "nulldevice"  };
 
 
   return exports;

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/GlusterfsCommon', 'model/StorageModifyDetails'], factory);
+    define(['ApiClient', 'model/StorageModifyDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./GlusterfsCommon'), require('./StorageModifyDetails'));
+    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.GlusterfsModify = factory(root.Onepanel.ApiClient, root.Onepanel.GlusterfsCommon, root.Onepanel.StorageModifyDetails);
+    root.Onepanel.GlusterfsModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
   }
-}(this, function(ApiClient, GlusterfsCommon, StorageModifyDetails) {
+}(this, function(ApiClient, StorageModifyDetails) {
   'use strict';
 
 
@@ -46,13 +46,18 @@
    * @alias module:model/GlusterfsModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @implements module:model/GlusterfsCommon
-   * @param type {module:model/GlusterfsCommon.TypeEnum} 
+   * @param type {module:model/GlusterfsModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
-    GlusterfsCommon.call(_this, type);
+    _this['type'] = type;
+
+
+
+
+
+
   };
 
   /**
@@ -76,7 +81,27 @@
     if (data) {
       obj = obj || new exports();
       StorageModifyDetails.constructFromObject(data, obj);
-      GlusterfsCommon.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
+      }
+      if (data.hasOwnProperty('hostname')) {
+        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+      }
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      }
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
+      }
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
+      }
     }
     return obj;
   }
@@ -84,52 +109,76 @@
   exports.prototype = Object.create(StorageModifyDetails.prototype);
   exports.prototype.constructor = exports;
 
-
-  // Implement GlusterfsCommon interface:
   /**
-   * @member {module:model/GlusterfsCommon.TypeEnum} type
+   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @member {module:model/GlusterfsModify.TypeEnum} type
    */
-exports.prototype['type'] = undefined;
-
+  exports.prototype['type'] = undefined;
   /**
    * The name of the volume to use as a storage backend.
    * @member {String} volume
    */
-exports.prototype['volume'] = undefined;
-
+  exports.prototype['volume'] = undefined;
   /**
    * The hostname (IP address or FQDN) of GlusterFS volume server.
    * @member {String} hostname
    */
-exports.prototype['hostname'] = undefined;
-
+  exports.prototype['hostname'] = undefined;
   /**
    * The GlusterFS port on volume server.
    * @member {Number} port
    */
-exports.prototype['port'] = undefined;
-
+  exports.prototype['port'] = undefined;
   /**
    * The transport protocol to use to connect to the volume server.
-   * @member {module:model/GlusterfsCommon.TransportEnum} transport
-   * @default 'tcp'
+   * @member {module:model/GlusterfsModify.TransportEnum} transport
    */
-exports.prototype['transport'] = 'tcp';
-
+  exports.prototype['transport'] = undefined;
   /**
    * Relative mountpoint within the volume which should be used by Oneprovider.
    * @member {String} mountPoint
-   * @default ''
    */
-exports.prototype['mountPoint'] = '';
-
+  exports.prototype['mountPoint'] = undefined;
   /**
    * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
    * @member {String} xlatorOptions
-   * @default ''
    */
-exports.prototype['xlatorOptions'] = '';
+  exports.prototype['xlatorOptions'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "glusterfs"
+     * @const
+     */
+    "glusterfs": "glusterfs"  };
+
+  /**
+   * Allowed values for the <code>transport</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TransportEnum = {
+    /**
+     * value: "tcp"
+     * @const
+     */
+    "tcp": "tcp",
+    /**
+     * value: "rdma"
+     * @const
+     */
+    "rdma": "rdma",
+    /**
+     * value: "socket"
+     * @const
+     */
+    "socket": "socket"  };
 
 
   return exports;

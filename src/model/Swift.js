@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageCommonPathTypeFlat', 'model/StorageGetDetails', 'model/SwiftCommon', 'model/SwiftCredentialsOptional'], factory);
+    define(['ApiClient', 'model/StorageCreateDetails', 'model/StorageGetDetails', 'model/SwiftCredentials'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageCommonPathTypeFlat'), require('./StorageGetDetails'), require('./SwiftCommon'), require('./SwiftCredentialsOptional'));
+    module.exports = factory(require('../ApiClient'), require('./StorageCreateDetails'), require('./StorageGetDetails'), require('./SwiftCredentials'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCommonPathTypeFlat, root.Onepanel.StorageGetDetails, root.Onepanel.SwiftCommon, root.Onepanel.SwiftCredentialsOptional);
+    root.Onepanel.Swift = factory(root.Onepanel.ApiClient, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails, root.Onepanel.SwiftCredentials);
   }
-}(this, function(ApiClient, StorageCommonPathTypeFlat, StorageGetDetails, SwiftCommon, SwiftCredentialsOptional) {
+}(this, function(ApiClient, StorageCreateDetails, StorageGetDetails, SwiftCredentials) {
   'use strict';
 
 
@@ -46,16 +46,25 @@
    * @alias module:model/Swift
    * @class
    * @extends module:model/StorageGetDetails
-   * @implements module:model/SwiftCredentialsOptional
-   * @implements module:model/SwiftCommon
-   * @implements module:model/StorageCommonPathTypeFlat
+   * @implements module:model/StorageCreateDetails
+   * @implements module:model/SwiftCredentials
+   * @param type {module:model/Swift.TypeEnum} The type of storage.
+   * @param username {String} The Keystone authentication username.
+   * @param password {String} The Keystone authentication password.
+   * @param authUrl {String} The URL to OpenStack Keystone identity service.
+   * @param tenantName {String} The name of the tenant to which the user belongs.
+   * @param containerName {String} The name of the Swift storage container.
    */
-  var exports = function() {
+  var exports = function(type, username, password, authUrl, tenantName, containerName) {
     var _this = this;
     StorageGetDetails.call(_this);
-    SwiftCredentialsOptional.call(_this);
-    SwiftCommon.call(_this);
-    StorageCommonPathTypeFlat.call(_this);
+    StorageCreateDetails.call(_this);
+    SwiftCredentials.call(_this, type, username, password);
+    _this['type'] = type;
+    _this['authUrl'] = authUrl;
+    _this['tenantName'] = tenantName;
+    _this['containerName'] = containerName;
+
 
   };
 
@@ -80,11 +89,25 @@
     if (data) {
       obj = obj || new exports();
       StorageGetDetails.constructFromObject(data, obj);
-      SwiftCredentialsOptional.constructFromObject(data, obj);
-      SwiftCommon.constructFromObject(data, obj);
-      StorageCommonPathTypeFlat.constructFromObject(data, obj);
+      StorageCreateDetails.constructFromObject(data, obj);
+      SwiftCredentials.constructFromObject(data, obj);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('authUrl')) {
+        obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
+      }
+      if (data.hasOwnProperty('tenantName')) {
+        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
+      }
+      if (data.hasOwnProperty('containerName')) {
+        obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
+      }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
@@ -94,15 +117,100 @@
   exports.prototype.constructor = exports;
 
   /**
+   * The type of storage.
+   * @member {module:model/Swift.TypeEnum} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * The URL to OpenStack Keystone identity service.
+   * @member {String} authUrl
+   */
+  exports.prototype['authUrl'] = undefined;
+  /**
+   * The name of the tenant to which the user belongs.
+   * @member {String} tenantName
+   */
+  exports.prototype['tenantName'] = undefined;
+  /**
+   * The name of the Swift storage container.
+   * @member {String} containerName
+   */
+  exports.prototype['containerName'] = undefined;
+  /**
    * Storage block size in bytes.
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
-  // Implement SwiftCredentialsOptional interface:
+  // Implement StorageCreateDetails interface:
+  /**
+   * The type of storage.
+   * @member {String} type
+   */
+exports.prototype['type'] = undefined;
+
+  /**
+   * Storage operation timeout in milliseconds.
+   * @member {Number} timeout
+   */
+exports.prototype['timeout'] = undefined;
+
+  /**
+   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
+   * @member {Boolean} skipStorageDetection
+   * @default false
+   */
+exports.prototype['skipStorageDetection'] = false;
+
+  /**
+   * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
+   * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed
+   * @default 'auto'
+   */
+exports.prototype['lumaFeed'] = 'auto';
+
+  /**
+   * URL of external feed for LUMA DB. Relevant only if lumaFeed equals `external`.
+   * @member {String} lumaFeedUrl
+   */
+exports.prototype['lumaFeedUrl'] = undefined;
+
+  /**
+   * API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals `external`. 
+   * @member {String} lumaFeedApiKey
+   */
+exports.prototype['lumaFeedApiKey'] = undefined;
+
+  /**
+   * Map with key-value pairs used for describing storage QoS parameters.
+   * @member {Object.<String, String>} qosParameters
+   */
+exports.prototype['qosParameters'] = undefined;
+
+  /**
+   * Defines whether storage contains existing data to be imported. 
+   * @member {Boolean} importedStorage
+   * @default false
+   */
+exports.prototype['importedStorage'] = false;
+
+  /**
+   * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
+   * @member {Boolean} readonly
+   * @default false
+   */
+exports.prototype['readonly'] = false;
+
+  // Implement SwiftCredentials interface:
   /**
    * Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
-   * @member {module:model/SwiftCredentialsOptional.TypeEnum} type
+   * @member {module:model/SwiftCredentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
 
@@ -118,38 +226,18 @@ exports.prototype['username'] = undefined;
    */
 exports.prototype['password'] = undefined;
 
-  // Implement SwiftCommon interface:
-  /**
-   * @member {module:model/SwiftCommon.TypeEnum} type
-   */
-exports.prototype['type'] = undefined;
 
   /**
-   * The URL to OpenStack Keystone identity service.
-   * @member {String} authUrl
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
    */
-exports.prototype['authUrl'] = undefined;
-
-  /**
-   * The name of the tenant to which the user belongs.
-   * @member {String} tenantName
-   */
-exports.prototype['tenantName'] = undefined;
-
-  /**
-   * The name of the Swift storage container.
-   * @member {String} containerName
-   */
-exports.prototype['containerName'] = undefined;
-
-  // Implement StorageCommonPathTypeFlat interface:
-  /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
-   * @default 'flat'
-   */
-exports.prototype['storagePathType'] = 'flat';
-
+  exports.TypeEnum = {
+    /**
+     * value: "swift"
+     * @const
+     */
+    "swift": "swift"  };
 
 
   return exports;

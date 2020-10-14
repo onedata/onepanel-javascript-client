@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/SwiftCredentials
-   * @param type {module:model/Swift.TypeEnum} The type of storage.
+   * @param type {module:model/Swift.TypeEnum} The type of storage.  `type = \"swift\"`  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol. 
    * @param username {String} The Keystone authentication username.
    * @param password {String} The Keystone authentication password.
    * @param authUrl {String} The URL to OpenStack Keystone identity service.
@@ -117,7 +117,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"swift\"`  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol. 
    * @member {module:model/Swift.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -150,7 +150,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

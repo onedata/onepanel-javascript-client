@@ -47,7 +47,7 @@
    * @class
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
-   * @param type {module:model/Glusterfs.TypeEnum} The type of storage.
+   * @param type {module:model/Glusterfs.TypeEnum} The type of storage.  `type = \"glusterfs\"`  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider. 
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
    */
@@ -119,7 +119,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"glusterfs\"`  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider. 
    * @member {module:model/Glusterfs.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -165,7 +165,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

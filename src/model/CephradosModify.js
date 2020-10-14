@@ -46,7 +46,7 @@
    * @alias module:model/CephradosModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/CephradosModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/CephradosModify.TypeEnum} The type of storage.  `type = \"cephrados\"`  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage. 
    */
   var exports = function(type) {
     var _this = this;
@@ -106,7 +106,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"cephrados\"`  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage. 
    * @member {module:model/CephradosModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

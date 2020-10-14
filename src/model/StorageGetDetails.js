@@ -125,7 +125,6 @@
   }
 
   /**
-   * The type of storage.
    * @member {String} type
    */
   exports.prototype['type'] = undefined;

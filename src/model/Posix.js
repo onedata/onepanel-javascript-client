@@ -47,7 +47,7 @@
    * @class
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
-   * @param type {module:model/Posix.TypeEnum} The type of storage.
+   * @param type {module:model/Posix.TypeEnum} The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
    * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
    */
   var exports = function(type, mountPoint) {
@@ -98,7 +98,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
    * @member {module:model/Posix.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -116,7 +116,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

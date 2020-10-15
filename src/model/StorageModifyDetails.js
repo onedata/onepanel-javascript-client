@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>StorageModifyDetails</code>.
-   * The part of storage configuration which can be modified after storage creation.
+   * An object with new values for storage parameters to be updated.
    * @alias module:model/StorageModifyDetails
    * @class
    */

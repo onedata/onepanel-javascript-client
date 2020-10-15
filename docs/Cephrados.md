@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of storage. | 
+**type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;cephrados\&quot;&#x60;  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage.  | 
 **monitorHostname** | **String** | The monitor hostname. | 
 **clusterName** | **String** | The Ceph cluster name. | 
 **poolName** | **String** | The Ceph pool name. | 

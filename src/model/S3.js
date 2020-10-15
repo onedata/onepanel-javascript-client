@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/S3Credentials
-   * @param type {module:model/S3.TypeEnum} The type of storage.
+   * @param type {module:model/S3.TypeEnum} The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
    * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    */
@@ -126,7 +126,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
    * @member {module:model/S3.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -176,7 +176,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

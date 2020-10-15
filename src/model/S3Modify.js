@@ -46,7 +46,7 @@
    * @alias module:model/S3Modify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/S3Modify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/S3Modify.TypeEnum} The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
    */
   var exports = function(type) {
     var _this = this;
@@ -118,7 +118,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
    * @member {module:model/S3Modify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

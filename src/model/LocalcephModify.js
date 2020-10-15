@@ -92,8 +92,8 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
-   * @member {String} type
+   * The type of storage.  `type = \"localceph\"`  Local Ceph cluster that has been deployed during deployment of Oneprovider. For more information on local Ceph deployment please see [here](https://onedata.org/#/home/documentation/stable/doc/administering_onedata/ceph_cluster_deployment.html). 
+   * @member {module:model/LocalcephModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -121,6 +121,18 @@ exports.prototype['copiesNumber'] = undefined;
    */
 exports.prototype['minCopiesNumber'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TypeEnum = {
+    /**
+     * value: "localceph"
+     * @const
+     */
+    "localceph": "localceph"  };
 
 
   return exports;

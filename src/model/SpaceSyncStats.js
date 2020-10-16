@@ -16,95 +16,132 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/TimeStatsCollection'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStatsCollection'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.SpaceSyncStats = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStatsCollection);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, TimeStatsCollection) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.AutoStorageImportInfo();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The SpaceSyncStats model module.
+   * @module model/SpaceSyncStats
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>SpaceSyncStats</code>.
+   * Status and statistics of storage/space synchronization.
+   * @alias module:model/SpaceSyncStats
+   * @class
+   * @param importStatus {module:model/SpaceSyncStats.ImportStatusEnum} Describes import algorithm run status.
+   */
+  var exports = function(importStatus) {
+    var _this = this;
+
+    _this['importStatus'] = importStatus;
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/SpaceSyncStats} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>SpaceSyncStats</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/SpaceSyncStats} obj Optional instance to populate.
+   * @return {module:model/SpaceSyncStats} The populated <code>SpaceSyncStats</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('importStatus')) {
+        obj['importStatus'] = ApiClient.convertToType(data['importStatus'], 'String');
+      }
+      if (data.hasOwnProperty('updateStatus')) {
+        obj['updateStatus'] = ApiClient.convertToType(data['updateStatus'], 'String');
+      }
+      if (data.hasOwnProperty('stats')) {
+        obj['stats'] = TimeStatsCollection.constructFromObject(data['stats']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Describes import algorithm run status.
+   * @member {module:model/SpaceSyncStats.ImportStatusEnum} importStatus
+   */
+  exports.prototype['importStatus'] = undefined;
+  /**
+   * Describes update algorithm run status.
+   * @member {module:model/SpaceSyncStats.UpdateStatusEnum} updateStatus
+   */
+  exports.prototype['updateStatus'] = undefined;
+  /**
+   * Collection of statistics for requested metrics.
+   * @member {module:model/TimeStatsCollection} stats
+   */
+  exports.prototype['stats'] = undefined;
 
-  describe('AutoStorageImportInfo', function() {
-    it('should create an instance of AutoStorageImportInfo', function() {
-      // uncomment below and update the code to test AutoStorageImportInfo
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be.a(Onepanel.AutoStorageImportInfo);
-    });
 
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>importStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ImportStatusEnum = {
+    /**
+     * value: "inProgress"
+     * @const
+     */
+    "inProgress": "inProgress",
+    /**
+     * value: "done"
+     * @const
+     */
+    "done": "done"  };
 
-    it('should have the property start (base name: "start")', function() {
-      // uncomment below and update the code to test the property start
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
+  /**
+   * Allowed values for the <code>updateStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.UpdateStatusEnum = {
+    /**
+     * value: "waiting"
+     * @const
+     */
+    "waiting": "waiting",
+    /**
+     * value: "inProgress"
+     * @const
+     */
+    "inProgress": "inProgress"  };
 
-    it('should have the property stop (base name: "stop")', function() {
-      // uncomment below and update the code to test the property stop
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property createdFiles (base name: "createdFiles")', function() {
-      // uncomment below and update the code to test the property createdFiles
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property modifiedFiles (base name: "modifiedFiles")', function() {
-      // uncomment below and update the code to test the property modifiedFiles
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property deletedFiles (base name: "deletedFiles")', function() {
-      // uncomment below and update the code to test the property deletedFiles
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property nextScan (base name: "nextScan")', function() {
-      // uncomment below and update the code to test the property nextScan
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property totalScans (base name: "totalScans")', function() {
-      // uncomment below and update the code to test the property totalScans
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportInfo', 'model/AutoStorageImportStats', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/Id', 'model/InlineResponse202', 'model/ManagerHosts', 'model/ManualStorageImportExample', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TransfersMock'], factory);
+    define(['ApiClient', 'model/BlockDevices', 'model/CephCluster', 'model/CephGlobalParams', 'model/CephManager', 'model/CephManagers', 'model/CephMonitor', 'model/CephMonitors', 'model/CephOsd', 'model/CephOsds', 'model/CephPool', 'model/CephPoolUsage', 'model/CephPools', 'model/CephStatus', 'model/CephUsage', 'model/ClusterIps', 'model/DataUsage', 'model/Error', 'model/Id', 'model/InlineResponse202', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneInfo', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/SpaceSyncStats', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AutoStorageImportInfo'), require('../model/AutoStorageImportStats'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/Id'), require('../model/InlineResponse202'), require('../model/ManagerHosts'), require('../model/ManualStorageImportExample'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'), require('../model/TaskId'), require('../model/TransfersMock'));
+    module.exports = factory(require('../ApiClient'), require('../model/BlockDevices'), require('../model/CephCluster'), require('../model/CephGlobalParams'), require('../model/CephManager'), require('../model/CephManagers'), require('../model/CephMonitor'), require('../model/CephMonitors'), require('../model/CephOsd'), require('../model/CephOsds'), require('../model/CephPool'), require('../model/CephPoolUsage'), require('../model/CephPools'), require('../model/CephStatus'), require('../model/CephUsage'), require('../model/ClusterIps'), require('../model/DataUsage'), require('../model/Error'), require('../model/Id'), require('../model/InlineResponse202'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneInfo'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'), require('../model/ProviderSpaces'), require('../model/ProviderStorages'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/SpaceAutoCleaningConfiguration'), require('../model/SpaceAutoCleaningReport'), require('../model/SpaceAutoCleaningReports'), require('../model/SpaceAutoCleaningStatus'), require('../model/SpaceDetails'), require('../model/SpaceFilePopularityConfiguration'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'), require('../model/SpaceSyncStats'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'), require('../model/TaskId'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportInfo, root.Onepanel.AutoStorageImportStats, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.Id, root.Onepanel.InlineResponse202, root.Onepanel.ManagerHosts, root.Onepanel.ManualStorageImportExample, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TaskId, root.Onepanel.TransfersMock);
+    root.Onepanel.OneproviderApi = factory(root.Onepanel.ApiClient, root.Onepanel.BlockDevices, root.Onepanel.CephCluster, root.Onepanel.CephGlobalParams, root.Onepanel.CephManager, root.Onepanel.CephManagers, root.Onepanel.CephMonitor, root.Onepanel.CephMonitors, root.Onepanel.CephOsd, root.Onepanel.CephOsds, root.Onepanel.CephPool, root.Onepanel.CephPoolUsage, root.Onepanel.CephPools, root.Onepanel.CephStatus, root.Onepanel.CephUsage, root.Onepanel.ClusterIps, root.Onepanel.DataUsage, root.Onepanel.Error, root.Onepanel.Id, root.Onepanel.InlineResponse202, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest, root.Onepanel.ProviderSpaces, root.Onepanel.ProviderStorages, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.SpaceAutoCleaningConfiguration, root.Onepanel.SpaceAutoCleaningReport, root.Onepanel.SpaceAutoCleaningReports, root.Onepanel.SpaceAutoCleaningStatus, root.Onepanel.SpaceDetails, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest, root.Onepanel.SpaceSyncStats, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest, root.Onepanel.TaskId, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient, AutoStorageImportInfo, AutoStorageImportStats, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, Id, InlineResponse202, ManagerHosts, ManualStorageImportExample, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest, TaskId, TransfersMock) {
+}(this, function(ApiClient, BlockDevices, CephCluster, CephGlobalParams, CephManager, CephManagers, CephMonitor, CephMonitors, CephOsd, CephOsds, CephPool, CephPoolUsage, CephPools, CephStatus, CephUsage, ClusterIps, DataUsage, Error, Id, InlineResponse202, ManagerHosts, ModifyClusterIps, OnezoneInfo, ProviderConfiguration, ProviderConfigurationDetails, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, SpaceSyncStats, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest, TaskId, TransfersMock) {
   'use strict';
 
   /**
@@ -639,202 +639,6 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto-cleaning/configuration', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the forceStartAutoStorageImportScan operation.
-     * @callback module:api/OneproviderApi~forceStartAutoStorageImportScanCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Force start auto storage import scan
-     * Forcefully starts scan of auto storage import mechanism in given space.
-     * @param {String} id The Id of a space.
-     * @param {module:api/OneproviderApi~forceStartAutoStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.forceStartAutoStorageImportScan = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling forceStartAutoStorageImportScan");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/storage-import/auto/force-start', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the forceStopAutoStorageImportScan operation.
-     * @callback module:api/OneproviderApi~forceStopAutoStorageImportScanCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Force stop auto storage import scan
-     * Forcefully stops current scan of auto storage import mechanism in given space.
-     * @param {String} id The Id of a space.
-     * @param {module:api/OneproviderApi~forceStopAutoStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.forceStopAutoStorageImportScan = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling forceStopAutoStorageImportScan");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/storage-import/auto/force-stop', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getAutoStorageImportInfo operation.
-     * @callback module:api/OneproviderApi~getAutoStorageImportInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AutoStorageImportInfo} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get information about auto storage import scan.
-     * Returns information about current or last finished auto storage import scan.
-     * @param {String} id The Id of a space for which storage import stats should be returned.
-     * @param {module:api/OneproviderApi~getAutoStorageImportInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AutoStorageImportInfo}
-     */
-    this.getAutoStorageImportInfo = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getAutoStorageImportInfo");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = AutoStorageImportInfo;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/storage-import/auto/info', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getAutoStorageImportStats operation.
-     * @callback module:api/OneproviderApi~getAutoStorageImportStatsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AutoStorageImportStats} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get statistics of auto storage import mechanism.
-     * Returns requested statistics of auto storage import mechanism for given space on this provider. 
-     * @param {String} id The Id of a space for which storage import stats should be returned.
-     * @param {module:model/String} period Predefined time period for which the statistics should be fetched.
-     * @param {String} metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;createdFiles&#x60;, &#x60;modifiedFiles&#x60;, &#x60;deletedFiles&#x60; 
-     * @param {module:api/OneproviderApi~getAutoStorageImportStatsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AutoStorageImportStats}
-     */
-    this.getAutoStorageImportStats = function(id, period, metrics, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getAutoStorageImportStats");
-      }
-
-      // verify the required parameter 'period' is set
-      if (period === undefined || period === null) {
-        throw new Error("Missing the required parameter 'period' when calling getAutoStorageImportStats");
-      }
-
-      // verify the required parameter 'metrics' is set
-      if (metrics === undefined || metrics === null) {
-        throw new Error("Missing the required parameter 'metrics' when calling getAutoStorageImportStats");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-        'period': period,
-        'metrics': metrics
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = AutoStorageImportStats;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/storage-import/auto/stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1482,52 +1286,6 @@
     }
 
     /**
-     * Callback function to receive the result of the getManualStorageImportExample operation.
-     * @callback module:api/OneproviderApi~getManualStorageImportExampleCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ManualStorageImportExample} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get manual storage import example.
-     * Returns example &#x60;curl&#x60; command that can be executed to manually import (register) file from storage.  The command is filled with correct host of the Oneprovider, space and storage ids. In order to execute the command, user must set 3 variables:  * &#x60;TOKEN&#x60; - Onedata access token.  * &#x60;STORAGE_FILE_ID&#x60; - Identifier of the file on storage, relevant for given storage backend:    * path on POSIX-compatible or canonical object storages, e.g. /dir/file.txt,    * URL on HTTP based storages, e.g. https://www.example.org/data/21/run123.tar.  * &#x60;DESTINATION_PATH&#x60; - An absolute path in space where file should be created.  For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor&#x3D;tag/File-registration 
-     * @param {String} id The Id of a space for which the example command should be generated.
-     * @param {module:api/OneproviderApi~getManualStorageImportExampleCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ManualStorageImportExample}
-     */
-    this.getManualStorageImportExample = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getManualStorageImportExample");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ManualStorageImportExample;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}/storage-import/manual/example', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getOnezoneInfo operation.
      * @callback module:api/OneproviderApi~getOnezoneInfoCallback
      * @param {String} error Error message, if any.
@@ -2043,6 +1801,58 @@
 
       return this.apiClient.callApi(
         '/provider/spaces/{id}/auto-cleaning/status', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getProviderSpaceSyncStats operation.
+     * @callback module:api/OneproviderApi~getProviderSpaceSyncStatsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SpaceSyncStats} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get statistics of storage synchronization
+     * Returns requested statistics of storage synchronization for given space on this provider. 
+     * @param {String} id The Id of a space for which sync stats should be returned.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} opts.period Predefined time period for which the statistics should be fetched.
+     * @param {String} opts.metrics Specify which statistic metrics should be returned - strings delimited with comma.
+     * @param {module:api/OneproviderApi~getProviderSpaceSyncStatsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceSyncStats}
+     */
+    this.getProviderSpaceSyncStats = function(id, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getProviderSpaceSyncStats");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+        'period': opts['period'],
+        'metrics': opts['metrics']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SpaceSyncStats;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/sync', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

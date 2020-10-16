@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImport'], factory);
+    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImport'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImport);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, StorageImport) {
+}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -60,6 +60,7 @@
     _this['storageId'] = storageId;
     _this['localStorages'] = localStorages;
     _this['supportingProviders'] = supportingProviders;
+
 
     _this['spaceOccupancy'] = spaceOccupancy;
   };
@@ -101,7 +102,10 @@
         obj['supportingProviders'] = ApiClient.convertToType(data['supportingProviders'], {'String': 'Number'});
       }
       if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImport.constructFromObject(data['storageImport']);
+        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
+      }
+      if (data.hasOwnProperty('storageUpdate')) {
+        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
       }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
@@ -136,9 +140,13 @@
    */
   exports.prototype['supportingProviders'] = undefined;
   /**
-   * @member {module:model/StorageImport} storageImport
+   * @member {module:model/StorageImportDetails} storageImport
    */
   exports.prototype['storageImport'] = undefined;
+  /**
+   * @member {module:model/StorageUpdateDetails} storageUpdate
+   */
+  exports.prototype['storageUpdate'] = undefined;
   /**
    * Amount of storage [b] used by data from given space on that storage.
    * @member {Number} spaceOccupancy

@@ -63,8 +63,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property autoStorageImportConfig (base name: "autoStorageImportConfig")', function() {
-      // uncomment below and update the code to test the property autoStorageImportConfig
+    it('should have the property storageImport (base name: "storageImport")', function() {
+      // uncomment below and update the code to test the property storageImport
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
+      // uncomment below and update the code to test the property storageUpdate
       //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });

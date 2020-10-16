@@ -17,182 +17,102 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/TimeStats'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./TimeStats'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.AutoStorageImportInfo = factory(root.Onepanel.ApiClient);
+    root.Onepanel.TimeStatsCollection = factory(root.Onepanel.ApiClient, root.Onepanel.TimeStats);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, TimeStats) {
   'use strict';
 
 
 
 
   /**
-   * The AutoStorageImportInfo model module.
-   * @module model/AutoStorageImportInfo
+   * The TimeStatsCollection model module.
+   * @module model/TimeStatsCollection
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new <code>AutoStorageImportInfo</code>.
-   * Information about current (or last finished) auto storage import scan in given space.
-   * @alias module:model/AutoStorageImportInfo
+   * Constructs a new <code>TimeStatsCollection</code>.
+   * Statistics for single metric over specified time.
+   * @alias module:model/TimeStatsCollection
    * @class
-   * @param status {module:model/AutoStorageImportInfo.StatusEnum} Describes status of current (or last finished) auto storage import scan in given space.
-   * @param start {Number} Time at which current (or last finished) scan has been started.
-   * @param stop {Number} Time at which current (or last finished) scan has been stopped.
-   * @param createdFiles {Number} Counter of created files that has been detected during current (or last finished) scan.
-   * @param modifiedFiles {Number} Counter of modified files that has been detected during current (or last finished) scan.
-   * @param deletedFiles {Number} Counter of deleted files that has been detected during current (or last finished) scan.
-   * @param totalScans {Number} Total number of performed scans.
    */
-  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, totalScans) {
+  var exports = function() {
     var _this = this;
 
-    _this['status'] = status;
-    _this['start'] = start;
-    _this['stop'] = stop;
-    _this['createdFiles'] = createdFiles;
-    _this['modifiedFiles'] = modifiedFiles;
-    _this['deletedFiles'] = deletedFiles;
 
-    _this['totalScans'] = totalScans;
+
+
+
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/AutoStorageImportInfo} The value of 'discriminator' field or undefined.
+   * @return {module:model/TimeStatsCollection} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>AutoStorageImportInfo</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>TimeStatsCollection</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AutoStorageImportInfo} obj Optional instance to populate.
-   * @return {module:model/AutoStorageImportInfo} The populated <code>AutoStorageImportInfo</code> instance.
+   * @param {module:model/TimeStatsCollection} obj Optional instance to populate.
+   * @return {module:model/TimeStatsCollection} The populated <code>TimeStatsCollection</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
+      if (data.hasOwnProperty('queueLength')) {
+        obj['queueLength'] = TimeStats.constructFromObject(data['queueLength']);
       }
-      if (data.hasOwnProperty('start')) {
-        obj['start'] = ApiClient.convertToType(data['start'], 'Number');
+      if (data.hasOwnProperty('insertCount')) {
+        obj['insertCount'] = TimeStats.constructFromObject(data['insertCount']);
       }
-      if (data.hasOwnProperty('stop')) {
-        obj['stop'] = ApiClient.convertToType(data['stop'], 'Number');
+      if (data.hasOwnProperty('updateCount')) {
+        obj['updateCount'] = TimeStats.constructFromObject(data['updateCount']);
       }
-      if (data.hasOwnProperty('createdFiles')) {
-        obj['createdFiles'] = ApiClient.convertToType(data['createdFiles'], 'Number');
-      }
-      if (data.hasOwnProperty('modifiedFiles')) {
-        obj['modifiedFiles'] = ApiClient.convertToType(data['modifiedFiles'], 'Number');
-      }
-      if (data.hasOwnProperty('deletedFiles')) {
-        obj['deletedFiles'] = ApiClient.convertToType(data['deletedFiles'], 'Number');
-      }
-      if (data.hasOwnProperty('nextScan')) {
-        obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
-      }
-      if (data.hasOwnProperty('totalScans')) {
-        obj['totalScans'] = ApiClient.convertToType(data['totalScans'], 'Number');
+      if (data.hasOwnProperty('deleteCount')) {
+        obj['deleteCount'] = TimeStats.constructFromObject(data['deleteCount']);
       }
     }
     return obj;
   }
 
   /**
-   * Describes status of current (or last finished) auto storage import scan in given space.
-   * @member {module:model/AutoStorageImportInfo.StatusEnum} status
+   * Statistics of storage sync jobs queue length.
+   * @member {module:model/TimeStats} queueLength
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['queueLength'] = undefined;
   /**
-   * Time at which current (or last finished) scan has been started.
-   * @member {Number} start
+   * Statistics of storage sync imported files.
+   * @member {module:model/TimeStats} insertCount
    */
-  exports.prototype['start'] = undefined;
+  exports.prototype['insertCount'] = undefined;
   /**
-   * Time at which current (or last finished) scan has been stopped.
-   * @member {Number} stop
+   * Statistics of storage sync updated files.
+   * @member {module:model/TimeStats} updateCount
    */
-  exports.prototype['stop'] = undefined;
+  exports.prototype['updateCount'] = undefined;
   /**
-   * Counter of created files that has been detected during current (or last finished) scan.
-   * @member {Number} createdFiles
+   * Statistics of storage sync deleted files.
+   * @member {module:model/TimeStats} deleteCount
    */
-  exports.prototype['createdFiles'] = undefined;
-  /**
-   * Counter of modified files that has been detected during current (or last finished) scan.
-   * @member {Number} modifiedFiles
-   */
-  exports.prototype['modifiedFiles'] = undefined;
-  /**
-   * Counter of deleted files that has been detected during current (or last finished) scan.
-   * @member {Number} deletedFiles
-   */
-  exports.prototype['deletedFiles'] = undefined;
-  /**
-   * Estimated time at which next scan will be enqueued.
-   * @member {Number} nextScan
-   */
-  exports.prototype['nextScan'] = undefined;
-  /**
-   * Total number of performed scans.
-   * @member {Number} totalScans
-   */
-  exports.prototype['totalScans'] = undefined;
+  exports.prototype['deleteCount'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>status</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.StatusEnum = {
-    /**
-     * value: "enqueued"
-     * @const
-     */
-    "enqueued": "enqueued",
-    /**
-     * value: "running"
-     * @const
-     */
-    "running": "running",
-    /**
-     * value: "aborting"
-     * @const
-     */
-    "aborting": "aborting",
-    /**
-     * value: "completed"
-     * @const
-     */
-    "completed": "completed",
-    /**
-     * value: "failed"
-     * @const
-     */
-    "failed": "failed",
-    /**
-     * value: "aborted"
-     * @const
-     */
-    "aborted": "aborted"  };
 
 
   return exports;

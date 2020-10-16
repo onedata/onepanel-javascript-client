@@ -16,53 +16,125 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.StorageUpdateDetails = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ManualStorageImportExample();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The StorageUpdateDetails model module.
+   * @module model/StorageUpdateDetails
+   * @version 20.02.1
+   */
+
+  /**
+   * Constructs a new <code>StorageUpdateDetails</code>.
+   * The storage update configuration. Storage update ensures that all changes on storage will be reflected in space. 
+   * @alias module:model/StorageUpdateDetails
+   * @class
+   * @param strategy {String} The update strategy. One of no_update, simple_scan.
+   */
+  var exports = function(strategy) {
+    var _this = this;
+
+    _this['strategy'] = strategy;
+
+
+
+
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/StorageUpdateDetails} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>StorageUpdateDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/StorageUpdateDetails} obj Optional instance to populate.
+   * @return {module:model/StorageUpdateDetails} The populated <code>StorageUpdateDetails</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('strategy')) {
+        obj['strategy'] = ApiClient.convertToType(data['strategy'], 'String');
+      }
+      if (data.hasOwnProperty('maxDepth')) {
+        obj['maxDepth'] = ApiClient.convertToType(data['maxDepth'], 'Number');
+      }
+      if (data.hasOwnProperty('scanInterval')) {
+        obj['scanInterval'] = ApiClient.convertToType(data['scanInterval'], 'Number');
+      }
+      if (data.hasOwnProperty('writeOnce')) {
+        obj['writeOnce'] = ApiClient.convertToType(data['writeOnce'], 'Boolean');
+      }
+      if (data.hasOwnProperty('deleteEnable')) {
+        obj['deleteEnable'] = ApiClient.convertToType(data['deleteEnable'], 'Boolean');
+      }
+      if (data.hasOwnProperty('syncAcl')) {
+        obj['syncAcl'] = ApiClient.convertToType(data['syncAcl'], 'Boolean');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * The update strategy. One of no_update, simple_scan.
+   * @member {String} strategy
+   */
+  exports.prototype['strategy'] = undefined;
+  /**
+   * Maximum depth of filesystem tree that will be traversed during storage synchronization. 
+   * @member {Number} maxDepth
+   */
+  exports.prototype['maxDepth'] = undefined;
+  /**
+   * Period between subsequent scans in seconds (counted from end of one scan till beginning of the following). 
+   * @member {Number} scanInterval
+   */
+  exports.prototype['scanInterval'] = undefined;
+  /**
+   * Flag determining that synchronized storage will be treated as immutable (only creations and deletions of files on storage will be detected). 
+   * @member {Boolean} writeOnce
+   */
+  exports.prototype['writeOnce'] = undefined;
+  /**
+   * Flag determining that deletions of files will be detected. 
+   * @member {Boolean} deleteEnable
+   */
+  exports.prototype['deleteEnable'] = undefined;
+  /**
+   * Flag that enables synchronization of NFSv4 ACLs. 
+   * @member {Boolean} syncAcl
+   */
+  exports.prototype['syncAcl'] = undefined;
 
-  describe('ManualStorageImportExample', function() {
-    it('should create an instance of ManualStorageImportExample', function() {
-      // uncomment below and update the code to test ManualStorageImportExample
-      //var instane = new Onepanel.ManualStorageImportExample();
-      //expect(instance).to.be.a(Onepanel.ManualStorageImportExample);
-    });
 
-    it('should have the property curl (base name: "curl")', function() {
-      // uncomment below and update the code to test the property curl
-      //var instane = new Onepanel.ManualStorageImportExample();
-      //expect(instance).to.be();
-    });
 
-  });
-
+  return exports;
 }));
+
+

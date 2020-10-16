@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property storageUpdate (base name: "storageUpdate")', function() {
+      // uncomment below and update the code to test the property storageUpdate
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property spaceOccupancy (base name: "spaceOccupancy")', function() {
       // uncomment below and update the code to test the property spaceOccupancy
       //var instane = new Onepanel.SpaceDetails();

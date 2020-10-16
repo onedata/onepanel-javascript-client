@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
+    define(['ApiClient', 'model/StorageImportDetails', 'model/StorageUpdateDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImportDetails'), require('./StorageUpdateDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImportDetails, root.Onepanel.StorageUpdateDetails);
   }
-}(this, function(ApiClient, AutoStorageImportConfig) {
+}(this, function(ApiClient, StorageImportDetails, StorageUpdateDetails) {
   'use strict';
 
 
@@ -48,6 +48,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -77,8 +78,11 @@
       if (data.hasOwnProperty('size')) {
         obj['size'] = ApiClient.convertToType(data['size'], 'Number');
       }
-      if (data.hasOwnProperty('autoStorageImportConfig')) {
-        obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
+      if (data.hasOwnProperty('storageImport')) {
+        obj['storageImport'] = StorageImportDetails.constructFromObject(data['storageImport']);
+      }
+      if (data.hasOwnProperty('storageUpdate')) {
+        obj['storageUpdate'] = StorageUpdateDetails.constructFromObject(data['storageUpdate']);
       }
     }
     return obj;
@@ -90,9 +94,13 @@
    */
   exports.prototype['size'] = undefined;
   /**
-   * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
+   * @member {module:model/StorageImportDetails} storageImport
    */
-  exports.prototype['autoStorageImportConfig'] = undefined;
+  exports.prototype['storageImport'] = undefined;
+  /**
+   * @member {module:model/StorageUpdateDetails} storageUpdate
+   */
+  exports.prototype['storageUpdate'] = undefined;
 
 
 

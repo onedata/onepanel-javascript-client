@@ -16,79 +16,71 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ManualStorageImportExample = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.TimeStatsCollection();
+  });
 
-
-  /**
-   * The ManualStorageImportExample model module.
-   * @module model/ManualStorageImportExample
-   * @version 20.02.1
-   */
-
-  /**
-   * Constructs a new <code>ManualStorageImportExample</code>.
-   * Example &#x60;curl&#x60; command that can be executed to manually import (register) file from storage. For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor&#x3D;tag/File-registration 
-   * @alias module:model/ManualStorageImportExample
-   * @class
-   * @param curl {String} 
-   */
-  var exports = function(curl) {
-    var _this = this;
-
-    _this['curl'] = curl;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ManualStorageImportExample} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ManualStorageImportExample</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ManualStorageImportExample} obj Optional instance to populate.
-   * @return {module:model/ManualStorageImportExample} The populated <code>ManualStorageImportExample</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('curl')) {
-        obj['curl'] = ApiClient.convertToType(data['curl'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {String} curl
-   */
-  exports.prototype['curl'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('TimeStatsCollection', function() {
+    it('should create an instance of TimeStatsCollection', function() {
+      // uncomment below and update the code to test TimeStatsCollection
+      //var instane = new Onepanel.TimeStatsCollection();
+      //expect(instance).to.be.a(Onepanel.TimeStatsCollection);
+    });
 
+    it('should have the property queueLength (base name: "queueLength")', function() {
+      // uncomment below and update the code to test the property queueLength
+      //var instane = new Onepanel.TimeStatsCollection();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property insertCount (base name: "insertCount")', function() {
+      // uncomment below and update the code to test the property insertCount
+      //var instane = new Onepanel.TimeStatsCollection();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updateCount (base name: "updateCount")', function() {
+      // uncomment below and update the code to test the property updateCount
+      //var instane = new Onepanel.TimeStatsCollection();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property deleteCount (base name: "deleteCount")', function() {
+      // uncomment below and update the code to test the property deleteCount
+      //var instane = new Onepanel.TimeStatsCollection();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

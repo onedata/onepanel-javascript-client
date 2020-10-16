@@ -181,46 +181,6 @@
         done();
       });
     });
-    describe('forceStartAutoStorageImportScan', function() {
-      it('should call forceStartAutoStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test forceStartAutoStorageImportScan
-        //instance.forceStartAutoStorageImportScan(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('forceStopAutoStorageImportScan', function() {
-      it('should call forceStopAutoStorageImportScan successfully', function(done) {
-        //uncomment below and update the code to test forceStopAutoStorageImportScan
-        //instance.forceStopAutoStorageImportScan(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAutoStorageImportInfo', function() {
-      it('should call getAutoStorageImportInfo successfully', function(done) {
-        //uncomment below and update the code to test getAutoStorageImportInfo
-        //instance.getAutoStorageImportInfo(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAutoStorageImportStats', function() {
-      it('should call getAutoStorageImportStats successfully', function(done) {
-        //uncomment below and update the code to test getAutoStorageImportStats
-        //instance.getAutoStorageImportStats(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getBlockDevices', function() {
       it('should call getBlockDevices successfully', function(done) {
         //uncomment below and update the code to test getBlockDevices
@@ -371,16 +331,6 @@
         done();
       });
     });
-    describe('getManualStorageImportExample', function() {
-      it('should call getManualStorageImportExample successfully', function(done) {
-        //uncomment below and update the code to test getManualStorageImportExample
-        //instance.getManualStorageImportExample(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getOnezoneInfo', function() {
       it('should call getOnezoneInfo successfully', function(done) {
         //uncomment below and update the code to test getOnezoneInfo
@@ -495,6 +445,16 @@
       it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
         //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceSyncStats', function() {
+      it('should call getProviderSpaceSyncStats successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceSyncStats
+        //instance.getProviderSpaceSyncStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

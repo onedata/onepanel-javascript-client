@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.StorageImport();
+    instance = new Onepanel.SpaceSyncStats();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,28 @@
       object[property] = value;
   }
 
-  describe('StorageImport', function() {
-    it('should create an instance of StorageImport', function() {
-      // uncomment below and update the code to test StorageImport
-      //var instane = new Onepanel.StorageImport();
-      //expect(instance).to.be.a(Onepanel.StorageImport);
+  describe('SpaceSyncStats', function() {
+    it('should create an instance of SpaceSyncStats', function() {
+      // uncomment below and update the code to test SpaceSyncStats
+      //var instane = new Onepanel.SpaceSyncStats();
+      //expect(instance).to.be.a(Onepanel.SpaceSyncStats);
     });
 
-    it('should have the property mode (base name: "mode")', function() {
-      // uncomment below and update the code to test the property mode
-      //var instane = new Onepanel.StorageImport();
+    it('should have the property importStatus (base name: "importStatus")', function() {
+      // uncomment below and update the code to test the property importStatus
+      //var instane = new Onepanel.SpaceSyncStats();
       //expect(instance).to.be();
     });
 
-    it('should have the property autoStorageImportConfig (base name: "autoStorageImportConfig")', function() {
-      // uncomment below and update the code to test the property autoStorageImportConfig
-      //var instane = new Onepanel.StorageImport();
+    it('should have the property updateStatus (base name: "updateStatus")', function() {
+      // uncomment below and update the code to test the property updateStatus
+      //var instane = new Onepanel.SpaceSyncStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property stats (base name: "stats")', function() {
+      // uncomment below and update the code to test the property stats
+      //var instane = new Onepanel.SpaceSyncStats();
       //expect(instance).to.be();
     });
 

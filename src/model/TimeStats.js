@@ -42,16 +42,19 @@
 
   /**
    * Constructs a new <code>TimeStats</code>.
-   * Statistics of single metric over specified time.
+   * Statistics for single metric over specified time.
    * @alias module:model/TimeStats
    * @class
+   * @param name {module:model/TimeStats.NameEnum} Name of metric for which this object holds statistics.
    * @param lastValueDate {String} Date of last measurement value in this object in ISO 8601 format.
    * @param values {Array.<Number>} List of sample values for given metric. The used period is divided into array-length number of parts. E.g. if the used period is an hour, and if there are 12 values in this array, every value is a value for 1/12 of day, which gives value for every hour of the day. If the value is null, there is no sample for given time part. 
    */
-  var exports = function(lastValueDate, values) {
+  var exports = function(name, lastValueDate, values) {
     var _this = this;
 
+    _this['name'] = name;
     _this['lastValueDate'] = lastValueDate;
+
     _this['values'] = values;
   };
 
@@ -76,8 +79,14 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
       if (data.hasOwnProperty('lastValueDate')) {
         obj['lastValueDate'] = ApiClient.convertToType(data['lastValueDate'], 'String');
+      }
+      if (data.hasOwnProperty('period')) {
+        obj['period'] = ApiClient.convertToType(data['period'], 'String');
       }
       if (data.hasOwnProperty('values')) {
         obj['values'] = ApiClient.convertToType(data['values'], ['Number']);
@@ -87,16 +96,75 @@
   }
 
   /**
+   * Name of metric for which this object holds statistics.
+   * @member {module:model/TimeStats.NameEnum} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
    * Date of last measurement value in this object in ISO 8601 format.
    * @member {String} lastValueDate
    */
   exports.prototype['lastValueDate'] = undefined;
+  /**
+   * Predefined time period for which the statistics were fetched.
+   * @member {module:model/TimeStats.PeriodEnum} period
+   */
+  exports.prototype['period'] = undefined;
   /**
    * List of sample values for given metric. The used period is divided into array-length number of parts. E.g. if the used period is an hour, and if there are 12 values in this array, every value is a value for 1/12 of day, which gives value for every hour of the day. If the value is null, there is no sample for given time part. 
    * @member {Array.<Number>} values
    */
   exports.prototype['values'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>name</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.NameEnum = {
+    /**
+     * value: "queueLength"
+     * @const
+     */
+    "queueLength": "queueLength",
+    /**
+     * value: "insertCount"
+     * @const
+     */
+    "insertCount": "insertCount",
+    /**
+     * value: "updateCount"
+     * @const
+     */
+    "updateCount": "updateCount",
+    /**
+     * value: "deleteCount"
+     * @const
+     */
+    "deleteCount": "deleteCount"  };
+
+  /**
+   * Allowed values for the <code>period</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.PeriodEnum = {
+    /**
+     * value: "minute"
+     * @const
+     */
+    "minute": "minute",
+    /**
+     * value: "hour"
+     * @const
+     */
+    "hour": "hour",
+    /**
+     * value: "day"
+     * @const
+     */
+    "day": "day"  };
 
 
   return exports;

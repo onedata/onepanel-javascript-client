@@ -46,7 +46,7 @@
    * @alias module:model/XRootDModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/XRootDModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/XRootDModify.TypeEnum} The type of storage.  `type = \"xrootd\"`  Storage backend compatible with [XRootD](http://www.xrootd.org/) protocol. 
    */
   var exports = function(type) {
     var _this = this;
@@ -106,7 +106,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"xrootd\"`  Storage backend compatible with [XRootD](http://www.xrootd.org/) protocol. 
    * @member {module:model/XRootDModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

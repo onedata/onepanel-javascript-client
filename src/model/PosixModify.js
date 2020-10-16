@@ -46,7 +46,7 @@
    * @alias module:model/PosixModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/PosixModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/PosixModify.TypeEnum} The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
    */
   var exports = function(type) {
     var _this = this;
@@ -90,7 +90,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
    * @member {module:model/PosixModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

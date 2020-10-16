@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/WebdavCredentials
-   * @param type {module:model/Webdav.TypeEnum} The type of storage.
+   * @param type {module:model/Webdav.TypeEnum} The type of storage.  `type = \"webdav\"`  Storage backend compatible with [WebDAV](https://tools.ietf.org/html/rfc4918) protocol. 
    * @param endpoint {String} Full URL of the WebDAV server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
@@ -129,7 +129,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"webdav\"`  Storage backend compatible with [WebDAV](https://tools.ietf.org/html/rfc4918) protocol. 
    * @member {module:model/Webdav.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -187,7 +187,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

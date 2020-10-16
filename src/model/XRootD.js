@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/XRootDCredentials
-   * @param type {module:model/XRootD.TypeEnum} The type of storage.
+   * @param type {module:model/XRootD.TypeEnum} The type of storage.  `type = \"xrootd\"`  Storage backend compatible with [XRootD](http://www.xrootd.org/) protocol. 
    * @param url {String} Full URL of the XRootD server, including scheme (root or http) and path, e.g. `root://192.168.0.1//data`. Please note, that XRootD URL format requires double slash after host to indicate absolute path. 
    */
   var exports = function(type, url) {
@@ -109,7 +109,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"xrootd\"`  Storage backend compatible with [XRootD](http://www.xrootd.org/) protocol. 
    * @member {module:model/XRootD.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -139,7 +139,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>StorageCreateDetails</code>.
-   * The cluster storage configuration.
+   * The storage configuration.
    * @alias module:model/StorageCreateDetails
    * @class
    */
@@ -113,7 +113,6 @@
   }
 
   /**
-   * The type of storage.
    * @member {String} type
    */
   exports.prototype['type'] = undefined;

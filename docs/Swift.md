@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of storage. | 
+**type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;swift\&quot;&#x60;  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol.  | 
 **authUrl** | **String** | The URL to OpenStack Keystone identity service. | 
 **tenantName** | **String** | The name of the tenant to which the user belongs. | 
 **containerName** | **String** | The name of the Swift storage container. | 

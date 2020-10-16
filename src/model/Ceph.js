@@ -48,7 +48,7 @@
    * @extends module:model/StorageCreateDetails
    * @implements module:model/StorageGetDetails
    * @implements module:model/CephCredentials
-   * @param type {module:model/Ceph.TypeEnum} The type of storage.
+   * @param type {module:model/Ceph.TypeEnum} The type of storage.  `type = \"ceph\"`  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated `libradosstriper` library. 
    * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
    * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
    * @param monitorHostname {String} The monitor hostname.
@@ -113,7 +113,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"ceph\"`  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated `libradosstriper` library. 
    * @member {module:model/Ceph.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -141,7 +141,6 @@
 
   // Implement StorageGetDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

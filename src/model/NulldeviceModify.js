@@ -46,7 +46,7 @@
    * @alias module:model/NulldeviceModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/NulldeviceModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/NulldeviceModify.TypeEnum} The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. Skip storage detection option is obligatory for this type of storage. 
    */
   var exports = function(type) {
     var _this = this;
@@ -110,7 +110,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. Skip storage detection option is obligatory for this type of storage. 
    * @member {module:model/NulldeviceModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

@@ -46,7 +46,7 @@
    * @alias module:model/HTTPModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/HTTPModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/HTTPModify.TypeEnum} The type of storage.  `type = \"http\"`  Any [HTTP](https://tools.ietf.org/html/rfc7231) or HTTPS compatible server. Supported only with Readonly option enabled and in manual import mode. 
    */
   var exports = function(type) {
     var _this = this;
@@ -114,7 +114,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"http\"`  Any [HTTP](https://tools.ietf.org/html/rfc7231) or HTTPS compatible server. Supported only with Readonly option enabled and in manual import mode. 
    * @member {module:model/HTTPModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

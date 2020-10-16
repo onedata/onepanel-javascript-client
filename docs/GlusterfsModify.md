@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  | 
+**type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;glusterfs\&quot;&#x60;  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider.  | 
 **volume** | **String** | The name of the volume to use as a storage backend. | [optional] 
 **hostname** | **String** | The hostname (IP address or FQDN) of GlusterFS volume server. | [optional] 
 **port** | **Number** | The GlusterFS port on volume server. | [optional] 

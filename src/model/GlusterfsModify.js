@@ -46,7 +46,7 @@
    * @alias module:model/GlusterfsModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/GlusterfsModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/GlusterfsModify.TypeEnum} The type of storage.  `type = \"glusterfs\"`  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider. 
    */
   var exports = function(type) {
     var _this = this;
@@ -110,7 +110,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"glusterfs\"`  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider. 
    * @member {module:model/GlusterfsModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

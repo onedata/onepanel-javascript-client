@@ -552,7 +552,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderApi();
 
-var storageCreateRequest = new Onepanel.StorageCreateRequest(); // StorageCreateRequest | The configuration details of storage resources to be added to the provider deployment. 
+var storageCreateRequest = new Onepanel.StorageCreateRequest(); // StorageCreateRequest | The configuration details of storage resources to be added to the provider deployment. Must be an object with unique names for the storages as keys and their corresponding configuration (objects) as values - see the request body example. 
 
 
 var callback = function(error, data, response) {
@@ -569,7 +569,7 @@ apiInstance.addStorage(storageCreateRequest, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storageCreateRequest** | [**StorageCreateRequest**](StorageCreateRequest.md)| The configuration details of storage resources to be added to the provider deployment.  | 
+ **storageCreateRequest** | [**StorageCreateRequest**](StorageCreateRequest.md)| The configuration details of storage resources to be added to the provider deployment. Must be an object with unique names for the storages as keys and their corresponding configuration (objects) as values - see the request body example.  | 
 
 ### Return type
 
@@ -3426,7 +3426,7 @@ var apiInstance = new Onepanel.OneproviderApi();
 
 var id = "id_example"; // String | The Id of the storage resource which details should be modified. 
 
-var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
+var storageModifyRequest = new Onepanel.StorageModifyRequest(); // StorageModifyRequest | An object with one key - the current name of the storage that is being modified - and its value set to an object with updated parameters. 
 
 
 var callback = function(error, data, response) {
@@ -3444,7 +3444,7 @@ apiInstance.modifyStorage(id, storageModifyRequest, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The Id of the storage resource which details should be modified.  | 
- **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| New values for storage configuration parameters which should be changed. Must contain the current type of the storage.  | 
+ **storageModifyRequest** | [**StorageModifyRequest**](StorageModifyRequest.md)| An object with one key - the current name of the storage that is being modified - and its value set to an object with updated parameters.  | 
 
 ### Return type
 

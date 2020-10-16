@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/CephradosCredentials
-   * @param type {module:model/Cephrados.TypeEnum} The type of storage.
+   * @param type {module:model/Cephrados.TypeEnum} The type of storage.  `type = \"cephrados\"`  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage. 
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
    * @param monitorHostname {String} The monitor hostname.
@@ -117,7 +117,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"cephrados\"`  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage. 
    * @member {module:model/Cephrados.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -150,7 +150,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

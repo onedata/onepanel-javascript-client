@@ -46,7 +46,7 @@
    * @alias module:model/SwiftModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/SwiftModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * @param type {module:model/SwiftModify.TypeEnum} The type of storage.  `type = \"swift\"`  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol. 
    */
   var exports = function(type) {
     var _this = this;
@@ -106,7 +106,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
+   * The type of storage.  `type = \"swift\"`  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol. 
    * @member {module:model/SwiftModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of storage. | [optional] 
+**type** | **String** |  | [optional] 
 **timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
 **skipStorageDetection** | **Boolean** | If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages.  | [optional] [default to false]
 **lumaFeed** | **String** | Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html  | [optional] [default to &#39;auto&#39;]

@@ -4,9 +4,9 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**checkDns**](DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+[**checkDns**](DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain
 [**getDnsCheckConfiguration**](DNSAndWebCertificatesApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
-[**getWebCert**](DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
+[**getWebCert**](DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status
 [**modifyDnsCheckConfiguration**](DNSAndWebCertificatesApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 [**modifyWebCert**](DNSAndWebCertificatesApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **checkDns**
 > DnsCheck checkDns(opts)
 
-Check correctness of DNS entries for the cluster&#39;s domain.
+Check correctness of DNS entries for the cluster&#39;s domain
 
 Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
 
@@ -138,7 +138,7 @@ This endpoint does not need any parameter.
 # **getWebCert**
 > WebCert getWebCert()
 
-Get information about SSL certificates configuration and status.
+Get information about SSL certificates configuration and status
 
 Returns information about SSL certificate status and renewal configuration. 
 

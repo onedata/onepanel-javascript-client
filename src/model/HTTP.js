@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @implements module:model/HTTPCredentials
-   * @param type {module:model/HTTP.TypeEnum} The type of storage.
+   * @param type {module:model/HTTP.TypeEnum} The type of storage.  `type = \"http\"`  Any [HTTP](https://tools.ietf.org/html/rfc7231) or HTTPS compatible server. Supported only with Readonly option enabled and in manual import mode. 
    * @param endpoint {String} Full URL of the HTTP server, including scheme (http or https) and path. 
    */
   var exports = function(type, endpoint) {
@@ -117,7 +117,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.
+   * The type of storage.  `type = \"http\"`  Any [HTTP](https://tools.ietf.org/html/rfc7231) or HTTPS compatible server. Supported only with Readonly option enabled and in manual import mode. 
    * @member {module:model/HTTP.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -158,7 +158,6 @@
 
   // Implement StorageCreateDetails interface:
   /**
-   * The type of storage.
    * @member {String} type
    */
 exports.prototype['type'] = undefined;

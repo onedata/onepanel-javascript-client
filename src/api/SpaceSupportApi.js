@@ -193,7 +193,7 @@
      */
 
     /**
-     * Get statistics of auto storage import mechanism.
+     * Get statistics of auto storage import mechanism
      * Returns requested statistics of auto storage import mechanism for given space on this provider. 
      * @param {String} id The Id of a space for which storage import stats should be returned.
      * @param {module:model/String} period Predefined time period for which the statistics should be fetched.

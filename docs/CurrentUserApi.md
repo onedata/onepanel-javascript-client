@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCluster**](CurrentUserApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusters**](CurrentUserApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
-[**getCurrentUser**](CurrentUserApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user
+[**getCurrentUser**](CurrentUserApi.md#getCurrentUser) | **GET** /user | Get details of authenticated user
 
 
 <a name="getCluster"></a>
@@ -135,9 +135,9 @@ This endpoint does not need any parameter.
 # **getCurrentUser**
 > CurrentUser getCurrentUser()
 
-Get Onepanel user details of currently logged in user
+Get details of authenticated user
 
-Returns the configuration information of the Onepanel user performing the query. 
+Returns the details of the user performing the query. 
 
 ### Example
 ```javascript

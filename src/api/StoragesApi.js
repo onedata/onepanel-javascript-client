@@ -59,7 +59,7 @@
     /**
      * Add storage
      * Adds additional storage resources to the provider.
-     * @param {module:model/StorageCreateRequest} storageCreateRequest The configuration details of storage resources to be added to the provider deployment. 
+     * @param {module:model/StorageCreateRequest} storageCreateRequest The configuration details of storage resources to be added to the provider deployment. Must be an object with unique names for the storages as keys and their corresponding configuration (objects) as values - see the request body example. 
      * @param {module:api/StoragesApi~addStorageCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.addStorage = function(storageCreateRequest, callback) {
@@ -189,7 +189,7 @@
      * Modify storage config
      * Modifies storage configuration.
      * @param {String} id The Id of the storage resource which details should be modified. 
-     * @param {module:model/StorageModifyRequest} storageModifyRequest New values for storage configuration parameters which should be changed. Must contain the current type of the storage. 
+     * @param {module:model/StorageModifyRequest} storageModifyRequest An object with one key - the current name of the storage that is being modified - and its value set to an object with updated parameters. 
      * @param {module:api/StoragesApi~modifyStorageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/StorageModifyDetails}
      */

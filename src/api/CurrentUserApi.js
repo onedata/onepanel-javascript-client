@@ -142,8 +142,8 @@
      */
 
     /**
-     * Get Onepanel user details of currently logged in user
-     * Returns the configuration information of the Onepanel user performing the query. 
+     * Get details of authenticated user
+     * Returns the details of the user performing the query. 
      * @param {module:api/CurrentUserApi~getCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CurrentUser}
      */

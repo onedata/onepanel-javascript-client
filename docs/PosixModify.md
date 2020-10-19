@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  | 
+**type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;posix\&quot;&#x60;  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS.  | 
 **mountPoint** | **String** | The absolute path to the directory where the POSIX storage is mounted on the cluster nodes.  | [optional] 
 
 

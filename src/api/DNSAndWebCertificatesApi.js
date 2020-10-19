@@ -57,7 +57,7 @@
      */
 
     /**
-     * Check correctness of DNS entries for the cluster&#39;s domain.
+     * Check correctness of DNS entries for the cluster&#39;s domain
      * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
@@ -139,7 +139,7 @@
      */
 
     /**
-     * Get information about SSL certificates configuration and status.
+     * Get information about SSL certificates configuration and status
      * Returns information about SSL certificate status and renewal configuration. 
      * @param {module:api/DNSAndWebCertificatesApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/WebCert}

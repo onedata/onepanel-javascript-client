@@ -147,10 +147,10 @@ Class | Method | HTTP request | Description
 *Onepanel.ClusterApi* | [**removeClusterHost**](docs/ClusterApi.md#removeClusterHost) | **DELETE** /hosts/{host} | Remove host from cluster
 *Onepanel.CurrentUserApi* | [**getCluster**](docs/CurrentUserApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.CurrentUserApi* | [**getClusters**](docs/CurrentUserApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
-*Onepanel.CurrentUserApi* | [**getCurrentUser**](docs/CurrentUserApi.md#getCurrentUser) | **GET** /user | Get Onepanel user details of currently logged in user
-*Onepanel.DNSAndWebCertificatesApi* | [**checkDns**](docs/DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
+*Onepanel.CurrentUserApi* | [**getCurrentUser**](docs/CurrentUserApi.md#getCurrentUser) | **GET** /user | Get details of authenticated user
+*Onepanel.DNSAndWebCertificatesApi* | [**checkDns**](docs/DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain
 *Onepanel.DNSAndWebCertificatesApi* | [**getDnsCheckConfiguration**](docs/DNSAndWebCertificatesApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
-*Onepanel.DNSAndWebCertificatesApi* | [**getWebCert**](docs/DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status.
+*Onepanel.DNSAndWebCertificatesApi* | [**getWebCert**](docs/DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status
 *Onepanel.DNSAndWebCertificatesApi* | [**modifyDnsCheckConfiguration**](docs/DNSAndWebCertificatesApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 *Onepanel.DNSAndWebCertificatesApi* | [**modifyWebCert**](docs/DNSAndWebCertificatesApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.DebugApi* | [**getTransfersMock**](docs/DebugApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
@@ -253,7 +253,7 @@ Class | Method | HTTP request | Description
 *Onepanel.SpaceSupportApi* | [**forceStartAutoStorageImportScan**](docs/SpaceSupportApi.md#forceStartAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-start | Force start auto storage import scan
 *Onepanel.SpaceSupportApi* | [**forceStopAutoStorageImportScan**](docs/SpaceSupportApi.md#forceStopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-stop | Force stop auto storage import scan
 *Onepanel.SpaceSupportApi* | [**getAutoStorageImportInfo**](docs/SpaceSupportApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan
-*Onepanel.SpaceSupportApi* | [**getAutoStorageImportStats**](docs/SpaceSupportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
+*Onepanel.SpaceSupportApi* | [**getAutoStorageImportStats**](docs/SpaceSupportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism
 *Onepanel.SpaceSupportApi* | [**getManualStorageImportExample**](docs/SpaceSupportApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example
 *Onepanel.SpaceSupportApi* | [**getProviderSpaces**](docs/SpaceSupportApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.SpaceSupportApi* | [**getSpaceDetails**](docs/SpaceSupportApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details

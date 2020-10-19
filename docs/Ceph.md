@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of storage. | 
+**type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;ceph\&quot;&#x60;  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated &#x60;libradosstriper&#x60; library.  | 
 **monitorHostname** | **String** | The monitor hostname. | 
 **clusterName** | **String** | The Ceph cluster name. | 
 **poolName** | **String** | The Ceph pool name. | 

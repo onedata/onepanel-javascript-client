@@ -47,13 +47,14 @@
    * @class
    * @param userId {String} The user Id.
    * @param username {String} User's full name (given names + surname).
+   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
    */
-  var exports = function(userId, username) {
+  var exports = function(userId, username, clusterPrivileges) {
     var _this = this;
 
     _this['userId'] = userId;
     _this['username'] = username;
-
+    _this['clusterPrivileges'] = clusterPrivileges;
   };
 
   /**

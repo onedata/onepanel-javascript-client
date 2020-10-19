@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**forceStartAutoStorageImportScan**](SpaceSupportApi.md#forceStartAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-start | Force start auto storage import scan
 [**forceStopAutoStorageImportScan**](SpaceSupportApi.md#forceStopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-stop | Force stop auto storage import scan
 [**getAutoStorageImportInfo**](SpaceSupportApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan
-[**getAutoStorageImportStats**](SpaceSupportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism.
+[**getAutoStorageImportStats**](SpaceSupportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism
 [**getManualStorageImportExample**](SpaceSupportApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example
 [**getProviderSpaces**](SpaceSupportApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 [**getSpaceDetails**](SpaceSupportApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 # **getAutoStorageImportStats**
 > AutoStorageImportStats getAutoStorageImportStats(id, period, metrics)
 
-Get statistics of auto storage import mechanism.
+Get statistics of auto storage import mechanism
 
 Returns requested statistics of auto storage import mechanism for given space on this provider. 
 

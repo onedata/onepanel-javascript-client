@@ -17,29 +17,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/OnezoneInfo', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest'], factory);
+    define(['ApiClient', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/OnezoneInfo'), require('../model/ProviderDetails'), require('../model/ProviderModifyRequest'), require('../model/ProviderRegisterRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.RegistrationAndIdentityApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.OnezoneInfo, root.Onepanel.ProviderDetails, root.Onepanel.ProviderModifyRequest, root.Onepanel.ProviderRegisterRequest);
+    root.Onepanel.DNSApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error);
   }
-}(this, function(ApiClient, Error, OnezoneInfo, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest) {
+}(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error) {
   'use strict';
 
   /**
-   * RegistrationAndIdentity service.
-   * @module api/RegistrationAndIdentityApi
+   * DNS service.
+   * @module api/DNSApi
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new RegistrationAndIdentityApi. 
-   * @alias module:api/RegistrationAndIdentityApi
+   * Constructs a new DNSApi. 
+   * @alias module:api/DNSApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,66 +49,22 @@
 
 
     /**
-     * Callback function to receive the result of the addProvider operation.
-     * @callback module:api/RegistrationAndIdentityApi~addProviderCallback
+     * Callback function to receive the result of the checkDns operation.
+     * @callback module:api/DNSApi~checkDnsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/DnsCheck} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Register provider
-     * Registers provider in the zone.
-     * @param {module:model/ProviderRegisterRequest} providerRegisterRequest The new provider details.
-     * @param {module:api/RegistrationAndIdentityApi~addProviderCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.addProvider = function(providerRegisterRequest, callback) {
-      var postBody = providerRegisterRequest;
-
-      // verify the required parameter 'providerRegisterRequest' is set
-      if (providerRegisterRequest === undefined || providerRegisterRequest === null) {
-        throw new Error("Missing the required parameter 'providerRegisterRequest' when calling addProvider");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getOnezoneInfo operation.
-     * @callback module:api/RegistrationAndIdentityApi~getOnezoneInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/OnezoneInfo} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Onezone information
-     * Get information about a Onezone. Before registration, this endpoint requires a registration token and returns information about the Onezone which issued the token. If the Oneprovider is registered, returns information about the Onezone at which the provider is registered. 
+     * Check correctness of DNS entries for the cluster&#39;s domain
+     * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.token Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
-     * @param {module:api/RegistrationAndIdentityApi~getOnezoneInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/OnezoneInfo}
+     * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
+     * @param {module:api/DNSApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheck}
      */
-    this.getOnezoneInfo = function(opts, callback) {
+    this.checkDns = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -116,7 +72,7 @@
       var pathParams = {
       };
       var queryParams = {
-        'token': opts['token']
+        'forceCheck': opts['forceCheck']
       };
       var headerParams = {
       };
@@ -126,30 +82,30 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = OnezoneInfo;
+      var returnType = DnsCheck;
 
       return this.apiClient.callApi(
-        '/provider/onezone_info', 'GET',
+        '/dns_check', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the getProvider operation.
-     * @callback module:api/RegistrationAndIdentityApi~getProviderCallback
+     * Callback function to receive the result of the getDnsCheckConfiguration operation.
+     * @callback module:api/DNSApi~getDnsCheckConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ProviderDetails} data The data returned by the service call.
+     * @param {module:model/DnsCheckConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get provider details
-     * Returns the basic configuration information of the provider.
-     * @param {module:api/RegistrationAndIdentityApi~getProviderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ProviderDetails}
+     * Return settings used when performing the DNS check
+     * Returns servers queried to check DNS configuration correctness. 
+     * @param {module:api/DNSApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheckConfiguration}
      */
-    this.getProvider = function(callback) {
+    this.getDnsCheckConfiguration = function(callback) {
       var postBody = null;
 
 
@@ -165,35 +121,35 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ProviderDetails;
+      var returnType = DnsCheckConfiguration;
 
       return this.apiClient.callApi(
-        '/provider', 'GET',
+        '/dns_check/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the modifyProvider operation.
-     * @callback module:api/RegistrationAndIdentityApi~modifyProviderCallback
+     * Callback function to receive the result of the modifyDnsCheckConfiguration operation.
+     * @callback module:api/DNSApi~modifyDnsCheckConfigurationCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify provider details
-     * Modifies basic provider details in the zone.
-     * @param {module:model/ProviderModifyRequest} providerModifyRequest New values for provider configuration parameters which should be changed. 
-     * @param {module:api/RegistrationAndIdentityApi~modifyProviderCallback} callback The callback function, accepting three arguments: error, data, response
+     * Configure dns check
+     * Informs what DNS servers to use for checking external DNS records validity. 
+     * @param {module:model/DnsCheckConfiguration} dnsCheckConfiguration The configuration changes.
+     * @param {module:api/DNSApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifyProvider = function(providerModifyRequest, callback) {
-      var postBody = providerModifyRequest;
+    this.modifyDnsCheckConfiguration = function(dnsCheckConfiguration, callback) {
+      var postBody = dnsCheckConfiguration;
 
-      // verify the required parameter 'providerModifyRequest' is set
-      if (providerModifyRequest === undefined || providerModifyRequest === null) {
-        throw new Error("Missing the required parameter 'providerModifyRequest' when calling modifyProvider");
+      // verify the required parameter 'dnsCheckConfiguration' is set
+      if (dnsCheckConfiguration === undefined || dnsCheckConfiguration === null) {
+        throw new Error("Missing the required parameter 'dnsCheckConfiguration' when calling modifyDnsCheckConfiguration");
       }
 
 
@@ -207,50 +163,12 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
       var accepts = [];
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the removeProvider operation.
-     * @callback module:api/RegistrationAndIdentityApi~removeProviderCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Unregister provider
-     * Unregisters provider from the zone.
-     * @param {module:api/RegistrationAndIdentityApi~removeProviderCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.removeProvider = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider', 'DELETE',
+        '/dns_check/configuration', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -17,29 +17,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/WebCert', 'model/WebCertModifyRequest'], factory);
+    define(['ApiClient', 'model/Error', 'model/SpaceFilePopularityConfiguration', 'model/TaskId'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/EmergencyPassphraseChangeRequest'), require('../model/EmergencyPassphraseStatus'), require('../model/Error'), require('../model/WebCert'), require('../model/WebCertModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/SpaceFilePopularityConfiguration'), require('../model/TaskId'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SecurityApi = factory(root.Onepanel.ApiClient, root.Onepanel.EmergencyPassphraseChangeRequest, root.Onepanel.EmergencyPassphraseStatus, root.Onepanel.Error, root.Onepanel.WebCert, root.Onepanel.WebCertModifyRequest);
+    root.Onepanel.FilePopularityApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.SpaceFilePopularityConfiguration, root.Onepanel.TaskId);
   }
-}(this, function(ApiClient, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, WebCert, WebCertModifyRequest) {
+}(this, function(ApiClient, Error, SpaceFilePopularityConfiguration, TaskId) {
   'use strict';
 
   /**
-   * Security service.
-   * @module api/SecurityApi
+   * FilePopularity service.
+   * @module api/FilePopularityApi
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new SecurityApi. 
-   * @alias module:api/SecurityApi
+   * Constructs a new FilePopularityApi. 
+   * @alias module:api/FilePopularityApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,107 +49,37 @@
 
 
     /**
-     * Callback function to receive the result of the getEmergencyPassphraseStatus operation.
-     * @callback module:api/SecurityApi~getEmergencyPassphraseStatusCallback
+     * Callback function to receive the result of the configureFilePopularity operation.
+     * @callback module:api/FilePopularityApi~configureFilePopularityCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/EmergencyPassphraseStatus} data The data returned by the service call.
+     * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get emergency passphrase status
-     * Returns information whether emergency passphrase is set.
-     * @param {module:api/SecurityApi~getEmergencyPassphraseStatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/EmergencyPassphraseStatus}
+     * Configure file popularity mechanism in the space
+     * Configures the file popularity mechanism in the space. The mechanism is responsible for collecting file popularity usage statistics per space support. Creates a view which can be queried to fetch the least popular files. The view is sorted in an increasing order by the popularity function value. The popularity function is defined as  &#x60;&#x60;&#x60; P(lastOpenHour, avgOpenCountPerDay) &#x3D; w1 * lastOpenHour + w2 * min(avgOpenCountPerDay, MAX_AVG_OPEN_COUNT_PER_DAY) where: * lastOpenHour - parameter which is equal to timestamp (in hours since 01.01.1970) of last open operation on given file * w1 - weight of lastOpenHour parameter * avgOpenCountPerDay - parameter equal to moving average of number of open operations on given file per day. Value is calculated over last 30 days. * w2 - weight of avgOpenCountPerDay parameter * MAX_AVG_OPEN_COUNT_PER_DAY - upper boundary for avgOpenCountPerDay parameter &#x60;&#x60;&#x60; 
+     * @param {String} id The Id of a space.
+     * @param {module:model/SpaceFilePopularityConfiguration} spaceFilePopularityConfiguration Configuration of the file-popularity mechanism in the space.
+     * @param {module:api/FilePopularityApi~configureFilePopularityCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
      */
-    this.getEmergencyPassphraseStatus = function(callback) {
-      var postBody = null;
+    this.configureFilePopularity = function(id, spaceFilePopularityConfiguration, callback) {
+      var postBody = spaceFilePopularityConfiguration;
 
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling configureFilePopularity");
+      }
 
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = EmergencyPassphraseStatus;
-
-      return this.apiClient.callApi(
-        '/emergency_passphrase', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getWebCert operation.
-     * @callback module:api/SecurityApi~getWebCertCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/WebCert} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get information about SSL certificates configuration and status
-     * Returns information about SSL certificate status and renewal configuration. 
-     * @param {module:api/SecurityApi~getWebCertCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/WebCert}
-     */
-    this.getWebCert = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = WebCert;
-
-      return this.apiClient.callApi(
-        '/web_cert', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the modifyWebCert operation.
-     * @callback module:api/SecurityApi~modifyWebCertCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify SSL certificate configuration
-     * Modifies configuration regarding certificate management. Allows enabling or disabling certificate autorenewal using Let&#39;s Encrypt service. 
-     * @param {module:model/WebCertModifyRequest} webCertModifyRequest New values for certificate management configuration. 
-     * @param {module:api/SecurityApi~modifyWebCertCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyWebCert = function(webCertModifyRequest, callback) {
-      var postBody = webCertModifyRequest;
-
-      // verify the required parameter 'webCertModifyRequest' is set
-      if (webCertModifyRequest === undefined || webCertModifyRequest === null) {
-        throw new Error("Missing the required parameter 'webCertModifyRequest' when calling modifyWebCert");
+      // verify the required parameter 'spaceFilePopularityConfiguration' is set
+      if (spaceFilePopularityConfiguration === undefined || spaceFilePopularityConfiguration === null) {
+        throw new Error("Missing the required parameter 'spaceFilePopularityConfiguration' when calling configureFilePopularity");
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -161,39 +91,41 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = TaskId;
 
       return this.apiClient.callApi(
-        '/web_cert', 'PATCH',
+        '/provider/spaces/{id}/file-popularity/configuration', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the setEmergencyPassphrase operation.
-     * @callback module:api/SecurityApi~setEmergencyPassphraseCallback
+     * Callback function to receive the result of the getFilePopularityConfiguration operation.
+     * @callback module:api/FilePopularityApi~getFilePopularityConfigurationCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SpaceFilePopularityConfiguration} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Set emergency passphrase
-     * Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI. May be invoked without credentials when no passphrase is set. 
-     * @param {module:model/EmergencyPassphraseChangeRequest} emergencyPassphrase 
-     * @param {module:api/SecurityApi~setEmergencyPassphraseCallback} callback The callback function, accepting three arguments: error, data, response
+     * Get file popularity configuration
+     * Returns configuration of file popularity mechanism in the space specified by space Id in the path. 
+     * @param {String} id The Id of a space of which file-popularity configuration should be returned.
+     * @param {module:api/FilePopularityApi~getFilePopularityConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SpaceFilePopularityConfiguration}
      */
-    this.setEmergencyPassphrase = function(emergencyPassphrase, callback) {
-      var postBody = emergencyPassphrase;
+    this.getFilePopularityConfiguration = function(id, callback) {
+      var postBody = null;
 
-      // verify the required parameter 'emergencyPassphrase' is set
-      if (emergencyPassphrase === undefined || emergencyPassphrase === null) {
-        throw new Error("Missing the required parameter 'emergencyPassphrase' when calling setEmergencyPassphrase");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getFilePopularityConfiguration");
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -203,12 +135,12 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = SpaceFilePopularityConfiguration;
 
       return this.apiClient.callApi(
-        '/emergency_passphrase', 'PUT',
+        '/provider/spaces/{id}/file-popularity/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

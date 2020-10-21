@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.RegistrationAndIdentityApi();
+    instance = new Onepanel.AutoCleaningApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,51 +50,71 @@
       object[property] = value;
   }
 
-  describe('RegistrationAndIdentityApi', function() {
-    describe('addProvider', function() {
-      it('should call addProvider successfully', function(done) {
-        //uncomment below and update the code to test addProvider
-        //instance.addProvider(function(error) {
+  describe('AutoCleaningApi', function() {
+    describe('cancelAutoCleaning', function() {
+      it('should call cancelAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test cancelAutoCleaning
+        //instance.cancelAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getOnezoneInfo', function() {
-      it('should call getOnezoneInfo successfully', function(done) {
-        //uncomment below and update the code to test getOnezoneInfo
-        //instance.getOnezoneInfo(function(error) {
+    describe('configureSpaceAutoCleaning', function() {
+      it('should call configureSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceAutoCleaning
+        //instance.configureSpaceAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProvider', function() {
-      it('should call getProvider successfully', function(done) {
-        //uncomment below and update the code to test getProvider
-        //instance.getProvider(function(error) {
+    describe('getProviderSpaceAutoCleaningReport', function() {
+      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
+        //instance.getProviderSpaceAutoCleaningReport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('modifyProvider', function() {
-      it('should call modifyProvider successfully', function(done) {
-        //uncomment below and update the code to test modifyProvider
-        //instance.modifyProvider(function(error) {
+    describe('getProviderSpaceAutoCleaningReports', function() {
+      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
+        //instance.getProviderSpaceAutoCleaningReports(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('removeProvider', function() {
-      it('should call removeProvider successfully', function(done) {
-        //uncomment below and update the code to test removeProvider
-        //instance.removeProvider(function(error) {
+    describe('getProviderSpaceAutoCleaningStatus', function() {
+      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
+        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getSpaceAutoCleaningConfiguration', function() {
+      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
+        //instance.getSpaceAutoCleaningConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('triggerAutoCleaning', function() {
+      it('should call triggerAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test triggerAutoCleaning
+        //instance.triggerAutoCleaning(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

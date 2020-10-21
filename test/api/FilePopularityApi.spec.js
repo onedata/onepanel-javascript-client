@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SecurityApi();
+    instance = new Onepanel.FilePopularityApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,41 +50,21 @@
       object[property] = value;
   }
 
-  describe('SecurityApi', function() {
-    describe('getEmergencyPassphraseStatus', function() {
-      it('should call getEmergencyPassphraseStatus successfully', function(done) {
-        //uncomment below and update the code to test getEmergencyPassphraseStatus
-        //instance.getEmergencyPassphraseStatus(function(error) {
+  describe('FilePopularityApi', function() {
+    describe('configureFilePopularity', function() {
+      it('should call configureFilePopularity successfully', function(done) {
+        //uncomment below and update the code to test configureFilePopularity
+        //instance.configureFilePopularity(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyWebCert', function() {
-      it('should call modifyWebCert successfully', function(done) {
-        //uncomment below and update the code to test modifyWebCert
-        //instance.modifyWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('setEmergencyPassphrase', function() {
-      it('should call setEmergencyPassphrase successfully', function(done) {
-        //uncomment below and update the code to test setEmergencyPassphrase
-        //instance.setEmergencyPassphrase(function(error) {
+    describe('getFilePopularityConfiguration', function() {
+      it('should call getFilePopularityConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getFilePopularityConfiguration
+        //instance.getFilePopularityConfiguration(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

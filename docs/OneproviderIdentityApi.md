@@ -1,14 +1,14 @@
-# Onepanel.RegistrationAndIdentityApi
+# Onepanel.OneproviderIdentityApi
 
 All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addProvider**](RegistrationAndIdentityApi.md#addProvider) | **POST** /provider | Register provider
-[**getOnezoneInfo**](RegistrationAndIdentityApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
-[**getProvider**](RegistrationAndIdentityApi.md#getProvider) | **GET** /provider | Get provider details
-[**modifyProvider**](RegistrationAndIdentityApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
-[**removeProvider**](RegistrationAndIdentityApi.md#removeProvider) | **DELETE** /provider | Unregister provider
+[**addProvider**](OneproviderIdentityApi.md#addProvider) | **POST** /provider | Register provider
+[**getOnezoneInfo**](OneproviderIdentityApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
+[**getProvider**](OneproviderIdentityApi.md#getProvider) | **GET** /provider | Get provider details
+[**modifyProvider**](OneproviderIdentityApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
+[**removeProvider**](OneproviderIdentityApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 
 
 <a name="addProvider"></a>
@@ -41,7 +41,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.RegistrationAndIdentityApi();
+var apiInstance = new Onepanel.OneproviderIdentityApi();
 
 var providerRegisterRequest = new Onepanel.ProviderRegisterRequest(); // ProviderRegisterRequest | The new provider details.
 
@@ -105,7 +105,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.RegistrationAndIdentityApi();
+var apiInstance = new Onepanel.OneproviderIdentityApi();
 
 var opts = { 
   'token': "token_example" // String | Oneprovider registration token obtained from Onezone. Required if the Oneprovider is not registered.
@@ -170,7 +170,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.RegistrationAndIdentityApi();
+var apiInstance = new Onepanel.OneproviderIdentityApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -228,7 +228,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.RegistrationAndIdentityApi();
+var apiInstance = new Onepanel.OneproviderIdentityApi();
 
 var providerModifyRequest = new Onepanel.ProviderModifyRequest(); // ProviderModifyRequest | New values for provider configuration parameters which should be changed. 
 
@@ -292,7 +292,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.RegistrationAndIdentityApi();
+var apiInstance = new Onepanel.OneproviderIdentityApi();
 
 var callback = function(error, data, response) {
   if (error) {

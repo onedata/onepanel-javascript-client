@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DNSAndWebCertificatesApi();
+    instance = new Onepanel.DNSApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,7 +50,7 @@
       object[property] = value;
   }
 
-  describe('DNSAndWebCertificatesApi', function() {
+  describe('DNSApi', function() {
     describe('checkDns', function() {
       it('should call checkDns successfully', function(done) {
         //uncomment below and update the code to test checkDns
@@ -71,30 +71,10 @@
         done();
       });
     });
-    describe('getWebCert', function() {
-      it('should call getWebCert successfully', function(done) {
-        //uncomment below and update the code to test getWebCert
-        //instance.getWebCert(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('modifyDnsCheckConfiguration', function() {
       it('should call modifyDnsCheckConfiguration successfully', function(done) {
         //uncomment below and update the code to test modifyDnsCheckConfiguration
         //instance.modifyDnsCheckConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyWebCert', function() {
-      it('should call modifyWebCert successfully', function(done) {
-        //uncomment below and update the code to test modifyWebCert
-        //instance.modifyWebCert(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

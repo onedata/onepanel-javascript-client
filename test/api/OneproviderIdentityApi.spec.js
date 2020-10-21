@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.FilePopularityAndAutoCleaningApi();
+    instance = new Onepanel.OneproviderIdentityApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,91 +50,51 @@
       object[property] = value;
   }
 
-  describe('FilePopularityAndAutoCleaningApi', function() {
-    describe('cancelAutoCleaning', function() {
-      it('should call cancelAutoCleaning successfully', function(done) {
-        //uncomment below and update the code to test cancelAutoCleaning
-        //instance.cancelAutoCleaning(function(error) {
+  describe('OneproviderIdentityApi', function() {
+    describe('addProvider', function() {
+      it('should call addProvider successfully', function(done) {
+        //uncomment below and update the code to test addProvider
+        //instance.addProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('configureFilePopularity', function() {
-      it('should call configureFilePopularity successfully', function(done) {
-        //uncomment below and update the code to test configureFilePopularity
-        //instance.configureFilePopularity(function(error) {
+    describe('getOnezoneInfo', function() {
+      it('should call getOnezoneInfo successfully', function(done) {
+        //uncomment below and update the code to test getOnezoneInfo
+        //instance.getOnezoneInfo(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('configureSpaceAutoCleaning', function() {
-      it('should call configureSpaceAutoCleaning successfully', function(done) {
-        //uncomment below and update the code to test configureSpaceAutoCleaning
-        //instance.configureSpaceAutoCleaning(function(error) {
+    describe('getProvider', function() {
+      it('should call getProvider successfully', function(done) {
+        //uncomment below and update the code to test getProvider
+        //instance.getProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getFilePopularityConfiguration', function() {
-      it('should call getFilePopularityConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getFilePopularityConfiguration
-        //instance.getFilePopularityConfiguration(function(error) {
+    describe('modifyProvider', function() {
+      it('should call modifyProvider successfully', function(done) {
+        //uncomment below and update the code to test modifyProvider
+        //instance.modifyProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getProviderSpaceAutoCleaningReport', function() {
-      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
-        //instance.getProviderSpaceAutoCleaningReport(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderSpaceAutoCleaningReports', function() {
-      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
-        //instance.getProviderSpaceAutoCleaningReports(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderSpaceAutoCleaningStatus', function() {
-      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
-        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getSpaceAutoCleaningConfiguration', function() {
-      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
-        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
-        //instance.getSpaceAutoCleaningConfiguration(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('triggerAutoCleaning', function() {
-      it('should call triggerAutoCleaning successfully', function(done) {
-        //uncomment below and update the code to test triggerAutoCleaning
-        //instance.triggerAutoCleaning(function(error) {
+    describe('removeProvider', function() {
+      it('should call removeProvider successfully', function(done) {
+        //uncomment below and update the code to test removeProvider
+        //instance.removeProvider(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

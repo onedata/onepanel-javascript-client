@@ -90,19 +90,19 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME'
 basic.password = 'YOUR PASSWORD'
 
-var api = new Onepanel.CephApi()
+var api = new Onepanel.AutoCleaningApi()
 
-var cephManagers = new Onepanel.CephManagers(); // {CephManagers} Object with a list of Ceph manager configurations.
+var id = "id_example"; // {String} The Id of a space.
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.addCephManagers(cephManagers, callback);
+api.cancelAutoCleaning(id, callback);
 
 ```
 
@@ -112,6 +112,13 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Onepanel.AutoCleaningApi* | [**cancelAutoCleaning**](docs/AutoCleaningApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancel space auto-cleaning
+*Onepanel.AutoCleaningApi* | [**configureSpaceAutoCleaning**](docs/AutoCleaningApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
+*Onepanel.AutoCleaningApi* | [**getProviderSpaceAutoCleaningReport**](docs/AutoCleaningApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
+*Onepanel.AutoCleaningApi* | [**getProviderSpaceAutoCleaningReports**](docs/AutoCleaningApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
+*Onepanel.AutoCleaningApi* | [**getProviderSpaceAutoCleaningStatus**](docs/AutoCleaningApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
+*Onepanel.AutoCleaningApi* | [**getSpaceAutoCleaningConfiguration**](docs/AutoCleaningApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
+*Onepanel.AutoCleaningApi* | [**triggerAutoCleaning**](docs/AutoCleaningApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Trigger space auto-cleaning
 *Onepanel.CephApi* | [**addCephManagers**](docs/CephApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
 *Onepanel.CephApi* | [**addCephMonitors**](docs/CephApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to Ceph cluster
 *Onepanel.CephApi* | [**addCephOsds**](docs/CephApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
@@ -148,22 +155,13 @@ Class | Method | HTTP request | Description
 *Onepanel.CurrentUserApi* | [**getCluster**](docs/CurrentUserApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 *Onepanel.CurrentUserApi* | [**getClusters**](docs/CurrentUserApi.md#getClusters) | **GET** /user/clusters | List user&#39;s clusters
 *Onepanel.CurrentUserApi* | [**getCurrentUser**](docs/CurrentUserApi.md#getCurrentUser) | **GET** /user | Get details of authenticated user
-*Onepanel.DNSAndWebCertificatesApi* | [**checkDns**](docs/DNSAndWebCertificatesApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain
-*Onepanel.DNSAndWebCertificatesApi* | [**getDnsCheckConfiguration**](docs/DNSAndWebCertificatesApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
-*Onepanel.DNSAndWebCertificatesApi* | [**getWebCert**](docs/DNSAndWebCertificatesApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status
-*Onepanel.DNSAndWebCertificatesApi* | [**modifyDnsCheckConfiguration**](docs/DNSAndWebCertificatesApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
-*Onepanel.DNSAndWebCertificatesApi* | [**modifyWebCert**](docs/DNSAndWebCertificatesApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
+*Onepanel.DNSApi* | [**checkDns**](docs/DNSApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain
+*Onepanel.DNSApi* | [**getDnsCheckConfiguration**](docs/DNSApi.md#getDnsCheckConfiguration) | **GET** /dns_check/configuration | Return settings used when performing the DNS check
+*Onepanel.DNSApi* | [**modifyDnsCheckConfiguration**](docs/DNSApi.md#modifyDnsCheckConfiguration) | **PATCH** /dns_check/configuration | Configure dns check
 *Onepanel.DebugApi* | [**getTransfersMock**](docs/DebugApi.md#getTransfersMock) | **GET** /provider/debug/transfers_mock | Get transfers mock status
 *Onepanel.DebugApi* | [**modifyTransfersMock**](docs/DebugApi.md#modifyTransfersMock) | **PATCH** /provider/debug/transfers_mock | Modify transfers mock
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**cancelAutoCleaning**](docs/FilePopularityAndAutoCleaningApi.md#cancelAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/cancel | Cancel space auto-cleaning
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**configureFilePopularity**](docs/FilePopularityAndAutoCleaningApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file-popularity mechanism in the space.
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**configureSpaceAutoCleaning**](docs/FilePopularityAndAutoCleaningApi.md#configureSpaceAutoCleaning) | **PATCH** /provider/spaces/{id}/auto-cleaning/configuration | Configure space auto-cleaning mechanism
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**getFilePopularityConfiguration**](docs/FilePopularityAndAutoCleaningApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file-popularity configuration
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**getProviderSpaceAutoCleaningReport**](docs/FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningReport) | **GET** /provider/spaces/{id}/auto-cleaning/reports/{report_id} | Get the report from a space auto-cleaning run
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**getProviderSpaceAutoCleaningReports**](docs/FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningReports) | **GET** /provider/spaces/{id}/auto-cleaning/reports | Get Ids of of the space auto-cleaning reports
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**getProviderSpaceAutoCleaningStatus**](docs/FilePopularityAndAutoCleaningApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**getSpaceAutoCleaningConfiguration**](docs/FilePopularityAndAutoCleaningApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
-*Onepanel.FilePopularityAndAutoCleaningApi* | [**triggerAutoCleaning**](docs/FilePopularityAndAutoCleaningApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Trigger space auto-cleaning
+*Onepanel.FilePopularityApi* | [**configureFilePopularity**](docs/FilePopularityApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file popularity mechanism in the space
+*Onepanel.FilePopularityApi* | [**getFilePopularityConfiguration**](docs/FilePopularityApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file popularity configuration
 *Onepanel.InternalApi* | [**getRemoteProvider**](docs/InternalApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider
 *Onepanel.InternalApi* | [**testImage**](docs/InternalApi.md#testImage) | **GET** /test_image | Get test image
 *Onepanel.LUMADBApi* | [**lumaClearDb**](docs/LUMADBApi.md#lumaClearDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
@@ -219,6 +217,11 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**startStopProviderManagers**](docs/OneproviderClusterApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
 *Onepanel.OneproviderClusterApi* | [**startStopProviderWorker**](docs/OneproviderClusterApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 *Onepanel.OneproviderClusterApi* | [**startStopProviderWorkers**](docs/OneproviderClusterApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
+*Onepanel.OneproviderIdentityApi* | [**addProvider**](docs/OneproviderIdentityApi.md#addProvider) | **POST** /provider | Register provider
+*Onepanel.OneproviderIdentityApi* | [**getOnezoneInfo**](docs/OneproviderIdentityApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
+*Onepanel.OneproviderIdentityApi* | [**getProvider**](docs/OneproviderIdentityApi.md#getProvider) | **GET** /provider | Get provider details
+*Onepanel.OneproviderIdentityApi* | [**modifyProvider**](docs/OneproviderIdentityApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
+*Onepanel.OneproviderIdentityApi* | [**removeProvider**](docs/OneproviderIdentityApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.OnezoneClusterApi* | [**addZoneDatabases**](docs/OnezoneClusterApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
 *Onepanel.OnezoneClusterApi* | [**addZoneManagers**](docs/OnezoneClusterApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
 *Onepanel.OnezoneClusterApi* | [**addZoneWorkers**](docs/OnezoneClusterApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
@@ -239,12 +242,9 @@ Class | Method | HTTP request | Description
 *Onepanel.OnezoneClusterApi* | [**startStopZoneManagers**](docs/OnezoneClusterApi.md#startStopZoneManagers) | **PATCH** /zone/managers | Start/stop zone cluster managers
 *Onepanel.OnezoneClusterApi* | [**startStopZoneWorker**](docs/OnezoneClusterApi.md#startStopZoneWorker) | **PATCH** /zone/workers/{host} | Start/stop zone cluster worker
 *Onepanel.OnezoneClusterApi* | [**startStopZoneWorkers**](docs/OnezoneClusterApi.md#startStopZoneWorkers) | **PATCH** /zone/workers | Start/stop zone cluster workers
-*Onepanel.RegistrationAndIdentityApi* | [**addProvider**](docs/RegistrationAndIdentityApi.md#addProvider) | **POST** /provider | Register provider
-*Onepanel.RegistrationAndIdentityApi* | [**getOnezoneInfo**](docs/RegistrationAndIdentityApi.md#getOnezoneInfo) | **GET** /provider/onezone_info | Get Onezone information
-*Onepanel.RegistrationAndIdentityApi* | [**getProvider**](docs/RegistrationAndIdentityApi.md#getProvider) | **GET** /provider | Get provider details
-*Onepanel.RegistrationAndIdentityApi* | [**modifyProvider**](docs/RegistrationAndIdentityApi.md#modifyProvider) | **PATCH** /provider | Modify provider details
-*Onepanel.RegistrationAndIdentityApi* | [**removeProvider**](docs/RegistrationAndIdentityApi.md#removeProvider) | **DELETE** /provider | Unregister provider
 *Onepanel.SecurityApi* | [**getEmergencyPassphraseStatus**](docs/SecurityApi.md#getEmergencyPassphraseStatus) | **GET** /emergency_passphrase | Get emergency passphrase status
+*Onepanel.SecurityApi* | [**getWebCert**](docs/SecurityApi.md#getWebCert) | **GET** /web_cert | Get information about SSL certificates configuration and status
+*Onepanel.SecurityApi* | [**modifyWebCert**](docs/SecurityApi.md#modifyWebCert) | **PATCH** /web_cert | Modify SSL certificate configuration
 *Onepanel.SecurityApi* | [**setEmergencyPassphrase**](docs/SecurityApi.md#setEmergencyPassphrase) | **PUT** /emergency_passphrase | Set emergency passphrase
 *Onepanel.ServiceConfigurationApi* | [**getGuiMessage**](docs/ServiceConfigurationApi.md#getGuiMessage) | **GET** /zone/gui_messages/{id} | Get settings of a Onezone GUI message
 *Onepanel.ServiceConfigurationApi* | [**getZonePolicies**](docs/ServiceConfigurationApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies

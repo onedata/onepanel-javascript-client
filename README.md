@@ -250,16 +250,16 @@ Class | Method | HTTP request | Description
 *Onepanel.ServiceConfigurationApi* | [**getZonePolicies**](docs/ServiceConfigurationApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies
 *Onepanel.ServiceConfigurationApi* | [**modifyGuiMessage**](docs/ServiceConfigurationApi.md#modifyGuiMessage) | **PATCH** /zone/gui_messages/{id} | Modify settings of a Onezone GUI message
 *Onepanel.ServiceConfigurationApi* | [**modifyZonePolicies**](docs/ServiceConfigurationApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
-*Onepanel.SpaceSupportApi* | [**forceStartAutoStorageImportScan**](docs/SpaceSupportApi.md#forceStartAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-start | Force start auto storage import scan
-*Onepanel.SpaceSupportApi* | [**forceStopAutoStorageImportScan**](docs/SpaceSupportApi.md#forceStopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-stop | Force stop auto storage import scan
-*Onepanel.SpaceSupportApi* | [**getAutoStorageImportInfo**](docs/SpaceSupportApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan
-*Onepanel.SpaceSupportApi* | [**getAutoStorageImportStats**](docs/SpaceSupportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism
-*Onepanel.SpaceSupportApi* | [**getManualStorageImportExample**](docs/SpaceSupportApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example
 *Onepanel.SpaceSupportApi* | [**getProviderSpaces**](docs/SpaceSupportApi.md#getProviderSpaces) | **GET** /provider/spaces | Get provider spaces
 *Onepanel.SpaceSupportApi* | [**getSpaceDetails**](docs/SpaceSupportApi.md#getSpaceDetails) | **GET** /provider/spaces/{id} | Get space details
 *Onepanel.SpaceSupportApi* | [**modifySpace**](docs/SpaceSupportApi.md#modifySpace) | **PATCH** /provider/spaces/{id} | Modify space details
 *Onepanel.SpaceSupportApi* | [**revokeSpaceSupport**](docs/SpaceSupportApi.md#revokeSpaceSupport) | **DELETE** /provider/spaces/{id} | Revoke space support for a space
 *Onepanel.SpaceSupportApi* | [**supportSpace**](docs/SpaceSupportApi.md#supportSpace) | **POST** /provider/spaces | Support space
+*Onepanel.StorageImportApi* | [**forceStartAutoStorageImportScan**](docs/StorageImportApi.md#forceStartAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-start | Force start auto storage import scan
+*Onepanel.StorageImportApi* | [**forceStopAutoStorageImportScan**](docs/StorageImportApi.md#forceStopAutoStorageImportScan) | **POST** /provider/spaces/{id}/storage-import/auto/force-stop | Force stop auto storage import scan
+*Onepanel.StorageImportApi* | [**getAutoStorageImportInfo**](docs/StorageImportApi.md#getAutoStorageImportInfo) | **GET** /provider/spaces/{id}/storage-import/auto/info | Get information about auto storage import scan
+*Onepanel.StorageImportApi* | [**getAutoStorageImportStats**](docs/StorageImportApi.md#getAutoStorageImportStats) | **GET** /provider/spaces/{id}/storage-import/auto/stats | Get statistics of auto storage import mechanism
+*Onepanel.StorageImportApi* | [**getManualStorageImportExample**](docs/StorageImportApi.md#getManualStorageImportExample) | **GET** /provider/spaces/{id}/storage-import/manual/example | Get manual storage import example
 *Onepanel.StoragesApi* | [**addStorage**](docs/StoragesApi.md#addStorage) | **POST** /provider/storages | Add storage
 *Onepanel.StoragesApi* | [**getStorageDetails**](docs/StoragesApi.md#getStorageDetails) | **GET** /provider/storages/{id} | Get storage details
 *Onepanel.StoragesApi* | [**getStorages**](docs/StoragesApi.md#getStorages) | **GET** /provider/storages | Get storages

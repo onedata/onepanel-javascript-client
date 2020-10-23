@@ -17,29 +17,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/Id', 'model/ProviderSpaces', 'model/SpaceDetails', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest'], factory);
+    define(['ApiClient', 'model/AutoStorageImportInfo', 'model/AutoStorageImportStats', 'model/Error', 'model/ManualStorageImportExample'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/Id'), require('../model/ProviderSpaces'), require('../model/SpaceDetails'), require('../model/SpaceModifyRequest'), require('../model/SpaceSupportRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/AutoStorageImportInfo'), require('../model/AutoStorageImportStats'), require('../model/Error'), require('../model/ManualStorageImportExample'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceSupportApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.Id, root.Onepanel.ProviderSpaces, root.Onepanel.SpaceDetails, root.Onepanel.SpaceModifyRequest, root.Onepanel.SpaceSupportRequest);
+    root.Onepanel.StorageImportApi = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportInfo, root.Onepanel.AutoStorageImportStats, root.Onepanel.Error, root.Onepanel.ManualStorageImportExample);
   }
-}(this, function(ApiClient, Error, Id, ProviderSpaces, SpaceDetails, SpaceModifyRequest, SpaceSupportRequest) {
+}(this, function(ApiClient, AutoStorageImportInfo, AutoStorageImportStats, Error, ManualStorageImportExample) {
   'use strict';
 
   /**
-   * SpaceSupport service.
-   * @module api/SpaceSupportApi
+   * StorageImport service.
+   * @module api/StorageImportApi
    * @version 20.02.1
    */
 
   /**
-   * Constructs a new SpaceSupportApi. 
-   * @alias module:api/SpaceSupportApi
+   * Constructs a new StorageImportApi. 
+   * @alias module:api/StorageImportApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,116 +49,25 @@
 
 
     /**
-     * Callback function to receive the result of the getProviderSpaces operation.
-     * @callback module:api/SpaceSupportApi~getProviderSpacesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ProviderSpaces} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get provider spaces
-     * Returns the list of spaces supported by the provider.
-     * @param {module:api/SpaceSupportApi~getProviderSpacesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ProviderSpaces}
-     */
-    this.getProviderSpaces = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ProviderSpaces;
-
-      return this.apiClient.callApi(
-        '/provider/spaces', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getSpaceDetails operation.
-     * @callback module:api/SpaceSupportApi~getSpaceDetailsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SpaceDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get space details
-     * Returns details of space specified by space Id in the path. 
-     * @param {String} id The Id of a space which details should be returned.
-     * @param {module:api/SpaceSupportApi~getSpaceDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SpaceDetails}
-     */
-    this.getSpaceDetails = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getSpaceDetails");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = SpaceDetails;
-
-      return this.apiClient.callApi(
-        '/provider/spaces/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the modifySpace operation.
-     * @callback module:api/SpaceSupportApi~modifySpaceCallback
+     * Callback function to receive the result of the forceStartAutoStorageImportScan operation.
+     * @callback module:api/StorageImportApi~forceStartAutoStorageImportScanCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Modify space details
-     * Modifies the space import/update strategies.
-     * @param {String} id The Id of a space which details should be modified.
-     * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
-     * @param {module:api/SpaceSupportApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
+     * Force start auto storage import scan
+     * Forcefully starts scan of auto storage import mechanism in given space.
+     * @param {String} id The Id of a space.
+     * @param {module:api/StorageImportApi~forceStartAutoStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.modifySpace = function(id, spaceModifyRequest, callback) {
-      var postBody = spaceModifyRequest;
+    this.forceStartAutoStorageImportScan = function(id, callback) {
+      var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling modifySpace");
-      }
-
-      // verify the required parameter 'spaceModifyRequest' is set
-      if (spaceModifyRequest === undefined || spaceModifyRequest === null) {
-        throw new Error("Missing the required parameter 'spaceModifyRequest' when calling modifySpace");
+        throw new Error("Missing the required parameter 'id' when calling forceStartAutoStorageImportScan");
       }
 
 
@@ -178,32 +87,78 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/provider/spaces/{id}', 'PATCH',
+        '/provider/spaces/{id}/storage-import/auto/force-start', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the revokeSpaceSupport operation.
-     * @callback module:api/SpaceSupportApi~revokeSpaceSupportCallback
+     * Callback function to receive the result of the forceStopAutoStorageImportScan operation.
+     * @callback module:api/StorageImportApi~forceStopAutoStorageImportScanCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Revoke space support for a space
-     * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider. 
-     * @param {String} id The Id of a space to be removed.
-     * @param {module:api/SpaceSupportApi~revokeSpaceSupportCallback} callback The callback function, accepting three arguments: error, data, response
+     * Force stop auto storage import scan
+     * Forcefully stops current scan of auto storage import mechanism in given space.
+     * @param {String} id The Id of a space.
+     * @param {module:api/StorageImportApi~forceStopAutoStorageImportScanCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.revokeSpaceSupport = function(id, callback) {
+    this.forceStopAutoStorageImportScan = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling revokeSpaceSupport");
+        throw new Error("Missing the required parameter 'id' when calling forceStopAutoStorageImportScan");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/storage-import/auto/force-stop', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAutoStorageImportInfo operation.
+     * @callback module:api/StorageImportApi~getAutoStorageImportInfoCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/AutoStorageImportInfo} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get information about auto storage import scan
+     * Returns information about current or last finished auto storage import scan.
+     * @param {String} id The Id of a space for which storage import stats should be returned.
+     * @param {module:api/StorageImportApi~getAutoStorageImportInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/AutoStorageImportInfo}
+     */
+    this.getAutoStorageImportInfo = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAutoStorageImportInfo");
       }
 
 
@@ -219,41 +174,102 @@
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
+      var accepts = ['application/json'];
+      var returnType = AutoStorageImportInfo;
 
       return this.apiClient.callApi(
-        '/provider/spaces/{id}', 'DELETE',
+        '/provider/spaces/{id}/storage-import/auto/info', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the supportSpace operation.
-     * @callback module:api/SpaceSupportApi~supportSpaceCallback
+     * Callback function to receive the result of the getAutoStorageImportStats operation.
+     * @callback module:api/StorageImportApi~getAutoStorageImportStatsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/Id} data The data returned by the service call.
+     * @param {module:model/AutoStorageImportStats} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Support space
-     * Supports an existing space. 
-     * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
-     * @param {module:api/SpaceSupportApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Id}
+     * Get statistics of auto storage import mechanism
+     * Returns requested statistics of auto storage import mechanism for given space on this provider. 
+     * @param {String} id The Id of a space for which storage import stats should be returned.
+     * @param {module:model/String} period Predefined time period for which the statistics should be fetched.
+     * @param {String} metrics Specify which statistic metrics should be returned - strings delimited with comma. Accepted values are: &#x60;queueLength&#x60;, &#x60;createdFiles&#x60;, &#x60;modifiedFiles&#x60;, &#x60;deletedFiles&#x60; 
+     * @param {module:api/StorageImportApi~getAutoStorageImportStatsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/AutoStorageImportStats}
      */
-    this.supportSpace = function(spaceSupportRequest, callback) {
-      var postBody = spaceSupportRequest;
+    this.getAutoStorageImportStats = function(id, period, metrics, callback) {
+      var postBody = null;
 
-      // verify the required parameter 'spaceSupportRequest' is set
-      if (spaceSupportRequest === undefined || spaceSupportRequest === null) {
-        throw new Error("Missing the required parameter 'spaceSupportRequest' when calling supportSpace");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getAutoStorageImportStats");
+      }
+
+      // verify the required parameter 'period' is set
+      if (period === undefined || period === null) {
+        throw new Error("Missing the required parameter 'period' when calling getAutoStorageImportStats");
+      }
+
+      // verify the required parameter 'metrics' is set
+      if (metrics === undefined || metrics === null) {
+        throw new Error("Missing the required parameter 'metrics' when calling getAutoStorageImportStats");
       }
 
 
       var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+        'period': period,
+        'metrics': metrics
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = AutoStorageImportStats;
+
+      return this.apiClient.callApi(
+        '/provider/spaces/{id}/storage-import/auto/stats', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getManualStorageImportExample operation.
+     * @callback module:api/StorageImportApi~getManualStorageImportExampleCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ManualStorageImportExample} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get manual storage import example
+     * Returns example &#x60;curl&#x60; command that can be executed to manually import (register) file from storage.  The command is filled with correct host of the Oneprovider, space and storage ids. In order to execute the command, user must set 3 variables:  * &#x60;TOKEN&#x60; - Onedata access token.  * &#x60;STORAGE_FILE_ID&#x60; - Identifier of the file on storage, relevant for given storage backend:    * path on POSIX-compatible or canonical object storages, e.g. /dir/file.txt,    * URL on HTTP based storages, e.g. https://www.example.org/data/21/run123.tar.  * &#x60;DESTINATION_PATH&#x60; - An absolute path in space where file should be created.  For more info please read: https://onedata.org/#/home/api/stable/oneprovider?anchor&#x3D;tag/File-registration 
+     * @param {String} id The Id of a space for which the example command should be generated.
+     * @param {module:api/StorageImportApi~getManualStorageImportExampleCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ManualStorageImportExample}
+     */
+    this.getManualStorageImportExample = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getManualStorageImportExample");
+      }
+
+
+      var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -263,12 +279,12 @@
       };
 
       var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Id;
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ManualStorageImportExample;
 
       return this.apiClient.callApi(
-        '/provider/spaces', 'POST',
+        '/provider/spaces/{id}/storage-import/manual/example', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

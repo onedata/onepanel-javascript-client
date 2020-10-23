@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceSupportApi();
+    instance = new Onepanel.StorageImportApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,51 +50,51 @@
       object[property] = value;
   }
 
-  describe('SpaceSupportApi', function() {
-    describe('getProviderSpaces', function() {
-      it('should call getProviderSpaces successfully', function(done) {
-        //uncomment below and update the code to test getProviderSpaces
-        //instance.getProviderSpaces(function(error) {
+  describe('StorageImportApi', function() {
+    describe('forceStartAutoStorageImportScan', function() {
+      it('should call forceStartAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test forceStartAutoStorageImportScan
+        //instance.forceStartAutoStorageImportScan(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('getSpaceDetails', function() {
-      it('should call getSpaceDetails successfully', function(done) {
-        //uncomment below and update the code to test getSpaceDetails
-        //instance.getSpaceDetails(function(error) {
+    describe('forceStopAutoStorageImportScan', function() {
+      it('should call forceStopAutoStorageImportScan successfully', function(done) {
+        //uncomment below and update the code to test forceStopAutoStorageImportScan
+        //instance.forceStopAutoStorageImportScan(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('modifySpace', function() {
-      it('should call modifySpace successfully', function(done) {
-        //uncomment below and update the code to test modifySpace
-        //instance.modifySpace(function(error) {
+    describe('getAutoStorageImportInfo', function() {
+      it('should call getAutoStorageImportInfo successfully', function(done) {
+        //uncomment below and update the code to test getAutoStorageImportInfo
+        //instance.getAutoStorageImportInfo(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('revokeSpaceSupport', function() {
-      it('should call revokeSpaceSupport successfully', function(done) {
-        //uncomment below and update the code to test revokeSpaceSupport
-        //instance.revokeSpaceSupport(function(error) {
+    describe('getAutoStorageImportStats', function() {
+      it('should call getAutoStorageImportStats successfully', function(done) {
+        //uncomment below and update the code to test getAutoStorageImportStats
+        //instance.getAutoStorageImportStats(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('supportSpace', function() {
-      it('should call supportSpace successfully', function(done) {
-        //uncomment below and update the code to test supportSpace
-        //instance.supportSpace(function(error) {
+    describe('getManualStorageImportExample', function() {
+      it('should call getManualStorageImportExample successfully', function(done) {
+        //uncomment below and update the code to test getManualStorageImportExample
+        //instance.getManualStorageImportExample(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

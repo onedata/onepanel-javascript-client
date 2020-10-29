@@ -58,7 +58,7 @@
 
     /**
      * Get provider spaces
-     * Returns the list of spaces supported by the provider.  ***Example cURL requests***  **Get provider space ids** &#x60;&#x60;&#x60;bash curl -H \&quot;x-auth-token: $TOKEN\&quot; -X GET -k -vvv \\ https://$HOST/api/v3/onepanel/provider/spaces \\  {   \&quot;ids\&quot;:[     \&quot;0614a7a1512271ceeae95539872eeeabched69\&quot;,     \&quot;06911eba60e6ba947f86f799ce975042chad21\&quot;,     \&quot;109b7d84c00cd45a88b6cdb852dba5b3ch84db\&quot;   ] } &#x60;&#x60;&#x60; 
+     * Returns the list of spaces supported by the provider.  ***Example cURL requests***  **Get provider space ids** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET \\ https://$HOST/api/v3/onepanel/provider/spaces  {   \&quot;ids\&quot;: [     \&quot;0614a7a1512271ceeae95539872eeeabched69\&quot;,     \&quot;06911eba60e6ba947f86f799ce975042chad21\&quot;,     \&quot;109b7d84c00cd45a88b6cdb852dba5b3ch84db\&quot;   ] } &#x60;&#x60;&#x60; 
      * @param {module:api/SpaceSupportApi~getProviderSpacesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ProviderSpaces}
      */
@@ -97,7 +97,7 @@
 
     /**
      * Get space details
-     * Returns details of space specified by space Id in the path.  ***Example cURL requests***  **Get space details** &#x60;&#x60;&#x60;bash curl -H \&quot;x-auth-token: $TOKEN\&quot; -X GET -k -vvv \\ https://172.17.0.8/api/v3/onepanel/provider/spaces/$SPACE_ID  {   \&quot;supportingProviders\&quot;:{\&quot;03c7e42a793912307b01b1bbb72a3a6bch4c1c\&quot;:10000000},   \&quot;storageId\&quot;:\&quot;18a42a43b1b2d92455ffa09e9a15df7fch4f82\&quot;,   \&quot;spaceOccupancy\&quot;:0,   \&quot;name\&quot;:\&quot;someSpace\&quot;,   \&quot;localStorages\&quot;:[\&quot;18a42a43b1b2d92455ffa09e9a15df7fch4f82\&quot;],   \&quot;importedStorage\&quot;:false,   \&quot;id\&quot;:\&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
+     * Returns details of space specified by space Id in the path.  ***Example cURL requests***  **Get space details** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET \\ https://$HOST/api/v3/onepanel/provider/spaces/$SPACE_ID  {   \&quot;supportingProviders\&quot;: {     \&quot;03c7e42a793912307b01b1bbb72a3a6bch4c1c\&quot;: 10000000   },   \&quot;storageId\&quot;: \&quot;18a42a43b1b2d92455ffa09e9a15df7fch4f82\&quot;,   \&quot;spaceOccupancy\&quot;: 0,   \&quot;name\&quot;: \&quot;someSpace\&quot;,   \&quot;localStorages\&quot;: [\&quot;18a42a43b1b2d92455ffa09e9a15df7fch4f82\&quot;],   \&quot;importedStorage\&quot;: false,   \&quot;id\&quot;: \&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space which details should be returned.
      * @param {module:api/SpaceSupportApi~getSpaceDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/SpaceDetails}
@@ -143,7 +143,7 @@
 
     /**
      * Modify space details
-     * Modifies the space import/update strategies.  ***Example cURL requests***  **Modify space support size** &#x60;&#x60;&#x60;bash curl -H \&quot;x-auth-token: $TOKEN\&quot; -X PATCH \\ -k -vvv -H \&quot;content-type: application/json\&quot; -d &#39;{\&quot;size\&quot;:\&quot;30000000\&quot;}&#39; \\ https://$HOST/api/v3/onepanel/provider/spaces/$SPACE_ID &#x60;&#x60;&#x60; 
+     * Modifies the space import/update strategies.  ***Example cURL requests***  **Modify space support size** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X PATCH \\ -H \&quot;Content-type: application/json\&quot; \\ -d &#39;{\&quot;size\&quot;: \&quot;30000000\&quot;}&#39; \\ https://$HOST/api/v3/onepanel/provider/spaces/$SPACE_ID &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/SpaceSupportApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
@@ -194,7 +194,7 @@
 
     /**
      * Revoke space support for a space
-     * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider.  ***Example cURL requests***  **Revoke space support** &#x60;&#x60;&#x60;bash curl -H \&quot;x-auth-token: $TOKEN\&quot; -X DELETE -k -vvv https://$HOST/api/v3/onepanel/provider/spaces/$SPACE_ID &#x60;&#x60;&#x60; 
+     * Allows provider to revoke storage support for a specific space. Users with access to this space will no longer be able to store data on the resources of this provider.  ***Example cURL requests***  **Revoke space support** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X DELETE \\ https://$HOST/api/v3/onepanel/provider/spaces/$SPACE_ID &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space to be removed.
      * @param {module:api/SpaceSupportApi~revokeSpaceSupportCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -239,7 +239,7 @@
 
     /**
      * Support space
-     * Supports an existing space.  ***Example cURL requests***  **Support space** &#x60;&#x60;&#x60;bash curl -H \&quot;x-auth-token: $TOKEN\&quot; -X POST -k -vvv -H \&quot;content-type: application/json\&quot; \\ -d &#39;{\&quot;token\&quot;:\&quot;MDAU02QHLaaJ00go\&quot;, \&quot;size\&quot;:\&quot;10000000\&quot;, \&quot;storageId\&quot;: \&quot;18a42a43b1b2d9e9a1f82\&quot;}&#39; \\ https://$HOST/api/v3/onepanel/provider/spaces  {   \&quot;id\&quot;:\&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
+     * Supports an existing space.  ***Example cURL requests***  **Support space** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST \\ -H \&quot;Content-type: application/json\&quot; \\ -d &#39;{\&quot;token\&quot;: \&quot;MDAU02QHLaaJ00go\&quot;, \&quot;size\&quot;: \&quot;10000000\&quot;, \&quot;storageId\&quot;: \&quot;18a42a43b1b2d9e9a1f82\&quot;}&#39; \\ https://$HOST/api/v3/onepanel/provider/spaces  {   \&quot;id\&quot;: \&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
      * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
      * @param {module:api/SpaceSupportApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Id}

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create Onezone user
 
-Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.  ***Example cURL requests***  **Create Onezone user with username &amp; password** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$HOST/api/v3/onepanel/zone/users \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{   \&quot;username\&quot;: \&quot;someUser\&quot;,   \&quot;password\&quot;: \&quot;somePassword\&quot; }&#39;  {   \&quot;id\&quot;: \&quot;b519b3ac46823b2b83b6cb85e1b16f4fchaa0f\&quot; } &#x60;&#x60;&#x60; 
+Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.  ***Example cURL requests***  **Create Onezone user with username &amp; password** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$HOST/api/v3/onepanel/zone/users \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;username\&quot;: \&quot;someUser\&quot;,     \&quot;password\&quot;: \&quot;somePassword\&quot; }&#39;  {     \&quot;id\&quot;: \&quot;b519b3ac46823b2b83b6cb85e1b16f4fchaa0f\&quot; } &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript
@@ -147,7 +147,7 @@ null (empty response body)
 
 Get Onezone user details
 
-Returns the configuration information of the Onezone user.  ***Example cURL requests***  **Get Onzone user details** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET https://$HOST/api/v3/onepanel/zone/users/$USER_ID  {   \&quot;username\&quot;: \&quot;someUser\&quot;,   \&quot;userId\&quot;: \&quot;b519b3ac46823b2b83b6cb85e1b16f4fchaa0f\&quot;,   \&quot;fullName\&quot;: \&quot;Unnamed User\&quot; } &#x60;&#x60;&#x60; 
+Returns the configuration information of the Onezone user.  ***Example cURL requests***  **Get Onzone user details** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET https://$HOST/api/v3/onepanel/zone/users/$USER_ID  {     \&quot;username\&quot;: \&quot;someUser\&quot;,     \&quot;userId\&quot;: \&quot;b519b3ac46823b2b83b6cb85e1b16f4fchaa0f\&quot;,     \&quot;fullName\&quot;: \&quot;Unnamed User\&quot; } &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 List Onezone users
 
-List Ids of Onezone users.  ***Example cURL requests***  **Get Onzone user ids** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET https://$HOST/api/v3/onepanel/zone/users  {   \&quot;ids\&quot;: [     \&quot;f891d1ddf693232bbf0c11fe3cd9f7e7cheda9\&quot;,     \&quot;eefc8a11e1776d0797969ccf0b59c6dcch73dc\&quot;,     \&quot;ec0a39261b325cdc74e9c2d6b54fa786ch0419\&quot;   ] } &#x60;&#x60;&#x60; 
+List Ids of Onezone users.  ***Example cURL requests***  **Get Onzone user ids** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X GET https://$HOST/api/v3/onepanel/zone/users  {     \&quot;ids\&quot;: [         \&quot;f891d1ddf693232bbf0c11fe3cd9f7e7cheda9\&quot;,         \&quot;eefc8a11e1776d0797969ccf0b59c6dcch73dc\&quot;,         \&quot;ec0a39261b325cdc74e9c2d6b54fa786ch0419\&quot;     ] } &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript

@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="addOnezoneUser"></a>
 # **addOnezoneUser**
-> Id addOnezoneUser(userCreateRequest)
+> addOnezoneUser(userCreateRequest)
 
 Create Onezone user
 
@@ -73,7 +73,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.addOnezoneUser(userCreateRequest, callback);
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Id**](Id.md)
+null (empty response body)
 
 ### Authorization
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 <a name="addZoneDatabases"></a>
 # **addZoneDatabases**
-> TaskId addZoneDatabases(serviceHosts)
+> addZoneDatabases(serviceHosts)
 
 Add zone databases
 
@@ -137,7 +137,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.addZoneDatabases(serviceHosts, callback);
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaskId**](TaskId.md)
+null (empty response body)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 <a name="addZoneManagers"></a>
 # **addZoneManagers**
-> TaskId addZoneManagers(managerHosts)
+> addZoneManagers(managerHosts)
 
 Add zone cluster managers
 
@@ -201,7 +201,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.addZoneManagers(managerHosts, callback);
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaskId**](TaskId.md)
+null (empty response body)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 <a name="addZoneWorkers"></a>
 # **addZoneWorkers**
-> TaskId addZoneWorkers(serviceHosts)
+> addZoneWorkers(serviceHosts)
 
 Add zone cluster workers
 
@@ -265,7 +265,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.addZoneWorkers(serviceHosts, callback);
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaskId**](TaskId.md)
+null (empty response body)
 
 ### Authorization
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 Set password for Onezone user
 
-Sets a new password for a Onezone user using Basic authentication. 
+Sets new password for a Onezone user using Basic authentication. 
 
 ### Example
 ```javascript
@@ -359,7 +359,7 @@ null (empty response body)
 
 <a name="configureZone"></a>
 # **configureZone**
-> TaskId configureZone(zoneConfiguration)
+> configureZone(zoneConfiguration)
 
 Configure zone deployment
 
@@ -396,7 +396,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.configureZone(zoneConfiguration, callback);
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaskId**](TaskId.md)
+null (empty response body)
 
 ### Authorization
 
@@ -604,8 +604,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getZoneClusterIps"></a>
 # **getZoneClusterIps**
@@ -613,7 +613,7 @@ This endpoint does not need any parameter.
 
 Get zone cluster nodes IPs
 
-Returns IPs of nodes in zone cluster.
+Returns IPs of nodes in zone cluster
 
 ### Example
 ```javascript

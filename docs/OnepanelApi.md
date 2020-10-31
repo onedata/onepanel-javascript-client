@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addClusterHost**](OnepanelApi.md#addClusterHost) | **POST** /hosts | Adds given host to the cluster
 [**checkDns**](OnepanelApi.md#checkDns) | **GET** /dns_check | Check correctness of DNS entries for the cluster&#39;s domain.
-[**createInviteToken**](OnepanelApi.md#createInviteToken) | **POST** /invite_tokens | Create node invite token
 [**createUserInviteToken**](OnepanelApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
 [**getCluster**](OnepanelApi.md#getCluster) | **GET** /user/clusters/{id} | Get details of a user&#39;s cluster
 [**getClusterCookie**](OnepanelApi.md#getClusterCookie) | **GET** /cookie | Get cluster cookie
@@ -102,7 +101,7 @@ Name | Type | Description  | Notes
 
 Check correctness of DNS entries for the cluster&#39;s domain.
 
-Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+Returns results of the last DNS check, verifying validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
 
 ### Example
 ```javascript
@@ -151,64 +150,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DnsCheck**](DnsCheck.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="createInviteToken"></a>
-# **createInviteToken**
-> InviteToken createInviteToken()
-
-Create node invite token
-
-Creates node invite token. The token can be used by other nodes to [join cluster](#operation/join_cluster). 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnepanelApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.createInviteToken(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**InviteToken**](InviteToken.md)
 
 ### Authorization
 
@@ -338,8 +279,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getClusterCookie"></a>
 # **getClusterCookie**
@@ -570,8 +511,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getConfiguration"></a>
 # **getConfiguration**
@@ -860,8 +801,8 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getNode"></a>
 # **getNode**
@@ -869,7 +810,7 @@ This endpoint does not need any parameter.
 
 Get information about current onepanel node.
 
-Returns information about current onepanel node. 
+Returns information about current onepanel node. This request can be executed by unauthorized users only if there are no admin users in the system. 
 
 ### Example
 ```javascript
@@ -1040,8 +981,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="getTaskStatus"></a>
 # **getTaskStatus**
@@ -1167,11 +1108,11 @@ This endpoint does not need any parameter.
 
 <a name="joinCluster"></a>
 # **joinCluster**
-> joinCluster(inviteToken)
+> joinCluster(joinClusterRequest)
 
 Join existing cluster
 
-Adds this host to administrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot have emergency passphrase or other configuration data set. Therefore this request does not need authorization. 
+Adds this host to adminstrative cluster. The host handling this request has to be newly started or removed from previous cluster. It cannot contain any configured user accounts or other configuration data. Therefore this request does not need authorization. 
 
 ### Example
 ```javascript
@@ -1197,7 +1138,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OnepanelApi();
 
-var inviteToken = new Onepanel.InviteToken(); // InviteToken | 
+var joinClusterRequest = new Onepanel.JoinClusterRequest(); // JoinClusterRequest | 
 
 
 var callback = function(error, data, response) {
@@ -1207,14 +1148,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.joinCluster(inviteToken, callback);
+apiInstance.joinCluster(joinClusterRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteToken** | [**InviteToken**](InviteToken.md)|  | 
+ **joinClusterRequest** | [**JoinClusterRequest**](JoinClusterRequest.md)|  | 
 
 ### Return type
 
@@ -1491,7 +1432,7 @@ null (empty response body)
 
 Set emergency passphrase
 
-Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI. May be invoked without credentials when no passphrase is set. 
+Sets passphrase which can be used to access the Onepanel REST API and emergency Onepanel GUI.
 
 ### Example
 ```javascript

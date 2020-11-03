@@ -16,152 +16,111 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.AutoCleaningApi();
+  });
 
-
-  /**
-   * The CurrentUser model module.
-   * @module model/CurrentUser
-   * @version 20.02.2
-   */
-
-  /**
-   * Constructs a new <code>CurrentUser</code>.
-   * Information about the authenticated user.
-   * @alias module:model/CurrentUser
-   * @class
-   * @param userId {String} The user Id.
-   * @param username {String} User's full name (given names + surname).
-   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
-   */
-  var exports = function(userId, username, clusterPrivileges) {
-    var _this = this;
-
-    _this['userId'] = userId;
-    _this['username'] = username;
-    _this['clusterPrivileges'] = clusterPrivileges;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The user Id.
-   * @member {String} userId
-   */
-  exports.prototype['userId'] = undefined;
-  /**
-   * User's full name (given names + surname).
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user in the current cluster. 
-   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('AutoCleaningApi', function() {
+    describe('cancelAutoCleaning', function() {
+      it('should call cancelAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test cancelAutoCleaning
+        //instance.cancelAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('configureSpaceAutoCleaning', function() {
+      it('should call configureSpaceAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test configureSpaceAutoCleaning
+        //instance.configureSpaceAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningReport', function() {
+      it('should call getProviderSpaceAutoCleaningReport successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReport
+        //instance.getProviderSpaceAutoCleaningReport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningReports', function() {
+      it('should call getProviderSpaceAutoCleaningReports successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningReports
+        //instance.getProviderSpaceAutoCleaningReports(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderSpaceAutoCleaningStatus', function() {
+      it('should call getProviderSpaceAutoCleaningStatus successfully', function(done) {
+        //uncomment below and update the code to test getProviderSpaceAutoCleaningStatus
+        //instance.getProviderSpaceAutoCleaningStatus(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getSpaceAutoCleaningConfiguration', function() {
+      it('should call getSpaceAutoCleaningConfiguration successfully', function(done) {
+        //uncomment below and update the code to test getSpaceAutoCleaningConfiguration
+        //instance.getSpaceAutoCleaningConfiguration(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('triggerAutoCleaning', function() {
+      it('should call triggerAutoCleaning successfully', function(done) {
+        //uncomment below and update the code to test triggerAutoCleaning
+        //instance.triggerAutoCleaning(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+  });
 
-  /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ClusterPrivilegesEnum = {
-    /**
-     * value: "cluster_view"
-     * @const
-     */
-    "view": "cluster_view",
-    /**
-     * value: "cluster_update"
-     * @const
-     */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
-
-
-  return exports;
 }));
-
-

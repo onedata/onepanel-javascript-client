@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **String** | The user Id. | 
 **username** | **String** | User&#39;s full name (given names + surname). | 
-**clusterPrivileges** | **[String]** | List of cluster privileges held by the user in the current cluster.  | [optional] 
+**clusterPrivileges** | **[String]** | List of cluster privileges held by the user in the current cluster.  | 
 
 
 <a name="[ClusterPrivilegesEnum]"></a>

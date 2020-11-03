@@ -17,29 +17,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/GuiMessage', 'model/Id', 'model/Ids', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PasswordChangeRequest', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZonePolicies'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/GuiMessage'), require('../model/Id'), require('../model/Ids'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/OnezoneUser'), require('../model/OnezoneUserCreateRequest'), require('../model/PasswordChangeRequest'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'), require('../model/ZonePolicies'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'), require('../model/ZoneConfiguration'), require('../model/ZoneConfigurationDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.GuiMessage, root.Onepanel.Id, root.Onepanel.Ids, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.OnezoneUser, root.Onepanel.OnezoneUserCreateRequest, root.Onepanel.PasswordChangeRequest, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails, root.Onepanel.ZonePolicies);
+    root.Onepanel.OnezoneClusterApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId, root.Onepanel.ZoneConfiguration, root.Onepanel.ZoneConfigurationDetails);
   }
-}(this, function(ApiClient, ClusterIps, Error, GuiMessage, Id, Ids, ManagerHosts, ModifyClusterIps, OnezoneUser, OnezoneUserCreateRequest, PasswordChangeRequest, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, TaskId, ZoneConfiguration, ZoneConfigurationDetails, ZonePolicies) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, TaskId, ZoneConfiguration, ZoneConfigurationDetails) {
   'use strict';
 
   /**
-   * Onezone service.
-   * @module api/OnezoneApi
+   * OnezoneCluster service.
+   * @module api/OnezoneClusterApi
    * @version 20.02.2
    */
 
   /**
-   * Constructs a new OnezoneApi. 
-   * @alias module:api/OnezoneApi
+   * Constructs a new OnezoneClusterApi. 
+   * @alias module:api/OnezoneClusterApi
    * @class
    * @param {module:ApiClient} apiClient Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,53 +49,8 @@
 
 
     /**
-     * Callback function to receive the result of the addOnezoneUser operation.
-     * @callback module:api/OnezoneApi~addOnezoneUserCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Id} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create Onezone user
-     * Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.
-     * @param {module:model/OnezoneUserCreateRequest} userCreateRequest The user configuration details.
-     * @param {module:api/OnezoneApi~addOnezoneUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Id}
-     */
-    this.addOnezoneUser = function(userCreateRequest, callback) {
-      var postBody = userCreateRequest;
-
-      // verify the required parameter 'userCreateRequest' is set
-      if (userCreateRequest === undefined || userCreateRequest === null) {
-        throw new Error("Missing the required parameter 'userCreateRequest' when calling addOnezoneUser");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = Id;
-
-      return this.apiClient.callApi(
-        '/zone/users', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the addZoneDatabases operation.
-     * @callback module:api/OnezoneApi~addZoneDatabasesCallback
+     * @callback module:api/OnezoneClusterApi~addZoneDatabasesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -105,7 +60,7 @@
      * Add zone databases
      * Deploys a database service on provided hosts.
      * @param {module:model/ServiceDatabases} serviceHosts The service hosts configuration where databases should be deployed. 
-     * @param {module:api/OnezoneApi~addZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~addZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
     this.addZoneDatabases = function(serviceHosts, callback) {
@@ -140,7 +95,7 @@
 
     /**
      * Callback function to receive the result of the addZoneManagers operation.
-     * @callback module:api/OnezoneApi~addZoneManagersCallback
+     * @callback module:api/OnezoneClusterApi~addZoneManagersCallback
      * @param {String} error Error message, if any.
      * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -150,7 +105,7 @@
      * Add zone cluster managers
      * Deploys a cluster manager service on provided hosts.
      * @param {module:model/ManagerHosts} managerHosts The hosts specification where cluster managers should be deployed. 
-     * @param {module:api/OnezoneApi~addZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~addZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
     this.addZoneManagers = function(managerHosts, callback) {
@@ -185,7 +140,7 @@
 
     /**
      * Callback function to receive the result of the addZoneWorkers operation.
-     * @callback module:api/OnezoneApi~addZoneWorkersCallback
+     * @callback module:api/OnezoneClusterApi~addZoneWorkersCallback
      * @param {String} error Error message, if any.
      * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -195,7 +150,7 @@
      * Add zone cluster workers
      * Deploys a cluster worker service on provided hosts.
      * @param {module:model/ServiceHosts} serviceHosts The hosts specification where the workers should be deployed.
-     * @param {module:api/OnezoneApi~addZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~addZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
     this.addZoneWorkers = function(serviceHosts, callback) {
@@ -229,59 +184,8 @@
     }
 
     /**
-     * Callback function to receive the result of the changeUserPassword operation.
-     * @callback module:api/OnezoneApi~changeUserPasswordCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Set password for Onezone user
-     * Sets a new password for a Onezone user using Basic authentication. 
-     * @param {String} id Id of the user whose password is changed.
-     * @param {module:model/PasswordChangeRequest} passwordChangeRequest 
-     * @param {module:api/OnezoneApi~changeUserPasswordCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.changeUserPassword = function(id, passwordChangeRequest, callback) {
-      var postBody = passwordChangeRequest;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling changeUserPassword");
-      }
-
-      // verify the required parameter 'passwordChangeRequest' is set
-      if (passwordChangeRequest === undefined || passwordChangeRequest === null) {
-        throw new Error("Missing the required parameter 'passwordChangeRequest' when calling changeUserPassword");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/zone/users/{id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the configureZone operation.
-     * @callback module:api/OnezoneApi~configureZoneCallback
+     * @callback module:api/OnezoneClusterApi~configureZoneCallback
      * @param {String} error Error message, if any.
      * @param {module:model/TaskId} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -291,7 +195,7 @@
      * Configure zone deployment
      * Configures and starts zone services, such as database, cluster manager and cluster worker. This request can be executed by unauthorized users as long as there are no admin users in the system. 
      * @param {module:model/ZoneConfiguration} zoneConfiguration The zone configuration description.
-     * @param {module:api/OnezoneApi~configureZoneCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~configureZoneCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
     this.configureZone = function(zoneConfiguration, callback) {
@@ -325,139 +229,8 @@
     }
 
     /**
-     * Callback function to receive the result of the getGuiMessage operation.
-     * @callback module:api/OnezoneApi~getGuiMessageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/GuiMessage} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get settings of a Onezone GUI message.
-     * Returns settings of a message displayed in Onezone GUI.
-     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
-     * @param {module:api/OnezoneApi~getGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/GuiMessage}
-     */
-    this.getGuiMessage = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getGuiMessage");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = GuiMessage;
-
-      return this.apiClient.callApi(
-        '/zone/gui_messages/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getOnezoneUser operation.
-     * @callback module:api/OnezoneApi~getOnezoneUserCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/OnezoneUser} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Onezone user details
-     * Returns the configuration information of the Onezone user. 
-     * @param {String} id Id of the user to be described.
-     * @param {module:api/OnezoneApi~getOnezoneUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/OnezoneUser}
-     */
-    this.getOnezoneUser = function(id, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getOnezoneUser");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = OnezoneUser;
-
-      return this.apiClient.callApi(
-        '/zone/users/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getOnezoneUsers operation.
-     * @callback module:api/OnezoneApi~getOnezoneUsersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Ids} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List Onezone users
-     * List Ids of Onezone users. 
-     * @param {module:api/OnezoneApi~getOnezoneUsersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Ids}
-     */
-    this.getOnezoneUsers = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Ids;
-
-      return this.apiClient.callApi(
-        '/zone/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getZoneClusterIps operation.
-     * @callback module:api/OnezoneApi~getZoneClusterIpsCallback
+     * @callback module:api/OnezoneClusterApi~getZoneClusterIpsCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ClusterIps} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -466,7 +239,7 @@
     /**
      * Get zone cluster nodes IPs
      * Returns IPs of nodes in zone cluster.
-     * @param {module:api/OnezoneApi~getZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ClusterIps}
      */
     this.getZoneClusterIps = function(callback) {
@@ -496,7 +269,7 @@
 
     /**
      * Callback function to receive the result of the getZoneConfiguration operation.
-     * @callback module:api/OnezoneApi~getZoneConfigurationCallback
+     * @callback module:api/OnezoneClusterApi~getZoneConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ZoneConfigurationDetails} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -505,7 +278,7 @@
     /**
      * Get zone cluster configuration
      * Returns the zone cluster configuration.
-     * @param {module:api/OnezoneApi~getZoneConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ZoneConfigurationDetails}
      */
     this.getZoneConfiguration = function(callback) {
@@ -535,7 +308,7 @@
 
     /**
      * Callback function to receive the result of the getZoneDatabaseStatus operation.
-     * @callback module:api/OnezoneApi~getZoneDatabaseStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneDatabaseStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatusHost} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -545,7 +318,7 @@
      * Get zone database status
      * Returns status of database service on the selected host.
      * @param {String} host The name of a host for which database service status should be returned. 
-     * @param {module:api/OnezoneApi~getZoneDatabaseStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneDatabaseStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatusHost}
      */
     this.getZoneDatabaseStatus = function(host, callback) {
@@ -581,7 +354,7 @@
 
     /**
      * Callback function to receive the result of the getZoneDatabasesStatus operation.
-     * @callback module:api/OnezoneApi~getZoneDatabasesStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneDatabasesStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatus} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -590,7 +363,7 @@
     /**
      * Get zone databases status
      * Returns status of database service on each host where it has been deployed. 
-     * @param {module:api/OnezoneApi~getZoneDatabasesStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneDatabasesStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
      */
     this.getZoneDatabasesStatus = function(callback) {
@@ -620,7 +393,7 @@
 
     /**
      * Callback function to receive the result of the getZoneManagerStatus operation.
-     * @callback module:api/OnezoneApi~getZoneManagerStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneManagerStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatusHost} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -630,7 +403,7 @@
      * Get zone cluster manager status
      * Returns status of cluster manager service on the selected host.
      * @param {String} host The name of a host for which cluster manager service status should be returned. 
-     * @param {module:api/OnezoneApi~getZoneManagerStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneManagerStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatusHost}
      */
     this.getZoneManagerStatus = function(host, callback) {
@@ -666,7 +439,7 @@
 
     /**
      * Callback function to receive the result of the getZoneManagersStatus operation.
-     * @callback module:api/OnezoneApi~getZoneManagersStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneManagersStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatus} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -675,7 +448,7 @@
     /**
      * Get zone cluster managers status
      * Returns status of cluster manager service on each host where it has been eployed. 
-     * @param {module:api/OnezoneApi~getZoneManagersStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneManagersStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
      */
     this.getZoneManagersStatus = function(callback) {
@@ -705,7 +478,7 @@
 
     /**
      * Callback function to receive the result of the getZoneNagiosReport operation.
-     * @callback module:api/OnezoneApi~getZoneNagiosReportCallback
+     * @callback module:api/OnezoneClusterApi~getZoneNagiosReportCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -714,7 +487,7 @@
     /**
      * Get zone nagios report
      * Returns the zone nagios report.
-     * @param {module:api/OnezoneApi~getZoneNagiosReportCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneNagiosReportCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.getZoneNagiosReport = function(callback) {
       var postBody = null;
@@ -742,47 +515,8 @@
     }
 
     /**
-     * Callback function to receive the result of the getZonePolicies operation.
-     * @callback module:api/OnezoneApi~getZonePoliciesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ZonePolicies} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get Onezone policies.
-     * Returns restrictions placed on Onezone operations such as registering Oneproviders. 
-     * @param {module:api/OnezoneApi~getZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ZonePolicies}
-     */
-    this.getZonePolicies = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ZonePolicies;
-
-      return this.apiClient.callApi(
-        '/zone/policies', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getZoneWorkerStatus operation.
-     * @callback module:api/OnezoneApi~getZoneWorkerStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneWorkerStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatusHost} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -792,7 +526,7 @@
      * Get zone cluster worker status
      * Returns status of cluster worker service on the selected host.
      * @param {String} host The name of a host for which cluster worker service status should be returned. 
-     * @param {module:api/OnezoneApi~getZoneWorkerStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneWorkerStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatusHost}
      */
     this.getZoneWorkerStatus = function(host, callback) {
@@ -828,7 +562,7 @@
 
     /**
      * Callback function to receive the result of the getZoneWorkersStatus operation.
-     * @callback module:api/OnezoneApi~getZoneWorkersStatusCallback
+     * @callback module:api/OnezoneClusterApi~getZoneWorkersStatusCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ServiceStatus} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -837,7 +571,7 @@
     /**
      * Get zone cluster workers status
      * Returns status of cluster worker service on each host where it has been deployed. 
-     * @param {module:api/OnezoneApi~getZoneWorkersStatusCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~getZoneWorkersStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
      */
     this.getZoneWorkersStatus = function(callback) {
@@ -866,59 +600,8 @@
     }
 
     /**
-     * Callback function to receive the result of the modifyGuiMessage operation.
-     * @callback module:api/OnezoneApi~modifyGuiMessageCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify settings of a Onezone GUI message.
-     * Enables, disables or modifies a message displayed in Onezone GUI.
-     * @param {module:model/String} id Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
-     * @param {module:model/GuiMessage} messageChange 
-     * @param {module:api/OnezoneApi~modifyGuiMessageCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyGuiMessage = function(id, messageChange, callback) {
-      var postBody = messageChange;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling modifyGuiMessage");
-      }
-
-      // verify the required parameter 'messageChange' is set
-      if (messageChange === undefined || messageChange === null) {
-        throw new Error("Missing the required parameter 'messageChange' when calling modifyGuiMessage");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/zone/gui_messages/{id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the modifyZoneClusterIps operation.
-     * @callback module:api/OnezoneApi~modifyZoneClusterIpsCallback
+     * @callback module:api/OnezoneClusterApi~modifyZoneClusterIpsCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -928,7 +611,7 @@
      * Set external IPs of nodes in application config
      * Informs cluster nodes about external IPs which can be used to access them by other zones. 
      * @param {module:model/ModifyClusterIps} clusterIps The zone configuration description.
-     * @param {module:api/OnezoneApi~modifyZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~modifyZoneClusterIpsCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.modifyZoneClusterIps = function(clusterIps, callback) {
       var postBody = clusterIps;
@@ -961,52 +644,8 @@
     }
 
     /**
-     * Callback function to receive the result of the modifyZonePolicies operation.
-     * @callback module:api/OnezoneApi~modifyZonePoliciesCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Modify current Onezone policies
-     * Modifies restrictions placed on Onezone operations such as registering providers. 
-     * @param {module:model/ZonePolicies} zonePolicies New values for Onezone policies.
-     * @param {module:api/OnezoneApi~modifyZonePoliciesCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.modifyZonePolicies = function(zonePolicies, callback) {
-      var postBody = zonePolicies;
-
-      // verify the required parameter 'zonePolicies' is set
-      if (zonePolicies === undefined || zonePolicies === null) {
-        throw new Error("Missing the required parameter 'zonePolicies' when calling modifyZonePolicies");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/zone/policies', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the startStopZoneDatabases operation.
-     * @callback module:api/OnezoneApi~startStopZoneDatabasesCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneDatabasesCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1017,7 +656,7 @@
      * Starts or stops database service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneDatabasesCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneDatabases = function(opts, callback) {
       opts = opts || {};
@@ -1048,7 +687,7 @@
 
     /**
      * Callback function to receive the result of the startStopZoneDatabasesHost operation.
-     * @callback module:api/OnezoneApi~startStopZoneDatabasesHostCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneDatabasesHostCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1060,7 +699,7 @@
      * @param {String} host The name of a host for which database service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneDatabasesHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneDatabasesHostCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneDatabasesHost = function(host, opts, callback) {
       opts = opts || {};
@@ -1097,7 +736,7 @@
 
     /**
      * Callback function to receive the result of the startStopZoneManager operation.
-     * @callback module:api/OnezoneApi~startStopZoneManagerCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneManagerCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1109,7 +748,7 @@
      * @param {String} host The name of a host for which cluster manager service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneManagerCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneManagerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneManager = function(host, opts, callback) {
       opts = opts || {};
@@ -1146,7 +785,7 @@
 
     /**
      * Callback function to receive the result of the startStopZoneManagers operation.
-     * @callback module:api/OnezoneApi~startStopZoneManagersCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneManagersCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1157,7 +796,7 @@
      * Starts or stops cluster manager service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneManagersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneManagers = function(opts, callback) {
       opts = opts || {};
@@ -1188,7 +827,7 @@
 
     /**
      * Callback function to receive the result of the startStopZoneWorker operation.
-     * @callback module:api/OnezoneApi~startStopZoneWorkerCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneWorkerCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1200,7 +839,7 @@
      * @param {String} host The name of a host for which cluster worker service status should be changed. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneWorkerCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneWorkerCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneWorker = function(host, opts, callback) {
       opts = opts || {};
@@ -1237,7 +876,7 @@
 
     /**
      * Callback function to receive the result of the startStopZoneWorkers operation.
-     * @callback module:api/OnezoneApi~startStopZoneWorkersCallback
+     * @callback module:api/OnezoneClusterApi~startStopZoneWorkersCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -1248,7 +887,7 @@
      * Starts or stops cluster worker service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.started Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OnezoneApi~startStopZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/OnezoneClusterApi~startStopZoneWorkersCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopZoneWorkers = function(opts, callback) {
       opts = opts || {};

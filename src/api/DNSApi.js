@@ -17,151 +17,163 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
+    root.Onepanel.DNSApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error) {
   'use strict';
 
-
-
-
   /**
-   * The CurrentUser model module.
-   * @module model/CurrentUser
+   * DNS service.
+   * @module api/DNSApi
    * @version 20.02.2
    */
 
   /**
-   * Constructs a new <code>CurrentUser</code>.
-   * Information about the authenticated user.
-   * @alias module:model/CurrentUser
+   * Constructs a new DNSApi. 
+   * @alias module:api/DNSApi
    * @class
-   * @param userId {String} The user Id.
-   * @param username {String} User's full name (given names + surname).
-   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
-  var exports = function(userId, username, clusterPrivileges) {
-    var _this = this;
+  var exports = function(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
 
-    _this['userId'] = userId;
-    _this['username'] = username;
-    _this['clusterPrivileges'] = clusterPrivileges;
-  };
 
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
+    /**
+     * Callback function to receive the result of the checkDns operation.
+     * @callback module:api/DNSApi~checkDnsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheck} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
-  /**
-   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
+    /**
+     * Check correctness of DNS entries for the cluster&#39;s domain
+     * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
+     * @param {module:api/DNSApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheck}
+     */
+    this.checkDns = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
 
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
-      }
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'forceCheck': opts['forceCheck']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheck;
+
+      return this.apiClient.callApi(
+        '/dns_check', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
     }
-    return obj;
-  }
 
-  /**
-   * The user Id.
-   * @member {String} userId
-   */
-  exports.prototype['userId'] = undefined;
-  /**
-   * User's full name (given names + surname).
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user in the current cluster. 
-   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+    /**
+     * Callback function to receive the result of the getDnsCheckConfiguration operation.
+     * @callback module:api/DNSApi~getDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DnsCheckConfiguration} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Return settings used when performing the DNS check
+     * Returns servers queried to check DNS configuration correctness. 
+     * @param {module:api/DNSApi~getDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DnsCheckConfiguration}
+     */
+    this.getDnsCheckConfiguration = function(callback) {
+      var postBody = null;
 
 
-  /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ClusterPrivilegesEnum = {
-    /**
-     * value: "cluster_view"
-     * @const
-     */
-    "view": "cluster_view",
-    /**
-     * value: "cluster_update"
-     * @const
-     */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
 
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DnsCheckConfiguration;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modifyDnsCheckConfiguration operation.
+     * @callback module:api/DNSApi~modifyDnsCheckConfigurationCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Configure dns check
+     * Informs what DNS servers to use for checking external DNS records validity. 
+     * @param {module:model/DnsCheckConfiguration} dnsCheckConfiguration The configuration changes.
+     * @param {module:api/DNSApi~modifyDnsCheckConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyDnsCheckConfiguration = function(dnsCheckConfiguration, callback) {
+      var postBody = dnsCheckConfiguration;
+
+      // verify the required parameter 'dnsCheckConfiguration' is set
+      if (dnsCheckConfiguration === undefined || dnsCheckConfiguration === null) {
+        throw new Error("Missing the required parameter 'dnsCheckConfiguration' when calling modifyDnsCheckConfiguration");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json', 'application/x-yaml'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/dns_check/configuration', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+  };
 
   return exports;
 }));
-
-

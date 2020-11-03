@@ -17,151 +17,121 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Error', 'model/RemoteProviderDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/RemoteProviderDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
+    root.Onepanel.InternalApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.RemoteProviderDetails);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Error, RemoteProviderDetails) {
   'use strict';
 
-
-
-
   /**
-   * The CurrentUser model module.
-   * @module model/CurrentUser
+   * Internal service.
+   * @module api/InternalApi
    * @version 20.02.2
    */
 
   /**
-   * Constructs a new <code>CurrentUser</code>.
-   * Information about the authenticated user.
-   * @alias module:model/CurrentUser
+   * Constructs a new InternalApi. 
+   * @alias module:api/InternalApi
    * @class
-   * @param userId {String} The user Id.
-   * @param username {String} User's full name (given names + surname).
-   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
-  var exports = function(userId, username, clusterPrivileges) {
-    var _this = this;
+  var exports = function(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
 
-    _this['userId'] = userId;
-    _this['username'] = username;
-    _this['clusterPrivileges'] = clusterPrivileges;
-  };
 
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
+    /**
+     * Callback function to receive the result of the getRemoteProvider operation.
+     * @callback module:api/InternalApi~getRemoteProviderCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/RemoteProviderDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
-  /**
-   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
+    /**
+     * Get details of a remote Oneprovider
+     * Returns the details of given provider. Only users belonging to that Oneprovider&#39;s cluster can fetch its details. 
+     * @param {String} id Id of requested Oneprovider.
+     * @param {module:api/InternalApi~getRemoteProviderCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/RemoteProviderDetails}
+     */
+    this.getRemoteProvider = function(id, callback) {
+      var postBody = null;
 
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getRemoteProvider");
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
-      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = RemoteProviderDetails;
+
+      return this.apiClient.callApi(
+        '/providers/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
     }
-    return obj;
-  }
 
-  /**
-   * The user Id.
-   * @member {String} userId
-   */
-  exports.prototype['userId'] = undefined;
-  /**
-   * User's full name (given names + surname).
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user in the current cluster. 
-   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+    /**
+     * Callback function to receive the result of the testImage operation.
+     * @callback module:api/InternalApi~testImageCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get test image
+     * This endpoint returns a dummy image in &#x60;.png&#x60; format. It is used internally by web applications across Onedata to check connectivity with certain services. This endpoint does not require authentication. 
+     * @param {module:api/InternalApi~testImageCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.testImage = function(callback) {
+      var postBody = null;
 
 
-  /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ClusterPrivilegesEnum = {
-    /**
-     * value: "cluster_view"
-     * @const
-     */
-    "view": "cluster_view",
-    /**
-     * value: "cluster_update"
-     * @const
-     */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
 
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['image/png'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/test_image', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+  };
 
   return exports;
 }));
-
-

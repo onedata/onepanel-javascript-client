@@ -17,151 +17,161 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/ClusterDetails', 'model/CurrentUser', 'model/Error', 'model/Ids'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterDetails'), require('../model/CurrentUser'), require('../model/Error'), require('../model/Ids'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
+    root.Onepanel.CurrentUserApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDetails, root.Onepanel.CurrentUser, root.Onepanel.Error, root.Onepanel.Ids);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, ClusterDetails, CurrentUser, Error, Ids) {
   'use strict';
 
-
-
-
   /**
-   * The CurrentUser model module.
-   * @module model/CurrentUser
+   * CurrentUser service.
+   * @module api/CurrentUserApi
    * @version 20.02.2
    */
 
   /**
-   * Constructs a new <code>CurrentUser</code>.
-   * Information about the authenticated user.
-   * @alias module:model/CurrentUser
+   * Constructs a new CurrentUserApi. 
+   * @alias module:api/CurrentUserApi
    * @class
-   * @param userId {String} The user Id.
-   * @param username {String} User's full name (given names + surname).
-   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
-  var exports = function(userId, username, clusterPrivileges) {
-    var _this = this;
+  var exports = function(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
 
-    _this['userId'] = userId;
-    _this['username'] = username;
-    _this['clusterPrivileges'] = clusterPrivileges;
-  };
 
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
+    /**
+     * Callback function to receive the result of the getCluster operation.
+     * @callback module:api/CurrentUserApi~getClusterCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ClusterDetails} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
-  /**
-   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
+    /**
+     * Get details of a user&#39;s cluster
+     * Returns details of the specified cluster. 
+     * @param {String} id Cluster Id which details should be returned.
+     * @param {module:api/CurrentUserApi~getClusterCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ClusterDetails}
+     */
+    this.getCluster = function(id, callback) {
+      var postBody = null;
 
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getCluster");
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
-      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ClusterDetails;
+
+      return this.apiClient.callApi(
+        '/user/clusters/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
     }
-    return obj;
-  }
 
-  /**
-   * The user Id.
-   * @member {String} userId
-   */
-  exports.prototype['userId'] = undefined;
-  /**
-   * User's full name (given names + surname).
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user in the current cluster. 
-   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+    /**
+     * Callback function to receive the result of the getClusters operation.
+     * @callback module:api/CurrentUserApi~getClustersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Ids} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List user&#39;s clusters
+     * Lists clusters to which current user belongs. 
+     * @param {module:api/CurrentUserApi~getClustersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Ids}
+     */
+    this.getClusters = function(callback) {
+      var postBody = null;
 
 
-  /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ClusterPrivilegesEnum = {
-    /**
-     * value: "cluster_view"
-     * @const
-     */
-    "view": "cluster_view",
-    /**
-     * value: "cluster_update"
-     * @const
-     */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
 
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Ids;
+
+      return this.apiClient.callApi(
+        '/user/clusters', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCurrentUser operation.
+     * @callback module:api/CurrentUserApi~getCurrentUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CurrentUser} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get details of authenticated user
+     * Returns the details of the user performing the query. 
+     * @param {module:api/CurrentUserApi~getCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CurrentUser}
+     */
+    this.getCurrentUser = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CurrentUser;
+
+      return this.apiClient.callApi(
+        '/user', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+  };
 
   return exports;
 }));
-
-

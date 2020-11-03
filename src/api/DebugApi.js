@@ -17,151 +17,120 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Error', 'model/TransfersMock'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/TransfersMock'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.CurrentUser = factory(root.Onepanel.ApiClient);
+    root.Onepanel.DebugApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.TransfersMock);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Error, TransfersMock) {
   'use strict';
 
-
-
-
   /**
-   * The CurrentUser model module.
-   * @module model/CurrentUser
+   * Debug service.
+   * @module api/DebugApi
    * @version 20.02.2
    */
 
   /**
-   * Constructs a new <code>CurrentUser</code>.
-   * Information about the authenticated user.
-   * @alias module:model/CurrentUser
+   * Constructs a new DebugApi. 
+   * @alias module:api/DebugApi
    * @class
-   * @param userId {String} The user Id.
-   * @param username {String} User's full name (given names + surname).
-   * @param clusterPrivileges {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} List of cluster privileges held by the user in the current cluster. 
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
-  var exports = function(userId, username, clusterPrivileges) {
-    var _this = this;
+  var exports = function(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
 
-    _this['userId'] = userId;
-    _this['username'] = username;
-    _this['clusterPrivileges'] = clusterPrivileges;
-  };
 
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CurrentUser} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
+    /**
+     * Callback function to receive the result of the getTransfersMock operation.
+     * @callback module:api/DebugApi~getTransfersMockCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/TransfersMock} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
 
-  /**
-   * Constructs a <code>CurrentUser</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUser} The populated <code>CurrentUser</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
+    /**
+     * Get transfers mock status
+     * Returns information whether transfers mocking is enabled. 
+     * @param {module:api/DebugApi~getTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TransfersMock}
+     */
+    this.getTransfersMock = function(callback) {
+      var postBody = null;
 
-      if (data.hasOwnProperty('userId')) {
-        obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('clusterPrivileges')) {
-        obj['clusterPrivileges'] = ApiClient.convertToType(data['clusterPrivileges'], ['String']);
-      }
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = TransfersMock;
+
+      return this.apiClient.callApi(
+        '/provider/debug/transfers_mock', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
     }
-    return obj;
-  }
 
-  /**
-   * The user Id.
-   * @member {String} userId
-   */
-  exports.prototype['userId'] = undefined;
-  /**
-   * User's full name (given names + surname).
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * List of cluster privileges held by the user in the current cluster. 
-   * @member {Array.<module:model/CurrentUser.ClusterPrivilegesEnum>} clusterPrivileges
-   */
-  exports.prototype['clusterPrivileges'] = undefined;
+    /**
+     * Callback function to receive the result of the modifyTransfersMock operation.
+     * @callback module:api/DebugApi~modifyTransfersMockCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify transfers mock
+     * Toggle transfers mock. When enabled, all transfers finish successfully without actually transferring data. WARNING: this is a debugging feature disrupting normal Oneprovider operation. 
+     * @param {module:model/TransfersMock} transfersMock New value for the mock setting.
+     * @param {module:api/DebugApi~modifyTransfersMockCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.modifyTransfersMock = function(transfersMock, callback) {
+      var postBody = transfersMock;
+
+      // verify the required parameter 'transfersMock' is set
+      if (transfersMock === undefined || transfersMock === null) {
+        throw new Error("Missing the required parameter 'transfersMock' when calling modifyTransfersMock");
+      }
 
 
-  /**
-   * Allowed values for the <code>clusterPrivileges</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.ClusterPrivilegesEnum = {
-    /**
-     * value: "cluster_view"
-     * @const
-     */
-    "view": "cluster_view",
-    /**
-     * value: "cluster_update"
-     * @const
-     */
-    "update": "cluster_update",
-    /**
-     * value: "cluster_delete"
-     * @const
-     */
-    "delete": "cluster_delete",
-    /**
-     * value: "cluster_view_privileges"
-     * @const
-     */
-    "view_privileges": "cluster_view_privileges",
-    /**
-     * value: "cluster_set_privileges"
-     * @const
-     */
-    "set_privileges": "cluster_set_privileges",
-    /**
-     * value: "cluster_add_user"
-     * @const
-     */
-    "add_user": "cluster_add_user",
-    /**
-     * value: "cluster_remove_user"
-     * @const
-     */
-    "remove_user": "cluster_remove_user",
-    /**
-     * value: "cluster_add_group"
-     * @const
-     */
-    "add_group": "cluster_add_group",
-    /**
-     * value: "cluster_remove_group"
-     * @const
-     */
-    "remove_group": "cluster_remove_group"  };
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
 
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/debug/transfers_mock', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+  };
 
   return exports;
 }));
-
-

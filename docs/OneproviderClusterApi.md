@@ -1,108 +1,36 @@
-# Onepanel.OnezoneApi
+# Onepanel.OneproviderClusterApi
 
 All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addOnezoneUser**](OnezoneApi.md#addOnezoneUser) | **POST** /zone/users | Create Onezone user
-[**addZoneDatabases**](OnezoneApi.md#addZoneDatabases) | **POST** /zone/databases | Add zone databases
-[**addZoneManagers**](OnezoneApi.md#addZoneManagers) | **POST** /zone/managers | Add zone cluster managers
-[**addZoneWorkers**](OnezoneApi.md#addZoneWorkers) | **POST** /zone/workers | Add zone cluster workers
-[**changeUserPassword**](OnezoneApi.md#changeUserPassword) | **PATCH** /zone/users/{id} | Set password for Onezone user
-[**configureZone**](OnezoneApi.md#configureZone) | **POST** /zone/configuration | Configure zone deployment
-[**getGuiMessage**](OnezoneApi.md#getGuiMessage) | **GET** /zone/gui_messages/{id} | Get settings of a Onezone GUI message.
-[**getOnezoneUser**](OnezoneApi.md#getOnezoneUser) | **GET** /zone/users/{id} | Get Onezone user details
-[**getOnezoneUsers**](OnezoneApi.md#getOnezoneUsers) | **GET** /zone/users | List Onezone users
-[**getZoneClusterIps**](OnezoneApi.md#getZoneClusterIps) | **GET** /zone/cluster_ips | Get zone cluster nodes IPs
-[**getZoneConfiguration**](OnezoneApi.md#getZoneConfiguration) | **GET** /zone/configuration | Get zone cluster configuration
-[**getZoneDatabaseStatus**](OnezoneApi.md#getZoneDatabaseStatus) | **GET** /zone/databases/{host} | Get zone database status
-[**getZoneDatabasesStatus**](OnezoneApi.md#getZoneDatabasesStatus) | **GET** /zone/databases | Get zone databases status
-[**getZoneManagerStatus**](OnezoneApi.md#getZoneManagerStatus) | **GET** /zone/managers/{host} | Get zone cluster manager status
-[**getZoneManagersStatus**](OnezoneApi.md#getZoneManagersStatus) | **GET** /zone/managers | Get zone cluster managers status
-[**getZoneNagiosReport**](OnezoneApi.md#getZoneNagiosReport) | **GET** /zone/nagios | Get zone nagios report
-[**getZonePolicies**](OnezoneApi.md#getZonePolicies) | **GET** /zone/policies | Get Onezone policies.
-[**getZoneWorkerStatus**](OnezoneApi.md#getZoneWorkerStatus) | **GET** /zone/workers/{host} | Get zone cluster worker status
-[**getZoneWorkersStatus**](OnezoneApi.md#getZoneWorkersStatus) | **GET** /zone/workers | Get zone cluster workers status
-[**modifyGuiMessage**](OnezoneApi.md#modifyGuiMessage) | **PATCH** /zone/gui_messages/{id} | Modify settings of a Onezone GUI message.
-[**modifyZoneClusterIps**](OnezoneApi.md#modifyZoneClusterIps) | **PATCH** /zone/cluster_ips | Set external IPs of nodes in application config
-[**modifyZonePolicies**](OnezoneApi.md#modifyZonePolicies) | **PATCH** /zone/policies | Modify current Onezone policies
-[**startStopZoneDatabases**](OnezoneApi.md#startStopZoneDatabases) | **PATCH** /zone/databases | Start/stop zone databases
-[**startStopZoneDatabasesHost**](OnezoneApi.md#startStopZoneDatabasesHost) | **PATCH** /zone/databases/{host} | Start/stop zone database
-[**startStopZoneManager**](OnezoneApi.md#startStopZoneManager) | **PATCH** /zone/managers/{host} | Start/stop zone cluster manager
-[**startStopZoneManagers**](OnezoneApi.md#startStopZoneManagers) | **PATCH** /zone/managers | Start/stop zone cluster managers
-[**startStopZoneWorker**](OnezoneApi.md#startStopZoneWorker) | **PATCH** /zone/workers/{host} | Start/stop zone cluster worker
-[**startStopZoneWorkers**](OnezoneApi.md#startStopZoneWorkers) | **PATCH** /zone/workers | Start/stop zone cluster workers
+[**addProviderDatabases**](OneproviderClusterApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
+[**addProviderManagers**](OneproviderClusterApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
+[**addProviderWorkers**](OneproviderClusterApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
+[**configureProvider**](OneproviderClusterApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**getProviderClusterIps**](OneproviderClusterApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
+[**getProviderConfiguration**](OneproviderClusterApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
+[**getProviderDatabaseStatus**](OneproviderClusterApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
+[**getProviderDatabasesStatus**](OneproviderClusterApi.md#getProviderDatabasesStatus) | **GET** /provider/databases | Get provider databases status
+[**getProviderManagerStatus**](OneproviderClusterApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
+[**getProviderManagersStatus**](OneproviderClusterApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
+[**getProviderNagiosReport**](OneproviderClusterApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
+[**getProviderWorkerStatus**](OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
+[**getProviderWorkersStatus**](OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
+[**modifyProviderClusterIps**](OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
+[**startStopProviderDatabase**](OneproviderClusterApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
+[**startStopProviderDatabases**](OneproviderClusterApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
+[**startStopProviderManager**](OneproviderClusterApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
+[**startStopProviderManagers**](OneproviderClusterApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
+[**startStopProviderWorker**](OneproviderClusterApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
+[**startStopProviderWorkers**](OneproviderClusterApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
 
 
-<a name="addOnezoneUser"></a>
-# **addOnezoneUser**
-> Id addOnezoneUser(userCreateRequest)
+<a name="addProviderDatabases"></a>
+# **addProviderDatabases**
+> TaskId addProviderDatabases(serviceHosts)
 
-Create Onezone user
-
-Creates a new Onezone user account with Basic (username &amp; password) authentication enabled.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var userCreateRequest = new Onepanel.OnezoneUserCreateRequest(); // OnezoneUserCreateRequest | The user configuration details.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.addOnezoneUser(userCreateRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userCreateRequest** | [**OnezoneUserCreateRequest**](OnezoneUserCreateRequest.md)| The user configuration details. | 
-
-### Return type
-
-[**Id**](Id.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="addZoneDatabases"></a>
-# **addZoneDatabases**
-> TaskId addZoneDatabases(serviceHosts)
-
-Add zone databases
+Deploy provider databases
 
 Deploys a database service on provided hosts.
 
@@ -128,7 +56,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var serviceHosts = new Onepanel.ServiceDatabases(); // ServiceDatabases | The service hosts configuration where databases should be deployed. 
 
@@ -140,7 +68,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.addZoneDatabases(serviceHosts, callback);
+apiInstance.addProviderDatabases(serviceHosts, callback);
 ```
 
 ### Parameters
@@ -162,11 +90,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="addZoneManagers"></a>
-# **addZoneManagers**
-> TaskId addZoneManagers(managerHosts)
+<a name="addProviderManagers"></a>
+# **addProviderManagers**
+> TaskId addProviderManagers(managerHosts)
 
-Add zone cluster managers
+Add provider cluster managers
 
 Deploys a cluster manager service on provided hosts.
 
@@ -192,9 +120,9 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
-var managerHosts = new Onepanel.ManagerHosts(); // ManagerHosts | The hosts specification where cluster managers should be deployed. 
+var managerHosts = new Onepanel.ManagerHosts(); // ManagerHosts | The cluster manager service hosts configuration.
 
 
 var callback = function(error, data, response) {
@@ -204,14 +132,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.addZoneManagers(managerHosts, callback);
+apiInstance.addProviderManagers(managerHosts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **managerHosts** | [**ManagerHosts**](ManagerHosts.md)| The hosts specification where cluster managers should be deployed.  | 
+ **managerHosts** | [**ManagerHosts**](ManagerHosts.md)| The cluster manager service hosts configuration. | 
 
 ### Return type
 
@@ -226,13 +154,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="addZoneWorkers"></a>
-# **addZoneWorkers**
-> TaskId addZoneWorkers(serviceHosts)
+<a name="addProviderWorkers"></a>
+# **addProviderWorkers**
+> TaskId addProviderWorkers(serviceHosts)
 
-Add zone cluster workers
+Add provider cluster workers
 
-Deploys a cluster worker service on provided hosts.
+Deploys cluster worker services on provided hosts.
 
 ### Example
 ```javascript
@@ -256,9 +184,9 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
-var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The hosts specification where the workers should be deployed.
+var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The service hosts configuration where workers should be deployed. 
 
 
 var callback = function(error, data, response) {
@@ -268,14 +196,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.addZoneWorkers(serviceHosts, callback);
+apiInstance.addProviderWorkers(serviceHosts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceHosts** | [**ServiceHosts**](ServiceHosts.md)| The hosts specification where the workers should be deployed. | 
+ **serviceHosts** | [**ServiceHosts**](ServiceHosts.md)| The service hosts configuration where workers should be deployed.  | 
 
 ### Return type
 
@@ -290,80 +218,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
-<a name="changeUserPassword"></a>
-# **changeUserPassword**
-> changeUserPassword(id, passwordChangeRequest)
+<a name="configureProvider"></a>
+# **configureProvider**
+> TaskId configureProvider(providerConfiguration)
 
-Set password for Onezone user
+Configure provider deployment
 
-Sets a new password for a Onezone user using Basic authentication. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var id = "id_example"; // String | Id of the user whose password is changed.
-
-var passwordChangeRequest = new Onepanel.PasswordChangeRequest(); // PasswordChangeRequest | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.changeUserPassword(id, passwordChangeRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| Id of the user whose password is changed. | 
- **passwordChangeRequest** | [**PasswordChangeRequest**](PasswordChangeRequest.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="configureZone"></a>
-# **configureZone**
-> TaskId configureZone(zoneConfiguration)
-
-Configure zone deployment
-
-Configures and starts zone services, such as database, cluster manager and cluster worker. This request can be executed by unauthorized users as long as there are no admin users in the system. 
+Configures and starts provider services, such as database, cluster manager and cluster worker. Depending on the configuration, sets up provider storage and registers in the zone. This request can be executed unauthorized as long as there are no admin users. 
 
 ### Example
 ```javascript
@@ -387,9 +248,9 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
-var zoneConfiguration = new Onepanel.ZoneConfiguration(); // ZoneConfiguration | The zone configuration description.
+var providerConfiguration = new Onepanel.ProviderConfiguration(); // ProviderConfiguration | The provider configuration description.
 
 
 var callback = function(error, data, response) {
@@ -399,14 +260,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.configureZone(zoneConfiguration, callback);
+apiInstance.configureProvider(providerConfiguration, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **zoneConfiguration** | [**ZoneConfiguration**](ZoneConfiguration.md)| The zone configuration description. | 
+ **providerConfiguration** | [**ProviderConfiguration**](ProviderConfiguration.md)| The provider configuration description. | 
 
 ### Return type
 
@@ -421,77 +282,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
-<a name="getGuiMessage"></a>
-# **getGuiMessage**
-> GuiMessage getGuiMessage(id)
+<a name="getProviderClusterIps"></a>
+# **getProviderClusterIps**
+> ClusterIps getProviderClusterIps()
 
-Get settings of a Onezone GUI message.
+Get provider cluster nodes IPs
 
-Returns settings of a message displayed in Onezone GUI.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getGuiMessage(id, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
-
-### Return type
-
-[**GuiMessage**](GuiMessage.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getOnezoneUser"></a>
-# **getOnezoneUser**
-> OnezoneUser getOnezoneUser(id)
-
-Get Onezone user details
-
-Returns the configuration information of the Onezone user. 
+Returns IPs of nodes in provider cluster.
 
 ### Example
 ```javascript
@@ -515,10 +312,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
-
-var id = "id_example"; // String | Id of the user to be described.
-
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -527,126 +321,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getOnezoneUser(id, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| Id of the user to be described. | 
-
-### Return type
-
-[**OnezoneUser**](OnezoneUser.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getOnezoneUsers"></a>
-# **getOnezoneUsers**
-> Ids getOnezoneUsers()
-
-List Onezone users
-
-List Ids of Onezone users. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getOnezoneUsers(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Ids**](Ids.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getZoneClusterIps"></a>
-# **getZoneClusterIps**
-> ClusterIps getZoneClusterIps()
-
-Get zone cluster nodes IPs
-
-Returns IPs of nodes in zone cluster.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getZoneClusterIps(callback);
+apiInstance.getProviderClusterIps(callback);
 ```
 
 ### Parameters
@@ -665,13 +340,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneConfiguration"></a>
-# **getZoneConfiguration**
-> ZoneConfigurationDetails getZoneConfiguration()
+<a name="getProviderConfiguration"></a>
+# **getProviderConfiguration**
+> ProviderConfigurationDetails getProviderConfiguration()
 
-Get zone cluster configuration
+Get provider cluster configuration
 
-Returns the zone cluster configuration.
+Returns the provider cluster configuration.
 
 ### Example
 ```javascript
@@ -695,7 +370,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -704,7 +379,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneConfiguration(callback);
+apiInstance.getProviderConfiguration(callback);
 ```
 
 ### Parameters
@@ -712,7 +387,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ZoneConfigurationDetails**](ZoneConfigurationDetails.md)
+[**ProviderConfigurationDetails**](ProviderConfigurationDetails.md)
 
 ### Authorization
 
@@ -723,11 +398,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneDatabaseStatus"></a>
-# **getZoneDatabaseStatus**
-> ServiceStatusHost getZoneDatabaseStatus(host)
+<a name="getProviderDatabaseStatus"></a>
+# **getProviderDatabaseStatus**
+> ServiceStatusHost getProviderDatabaseStatus(host)
 
-Get zone database status
+Get provider database status
 
 Returns status of database service on the selected host.
 
@@ -753,7 +428,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which database service status should be returned. 
 
@@ -765,7 +440,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneDatabaseStatus(host, callback);
+apiInstance.getProviderDatabaseStatus(host, callback);
 ```
 
 ### Parameters
@@ -787,11 +462,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneDatabasesStatus"></a>
-# **getZoneDatabasesStatus**
-> ServiceStatus getZoneDatabasesStatus()
+<a name="getProviderDatabasesStatus"></a>
+# **getProviderDatabasesStatus**
+> ServiceStatus getProviderDatabasesStatus()
 
-Get zone databases status
+Get provider databases status
 
 Returns status of database service on each host where it has been deployed. 
 
@@ -817,7 +492,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -826,7 +501,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneDatabasesStatus(callback);
+apiInstance.getProviderDatabasesStatus(callback);
 ```
 
 ### Parameters
@@ -845,11 +520,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneManagerStatus"></a>
-# **getZoneManagerStatus**
-> ServiceStatusHost getZoneManagerStatus(host)
+<a name="getProviderManagerStatus"></a>
+# **getProviderManagerStatus**
+> ServiceStatusHost getProviderManagerStatus(host)
 
-Get zone cluster manager status
+Get provider cluster manager status
 
 Returns status of cluster manager service on the selected host.
 
@@ -875,7 +550,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be returned. 
 
@@ -887,7 +562,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneManagerStatus(host, callback);
+apiInstance.getProviderManagerStatus(host, callback);
 ```
 
 ### Parameters
@@ -909,13 +584,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneManagersStatus"></a>
-# **getZoneManagersStatus**
-> ServiceStatus getZoneManagersStatus()
+<a name="getProviderManagersStatus"></a>
+# **getProviderManagersStatus**
+> ServiceStatus getProviderManagersStatus()
 
-Get zone cluster managers status
+Get provider cluster managers status
 
-Returns status of cluster manager service on each host where it has been eployed. 
+Returns status of cluster manager service on each host where it has been deployed. 
 
 ### Example
 ```javascript
@@ -939,7 +614,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -948,7 +623,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneManagersStatus(callback);
+apiInstance.getProviderManagersStatus(callback);
 ```
 
 ### Parameters
@@ -967,13 +642,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneNagiosReport"></a>
-# **getZoneNagiosReport**
-> getZoneNagiosReport()
+<a name="getProviderNagiosReport"></a>
+# **getProviderNagiosReport**
+> getProviderNagiosReport()
 
-Get zone nagios report
+Get provider nagios report
 
-Returns the zone nagios report.
+Returns the provider nagios report.
 
 ### Example
 ```javascript
@@ -997,7 +672,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1006,7 +681,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getZoneNagiosReport(callback);
+apiInstance.getProviderNagiosReport(callback);
 ```
 
 ### Parameters
@@ -1025,69 +700,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: text/xml
 
-<a name="getZonePolicies"></a>
-# **getZonePolicies**
-> ZonePolicies getZonePolicies()
+<a name="getProviderWorkerStatus"></a>
+# **getProviderWorkerStatus**
+> ServiceStatusHost getProviderWorkerStatus(host)
 
-Get Onezone policies.
-
-Returns restrictions placed on Onezone operations such as registering Oneproviders. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getZonePolicies(callback);
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ZonePolicies**](ZonePolicies.md)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getZoneWorkerStatus"></a>
-# **getZoneWorkerStatus**
-> ServiceStatusHost getZoneWorkerStatus(host)
-
-Get zone cluster worker status
+Get provider cluster worker status
 
 Returns status of cluster worker service on the selected host.
 
@@ -1113,7 +730,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which cluster worker service status should be returned. 
 
@@ -1125,7 +742,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneWorkerStatus(host, callback);
+apiInstance.getProviderWorkerStatus(host, callback);
 ```
 
 ### Parameters
@@ -1147,11 +764,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getZoneWorkersStatus"></a>
-# **getZoneWorkersStatus**
-> ServiceStatus getZoneWorkersStatus()
+<a name="getProviderWorkersStatus"></a>
+# **getProviderWorkersStatus**
+> ServiceStatus getProviderWorkersStatus()
 
-Get zone cluster workers status
+Get provider cluster workers status
 
 Returns status of cluster worker service on each host where it has been deployed. 
 
@@ -1177,7 +794,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1186,7 +803,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getZoneWorkersStatus(callback);
+apiInstance.getProviderWorkersStatus(callback);
 ```
 
 ### Parameters
@@ -1205,80 +822,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="modifyGuiMessage"></a>
-# **modifyGuiMessage**
-> modifyGuiMessage(id, messageChange)
-
-Modify settings of a Onezone GUI message.
-
-Enables, disables or modifies a message displayed in Onezone GUI.
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
-
-var messageChange = new Onepanel.GuiMessage(); // GuiMessage | 
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyGuiMessage(id, messageChange, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
- **messageChange** | [**GuiMessage**](GuiMessage.md)|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="modifyZoneClusterIps"></a>
-# **modifyZoneClusterIps**
-> modifyZoneClusterIps(clusterIps)
+<a name="modifyProviderClusterIps"></a>
+# **modifyProviderClusterIps**
+> modifyProviderClusterIps(clusterIps)
 
 Set external IPs of nodes in application config
 
-Informs cluster nodes about external IPs which can be used to access them by other zones. 
+Informs cluster nodes about external IPs which can be used to access them by other providers. 
 
 ### Example
 ```javascript
@@ -1302,9 +852,9 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
-var clusterIps = new Onepanel.ModifyClusterIps(); // ModifyClusterIps | The zone configuration description.
+var clusterIps = new Onepanel.ModifyClusterIps(); // ModifyClusterIps | The provider configuration description.
 
 
 var callback = function(error, data, response) {
@@ -1314,14 +864,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.modifyZoneClusterIps(clusterIps, callback);
+apiInstance.modifyProviderClusterIps(clusterIps, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clusterIps** | [**ModifyClusterIps**](ModifyClusterIps.md)| The zone configuration description. | 
+ **clusterIps** | [**ModifyClusterIps**](ModifyClusterIps.md)| The provider configuration description. | 
 
 ### Return type
 
@@ -1336,140 +886,11 @@ null (empty response body)
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
 
-<a name="modifyZonePolicies"></a>
-# **modifyZonePolicies**
-> modifyZonePolicies(zonePolicies)
+<a name="startStopProviderDatabase"></a>
+# **startStopProviderDatabase**
+> startStopProviderDatabase(host, opts)
 
-Modify current Onezone policies
-
-Modifies restrictions placed on Onezone operations such as registering providers. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var zonePolicies = new Onepanel.ZonePolicies(); // ZonePolicies | New values for Onezone policies.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.modifyZonePolicies(zonePolicies, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **zonePolicies** | [**ZonePolicies**](ZonePolicies.md)| New values for Onezone policies. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-<a name="startStopZoneDatabases"></a>
-# **startStopZoneDatabases**
-> startStopZoneDatabases(opts)
-
-Start/stop zone databases
-
-Starts or stops database service on all hosts in the local deployment. 
-
-### Example
-```javascript
-var Onepanel = require('onepanel');
-var defaultClient = Onepanel.ApiClient.instance;
-
-// Configure API key authorization: api_key1
-var api_key1 = defaultClient.authentications['api_key1'];
-api_key1.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key1.apiKeyPrefix = 'Token';
-
-// Configure API key authorization: api_key2
-var api_key2 = defaultClient.authentications['api_key2'];
-api_key2.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key2.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME';
-basic.password = 'YOUR PASSWORD';
-
-var apiInstance = new Onepanel.OnezoneApi();
-
-var opts = { 
-  'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-apiInstance.startStopZoneDatabases(opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="startStopZoneDatabasesHost"></a>
-# **startStopZoneDatabasesHost**
-> startStopZoneDatabasesHost(host, opts)
-
-Start/stop zone database
+Start/stop provider database
 
 Starts or stops database service on the selected hosts in the local deployment. 
 
@@ -1495,7 +916,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which database service status should be changed. 
 
@@ -1510,7 +931,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.startStopZoneDatabasesHost(host, opts, callback);
+apiInstance.startStopProviderDatabase(host, opts, callback);
 ```
 
 ### Parameters
@@ -1533,11 +954,76 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="startStopZoneManager"></a>
-# **startStopZoneManager**
-> startStopZoneManager(host, opts)
+<a name="startStopProviderDatabases"></a>
+# **startStopProviderDatabases**
+> startStopProviderDatabases(opts)
 
-Start/stop zone cluster manager
+Start/stop provider databases
+
+Starts or stops database service on all hosts in the local deployment. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var opts = { 
+  'started': true // Boolean | Defines the intended state of the database service. The service will be started or stopped in order to match the requested state. 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopProviderDatabases(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **started** | **Boolean**| Defines the intended state of the database service. The service will be started or stopped in order to match the requested state.  | [optional] [default to true]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="startStopProviderManager"></a>
+# **startStopProviderManager**
+> startStopProviderManager(host, opts)
+
+Start/stop provider cluster manager
 
 Starts or stops cluster manager service on the selected hosts in the local deployment. 
 
@@ -1563,7 +1049,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which cluster manager service status should be changed. 
 
@@ -1578,7 +1064,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.startStopZoneManager(host, opts, callback);
+apiInstance.startStopProviderManager(host, opts, callback);
 ```
 
 ### Parameters
@@ -1601,11 +1087,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="startStopZoneManagers"></a>
-# **startStopZoneManagers**
-> startStopZoneManagers(opts)
+<a name="startStopProviderManagers"></a>
+# **startStopProviderManagers**
+> startStopProviderManagers(opts)
 
-Start/stop zone cluster managers
+Start/stop provider cluster managers
 
 Starts or stops cluster manager service on all hosts in the local deployment. 
 
@@ -1631,7 +1117,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster manager service. The service will be started or stopped in order to match the requested state. 
@@ -1644,7 +1130,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.startStopZoneManagers(opts, callback);
+apiInstance.startStopProviderManagers(opts, callback);
 ```
 
 ### Parameters
@@ -1666,13 +1152,13 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="startStopZoneWorker"></a>
-# **startStopZoneWorker**
-> startStopZoneWorker(host, opts)
+<a name="startStopProviderWorker"></a>
+# **startStopProviderWorker**
+> startStopProviderWorker(host, opts)
 
-Start/stop zone cluster worker
+Start/stop provider cluster worker
 
-Starts or stops cluster worker service on the selected hosts in the local deployment. 
+Starts or stops cluster worker service on the selected host in the local deployment. 
 
 ### Example
 ```javascript
@@ -1696,7 +1182,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var host = "host_example"; // String | The name of a host for which cluster worker service status should be changed. 
 
@@ -1711,7 +1197,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.startStopZoneWorker(host, opts, callback);
+apiInstance.startStopProviderWorker(host, opts, callback);
 ```
 
 ### Parameters
@@ -1734,11 +1220,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="startStopZoneWorkers"></a>
-# **startStopZoneWorkers**
-> startStopZoneWorkers(opts)
+<a name="startStopProviderWorkers"></a>
+# **startStopProviderWorkers**
+> startStopProviderWorkers(opts)
 
-Start/stop zone cluster workers
+Start/stop provider cluster workers
 
 Starts or stops cluster worker service on all hosts in the local deployment. 
 
@@ -1764,7 +1250,7 @@ var basic = defaultClient.authentications['basic'];
 basic.username = 'YOUR USERNAME';
 basic.password = 'YOUR PASSWORD';
 
-var apiInstance = new Onepanel.OnezoneApi();
+var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var opts = { 
   'started': true // Boolean | Defines the intended state of the cluster worker service. The service will be started or stopped in order to match the requested state. 
@@ -1777,7 +1263,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.startStopZoneWorkers(opts, callback);
+apiInstance.startStopProviderWorkers(opts, callback);
 ```
 
 ### Parameters

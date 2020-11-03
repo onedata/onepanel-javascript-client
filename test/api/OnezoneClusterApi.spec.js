@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.OnezoneApi();
+    instance = new Onepanel.OnezoneClusterApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,17 +50,7 @@
       object[property] = value;
   }
 
-  describe('OnezoneApi', function() {
-    describe('addOnezoneUser', function() {
-      it('should call addOnezoneUser successfully', function(done) {
-        //uncomment below and update the code to test addOnezoneUser
-        //instance.addOnezoneUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+  describe('OnezoneClusterApi', function() {
     describe('addZoneDatabases', function() {
       it('should call addZoneDatabases successfully', function(done) {
         //uncomment below and update the code to test addZoneDatabases
@@ -91,50 +81,10 @@
         done();
       });
     });
-    describe('changeUserPassword', function() {
-      it('should call changeUserPassword successfully', function(done) {
-        //uncomment below and update the code to test changeUserPassword
-        //instance.changeUserPassword(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('configureZone', function() {
       it('should call configureZone successfully', function(done) {
         //uncomment below and update the code to test configureZone
         //instance.configureZone(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getGuiMessage', function() {
-      it('should call getGuiMessage successfully', function(done) {
-        //uncomment below and update the code to test getGuiMessage
-        //instance.getGuiMessage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getOnezoneUser', function() {
-      it('should call getOnezoneUser successfully', function(done) {
-        //uncomment below and update the code to test getOnezoneUser
-        //instance.getOnezoneUser(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getOnezoneUsers', function() {
-      it('should call getOnezoneUsers successfully', function(done) {
-        //uncomment below and update the code to test getOnezoneUsers
-        //instance.getOnezoneUsers(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -211,16 +161,6 @@
         done();
       });
     });
-    describe('getZonePolicies', function() {
-      it('should call getZonePolicies successfully', function(done) {
-        //uncomment below and update the code to test getZonePolicies
-        //instance.getZonePolicies(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getZoneWorkerStatus', function() {
       it('should call getZoneWorkerStatus successfully', function(done) {
         //uncomment below and update the code to test getZoneWorkerStatus
@@ -241,30 +181,10 @@
         done();
       });
     });
-    describe('modifyGuiMessage', function() {
-      it('should call modifyGuiMessage successfully', function(done) {
-        //uncomment below and update the code to test modifyGuiMessage
-        //instance.modifyGuiMessage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('modifyZoneClusterIps', function() {
       it('should call modifyZoneClusterIps successfully', function(done) {
         //uncomment below and update the code to test modifyZoneClusterIps
         //instance.modifyZoneClusterIps(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('modifyZonePolicies', function() {
-      it('should call modifyZonePolicies successfully', function(done) {
-        //uncomment below and update the code to test modifyZonePolicies
-        //instance.modifyZonePolicies(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

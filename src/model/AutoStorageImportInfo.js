@@ -48,9 +48,9 @@
    * @param status {module:model/AutoStorageImportInfo.StatusEnum} Describes status of current (or last finished) auto storage import scan in given space.
    * @param start {Number} Time at which current (or last finished) scan has been started.
    * @param stop {Number} Time at which current (or last finished) scan has been stopped.
-   * @param createdFiles {Number} Counter of created files that has been detected during current (or last finished) scan.
-   * @param modifiedFiles {Number} Counter of modified files that has been detected during current (or last finished) scan.
-   * @param deletedFiles {Number} Counter of deleted files that has been detected during current (or last finished) scan.
+   * @param createdFiles {Number} Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param modifiedFiles {Number} Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param deletedFiles {Number} Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @param totalScans {Number} Total number of performed scans.
    */
   var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, totalScans) {
@@ -59,9 +59,11 @@
     _this['status'] = status;
     _this['start'] = start;
     _this['stop'] = stop;
+
     _this['createdFiles'] = createdFiles;
     _this['modifiedFiles'] = modifiedFiles;
     _this['deletedFiles'] = deletedFiles;
+
 
     _this['totalScans'] = totalScans;
   };
@@ -96,6 +98,9 @@
       if (data.hasOwnProperty('stop')) {
         obj['stop'] = ApiClient.convertToType(data['stop'], 'Number');
       }
+      if (data.hasOwnProperty('storageFiles')) {
+        obj['storageFiles'] = ApiClient.convertToType(data['storageFiles'], 'Number');
+      }
       if (data.hasOwnProperty('createdFiles')) {
         obj['createdFiles'] = ApiClient.convertToType(data['createdFiles'], 'Number');
       }
@@ -104,6 +109,9 @@
       }
       if (data.hasOwnProperty('deletedFiles')) {
         obj['deletedFiles'] = ApiClient.convertToType(data['deletedFiles'], 'Number');
+      }
+      if (data.hasOwnProperty('processedFiles')) {
+        obj['processedFiles'] = ApiClient.convertToType(data['processedFiles'], 'Number');
       }
       if (data.hasOwnProperty('nextScan')) {
         obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
@@ -131,20 +139,30 @@
    */
   exports.prototype['stop'] = undefined;
   /**
-   * Counter of created files that has been detected during current (or last finished) scan.
+   * Counter of files (both directories and regular files) that has been detected on storage during current (or last finished) scan.
+   * @member {Number} storageFiles
+   */
+  exports.prototype['storageFiles'] = undefined;
+  /**
+   * Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} createdFiles
    */
   exports.prototype['createdFiles'] = undefined;
   /**
-   * Counter of modified files that has been detected during current (or last finished) scan.
+   * Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} modifiedFiles
    */
   exports.prototype['modifiedFiles'] = undefined;
   /**
-   * Counter of deleted files that has been detected during current (or last finished) scan.
+   * Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} deletedFiles
    */
   exports.prototype['deletedFiles'] = undefined;
+  /**
+   * Counter of all files (both directories and regular files) that has been processed during current (or last finished) scan.
+   * @member {Number} processedFiles
+   */
+  exports.prototype['processedFiles'] = undefined;
   /**
    * Estimated time at which next scan will be enqueued.
    * @member {Number} nextScan

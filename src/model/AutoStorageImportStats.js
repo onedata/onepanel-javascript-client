@@ -98,17 +98,17 @@
    */
   exports.prototype['queueLength'] = undefined;
   /**
-   * Statistics of count of created files detected by auto storage import.
+   * Statistics of count of created files (both directories and regular files) detected by auto storage import.
    * @member {module:model/TimeStats} createdFiles
    */
   exports.prototype['createdFiles'] = undefined;
   /**
-   * Statistics of count of modified files detected by auto storage import.
+   * Statistics of count of modified files (both directories and regular files) detected by auto storage import.
    * @member {module:model/TimeStats} modifiedFiles
    */
   exports.prototype['modifiedFiles'] = undefined;
   /**
-   * Statistics of count of deleted files detected by auto storage import.
+   * Statistics of count of deleted files (both directories and regular files) detected by auto storage import.
    * @member {module:model/TimeStats} deletedFiles
    */
   exports.prototype['deletedFiles'] = undefined;

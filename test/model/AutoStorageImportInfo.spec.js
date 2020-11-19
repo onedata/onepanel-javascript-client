@@ -75,12 +75,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property storageFiles (base name: "storageFiles")', function() {
-      // uncomment below and update the code to test the property storageFiles
-      //var instane = new Onepanel.AutoStorageImportInfo();
-      //expect(instance).to.be();
-    });
-
     it('should have the property createdFiles (base name: "createdFiles")', function() {
       // uncomment below and update the code to test the property createdFiles
       //var instane = new Onepanel.AutoStorageImportInfo();
@@ -99,8 +93,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property processedFiles (base name: "processedFiles")', function() {
-      // uncomment below and update the code to test the property processedFiles
+    it('should have the property umodifiedFiles (base name: "umodifiedFiles")', function() {
+      // uncomment below and update the code to test the property umodifiedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failedFiles (base name: "failedFiles")', function() {
+      // uncomment below and update the code to test the property failedFiles
       //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });

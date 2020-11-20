@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **createdFiles** | **Number** | Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan. | 
 **modifiedFiles** | **Number** | Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan. | 
 **deletedFiles** | **Number** | Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan. | 
-**unmodifiedFiles** | **Number** | Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan. | [optional] 
-**failedFiles** | **Number** | Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan. | [optional] 
+**unmodifiedFiles** | **Number** | Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan. | 
+**failedFiles** | **Number** | Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan. | 
 **nextScan** | **Number** | Estimated time at which next scan will be enqueued. | [optional] 
 **totalScans** | **Number** | Total number of performed scans. | 
 

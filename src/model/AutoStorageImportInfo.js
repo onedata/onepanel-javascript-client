@@ -51,9 +51,11 @@
    * @param createdFiles {Number} Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @param modifiedFiles {Number} Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @param deletedFiles {Number} Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param unmodifiedFiles {Number} Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param failedFiles {Number} Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan.
    * @param totalScans {Number} Total number of performed scans.
    */
-  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, totalScans) {
+  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, unmodifiedFiles, failedFiles, totalScans) {
     var _this = this;
 
     _this['status'] = status;
@@ -62,8 +64,8 @@
     _this['createdFiles'] = createdFiles;
     _this['modifiedFiles'] = modifiedFiles;
     _this['deletedFiles'] = deletedFiles;
-
-
+    _this['unmodifiedFiles'] = unmodifiedFiles;
+    _this['failedFiles'] = failedFiles;
 
     _this['totalScans'] = totalScans;
   };

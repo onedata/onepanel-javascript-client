@@ -107,8 +107,8 @@
       if (data.hasOwnProperty('deletedFiles')) {
         obj['deletedFiles'] = ApiClient.convertToType(data['deletedFiles'], 'Number');
       }
-      if (data.hasOwnProperty('umodifiedFiles')) {
-        obj['umodifiedFiles'] = ApiClient.convertToType(data['umodifiedFiles'], 'Number');
+      if (data.hasOwnProperty('unmodifiedFiles')) {
+        obj['unmodifiedFiles'] = ApiClient.convertToType(data['unmodifiedFiles'], 'Number');
       }
       if (data.hasOwnProperty('failedFiles')) {
         obj['failedFiles'] = ApiClient.convertToType(data['failedFiles'], 'Number');
@@ -155,9 +155,9 @@
   exports.prototype['deletedFiles'] = undefined;
   /**
    * Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan.
-   * @member {Number} umodifiedFiles
+   * @member {Number} unmodifiedFiles
    */
-  exports.prototype['umodifiedFiles'] = undefined;
+  exports.prototype['unmodifiedFiles'] = undefined;
   /**
    * Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan.
    * @member {Number} failedFiles

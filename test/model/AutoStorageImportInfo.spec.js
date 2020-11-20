@@ -93,8 +93,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property umodifiedFiles (base name: "umodifiedFiles")', function() {
-      // uncomment below and update the code to test the property umodifiedFiles
+    it('should have the property unmodifiedFiles (base name: "unmodifiedFiles")', function() {
+      // uncomment below and update the code to test the property unmodifiedFiles
       //var instane = new Onepanel.AutoStorageImportInfo();
       //expect(instance).to.be();
     });

@@ -48,12 +48,14 @@
    * @param status {module:model/AutoStorageImportInfo.StatusEnum} Describes status of current (or last finished) auto storage import scan in given space.
    * @param start {Number} Time at which current (or last finished) scan has been started.
    * @param stop {Number} Time at which current (or last finished) scan has been stopped.
-   * @param createdFiles {Number} Counter of created files that has been detected during current (or last finished) scan.
-   * @param modifiedFiles {Number} Counter of modified files that has been detected during current (or last finished) scan.
-   * @param deletedFiles {Number} Counter of deleted files that has been detected during current (or last finished) scan.
+   * @param createdFiles {Number} Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param modifiedFiles {Number} Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param deletedFiles {Number} Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param unmodifiedFiles {Number} Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @param failedFiles {Number} Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan.
    * @param totalScans {Number} Total number of performed scans.
    */
-  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, totalScans) {
+  var exports = function(status, start, stop, createdFiles, modifiedFiles, deletedFiles, unmodifiedFiles, failedFiles, totalScans) {
     var _this = this;
 
     _this['status'] = status;
@@ -62,6 +64,8 @@
     _this['createdFiles'] = createdFiles;
     _this['modifiedFiles'] = modifiedFiles;
     _this['deletedFiles'] = deletedFiles;
+    _this['unmodifiedFiles'] = unmodifiedFiles;
+    _this['failedFiles'] = failedFiles;
 
     _this['totalScans'] = totalScans;
   };
@@ -105,6 +109,12 @@
       if (data.hasOwnProperty('deletedFiles')) {
         obj['deletedFiles'] = ApiClient.convertToType(data['deletedFiles'], 'Number');
       }
+      if (data.hasOwnProperty('unmodifiedFiles')) {
+        obj['unmodifiedFiles'] = ApiClient.convertToType(data['unmodifiedFiles'], 'Number');
+      }
+      if (data.hasOwnProperty('failedFiles')) {
+        obj['failedFiles'] = ApiClient.convertToType(data['failedFiles'], 'Number');
+      }
       if (data.hasOwnProperty('nextScan')) {
         obj['nextScan'] = ApiClient.convertToType(data['nextScan'], 'Number');
       }
@@ -131,20 +141,30 @@
    */
   exports.prototype['stop'] = undefined;
   /**
-   * Counter of created files that has been detected during current (or last finished) scan.
+   * Counter of created files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} createdFiles
    */
   exports.prototype['createdFiles'] = undefined;
   /**
-   * Counter of modified files that has been detected during current (or last finished) scan.
+   * Counter of modified files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} modifiedFiles
    */
   exports.prototype['modifiedFiles'] = undefined;
   /**
-   * Counter of deleted files that has been detected during current (or last finished) scan.
+   * Counter of deleted files (both directories and regular files) that has been detected during current (or last finished) scan.
    * @member {Number} deletedFiles
    */
   exports.prototype['deletedFiles'] = undefined;
+  /**
+   * Counter of unmodified files (both directories and regular files) that has been detected during current (or last finished) scan.
+   * @member {Number} unmodifiedFiles
+   */
+  exports.prototype['unmodifiedFiles'] = undefined;
+  /**
+   * Counter of files (both directories and regular files) for which the processing has failed during current (or last finished) scan.
+   * @member {Number} failedFiles
+   */
+  exports.prototype['failedFiles'] = undefined;
   /**
    * Estimated time at which next scan will be enqueued.
    * @member {Number} nextScan

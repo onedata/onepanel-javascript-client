@@ -93,6 +93,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property unmodifiedFiles (base name: "unmodifiedFiles")', function() {
+      // uncomment below and update the code to test the property unmodifiedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failedFiles (base name: "failedFiles")', function() {
+      // uncomment below and update the code to test the property failedFiles
+      //var instane = new Onepanel.AutoStorageImportInfo();
+      //expect(instance).to.be();
+    });
+
     it('should have the property nextScan (base name: "nextScan")', function() {
       // uncomment below and update the code to test the property nextScan
       //var instane = new Onepanel.AutoStorageImportInfo();

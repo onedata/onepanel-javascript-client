@@ -54,6 +54,7 @@
     _this['username'] = username;
     _this['password'] = password;
 
+
   };
 
   /**
@@ -83,6 +84,9 @@
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
+      if (data.hasOwnProperty('fullName')) {
+        obj['fullName'] = ApiClient.convertToType(data['fullName'], 'String');
+      }
       if (data.hasOwnProperty('groups')) {
         obj['groups'] = ApiClient.convertToType(data['groups'], ['String']);
       }
@@ -98,6 +102,10 @@
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
+  /**
+   * @member {String} fullName
+   */
+  exports.prototype['fullName'] = undefined;
   /**
    * Ids of Onezone groups to which the user should be added. The groups must already exist.
    * @member {Array.<String>} groups

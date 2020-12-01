@@ -353,7 +353,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceAutoCleaningReports](docs/SpaceAutoCleaningReports.md)
  - [Onepanel.SpaceAutoCleaningRuleSetting](docs/SpaceAutoCleaningRuleSetting.md)
  - [Onepanel.SpaceAutoCleaningRules](docs/SpaceAutoCleaningRules.md)
- - [Onepanel.SpaceAutoCleaningRunStatus](docs/SpaceAutoCleaningRunStatus.md)
  - [Onepanel.SpaceAutoCleaningStatus](docs/SpaceAutoCleaningStatus.md)
  - [Onepanel.SpaceDetails](docs/SpaceDetails.md)
  - [Onepanel.SpaceFilePopularityConfiguration](docs/SpaceFilePopularityConfiguration.md)

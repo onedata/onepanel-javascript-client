@@ -10,6 +10,23 @@ Name | Type | Description | Notes
 **releasedBytes** | **Number** | Number of bytes deleted during an auto-cleaning run. | 
 **bytesToRelease** | **Number** | Number of bytes that should be deleted. | 
 **filesNumber** | **Number** | Number of deleted files. | 
-**status** | [**SpaceAutoCleaningRunStatus**](SpaceAutoCleaningRunStatus.md) |  | 
+**status** | **String** | Status of an auto-cleaning run. | 
+
+
+<a name="StatusEnum"></a>
+## Enum: StatusEnum
+
+
+* `active` (value: `"active"`)
+
+* `cancelling` (value: `"cancelling"`)
+
+* `completed` (value: `"completed"`)
+
+* `failed` (value: `"failed"`)
+
+* `cancelled` (value: `"cancelled"`)
+
+
 
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaningRunStatus'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRunStatus'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningReport = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRunStatus);
+    root.Onepanel.SpaceAutoCleaningReport = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, SpaceAutoCleaningRunStatus) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -52,7 +52,7 @@
    * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
    * @param bytesToRelease {Number} Number of bytes that should be deleted.
    * @param filesNumber {Number} Number of deleted files.
-   * @param status {module:model/SpaceAutoCleaningRunStatus} 
+   * @param status {module:model/SpaceAutoCleaningReport.StatusEnum} Status of an auto-cleaning run.
    */
   var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber, status) {
     var _this = this;
@@ -110,7 +110,7 @@
         obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
       }
       if (data.hasOwnProperty('status')) {
-        obj['status'] = SpaceAutoCleaningRunStatus.constructFromObject(data['status']);
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
     }
     return obj;
@@ -152,10 +152,43 @@
    */
   exports.prototype['filesNumber'] = undefined;
   /**
-   * @member {module:model/SpaceAutoCleaningRunStatus} status
+   * Status of an auto-cleaning run.
+   * @member {module:model/SpaceAutoCleaningReport.StatusEnum} status
    */
   exports.prototype['status'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StatusEnum = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
 
   return exports;

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaningRunStatus'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRunStatus'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningStatus = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRunStatus);
+    root.Onepanel.SpaceAutoCleaningStatus = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, SpaceAutoCleaningRunStatus) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * Status of current auto-cleaning process for given space.
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param lastRunStatus {module:model/SpaceAutoCleaningRunStatus} 
+   * @param lastRunStatus {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} Status of an auto-cleaning run.
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
   var exports = function(lastRunStatus, spaceOccupancy) {
@@ -77,7 +77,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('lastRunStatus')) {
-        obj['lastRunStatus'] = SpaceAutoCleaningRunStatus.constructFromObject(data['lastRunStatus']);
+        obj['lastRunStatus'] = ApiClient.convertToType(data['lastRunStatus'], 'String');
       }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
@@ -87,7 +87,8 @@
   }
 
   /**
-   * @member {module:model/SpaceAutoCleaningRunStatus} lastRunStatus
+   * Status of an auto-cleaning run.
+   * @member {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} lastRunStatus
    */
   exports.prototype['lastRunStatus'] = undefined;
   /**
@@ -96,6 +97,38 @@
    */
   exports.prototype['spaceOccupancy'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>lastRunStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.LastRunStatusEnum = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
 
   return exports;

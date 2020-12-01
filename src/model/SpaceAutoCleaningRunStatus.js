@@ -17,146 +17,61 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SpaceAutoCleaningRunStatus'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRunStatus'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningReport = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRunStatus);
+    root.Onepanel.SpaceAutoCleaningRunStatus = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, SpaceAutoCleaningRunStatus) {
+}(this, function(ApiClient) {
   'use strict';
 
 
-
+  /**
+   * Enum class SpaceAutoCleaningRunStatus.
+   * @enum {}
+   * @readonly
+   */
+  var exports = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
   /**
-   * The SpaceAutoCleaningReport model module.
-   * @module model/SpaceAutoCleaningReport
-   * @version 20.02.3
+   * Returns a <code>SpaceAutoCleaningRunStatus</code> enum value from a Javascript object name.
+   * @param {Object} data The plain JavaScript object containing the name of the enum value.
+   * @return {module:model/SpaceAutoCleaningRunStatus} The enum <code>SpaceAutoCleaningRunStatus</code> value.
    */
-
-  /**
-   * Constructs a new <code>SpaceAutoCleaningReport</code>.
-   * Report from an auto-cleaning run.
-   * @alias module:model/SpaceAutoCleaningReport
-   * @class
-   * @param id {String} Id of an auto-cleaning report.
-   * @param index {String} Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @param startedAt {String} Start time of an auto-cleaning run in ISO 8601 format.
-   * @param stoppedAt {String} Finish time of an auto-cleaning run in ISO 8601 format.
-   * @param releasedBytes {Number} Number of bytes deleted during an auto-cleaning run.
-   * @param bytesToRelease {Number} Number of bytes that should be deleted.
-   * @param filesNumber {Number} Number of deleted files.
-   * @param status {module:model/SpaceAutoCleaningRunStatus} 
-   */
-  var exports = function(id, index, startedAt, stoppedAt, releasedBytes, bytesToRelease, filesNumber, status) {
-    var _this = this;
-
-    _this['id'] = id;
-    _this['index'] = index;
-    _this['startedAt'] = startedAt;
-    _this['stoppedAt'] = stoppedAt;
-    _this['releasedBytes'] = releasedBytes;
-    _this['bytesToRelease'] = bytesToRelease;
-    _this['filesNumber'] = filesNumber;
-    _this['status'] = status;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceAutoCleaningReport} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceAutoCleaningReport</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceAutoCleaningReport} obj Optional instance to populate.
-   * @return {module:model/SpaceAutoCleaningReport} The populated <code>SpaceAutoCleaningReport</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('index')) {
-        obj['index'] = ApiClient.convertToType(data['index'], 'String');
-      }
-      if (data.hasOwnProperty('startedAt')) {
-        obj['startedAt'] = ApiClient.convertToType(data['startedAt'], 'String');
-      }
-      if (data.hasOwnProperty('stoppedAt')) {
-        obj['stoppedAt'] = ApiClient.convertToType(data['stoppedAt'], 'String');
-      }
-      if (data.hasOwnProperty('releasedBytes')) {
-        obj['releasedBytes'] = ApiClient.convertToType(data['releasedBytes'], 'Number');
-      }
-      if (data.hasOwnProperty('bytesToRelease')) {
-        obj['bytesToRelease'] = ApiClient.convertToType(data['bytesToRelease'], 'Number');
-      }
-      if (data.hasOwnProperty('filesNumber')) {
-        obj['filesNumber'] = ApiClient.convertToType(data['filesNumber'], 'Number');
-      }
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = SpaceAutoCleaningRunStatus.constructFromObject(data['status']);
-      }
-    }
-    return obj;
+  exports.constructFromObject = function(object) {
+    return object;
   }
-
-  /**
-   * Id of an auto-cleaning report.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * Index of an auto-cleaning report. It can be used to list report Ids starting from given report. 
-   * @member {String} index
-   */
-  exports.prototype['index'] = undefined;
-  /**
-   * Start time of an auto-cleaning run in ISO 8601 format.
-   * @member {String} startedAt
-   */
-  exports.prototype['startedAt'] = undefined;
-  /**
-   * Finish time of an auto-cleaning run in ISO 8601 format.
-   * @member {String} stoppedAt
-   */
-  exports.prototype['stoppedAt'] = undefined;
-  /**
-   * Number of bytes deleted during an auto-cleaning run.
-   * @member {Number} releasedBytes
-   */
-  exports.prototype['releasedBytes'] = undefined;
-  /**
-   * Number of bytes that should be deleted.
-   * @member {Number} bytesToRelease
-   */
-  exports.prototype['bytesToRelease'] = undefined;
-  /**
-   * Number of deleted files.
-   * @member {Number} filesNumber
-   */
-  exports.prototype['filesNumber'] = undefined;
-  /**
-   * @member {module:model/SpaceAutoCleaningRunStatus} status
-   */
-  exports.prototype['status'] = undefined;
-
-
 
   return exports;
 }));

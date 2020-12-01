@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/SpaceAutoCleaningRunStatus'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./SpaceAutoCleaningRunStatus'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceAutoCleaningStatus = factory(root.Onepanel.ApiClient);
+    root.Onepanel.SpaceAutoCleaningStatus = factory(root.Onepanel.ApiClient, root.Onepanel.SpaceAutoCleaningRunStatus);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, SpaceAutoCleaningRunStatus) {
   'use strict';
 
 
@@ -45,13 +45,13 @@
    * Status of current auto-cleaning process for given space.
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param inProgress {Boolean} Flag which indicates whether auto-cleaning process is currently in progress 
+   * @param lastRunStatus {module:model/SpaceAutoCleaningRunStatus} 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
-  var exports = function(inProgress, spaceOccupancy) {
+  var exports = function(lastRunStatus, spaceOccupancy) {
     var _this = this;
 
-    _this['inProgress'] = inProgress;
+    _this['lastRunStatus'] = lastRunStatus;
     _this['spaceOccupancy'] = spaceOccupancy;
   };
 
@@ -76,8 +76,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('inProgress')) {
-        obj['inProgress'] = ApiClient.convertToType(data['inProgress'], 'Boolean');
+      if (data.hasOwnProperty('lastRunStatus')) {
+        obj['lastRunStatus'] = SpaceAutoCleaningRunStatus.constructFromObject(data['lastRunStatus']);
       }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
@@ -87,10 +87,9 @@
   }
 
   /**
-   * Flag which indicates whether auto-cleaning process is currently in progress 
-   * @member {Boolean} inProgress
+   * @member {module:model/SpaceAutoCleaningRunStatus} lastRunStatus
    */
-  exports.prototype['inProgress'] = undefined;
+  exports.prototype['lastRunStatus'] = undefined;
   /**
    * Amount of storage [b] used by data from given space on that storage.
    * @member {Number} spaceOccupancy

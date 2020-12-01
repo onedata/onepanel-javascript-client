@@ -57,8 +57,8 @@
       //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningStatus);
     });
 
-    it('should have the property inProgress (base name: "inProgress")', function() {
-      // uncomment below and update the code to test the property inProgress
+    it('should have the property lastRunStatus (base name: "lastRunStatus")', function() {
+      // uncomment below and update the code to test the property lastRunStatus
       //var instane = new Onepanel.SpaceAutoCleaningStatus();
       //expect(instance).to.be();
     });

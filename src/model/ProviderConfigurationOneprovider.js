@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>ProviderConfigurationOneprovider</code>.
-   * The provider custom configuration.
+   * The provider registration data.
    * @alias module:model/ProviderConfigurationOneprovider
    * @class
    * @param register {Boolean} Defines whether the provider should be registered in a zone.
@@ -133,7 +133,7 @@
    */
   exports.prototype['register'] = undefined;
   /**
-   * Indicates how the Oneprovider registration token will be provided: * `inline` - the registration token must be placed in the `token`   field (consult for more information). * `fromFile` - the registration token will be read from given file,   specified in the `tokenFile` field (consult for more information). 
+   * Indicates how the Oneprovider registration token will be provided: * `\"inline\"` - the registration token must be placed in the **token**   field (consult for more information). * `\"fromFile\"` - the registration token will be read from given file,   specified in the **tokenFile** field (consult for more information). 
    * @member {module:model/ProviderConfigurationOneprovider.TokenProvisionMethodEnum} tokenProvisionMethod
    * @default 'inline'
    */
@@ -144,7 +144,7 @@
    */
   exports.prototype['token'] = undefined;
   /**
-   * Absolute path to the file containing the Oneprovider registration token. The file does not have to pre-exist - it may be created after this request is made (Onepanel will wait for the file to appear for some time). Required when the `tokenProvisionMethod` is set to `\"fromFile\"`. 
+   * Absolute path to the file containing the Oneprovider registration token. The token (and nothing else) should be placed in the file as plaintext. The file does not have to pre-exist - it may be created after this request is made (Onepanel will wait for the file to appear for some time). Required when the `tokenProvisionMethod` is set to `\"fromFile\"`. 
    * @member {String} tokenFile
    */
   exports.prototype['tokenFile'] = undefined;

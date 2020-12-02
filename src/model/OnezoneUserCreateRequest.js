@@ -45,8 +45,8 @@
    * The new Onezone user account details.
    * @alias module:model/OnezoneUserCreateRequest
    * @class
-   * @param username {String} 
-   * @param password {String} 
+   * @param username {String} User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password.
+   * @param password {String} User's password (in plaintext).
    */
   var exports = function(username, password) {
     var _this = this;
@@ -95,14 +95,17 @@
   }
 
   /**
+   * User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password.
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
   /**
+   * User's password (in plaintext).
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
   /**
+   * User's full name (given names + surname).
    * @member {String} fullName
    */
   exports.prototype['fullName'] = undefined;

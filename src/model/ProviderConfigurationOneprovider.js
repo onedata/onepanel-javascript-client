@@ -139,7 +139,7 @@
    */
   exports.prototype['tokenProvisionMethod'] = 'inline';
   /**
-   * Registration token obtained from Onezone. This token identifies the Onezone service where the Oneprovider will be registered and authorizes the registration request. It looks like the following: `MDAzM2xvY2F00aW9uIGRldi1vbmV6b25lLmRlZmF1...`. Required when the `tokenProvisionMethod` is set to `\"inline\"`. 
+   * Registration token obtained from Onezone. This token identifies the Onezone service where the Oneprovider will be registered and authorizes the registration request. Required when the `tokenProvisionMethod` is set to `\"inline\"`. 
    * @member {String} token
    */
   exports.prototype['token'] = undefined;

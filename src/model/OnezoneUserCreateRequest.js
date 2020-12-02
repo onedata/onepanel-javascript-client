@@ -45,7 +45,7 @@
    * The new Onezone user account details.
    * @alias module:model/OnezoneUserCreateRequest
    * @class
-   * @param username {String} User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password.
+   * @param username {String} User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password. 
    * @param password {String} User's password (in plaintext).
    */
   var exports = function(username, password) {
@@ -95,7 +95,7 @@
   }
 
   /**
-   * User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password.
+   * User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password. 
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
@@ -110,7 +110,7 @@
    */
   exports.prototype['fullName'] = undefined;
   /**
-   * Ids of Onezone groups to which the user should be added. The groups must already exist.
+   * Ids of Onezone groups to which the user should be added. The groups must already exist. 
    * @member {Array.<String>} groups
    */
   exports.prototype['groups'] = undefined;

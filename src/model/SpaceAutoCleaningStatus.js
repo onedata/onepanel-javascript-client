@@ -45,7 +45,7 @@
    * Status of current auto-cleaning process for given space.
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param lastRunStatus {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} Status of an auto-cleaning run.
+   * @param lastRunStatus {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} Status of the last auto-cleaning run.
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
   var exports = function(lastRunStatus, spaceOccupancy) {
@@ -87,7 +87,7 @@
   }
 
   /**
-   * Status of an auto-cleaning run.
+   * Status of the last auto-cleaning run.
    * @member {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} lastRunStatus
    */
   exports.prototype['lastRunStatus'] = undefined;

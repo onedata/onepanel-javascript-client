@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lastRunStatus** | **String** | Status of an auto-cleaning run. | 
+**lastRunStatus** | **String** | Status of the last auto-cleaning run. | 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
 
 

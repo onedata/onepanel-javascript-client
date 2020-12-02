@@ -54,6 +54,8 @@
 
     _this['register'] = register;
 
+
+
     _this['name'] = name;
 
 
@@ -88,8 +90,14 @@
       if (data.hasOwnProperty('register')) {
         obj['register'] = ApiClient.convertToType(data['register'], 'Boolean');
       }
+      if (data.hasOwnProperty('tokenProvisionMethod')) {
+        obj['tokenProvisionMethod'] = ApiClient.convertToType(data['tokenProvisionMethod'], 'String');
+      }
       if (data.hasOwnProperty('token')) {
         obj['token'] = ApiClient.convertToType(data['token'], 'String');
+      }
+      if (data.hasOwnProperty('tokenFile')) {
+        obj['tokenFile'] = ApiClient.convertToType(data['tokenFile'], 'String');
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -125,10 +133,21 @@
    */
   exports.prototype['register'] = undefined;
   /**
-   * Registration token obtained from Onezone. This token identifies Onezone to be used and authorizes the registration request. 
+   * Indicates how the Oneprovider registration token will be provided: * `inline` - the registration token must be placed in the `token`   field (consult for more information). * `fromFile` - the registration token will be read from given file,   specified in the `tokenFile` field (consult for more information). 
+   * @member {module:model/ProviderConfigurationOneprovider.TokenProvisionMethodEnum} tokenProvisionMethod
+   * @default 'inline'
+   */
+  exports.prototype['tokenProvisionMethod'] = 'inline';
+  /**
+   * Registration token obtained from Onezone. This token identifies the Onezone service where the Oneprovider will be registered and authorizes the registration request. It looks like the following: `MDAzM2xvY2F00aW9uIGRldi1vbmV6b25lLmRlZmF1...`. Required when the `tokenProvisionMethod` is set to `\"inline\"`. 
    * @member {String} token
    */
   exports.prototype['token'] = undefined;
+  /**
+   * Absolute path to the file containing the Oneprovider registration token. The file does not have to pre-exist - it may be created after this request is made (Onepanel will wait for the file to appear for some time). Required when the `tokenProvisionMethod` is set to `\"fromFile\"`. 
+   * @member {String} tokenFile
+   */
+  exports.prototype['tokenFile'] = undefined;
   /**
    * The name under which the provider will be registered in a zone.
    * @member {String} name
@@ -172,6 +191,23 @@
    */
   exports.prototype['adminEmail'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>tokenProvisionMethod</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TokenProvisionMethodEnum = {
+    /**
+     * value: "inline"
+     * @const
+     */
+    "inline": "inline",
+    /**
+     * value: "fromFile"
+     * @const
+     */
+    "fromFile": "fromFile"  };
 
 
   return exports;

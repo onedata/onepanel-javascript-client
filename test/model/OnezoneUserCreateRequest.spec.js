@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fullName (base name: "fullName")', function() {
+      // uncomment below and update the code to test the property fullName
+      //var instane = new Onepanel.OnezoneUserCreateRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property groups (base name: "groups")', function() {
       // uncomment below and update the code to test the property groups
       //var instane = new Onepanel.OnezoneUserCreateRequest();

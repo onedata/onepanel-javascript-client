@@ -45,14 +45,15 @@
    * The new Onezone user account details.
    * @alias module:model/OnezoneUserCreateRequest
    * @class
-   * @param username {String} 
-   * @param password {String} 
+   * @param username {String} User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password. 
+   * @param password {String} User's password (in plaintext).
    */
   var exports = function(username, password) {
     var _this = this;
 
     _this['username'] = username;
     _this['password'] = password;
+
 
   };
 
@@ -83,6 +84,9 @@
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
+      if (data.hasOwnProperty('fullName')) {
+        obj['fullName'] = ApiClient.convertToType(data['fullName'], 'String');
+      }
       if (data.hasOwnProperty('groups')) {
         obj['groups'] = ApiClient.convertToType(data['groups'], ['String']);
       }
@@ -91,15 +95,22 @@
   }
 
   /**
+   * User's human-readable identifier, unique across the system. Makes it easier to identify the user and can be used for signing in with password. 
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
   /**
+   * User's password (in plaintext).
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
   /**
-   * Ids of Onezone groups to which the user should be added. The groups must already exist.
+   * User's full name (given names + surname).
+   * @member {String} fullName
+   */
+  exports.prototype['fullName'] = undefined;
+  /**
+   * Ids of Onezone groups to which the user should be added. The groups must already exist. 
    * @member {Array.<String>} groups
    */
   exports.prototype['groups'] = undefined;

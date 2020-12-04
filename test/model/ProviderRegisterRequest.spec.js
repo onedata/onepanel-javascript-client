@@ -63,8 +63,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tokenProvisionMethod (base name: "tokenProvisionMethod")', function() {
+      // uncomment below and update the code to test the property tokenProvisionMethod
+      //var instane = new Onepanel.ProviderRegisterRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property token (base name: "token")', function() {
       // uncomment below and update the code to test the property token
+      //var instane = new Onepanel.ProviderRegisterRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tokenFile (base name: "tokenFile")', function() {
+      // uncomment below and update the code to test the property tokenFile
       //var instane = new Onepanel.ProviderRegisterRequest();
       //expect(instance).to.be();
     });

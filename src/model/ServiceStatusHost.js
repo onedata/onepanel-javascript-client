@@ -39,6 +39,11 @@
    */
   var exports = {
     /**
+     * value: "starting"
+     * @const
+     */
+    "starting": "starting",
+    /**
      * value: "healthy"
      * @const
      */
@@ -48,6 +53,11 @@
      * @const
      */
     "unhealthy": "unhealthy",
+    /**
+     * value: "stopping"
+     * @const
+     */
+    "stopping": "stopping",
     /**
      * value: "stopped"
      * @const

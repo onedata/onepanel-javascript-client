@@ -3,7 +3,24 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inProgress** | **Boolean** | Flag which indicates whether auto-cleaning process is currently in progress  | 
+**lastRunStatus** | **String** | Status of the last auto-cleaning run. | 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
+
+
+<a name="LastRunStatusEnum"></a>
+## Enum: LastRunStatusEnum
+
+
+* `active` (value: `"active"`)
+
+* `cancelling` (value: `"cancelling"`)
+
+* `completed` (value: `"completed"`)
+
+* `failed` (value: `"failed"`)
+
+* `cancelled` (value: `"cancelled"`)
+
+
 
 

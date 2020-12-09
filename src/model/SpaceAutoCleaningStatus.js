@@ -45,13 +45,13 @@
    * Status of current auto-cleaning process for given space.
    * @alias module:model/SpaceAutoCleaningStatus
    * @class
-   * @param inProgress {Boolean} Flag which indicates whether auto-cleaning process is currently in progress 
+   * @param lastRunStatus {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} Status of the last auto-cleaning run.
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    */
-  var exports = function(inProgress, spaceOccupancy) {
+  var exports = function(lastRunStatus, spaceOccupancy) {
     var _this = this;
 
-    _this['inProgress'] = inProgress;
+    _this['lastRunStatus'] = lastRunStatus;
     _this['spaceOccupancy'] = spaceOccupancy;
   };
 
@@ -76,8 +76,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('inProgress')) {
-        obj['inProgress'] = ApiClient.convertToType(data['inProgress'], 'Boolean');
+      if (data.hasOwnProperty('lastRunStatus')) {
+        obj['lastRunStatus'] = ApiClient.convertToType(data['lastRunStatus'], 'String');
       }
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
@@ -87,16 +87,48 @@
   }
 
   /**
-   * Flag which indicates whether auto-cleaning process is currently in progress 
-   * @member {Boolean} inProgress
+   * Status of the last auto-cleaning run.
+   * @member {module:model/SpaceAutoCleaningStatus.LastRunStatusEnum} lastRunStatus
    */
-  exports.prototype['inProgress'] = undefined;
+  exports.prototype['lastRunStatus'] = undefined;
   /**
    * Amount of storage [b] used by data from given space on that storage.
    * @member {Number} spaceOccupancy
    */
   exports.prototype['spaceOccupancy'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>lastRunStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.LastRunStatusEnum = {
+    /**
+     * value: "active"
+     * @const
+     */
+    "active": "active",
+    /**
+     * value: "cancelling"
+     * @const
+     */
+    "cancelling": "cancelling",
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+    /**
+     * value: "failed"
+     * @const
+     */
+    "failed": "failed",
+    /**
+     * value: "cancelled"
+     * @const
+     */
+    "cancelled": "cancelled"  };
 
 
   return exports;

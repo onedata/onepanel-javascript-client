@@ -1,6 +1,6 @@
 {
   "name": "onepanel",
-  "version": "20.02.5",
+  "version": "20.02.6",
   "description": "This is a Javascript client for [Onedata Onepanel](https://onedata.org) service.",
   "license": "Unlicense",
   "main": "src/index.js",

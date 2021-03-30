@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Add storage
 
-Adds additional storage resources to the provider.  ***Example cURL requests***  **Add storage** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$HOST/api/v3/onepanel/provider/storages \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;My S3 Storage\&quot;: {         \&quot;type\&quot;: \&quot;s3\&quot;,         \&quot;hostname\&quot;: \&quot;iam.example.com\&quot;,         \&quot;bucketName\&quot;: \&quot;bucket1.iam.example.com\&quot;,         \&quot;skipStorageDetection\&quot;: true     } }&#39; &#x60;&#x60;&#x60; 
+Adds additional storage resources to the provider.  ***Example cURL requests***  **Add storage** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$HOST/api/v3/onepanel/provider/storages \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;My S3 Storage\&quot;: {         \&quot;type\&quot;: \&quot;s3\&quot;,         \&quot;hostname\&quot;: \&quot;iam.example.com\&quot;,         \&quot;bucketName\&quot;: \&quot;bucket1.iam.example.com\&quot;,         \&quot;skipStorageDetection\&quot;: true     } }&#39;  {   \&quot;My S3 Storage\&quot;: {     \&quot;id\&quot;: \&quot;f891d1ddf693232bbf0c11fe3cd9f7e7cheda9\&quot;   } } &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript

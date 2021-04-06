@@ -360,6 +360,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.SpaceSupportRequest](docs/SpaceSupportRequest.md)
  - [Onepanel.StorageCreateDetails](docs/StorageCreateDetails.md)
  - [Onepanel.StorageCreateRequest](docs/StorageCreateRequest.md)
+ - [Onepanel.StorageCreateResponse](docs/StorageCreateResponse.md)
  - [Onepanel.StorageGetDetails](docs/StorageGetDetails.md)
  - [Onepanel.StorageImport](docs/StorageImport.md)
  - [Onepanel.StorageModifyDetails](docs/StorageModifyDetails.md)

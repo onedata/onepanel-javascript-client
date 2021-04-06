@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="addStorage"></a>
 # **addStorage**
-> addStorage(storageCreateRequest)
+> StorageCreateResponse addStorage(storageCreateRequest)
 
 Add storage
 
@@ -50,7 +50,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addStorage(storageCreateRequest, callback);
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**StorageCreateResponse**](StorageCreateResponse.md)
 
 ### Authorization
 

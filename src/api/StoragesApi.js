@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Error', 'model/ProviderStorages', 'model/StorageCreateRequest', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest'], factory);
+    define(['ApiClient', 'model/Error', 'model/ProviderStorages', 'model/StorageCreateRequest', 'model/StorageCreateResponse', 'model/StorageGetDetails', 'model/StorageModifyDetails', 'model/StorageModifyRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/ProviderStorages'), require('../model/StorageCreateRequest'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/ProviderStorages'), require('../model/StorageCreateRequest'), require('../model/StorageCreateResponse'), require('../model/StorageGetDetails'), require('../model/StorageModifyDetails'), require('../model/StorageModifyRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.StoragesApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.ProviderStorages, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest);
+    root.Onepanel.StoragesApi = factory(root.Onepanel.ApiClient, root.Onepanel.Error, root.Onepanel.ProviderStorages, root.Onepanel.StorageCreateRequest, root.Onepanel.StorageCreateResponse, root.Onepanel.StorageGetDetails, root.Onepanel.StorageModifyDetails, root.Onepanel.StorageModifyRequest);
   }
-}(this, function(ApiClient, Error, ProviderStorages, StorageCreateRequest, StorageGetDetails, StorageModifyDetails, StorageModifyRequest) {
+}(this, function(ApiClient, Error, ProviderStorages, StorageCreateRequest, StorageCreateResponse, StorageGetDetails, StorageModifyDetails, StorageModifyRequest) {
   'use strict';
 
   /**
@@ -52,7 +52,7 @@
      * Callback function to receive the result of the addStorage operation.
      * @callback module:api/StoragesApi~addStorageCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/StorageCreateResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -61,6 +61,7 @@
      * Adds additional storage resources to the provider.  ***Example cURL requests***  **Add storage** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$HOST/api/v3/onepanel/provider/storages \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;My S3 Storage\&quot;: {         \&quot;type\&quot;: \&quot;s3\&quot;,         \&quot;hostname\&quot;: \&quot;iam.example.com\&quot;,         \&quot;bucketName\&quot;: \&quot;bucket1.iam.example.com\&quot;,         \&quot;skipStorageDetection\&quot;: true     } }&#39;  {   \&quot;My S3 Storage\&quot;: {     \&quot;id\&quot;: \&quot;f891d1ddf693232bbf0c11fe3cd9f7e7cheda9\&quot;   } } &#x60;&#x60;&#x60; 
      * @param {module:model/StorageCreateRequest} storageCreateRequest The configuration details of storage resources to be added to the provider deployment. Must be an object with unique names for the storages as keys and their corresponding configuration (objects) as values - see the request body example. 
      * @param {module:api/StoragesApi~addStorageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StorageCreateResponse}
      */
     this.addStorage = function(storageCreateRequest, callback) {
       var postBody = storageCreateRequest;
@@ -83,7 +84,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = ['application/json'];
       var accepts = [];
-      var returnType = null;
+      var returnType = StorageCreateResponse;
 
       return this.apiClient.callApi(
         '/provider/storages', 'POST',

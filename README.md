@@ -307,7 +307,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.EmergencyPassphraseChangeRequest](docs/EmergencyPassphraseChangeRequest.md)
  - [Onepanel.EmergencyPassphraseStatus](docs/EmergencyPassphraseStatus.md)
  - [Onepanel.Error](docs/Error.md)
- - [Onepanel.ErrorError](docs/ErrorError.md)
+ - [Onepanel.ErrorDetails](docs/ErrorDetails.md)
  - [Onepanel.GuiMessage](docs/GuiMessage.md)
  - [Onepanel.Host](docs/Host.md)
  - [Onepanel.HostAddRequest](docs/HostAddRequest.md)

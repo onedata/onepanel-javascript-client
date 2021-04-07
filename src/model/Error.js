@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ErrorError'], factory);
+    define(['ApiClient', 'model/ErrorDetails'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ErrorError'));
+    module.exports = factory(require('../ApiClient'), require('./ErrorDetails'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Error = factory(root.Onepanel.ApiClient, root.Onepanel.ErrorError);
+    root.Onepanel.Error = factory(root.Onepanel.ApiClient, root.Onepanel.ErrorDetails);
   }
-}(this, function(ApiClient, ErrorError) {
+}(this, function(ApiClient, ErrorDetails) {
   'use strict';
 
 
@@ -45,11 +45,12 @@
    * The generic error model for REST requests.
    * @alias module:model/Error
    * @class
+   * @param error {module:model/ErrorDetails} 
    */
-  var exports = function() {
+  var exports = function(error) {
     var _this = this;
 
-
+    _this['error'] = error;
   };
 
   /**
@@ -74,14 +75,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('error')) {
-        obj['error'] = ErrorError.constructFromObject(data['error']);
+        obj['error'] = ErrorDetails.constructFromObject(data['error']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/ErrorError} error
+   * @member {module:model/ErrorDetails} error
    */
   exports.prototype['error'] = undefined;
 

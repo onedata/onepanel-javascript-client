@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 <a name="addStorage"></a>
 # **addStorage**
-> addStorage(storageCreateRequest)
+> StorageCreateResponse addStorage(storageCreateRequest)
 
 Add storage
 
-Adds additional storage resources to the provider.  ***Example cURL requests***  **Add storage** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$OP_PANEL_HOST/api/v3/onepanel/provider/storages \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;My S3 Storage\&quot;: {         \&quot;type\&quot;: \&quot;s3\&quot;,         \&quot;hostname\&quot;: \&quot;iam.example.com\&quot;,         \&quot;bucketName\&quot;: \&quot;bucket1.iam.example.com\&quot;,         \&quot;skipStorageDetection\&quot;: true     } }&#39; &#x60;&#x60;&#x60; 
+Adds additional storage resources to the provider.  ***Example cURL requests***  **Add storage** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$OP_PANEL_HOST/api/v3/onepanel/provider/storages \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;My S3 Storage\&quot;: {         \&quot;type\&quot;: \&quot;s3\&quot;,         \&quot;hostname\&quot;: \&quot;iam.example.com\&quot;,         \&quot;bucketName\&quot;: \&quot;bucket1.iam.example.com\&quot;,         \&quot;skipStorageDetection\&quot;: true     },     \&quot;My Posix Storage\&quot;: {         \&quot;type\&quot;: \&quot;posix\&quot;,         \&quot;mountPoint\&quot;: \&quot;/volumes/inexistent/path\&quot;     } }&#39;  {   \&quot;My S3 Storage\&quot;: {       \&quot;id\&quot;: \&quot;f891d1ddf693232bbf0c11fe3cd9f7e7cheda9\&quot;   },   \&quot;My Posix Storage\&quot;: {       \&quot;error\&quot;: {           \&quot;id\&quot;: \&quot;storageTestFailed\&quot;,           \&quot;description\&quot;: \&quot;Failed to write test file on storage.\&quot;,           \&quot;details\&quot;: {               \&quot;operation\&quot;: \&quot;write\&quot;           }       }   } } &#x60;&#x60;&#x60; 
 
 ### Example
 ```javascript
@@ -50,7 +50,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.addStorage(storageCreateRequest, callback);
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**StorageCreateResponse**](StorageCreateResponse.md)
 
 ### Authorization
 

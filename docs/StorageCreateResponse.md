@@ -1,8 +1,7 @@
-# Onepanel.Error
+# Onepanel.StorageCreateResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | [**ErrorDetails**](ErrorDetails.md) |  | 
 
 

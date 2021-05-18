@@ -1,4 +1,4 @@
-# Onepanel.ErrorDetails
+# Onepanel.ErrorError
 
 ## Properties
 Name | Type | Description | Notes

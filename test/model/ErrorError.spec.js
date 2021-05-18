@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ProviderConfiguration();
+    instance = new Onepanel.ErrorError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,28 @@
       object[property] = value;
   }
 
-  describe('ProviderConfiguration', function() {
-    it('should create an instance of ProviderConfiguration', function() {
-      // uncomment below and update the code to test ProviderConfiguration
-      //var instane = new Onepanel.ProviderConfiguration();
-      //expect(instance).to.be.a(Onepanel.ProviderConfiguration);
+  describe('ErrorError', function() {
+    it('should create an instance of ErrorError', function() {
+      // uncomment below and update the code to test ErrorError
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be.a(Onepanel.ErrorError);
     });
 
-    it('should have the property cluster (base name: "cluster")', function() {
-      // uncomment below and update the code to test the property cluster
-      //var instane = new Onepanel.ProviderConfiguration();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property ceph (base name: "ceph")', function() {
-      // uncomment below and update the code to test the property ceph
-      //var instane = new Onepanel.ProviderConfiguration();
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property oneprovider (base name: "oneprovider")', function() {
-      // uncomment below and update the code to test the property oneprovider
-      //var instane = new Onepanel.ProviderConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property onepanel (base name: "onepanel")', function() {
-      // uncomment below and update the code to test the property onepanel
-      //var instane = new Onepanel.ProviderConfiguration();
+    it('should have the property details (base name: "details")', function() {
+      // uncomment below and update the code to test the property details
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 

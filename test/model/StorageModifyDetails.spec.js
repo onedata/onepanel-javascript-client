@@ -105,6 +105,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property archiveStorage (base name: "archiveStorage")', function() {
+      // uncomment below and update the code to test the property archiveStorage
+      //var instane = new Onepanel.StorageModifyDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property readonly (base name: "readonly")', function() {
       // uncomment below and update the code to test the property readonly
       //var instane = new Onepanel.StorageModifyDetails();

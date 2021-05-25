@@ -141,7 +141,7 @@
    */
   exports.prototype['bucketName'] = undefined;
   /**
-   * The version of signature used to sign requests. Only version 4. is supported. 
+   * The version of signature used to sign requests. Only version 4 is supported. 
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;

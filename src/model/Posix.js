@@ -122,12 +122,12 @@
    */
   exports.prototype['storagePathType'] = 'canonical';
   /**
-   * Admin uid on posix storage.
+   * UID of the user, on whose behalf operations in the admin context will be performed on the storage.
    * @member {Number} rootUid
    */
   exports.prototype['rootUid'] = undefined;
   /**
-   * Admin gid on posix storage.
+   * GID of the group, on whose behalf operations in the admin context will be performed on the storage.
    * @member {Number} rootGid
    */
   exports.prototype['rootGid'] = undefined;

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | [**ErrorDetails**](ErrorDetails.md) |  | 
+**error** | [**ErrorError**](ErrorError.md) |  | [optional] 
 
 

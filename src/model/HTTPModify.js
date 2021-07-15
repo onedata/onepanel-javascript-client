@@ -59,6 +59,7 @@
 
 
 
+
   };
 
   /**
@@ -102,6 +103,9 @@
       }
       if (data.hasOwnProperty('connectionPoolSize')) {
         obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maxRequestsPerSession')) {
+        obj['maxRequestsPerSession'] = ApiClient.convertToType(data['maxRequestsPerSession'], 'Number');
       }
       if (data.hasOwnProperty('fileMode')) {
         obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
@@ -148,6 +152,11 @@
    * @member {Number} connectionPoolSize
    */
   exports.prototype['connectionPoolSize'] = undefined;
+  /**
+   * Defines the maximum number requests performed on a single HTTP session. After the limit is reached, 'Connection: close' header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server. 
+   * @member {Number} maxRequestsPerSession
+   */
+  exports.prototype['maxRequestsPerSession'] = undefined;
   /**
    * Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. `0664`. 
    * @member {String} fileMode

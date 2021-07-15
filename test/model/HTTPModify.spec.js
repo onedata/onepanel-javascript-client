@@ -99,6 +99,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property maxRequestsPerSession (base name: "maxRequestsPerSession")', function() {
+      // uncomment below and update the code to test the property maxRequestsPerSession
+      //var instane = new Onepanel.HTTPModify();
+      //expect(instance).to.be();
+    });
+
     it('should have the property fileMode (base name: "fileMode")', function() {
       // uncomment below and update the code to test the property fileMode
       //var instane = new Onepanel.HTTPModify();

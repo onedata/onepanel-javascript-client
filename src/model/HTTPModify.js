@@ -153,7 +153,7 @@
    */
   exports.prototype['connectionPoolSize'] = undefined;
   /**
-   * Defines the maximum number requests performed on a single HTTP session. After the limit is reached, 'Connection: close' header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server. 
+   * Defines the maximum number of requests performed in a single HTTP session. After the limit is reached, 'Connection: close' header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server. 
    * @member {Number} maxRequestsPerSession
    */
   exports.prototype['maxRequestsPerSession'] = undefined;

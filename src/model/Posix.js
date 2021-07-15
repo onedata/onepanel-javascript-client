@@ -57,6 +57,8 @@
     _this['type'] = type;
     _this['mountPoint'] = mountPoint;
 
+
+
   };
 
   /**
@@ -90,6 +92,12 @@
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
+      if (data.hasOwnProperty('rootUid')) {
+        obj['rootUid'] = ApiClient.convertToType(data['rootUid'], 'Number');
+      }
+      if (data.hasOwnProperty('rootGid')) {
+        obj['rootGid'] = ApiClient.convertToType(data['rootGid'], 'Number');
+      }
     }
     return obj;
   }
@@ -113,6 +121,16 @@
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
+  /**
+   * Admin uid on posix storage.
+   * @member {Number} rootUid
+   */
+  exports.prototype['rootUid'] = undefined;
+  /**
+   * Admin gid on posix storage.
+   * @member {Number} rootGid
+   */
+  exports.prototype['rootGid'] = undefined;
 
   // Implement StorageCreateDetails interface:
   /**

@@ -75,6 +75,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property rootUid (base name: "rootUid")', function() {
+      // uncomment below and update the code to test the property rootUid
+      //var instane = new Onepanel.Posix();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rootGid (base name: "rootGid")', function() {
+      // uncomment below and update the code to test the property rootGid
+      //var instane = new Onepanel.Posix();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

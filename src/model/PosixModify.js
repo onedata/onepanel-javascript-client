@@ -53,6 +53,8 @@
     StorageModifyDetails.call(_this);
     _this['type'] = type;
 
+
+
   };
 
   /**
@@ -82,6 +84,12 @@
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
+      if (data.hasOwnProperty('rootUid')) {
+        obj['rootUid'] = ApiClient.convertToType(data['rootUid'], 'Number');
+      }
+      if (data.hasOwnProperty('rootGid')) {
+        obj['rootGid'] = ApiClient.convertToType(data['rootGid'], 'Number');
+      }
     }
     return obj;
   }
@@ -99,6 +107,16 @@
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
+  /**
+   * UID of the user on whose behalf operations in the admin context will be performed on the storage.
+   * @member {Number} rootUid
+   */
+  exports.prototype['rootUid'] = undefined;
+  /**
+   * GID of the group on whose behalf operations in the admin context will be performed on the storage.
+   * @member {Number} rootGid
+   */
+  exports.prototype['rootGid'] = undefined;
 
 
   /**

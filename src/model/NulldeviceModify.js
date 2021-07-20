@@ -135,7 +135,7 @@
    */
   exports.prototype['filter'] = undefined;
   /**
-   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). Default empty string disables the simulated filesystem feature. 
+   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). In order to specify the size of generated files, a size in bytes needs to be added as the last component of the parameter specification, for example `2-2:2-2:0-1:1048576`. Default empty string disables the simulated filesystem feature. 
    * @member {String} simulatedFilesystemParameters
    */
   exports.prototype['simulatedFilesystemParameters'] = undefined;

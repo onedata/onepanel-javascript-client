@@ -95,6 +95,44 @@
     }
 
     /**
+     * Callback function to receive the result of the health operation.
+     * @callback module:api/InternalApi~healthCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Perform health check
+     * Returns status code indicating oneprovider service health status.     This endpoint does not require authentication. 
+     * @param {module:api/InternalApi~healthCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.health = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/health', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the testImage operation.
      * @callback module:api/InternalApi~testImageCallback
      * @param {String} error Error message, if any.

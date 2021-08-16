@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.CephCredentials();
+    instance = new Onepanel.ErrorError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,28 @@
       object[property] = value;
   }
 
-  describe('CephCredentials', function() {
-    it('should create an instance of CephCredentials', function() {
-      // uncomment below and update the code to test CephCredentials
-      //var instane = new Onepanel.CephCredentials();
-      //expect(instance).to.be.a(Onepanel.CephCredentials);
+  describe('ErrorError', function() {
+    it('should create an instance of ErrorError', function() {
+      // uncomment below and update the code to test ErrorError
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be.a(Onepanel.ErrorError);
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.CephCredentials();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
-      //var instane = new Onepanel.CephCredentials();
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property key (base name: "key")', function() {
-      // uncomment below and update the code to test the property key
-      //var instane = new Onepanel.CephCredentials();
+    it('should have the property details (base name: "details")', function() {
+      // uncomment below and update the code to test the property details
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 

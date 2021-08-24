@@ -104,7 +104,7 @@
 
     /**
      * Perform health check
-     * Returns status code indicating oneprovider service health status.     This endpoint does not require authentication. 
+     * Returns status code indicating onepanel service health status. This endpoint does not require authentication. 
      * @param {module:api/InternalApi~healthCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.health = function(callback) {

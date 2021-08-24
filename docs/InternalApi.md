@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 Perform health check
 
-Returns status code indicating oneprovider service health status.     This endpoint does not require authentication. 
+Returns status code indicating onepanel service health status. This endpoint does not require authentication. 
 
 ### Example
 ```javascript

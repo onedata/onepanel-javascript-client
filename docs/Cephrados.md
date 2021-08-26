@@ -20,3 +20,12 @@ Name | Type | Description | Notes
 
 
 
+<a name="StoragePathTypeEnum"></a>
+## Enum: StoragePathTypeEnum
+
+
+* `flat` (value: `"flat"`)
+
+
+
+

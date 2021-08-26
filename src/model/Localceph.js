@@ -110,7 +110,7 @@
   exports.prototype['blockSize'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
+   * @member {module:model/Localceph.StoragePathTypeEnum} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
@@ -211,6 +211,18 @@ exports.prototype['minCopiesNumber'] = undefined;
      * @const
      */
     "localceph": "localceph"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "flat"
+     * @const
+     */
+    "flat": "flat"  };
 
 
   return exports;

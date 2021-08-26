@@ -5,7 +5,7 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getRemoteProvider**](InternalApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider
-[**health**](InternalApi.md#health) | **GET** /health | Perform health check
+[**health**](InternalApi.md#health) | **GET** /health | Check cluster health
 [**testImage**](InternalApi.md#testImage) | **GET** /test_image | Get test image
 
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 # **health**
 > health()
 
-Perform health check
+Check cluster health
 
 Returns status code indicating onepanel service health status. This endpoint does not require authentication. 
 

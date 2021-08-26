@@ -103,7 +103,7 @@
      */
 
     /**
-     * Perform health check
+     * Check cluster health
      * Returns status code indicating onepanel service health status. This endpoint does not require authentication. 
      * @param {module:api/InternalApi~healthCallback} callback The callback function, accepting three arguments: error, data, response
      */

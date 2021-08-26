@@ -163,7 +163,7 @@ Class | Method | HTTP request | Description
 *Onepanel.FilePopularityApi* | [**configureFilePopularity**](docs/FilePopularityApi.md#configureFilePopularity) | **PATCH** /provider/spaces/{id}/file-popularity/configuration | Configure file popularity mechanism in the space
 *Onepanel.FilePopularityApi* | [**getFilePopularityConfiguration**](docs/FilePopularityApi.md#getFilePopularityConfiguration) | **GET** /provider/spaces/{id}/file-popularity/configuration | Get file popularity configuration
 *Onepanel.InternalApi* | [**getRemoteProvider**](docs/InternalApi.md#getRemoteProvider) | **GET** /providers/{id} | Get details of a remote Oneprovider
-*Onepanel.InternalApi* | [**health**](docs/InternalApi.md#health) | **GET** /health | Perform health check
+*Onepanel.InternalApi* | [**health**](docs/InternalApi.md#health) | **GET** /health | Check cluster health
 *Onepanel.InternalApi* | [**testImage**](docs/InternalApi.md#testImage) | **GET** /test_image | Get test image
 *Onepanel.LUMADBApi* | [**lumaClearDb**](docs/LUMADBApi.md#lumaClearDb) | **DELETE** /provider/storages/{id}/luma/db | Clear LUMA DB
 *Onepanel.LUMADBApi* | [**lumaGetAclGroupToOnedataGroupMapping**](docs/LUMADBApi.md#lumaGetAclGroupToOnedataGroupMapping) | **GET** /provider/storages/{id}/luma/db/storage_import/posix_compatible/acl_group_to_onedata_group/{groupname} | Lookup mapping of ACL group

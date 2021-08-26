@@ -16,101 +16,99 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.ErrorError = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.WebCert();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The ErrorError model module.
+   * @module model/ErrorError
+   * @version 20.02.12
+   */
+
+  /**
+   * Constructs a new <code>ErrorError</code>.
+   * Object describing an error.
+   * @alias module:model/ErrorError
+   * @class
+   * @param id {String} String identifying the error type. Does not change between error instances.
+   * @param description {String} Human readable error description. May contain information specific to given error instance.
+   */
+  var exports = function(id, description) {
+    var _this = this;
+
+    _this['id'] = id;
+    _this['description'] = description;
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/ErrorError} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>ErrorError</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ErrorError} obj Optional instance to populate.
+   * @return {module:model/ErrorError} The populated <code>ErrorError</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('description')) {
+        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+      }
+      if (data.hasOwnProperty('details')) {
+        obj['details'] = ApiClient.convertToType(data['details'], Object);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * String identifying the error type. Does not change between error instances.
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
+   * Human readable error description. May contain information specific to given error instance.
+   * @member {String} description
+   */
+  exports.prototype['description'] = undefined;
+  /**
+   * Details about the error instance. The object schema is specific to each error type.
+   * @member {Object} details
+   */
+  exports.prototype['details'] = undefined;
 
-  describe('WebCert', function() {
-    it('should create an instance of WebCert', function() {
-      // uncomment below and update the code to test WebCert
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be.a(Onepanel.WebCert);
-    });
 
-    it('should have the property letsEncrypt (base name: "letsEncrypt")', function() {
-      // uncomment below and update the code to test the property letsEncrypt
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property expirationTime (base name: "expirationTime")', function() {
-      // uncomment below and update the code to test the property expirationTime
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property creationTime (base name: "creationTime")', function() {
-      // uncomment below and update the code to test the property creationTime
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property paths (base name: "paths")', function() {
-      // uncomment below and update the code to test the property paths
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property issuer (base name: "issuer")', function() {
-      // uncomment below and update the code to test the property issuer
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lastRenewalSuccess (base name: "lastRenewalSuccess")', function() {
-      // uncomment below and update the code to test the property lastRenewalSuccess
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property lastRenewalFailure (base name: "lastRenewalFailure")', function() {
-      // uncomment below and update the code to test the property lastRenewalFailure
-      //var instane = new Onepanel.WebCert();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

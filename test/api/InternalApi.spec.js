@@ -61,6 +61,16 @@
         done();
       });
     });
+    describe('health', function() {
+      it('should call health successfully', function(done) {
+        //uncomment below and update the code to test health
+        //instance.health(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('testImage', function() {
       it('should call testImage successfully', function(done) {
         //uncomment below and update the code to test testImage

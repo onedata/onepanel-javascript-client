@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OnezoneInfo = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ErrorError = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,27 +35,24 @@
 
 
   /**
-   * The OnezoneInfo model module.
-   * @module model/OnezoneInfo
+   * The ErrorError model module.
+   * @module model/ErrorError
    * @version 20.02.13
    */
 
   /**
-   * Constructs a new <code>OnezoneInfo</code>.
-   * Information which can be obtained about remote Onezone.
-   * @alias module:model/OnezoneInfo
+   * Constructs a new <code>ErrorError</code>.
+   * Object describing an error.
+   * @alias module:model/ErrorError
    * @class
-   * @param online {Boolean} True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
-   * @param domain {String} Domain of the Onezone.
+   * @param id {String} String identifying the error type. Does not change between error instances.
+   * @param description {String} Human readable error description. May contain information specific to given error instance.
    */
-  var exports = function(online, domain) {
+  var exports = function(id, description) {
     var _this = this;
 
-    _this['online'] = online;
-
-    _this['domain'] = domain;
-
-
+    _this['id'] = id;
+    _this['description'] = description;
 
   };
 
@@ -63,75 +60,51 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/OnezoneInfo} The value of 'discriminator' field or undefined.
+   * @return {module:model/ErrorError} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>OnezoneInfo</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ErrorError</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/OnezoneInfo} obj Optional instance to populate.
-   * @return {module:model/OnezoneInfo} The populated <code>OnezoneInfo</code> instance.
+   * @param {module:model/ErrorError} obj Optional instance to populate.
+   * @return {module:model/ErrorError} The populated <code>ErrorError</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('online')) {
-        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('version')) {
-        obj['version'] = ApiClient.convertToType(data['version'], 'String');
+      if (data.hasOwnProperty('description')) {
+        obj['description'] = ApiClient.convertToType(data['description'], 'String');
       }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('compatible')) {
-        obj['compatible'] = ApiClient.convertToType(data['compatible'], 'Boolean');
-      }
-      if (data.hasOwnProperty('subdomainDelegationSupported')) {
-        obj['subdomainDelegationSupported'] = ApiClient.convertToType(data['subdomainDelegationSupported'], 'Boolean');
+      if (data.hasOwnProperty('details')) {
+        obj['details'] = ApiClient.convertToType(data['details'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
-   * @member {Boolean} online
+   * String identifying the error type. Does not change between error instances.
+   * @member {String} id
    */
-  exports.prototype['online'] = undefined;
+  exports.prototype['id'] = undefined;
   /**
-   * Onezone cluster version.
-   * @member {String} version
+   * Human readable error description. May contain information specific to given error instance.
+   * @member {String} description
    */
-  exports.prototype['version'] = undefined;
+  exports.prototype['description'] = undefined;
   /**
-   * Domain of the Onezone.
-   * @member {String} domain
+   * Details about the error instance. The object schema is specific to each error type.
+   * @member {Object} details
    */
-  exports.prototype['domain'] = undefined;
-  /**
-   * Name of the Onezone cluster.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * True if versions of this Oneprovider and the Onezone are compatible.
-   * @member {Boolean} compatible
-   */
-  exports.prototype['compatible'] = undefined;
-  /**
-   * Whether given Onezone allows subdomain delegation.
-   * @member {Boolean} subdomainDelegationSupported
-   */
-  exports.prototype['subdomainDelegationSupported'] = undefined;
+  exports.prototype['details'] = undefined;
 
 
 

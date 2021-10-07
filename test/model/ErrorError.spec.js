@@ -16,126 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.OnezoneInfo = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ErrorError();
+  });
 
-
-  /**
-   * The OnezoneInfo model module.
-   * @module model/OnezoneInfo
-   * @version 20.02.13
-   */
-
-  /**
-   * Constructs a new <code>OnezoneInfo</code>.
-   * Information which can be obtained about remote Onezone.
-   * @alias module:model/OnezoneInfo
-   * @class
-   * @param online {Boolean} True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
-   * @param domain {String} Domain of the Onezone.
-   */
-  var exports = function(online, domain) {
-    var _this = this;
-
-    _this['online'] = online;
-
-    _this['domain'] = domain;
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/OnezoneInfo} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>OnezoneInfo</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/OnezoneInfo} obj Optional instance to populate.
-   * @return {module:model/OnezoneInfo} The populated <code>OnezoneInfo</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('online')) {
-        obj['online'] = ApiClient.convertToType(data['online'], 'Boolean');
-      }
-      if (data.hasOwnProperty('version')) {
-        obj['version'] = ApiClient.convertToType(data['version'], 'String');
-      }
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('compatible')) {
-        obj['compatible'] = ApiClient.convertToType(data['compatible'], 'Boolean');
-      }
-      if (data.hasOwnProperty('subdomainDelegationSupported')) {
-        obj['subdomainDelegationSupported'] = ApiClient.convertToType(data['subdomainDelegationSupported'], 'Boolean');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * True if connection to the Onezone was achieved. If false, fields other than 'domain' will not be sent. 
-   * @member {Boolean} online
-   */
-  exports.prototype['online'] = undefined;
-  /**
-   * Onezone cluster version.
-   * @member {String} version
-   */
-  exports.prototype['version'] = undefined;
-  /**
-   * Domain of the Onezone.
-   * @member {String} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * Name of the Onezone cluster.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * True if versions of this Oneprovider and the Onezone are compatible.
-   * @member {Boolean} compatible
-   */
-  exports.prototype['compatible'] = undefined;
-  /**
-   * Whether given Onezone allows subdomain delegation.
-   * @member {Boolean} subdomainDelegationSupported
-   */
-  exports.prototype['subdomainDelegationSupported'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ErrorError', function() {
+    it('should create an instance of ErrorError', function() {
+      // uncomment below and update the code to test ErrorError
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be.a(Onepanel.ErrorError);
+    });
 
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property details (base name: "details")', function() {
+      // uncomment below and update the code to test the property details
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

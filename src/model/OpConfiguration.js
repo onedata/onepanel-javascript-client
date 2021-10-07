@@ -52,13 +52,17 @@
    * @param deployed {Boolean} True when cluster deployment is finished.
    * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param providerId {String} This cluster's Oneprovider Id. `null` if the Oneprovider is not registered or Oneprovider worker is down. 
+   * @param providerName {String} Name of this Oneprovider. `null` if the Oneprovider is not configured. 
+   * @param providerDomain {String} The domain of this Oneprovider cluster. `null` before cluster is configured. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
    */
-  var exports = function(clusterId, version, build, deployed, serviceType, providerId, zoneDomain) {
+  var exports = function(clusterId, version, build, deployed, serviceType, providerId, providerName, providerDomain, zoneDomain) {
     var _this = this;
     Configuration.call(_this, clusterId, version, build, deployed);
     _this['serviceType'] = serviceType;
     _this['providerId'] = providerId;
+    _this['providerName'] = providerName;
+    _this['providerDomain'] = providerDomain;
     _this['zoneDomain'] = zoneDomain;
 
   };
@@ -90,6 +94,12 @@
       if (data.hasOwnProperty('providerId')) {
         obj['providerId'] = ApiClient.convertToType(data['providerId'], 'String');
       }
+      if (data.hasOwnProperty('providerName')) {
+        obj['providerName'] = ApiClient.convertToType(data['providerName'], 'String');
+      }
+      if (data.hasOwnProperty('providerDomain')) {
+        obj['providerDomain'] = ApiClient.convertToType(data['providerDomain'], 'String');
+      }
       if (data.hasOwnProperty('zoneDomain')) {
         obj['zoneDomain'] = ApiClient.convertToType(data['zoneDomain'], 'String');
       }
@@ -113,6 +123,16 @@
    * @member {String} providerId
    */
   exports.prototype['providerId'] = undefined;
+  /**
+   * Name of this Oneprovider. `null` if the Oneprovider is not configured. 
+   * @member {String} providerName
+   */
+  exports.prototype['providerName'] = undefined;
+  /**
+   * The domain of this Oneprovider cluster. `null` before cluster is configured. 
+   * @member {String} providerDomain
+   */
+  exports.prototype['providerDomain'] = undefined;
   /**
    * The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
    * @member {String} zoneDomain

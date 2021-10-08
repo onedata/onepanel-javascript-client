@@ -52,8 +52,8 @@
    * @param deployed {Boolean} True when cluster deployment is finished.
    * @param serviceType {module:model/OpConfiguration.ServiceTypeEnum} Indicates that this is Oneprovider's panel.
    * @param providerId {String} This cluster's Oneprovider Id. `null` if the Oneprovider is not registered or Oneprovider worker is down. 
-   * @param providerName {String} Name of this Oneprovider. `null` if the Oneprovider is not configured. 
-   * @param providerDomain {String} The domain of this Oneprovider cluster. `null` before cluster is configured. 
+   * @param providerName {String} The name of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
+   * @param providerDomain {String} The domain of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
    */
   var exports = function(clusterId, version, build, deployed, serviceType, providerId, providerName, providerDomain, zoneDomain) {
@@ -124,12 +124,12 @@
    */
   exports.prototype['providerId'] = undefined;
   /**
-   * Name of this Oneprovider. `null` if the Oneprovider is not configured. 
+   * The name of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @member {String} providerName
    */
   exports.prototype['providerName'] = undefined;
   /**
-   * The domain of this Oneprovider cluster. `null` before cluster is configured. 
+   * The domain of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @member {String} providerDomain
    */
   exports.prototype['providerDomain'] = undefined;

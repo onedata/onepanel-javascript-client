@@ -69,6 +69,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property providerName (base name: "providerName")', function() {
+      // uncomment below and update the code to test the property providerName
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property providerDomain (base name: "providerDomain")', function() {
+      // uncomment below and update the code to test the property providerDomain
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
     it('should have the property zoneDomain (base name: "zoneDomain")', function() {
       // uncomment below and update the code to test the property zoneDomain
       //var instane = new Onepanel.OpConfiguration();

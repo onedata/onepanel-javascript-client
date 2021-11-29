@@ -16,59 +16,99 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.ErrorError = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.SpaceAutoCleaningRuleSetting();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The ErrorError model module.
+   * @module model/ErrorError
+   * @version 20.02.14
+   */
+
+  /**
+   * Constructs a new <code>ErrorError</code>.
+   * Object describing an error.
+   * @alias module:model/ErrorError
+   * @class
+   * @param id {String} String identifying the error type. Does not change between error instances.
+   * @param description {String} Human readable error description. May contain information specific to given error instance.
+   */
+  var exports = function(id, description) {
+    var _this = this;
+
+    _this['id'] = id;
+    _this['description'] = description;
+
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/ErrorError} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>ErrorError</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ErrorError} obj Optional instance to populate.
+   * @return {module:model/ErrorError} The populated <code>ErrorError</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
+      if (data.hasOwnProperty('description')) {
+        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+      }
+      if (data.hasOwnProperty('details')) {
+        obj['details'] = ApiClient.convertToType(data['details'], Object);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * String identifying the error type. Does not change between error instances.
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
+  /**
+   * Human readable error description. May contain information specific to given error instance.
+   * @member {String} description
+   */
+  exports.prototype['description'] = undefined;
+  /**
+   * Details about the error instance. The object schema is specific to each error type.
+   * @member {Object} details
+   */
+  exports.prototype['details'] = undefined;
 
-  describe('SpaceAutoCleaningRuleSetting', function() {
-    it('should create an instance of SpaceAutoCleaningRuleSetting', function() {
-      // uncomment below and update the code to test SpaceAutoCleaningRuleSetting
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
-      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningRuleSetting);
-    });
 
-    it('should have the property enabled (base name: "enabled")', function() {
-      // uncomment below and update the code to test the property enabled
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property value (base name: "value")', function() {
-      // uncomment below and update the code to test the property value
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

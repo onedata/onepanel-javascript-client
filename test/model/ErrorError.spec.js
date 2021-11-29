@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.SpaceAutoCleaningRuleSetting();
+    instance = new Onepanel.ErrorError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,28 @@
       object[property] = value;
   }
 
-  describe('SpaceAutoCleaningRuleSetting', function() {
-    it('should create an instance of SpaceAutoCleaningRuleSetting', function() {
-      // uncomment below and update the code to test SpaceAutoCleaningRuleSetting
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
-      //expect(instance).to.be.a(Onepanel.SpaceAutoCleaningRuleSetting);
+  describe('ErrorError', function() {
+    it('should create an instance of ErrorError', function() {
+      // uncomment below and update the code to test ErrorError
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be.a(Onepanel.ErrorError);
     });
 
-    it('should have the property enabled (base name: "enabled")', function() {
-      // uncomment below and update the code to test the property enabled
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 
-    it('should have the property value (base name: "value")', function() {
-      // uncomment below and update the code to test the property value
-      //var instane = new Onepanel.SpaceAutoCleaningRuleSetting();
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instane = new Onepanel.ErrorError();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property details (base name: "details")', function() {
+      // uncomment below and update the code to test the property details
+      //var instane = new Onepanel.ErrorError();
       //expect(instance).to.be();
     });
 

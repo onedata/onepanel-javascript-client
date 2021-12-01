@@ -42,7 +42,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.ServiceConfigurationApi();
 
-var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the contents of privacy policy document   - acceptable_use_policy - for the contents of Acceptable Use Policy (AUP) document   - signin_notification - for the message displayed on the Onezone sign in screen 
 
 
 var callback = function(error, data, response) {
@@ -59,7 +59,7 @@ apiInstance.getGuiMessage(id, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
+ **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the contents of privacy policy document   - acceptable_use_policy - for the contents of Acceptable Use Policy (AUP) document   - signin_notification - for the message displayed on the Onezone sign in screen  | 
 
 ### Return type
 
@@ -164,7 +164,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.ServiceConfigurationApi();
 
-var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen 
+var id = "id_example"; // String | Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the contents of privacy policy document   - acceptable_use_policy - for the contents of Acceptable Use Policy (AUP) document   - signin_notification - for the message displayed on the Onezone sign in screen 
 
 var messageChange = new Onepanel.GuiMessage(); // GuiMessage | 
 
@@ -183,7 +183,7 @@ apiInstance.modifyGuiMessage(id, messageChange, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the privacy policy   - signin_notification - for the message displayed on the Onezone sign in screen  | 
+ **id** | **String**| Possible values are:   - cookie_consent_notification - for the contents of cookie consent popup   - privacy_policy - for the contents of privacy policy document   - acceptable_use_policy - for the contents of Acceptable Use Policy (AUP) document   - signin_notification - for the message displayed on the Onezone sign in screen  | 
  **messageChange** | [**GuiMessage**](GuiMessage.md)|  | 
 
 ### Return type

@@ -116,8 +116,8 @@
    */
   exports.prototype['mountPoint'] = undefined;
   /**
-   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
+   * @member {module:model/Posix.StoragePathTypeEnum} storagePathType
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
@@ -209,6 +209,18 @@ exports.prototype['readonly'] = false;
      * @const
      */
     "posix": "posix"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical"  };
 
 
   return exports;

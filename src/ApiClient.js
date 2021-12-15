@@ -540,6 +540,14 @@
               polymorphicType = require("./model/CephradosModify");
             }
 
+            if('Embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/Embeddedceph");
+            }
+
+            if('EmbeddedcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/EmbeddedcephModify");
+            }
+
             if('Glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Glusterfs");
             }
@@ -562,14 +570,6 @@
 
             if('HTTPModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/HTTPModify");
-            }
-
-            if('Localceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Localceph");
-            }
-
-            if('LocalcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/LocalcephModify");
             }
 
             if('loopdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

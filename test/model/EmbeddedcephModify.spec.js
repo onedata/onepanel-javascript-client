@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.LocalcephModify();
+    instance = new Onepanel.EmbeddedcephModify();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,22 +50,22 @@
       object[property] = value;
   }
 
-  describe('LocalcephModify', function() {
-    it('should create an instance of LocalcephModify', function() {
-      // uncomment below and update the code to test LocalcephModify
-      //var instane = new Onepanel.LocalcephModify();
-      //expect(instance).to.be.a(Onepanel.LocalcephModify);
+  describe('EmbeddedcephModify', function() {
+    it('should create an instance of EmbeddedcephModify', function() {
+      // uncomment below and update the code to test EmbeddedcephModify
+      //var instane = new Onepanel.EmbeddedcephModify();
+      //expect(instance).to.be.a(Onepanel.EmbeddedcephModify);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instane = new Onepanel.LocalcephModify();
+      //var instane = new Onepanel.EmbeddedcephModify();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Onepanel.LocalcephModify();
+      //var instane = new Onepanel.EmbeddedcephModify();
       //expect(instance).to.be();
     });
 

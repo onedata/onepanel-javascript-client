@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.Localceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
+    root.Onepanel.Embeddedceph = factory(root.Onepanel.ApiClient, root.Onepanel.CephPool, root.Onepanel.StorageCreateDetails, root.Onepanel.StorageGetDetails);
   }
 }(this, function(ApiClient, CephPool, StorageCreateDetails, StorageGetDetails) {
   'use strict';
@@ -35,15 +35,15 @@
 
 
   /**
-   * The Localceph model module.
-   * @module model/Localceph
+   * The Embeddedceph model module.
+   * @module model/Embeddedceph
    * @version 21.02.0-alpha23
    */
 
   /**
-   * Constructs a new <code>Localceph</code>.
-   * Configuration of a Ceph (librados) storage backed by a Ceph pool created in the local Ceph cluster.
-   * @alias module:model/Localceph
+   * Constructs a new <code>Embeddedceph</code>.
+   * Configuration of a Ceph (librados) storage backed by a Ceph pool created in the embedded Ceph cluster.
+   * @alias module:model/Embeddedceph
    * @class
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
@@ -63,18 +63,18 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/Localceph} The value of 'discriminator' field or undefined.
+   * @return {module:model/Embeddedceph} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>Localceph</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Embeddedceph</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Localceph} obj Optional instance to populate.
-   * @return {module:model/Localceph} The populated <code>Localceph</code> instance.
+   * @param {module:model/Embeddedceph} obj Optional instance to populate.
+   * @return {module:model/Embeddedceph} The populated <code>Embeddedceph</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -99,8 +99,8 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.  `type = \"localceph\"`  Local Ceph cluster that has been deployed during deployment of Oneprovider. For more information on local Ceph deployment please see [here](https://onedata.org/#/home/documentation/stable/doc/administering_onedata/ceph_cluster_deployment.html). 
-   * @member {module:model/Localceph.TypeEnum} type
+   * The type of storage.  `type = \"embeddedceph\"`  Embedded Ceph cluster that has been deployed during deployment of Oneprovider. For more information on embedded Ceph deployment please see [here](https://onedata.org/#/home/documentation/stable/doc/administering_onedata/ceph_cluster_deployment.html). 
+   * @member {module:model/Embeddedceph.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -110,7 +110,7 @@
   exports.prototype['blockSize'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {module:model/Localceph.StoragePathTypeEnum} storagePathType
+   * @member {module:model/Embeddedceph.StoragePathTypeEnum} storagePathType
    * @default 'flat'
    */
   exports.prototype['storagePathType'] = 'flat';
@@ -207,10 +207,10 @@ exports.prototype['minCopiesNumber'] = undefined;
    */
   exports.TypeEnum = {
     /**
-     * value: "localceph"
+     * value: "embeddedceph"
      * @const
      */
-    "localceph": "localceph"  };
+    "embeddedceph": "embeddedceph"  };
 
   /**
    * Allowed values for the <code>storagePathType</code> property.

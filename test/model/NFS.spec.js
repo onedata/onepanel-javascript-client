@@ -63,12 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property volume (base name: "volume")', function() {
-      // uncomment below and update the code to test the property volume
-      //var instane = new Onepanel.NFS();
-      //expect(instance).to.be();
-    });
-
     it('should have the property hostname (base name: "hostname")', function() {
       // uncomment below and update the code to test the property hostname
       //var instane = new Onepanel.NFS();
@@ -81,20 +75,32 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property dircache (base name: "dircache")', function() {
-      // uncomment below and update the code to test the property dircache
+    it('should have the property volume (base name: "volume")', function() {
+      // uncomment below and update the code to test the property volume
       //var instane = new Onepanel.NFS();
       //expect(instance).to.be();
     });
 
-    it('should have the property readahead (base name: "readahead")', function() {
-      // uncomment below and update the code to test the property readahead
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
       //var instane = new Onepanel.NFS();
       //expect(instance).to.be();
     });
 
-    it('should have the property autoreconnect (base name: "autoreconnect")', function() {
-      // uncomment below and update the code to test the property autoreconnect
+    it('should have the property dirCache (base name: "dirCache")', function() {
+      // uncomment below and update the code to test the property dirCache
+      //var instane = new Onepanel.NFS();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readAhead (base name: "readAhead")', function() {
+      // uncomment below and update the code to test the property readAhead
+      //var instane = new Onepanel.NFS();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autorReconnect (base name: "autorReconnect")', function() {
+      // uncomment below and update the code to test the property autorReconnect
       //var instane = new Onepanel.NFS();
       //expect(instance).to.be();
     });

@@ -58,6 +58,7 @@
 
 
 
+
   };
 
   /**
@@ -93,14 +94,17 @@
       if (data.hasOwnProperty('volume')) {
         obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('dircache')) {
-        obj['dircache'] = ApiClient.convertToType(data['dircache'], 'Boolean');
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
       }
-      if (data.hasOwnProperty('readahead')) {
-        obj['readahead'] = ApiClient.convertToType(data['readahead'], 'Number');
+      if (data.hasOwnProperty('dirCache')) {
+        obj['dirCache'] = ApiClient.convertToType(data['dirCache'], 'Boolean');
       }
-      if (data.hasOwnProperty('autoreconnect')) {
-        obj['autoreconnect'] = ApiClient.convertToType(data['autoreconnect'], 'Number');
+      if (data.hasOwnProperty('readAhead')) {
+        obj['readAhead'] = ApiClient.convertToType(data['readAhead'], 'Number');
+      }
+      if (data.hasOwnProperty('autoReconnect')) {
+        obj['autoReconnect'] = ApiClient.convertToType(data['autoReconnect'], 'Number');
       }
     }
     return obj;
@@ -130,20 +134,25 @@
    */
   exports.prototype['volume'] = undefined;
   /**
-   * Enables directory caching.
-   * @member {Boolean} dircache
+   * The size of NFS connection pool.
+   * @member {Number} connectionPoolSize
    */
-  exports.prototype['dircache'] = undefined;
+  exports.prototype['connectionPoolSize'] = undefined;
+  /**
+   * Enables directory caching.
+   * @member {Boolean} dirCache
+   */
+  exports.prototype['dirCache'] = undefined;
   /**
    * The size of readahead in bytes.
-   * @member {Number} readahead
+   * @member {Number} readAhead
    */
-  exports.prototype['readahead'] = undefined;
+  exports.prototype['readAhead'] = undefined;
   /**
    * The number of automatic reconnect attempts to the server. Setting `-1` enables infinite number of reconnects.
-   * @member {Number} autoreconnect
+   * @member {Number} autoReconnect
    */
-  exports.prototype['autoreconnect'] = undefined;
+  exports.prototype['autoReconnect'] = undefined;
 
 
   /**

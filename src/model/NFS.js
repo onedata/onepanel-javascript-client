@@ -48,16 +48,17 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @param type {module:model/NFS.TypeEnum} The type of storage.  `type = \"nfs\"`  NFS storage. 
-   * @param volume {String} The name of the NFS volume (export).
    * @param hostname {String} The hostname (IP address or FQDN) of NFS server.
+   * @param volume {String} The name of the NFS volume (export).
    */
-  var exports = function(type, volume, hostname) {
+  var exports = function(type, hostname, volume) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
     _this['type'] = type;
-    _this['volume'] = volume;
     _this['hostname'] = hostname;
+
+    _this['volume'] = volume;
 
 
 
@@ -90,23 +91,26 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('volume')) {
-        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
-      }
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'Number');
       }
-      if (data.hasOwnProperty('dircache')) {
-        obj['dircache'] = ApiClient.convertToType(data['dircache'], 'Boolean');
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
       }
-      if (data.hasOwnProperty('readahead')) {
-        obj['readahead'] = ApiClient.convertToType(data['readahead'], 'Number');
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
       }
-      if (data.hasOwnProperty('autoreconnect')) {
-        obj['autoreconnect'] = ApiClient.convertToType(data['autoreconnect'], 'Number');
+      if (data.hasOwnProperty('dirCache')) {
+        obj['dirCache'] = ApiClient.convertToType(data['dirCache'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readAhead')) {
+        obj['readAhead'] = ApiClient.convertToType(data['readAhead'], 'Number');
+      }
+      if (data.hasOwnProperty('autorReconnect')) {
+        obj['autorReconnect'] = ApiClient.convertToType(data['autorReconnect'], 'Number');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -124,11 +128,6 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The name of the NFS volume (export).
-   * @member {String} volume
-   */
-  exports.prototype['volume'] = undefined;
-  /**
    * The hostname (IP address or FQDN) of NFS server.
    * @member {String} hostname
    */
@@ -139,21 +138,31 @@
    */
   exports.prototype['version'] = undefined;
   /**
+   * The name of the NFS volume (export).
+   * @member {String} volume
+   */
+  exports.prototype['volume'] = undefined;
+  /**
+   * The size of NFS connection pool.
+   * @member {Number} connectionPoolSize
+   */
+  exports.prototype['connectionPoolSize'] = undefined;
+  /**
    * Enables directory caching.
-   * @member {Boolean} dircache
+   * @member {Boolean} dirCache
    * @default true
    */
-  exports.prototype['dircache'] = true;
+  exports.prototype['dirCache'] = true;
   /**
    * The size of readahead in bytes.
-   * @member {Number} readahead
+   * @member {Number} readAhead
    */
-  exports.prototype['readahead'] = undefined;
+  exports.prototype['readAhead'] = undefined;
   /**
    * The number of automatic reconnect attempts to the server. Setting `-1` enables infinite number of reconnects.
-   * @member {Number} autoreconnect
+   * @member {Number} autorReconnect
    */
-  exports.prototype['autoreconnect'] = undefined;
+  exports.prototype['autorReconnect'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
    * @member {module:model/NFS.StoragePathTypeEnum} storagePathType

@@ -63,8 +63,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property hostname (base name: "hostname")', function() {
-      // uncomment below and update the code to test the property hostname
+    it('should have the property host (base name: "host")', function() {
+      // uncomment below and update the code to test the property host
       //var instane = new Onepanel.NFS();
       //expect(instance).to.be();
     });
@@ -99,8 +99,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property autorReconnect (base name: "autorReconnect")', function() {
-      // uncomment below and update the code to test the property autorReconnect
+    it('should have the property autoReconnect (base name: "autoReconnect")', function() {
+      // uncomment below and update the code to test the property autoReconnect
       //var instane = new Onepanel.NFS();
       //expect(instance).to.be();
     });

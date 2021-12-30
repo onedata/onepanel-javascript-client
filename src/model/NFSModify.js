@@ -85,8 +85,8 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('hostname')) {
-        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'Number');
@@ -120,9 +120,9 @@
   exports.prototype['type'] = undefined;
   /**
    * The hostname (IP address or FQDN) of NFS server.
-   * @member {String} hostname
+   * @member {String} host
    */
-  exports.prototype['hostname'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
    * The NFS protocol version. Allowed values are 3 (default) and 4 (experimental).
    * @member {Number} version

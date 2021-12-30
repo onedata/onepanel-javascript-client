@@ -48,15 +48,14 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @param type {module:model/NFS.TypeEnum} The type of storage.  `type = \"nfs\"`  NFS storage. 
-   * @param hostname {String} The hostname (IP address or FQDN) of NFS server.
    * @param volume {String} The name of the NFS volume (export).
    */
-  var exports = function(type, hostname, volume) {
+  var exports = function(type, volume) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
     _this['type'] = type;
-    _this['hostname'] = hostname;
+
 
     _this['volume'] = volume;
 
@@ -91,8 +90,8 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('hostname')) {
-        obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
+      if (data.hasOwnProperty('host')) {
+        obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
       if (data.hasOwnProperty('version')) {
         obj['version'] = ApiClient.convertToType(data['version'], 'Number');
@@ -109,8 +108,8 @@
       if (data.hasOwnProperty('readAhead')) {
         obj['readAhead'] = ApiClient.convertToType(data['readAhead'], 'Number');
       }
-      if (data.hasOwnProperty('autorReconnect')) {
-        obj['autorReconnect'] = ApiClient.convertToType(data['autorReconnect'], 'Number');
+      if (data.hasOwnProperty('autoReconnect')) {
+        obj['autoReconnect'] = ApiClient.convertToType(data['autoReconnect'], 'Number');
       }
       if (data.hasOwnProperty('storagePathType')) {
         obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
@@ -129,9 +128,9 @@
   exports.prototype['type'] = undefined;
   /**
    * The hostname (IP address or FQDN) of NFS server.
-   * @member {String} hostname
+   * @member {String} host
    */
-  exports.prototype['hostname'] = undefined;
+  exports.prototype['host'] = undefined;
   /**
    * The NFS protocol version. Allowed values are 3 (default) and 4 (experimental).
    * @member {Number} version
@@ -160,9 +159,9 @@
   exports.prototype['readAhead'] = undefined;
   /**
    * The number of automatic reconnect attempts to the server. Setting `-1` enables infinite number of reconnects.
-   * @member {Number} autorReconnect
+   * @member {Number} autoReconnect
    */
-  exports.prototype['autorReconnect'] = undefined;
+  exports.prototype['autoReconnect'] = undefined;
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
    * @member {module:model/NFS.StoragePathTypeEnum} storagePathType

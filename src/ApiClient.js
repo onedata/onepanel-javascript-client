@@ -592,6 +592,18 @@
               polymorphicType = require("./model/LumaOnedataUserScheme");
             }
 
+            if('NFS'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/NFS");
+            }
+
+            if('NFSCredentials'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/NFSCredentials");
+            }
+
+            if('NFSModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/NFSModify");
+            }
+
             if('Nulldevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Nulldevice");
             }

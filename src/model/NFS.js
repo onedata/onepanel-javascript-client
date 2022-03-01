@@ -48,14 +48,15 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @param type {module:model/NFS.TypeEnum} The type of storage.  `type = \"nfs\"`  NFS storage. 
+   * @param host {String} The hostname (IP address or FQDN) of NFS server.
    * @param volume {String} The name of the NFS volume (export).
    */
-  var exports = function(type, volume) {
+  var exports = function(type, host, volume) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
     _this['type'] = type;
-
+    _this['host'] = host;
 
     _this['volume'] = volume;
 

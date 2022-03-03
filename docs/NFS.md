@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;nfs\&quot;&#x60;  NFS storage.  | 
-**host** | **String** | The hostname (IP address or FQDN) of NFS server. | [optional] 
+**host** | **String** | The hostname (IP address or FQDN) of NFS server. | 
 **version** | **Number** | The NFS protocol version. Allowed values are 3 (default) and 4 (experimental). | [optional] 
 **volume** | **String** | The name of the NFS volume (export). | 
 **connectionPoolSize** | **Number** | The size of NFS connection pool. | [optional] 

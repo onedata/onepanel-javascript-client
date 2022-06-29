@@ -69,6 +69,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property accountingEnabled (base name: "accountingEnabled")', function() {
+      // uncomment below and update the code to test the property accountingEnabled
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirStatsEnabled (base name: "dirStatsEnabled")', function() {
+      // uncomment below and update the code to test the property dirStatsEnabled
+      //var instane = new Onepanel.SpaceModifyRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

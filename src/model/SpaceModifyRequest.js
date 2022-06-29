@@ -51,6 +51,8 @@
 
 
 
+
+
   };
 
   /**
@@ -80,6 +82,12 @@
       if (data.hasOwnProperty('autoStorageImportConfig')) {
         obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
       }
+      if (data.hasOwnProperty('accountingEnabled')) {
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsEnabled')) {
+        obj['dirStatsEnabled'] = ApiClient.convertToType(data['dirStatsEnabled'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -93,6 +101,16 @@
    * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
    */
   exports.prototype['autoStorageImportConfig'] = undefined;
+  /**
+   * Flag that enables accounting.
+   * @member {Boolean} accountingEnabled
+   */
+  exports.prototype['accountingEnabled'] = undefined;
+  /**
+   * Flag that enables gathering various directory statistics (e.g. size). It can't be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsEnabled
+   */
+  exports.prototype['dirStatsEnabled'] = undefined;
 
 
 

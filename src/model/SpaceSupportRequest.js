@@ -56,6 +56,8 @@
     _this['size'] = size;
     _this['storageId'] = storageId;
 
+
+
   };
 
   /**
@@ -91,6 +93,12 @@
       if (data.hasOwnProperty('storageImport')) {
         obj['storageImport'] = StorageImport.constructFromObject(data['storageImport']);
       }
+      if (data.hasOwnProperty('accountingEnabled')) {
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsEnabled')) {
+        obj['dirStatsEnabled'] = ApiClient.convertToType(data['dirStatsEnabled'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -114,6 +122,18 @@
    * @member {module:model/StorageImport} storageImport
    */
   exports.prototype['storageImport'] = undefined;
+  /**
+   * Flag that enables accounting.
+   * @member {Boolean} accountingEnabled
+   * @default false
+   */
+  exports.prototype['accountingEnabled'] = false;
+  /**
+   * Flag that enables gathering various directory statistics (e.g. size). It can't be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsEnabled
+   * @default false
+   */
+  exports.prototype['dirStatsEnabled'] = false;
 
 
 

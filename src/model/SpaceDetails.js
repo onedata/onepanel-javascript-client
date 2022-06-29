@@ -51,8 +51,11 @@
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
+   * @param accountingEnabled {Boolean} Flag informing whether accounting is enabled.
+   * @param dirStatsEnabled {Boolean} Flag informing whether gathering various directory statistics (e.g. size) is enabled. 
+   * @param dirStatsCollectingStatus {module:model/SpaceDetails.DirStatsCollectingStatusEnum} Current status of directory statistics gathering.
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy) {
+  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy, accountingEnabled, dirStatsEnabled, dirStatsCollectingStatus) {
     var _this = this;
 
     _this['id'] = id;
@@ -62,6 +65,9 @@
     _this['supportingProviders'] = supportingProviders;
 
     _this['spaceOccupancy'] = spaceOccupancy;
+    _this['accountingEnabled'] = accountingEnabled;
+    _this['dirStatsEnabled'] = dirStatsEnabled;
+    _this['dirStatsCollectingStatus'] = dirStatsCollectingStatus;
   };
 
   /**
@@ -106,6 +112,15 @@
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
+      if (data.hasOwnProperty('accountingEnabled')) {
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsEnabled')) {
+        obj['dirStatsEnabled'] = ApiClient.convertToType(data['dirStatsEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsCollectingStatus')) {
+        obj['dirStatsCollectingStatus'] = ApiClient.convertToType(data['dirStatsCollectingStatus'], 'String');
+      }
     }
     return obj;
   }
@@ -144,7 +159,49 @@
    * @member {Number} spaceOccupancy
    */
   exports.prototype['spaceOccupancy'] = undefined;
+  /**
+   * Flag informing whether accounting is enabled.
+   * @member {Boolean} accountingEnabled
+   */
+  exports.prototype['accountingEnabled'] = undefined;
+  /**
+   * Flag informing whether gathering various directory statistics (e.g. size) is enabled. 
+   * @member {Boolean} dirStatsEnabled
+   */
+  exports.prototype['dirStatsEnabled'] = undefined;
+  /**
+   * Current status of directory statistics gathering.
+   * @member {module:model/SpaceDetails.DirStatsCollectingStatusEnum} dirStatsCollectingStatus
+   */
+  exports.prototype['dirStatsCollectingStatus'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>dirStatsCollectingStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.DirStatsCollectingStatusEnum = {
+    /**
+     * value: "initializing"
+     * @const
+     */
+    "initializing": "initializing",
+    /**
+     * value: "enabled"
+     * @const
+     */
+    "enabled": "enabled",
+    /**
+     * value: "stopping"
+     * @const
+     */
+    "stopping": "stopping",
+    /**
+     * value: "disabled"
+     * @const
+     */
+    "disabled": "disabled"  };
 
 
   return exports;

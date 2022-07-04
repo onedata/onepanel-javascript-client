@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
+    define(['ApiClient', 'model/AccountingEnabled', 'model/AutoStorageImportConfig', 'model/DirStatsServiceEnabled'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
+    module.exports = factory(require('../ApiClient'), require('./AccountingEnabled'), require('./AutoStorageImportConfig'), require('./DirStatsServiceEnabled'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AccountingEnabled, root.Onepanel.AutoStorageImportConfig, root.Onepanel.DirStatsServiceEnabled);
   }
-}(this, function(ApiClient, AutoStorageImportConfig) {
+}(this, function(ApiClient, AccountingEnabled, AutoStorageImportConfig, DirStatsServiceEnabled) {
   'use strict';
 
 
@@ -83,10 +83,10 @@
         obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
       }
       if (data.hasOwnProperty('accountingEnabled')) {
-        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+        obj['accountingEnabled'] = AccountingEnabled.constructFromObject(data['accountingEnabled']);
       }
-      if (data.hasOwnProperty('dirStatsEnabled')) {
-        obj['dirStatsEnabled'] = ApiClient.convertToType(data['dirStatsEnabled'], 'Boolean');
+      if (data.hasOwnProperty('dirStatsServiceEnabled')) {
+        obj['dirStatsServiceEnabled'] = DirStatsServiceEnabled.constructFromObject(data['dirStatsServiceEnabled']);
       }
     }
     return obj;
@@ -102,15 +102,13 @@
    */
   exports.prototype['autoStorageImportConfig'] = undefined;
   /**
-   * Flag that enables accounting.
-   * @member {Boolean} accountingEnabled
+   * @member {module:model/AccountingEnabled} accountingEnabled
    */
   exports.prototype['accountingEnabled'] = undefined;
   /**
-   * Flag that enables gathering various directory statistics (e.g. size). It can't be disabled if accounting is enabled. 
-   * @member {Boolean} dirStatsEnabled
+   * @member {module:model/DirStatsServiceEnabled} dirStatsServiceEnabled
    */
-  exports.prototype['dirStatsEnabled'] = undefined;
+  exports.prototype['dirStatsServiceEnabled'] = undefined;
 
 
 

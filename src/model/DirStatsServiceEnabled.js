@@ -17,189 +17,66 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AccountingEnabled', 'model/DirStatsServiceEnabled', 'model/StorageImport'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AccountingEnabled'), require('./DirStatsServiceEnabled'), require('./StorageImport'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.AccountingEnabled, root.Onepanel.DirStatsServiceEnabled, root.Onepanel.StorageImport);
+    root.Onepanel.DirStatsServiceEnabled = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, AccountingEnabled, DirStatsServiceEnabled, StorageImport) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The SpaceDetails model module.
-   * @module model/SpaceDetails
+   * The DirStatsServiceEnabled model module.
+   * @module model/DirStatsServiceEnabled
    * @version 21.02.0-alpha25
    */
 
   /**
-   * Constructs a new <code>SpaceDetails</code>.
-   * The space details.
-   * @alias module:model/SpaceDetails
+   * Constructs a new <code>DirStatsServiceEnabled</code>.
+   * Indicates enabling of directory statistics (e.g. logical/physical size)  gathering service. 
+   * @alias module:model/DirStatsServiceEnabled
    * @class
-   * @param id {String} The Id of the space.
-   * @param name {String} The name of the space.
-   * @param storageId {String} Id of storage that supports this space on provider that is associated with this panel. 
-   * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
-   * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
-   * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
-   * @param accountingEnabled {module:model/AccountingEnabled} 
-   * @param dirStatsServiceEnabled {module:model/DirStatsServiceEnabled} 
-   * @param dirStatsServiceStatus {module:model/SpaceDetails.DirStatsServiceStatusEnum} Current status of directory statistics gathering service.
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy, accountingEnabled, dirStatsServiceEnabled, dirStatsServiceStatus) {
+  var exports = function() {
     var _this = this;
 
-    _this['id'] = id;
-    _this['name'] = name;
-    _this['storageId'] = storageId;
-    _this['localStorages'] = localStorages;
-    _this['supportingProviders'] = supportingProviders;
-
-    _this['spaceOccupancy'] = spaceOccupancy;
-    _this['accountingEnabled'] = accountingEnabled;
-    _this['dirStatsServiceEnabled'] = dirStatsServiceEnabled;
-    _this['dirStatsServiceStatus'] = dirStatsServiceStatus;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/SpaceDetails} The value of 'discriminator' field or undefined.
+   * @return {module:model/DirStatsServiceEnabled} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>SpaceDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DirStatsServiceEnabled</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceDetails} obj Optional instance to populate.
-   * @return {module:model/SpaceDetails} The populated <code>SpaceDetails</code> instance.
+   * @param {module:model/DirStatsServiceEnabled} obj Optional instance to populate.
+   * @return {module:model/DirStatsServiceEnabled} The populated <code>DirStatsServiceEnabled</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('storageId')) {
-        obj['storageId'] = ApiClient.convertToType(data['storageId'], 'String');
-      }
-      if (data.hasOwnProperty('localStorages')) {
-        obj['localStorages'] = ApiClient.convertToType(data['localStorages'], ['String']);
-      }
-      if (data.hasOwnProperty('supportingProviders')) {
-        obj['supportingProviders'] = ApiClient.convertToType(data['supportingProviders'], {'String': 'Number'});
-      }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImport.constructFromObject(data['storageImport']);
-      }
-      if (data.hasOwnProperty('spaceOccupancy')) {
-        obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
-      }
-      if (data.hasOwnProperty('accountingEnabled')) {
-        obj['accountingEnabled'] = AccountingEnabled.constructFromObject(data['accountingEnabled']);
-      }
-      if (data.hasOwnProperty('dirStatsServiceEnabled')) {
-        obj['dirStatsServiceEnabled'] = DirStatsServiceEnabled.constructFromObject(data['dirStatsServiceEnabled']);
-      }
-      if (data.hasOwnProperty('dirStatsServiceStatus')) {
-        obj['dirStatsServiceStatus'] = ApiClient.convertToType(data['dirStatsServiceStatus'], 'String');
-      }
     }
     return obj;
   }
 
-  /**
-   * The Id of the space.
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * The name of the space.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * Id of storage that supports this space on provider that is associated with this panel. 
-   * @member {String} storageId
-   */
-  exports.prototype['storageId'] = undefined;
-  /**
-   * The list of IDs of cluster storage resources.
-   * @member {Array.<String>} localStorages
-   */
-  exports.prototype['localStorages'] = undefined;
-  /**
-   * The collection of provider IDs with associated supported storage space in bytes. 
-   * @member {Object.<String, Number>} supportingProviders
-   */
-  exports.prototype['supportingProviders'] = undefined;
-  /**
-   * @member {module:model/StorageImport} storageImport
-   */
-  exports.prototype['storageImport'] = undefined;
-  /**
-   * Amount of storage [b] used by data from given space on that storage.
-   * @member {Number} spaceOccupancy
-   */
-  exports.prototype['spaceOccupancy'] = undefined;
-  /**
-   * @member {module:model/AccountingEnabled} accountingEnabled
-   */
-  exports.prototype['accountingEnabled'] = undefined;
-  /**
-   * @member {module:model/DirStatsServiceEnabled} dirStatsServiceEnabled
-   */
-  exports.prototype['dirStatsServiceEnabled'] = undefined;
-  /**
-   * Current status of directory statistics gathering service.
-   * @member {module:model/SpaceDetails.DirStatsServiceStatusEnum} dirStatsServiceStatus
-   */
-  exports.prototype['dirStatsServiceStatus'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>dirStatsServiceStatus</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DirStatsServiceStatusEnum = {
-    /**
-     * value: "initializing"
-     * @const
-     */
-    "initializing": "initializing",
-    /**
-     * value: "enabled"
-     * @const
-     */
-    "enabled": "enabled",
-    /**
-     * value: "stopping"
-     * @const
-     */
-    "stopping": "stopping",
-    /**
-     * value: "disabled"
-     * @const
-     */
-    "disabled": "disabled"  };
 
 
   return exports;

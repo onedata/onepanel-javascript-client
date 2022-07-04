@@ -274,6 +274,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [Onepanel.AccountingEnabled](docs/AccountingEnabled.md)
  - [Onepanel.AutoStorageImportConfig](docs/AutoStorageImportConfig.md)
  - [Onepanel.AutoStorageImportInfo](docs/AutoStorageImportInfo.md)
  - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
@@ -302,6 +303,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.CurrentUser](docs/CurrentUser.md)
  - [Onepanel.DataUsage](docs/DataUsage.md)
  - [Onepanel.DatabaseHosts](docs/DatabaseHosts.md)
+ - [Onepanel.DirStatsServiceEnabled](docs/DirStatsServiceEnabled.md)
  - [Onepanel.DnsCheck](docs/DnsCheck.md)
  - [Onepanel.DnsCheckConfiguration](docs/DnsCheckConfiguration.md)
  - [Onepanel.DnsCheckResult](docs/DnsCheckResult.md)

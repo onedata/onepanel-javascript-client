@@ -105,14 +105,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property dirStatsEnabled (base name: "dirStatsEnabled")', function() {
-      // uncomment below and update the code to test the property dirStatsEnabled
+    it('should have the property dirStatsServiceEnabled (base name: "dirStatsServiceEnabled")', function() {
+      // uncomment below and update the code to test the property dirStatsServiceEnabled
       //var instane = new Onepanel.SpaceDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property dirStatsCollectingStatus (base name: "dirStatsCollectingStatus")', function() {
-      // uncomment below and update the code to test the property dirStatsCollectingStatus
+    it('should have the property dirStatsServiceStatus (base name: "dirStatsServiceStatus")', function() {
+      // uncomment below and update the code to test the property dirStatsServiceStatus
       //var instane = new Onepanel.SpaceDetails();
       //expect(instance).to.be();
     });

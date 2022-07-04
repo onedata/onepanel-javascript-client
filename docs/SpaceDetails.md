@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **supportingProviders** | **{String: Number}** | The collection of provider IDs with associated supported storage space in bytes.  | 
 **storageImport** | [**StorageImport**](StorageImport.md) |  | [optional] 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
-**accountingEnabled** | **Boolean** | Flag informing whether accounting is enabled. | 
-**dirStatsEnabled** | **Boolean** | Flag informing whether gathering various directory statistics (e.g. size) is enabled.  | 
-**dirStatsCollectingStatus** | **String** | Current status of directory statistics gathering. | 
+**accountingEnabled** | [**AccountingEnabled**](AccountingEnabled.md) |  | 
+**dirStatsServiceEnabled** | [**DirStatsServiceEnabled**](DirStatsServiceEnabled.md) |  | 
+**dirStatsServiceStatus** | **String** | Current status of directory statistics gathering service. | 
 
 
-<a name="DirStatsCollectingStatusEnum"></a>
-## Enum: DirStatsCollectingStatusEnum
+<a name="DirStatsServiceStatusEnum"></a>
+## Enum: DirStatsServiceStatusEnum
 
 
 * `initializing` (value: `"initializing"`)

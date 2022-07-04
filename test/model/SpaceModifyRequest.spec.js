@@ -75,8 +75,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property dirStatsEnabled (base name: "dirStatsEnabled")', function() {
-      // uncomment below and update the code to test the property dirStatsEnabled
+    it('should have the property dirStatsServiceEnabled (base name: "dirStatsServiceEnabled")', function() {
+      // uncomment below and update the code to test the property dirStatsServiceEnabled
       //var instane = new Onepanel.SpaceModifyRequest();
       //expect(instance).to.be();
     });

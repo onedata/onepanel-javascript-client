@@ -16,108 +16,47 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageImport'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageImport'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.SpaceSupportRequest = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImport);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, StorageImport) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.DirStatsServiceEnabled();
+  });
 
-
-  /**
-   * The SpaceSupportRequest model module.
-   * @module model/SpaceSupportRequest
-   * @version 21.02.0-alpha25
-   */
-
-  /**
-   * Constructs a new <code>SpaceSupportRequest</code>.
-   * The configuration details required to create or support a space by a provider. 
-   * @alias module:model/SpaceSupportRequest
-   * @class
-   * @param token {String} The token for space creation or support.
-   * @param size {Number} The storage space size in bytes that provider is willing to assign to the space. 
-   * @param storageId {String} The Id of the storage resource where the space data should be stored. 
-   */
-  var exports = function(token, size, storageId) {
-    var _this = this;
-
-    _this['token'] = token;
-    _this['size'] = size;
-    _this['storageId'] = storageId;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/SpaceSupportRequest} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>SpaceSupportRequest</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/SpaceSupportRequest} obj Optional instance to populate.
-   * @return {module:model/SpaceSupportRequest} The populated <code>SpaceSupportRequest</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('token')) {
-        obj['token'] = ApiClient.convertToType(data['token'], 'String');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('storageId')) {
-        obj['storageId'] = ApiClient.convertToType(data['storageId'], 'String');
-      }
-      if (data.hasOwnProperty('storageImport')) {
-        obj['storageImport'] = StorageImport.constructFromObject(data['storageImport']);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The token for space creation or support.
-   * @member {String} token
-   */
-  exports.prototype['token'] = undefined;
-  /**
-   * The storage space size in bytes that provider is willing to assign to the space. 
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
-  /**
-   * The Id of the storage resource where the space data should be stored. 
-   * @member {String} storageId
-   */
-  exports.prototype['storageId'] = undefined;
-  /**
-   * @member {module:model/StorageImport} storageImport
-   */
-  exports.prototype['storageImport'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('DirStatsServiceEnabled', function() {
+    it('should create an instance of DirStatsServiceEnabled', function() {
+      // uncomment below and update the code to test DirStatsServiceEnabled
+      //var instane = new Onepanel.DirStatsServiceEnabled();
+      //expect(instance).to.be.a(Onepanel.DirStatsServiceEnabled);
+    });
 
+  });
 
-  return exports;
 }));
-
-

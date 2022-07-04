@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>DirStatsServiceEnabled</code>.
-   * Indicates enabling of directory statistics (e.g. logical/physical size)  gathering service. 
+   * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
    * @alias module:model/DirStatsServiceEnabled
    * @class
    */

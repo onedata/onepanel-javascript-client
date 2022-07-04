@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>AccountingEnabled</code>.
-   * Indciates enabling of space accounting.
+   * Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
    * @alias module:model/AccountingEnabled
    * @class
    */

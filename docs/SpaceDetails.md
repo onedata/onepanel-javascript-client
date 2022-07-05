@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
 **accountingEnabled** | [**AccountingEnabled**](AccountingEnabled.md) |  | 
 **dirStatsServiceEnabled** | [**DirStatsServiceEnabled**](DirStatsServiceEnabled.md) |  | 
-**dirStatsServiceStatus** | **String** | Current status of directory statistics gathering service. | 
+**dirStatsServiceStatus** | **String** | Current status of directory statistics service. | 
 
 
 <a name="DirStatsServiceStatusEnum"></a>

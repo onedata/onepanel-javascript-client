@@ -53,7 +53,7 @@
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
    * @param accountingEnabled {module:model/AccountingEnabled} 
    * @param dirStatsServiceEnabled {module:model/DirStatsServiceEnabled} 
-   * @param dirStatsServiceStatus {module:model/SpaceDetails.DirStatsServiceStatusEnum} Current status of directory statistics gathering service.
+   * @param dirStatsServiceStatus {module:model/SpaceDetails.DirStatsServiceStatusEnum} Current status of directory statistics service.
    */
   var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy, accountingEnabled, dirStatsServiceEnabled, dirStatsServiceStatus) {
     var _this = this;
@@ -168,7 +168,7 @@
    */
   exports.prototype['dirStatsServiceEnabled'] = undefined;
   /**
-   * Current status of directory statistics gathering service.
+   * Current status of directory statistics service.
    * @member {module:model/SpaceDetails.DirStatsServiceStatusEnum} dirStatsServiceStatus
    */
   exports.prototype['dirStatsServiceStatus'] = undefined;

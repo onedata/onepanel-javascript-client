@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AccountingEnabled', 'model/DirStatsServiceEnabled', 'model/StorageImport'], factory);
+    define(['ApiClient', 'model/StorageImport'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AccountingEnabled'), require('./DirStatsServiceEnabled'), require('./StorageImport'));
+    module.exports = factory(require('../ApiClient'), require('./StorageImport'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.AccountingEnabled, root.Onepanel.DirStatsServiceEnabled, root.Onepanel.StorageImport);
+    root.Onepanel.SpaceDetails = factory(root.Onepanel.ApiClient, root.Onepanel.StorageImport);
   }
-}(this, function(ApiClient, AccountingEnabled, DirStatsServiceEnabled, StorageImport) {
+}(this, function(ApiClient, StorageImport) {
   'use strict';
 
 
@@ -51,8 +51,8 @@
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
-   * @param accountingEnabled {module:model/AccountingEnabled} 
-   * @param dirStatsServiceEnabled {module:model/DirStatsServiceEnabled} 
+   * @param accountingEnabled {Boolean} Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @param dirStatsServiceEnabled {Boolean} Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
    * @param dirStatsServiceStatus {module:model/SpaceDetails.DirStatsServiceStatusEnum} Current status of directory statistics service.
    */
   var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy, accountingEnabled, dirStatsServiceEnabled, dirStatsServiceStatus) {
@@ -113,10 +113,10 @@
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
       if (data.hasOwnProperty('accountingEnabled')) {
-        obj['accountingEnabled'] = AccountingEnabled.constructFromObject(data['accountingEnabled']);
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('dirStatsServiceEnabled')) {
-        obj['dirStatsServiceEnabled'] = DirStatsServiceEnabled.constructFromObject(data['dirStatsServiceEnabled']);
+        obj['dirStatsServiceEnabled'] = ApiClient.convertToType(data['dirStatsServiceEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('dirStatsServiceStatus')) {
         obj['dirStatsServiceStatus'] = ApiClient.convertToType(data['dirStatsServiceStatus'], 'String');
@@ -160,11 +160,13 @@
    */
   exports.prototype['spaceOccupancy'] = undefined;
   /**
-   * @member {module:model/AccountingEnabled} accountingEnabled
+   * Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @member {Boolean} accountingEnabled
    */
   exports.prototype['accountingEnabled'] = undefined;
   /**
-   * @member {module:model/DirStatsServiceEnabled} dirStatsServiceEnabled
+   * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsServiceEnabled
    */
   exports.prototype['dirStatsServiceEnabled'] = undefined;
   /**

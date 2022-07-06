@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **supportingProviders** | **{String: Number}** | The collection of provider IDs with associated supported storage space in bytes.  | 
 **storageImport** | [**StorageImport**](StorageImport.md) |  | [optional] 
 **spaceOccupancy** | **Number** | Amount of storage [b] used by data from given space on that storage. | 
-**accountingEnabled** | [**AccountingEnabled**](AccountingEnabled.md) |  | 
-**dirStatsServiceEnabled** | [**DirStatsServiceEnabled**](DirStatsServiceEnabled.md) |  | 
+**accountingEnabled** | **Boolean** | Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider.  | 
+**dirStatsServiceEnabled** | **Boolean** | Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled.  | 
 **dirStatsServiceStatus** | **String** | Current status of directory statistics service. | 
 
 

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AccountingEnabled', 'model/AutoStorageImportConfig', 'model/DirStatsServiceEnabled'], factory);
+    define(['ApiClient', 'model/AutoStorageImportConfig'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./AccountingEnabled'), require('./AutoStorageImportConfig'), require('./DirStatsServiceEnabled'));
+    module.exports = factory(require('../ApiClient'), require('./AutoStorageImportConfig'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AccountingEnabled, root.Onepanel.AutoStorageImportConfig, root.Onepanel.DirStatsServiceEnabled);
+    root.Onepanel.SpaceModifyRequest = factory(root.Onepanel.ApiClient, root.Onepanel.AutoStorageImportConfig);
   }
-}(this, function(ApiClient, AccountingEnabled, AutoStorageImportConfig, DirStatsServiceEnabled) {
+}(this, function(ApiClient, AutoStorageImportConfig) {
   'use strict';
 
 
@@ -83,10 +83,10 @@
         obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
       }
       if (data.hasOwnProperty('accountingEnabled')) {
-        obj['accountingEnabled'] = AccountingEnabled.constructFromObject(data['accountingEnabled']);
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
       }
       if (data.hasOwnProperty('dirStatsServiceEnabled')) {
-        obj['dirStatsServiceEnabled'] = DirStatsServiceEnabled.constructFromObject(data['dirStatsServiceEnabled']);
+        obj['dirStatsServiceEnabled'] = ApiClient.convertToType(data['dirStatsServiceEnabled'], 'Boolean');
       }
     }
     return obj;
@@ -102,11 +102,13 @@
    */
   exports.prototype['autoStorageImportConfig'] = undefined;
   /**
-   * @member {module:model/AccountingEnabled} accountingEnabled
+   * Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @member {Boolean} accountingEnabled
    */
   exports.prototype['accountingEnabled'] = undefined;
   /**
-   * @member {module:model/DirStatsServiceEnabled} dirStatsServiceEnabled
+   * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsServiceEnabled
    */
   exports.prototype['dirStatsServiceEnabled'] = undefined;
 

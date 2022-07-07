@@ -99,6 +99,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property accountingEnabled (base name: "accountingEnabled")', function() {
+      // uncomment below and update the code to test the property accountingEnabled
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirStatsServiceEnabled (base name: "dirStatsServiceEnabled")', function() {
+      // uncomment below and update the code to test the property dirStatsServiceEnabled
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirStatsServiceStatus (base name: "dirStatsServiceStatus")', function() {
+      // uncomment below and update the code to test the property dirStatsServiceStatus
+      //var instane = new Onepanel.SpaceDetails();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

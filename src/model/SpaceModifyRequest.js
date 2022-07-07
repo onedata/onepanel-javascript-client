@@ -51,6 +51,8 @@
 
 
 
+
+
   };
 
   /**
@@ -80,6 +82,12 @@
       if (data.hasOwnProperty('autoStorageImportConfig')) {
         obj['autoStorageImportConfig'] = AutoStorageImportConfig.constructFromObject(data['autoStorageImportConfig']);
       }
+      if (data.hasOwnProperty('accountingEnabled')) {
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsServiceEnabled')) {
+        obj['dirStatsServiceEnabled'] = ApiClient.convertToType(data['dirStatsServiceEnabled'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -93,6 +101,16 @@
    * @member {module:model/AutoStorageImportConfig} autoStorageImportConfig
    */
   exports.prototype['autoStorageImportConfig'] = undefined;
+  /**
+   * Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @member {Boolean} accountingEnabled
+   */
+  exports.prototype['accountingEnabled'] = undefined;
+  /**
+   * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsServiceEnabled
+   */
+  exports.prototype['dirStatsServiceEnabled'] = undefined;
 
 
 

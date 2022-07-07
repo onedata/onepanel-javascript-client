@@ -51,8 +51,11 @@
    * @param localStorages {Array.<String>} The list of IDs of cluster storage resources.
    * @param supportingProviders {Object.<String, Number>} The collection of provider IDs with associated supported storage space in bytes. 
    * @param spaceOccupancy {Number} Amount of storage [b] used by data from given space on that storage.
+   * @param accountingEnabled {Boolean} Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @param dirStatsServiceEnabled {Boolean} Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
+   * @param dirStatsServiceStatus {module:model/SpaceDetails.DirStatsServiceStatusEnum} Current status of directory statistics service.
    */
-  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy) {
+  var exports = function(id, name, storageId, localStorages, supportingProviders, spaceOccupancy, accountingEnabled, dirStatsServiceEnabled, dirStatsServiceStatus) {
     var _this = this;
 
     _this['id'] = id;
@@ -62,6 +65,9 @@
     _this['supportingProviders'] = supportingProviders;
 
     _this['spaceOccupancy'] = spaceOccupancy;
+    _this['accountingEnabled'] = accountingEnabled;
+    _this['dirStatsServiceEnabled'] = dirStatsServiceEnabled;
+    _this['dirStatsServiceStatus'] = dirStatsServiceStatus;
   };
 
   /**
@@ -106,6 +112,15 @@
       if (data.hasOwnProperty('spaceOccupancy')) {
         obj['spaceOccupancy'] = ApiClient.convertToType(data['spaceOccupancy'], 'Number');
       }
+      if (data.hasOwnProperty('accountingEnabled')) {
+        obj['accountingEnabled'] = ApiClient.convertToType(data['accountingEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsServiceEnabled')) {
+        obj['dirStatsServiceEnabled'] = ApiClient.convertToType(data['dirStatsServiceEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('dirStatsServiceStatus')) {
+        obj['dirStatsServiceStatus'] = ApiClient.convertToType(data['dirStatsServiceStatus'], 'String');
+      }
     }
     return obj;
   }
@@ -144,7 +159,49 @@
    * @member {Number} spaceOccupancy
    */
   exports.prototype['spaceOccupancy'] = undefined;
+  /**
+   * Indicates if accounting is enabled. The accounting mechanism utilizes directory  statistics to keep track of quota usage within a space for the corresponding  supporting provider. 
+   * @member {Boolean} accountingEnabled
+   */
+  exports.prototype['accountingEnabled'] = undefined;
+  /**
+   * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
+   * @member {Boolean} dirStatsServiceEnabled
+   */
+  exports.prototype['dirStatsServiceEnabled'] = undefined;
+  /**
+   * Current status of directory statistics service.
+   * @member {module:model/SpaceDetails.DirStatsServiceStatusEnum} dirStatsServiceStatus
+   */
+  exports.prototype['dirStatsServiceStatus'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>dirStatsServiceStatus</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.DirStatsServiceStatusEnum = {
+    /**
+     * value: "initializing"
+     * @const
+     */
+    "initializing": "initializing",
+    /**
+     * value: "enabled"
+     * @const
+     */
+    "enabled": "enabled",
+    /**
+     * value: "stopping"
+     * @const
+     */
+    "stopping": "stopping",
+    /**
+     * value: "disabled"
+     * @const
+     */
+    "disabled": "disabled"  };
 
 
   return exports;

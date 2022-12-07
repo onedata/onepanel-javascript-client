@@ -131,9 +131,9 @@
   /**
    * Indicates if the directory statistics service is enabled.  The service gathers statistics concerning logical and physical directory size, file count and update times. It cannot be disabled if accounting is enabled. 
    * @member {Boolean} dirStatsServiceEnabled
-   * @default false
+   * @default true
    */
-  exports.prototype['dirStatsServiceEnabled'] = false;
+  exports.prototype['dirStatsServiceEnabled'] = true;
 
 
 

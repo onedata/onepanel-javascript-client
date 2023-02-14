@@ -99,6 +99,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property enableDataVerification (base name: "enableDataVerification")', function() {
+      // uncomment below and update the code to test the property enableDataVerification
+      //var instane = new Onepanel.NulldeviceModify();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

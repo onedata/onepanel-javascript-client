@@ -58,6 +58,7 @@
 
 
 
+
   };
 
   /**
@@ -102,6 +103,9 @@
       if (data.hasOwnProperty('simulatedFilesystemGrowSpeed')) {
         obj['simulatedFilesystemGrowSpeed'] = ApiClient.convertToType(data['simulatedFilesystemGrowSpeed'], 'Number');
       }
+      if (data.hasOwnProperty('enableDataVerification')) {
+        obj['enableDataVerification'] = ApiClient.convertToType(data['enableDataVerification'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -144,6 +148,12 @@
    * @member {Number} simulatedFilesystemGrowSpeed
    */
   exports.prototype['simulatedFilesystemGrowSpeed'] = undefined;
+  /**
+   * Enables data verification for `read` and `write` operations. Read operations will always return a predictable pattern of characters based on `offset` and `size`, and `write` operations will fail with I/O error, if the input data does not match the pattern at a given `offset`. 
+   * @member {Boolean} enableDataVerification
+   * @default false
+   */
+  exports.prototype['enableDataVerification'] = false;
 
 
   /**

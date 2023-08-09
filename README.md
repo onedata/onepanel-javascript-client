@@ -119,25 +119,6 @@ Class | Method | HTTP request | Description
 *Onepanel.AutoCleaningApi* | [**getProviderSpaceAutoCleaningStatus**](docs/AutoCleaningApi.md#getProviderSpaceAutoCleaningStatus) | **GET** /provider/spaces/{id}/auto-cleaning/status | Get status of space auto-cleaning mechanism
 *Onepanel.AutoCleaningApi* | [**getSpaceAutoCleaningConfiguration**](docs/AutoCleaningApi.md#getSpaceAutoCleaningConfiguration) | **GET** /provider/spaces/{id}/auto-cleaning/configuration | Get space auto-cleaning configuration
 *Onepanel.AutoCleaningApi* | [**triggerAutoCleaning**](docs/AutoCleaningApi.md#triggerAutoCleaning) | **POST** /provider/spaces/{id}/auto-cleaning/start | Trigger space auto-cleaning
-*Onepanel.CephApi* | [**addCephManagers**](docs/CephApi.md#addCephManagers) | **POST** /provider/ceph/managers | Add managers to ceph cluster
-*Onepanel.CephApi* | [**addCephMonitors**](docs/CephApi.md#addCephMonitors) | **POST** /provider/ceph/monitors | Add monitors to Ceph cluster
-*Onepanel.CephApi* | [**addCephOsds**](docs/CephApi.md#addCephOsds) | **POST** /provider/ceph/osds | Add OSDs to Ceph cluster
-*Onepanel.CephApi* | [**configureCeph**](docs/CephApi.md#configureCeph) | **POST** /provider/ceph | Configure Ceph cluster
-*Onepanel.CephApi* | [**getBlockDevices**](docs/CephApi.md#getBlockDevices) | **GET** /provider/ceph/preflight/block_devices | Get block devices for Ceph OSD
-*Onepanel.CephApi* | [**getCephManager**](docs/CephApi.md#getCephManager) | **GET** /provider/ceph/managers/{id} | Get Ceph manager
-*Onepanel.CephApi* | [**getCephManagers**](docs/CephApi.md#getCephManagers) | **GET** /provider/ceph/managers | List Ceph managers
-*Onepanel.CephApi* | [**getCephMonitor**](docs/CephApi.md#getCephMonitor) | **GET** /provider/ceph/monitors/{id} | Get Ceph monitor
-*Onepanel.CephApi* | [**getCephMonitors**](docs/CephApi.md#getCephMonitors) | **GET** /provider/ceph/monitors | List Ceph monitors
-*Onepanel.CephApi* | [**getCephOsd**](docs/CephApi.md#getCephOsd) | **GET** /provider/ceph/osds/{id} | Get Ceph OSD
-*Onepanel.CephApi* | [**getCephOsdUsage**](docs/CephApi.md#getCephOsdUsage) | **GET** /provider/ceph/osds/{id}/usage | Get storage space usage details for specific OSD
-*Onepanel.CephApi* | [**getCephOsds**](docs/CephApi.md#getCephOsds) | **GET** /provider/ceph/osds | Get Ceph OSDs list
-*Onepanel.CephApi* | [**getCephParams**](docs/CephApi.md#getCephParams) | **GET** /provider/ceph | Get global Ceph params
-*Onepanel.CephApi* | [**getCephPool**](docs/CephApi.md#getCephPool) | **GET** /provider/ceph/pools/{name} | Get details of a Ceph pool
-*Onepanel.CephApi* | [**getCephPoolUsage**](docs/CephApi.md#getCephPoolUsage) | **GET** /provider/ceph/pools/{name}/usage | Get storage space usage details for specific pool
-*Onepanel.CephApi* | [**getCephPools**](docs/CephApi.md#getCephPools) | **GET** /provider/ceph/pools | List Ceph pools
-*Onepanel.CephApi* | [**getCephStatus**](docs/CephApi.md#getCephStatus) | **GET** /provider/ceph/status | Get Ceph cluster health
-*Onepanel.CephApi* | [**getCephUsage**](docs/CephApi.md#getCephUsage) | **GET** /provider/ceph/usage | Get Ceph storage space usage.
-*Onepanel.CephApi* | [**modifyCephPool**](docs/CephApi.md#modifyCephPool) | **PATCH** /provider/ceph/pools/{name} | Modify pool params
 *Onepanel.ClusterApi* | [**addClusterHost**](docs/ClusterApi.md#addClusterHost) | **POST** /hosts | Add given host to the cluster
 *Onepanel.ClusterApi* | [**createInviteToken**](docs/ClusterApi.md#createInviteToken) | **POST** /invite_tokens | Create node invite token
 *Onepanel.ClusterApi* | [**createUserInviteToken**](docs/ClusterApi.md#createUserInviteToken) | **POST** /cluster/invite_user_token | Generate cluster invitation token for a user
@@ -279,18 +260,6 @@ Class | Method | HTTP request | Description
  - [Onepanel.AutoStorageImportStats](docs/AutoStorageImportStats.md)
  - [Onepanel.BlockDevices](docs/BlockDevices.md)
  - [Onepanel.BlockDevicesBlockDevices](docs/BlockDevicesBlockDevices.md)
- - [Onepanel.CephGlobalParams](docs/CephGlobalParams.md)
- - [Onepanel.CephManager](docs/CephManager.md)
- - [Onepanel.CephManagers](docs/CephManagers.md)
- - [Onepanel.CephMonitor](docs/CephMonitor.md)
- - [Onepanel.CephMonitors](docs/CephMonitors.md)
- - [Onepanel.CephOsd](docs/CephOsd.md)
- - [Onepanel.CephOsds](docs/CephOsds.md)
- - [Onepanel.CephPool](docs/CephPool.md)
- - [Onepanel.CephPoolUsage](docs/CephPoolUsage.md)
- - [Onepanel.CephPools](docs/CephPools.md)
- - [Onepanel.CephStatus](docs/CephStatus.md)
- - [Onepanel.CephUsage](docs/CephUsage.md)
  - [Onepanel.ClusterConfigurationDetails](docs/ClusterConfigurationDetails.md)
  - [Onepanel.ClusterDatabases](docs/ClusterDatabases.md)
  - [Onepanel.ClusterDetails](docs/ClusterDetails.md)
@@ -383,23 +352,18 @@ Class | Method | HTTP request | Description
  - [Onepanel.ZoneConfigurationDetailsOnezone](docs/ZoneConfigurationDetailsOnezone.md)
  - [Onepanel.ZoneConfigurationOnezone](docs/ZoneConfigurationOnezone.md)
  - [Onepanel.ZonePolicies](docs/ZonePolicies.md)
- - [Onepanel.Blockdevice](docs/Blockdevice.md)
  - [Onepanel.Ceph](docs/Ceph.md)
- - [Onepanel.CephCluster](docs/CephCluster.md)
  - [Onepanel.CephCredentials](docs/CephCredentials.md)
  - [Onepanel.CephModify](docs/CephModify.md)
  - [Onepanel.Cephrados](docs/Cephrados.md)
  - [Onepanel.CephradosCredentials](docs/CephradosCredentials.md)
  - [Onepanel.CephradosModify](docs/CephradosModify.md)
- - [Onepanel.Embeddedceph](docs/Embeddedceph.md)
- - [Onepanel.EmbeddedcephModify](docs/EmbeddedcephModify.md)
  - [Onepanel.Glusterfs](docs/Glusterfs.md)
  - [Onepanel.GlusterfsCredentials](docs/GlusterfsCredentials.md)
  - [Onepanel.GlusterfsModify](docs/GlusterfsModify.md)
  - [Onepanel.HTTP](docs/HTTP.md)
  - [Onepanel.HTTPCredentials](docs/HTTPCredentials.md)
  - [Onepanel.HTTPModify](docs/HTTPModify.md)
- - [Onepanel.Loopdevice](docs/Loopdevice.md)
  - [Onepanel.LumaIdpEntitlementScheme](docs/LumaIdpEntitlementScheme.md)
  - [Onepanel.LumaIdpUserScheme](docs/LumaIdpUserScheme.md)
  - [Onepanel.LumaOnedataGroupScheme](docs/LumaOnedataGroupScheme.md)

@@ -512,10 +512,6 @@
           if(type.__swaggerDiscriminator() !== undefined) {
             var polymorphicType;
 
-            if('blockdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Blockdevice");
-            }
-
             if('Ceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Ceph");
             }
@@ -540,14 +536,6 @@
               polymorphicType = require("./model/CephradosModify");
             }
 
-            if('Embeddedceph'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Embeddedceph");
-            }
-
-            if('EmbeddedcephModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/EmbeddedcephModify");
-            }
-
             if('Glusterfs'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/Glusterfs");
             }
@@ -570,10 +558,6 @@
 
             if('HTTPModify'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
               polymorphicType = require("./model/HTTPModify");
-            }
-
-            if('loopdevice'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/Loopdevice");
             }
 
             if('LumaIdpEntitlementScheme'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {

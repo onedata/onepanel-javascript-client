@@ -81,6 +81,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property region (base name: "region")', function() {
+      // uncomment below and update the code to test the property region
+      //var instane = new Onepanel.S3();
+      //expect(instance).to.be();
+    });
+
     it('should have the property blockSize (base name: "blockSize")', function() {
       // uncomment below and update the code to test the property blockSize
       //var instane = new Onepanel.S3();

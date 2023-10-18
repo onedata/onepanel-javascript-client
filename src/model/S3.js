@@ -66,6 +66,8 @@
 
 
 
+
+
   };
 
   /**
@@ -102,6 +104,12 @@
       }
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
+      }
+      if (data.hasOwnProperty('verifyServerCertificate')) {
+        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      }
+      if (data.hasOwnProperty('region')) {
+        obj['region'] = ApiClient.convertToType(data['region'], 'String');
       }
       if (data.hasOwnProperty('blockSize')) {
         obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
@@ -145,6 +153,18 @@
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;
+  /**
+   * Enables or disables verification of the S3 server SSL certificate. 
+   * @member {Boolean} verifyServerCertificate
+   * @default true
+   */
+  exports.prototype['verifyServerCertificate'] = true;
+  /**
+   * Allows to specify a custom S3 region, which will be send with each request to the S3 server. 
+   * @member {String} region
+   * @default 'us-east-1'
+   */
+  exports.prototype['region'] = 'us-east-1';
   /**
    * Storage block size in bytes. In case the block size is `0` and `canonical` path type is selected, each file is stored in a single S3 object. This value must be set to `0` to enable data import from an existing S3 bucket. 
    * @member {Number} blockSize

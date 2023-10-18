@@ -93,6 +93,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property region (base name: "region")', function() {
+      // uncomment below and update the code to test the property region
+      //var instane = new Onepanel.S3Modify();
+      //expect(instance).to.be();
+    });
+
     it('should have the property maximumCanonicalObjectSize (base name: "maximumCanonicalObjectSize")', function() {
       // uncomment below and update the code to test the property maximumCanonicalObjectSize
       //var instane = new Onepanel.S3Modify();

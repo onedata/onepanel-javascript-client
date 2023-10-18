@@ -60,6 +60,8 @@
 
 
 
+
+
   };
 
   /**
@@ -100,6 +102,12 @@
       }
       if (data.hasOwnProperty('signatureVersion')) {
         obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
+      }
+      if (data.hasOwnProperty('verifyServerCertificate')) {
+        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      }
+      if (data.hasOwnProperty('region')) {
+        obj['region'] = ApiClient.convertToType(data['region'], 'String');
       }
       if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
         obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
@@ -147,6 +155,16 @@
    * @member {Number} signatureVersion
    */
   exports.prototype['signatureVersion'] = undefined;
+  /**
+   * Enables or disables verification of the S3 server SSL certificate. 
+   * @member {Boolean} verifyServerCertificate
+   */
+  exports.prototype['verifyServerCertificate'] = undefined;
+  /**
+   * Allows to specify a custom S3 region, which will be send with each request to the S3 server. 
+   * @member {String} region
+   */
+  exports.prototype['region'] = undefined;
   /**
    * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
    * @member {Number} maximumCanonicalObjectSize

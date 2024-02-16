@@ -143,7 +143,7 @@
 
     /**
      * Modify space details
-     * Modifies the space import/update strategies.  ***Example cURL requests***  **Modify space support size** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X PATCH https://$OP_PANEL_HOST/api/v3/onepanel/provider/spaces/$SPACE_ID \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{\&quot;size\&quot;: \&quot;30000000\&quot;}&#39; &#x60;&#x60;&#x60; 
+     * Modifies the space import/update strategies.  ***Example cURL requests***  **Modify space support size** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X PATCH https://$OP_PANEL_HOST/api/v3/onepanel/provider/spaces/$SPACE_ID \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{\&quot;size\&quot;: 30000000}&#39; &#x60;&#x60;&#x60; 
      * @param {String} id The Id of a space which details should be modified.
      * @param {module:model/SpaceModifyRequest} spaceModifyRequest 
      * @param {module:api/SpaceSupportApi~modifySpaceCallback} callback The callback function, accepting three arguments: error, data, response
@@ -239,7 +239,7 @@
 
     /**
      * Support space
-     * Supports an existing space.  ***Example cURL requests***  **Support space** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$OP_PANEL_HOST/api/v3/onepanel/provider/spaces \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;token\&quot;: \&quot;MDAU02QHLaaJ00go\&quot;,     \&quot;size\&quot;: \&quot;10000000\&quot;,     \&quot;storageId\&quot;: \&quot;18a42a43b1b2d9e9a1f82\&quot; }&#39;  {     \&quot;id\&quot;: \&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
+     * Supports an existing space.  ***Example cURL requests***  **Support space** &#x60;&#x60;&#x60;bash curl -H \&quot;X-Auth-Token: $TOKEN\&quot; -X POST https://$OP_PANEL_HOST/api/v3/onepanel/provider/spaces \\ -H \&quot;Content-Type: application/json\&quot; -d &#39;{     \&quot;token\&quot;: \&quot;MDAU02QHLaaJ00go\&quot;,     \&quot;size\&quot;: 10000000,     \&quot;storageId\&quot;: \&quot;18a42a43b1b2d9e9a1f82\&quot; }&#39;  {     \&quot;id\&quot;: \&quot;16403a6c45105010dc7103e31874cb3echac41\&quot; } &#x60;&#x60;&#x60; 
      * @param {module:model/SpaceSupportRequest} spaceSupportRequest Specification of the space support request including support size and token. 
      * @param {module:api/SpaceSupportApi~supportSpaceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Id}

@@ -81,6 +81,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property oneS3 (base name: "oneS3")', function() {
+      // uncomment below and update the code to test the property oneS3
+      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property workers (base name: "workers")', function() {
       // uncomment below and update the code to test the property workers
       //var instane = new Onepanel.ClusterConfigurationDetails();

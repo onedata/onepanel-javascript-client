@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DnsCheck();
+    instance = new Onepanel.OneS3Hosts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,16 @@
       object[property] = value;
   }
 
-  describe('DnsCheck', function() {
-    it('should create an instance of DnsCheck', function() {
-      // uncomment below and update the code to test DnsCheck
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be.a(Onepanel.DnsCheck);
+  describe('OneS3Hosts', function() {
+    it('should create an instance of OneS3Hosts', function() {
+      // uncomment below and update the code to test OneS3Hosts
+      //var instane = new Onepanel.OneS3Hosts();
+      //expect(instance).to.be.a(Onepanel.OneS3Hosts);
     });
 
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oneS3Subdomain (base name: "oneS3Subdomain")', function() {
-      // uncomment below and update the code to test the property oneS3Subdomain
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property dnsZone (base name: "dnsZone")', function() {
-      // uncomment below and update the code to test the property dnsZone
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timestamp (base name: "timestamp")', function() {
-      // uncomment below and update the code to test the property timestamp
-      //var instane = new Onepanel.DnsCheck();
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.OneS3Hosts();
       //expect(instance).to.be();
     });
 

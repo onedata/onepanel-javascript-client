@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/WorkerHosts'], factory);
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/OneS3Hosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./WorkerHosts'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./OneS3Hosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.WorkerHosts);
+    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.OneS3Hosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(ApiClient, DatabaseHosts, ManagerHosts, WorkerHosts) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, OneS3Hosts, WorkerHosts) {
   'use strict';
 
 
@@ -58,6 +58,7 @@
     _this['hosts'] = hosts;
     _this['databases'] = databases;
     _this['managers'] = managers;
+
     _this['workers'] = workers;
   };
 
@@ -94,6 +95,9 @@
       if (data.hasOwnProperty('managers')) {
         obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
       }
+      if (data.hasOwnProperty('oneS3')) {
+        obj['oneS3'] = OneS3Hosts.constructFromObject(data['oneS3']);
+      }
       if (data.hasOwnProperty('workers')) {
         obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
       }
@@ -119,6 +123,10 @@
    * @member {module:model/ManagerHosts} managers
    */
   exports.prototype['managers'] = undefined;
+  /**
+   * @member {module:model/OneS3Hosts} oneS3
+   */
+  exports.prototype['oneS3'] = undefined;
   /**
    * @member {module:model/WorkerHosts} workers
    */

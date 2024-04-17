@@ -49,16 +49,17 @@
    * @param hosts {Array.<String>} List of hosts belonging to the Onepanel cluster.
    * @param databases {module:model/DatabaseHosts} 
    * @param managers {module:model/ManagerHosts} 
+   * @param oneS3 {module:model/OneS3Hosts} 
    * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(master, hosts, databases, managers, workers) {
+  var exports = function(master, hosts, databases, managers, oneS3, workers) {
     var _this = this;
 
     _this['master'] = master;
     _this['hosts'] = hosts;
     _this['databases'] = databases;
     _this['managers'] = managers;
-
+    _this['oneS3'] = oneS3;
     _this['workers'] = workers;
   };
 

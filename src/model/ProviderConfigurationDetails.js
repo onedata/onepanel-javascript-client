@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider'], factory);
+    define(['ApiClient', 'model/ProviderClusterConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterConfigurationDetails'), require('./ProviderConfigurationDetailsOneprovider'));
+    module.exports = factory(require('../ApiClient'), require('./ProviderClusterConfigurationDetails'), require('./ProviderConfigurationDetailsOneprovider'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterConfigurationDetails, root.Onepanel.ProviderConfigurationDetailsOneprovider);
+    root.Onepanel.ProviderConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.ProviderClusterConfigurationDetails, root.Onepanel.ProviderConfigurationDetailsOneprovider);
   }
-}(this, function(ApiClient, ClusterConfigurationDetails, ProviderConfigurationDetailsOneprovider) {
+}(this, function(ApiClient, ProviderClusterConfigurationDetails, ProviderConfigurationDetailsOneprovider) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * The provider deployment configuration.
    * @alias module:model/ProviderConfigurationDetails
    * @class
-   * @param cluster {module:model/ClusterConfigurationDetails} 
+   * @param cluster {module:model/ProviderClusterConfigurationDetails} 
    */
   var exports = function(cluster) {
     var _this = this;
@@ -76,7 +76,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ClusterConfigurationDetails.constructFromObject(data['cluster']);
+        obj['cluster'] = ProviderClusterConfigurationDetails.constructFromObject(data['cluster']);
       }
       if (data.hasOwnProperty('oneprovider')) {
         obj['oneprovider'] = ProviderConfigurationDetailsOneprovider.constructFromObject(data['oneprovider']);
@@ -86,7 +86,7 @@
   }
 
   /**
-   * @member {module:model/ClusterConfigurationDetails} cluster
+   * @member {module:model/ProviderClusterConfigurationDetails} cluster
    */
   exports.prototype['cluster'] = undefined;
   /**

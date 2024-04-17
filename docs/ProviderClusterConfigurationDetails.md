@@ -1,4 +1,4 @@
-# Onepanel.ClusterConfigurationDetails
+# Onepanel.ProviderClusterConfigurationDetails
 
 ## Properties
 Name | Type | Description | Notes

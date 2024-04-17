@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ClusterConfigurationDetails();
+    instance = new Onepanel.ZoneClusterConfigurationDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,46 +50,40 @@
       object[property] = value;
   }
 
-  describe('ClusterConfigurationDetails', function() {
-    it('should create an instance of ClusterConfigurationDetails', function() {
-      // uncomment below and update the code to test ClusterConfigurationDetails
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be.a(Onepanel.ClusterConfigurationDetails);
+  describe('ZoneClusterConfigurationDetails', function() {
+    it('should create an instance of ZoneClusterConfigurationDetails', function() {
+      // uncomment below and update the code to test ZoneClusterConfigurationDetails
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
+      //expect(instance).to.be.a(Onepanel.ZoneClusterConfigurationDetails);
     });
 
     it('should have the property master (base name: "master")', function() {
       // uncomment below and update the code to test the property master
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property hosts (base name: "hosts")', function() {
       // uncomment below and update the code to test the property hosts
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property databases (base name: "databases")', function() {
       // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property managers (base name: "managers")', function() {
       // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oneS3 (base name: "oneS3")', function() {
-      // uncomment below and update the code to test the property oneS3
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property workers (base name: "workers")', function() {
       // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 

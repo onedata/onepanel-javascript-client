@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cluster** | [**ClusterConfigurationDetails**](ClusterConfigurationDetails.md) |  | 
+**cluster** | [**ProviderClusterConfigurationDetails**](ProviderClusterConfigurationDetails.md) |  | 
 **oneprovider** | [**ProviderConfigurationDetailsOneprovider**](ProviderConfigurationDetailsOneprovider.md) |  | [optional] 
 
 

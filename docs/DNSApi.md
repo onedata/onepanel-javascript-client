@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Check correctness of DNS entries for the cluster&#39;s domain
 
-Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached.  Both Oneprovider and Onezone return field &#x60;domain&#x60; for checking if cluster&#39;s  domain can be resolved.  In Oneprovider there may be additional field &#x60;oneS3Subdomain&#x60; for checking if  OneS3 domain can be resolved if said service is enabled.  In Onezone there is additional field &#x60;dnsZone&#x60; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation.  If the cluster is configured with an IP instead of a domain no results are returned.  Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
 
 ### Example
 ```javascript

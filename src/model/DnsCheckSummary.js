@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DnsCheck = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
+    root.Onepanel.DnsCheckSummary = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
   }
 }(this, function(ApiClient, DnsCheckResult) {
   'use strict';
@@ -35,15 +35,15 @@
 
 
   /**
-   * The DnsCheck model module.
-   * @module model/DnsCheck
+   * The DnsCheckSummary model module.
+   * @module model/DnsCheckSummary
    * @version 21.02.4
    */
 
   /**
-   * Constructs a new <code>DnsCheck</code>.
+   * Constructs a new <code>DnsCheckSummary</code>.
    * Gathers results of DNS checks for various aspects of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Oneprovider there may be additional field &#39;oneS3Subdomain&#39; for checking if  OneS3 domain can be resolved if said service is enabled. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither &#39;domain&#39; nor &#39;dnsZone&#39; is returned. 
-   * @alias module:model/DnsCheck
+   * @alias module:model/DnsCheckSummary
    * @class
    * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
    */
@@ -60,18 +60,18 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/DnsCheck} The value of 'discriminator' field or undefined.
+   * @return {module:model/DnsCheckSummary} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>DnsCheck</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DnsCheckSummary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheck} obj Optional instance to populate.
-   * @return {module:model/DnsCheck} The populated <code>DnsCheck</code> instance.
+   * @param {module:model/DnsCheckSummary} obj Optional instance to populate.
+   * @return {module:model/DnsCheckSummary} The populated <code>DnsCheckSummary</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

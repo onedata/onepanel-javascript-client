@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="checkDns"></a>
 # **checkDns**
-> DnsCheck checkDns(opts)
+> DnsCheckSummary checkDns(opts)
 
 Check correctness of DNS entries for the cluster&#39;s domain
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DnsCheck**](DnsCheck.md)
+[**DnsCheckSummary**](DnsCheckSummary.md)
 
 ### Authorization
 

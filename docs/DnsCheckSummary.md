@@ -1,4 +1,4 @@
-# Onepanel.DnsCheck
+# Onepanel.DnsCheckSummary
 
 ## Properties
 Name | Type | Description | Notes

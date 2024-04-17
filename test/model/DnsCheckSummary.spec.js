@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DnsCheck();
+    instance = new Onepanel.DnsCheckSummary();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,34 +50,34 @@
       object[property] = value;
   }
 
-  describe('DnsCheck', function() {
-    it('should create an instance of DnsCheck', function() {
-      // uncomment below and update the code to test DnsCheck
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be.a(Onepanel.DnsCheck);
+  describe('DnsCheckSummary', function() {
+    it('should create an instance of DnsCheckSummary', function() {
+      // uncomment below and update the code to test DnsCheckSummary
+      //var instane = new Onepanel.DnsCheckSummary();
+      //expect(instance).to.be.a(Onepanel.DnsCheckSummary);
     });
 
     it('should have the property domain (base name: "domain")', function() {
       // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.DnsCheck();
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
     it('should have the property oneS3Subdomain (base name: "oneS3Subdomain")', function() {
       // uncomment below and update the code to test the property oneS3Subdomain
-      //var instane = new Onepanel.DnsCheck();
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
     it('should have the property dnsZone (base name: "dnsZone")', function() {
       // uncomment below and update the code to test the property dnsZone
-      //var instane = new Onepanel.DnsCheck();
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
     it('should have the property timestamp (base name: "timestamp")', function() {
       // uncomment below and update the code to test the property timestamp
-      //var instane = new Onepanel.DnsCheck();
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 

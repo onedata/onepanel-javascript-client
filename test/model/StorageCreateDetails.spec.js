@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property skipStorageDetection (base name: "skipStorageDetection")', function() {
-      // uncomment below and update the code to test the property skipStorageDetection
-      //var instane = new Onepanel.StorageCreateDetails();
-      //expect(instance).to.be();
-    });
-
     it('should have the property lumaFeed (base name: "lumaFeed")', function() {
       // uncomment below and update the code to test the property lumaFeed
       //var instane = new Onepanel.StorageCreateDetails();

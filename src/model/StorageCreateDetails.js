@@ -58,7 +58,6 @@
 
 
 
-
   };
 
   /**
@@ -87,9 +86,6 @@
       }
       if (data.hasOwnProperty('timeout')) {
         obj['timeout'] = ApiClient.convertToType(data['timeout'], 'Number');
-      }
-      if (data.hasOwnProperty('skipStorageDetection')) {
-        obj['skipStorageDetection'] = ApiClient.convertToType(data['skipStorageDetection'], 'Boolean');
       }
       if (data.hasOwnProperty('lumaFeed')) {
         obj['lumaFeed'] = ApiClient.convertToType(data['lumaFeed'], 'String');
@@ -125,12 +121,6 @@
    * @member {Number} timeout
    */
   exports.prototype['timeout'] = undefined;
-  /**
-   * If true, detecting whether storage is directly accessible by the Oneclient will not be performed. This option should be set to true on readonly storages. 
-   * @member {Boolean} skipStorageDetection
-   * @default false
-   */
-  exports.prototype['skipStorageDetection'] = false;
   /**
    * Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html 
    * @member {module:model/StorageCreateDetails.LumaFeedEnum} lumaFeed

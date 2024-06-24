@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ProviderClusterConfiguration();
+    instance = new Onepanel.ClusterOneS3();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,52 +50,16 @@
       object[property] = value;
   }
 
-  describe('ProviderClusterConfiguration', function() {
-    it('should create an instance of ProviderClusterConfiguration', function() {
-      // uncomment below and update the code to test ProviderClusterConfiguration
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be.a(Onepanel.ProviderClusterConfiguration);
-    });
-
-    it('should have the property domainName (base name: "domainName")', function() {
-      // uncomment below and update the code to test the property domainName
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
+  describe('ClusterOneS3', function() {
+    it('should create an instance of ClusterOneS3', function() {
+      // uncomment below and update the code to test ClusterOneS3
+      //var instane = new Onepanel.ClusterOneS3();
+      //expect(instance).to.be.a(Onepanel.ClusterOneS3);
     });
 
     it('should have the property nodes (base name: "nodes")', function() {
       // uncomment below and update the code to test the property nodes
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property databases (base name: "databases")', function() {
-      // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oneS3 (base name: "oneS3")', function() {
-      // uncomment below and update the code to test the property oneS3
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workers (base name: "workers")', function() {
-      // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storages (base name: "storages")', function() {
-      // uncomment below and update the code to test the property storages
-      //var instane = new Onepanel.ProviderClusterConfiguration();
+      //var instane = new Onepanel.ClusterOneS3();
       //expect(instance).to.be();
     });
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **nodes** | [**{String: ZoneClusterConfigurationNodes}**](ZoneClusterConfigurationNodes.md) | The collection of nodes aliases associated with nodes properties. | 
 **databases** | [**ClusterDatabases**](ClusterDatabases.md) |  | 
 **managers** | [**ClusterManagers**](ClusterManagers.md) |  | 
+**oneS3** | [**ClusterOneS3**](ClusterOneS3.md) |  | [optional] 
 **workers** | [**ClusterWorkers**](ClusterWorkers.md) |  | 
 **storages** | [**StorageCreateRequest**](StorageCreateRequest.md) |  | [optional] 
 

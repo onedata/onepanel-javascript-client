@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.DnsCheck();
+    instance = new Onepanel.ZoneClusterConfigurationDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,40 @@
       object[property] = value;
   }
 
-  describe('DnsCheck', function() {
-    it('should create an instance of DnsCheck', function() {
-      // uncomment below and update the code to test DnsCheck
-      //var instane = new Onepanel.DnsCheck();
-      //expect(instance).to.be.a(Onepanel.DnsCheck);
+  describe('ZoneClusterConfigurationDetails', function() {
+    it('should create an instance of ZoneClusterConfigurationDetails', function() {
+      // uncomment below and update the code to test ZoneClusterConfigurationDetails
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
+      //expect(instance).to.be.a(Onepanel.ZoneClusterConfigurationDetails);
     });
 
-    it('should have the property domain (base name: "domain")', function() {
-      // uncomment below and update the code to test the property domain
-      //var instane = new Onepanel.DnsCheck();
+    it('should have the property master (base name: "master")', function() {
+      // uncomment below and update the code to test the property master
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property dnsZone (base name: "dnsZone")', function() {
-      // uncomment below and update the code to test the property dnsZone
-      //var instane = new Onepanel.DnsCheck();
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 
-    it('should have the property timestamp (base name: "timestamp")', function() {
-      // uncomment below and update the code to test the property timestamp
-      //var instane = new Onepanel.DnsCheck();
+    it('should have the property databases (base name: "databases")', function() {
+      // uncomment below and update the code to test the property databases
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property managers (base name: "managers")', function() {
+      // uncomment below and update the code to test the property managers
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property workers (base name: "workers")', function() {
+      // uncomment below and update the code to test the property workers
+      //var instane = new Onepanel.ZoneClusterConfigurationDetails();
       //expect(instance).to.be();
     });
 

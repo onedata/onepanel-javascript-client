@@ -93,6 +93,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property sANs (base name: "SANs")', function() {
+      // uncomment below and update the code to test the property sANs
+      //var instane = new Onepanel.WebCert();
+      //expect(instance).to.be();
+    });
+
     it('should have the property issuer (base name: "issuer")', function() {
       // uncomment below and update the code to test the property issuer
       //var instane = new Onepanel.WebCert();

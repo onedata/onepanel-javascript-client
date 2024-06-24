@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DnsCheck', 'model/DnsCheckConfiguration', 'model/Error'], factory);
+    define(['ApiClient', 'model/DnsCheckConfiguration', 'model/DnsCheckSummary', 'model/Error'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/DnsCheck'), require('../model/DnsCheckConfiguration'), require('../model/Error'));
+    module.exports = factory(require('../ApiClient'), require('../model/DnsCheckConfiguration'), require('../model/DnsCheckSummary'), require('../model/Error'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DNSApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheck, root.Onepanel.DnsCheckConfiguration, root.Onepanel.Error);
+    root.Onepanel.DNSApi = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckConfiguration, root.Onepanel.DnsCheckSummary, root.Onepanel.Error);
   }
-}(this, function(ApiClient, DnsCheck, DnsCheckConfiguration, Error) {
+}(this, function(ApiClient, DnsCheckConfiguration, DnsCheckSummary, Error) {
   'use strict';
 
   /**
@@ -52,17 +52,17 @@
      * Callback function to receive the result of the checkDns operation.
      * @callback module:api/DNSApi~checkDnsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/DnsCheck} data The data returned by the service call.
+     * @param {module:model/DnsCheckSummary} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Check correctness of DNS entries for the cluster&#39;s domain
-     * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached. If the cluster is configured with an IP instead of a domain no results are returned. Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
+     * Returns results of the last DNS check, verifying the validity of DNS configuration for cluster&#39;s domain. Unless &#39;forceCheck&#39; flag is set, the results may be cached.  Both Oneprovider and Onezone return field &#x60;domain&#x60; for checking if cluster&#39;s  domain can be resolved.  In Oneprovider there may be additional field &#x60;oneS3Subdomain&#x60; for checking if  OneS3 domain can be resolved if said service is enabled.  In Onezone there is additional field &#x60;dnsZone&#x60; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation.  If the cluster is configured with an IP instead of a domain no results are returned.  Settings used for the check, ie. DNS servers used can be modified using the dns_check/configuration endpoint. 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.forceCheck If true the DNS check cache is overridden and check is performed during handling of the request. (default to false)
      * @param {module:api/DNSApi~checkDnsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DnsCheck}
+     * data is of type: {@link module:model/DnsCheckSummary}
      */
     this.checkDns = function(opts, callback) {
       opts = opts || {};
@@ -82,7 +82,7 @@
       var authNames = ['api_key1', 'api_key2', 'basic'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = DnsCheck;
+      var returnType = DnsCheckSummary;
 
       return this.apiClient.callApi(
         '/dns_check', 'GET',

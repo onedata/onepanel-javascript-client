@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Onepanel.ProviderClusterConfiguration();
+    instance = new Onepanel.DnsCheckSummary();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,52 +50,34 @@
       object[property] = value;
   }
 
-  describe('ProviderClusterConfiguration', function() {
-    it('should create an instance of ProviderClusterConfiguration', function() {
-      // uncomment below and update the code to test ProviderClusterConfiguration
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be.a(Onepanel.ProviderClusterConfiguration);
+  describe('DnsCheckSummary', function() {
+    it('should create an instance of DnsCheckSummary', function() {
+      // uncomment below and update the code to test DnsCheckSummary
+      //var instane = new Onepanel.DnsCheckSummary();
+      //expect(instance).to.be.a(Onepanel.DnsCheckSummary);
     });
 
-    it('should have the property domainName (base name: "domainName")', function() {
-      // uncomment below and update the code to test the property domainName
-      //var instane = new Onepanel.ProviderClusterConfiguration();
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property nodes (base name: "nodes")', function() {
-      // uncomment below and update the code to test the property nodes
-      //var instane = new Onepanel.ProviderClusterConfiguration();
+    it('should have the property oneS3Subdomain (base name: "oneS3Subdomain")', function() {
+      // uncomment below and update the code to test the property oneS3Subdomain
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property databases (base name: "databases")', function() {
-      // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ProviderClusterConfiguration();
+    it('should have the property dnsZone (base name: "dnsZone")', function() {
+      // uncomment below and update the code to test the property dnsZone
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oneS3 (base name: "oneS3")', function() {
-      // uncomment below and update the code to test the property oneS3
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workers (base name: "workers")', function() {
-      // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storages (base name: "storages")', function() {
-      // uncomment below and update the code to test the property storages
-      //var instane = new Onepanel.ProviderClusterConfiguration();
+    it('should have the property timestamp (base name: "timestamp")', function() {
+      // uncomment below and update the code to test the property timestamp
+      //var instane = new Onepanel.DnsCheckSummary();
       //expect(instance).to.be();
     });
 

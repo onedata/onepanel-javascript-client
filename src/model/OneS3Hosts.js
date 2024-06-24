@@ -17,91 +17,75 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DnsCheckResult'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DnsCheckResult'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DnsCheck = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
+    root.Onepanel.OneS3Hosts = factory(root.Onepanel.ApiClient);
   }
-}(this, function(ApiClient, DnsCheckResult) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The DnsCheck model module.
-   * @module model/DnsCheck
+   * The OneS3Hosts model module.
+   * @module model/OneS3Hosts
    * @version 21.02.5
    */
 
   /**
-   * Constructs a new <code>DnsCheck</code>.
-   * Gathers results of DNS checks for various aspects of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither &#39;domain&#39; nor &#39;dnsZone&#39; is returned. 
-   * @alias module:model/DnsCheck
+   * Constructs a new <code>OneS3Hosts</code>.
+   * The OneS3 service hosts configuration.
+   * @alias module:model/OneS3Hosts
    * @class
-   * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
+   * @param hosts {Array.<String>} The list of service hosts.
    */
-  var exports = function(timestamp) {
+  var exports = function(hosts) {
     var _this = this;
 
-
-
-    _this['timestamp'] = timestamp;
+    _this['hosts'] = hosts;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/DnsCheck} The value of 'discriminator' field or undefined.
+   * @return {module:model/OneS3Hosts} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>DnsCheck</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>OneS3Hosts</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheck} obj Optional instance to populate.
-   * @return {module:model/DnsCheck} The populated <code>DnsCheck</code> instance.
+   * @param {module:model/OneS3Hosts} obj Optional instance to populate.
+   * @return {module:model/OneS3Hosts} The populated <code>OneS3Hosts</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = DnsCheckResult.constructFromObject(data['domain']);
-      }
-      if (data.hasOwnProperty('dnsZone')) {
-        obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
-      }
-      if (data.hasOwnProperty('timestamp')) {
-        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], 'String');
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/DnsCheckResult} domain
+   * The list of service hosts.
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['domain'] = undefined;
-  /**
-   * @member {module:model/DnsCheckResult} dnsZone
-   */
-  exports.prototype['dnsZone'] = undefined;
-  /**
-   * Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
-   * @member {String} timestamp
-   */
-  exports.prototype['timestamp'] = undefined;
+  exports.prototype['hosts'] = undefined;
 
 
 

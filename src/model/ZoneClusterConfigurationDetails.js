@@ -16,77 +16,117 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.ZoneClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, WorkerHosts) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ClusterConfigurationDetails();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The ZoneClusterConfigurationDetails model module.
+   * @module model/ZoneClusterConfigurationDetails
+   * @version 21.02.5
+   */
+
+  /**
+   * Constructs a new <code>ZoneClusterConfigurationDetails</code>.
+   * The cluster configuration.
+   * @alias module:model/ZoneClusterConfigurationDetails
+   * @class
+   * @param master {String} Host responsible for deploying cluster and coordinating cluster restarts.
+   * @param hosts {Array.<String>} List of hosts belonging to the Onepanel cluster.
+   * @param databases {module:model/DatabaseHosts} 
+   * @param managers {module:model/ManagerHosts} 
+   * @param workers {module:model/WorkerHosts} 
+   */
+  var exports = function(master, hosts, databases, managers, workers) {
+    var _this = this;
+
+    _this['master'] = master;
+    _this['hosts'] = hosts;
+    _this['databases'] = databases;
+    _this['managers'] = managers;
+    _this['workers'] = workers;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/ZoneClusterConfigurationDetails} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>ZoneClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ZoneClusterConfigurationDetails} obj Optional instance to populate.
+   * @return {module:model/ZoneClusterConfigurationDetails} The populated <code>ZoneClusterConfigurationDetails</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('master')) {
+        obj['master'] = ApiClient.convertToType(data['master'], 'String');
+      }
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
+      }
+      if (data.hasOwnProperty('databases')) {
+        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
+      }
+      if (data.hasOwnProperty('managers')) {
+        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
+      }
+      if (data.hasOwnProperty('workers')) {
+        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Host responsible for deploying cluster and coordinating cluster restarts.
+   * @member {String} master
+   */
+  exports.prototype['master'] = undefined;
+  /**
+   * List of hosts belonging to the Onepanel cluster.
+   * @member {Array.<String>} hosts
+   */
+  exports.prototype['hosts'] = undefined;
+  /**
+   * @member {module:model/DatabaseHosts} databases
+   */
+  exports.prototype['databases'] = undefined;
+  /**
+   * @member {module:model/ManagerHosts} managers
+   */
+  exports.prototype['managers'] = undefined;
+  /**
+   * @member {module:model/WorkerHosts} workers
+   */
+  exports.prototype['workers'] = undefined;
 
-  describe('ClusterConfigurationDetails', function() {
-    it('should create an instance of ClusterConfigurationDetails', function() {
-      // uncomment below and update the code to test ClusterConfigurationDetails
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be.a(Onepanel.ClusterConfigurationDetails);
-    });
 
-    it('should have the property master (base name: "master")', function() {
-      // uncomment below and update the code to test the property master
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property hosts (base name: "hosts")', function() {
-      // uncomment below and update the code to test the property hosts
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property databases (base name: "databases")', function() {
-      // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workers (base name: "workers")', function() {
-      // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ClusterConfigurationDetails();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

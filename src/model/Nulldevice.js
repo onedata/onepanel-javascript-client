@@ -47,7 +47,7 @@
    * @class
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
-   * @param type {module:model/Nulldevice.TypeEnum} The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. Skip storage detection option is obligatory for this type of storage. 
+   * @param type {module:model/Nulldevice.TypeEnum} The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. 
    */
   var exports = function(type) {
     var _this = this;
@@ -121,7 +121,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. Skip storage detection option is obligatory for this type of storage. 
+   * The type of storage.  `type = \"nulldevice\"`  POSIX compatible storage which emulates behavior of `/dev/null` on local filesystem. Allows running various performance tests, which are not impacted by actual storage latency. 
    * @member {module:model/Nulldevice.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

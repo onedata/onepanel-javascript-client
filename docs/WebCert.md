@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **status** | **String** | Describes certificate validity status. | 
 **paths** | [**WebCertPaths**](WebCertPaths.md) |  | [optional] 
 **domain** | **String** | **DEPRECATED** The domain (Common Name) for which current certificate  was issued.  | 
-**dnsNames** | **[String]** | List of dns names included in certificate&#39;s Subject Alternative Name extension.  | [optional] 
+**dnsNames** | **[String]** | List of DNS names included in certificate&#39;s Subject Alternative Name extension.  | [optional] 
 **issuer** | **String** | Issuer value of the current certificate.  | 
 **lastRenewalSuccess** | **String** | Date and time in ISO 8601 format. Represents last successful Let&#39;s Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 
 **lastRenewalFailure** | **String** | Date and time in ISO 8601 format. Represents last unsuccessful Let&#39;s Encrypt certification. If there are no successful attempts its value is null. This property is omitted if letsEncrypt is off.  | [optional] 

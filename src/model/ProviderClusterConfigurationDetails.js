@@ -17,91 +17,121 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DnsCheckResult'], factory);
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/OneS3Hosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DnsCheckResult'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./OneS3Hosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.DnsCheck = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
+    root.Onepanel.ProviderClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.OneS3Hosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(ApiClient, DnsCheckResult) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, OneS3Hosts, WorkerHosts) {
   'use strict';
 
 
 
 
   /**
-   * The DnsCheck model module.
-   * @module model/DnsCheck
+   * The ProviderClusterConfigurationDetails model module.
+   * @module model/ProviderClusterConfigurationDetails
    * @version 21.02.8
    */
 
   /**
-   * Constructs a new <code>DnsCheck</code>.
-   * Gathers results of DNS checks for various aspects of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither &#39;domain&#39; nor &#39;dnsZone&#39; is returned. 
-   * @alias module:model/DnsCheck
+   * Constructs a new <code>ProviderClusterConfigurationDetails</code>.
+   * The provider cluster configuration.
+   * @alias module:model/ProviderClusterConfigurationDetails
    * @class
-   * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
+   * @param master {String} Host responsible for deploying cluster and coordinating cluster restarts.
+   * @param hosts {Array.<String>} List of hosts belonging to the Onepanel cluster.
+   * @param databases {module:model/DatabaseHosts} 
+   * @param managers {module:model/ManagerHosts} 
+   * @param oneS3 {module:model/OneS3Hosts} 
+   * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(timestamp) {
+  var exports = function(master, hosts, databases, managers, oneS3, workers) {
     var _this = this;
 
-
-
-    _this['timestamp'] = timestamp;
+    _this['master'] = master;
+    _this['hosts'] = hosts;
+    _this['databases'] = databases;
+    _this['managers'] = managers;
+    _this['oneS3'] = oneS3;
+    _this['workers'] = workers;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/DnsCheck} The value of 'discriminator' field or undefined.
+   * @return {module:model/ProviderClusterConfigurationDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>DnsCheck</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ProviderClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheck} obj Optional instance to populate.
-   * @return {module:model/DnsCheck} The populated <code>DnsCheck</code> instance.
+   * @param {module:model/ProviderClusterConfigurationDetails} obj Optional instance to populate.
+   * @return {module:model/ProviderClusterConfigurationDetails} The populated <code>ProviderClusterConfigurationDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = DnsCheckResult.constructFromObject(data['domain']);
+      if (data.hasOwnProperty('master')) {
+        obj['master'] = ApiClient.convertToType(data['master'], 'String');
       }
-      if (data.hasOwnProperty('dnsZone')) {
-        obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
-      if (data.hasOwnProperty('timestamp')) {
-        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], 'String');
+      if (data.hasOwnProperty('databases')) {
+        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
+      }
+      if (data.hasOwnProperty('managers')) {
+        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
+      }
+      if (data.hasOwnProperty('oneS3')) {
+        obj['oneS3'] = OneS3Hosts.constructFromObject(data['oneS3']);
+      }
+      if (data.hasOwnProperty('workers')) {
+        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/DnsCheckResult} domain
+   * Host responsible for deploying cluster and coordinating cluster restarts.
+   * @member {String} master
    */
-  exports.prototype['domain'] = undefined;
+  exports.prototype['master'] = undefined;
   /**
-   * @member {module:model/DnsCheckResult} dnsZone
+   * List of hosts belonging to the Onepanel cluster.
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['dnsZone'] = undefined;
+  exports.prototype['hosts'] = undefined;
   /**
-   * Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
-   * @member {String} timestamp
+   * @member {module:model/DatabaseHosts} databases
    */
-  exports.prototype['timestamp'] = undefined;
+  exports.prototype['databases'] = undefined;
+  /**
+   * @member {module:model/ManagerHosts} managers
+   */
+  exports.prototype['managers'] = undefined;
+  /**
+   * @member {module:model/OneS3Hosts} oneS3
+   */
+  exports.prototype['oneS3'] = undefined;
+  /**
+   * @member {module:model/WorkerHosts} workers
+   */
+  exports.prototype['workers'] = undefined;
 
 
 

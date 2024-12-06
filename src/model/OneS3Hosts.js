@@ -16,89 +16,80 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.Onepanel);
+    if (!root.Onepanel) {
+      root.Onepanel = {};
+    }
+    root.Onepanel.OneS3Hosts = factory(root.Onepanel.ApiClient);
   }
-}(this, function(expect, Onepanel) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new Onepanel.ProviderClusterConfiguration();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The OneS3Hosts model module.
+   * @module model/OneS3Hosts
+   * @version 21.02.8
+   */
+
+  /**
+   * Constructs a new <code>OneS3Hosts</code>.
+   * The OneS3 service hosts configuration.
+   * @alias module:model/OneS3Hosts
+   * @class
+   * @param hosts {Array.<String>} The list of service hosts.
+   */
+  var exports = function(hosts) {
+    var _this = this;
+
+    _this['hosts'] = hosts;
+  };
+
+  /**
+   * Provides basic polymorphism support by returning discriminator type for
+   * Swagger base classes. If type is not polymorphic returns 'undefined'.
+   *
+   * @return {module:model/OneS3Hosts} The value of 'discriminator' field or undefined.
+   */
+  exports.__swaggerDiscriminator = function() {
+    ;
+  };
+
+  /**
+   * Constructs a <code>OneS3Hosts</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/OneS3Hosts} obj Optional instance to populate.
+   * @return {module:model/OneS3Hosts} The populated <code>OneS3Hosts</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * The list of service hosts.
+   * @member {Array.<String>} hosts
+   */
+  exports.prototype['hosts'] = undefined;
 
-  describe('ProviderClusterConfiguration', function() {
-    it('should create an instance of ProviderClusterConfiguration', function() {
-      // uncomment below and update the code to test ProviderClusterConfiguration
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be.a(Onepanel.ProviderClusterConfiguration);
-    });
 
-    it('should have the property domainName (base name: "domainName")', function() {
-      // uncomment below and update the code to test the property domainName
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
 
-    it('should have the property nodes (base name: "nodes")', function() {
-      // uncomment below and update the code to test the property nodes
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property databases (base name: "databases")', function() {
-      // uncomment below and update the code to test the property databases
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property managers (base name: "managers")', function() {
-      // uncomment below and update the code to test the property managers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property oneS3 (base name: "oneS3")', function() {
-      // uncomment below and update the code to test the property oneS3
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property workers (base name: "workers")', function() {
-      // uncomment below and update the code to test the property workers
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property storages (base name: "storages")', function() {
-      // uncomment below and update the code to test the property storages
-      //var instane = new Onepanel.ProviderClusterConfiguration();
-      //expect(instance).to.be();
-    });
-
-  });
-
+  return exports;
 }));
+
+

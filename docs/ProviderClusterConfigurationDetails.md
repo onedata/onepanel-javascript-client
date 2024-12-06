@@ -1,4 +1,4 @@
-# Onepanel.ClusterConfigurationDetails
+# Onepanel.ProviderClusterConfigurationDetails
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **hosts** | **[String]** | List of hosts belonging to the Onepanel cluster. | 
 **databases** | [**DatabaseHosts**](DatabaseHosts.md) |  | 
 **managers** | [**ManagerHosts**](ManagerHosts.md) |  | 
+**oneS3** | [**OneS3Hosts**](OneS3Hosts.md) |  | 
 **workers** | [**WorkerHosts**](WorkerHosts.md) |  | 
 
 

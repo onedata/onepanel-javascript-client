@@ -91,6 +91,16 @@
         done();
       });
     });
+    describe('enableProviderOneS3', function() {
+      it('should call enableProviderOneS3 successfully', function(done) {
+        //uncomment below and update the code to test enableProviderOneS3
+        //instance.enableProviderOneS3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderClusterIps', function() {
       it('should call getProviderClusterIps successfully', function(done) {
         //uncomment below and update the code to test getProviderClusterIps
@@ -161,6 +171,26 @@
         done();
       });
     });
+    describe('getProviderOneS3Status', function() {
+      it('should call getProviderOneS3Status successfully', function(done) {
+        //uncomment below and update the code to test getProviderOneS3Status
+        //instance.getProviderOneS3Status(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getProviderOneS3StatusAll', function() {
+      it('should call getProviderOneS3StatusAll successfully', function(done) {
+        //uncomment below and update the code to test getProviderOneS3StatusAll
+        //instance.getProviderOneS3StatusAll(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderWorkerStatus', function() {
       it('should call getProviderWorkerStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderWorkerStatus
@@ -225,6 +255,26 @@
       it('should call startStopProviderManagers successfully', function(done) {
         //uncomment below and update the code to test startStopProviderManagers
         //instance.startStopProviderManagers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startStopProviderOneS3', function() {
+      it('should call startStopProviderOneS3 successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderOneS3
+        //instance.startStopProviderOneS3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startStopProviderOneS3All', function() {
+      it('should call startStopProviderOneS3All successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderOneS3All
+        //instance.startStopProviderOneS3All(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

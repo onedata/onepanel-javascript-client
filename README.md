@@ -183,6 +183,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**addProviderManagers**](docs/OneproviderClusterApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderClusterApi* | [**addProviderWorkers**](docs/OneproviderClusterApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderClusterApi* | [**configureProvider**](docs/OneproviderClusterApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+*Onepanel.OneproviderClusterApi* | [**enableProviderOneS3**](docs/OneproviderClusterApi.md#enableProviderOneS3) | **POST** /provider/ones3 | Enable provider OneS3
 *Onepanel.OneproviderClusterApi* | [**getProviderClusterIps**](docs/OneproviderClusterApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderClusterApi* | [**getProviderConfiguration**](docs/OneproviderClusterApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 *Onepanel.OneproviderClusterApi* | [**getProviderDatabaseStatus**](docs/OneproviderClusterApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -190,6 +191,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**getProviderManagerStatus**](docs/OneproviderClusterApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderClusterApi* | [**getProviderManagersStatus**](docs/OneproviderClusterApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderClusterApi* | [**getProviderNagiosReport**](docs/OneproviderClusterApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
+*Onepanel.OneproviderClusterApi* | [**getProviderOneS3Status**](docs/OneproviderClusterApi.md#getProviderOneS3Status) | **GET** /provider/ones3/{host} | Get provider OneS3 status
+*Onepanel.OneproviderClusterApi* | [**getProviderOneS3StatusAll**](docs/OneproviderClusterApi.md#getProviderOneS3StatusAll) | **GET** /provider/ones3 | Get provider OneS3 status on all hosts
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkerStatus**](docs/OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkersStatus**](docs/OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 *Onepanel.OneproviderClusterApi* | [**modifyProviderClusterIps**](docs/OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
@@ -197,6 +200,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**startStopProviderDatabases**](docs/OneproviderClusterApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 *Onepanel.OneproviderClusterApi* | [**startStopProviderManager**](docs/OneproviderClusterApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
 *Onepanel.OneproviderClusterApi* | [**startStopProviderManagers**](docs/OneproviderClusterApi.md#startStopProviderManagers) | **PATCH** /provider/managers | Start/stop provider cluster managers
+*Onepanel.OneproviderClusterApi* | [**startStopProviderOneS3**](docs/OneproviderClusterApi.md#startStopProviderOneS3) | **PATCH** /provider/ones3/{host} | Start/stop provider OneS3
+*Onepanel.OneproviderClusterApi* | [**startStopProviderOneS3All**](docs/OneproviderClusterApi.md#startStopProviderOneS3All) | **PATCH** /provider/ones3 | Start/stop provider OneS3 on all hosts
 *Onepanel.OneproviderClusterApi* | [**startStopProviderWorker**](docs/OneproviderClusterApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 *Onepanel.OneproviderClusterApi* | [**startStopProviderWorkers**](docs/OneproviderClusterApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
 *Onepanel.OneproviderIdentityApi* | [**addProvider**](docs/OneproviderIdentityApi.md#addProvider) | **POST** /provider | Register provider

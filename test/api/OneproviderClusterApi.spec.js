@@ -71,6 +71,16 @@
         done();
       });
     });
+    describe('addProviderOneS3', function() {
+      it('should call addProviderOneS3 successfully', function(done) {
+        //uncomment below and update the code to test addProviderOneS3
+        //instance.addProviderOneS3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addProviderWorkers', function() {
       it('should call addProviderWorkers successfully', function(done) {
         //uncomment below and update the code to test addProviderWorkers
@@ -85,16 +95,6 @@
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider
         //instance.configureProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('enableProviderOneS3', function() {
-      it('should call enableProviderOneS3 successfully', function(done) {
-        //uncomment below and update the code to test enableProviderOneS3
-        //instance.enableProviderOneS3(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -141,6 +141,16 @@
         done();
       });
     });
+    describe('getProviderHostOneS3Status', function() {
+      it('should call getProviderHostOneS3Status successfully', function(done) {
+        //uncomment below and update the code to test getProviderHostOneS3Status
+        //instance.getProviderHostOneS3Status(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getProviderManagerStatus', function() {
       it('should call getProviderManagerStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderManagerStatus
@@ -175,16 +185,6 @@
       it('should call getProviderOneS3Status successfully', function(done) {
         //uncomment below and update the code to test getProviderOneS3Status
         //instance.getProviderOneS3Status(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderOneS3StatusAll', function() {
-      it('should call getProviderOneS3StatusAll successfully', function(done) {
-        //uncomment below and update the code to test getProviderOneS3StatusAll
-        //instance.getProviderOneS3StatusAll(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -241,6 +241,16 @@
         done();
       });
     });
+    describe('startStopProviderHostOneS3', function() {
+      it('should call startStopProviderHostOneS3 successfully', function(done) {
+        //uncomment below and update the code to test startStopProviderHostOneS3
+        //instance.startStopProviderHostOneS3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('startStopProviderManager', function() {
       it('should call startStopProviderManager successfully', function(done) {
         //uncomment below and update the code to test startStopProviderManager
@@ -265,16 +275,6 @@
       it('should call startStopProviderOneS3 successfully', function(done) {
         //uncomment below and update the code to test startStopProviderOneS3
         //instance.startStopProviderOneS3(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('startStopProviderOneS3All', function() {
-      it('should call startStopProviderOneS3All successfully', function(done) {
-        //uncomment below and update the code to test startStopProviderOneS3All
-        //instance.startStopProviderOneS3All(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

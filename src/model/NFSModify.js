@@ -129,22 +129,22 @@
    */
   exports.prototype['version'] = undefined;
   /**
-   * The name of the NFS volume (export).
+   * The name (path) of the NFS export.
    * @member {String} volume
    */
   exports.prototype['volume'] = undefined;
   /**
-   * The size of NFS connection pool.
+   * Number of simultaneous network connections that can be maintained with the NFS server. 
    * @member {Number} connectionPoolSize
    */
   exports.prototype['connectionPoolSize'] = undefined;
   /**
-   * Enables directory caching.
+   * Enables caching of directory metadata on the client side to improve performance by reducing requests to the NFS server. May cause temporary inconsistencies if the directory content changes on the server. 
    * @member {Boolean} dirCache
    */
   exports.prototype['dirCache'] = undefined;
   /**
-   * The size of readahead in bytes.
+   * The amount of data that the system preloads into cache ahead of client requests. 
    * @member {Number} readAhead
    */
   exports.prototype['readAhead'] = undefined;

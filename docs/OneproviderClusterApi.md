@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**getProviderManagerStatus**](OneproviderClusterApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 [**getProviderManagersStatus**](OneproviderClusterApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 [**getProviderNagiosReport**](OneproviderClusterApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-[**getProviderOneS3Status**](OneproviderClusterApi.md#getProviderOneS3Status) | **GET** /provider/ones3 | Get provider host OneS3 status on all hosts
+[**getProviderOneS3Status**](OneproviderClusterApi.md#getProviderOneS3Status) | **GET** /provider/ones3 | Get provider OneS3 status on all hosts
 [**getProviderWorkerStatus**](OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 [**modifyProviderClusterIps**](OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
@@ -191,7 +191,7 @@ basic.password = 'YOUR PASSWORD';
 
 var apiInstance = new Onepanel.OneproviderClusterApi();
 
-var serviceHosts = new Onepanel.ServiceHosts(); // ServiceHosts | The OneS3 service hosts configuration. 
+var serviceHosts = new Onepanel.ServiceOnes3(); // ServiceOnes3 | The OneS3 service hosts configuration. 
 
 
 var callback = function(error, data, response) {
@@ -208,7 +208,7 @@ apiInstance.addProviderOneS3(serviceHosts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceHosts** | [**ServiceHosts**](ServiceHosts.md)| The OneS3 service hosts configuration.  | 
+ **serviceHosts** | [**ServiceOnes3**](ServiceOnes3.md)| The OneS3 service hosts configuration.  | 
 
 ### Return type
 
@@ -837,7 +837,7 @@ null (empty response body)
 # **getProviderOneS3Status**
 > ServiceStatus getProviderOneS3Status()
 
-Get provider host OneS3 status on all hosts
+Get provider OneS3 status on all hosts
 
 Returns status of OneS3 service on each host where it has been deployed. 
 
@@ -1444,7 +1444,7 @@ basic.password = 'YOUR PASSWORD';
 var apiInstance = new Onepanel.OneproviderClusterApi();
 
 var opts = { 
-  'started': true // Boolean | Defines the intended state of the OneS3 server service. The service  will be started or stopped in order to match the requested state. 
+  'started': true // Boolean | Defines the intended state of the OneS3 service. The service  will be started or stopped in order to match the requested state. 
 };
 
 var callback = function(error, data, response) {
@@ -1461,7 +1461,7 @@ apiInstance.startStopProviderOneS3(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **started** | **Boolean**| Defines the intended state of the OneS3 server service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
+ **started** | **Boolean**| Defines the intended state of the OneS3 service. The service  will be started or stopped in order to match the requested state.  | [optional] [default to true]
 
 ### Return type
 

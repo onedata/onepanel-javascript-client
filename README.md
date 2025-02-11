@@ -192,7 +192,7 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**getProviderManagerStatus**](docs/OneproviderClusterApi.md#getProviderManagerStatus) | **GET** /provider/managers/{host} | Get provider cluster manager status
 *Onepanel.OneproviderClusterApi* | [**getProviderManagersStatus**](docs/OneproviderClusterApi.md#getProviderManagersStatus) | **GET** /provider/managers | Get provider cluster managers status
 *Onepanel.OneproviderClusterApi* | [**getProviderNagiosReport**](docs/OneproviderClusterApi.md#getProviderNagiosReport) | **GET** /provider/nagios | Get provider nagios report
-*Onepanel.OneproviderClusterApi* | [**getProviderOneS3Status**](docs/OneproviderClusterApi.md#getProviderOneS3Status) | **GET** /provider/ones3 | Get provider host OneS3 status on all hosts
+*Onepanel.OneproviderClusterApi* | [**getProviderOneS3Status**](docs/OneproviderClusterApi.md#getProviderOneS3Status) | **GET** /provider/ones3 | Get provider OneS3 status on all hosts
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkerStatus**](docs/OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkersStatus**](docs/OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 *Onepanel.OneproviderClusterApi* | [**modifyProviderClusterIps**](docs/OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
@@ -323,6 +323,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)
+ - [Onepanel.ServiceOnes3](docs/ServiceOnes3.md)
  - [Onepanel.ServiceStatus](docs/ServiceStatus.md)
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
  - [Onepanel.SpaceAutoCleaningConfiguration](docs/SpaceAutoCleaningConfiguration.md)

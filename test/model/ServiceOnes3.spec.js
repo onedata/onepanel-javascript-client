@@ -16,89 +16,59 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.ClusterOneS3 = factory(root.Onepanel.ApiClient);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ServiceOnes3();
+  });
 
-
-  /**
-   * The ClusterOneS3 model module.
-   * @module model/ClusterOneS3
-   * @version 21.02.8
-   */
-
-  /**
-   * Constructs a new <code>ClusterOneS3</code>.
-   * The OneS3 service configuration.
-   * @alias module:model/ClusterOneS3
-   * @class
-   * @param nodes {Array.<String>} The list of aliases of OneS3 nodes.
-   */
-  var exports = function(nodes) {
-    var _this = this;
-
-    _this['nodes'] = nodes;
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/ClusterOneS3} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>ClusterOneS3</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterOneS3} obj Optional instance to populate.
-   * @return {module:model/ClusterOneS3} The populated <code>ClusterOneS3</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], ['String']);
-      }
-      if (data.hasOwnProperty('port')) {
-        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * The list of aliases of OneS3 nodes.
-   * @member {Array.<String>} nodes
-   */
-  exports.prototype['nodes'] = undefined;
-  /**
-   * The port on which the OneS3 service will be available.
-   * @member {Number} port
-   */
-  exports.prototype['port'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ServiceOnes3', function() {
+    it('should create an instance of ServiceOnes3', function() {
+      // uncomment below and update the code to test ServiceOnes3
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be.a(Onepanel.ServiceOnes3);
+    });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

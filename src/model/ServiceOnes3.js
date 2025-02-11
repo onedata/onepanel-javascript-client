@@ -26,7 +26,7 @@
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterOneS3 = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ServiceOnes3 = factory(root.Onepanel.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,22 +35,22 @@
 
 
   /**
-   * The ClusterOneS3 model module.
-   * @module model/ClusterOneS3
+   * The ServiceOnes3 model module.
+   * @module model/ServiceOnes3
    * @version 21.02.8
    */
 
   /**
-   * Constructs a new <code>ClusterOneS3</code>.
-   * The OneS3 service configuration.
-   * @alias module:model/ClusterOneS3
+   * Constructs a new <code>ServiceOnes3</code>.
+   * The service hosts configuration.
+   * @alias module:model/ServiceOnes3
    * @class
-   * @param nodes {Array.<String>} The list of aliases of OneS3 nodes.
+   * @param hosts {Array.<String>} The list of hosts where service should be deployed.
    */
-  var exports = function(nodes) {
+  var exports = function(hosts) {
     var _this = this;
 
-    _this['nodes'] = nodes;
+    _this['hosts'] = hosts;
 
   };
 
@@ -58,25 +58,25 @@
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ClusterOneS3} The value of 'discriminator' field or undefined.
+   * @return {module:model/ServiceOnes3} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ClusterOneS3</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ServiceOnes3</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterOneS3} obj Optional instance to populate.
-   * @return {module:model/ClusterOneS3} The populated <code>ClusterOneS3</code> instance.
+   * @param {module:model/ServiceOnes3} obj Optional instance to populate.
+   * @return {module:model/ServiceOnes3} The populated <code>ServiceOnes3</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], ['String']);
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
       if (data.hasOwnProperty('port')) {
         obj['port'] = ApiClient.convertToType(data['port'], 'Number');
@@ -86,12 +86,12 @@
   }
 
   /**
-   * The list of aliases of OneS3 nodes.
-   * @member {Array.<String>} nodes
+   * The list of hosts where service should be deployed.
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['nodes'] = undefined;
+  exports.prototype['hosts'] = undefined;
   /**
-   * The port on which the OneS3 service will be available.
+   * The port on which the OneS3 service will be available. NOTE: This is used only for first deployment and ignored when adding new  hosts for the service. 
    * @member {Number} port
    */
   exports.prototype['port'] = undefined;

@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId'], factory);
+    define(['ApiClient', 'model/ClusterIps', 'model/Error', 'model/ManagerHosts', 'model/ModifyClusterIps', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceOnes3', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/TaskId'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'));
+    module.exports = factory(require('../ApiClient'), require('../model/ClusterIps'), require('../model/Error'), require('../model/ManagerHosts'), require('../model/ModifyClusterIps'), require('../model/ProviderConfiguration'), require('../model/ProviderConfigurationDetails'), require('../model/ServiceDatabases'), require('../model/ServiceHosts'), require('../model/ServiceOnes3'), require('../model/ServiceStatus'), require('../model/ServiceStatusHost'), require('../model/TaskId'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.OneproviderClusterApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId);
+    root.Onepanel.OneproviderClusterApi = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterIps, root.Onepanel.Error, root.Onepanel.ManagerHosts, root.Onepanel.ModifyClusterIps, root.Onepanel.ProviderConfiguration, root.Onepanel.ProviderConfigurationDetails, root.Onepanel.ServiceDatabases, root.Onepanel.ServiceHosts, root.Onepanel.ServiceOnes3, root.Onepanel.ServiceStatus, root.Onepanel.ServiceStatusHost, root.Onepanel.TaskId);
   }
-}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ServiceDatabases, ServiceHosts, ServiceStatus, ServiceStatusHost, TaskId) {
+}(this, function(ApiClient, ClusterIps, Error, ManagerHosts, ModifyClusterIps, ProviderConfiguration, ProviderConfigurationDetails, ServiceDatabases, ServiceHosts, ServiceOnes3, ServiceStatus, ServiceStatusHost, TaskId) {
   'use strict';
 
   /**
@@ -149,7 +149,7 @@
     /**
      * Add provider OneS3
      * Deploys the OneS3 service on the specified hosts. NOTE: If provider is not registered in Onezone yet, then OneS3 will be enabled but not started. 
-     * @param {module:model/ServiceHosts} serviceHosts The OneS3 service hosts configuration. 
+     * @param {module:model/ServiceOnes3} serviceHosts The OneS3 service hosts configuration. 
      * @param {module:api/OneproviderClusterApi~addProviderOneS3Callback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TaskId}
      */
@@ -614,7 +614,7 @@
      */
 
     /**
-     * Get provider host OneS3 status on all hosts
+     * Get provider OneS3 status on all hosts
      * Returns status of OneS3 service on each host where it has been deployed. 
      * @param {module:api/OneproviderClusterApi~getProviderOneS3StatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ServiceStatus}
@@ -1016,7 +1016,7 @@
      * Start/stop provider OneS3
      * Starts or stops OneS3 service on all hosts in the local deployment. 
      * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the OneS3 server service. The service  will be started or stopped in order to match the requested state.  (default to true)
+     * @param {Boolean} opts.started Defines the intended state of the OneS3 service. The service  will be started or stopped in order to match the requested state.  (default to true)
      * @param {module:api/OneproviderClusterApi~startStopProviderOneS3Callback} callback The callback function, accepting three arguments: error, data, response
      */
     this.startStopProviderOneS3 = function(opts, callback) {

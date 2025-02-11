@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.ClusterOneS3();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

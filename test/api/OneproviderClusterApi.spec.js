@@ -51,6 +51,16 @@
   }
 
   describe('OneproviderClusterApi', function() {
+    describe('addOnes3', function() {
+      it('should call addOnes3 successfully', function(done) {
+        //uncomment below and update the code to test addOnes3
+        //instance.addOnes3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addProviderDatabases', function() {
       it('should call addProviderDatabases successfully', function(done) {
         //uncomment below and update the code to test addProviderDatabases
@@ -71,16 +81,6 @@
         done();
       });
     });
-    describe('addProviderOneS3', function() {
-      it('should call addProviderOneS3 successfully', function(done) {
-        //uncomment below and update the code to test addProviderOneS3
-        //instance.addProviderOneS3(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addProviderWorkers', function() {
       it('should call addProviderWorkers successfully', function(done) {
         //uncomment below and update the code to test addProviderWorkers
@@ -95,6 +95,26 @@
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider
         //instance.configureProvider(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getOnes3StatusClusterWide', function() {
+      it('should call getOnes3StatusClusterWide successfully', function(done) {
+        //uncomment below and update the code to test getOnes3StatusClusterWide
+        //instance.getOnes3StatusClusterWide(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getOnes3StatusOnHost', function() {
+      it('should call getOnes3StatusOnHost successfully', function(done) {
+        //uncomment below and update the code to test getOnes3StatusOnHost
+        //instance.getOnes3StatusOnHost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -141,16 +161,6 @@
         done();
       });
     });
-    describe('getProviderHostOneS3Status', function() {
-      it('should call getProviderHostOneS3Status successfully', function(done) {
-        //uncomment below and update the code to test getProviderHostOneS3Status
-        //instance.getProviderHostOneS3Status(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getProviderManagerStatus', function() {
       it('should call getProviderManagerStatus successfully', function(done) {
         //uncomment below and update the code to test getProviderManagerStatus
@@ -175,16 +185,6 @@
       it('should call getProviderNagiosReport successfully', function(done) {
         //uncomment below and update the code to test getProviderNagiosReport
         //instance.getProviderNagiosReport(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getProviderOneS3Status', function() {
-      it('should call getProviderOneS3Status successfully', function(done) {
-        //uncomment below and update the code to test getProviderOneS3Status
-        //instance.getProviderOneS3Status(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -221,6 +221,26 @@
         done();
       });
     });
+    describe('startStopOnes3ClusterWide', function() {
+      it('should call startStopOnes3ClusterWide successfully', function(done) {
+        //uncomment below and update the code to test startStopOnes3ClusterWide
+        //instance.startStopOnes3ClusterWide(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startStopOnes3OnHost', function() {
+      it('should call startStopOnes3OnHost successfully', function(done) {
+        //uncomment below and update the code to test startStopOnes3OnHost
+        //instance.startStopOnes3OnHost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('startStopProviderDatabase', function() {
       it('should call startStopProviderDatabase successfully', function(done) {
         //uncomment below and update the code to test startStopProviderDatabase
@@ -241,16 +261,6 @@
         done();
       });
     });
-    describe('startStopProviderHostOneS3', function() {
-      it('should call startStopProviderHostOneS3 successfully', function(done) {
-        //uncomment below and update the code to test startStopProviderHostOneS3
-        //instance.startStopProviderHostOneS3(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('startStopProviderManager', function() {
       it('should call startStopProviderManager successfully', function(done) {
         //uncomment below and update the code to test startStopProviderManager
@@ -265,16 +275,6 @@
       it('should call startStopProviderManagers successfully', function(done) {
         //uncomment below and update the code to test startStopProviderManagers
         //instance.startStopProviderManagers(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('startStopProviderOneS3', function() {
-      it('should call startStopProviderOneS3 successfully', function(done) {
-        //uncomment below and update the code to test startStopProviderOneS3
-        //instance.startStopProviderOneS3(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

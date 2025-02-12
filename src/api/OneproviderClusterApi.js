@@ -49,6 +49,51 @@
 
 
     /**
+     * Callback function to receive the result of the addOnes3 operation.
+     * @callback module:api/OneproviderClusterApi~addOnes3Callback
+     * @param {String} error Error message, if any.
+     * @param {module:model/TaskId} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Add OneS3 services
+     * Deploys the OneS3 service on the specified hosts.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the service will be enabled, but its start will be postponed and automatically  resumed after the registration. 
+     * @param {module:model/ServiceOnes3} serviceHosts The OneS3 service hosts configuration. 
+     * @param {module:api/OneproviderClusterApi~addOnes3Callback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TaskId}
+     */
+    this.addOnes3 = function(serviceHosts, callback) {
+      var postBody = serviceHosts;
+
+      // verify the required parameter 'serviceHosts' is set
+      if (serviceHosts === undefined || serviceHosts === null) {
+        throw new Error("Missing the required parameter 'serviceHosts' when calling addOnes3");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = TaskId;
+
+      return this.apiClient.callApi(
+        '/provider/ones3', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the addProviderDatabases operation.
      * @callback module:api/OneproviderClusterApi~addProviderDatabasesCallback
      * @param {String} error Error message, if any.
@@ -139,51 +184,6 @@
     }
 
     /**
-     * Callback function to receive the result of the addProviderOneS3 operation.
-     * @callback module:api/OneproviderClusterApi~addProviderOneS3Callback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TaskId} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add provider OneS3
-     * Deploys the OneS3 service on the specified hosts. NOTE: If provider is not registered in Onezone yet, then OneS3 will be enabled but not started. 
-     * @param {module:model/ServiceOnes3} serviceHosts The OneS3 service hosts configuration. 
-     * @param {module:api/OneproviderClusterApi~addProviderOneS3Callback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TaskId}
-     */
-    this.addProviderOneS3 = function(serviceHosts, callback) {
-      var postBody = serviceHosts;
-
-      // verify the required parameter 'serviceHosts' is set
-      if (serviceHosts === undefined || serviceHosts === null) {
-        throw new Error("Missing the required parameter 'serviceHosts' when calling addProviderOneS3");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = TaskId;
-
-      return this.apiClient.callApi(
-        '/provider/ones3', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the addProviderWorkers operation.
      * @callback module:api/OneproviderClusterApi~addProviderWorkersCallback
      * @param {String} error Error message, if any.
@@ -268,6 +268,91 @@
 
       return this.apiClient.callApi(
         '/provider/configuration', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getOnes3StatusClusterWide operation.
+     * @callback module:api/OneproviderClusterApi~getOnes3StatusClusterWideCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get OneS3 service status (cluster-wide)
+     * Returns the status of OneS3 service on each host where it has been deployed. 
+     * @param {module:api/OneproviderClusterApi~getOnes3StatusClusterWideCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatus}
+     */
+    this.getOnes3StatusClusterWide = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ServiceStatus;
+
+      return this.apiClient.callApi(
+        '/provider/ones3', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getOnes3StatusOnHost operation.
+     * @callback module:api/OneproviderClusterApi~getOnes3StatusOnHostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get OneS3 service status on a host
+     * Returns the status of the OneS3 service on the selected host.
+     * @param {String} host The cluster host for which the OneS3 service status should be returned.
+     * @param {module:api/OneproviderClusterApi~getOnes3StatusOnHostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceStatusHost}
+     */
+    this.getOnes3StatusOnHost = function(host, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'host' is set
+      if (host === undefined || host === null) {
+        throw new Error("Missing the required parameter 'host' when calling getOnes3StatusOnHost");
+      }
+
+
+      var pathParams = {
+        'host': host
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ServiceStatusHost;
+
+      return this.apiClient.callApi(
+        '/provider/ones3/{host}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -437,52 +522,6 @@
     }
 
     /**
-     * Callback function to receive the result of the getProviderHostOneS3Status operation.
-     * @callback module:api/OneproviderClusterApi~getProviderHostOneS3StatusCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServiceStatusHost} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get provider host OneS3 status
-     * Returns status of OneS3 service on the selected host.
-     * @param {String} host The name of a host for which OneS3 service status should be returned.
-     * @param {module:api/OneproviderClusterApi~getProviderHostOneS3StatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServiceStatusHost}
-     */
-    this.getProviderHostOneS3Status = function(host, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'host' is set
-      if (host === undefined || host === null) {
-        throw new Error("Missing the required parameter 'host' when calling getProviderHostOneS3Status");
-      }
-
-
-      var pathParams = {
-        'host': host
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ServiceStatusHost;
-
-      return this.apiClient.callApi(
-        '/provider/ones3/{host}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getProviderManagerStatus operation.
      * @callback module:api/OneproviderClusterApi~getProviderManagerStatusCallback
      * @param {String} error Error message, if any.
@@ -600,45 +639,6 @@
 
       return this.apiClient.callApi(
         '/provider/nagios', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getProviderOneS3Status operation.
-     * @callback module:api/OneproviderClusterApi~getProviderOneS3StatusCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServiceStatus} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get provider OneS3 status on all hosts
-     * Returns status of OneS3 service on each host where it has been deployed. 
-     * @param {module:api/OneproviderClusterApi~getProviderOneS3StatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServiceStatus}
-     */
-    this.getProviderOneS3Status = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ServiceStatus;
-
-      return this.apiClient.callApi(
-        '/provider/ones3', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -774,6 +774,97 @@
     }
 
     /**
+     * Callback function to receive the result of the startStopOnes3ClusterWide operation.
+     * @callback module:api/OneproviderClusterApi~startStopOnes3ClusterWideCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Start/stop OneS3 service (cluster-wide)
+     * Starts or stops OneS3 service on all hosts in the cluster.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the start of the service will be postponed and automatically resumed after the registration. 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.started Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description).  (default to true)
+     * @param {module:api/OneproviderClusterApi~startStopOnes3ClusterWideCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.startStopOnes3ClusterWide = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'started': opts['started']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/ones3', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the startStopOnes3OnHost operation.
+     * @callback module:api/OneproviderClusterApi~startStopOnes3OnHostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Start/stop OneS3 service on a host
+     * Starts or stops the OneS3 service on the selected host in the cluster.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the start of the service will be postponed and automatically resumed after the registration. 
+     * @param {String} host The cluster host for which OneS3 service status should be changed.
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.started Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description).  (default to true)
+     * @param {module:api/OneproviderClusterApi~startStopOnes3OnHostCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.startStopOnes3OnHost = function(host, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'host' is set
+      if (host === undefined || host === null) {
+        throw new Error("Missing the required parameter 'host' when calling startStopOnes3OnHost");
+      }
+
+
+      var pathParams = {
+        'host': host
+      };
+      var queryParams = {
+        'started': opts['started']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key1', 'api_key2', 'basic'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/provider/ones3/{host}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the startStopProviderDatabase operation.
      * @callback module:api/OneproviderClusterApi~startStopProviderDatabaseCallback
      * @param {String} error Error message, if any.
@@ -865,55 +956,6 @@
     }
 
     /**
-     * Callback function to receive the result of the startStopProviderHostOneS3 operation.
-     * @callback module:api/OneproviderClusterApi~startStopProviderHostOneS3Callback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Start/stop provider host OneS3
-     * Starts or stops OneS3 service on the selected host in the local deployment. 
-     * @param {String} host The name of a host for which OneS3 service status should be changed. 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OneproviderClusterApi~startStopProviderHostOneS3Callback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.startStopProviderHostOneS3 = function(host, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-      // verify the required parameter 'host' is set
-      if (host === undefined || host === null) {
-        throw new Error("Missing the required parameter 'host' when calling startStopProviderHostOneS3");
-      }
-
-
-      var pathParams = {
-        'host': host
-      };
-      var queryParams = {
-        'started': opts['started']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/ones3/{host}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the startStopProviderManager operation.
      * @callback module:api/OneproviderClusterApi~startStopProviderManagerCallback
      * @param {String} error Error message, if any.
@@ -999,48 +1041,6 @@
 
       return this.apiClient.callApi(
         '/provider/managers', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the startStopProviderOneS3 operation.
-     * @callback module:api/OneproviderClusterApi~startStopProviderOneS3Callback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Start/stop provider OneS3
-     * Starts or stops OneS3 service on all hosts in the local deployment. 
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.started Defines the intended state of the OneS3 service. The service  will be started or stopped in order to match the requested state.  (default to true)
-     * @param {module:api/OneproviderClusterApi~startStopProviderOneS3Callback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.startStopProviderOneS3 = function(opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'started': opts['started']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key1', 'api_key2', 'basic'];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/provider/ones3', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

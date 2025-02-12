@@ -95,12 +95,12 @@
    */
   exports.prototype['hosts'] = undefined;
   /**
-   * The server quota is the RAM memory in bytes that is allocated to the server when Couchbase Server is first installed. This sets the limit of RAM allocated by Couchbase for caching data for all buckets and is configured on a per-node basis. NOTE: This is used only for first deployment and ignored when adding new  hosts for the service. 
+   * The server quota is the RAM memory in MiB that is allocated to the server when Couchbase Server is first installed. This sets the limit of RAM allocated by Couchbase for caching data for all buckets on each of the nodes.  Optional, defaults to `4096` (4 GiB).  NOTE: This parameter is taken into account only during the initial cluster  deployment and ignored when adding new hosts to the cluster. 
    * @member {Number} serverQuota
    */
   exports.prototype['serverQuota'] = undefined;
   /**
-   * The bucket quota is the amount of RAM memory in bytes allocated to an individual bucket for caching data. NOTE: This is used only for first deployment and ignored when adding new  hosts for the service. 
+   * The bucket quota is the amount of RAM memory in MiB allocated to each individual bucket for caching data. Optional, defaults to `4096` (4 GiB).  Optimally, should be set to the same value as `serverQuota`.  NOTE: This parameter is taken into account only during the initial cluster  deployment and ignored when adding new hosts to the cluster. 
    * @member {Number} bucketQuota
    */
   exports.prototype['bucketQuota'] = undefined;

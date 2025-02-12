@@ -91,7 +91,7 @@
    */
   exports.prototype['hosts'] = undefined;
   /**
-   * The port on which the OneS3 service will be available. NOTE: This is used only for first deployment and ignored when adding new  hosts for the service. 
+   * The port on which the OneS3 service will be available.  NOTE: This parameter is taken into account only during the initial cluster  deployment and ignored when adding new hosts to the cluster. 
    * @member {Number} port
    */
   exports.prototype['port'] = undefined;

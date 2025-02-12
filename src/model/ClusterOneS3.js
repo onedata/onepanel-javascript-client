@@ -51,6 +51,7 @@
     var _this = this;
 
     _this['nodes'] = nodes;
+
   };
 
   /**
@@ -77,6 +78,9 @@
       if (data.hasOwnProperty('nodes')) {
         obj['nodes'] = ApiClient.convertToType(data['nodes'], ['String']);
       }
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      }
     }
     return obj;
   }
@@ -86,6 +90,11 @@
    * @member {Array.<String>} nodes
    */
   exports.prototype['nodes'] = undefined;
+  /**
+   * The port on which the OneS3 service will be available.
+   * @member {Number} port
+   */
+  exports.prototype['port'] = undefined;
 
 
 

@@ -51,6 +51,16 @@
   }
 
   describe('OneproviderClusterApi', function() {
+    describe('addOnes3', function() {
+      it('should call addOnes3 successfully', function(done) {
+        //uncomment below and update the code to test addOnes3
+        //instance.addOnes3(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addProviderDatabases', function() {
       it('should call addProviderDatabases successfully', function(done) {
         //uncomment below and update the code to test addProviderDatabases
@@ -85,6 +95,26 @@
       it('should call configureProvider successfully', function(done) {
         //uncomment below and update the code to test configureProvider
         //instance.configureProvider(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getOnes3StatusClusterWide', function() {
+      it('should call getOnes3StatusClusterWide successfully', function(done) {
+        //uncomment below and update the code to test getOnes3StatusClusterWide
+        //instance.getOnes3StatusClusterWide(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getOnes3StatusOnHost', function() {
+      it('should call getOnes3StatusOnHost successfully', function(done) {
+        //uncomment below and update the code to test getOnes3StatusOnHost
+        //instance.getOnes3StatusOnHost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -185,6 +215,26 @@
       it('should call modifyProviderClusterIps successfully', function(done) {
         //uncomment below and update the code to test modifyProviderClusterIps
         //instance.modifyProviderClusterIps(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startStopOnes3ClusterWide', function() {
+      it('should call startStopOnes3ClusterWide successfully', function(done) {
+        //uncomment below and update the code to test startStopOnes3ClusterWide
+        //instance.startStopOnes3ClusterWide(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('startStopOnes3OnHost', function() {
+      it('should call startStopOnes3OnHost successfully', function(done) {
+        //uncomment below and update the code to test startStopOnes3OnHost
+        //instance.startStopOnes3OnHost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

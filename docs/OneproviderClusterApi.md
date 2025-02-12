@@ -4,10 +4,13 @@ All URIs are relative to *https://localhost/api/v3/onepanel*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addOnes3**](OneproviderClusterApi.md#addOnes3) | **POST** /provider/ones3 | Add OneS3 services
 [**addProviderDatabases**](OneproviderClusterApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 [**addProviderManagers**](OneproviderClusterApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 [**addProviderWorkers**](OneproviderClusterApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 [**configureProvider**](OneproviderClusterApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+[**getOnes3StatusClusterWide**](OneproviderClusterApi.md#getOnes3StatusClusterWide) | **GET** /provider/ones3 | Get OneS3 service status (cluster-wide)
+[**getOnes3StatusOnHost**](OneproviderClusterApi.md#getOnes3StatusOnHost) | **GET** /provider/ones3/{host} | Get OneS3 service status on a host
 [**getProviderClusterIps**](OneproviderClusterApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 [**getProviderConfiguration**](OneproviderClusterApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 [**getProviderDatabaseStatus**](OneproviderClusterApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -18,6 +21,8 @@ Method | HTTP request | Description
 [**getProviderWorkerStatus**](OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 [**getProviderWorkersStatus**](OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 [**modifyProviderClusterIps**](OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
+[**startStopOnes3ClusterWide**](OneproviderClusterApi.md#startStopOnes3ClusterWide) | **PATCH** /provider/ones3 | Start/stop OneS3 service (cluster-wide)
+[**startStopOnes3OnHost**](OneproviderClusterApi.md#startStopOnes3OnHost) | **PATCH** /provider/ones3/{host} | Start/stop OneS3 service on a host
 [**startStopProviderDatabase**](OneproviderClusterApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 [**startStopProviderDatabases**](OneproviderClusterApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 [**startStopProviderManager**](OneproviderClusterApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -25,6 +30,70 @@ Method | HTTP request | Description
 [**startStopProviderWorker**](OneproviderClusterApi.md#startStopProviderWorker) | **PATCH** /provider/workers/{host} | Start/stop provider cluster worker
 [**startStopProviderWorkers**](OneproviderClusterApi.md#startStopProviderWorkers) | **PATCH** /provider/workers | Start/stop provider cluster workers
 
+
+<a name="addOnes3"></a>
+# **addOnes3**
+> TaskId addOnes3(serviceHosts)
+
+Add OneS3 services
+
+Deploys the OneS3 service on the specified hosts.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the service will be enabled, but its start will be postponed and automatically  resumed after the registration. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var serviceHosts = new Onepanel.ServiceOnes3(); // ServiceOnes3 | The OneS3 service hosts configuration. 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addOnes3(serviceHosts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serviceHosts** | [**ServiceOnes3**](ServiceOnes3.md)| The OneS3 service hosts configuration.  | 
+
+### Return type
+
+[**TaskId**](TaskId.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="addProviderDatabases"></a>
 # **addProviderDatabases**
@@ -281,6 +350,128 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/x-yaml
  - **Accept**: Not defined
+
+<a name="getOnes3StatusClusterWide"></a>
+# **getOnes3StatusClusterWide**
+> ServiceStatus getOnes3StatusClusterWide()
+
+Get OneS3 service status (cluster-wide)
+
+Returns the status of OneS3 service on each host where it has been deployed. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnes3StatusClusterWide(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ServiceStatus**](ServiceStatus.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getOnes3StatusOnHost"></a>
+# **getOnes3StatusOnHost**
+> ServiceStatusHost getOnes3StatusOnHost(host)
+
+Get OneS3 service status on a host
+
+Returns the status of the OneS3 service on the selected host.
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var host = "host_example"; // String | The cluster host for which the OneS3 service status should be returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getOnes3StatusOnHost(host, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| The cluster host for which the OneS3 service status should be returned. | 
+
+### Return type
+
+[**ServiceStatusHost**](ServiceStatusHost.md)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getProviderClusterIps"></a>
 # **getProviderClusterIps**
@@ -884,6 +1075,139 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/x-yaml
+ - **Accept**: Not defined
+
+<a name="startStopOnes3ClusterWide"></a>
+# **startStopOnes3ClusterWide**
+> startStopOnes3ClusterWide(opts)
+
+Start/stop OneS3 service (cluster-wide)
+
+Starts or stops OneS3 service on all hosts in the cluster.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the start of the service will be postponed and automatically resumed after the registration. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var opts = { 
+  'started': true // Boolean | Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description). 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopOnes3ClusterWide(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **started** | **Boolean**| Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description).  | [optional] [default to true]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="startStopOnes3OnHost"></a>
+# **startStopOnes3OnHost**
+> startStopOnes3OnHost(host, opts)
+
+Start/stop OneS3 service on a host
+
+Starts or stops the OneS3 service on the selected host in the cluster.  NOTE: the OneS3 service requires that the provider is registered in  Onezone before it can be started. If it&#39;s not the case, the start of the service will be postponed and automatically resumed after the registration. 
+
+### Example
+```javascript
+var Onepanel = require('onepanel');
+var defaultClient = Onepanel.ApiClient.instance;
+
+// Configure API key authorization: api_key1
+var api_key1 = defaultClient.authentications['api_key1'];
+api_key1.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key1.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: api_key2
+var api_key2 = defaultClient.authentications['api_key2'];
+api_key2.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key2.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: basic
+var basic = defaultClient.authentications['basic'];
+basic.username = 'YOUR USERNAME';
+basic.password = 'YOUR PASSWORD';
+
+var apiInstance = new Onepanel.OneproviderClusterApi();
+
+var host = "host_example"; // String | The cluster host for which OneS3 service status should be changed.
+
+var opts = { 
+  'started': true // Boolean | Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description). 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.startStopOnes3OnHost(host, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| The cluster host for which OneS3 service status should be changed. | 
+ **started** | **Boolean**| Defines the intended state of the OneS3 service. The service will be started or stopped in order to match the requested state. Starting may be postponed (see the description).  | [optional] [default to true]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key1](../README.md#api_key1), [api_key2](../README.md#api_key2), [basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 <a name="startStopProviderDatabase"></a>

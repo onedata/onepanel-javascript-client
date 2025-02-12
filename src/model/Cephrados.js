@@ -51,9 +51,9 @@
    * @param type {module:model/Cephrados.TypeEnum} The type of storage.  `type = \"cephrados\"`  Storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage. 
    * @param username {String} The username of the Ceph cluster administrator.
    * @param key {String} The admin key to access the Ceph cluster.
-   * @param monitorHostname {String} The hostname (IP address or FQDN) of the Ceph monitor service. 
-   * @param clusterName {String} The name of the Ceph storage cluster.
-   * @param poolName {String} The name of the Ceph pool – the logical partition for object storage. 
+   * @param monitorHostname {String} The monitor hostname.
+   * @param clusterName {String} The Ceph cluster name.
+   * @param poolName {String} The Ceph pool name.
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
@@ -122,22 +122,22 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The hostname (IP address or FQDN) of the Ceph monitor service. 
+   * The monitor hostname.
    * @member {String} monitorHostname
    */
   exports.prototype['monitorHostname'] = undefined;
   /**
-   * The name of the Ceph storage cluster.
+   * The Ceph cluster name.
    * @member {String} clusterName
    */
   exports.prototype['clusterName'] = undefined;
   /**
-   * The name of the Ceph pool – the logical partition for object storage. 
+   * The Ceph pool name.
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;
   /**
-   * Each file will be split across a number of Ceph RADOS objects of the specified size. For optimal performance, this value should be equal to the object size configured in a given Ceph Storage Cluster (default 4M). 
+   * Storage block size in bytes.
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;

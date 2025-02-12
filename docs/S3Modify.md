@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;s3\&quot;&#x60;  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage.  | 
-**hostname** | **String** | The URL of the S3 service endpoint, including the scheme (http or https) and optionally a port (after a colon).  | [optional] 
+**hostname** | **String** | The hostname of a machine where S3 storage is installed. | [optional] 
 **bucketName** | **String** | The storage bucket name. | [optional] 
 **accessKey** | **String** | The access key to the S3 storage. | [optional] 
 **secretKey** | **String** | The secret key to the S3 storage. | [optional] 

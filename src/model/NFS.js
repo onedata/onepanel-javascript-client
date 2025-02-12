@@ -49,7 +49,7 @@
    * @implements module:model/StorageCreateDetails
    * @param type {module:model/NFS.TypeEnum} The type of storage.  `type = \"nfs\"`  NFS storage. 
    * @param host {String} The hostname (IP address or FQDN) of NFS server.
-   * @param volume {String} The name (path) of the NFS export.
+   * @param volume {String} The name of the NFS volume (export).
    */
   var exports = function(type, host, volume) {
     var _this = this;
@@ -138,23 +138,23 @@
    */
   exports.prototype['version'] = undefined;
   /**
-   * The name (path) of the NFS export.
+   * The name of the NFS volume (export).
    * @member {String} volume
    */
   exports.prototype['volume'] = undefined;
   /**
-   * Number of simultaneous network connections that can be maintained with the NFS server. 
+   * The size of NFS connection pool.
    * @member {Number} connectionPoolSize
    */
   exports.prototype['connectionPoolSize'] = undefined;
   /**
-   * Enables caching of directory metadata on the client side to improve performance by reducing requests to the NFS server. May cause temporary inconsistencies if the directory content changes on the server. 
+   * Enables directory caching.
    * @member {Boolean} dirCache
    * @default true
    */
   exports.prototype['dirCache'] = true;
   /**
-   * The amount of data that the system preloads into cache ahead of client requests. 
+   * The size of readahead in bytes.
    * @member {Number} readAhead
    */
   exports.prototype['readAhead'] = undefined;

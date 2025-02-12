@@ -46,11 +46,13 @@
    * @alias module:model/OneS3Hosts
    * @class
    * @param hosts {Array.<String>} The list of service hosts.
+   * @param port {Number} The port on which the OneS3 service is available.
    */
-  var exports = function(hosts) {
+  var exports = function(hosts, port) {
     var _this = this;
 
     _this['hosts'] = hosts;
+    _this['port'] = port;
   };
 
   /**
@@ -77,6 +79,9 @@
       if (data.hasOwnProperty('hosts')) {
         obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
       }
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      }
     }
     return obj;
   }
@@ -86,6 +91,11 @@
    * @member {Array.<String>} hosts
    */
   exports.prototype['hosts'] = undefined;
+  /**
+   * The port on which the OneS3 service is available.
+   * @member {Number} port
+   */
+  exports.prototype['port'] = undefined;
 
 
 

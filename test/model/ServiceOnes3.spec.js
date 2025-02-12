@@ -16,141 +16,59 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StorageModifyDetails'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StorageModifyDetails'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.CephModify = factory(root.Onepanel.ApiClient, root.Onepanel.StorageModifyDetails);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, StorageModifyDetails) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.ServiceOnes3();
+  });
 
-
-  /**
-   * The CephModify model module.
-   * @module model/CephModify
-   * @version 21.02.8
-   */
-
-  /**
-   * Constructs a new <code>CephModify</code>.
-   * The Ceph storage configuration (uses libradosstriper).
-   * @alias module:model/CephModify
-   * @class
-   * @extends module:model/StorageModifyDetails
-   * @param type {module:model/CephModify.TypeEnum} Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  `type = \"ceph\"`  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated `libradosstriper` library. 
-   */
-  var exports = function(type) {
-    var _this = this;
-    StorageModifyDetails.call(_this);
-    _this['type'] = type;
-
-
-
-
-
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/CephModify} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>CephModify</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CephModify} obj Optional instance to populate.
-   * @return {module:model/CephModify} The populated <code>CephModify</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-      StorageModifyDetails.constructFromObject(data, obj);
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
-      if (data.hasOwnProperty('monitorHostname')) {
-        obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
-      }
-      if (data.hasOwnProperty('clusterName')) {
-        obj['clusterName'] = ApiClient.convertToType(data['clusterName'], 'String');
-      }
-      if (data.hasOwnProperty('poolName')) {
-        obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  exports.prototype = Object.create(StorageModifyDetails.prototype);
-  exports.prototype.constructor = exports;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
-  /**
-   * Type of the modified storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism.  `type = \"ceph\"`  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated `libradosstriper` library. 
-   * @member {module:model/CephModify.TypeEnum} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
-   * The username of the Ceph cluster administrator.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The admin key to access the Ceph cluster.
-   * @member {String} key
-   */
-  exports.prototype['key'] = undefined;
-  /**
-   * The monitor hostname.
-   * @member {String} monitorHostname
-   */
-  exports.prototype['monitorHostname'] = undefined;
-  /**
-   * The Ceph cluster name.
-   * @member {String} clusterName
-   */
-  exports.prototype['clusterName'] = undefined;
-  /**
-   * The Ceph pool name.
-   * @member {String} poolName
-   */
-  exports.prototype['poolName'] = undefined;
+  describe('ServiceOnes3', function() {
+    it('should create an instance of ServiceOnes3', function() {
+      // uncomment below and update the code to test ServiceOnes3
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be.a(Onepanel.ServiceOnes3);
+    });
 
+    it('should have the property hosts (base name: "hosts")', function() {
+      // uncomment below and update the code to test the property hosts
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be();
+    });
 
-  /**
-   * Allowed values for the <code>type</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TypeEnum = {
-    /**
-     * value: "ceph"
-     * @const
-     */
-    "ceph": "ceph"  };
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.ServiceOnes3();
+      //expect(instance).to.be();
+    });
 
+  });
 
-  return exports;
 }));
-
-

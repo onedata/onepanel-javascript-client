@@ -179,10 +179,13 @@ Class | Method | HTTP request | Description
 *Onepanel.LUMADBLocalFeedApi* | [**localFeedSetDefaultPosixCredentials**](docs/LUMADBLocalFeedApi.md#localFeedSetDefaultPosixCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/storage_access/posix_compatible/default_credentials/{space_id} | Insert default posix credentials into local feed
 *Onepanel.LUMADBLocalFeedApi* | [**localFeedSetDisplayCredentials**](docs/LUMADBLocalFeedApi.md#localFeedSetDisplayCredentials) | **PUT** /provider/storages/{id}/luma/local_feed/display_credentials/all/default/{space_id} | Insert default display credentials into local feed
 *Onepanel.LUMADBLocalFeedApi* | [**localFeedSetUidToOnedataUserMapping**](docs/LUMADBLocalFeedApi.md#localFeedSetUidToOnedataUserMapping) | **PUT** /provider/storages/{id}/luma/local_feed/storage_import/posix_compatible/uid_to_onedata_user/{uid} | Insert mapping of UID into local feed
+*Onepanel.OneproviderClusterApi* | [**addOnes3**](docs/OneproviderClusterApi.md#addOnes3) | **POST** /provider/ones3 | Add OneS3 services
 *Onepanel.OneproviderClusterApi* | [**addProviderDatabases**](docs/OneproviderClusterApi.md#addProviderDatabases) | **POST** /provider/databases | Deploy provider databases
 *Onepanel.OneproviderClusterApi* | [**addProviderManagers**](docs/OneproviderClusterApi.md#addProviderManagers) | **POST** /provider/managers | Add provider cluster managers
 *Onepanel.OneproviderClusterApi* | [**addProviderWorkers**](docs/OneproviderClusterApi.md#addProviderWorkers) | **POST** /provider/workers | Add provider cluster workers
 *Onepanel.OneproviderClusterApi* | [**configureProvider**](docs/OneproviderClusterApi.md#configureProvider) | **POST** /provider/configuration | Configure provider deployment
+*Onepanel.OneproviderClusterApi* | [**getOnes3StatusClusterWide**](docs/OneproviderClusterApi.md#getOnes3StatusClusterWide) | **GET** /provider/ones3 | Get OneS3 service status (cluster-wide)
+*Onepanel.OneproviderClusterApi* | [**getOnes3StatusOnHost**](docs/OneproviderClusterApi.md#getOnes3StatusOnHost) | **GET** /provider/ones3/{host} | Get OneS3 service status on a host
 *Onepanel.OneproviderClusterApi* | [**getProviderClusterIps**](docs/OneproviderClusterApi.md#getProviderClusterIps) | **GET** /provider/cluster_ips | Get provider cluster nodes IPs
 *Onepanel.OneproviderClusterApi* | [**getProviderConfiguration**](docs/OneproviderClusterApi.md#getProviderConfiguration) | **GET** /provider/configuration | Get provider cluster configuration
 *Onepanel.OneproviderClusterApi* | [**getProviderDatabaseStatus**](docs/OneproviderClusterApi.md#getProviderDatabaseStatus) | **GET** /provider/databases/{host} | Get provider database status
@@ -193,6 +196,8 @@ Class | Method | HTTP request | Description
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkerStatus**](docs/OneproviderClusterApi.md#getProviderWorkerStatus) | **GET** /provider/workers/{host} | Get provider cluster worker status
 *Onepanel.OneproviderClusterApi* | [**getProviderWorkersStatus**](docs/OneproviderClusterApi.md#getProviderWorkersStatus) | **GET** /provider/workers | Get provider cluster workers status
 *Onepanel.OneproviderClusterApi* | [**modifyProviderClusterIps**](docs/OneproviderClusterApi.md#modifyProviderClusterIps) | **PATCH** /provider/cluster_ips | Set external IPs of nodes in application config
+*Onepanel.OneproviderClusterApi* | [**startStopOnes3ClusterWide**](docs/OneproviderClusterApi.md#startStopOnes3ClusterWide) | **PATCH** /provider/ones3 | Start/stop OneS3 service (cluster-wide)
+*Onepanel.OneproviderClusterApi* | [**startStopOnes3OnHost**](docs/OneproviderClusterApi.md#startStopOnes3OnHost) | **PATCH** /provider/ones3/{host} | Start/stop OneS3 service on a host
 *Onepanel.OneproviderClusterApi* | [**startStopProviderDatabase**](docs/OneproviderClusterApi.md#startStopProviderDatabase) | **PATCH** /provider/databases/{host} | Start/stop provider database
 *Onepanel.OneproviderClusterApi* | [**startStopProviderDatabases**](docs/OneproviderClusterApi.md#startStopProviderDatabases) | **PATCH** /provider/databases | Start/stop provider databases
 *Onepanel.OneproviderClusterApi* | [**startStopProviderManager**](docs/OneproviderClusterApi.md#startStopProviderManager) | **PATCH** /provider/managers/{host} | Start/stop provider cluster manager
@@ -318,6 +323,7 @@ Class | Method | HTTP request | Description
  - [Onepanel.RemoteProviderDetails](docs/RemoteProviderDetails.md)
  - [Onepanel.ServiceDatabases](docs/ServiceDatabases.md)
  - [Onepanel.ServiceHosts](docs/ServiceHosts.md)
+ - [Onepanel.ServiceOnes3](docs/ServiceOnes3.md)
  - [Onepanel.ServiceStatus](docs/ServiceStatus.md)
  - [Onepanel.ServiceStatusHost](docs/ServiceStatusHost.md)
  - [Onepanel.SpaceAutoCleaningConfiguration](docs/SpaceAutoCleaningConfiguration.md)

@@ -51,18 +51,17 @@
    * @param type {module:model/Swift.TypeEnum} The type of storage.  `type = \"swift\"`  Storage backend compatible with [OpenStack](http://docs.openstack.org/developer/swift/) SWIFT protocol. 
    * @param username {String} The Keystone authentication username.
    * @param password {String} The Keystone authentication password.
-   * @param authUrl {String} The URL to OpenStack Keystone identity service.
-   * @param tenantName {String} The name of the tenant to which the user belongs.
+   * @param projectName {String} The Keystone project name.
+   * @param authUrl {String} The URL to OpenStack Identity Service (Keystone) V3.
    * @param containerName {String} The name of the Swift storage container.
    */
-  var exports = function(type, username, password, authUrl, tenantName, containerName) {
+  var exports = function(type, username, password, projectName, authUrl, containerName) {
     var _this = this;
     StorageGetDetails.call(_this);
     StorageCreateDetails.call(_this);
-    SwiftCredentials.call(_this, type, username, password);
+    SwiftCredentials.call(_this, type, username, password, projectName);
     _this['type'] = type;
     _this['authUrl'] = authUrl;
-    _this['tenantName'] = tenantName;
     _this['containerName'] = containerName;
 
 
@@ -97,9 +96,6 @@
       if (data.hasOwnProperty('authUrl')) {
         obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
       }
-      if (data.hasOwnProperty('tenantName')) {
-        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
-      }
       if (data.hasOwnProperty('containerName')) {
         obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
       }
@@ -122,15 +118,10 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL to OpenStack Keystone identity service.
+   * The URL to OpenStack Identity Service (Keystone) V3.
    * @member {String} authUrl
    */
   exports.prototype['authUrl'] = undefined;
-  /**
-   * The name of the tenant to which the user belongs.
-   * @member {String} tenantName
-   */
-  exports.prototype['tenantName'] = undefined;
   /**
    * The name of the Swift storage container.
    * @member {String} containerName
@@ -224,6 +215,26 @@ exports.prototype['username'] = undefined;
    * @member {String} password
    */
 exports.prototype['password'] = undefined;
+
+  /**
+   * The Keystone project name.
+   * @member {String} projectName
+   */
+exports.prototype['projectName'] = undefined;
+
+  /**
+   * The Keystone user domain name.
+   * @member {String} userDomainName
+   * @default 'Default'
+   */
+exports.prototype['userDomainName'] = 'Default';
+
+  /**
+   * The Keystone project domain name.
+   * @member {String} projectDomainName
+   * @default 'Default'
+   */
+exports.prototype['projectDomainName'] = 'Default';
 
 
   /**

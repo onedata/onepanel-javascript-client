@@ -49,7 +49,7 @@
    * @implements module:model/StorageCreateDetails
    * @implements module:model/S3Credentials
    * @param type {module:model/S3.TypeEnum} The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
-   * @param hostname {String} The URL of the S3 service endpoint, including the scheme (http or https) and optionally a port (after a colon). 
+   * @param hostname {String} The hostname of a machine where S3 storage is installed.
    * @param bucketName {String} The storage bucket name.
    */
   var exports = function(type, hostname, bucketName) {
@@ -139,7 +139,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint, including the scheme (http or https) and optionally a port (after a colon). 
+   * The hostname of a machine where S3 storage is installed.
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
@@ -166,7 +166,7 @@
    */
   exports.prototype['region'] = 'us-east-1';
   /**
-   * Storage block size in bytes i.e. the maximum object size. Files larger than one block will stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an S3 storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
+   * Storage block size in bytes. In case the block size is `0` and `canonical` path type is selected, each file is stored in a single S3 object. This value must be set to `0` to enable data import from an existing S3 bucket. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;

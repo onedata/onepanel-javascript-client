@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tenantName (base name: "tenantName")', function() {
+      // uncomment below and update the code to test the property tenantName
+      //var instane = new Onepanel.SwiftModify();
+      //expect(instance).to.be();
+    });
+
     it('should have the property containerName (base name: "containerName")', function() {
       // uncomment below and update the code to test the property containerName
       //var instane = new Onepanel.SwiftModify();
@@ -83,24 +89,6 @@
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instane = new Onepanel.SwiftModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property projectName (base name: "projectName")', function() {
-      // uncomment below and update the code to test the property projectName
-      //var instane = new Onepanel.SwiftModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property userDomainName (base name: "userDomainName")', function() {
-      // uncomment below and update the code to test the property userDomainName
-      //var instane = new Onepanel.SwiftModify();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property projectDomainName (base name: "projectDomainName")', function() {
-      // uncomment below and update the code to test the property projectDomainName
       //var instane = new Onepanel.SwiftModify();
       //expect(instance).to.be();
     });

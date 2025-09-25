@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cluster** | [**ZoneClusterConfigurationDetails**](ZoneClusterConfigurationDetails.md) |  | 
+**cluster** | [**ClusterConfigurationDetails**](ClusterConfigurationDetails.md) |  | 
 **onezone** | [**ZoneConfigurationDetailsOnezone**](ZoneConfigurationDetailsOnezone.md) |  | [optional] 
 
 

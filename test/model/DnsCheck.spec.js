@@ -16,104 +16,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DnsCheckResult'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./DnsCheckResult'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Onepanel) {
-      root.Onepanel = {};
-    }
-    root.Onepanel.DnsCheckSummary = factory(root.Onepanel.ApiClient, root.Onepanel.DnsCheckResult);
+    factory(root.expect, root.Onepanel);
   }
-}(this, function(ApiClient, DnsCheckResult) {
+}(this, function(expect, Onepanel) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Onepanel.DnsCheck();
+  });
 
-
-  /**
-   * The DnsCheckSummary model module.
-   * @module model/DnsCheckSummary
-   * @version 21.02.8
-   */
-
-  /**
-   * Constructs a new <code>DnsCheckSummary</code>.
-   * Gathers results of DNS checks for various aspects of the cluster domain. Both Oneprovider and Onezone return field &#39;domain&#39; for checking if cluster&#39;s domain can be resolved. In Oneprovider there may be additional field &#39;oneS3Subdomain&#39; for checking if  OneS3 domain can be resolved if said service is enabled. In Onezone there is additional field &#39;dnsZone&#39; for checking whether DNS zone management for the Onezone&#39;s domain has been delegated to Onezone server (SOA and NS records) allowing for subdomain delegation. If the cluster is configured with an IP neither &#39;domain&#39; nor &#39;dnsZone&#39; is returned. 
-   * @alias module:model/DnsCheckSummary
-   * @class
-   * @param timestamp {String} Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
-   */
-  var exports = function(timestamp) {
-    var _this = this;
-
-
-
-
-    _this['timestamp'] = timestamp;
-  };
-
-  /**
-   * Provides basic polymorphism support by returning discriminator type for
-   * Swagger base classes. If type is not polymorphic returns 'undefined'.
-   *
-   * @return {module:model/DnsCheckSummary} The value of 'discriminator' field or undefined.
-   */
-  exports.__swaggerDiscriminator = function() {
-    ;
-  };
-
-  /**
-   * Constructs a <code>DnsCheckSummary</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DnsCheckSummary} obj Optional instance to populate.
-   * @return {module:model/DnsCheckSummary} The populated <code>DnsCheckSummary</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('domain')) {
-        obj['domain'] = DnsCheckResult.constructFromObject(data['domain']);
-      }
-      if (data.hasOwnProperty('oneS3Subdomain')) {
-        obj['oneS3Subdomain'] = DnsCheckResult.constructFromObject(data['oneS3Subdomain']);
-      }
-      if (data.hasOwnProperty('dnsZone')) {
-        obj['dnsZone'] = DnsCheckResult.constructFromObject(data['dnsZone']);
-      }
-      if (data.hasOwnProperty('timestamp')) {
-        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {module:model/DnsCheckResult} domain
-   */
-  exports.prototype['domain'] = undefined;
-  /**
-   * @member {module:model/DnsCheckResult} oneS3Subdomain
-   */
-  exports.prototype['oneS3Subdomain'] = undefined;
-  /**
-   * @member {module:model/DnsCheckResult} dnsZone
-   */
-  exports.prototype['dnsZone'] = undefined;
-  /**
-   * Time at which the DNS check was perfmormed. Formatted according to ISO 8601.
-   * @member {String} timestamp
-   */
-  exports.prototype['timestamp'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('DnsCheck', function() {
+    it('should create an instance of DnsCheck', function() {
+      // uncomment below and update the code to test DnsCheck
+      //var instane = new Onepanel.DnsCheck();
+      //expect(instance).to.be.a(Onepanel.DnsCheck);
+    });
 
+    it('should have the property domain (base name: "domain")', function() {
+      // uncomment below and update the code to test the property domain
+      //var instane = new Onepanel.DnsCheck();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property dnsZone (base name: "dnsZone")', function() {
+      // uncomment below and update the code to test the property dnsZone
+      //var instane = new Onepanel.DnsCheck();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timestamp (base name: "timestamp")', function() {
+      // uncomment below and update the code to test the property timestamp
+      //var instane = new Onepanel.DnsCheck();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

@@ -51,9 +51,9 @@
    * @param type {module:model/Ceph.TypeEnum} The type of storage.  `type = \"ceph\"`  (**DEPRECATED** - use Ceph RADOS instead) storage backend compatible with [Ceph](http://ceph.com/ceph-storage/) object storage, using the deprecated `libradosstriper` library. 
    * @param username {String} The username of the Ceph cluster user. In case of configuring storage, this field must be equal to name of the Ceph cluster admin. 
    * @param key {String} The key to access the Ceph cluster. In case of configuring storage, the key must be the key of admin user passed in `username`. 
-   * @param monitorHostname {String} The hostname (IP address or FQDN) of the Ceph monitor service. 
-   * @param clusterName {String} The name of the Ceph storage cluster.
-   * @param poolName {String} The name of the Ceph pool – the logical partition for object storage. 
+   * @param monitorHostname {String} The monitor hostname.
+   * @param clusterName {String} The Ceph cluster name.
+   * @param poolName {String} The Ceph pool name.
    */
   var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
@@ -118,17 +118,17 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The hostname (IP address or FQDN) of the Ceph monitor service. 
+   * The monitor hostname.
    * @member {String} monitorHostname
    */
   exports.prototype['monitorHostname'] = undefined;
   /**
-   * The name of the Ceph storage cluster.
+   * The Ceph cluster name.
    * @member {String} clusterName
    */
   exports.prototype['clusterName'] = undefined;
   /**
-   * The name of the Ceph pool – the logical partition for object storage. 
+   * The Ceph pool name.
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;

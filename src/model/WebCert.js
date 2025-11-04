@@ -49,7 +49,7 @@
    * @param expirationTime {String} Installed certificate's expiration time in ISO 8601 format. 
    * @param creationTime {String} Installed certificate's creation time in ISO 8601 format. 
    * @param status {module:model/WebCert.StatusEnum} Describes certificate validity status.
-   * @param domain {String} **DEPRECATED** The domain (Common Name) for which current certificate  was issued. 
+   * @param domain {String} The domain (Common Name) for which current certificate was issued. 
    * @param issuer {String} Issuer value of the current certificate. 
    */
   var exports = function(letsEncrypt, expirationTime, creationTime, status, domain, issuer) {
@@ -61,7 +61,6 @@
     _this['status'] = status;
 
     _this['domain'] = domain;
-
     _this['issuer'] = issuer;
 
 
@@ -106,9 +105,6 @@
       if (data.hasOwnProperty('domain')) {
         obj['domain'] = ApiClient.convertToType(data['domain'], 'String');
       }
-      if (data.hasOwnProperty('dnsNames')) {
-        obj['dnsNames'] = ApiClient.convertToType(data['dnsNames'], ['String']);
-      }
       if (data.hasOwnProperty('issuer')) {
         obj['issuer'] = ApiClient.convertToType(data['issuer'], 'String');
       }
@@ -147,15 +143,10 @@
    */
   exports.prototype['paths'] = undefined;
   /**
-   * **DEPRECATED** The domain (Common Name) for which current certificate  was issued. 
+   * The domain (Common Name) for which current certificate was issued. 
    * @member {String} domain
    */
   exports.prototype['domain'] = undefined;
-  /**
-   * List of DNS names included in certificate's Subject Alternative Name extension. 
-   * @member {Array.<String>} dnsNames
-   */
-  exports.prototype['dnsNames'] = undefined;
   /**
    * Issuer value of the current certificate. 
    * @member {String} issuer

@@ -131,7 +131,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint, including the scheme (http or https) and optionally a port (after a colon). 
+   * The hostname of a machine where S3 storage is installed.
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;

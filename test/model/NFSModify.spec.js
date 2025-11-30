@@ -105,6 +105,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property uid (base name: "uid")', function() {
+      // uncomment below and update the code to test the property uid
+      //var instane = new Onepanel.NFSModify();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property gid (base name: "gid")', function() {
+      // uncomment below and update the code to test the property gid
+      //var instane = new Onepanel.NFSModify();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

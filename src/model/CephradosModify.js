@@ -83,12 +83,6 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
       if (data.hasOwnProperty('monitorHostname')) {
         obj['monitorHostname'] = ApiClient.convertToType(data['monitorHostname'], 'String');
       }
@@ -97,6 +91,12 @@
       }
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
+      }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
       }
     }
     return obj;
@@ -111,17 +111,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The username of the Ceph cluster administrator.
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-  /**
-   * The admin key to access the Ceph cluster.
-   * @member {String} key
-   */
-  exports.prototype['key'] = undefined;
-  /**
-   * The hostname (IP address or FQDN) of the Ceph monitor service.
+   * The hostname (IP address or FQDN) of the Ceph monitor service. 
    * @member {String} monitorHostname
    */
   exports.prototype['monitorHostname'] = undefined;
@@ -135,6 +125,16 @@
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;
+  /**
+   * The username of the Ceph cluster administrator.
+   * @member {String} username
+   */
+  exports.prototype['username'] = undefined;
+  /**
+   * The admin key to access the Ceph cluster.
+   * @member {String} key
+   */
+  exports.prototype['key'] = undefined;
 
 
   /**

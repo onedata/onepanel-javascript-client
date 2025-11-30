@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **username** | **String** | The Keystone authentication username. | 
 **password** | **String** | The Keystone authentication password. | 
 **projectName** | **String** | The Keystone project name. | 
-**userDomainName** | **String** | The Keystone user domain name. | [optional] [default to &#39;Default&#39;]
-**projectDomainName** | **String** | The Keystone project domain name. | [optional] [default to &#39;Default&#39;]
 
 
 <a name="TypeEnum"></a>

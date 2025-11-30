@@ -58,6 +58,8 @@
 
 
 
+
+
   };
 
   /**
@@ -102,6 +104,12 @@
       if (data.hasOwnProperty('xlatorOptions')) {
         obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
       }
+      if (data.hasOwnProperty('uid')) {
+        obj['uid'] = ApiClient.convertToType(data['uid'], 'Number');
+      }
+      if (data.hasOwnProperty('gid')) {
+        obj['gid'] = ApiClient.convertToType(data['gid'], 'Number');
+      }
     }
     return obj;
   }
@@ -144,6 +152,16 @@
    * @member {String} xlatorOptions
    */
   exports.prototype['xlatorOptions'] = undefined;
+  /**
+   * User identifier.
+   * @member {Number} uid
+   */
+  exports.prototype['uid'] = undefined;
+  /**
+   * Group identifier.
+   * @member {Number} gid
+   */
+  exports.prototype['gid'] = undefined;
 
 
   /**

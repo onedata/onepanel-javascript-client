@@ -53,7 +53,6 @@
     LumaStorageCredentials.call(_this);
     _this['type'] = type;
 
-
   };
 
   /**
@@ -80,9 +79,6 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('credentialsType')) {
-        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
-      }
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
       }
@@ -98,12 +94,6 @@
    * @member {module:model/XRootDCredentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
-  /**
-   * Determines the types of credentials provided in the credentials field. 
-   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
-   * @default 'none'
-   */
-  exports.prototype['credentialsType'] = 'none';
   /**
    * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
    * @member {String} credentials
@@ -122,23 +112,6 @@
      * @const
      */
     "xrootd": "xrootd"  };
-
-  /**
-   * Allowed values for the <code>credentialsType</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.CredentialsTypeEnum = {
-    /**
-     * value: "none"
-     * @const
-     */
-    "none": "none",
-    /**
-     * value: "pwd"
-     * @const
-     */
-    "pwd": "pwd"  };
 
 
   return exports;

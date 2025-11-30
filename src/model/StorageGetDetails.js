@@ -60,7 +60,6 @@
 
 
 
-
   };
 
   /**
@@ -113,9 +112,6 @@
       }
       if (data.hasOwnProperty('importedStorage')) {
         obj['importedStorage'] = ApiClient.convertToType(data['importedStorage'], 'Boolean');
-      }
-      if (data.hasOwnProperty('archiveStorage')) {
-        obj['archiveStorage'] = ApiClient.convertToType(data['archiveStorage'], 'Boolean');
       }
       if (data.hasOwnProperty('readonly')) {
         obj['readonly'] = ApiClient.convertToType(data['readonly'], 'Boolean');
@@ -174,12 +170,6 @@
    * @default false
    */
   exports.prototype['importedStorage'] = false;
-  /**
-   * Defines whether storage supports long-term dataset archiving. 
-   * @member {Boolean} archiveStorage
-   * @default false
-   */
-  exports.prototype['archiveStorage'] = false;
   /**
    * Defines whether the storage is readonly. If enabled, Oneprovider will block any operation that writes, modifies or deletes data on the storage. Such storage can only be used to import data into the space. Mandatory to ensure proper behaviour if the backend storage is actually configured as readonly. This option is available only for imported storages. 
    * @member {Boolean} readonly

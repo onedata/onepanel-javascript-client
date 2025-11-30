@@ -63,18 +63,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property accessKey (base name: "accessKey")', function() {
-      // uncomment below and update the code to test the property accessKey
-      //var instane = new Onepanel.S3Credentials();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property secretKey (base name: "secretKey")', function() {
-      // uncomment below and update the code to test the property secretKey
-      //var instane = new Onepanel.S3Credentials();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

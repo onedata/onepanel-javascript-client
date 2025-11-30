@@ -56,6 +56,12 @@
     HTTPCredentials.call(_this, type);
     _this['type'] = type;
     _this['endpoint'] = endpoint;
+
+
+
+
+
+
   };
 
   /**
@@ -86,6 +92,24 @@
       if (data.hasOwnProperty('endpoint')) {
         obj['endpoint'] = ApiClient.convertToType(data['endpoint'], 'String');
       }
+      if (data.hasOwnProperty('verifyServerCertificate')) {
+        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      }
+      if (data.hasOwnProperty('authorizationHeader')) {
+        obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
+      }
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maxRequestsPerSession')) {
+        obj['maxRequestsPerSession'] = ApiClient.convertToType(data['maxRequestsPerSession'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -103,6 +127,40 @@
    * @member {String} endpoint
    */
   exports.prototype['endpoint'] = undefined;
+  /**
+   * Determines whether Oneprovider should verify the certificate of the HTTP server. 
+   * @member {Boolean} verifyServerCertificate
+   * @default true
+   */
+  exports.prototype['verifyServerCertificate'] = true;
+  /**
+   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will be placed where `{}` is provided. 
+   * @member {String} authorizationHeader
+   * @default 'Authorization: Bearer {}'
+   */
+  exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
+  /**
+   * Defines the maximum number of parallel connections for a single HTTP storage. 
+   * @member {Number} connectionPoolSize
+   */
+  exports.prototype['connectionPoolSize'] = undefined;
+  /**
+   * Defines the maximum number of requests performed in a single HTTP session. After the limit is reached, 'Connection: close' header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server. 
+   * @member {Number} maxRequestsPerSession
+   */
+  exports.prototype['maxRequestsPerSession'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. `0664`. 
+   * @member {String} fileMode
+   * @default '0664'
+   */
+  exports.prototype['fileMode'] = '0664';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
 
   // Implement HTTPCredentials interface:
   /**
@@ -110,6 +168,13 @@
    * @member {module:model/HTTPCredentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
+
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/HTTPCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+exports.prototype['credentialsType'] = 'none';
 
   /**
    * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the HTTP, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
@@ -124,7 +189,7 @@ exports.prototype['credentials'] = undefined;
 exports.prototype['oauth2IdP'] = undefined;
 
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
+   * When registering storage with feed of LUMA DB set to `auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
    * @member {String} onedataAccessToken
    */
 exports.prototype['onedataAccessToken'] = undefined;

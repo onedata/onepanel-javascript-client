@@ -75,6 +75,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property signatureVersion (base name: "signatureVersion")', function() {
+      // uncomment below and update the code to test the property signatureVersion
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property region (base name: "region")', function() {
+      // uncomment below and update the code to test the property region
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumCanonicalObjectSize (base name: "maximumCanonicalObjectSize")', function() {
+      // uncomment below and update the code to test the property maximumCanonicalObjectSize
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirMode (base name: "dirMode")', function() {
+      // uncomment below and update the code to test the property dirMode
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.S3Create();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

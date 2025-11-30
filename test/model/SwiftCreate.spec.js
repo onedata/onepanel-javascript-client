@@ -75,6 +75,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property blockSize (base name: "blockSize")', function() {
+      // uncomment below and update the code to test the property blockSize
+      //var instane = new Onepanel.SwiftCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.SwiftCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -164,12 +164,12 @@
    */
   exports.prototype['oauth2IdP'] = undefined;
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * When registering storage with feed of LUMA DB set to `auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
    * @member {String} onedataAccessToken
    */
   exports.prototype['onedataAccessToken'] = undefined;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
+   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will be placed where `{}` is provided. 
    * @member {String} authorizationHeader
    */
   exports.prototype['authorizationHeader'] = undefined;

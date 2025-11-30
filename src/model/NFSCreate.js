@@ -57,7 +57,13 @@
     NFSCredentials.call(_this, type);
     _this['type'] = type;
     _this['host'] = host;
+
     _this['volume'] = volume;
+
+
+
+
+
   };
 
   /**
@@ -88,8 +94,26 @@
       if (data.hasOwnProperty('host')) {
         obj['host'] = ApiClient.convertToType(data['host'], 'String');
       }
+      if (data.hasOwnProperty('version')) {
+        obj['version'] = ApiClient.convertToType(data['version'], 'Number');
+      }
       if (data.hasOwnProperty('volume')) {
         obj['volume'] = ApiClient.convertToType(data['volume'], 'String');
+      }
+      if (data.hasOwnProperty('connectionPoolSize')) {
+        obj['connectionPoolSize'] = ApiClient.convertToType(data['connectionPoolSize'], 'Number');
+      }
+      if (data.hasOwnProperty('dirCache')) {
+        obj['dirCache'] = ApiClient.convertToType(data['dirCache'], 'Boolean');
+      }
+      if (data.hasOwnProperty('readAhead')) {
+        obj['readAhead'] = ApiClient.convertToType(data['readAhead'], 'Number');
+      }
+      if (data.hasOwnProperty('autoReconnect')) {
+        obj['autoReconnect'] = ApiClient.convertToType(data['autoReconnect'], 'Number');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
       }
     }
     return obj;
@@ -109,10 +133,42 @@
    */
   exports.prototype['host'] = undefined;
   /**
+   * The NFS protocol version. Allowed values are 3 (default) and 4 (experimental).
+   * @member {Number} version
+   */
+  exports.prototype['version'] = undefined;
+  /**
    * The name (path) of the NFS export.
    * @member {String} volume
    */
   exports.prototype['volume'] = undefined;
+  /**
+   * Number of simultaneous network connections that can be maintained with the NFS server. 
+   * @member {Number} connectionPoolSize
+   */
+  exports.prototype['connectionPoolSize'] = undefined;
+  /**
+   * Enables caching of directory metadata on the client side to improve performance by reducing requests to the NFS server. May cause temporary inconsistencies if the directory content changes on the server. 
+   * @member {Boolean} dirCache
+   * @default true
+   */
+  exports.prototype['dirCache'] = true;
+  /**
+   * The amount of data that the system preloads into cache ahead of client requests. 
+   * @member {Number} readAhead
+   */
+  exports.prototype['readAhead'] = undefined;
+  /**
+   * The number of automatic reconnect attempts to the server. Setting `-1` enables infinite number of reconnects.
+   * @member {Number} autoReconnect
+   */
+  exports.prototype['autoReconnect'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
+   * @member {module:model/NFSCreate.StoragePathTypeEnum} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
 
   // Implement NFSCredentials interface:
   /**
@@ -145,6 +201,18 @@ exports.prototype['type'] = undefined;
      * @const
      */
     "nfs": "nfs"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical"  };
 
 
   return exports;

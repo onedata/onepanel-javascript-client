@@ -56,6 +56,9 @@
     XRootDCredentials.call(_this, type);
     _this['type'] = type;
     _this['url'] = url;
+
+
+
   };
 
   /**
@@ -86,6 +89,15 @@
       if (data.hasOwnProperty('url')) {
         obj['url'] = ApiClient.convertToType(data['url'], 'String');
       }
+      if (data.hasOwnProperty('fileModeMask')) {
+        obj['fileModeMask'] = ApiClient.convertToType(data['fileModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('dirModeMask')) {
+        obj['dirModeMask'] = ApiClient.convertToType(data['dirModeMask'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -103,6 +115,24 @@
    * @member {String} url
    */
   exports.prototype['url'] = undefined;
+  /**
+   * Defines the file permissions mask, which is used to map XRootD file mode to POSIX mode. For instance a fileModeMask `0664` for readable file on XRootD would result in a file which is readable for all users, but file which is writeable in XRootD will be only writeable by user and group. 
+   * @member {String} fileModeMask
+   * @default '0664'
+   */
+  exports.prototype['fileModeMask'] = '0664';
+  /**
+   * Defines the directory permissions mask, which is used to map XRootD dir mode to POSIX mode. For instance a dirModeMask `0770` for readable directory on XRootD would result in a directory which is readable for owner and group but not for others. 
+   * @member {String} dirModeMask
+   * @default '0775'
+   */
+  exports.prototype['dirModeMask'] = '0775';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
 
   // Implement XRootDCredentials interface:
   /**
@@ -110,6 +140,13 @@
    * @member {module:model/XRootDCredentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
+
+  /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+exports.prototype['credentialsType'] = 'none';
 
   /**
    * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 

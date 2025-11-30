@@ -55,6 +55,7 @@
 
 
 
+
   };
 
   /**
@@ -81,6 +82,9 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
+      if (data.hasOwnProperty('credentialsType')) {
+        obj['credentialsType'] = ApiClient.convertToType(data['credentialsType'], 'String');
+      }
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
       }
@@ -103,6 +107,12 @@
    */
   exports.prototype['type'] = undefined;
   /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/HTTPCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+  exports.prototype['credentialsType'] = 'none';
+  /**
    * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the HTTP, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
    * @member {String} credentials
    */
@@ -113,7 +123,7 @@
    */
   exports.prototype['oauth2IdP'] = undefined;
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
+   * When registering storage with feed of LUMA DB set to `auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
    * @member {String} onedataAccessToken
    */
   exports.prototype['onedataAccessToken'] = undefined;
@@ -130,6 +140,33 @@
      * @const
      */
     "http": "http"  };
+
+  /**
+   * Allowed values for the <code>credentialsType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CredentialsTypeEnum = {
+    /**
+     * value: "none"
+     * @const
+     */
+    "none": "none",
+    /**
+     * value: "basic"
+     * @const
+     */
+    "basic": "basic",
+    /**
+     * value: "token"
+     * @const
+     */
+    "token": "token",
+    /**
+     * value: "oauth2"
+     * @const
+     */
+    "oauth2": "oauth2"  };
 
 
   return exports;

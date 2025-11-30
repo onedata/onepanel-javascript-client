@@ -54,6 +54,9 @@
     StorageCreateDetails.call(_this);
     _this['type'] = type;
     _this['mountPoint'] = mountPoint;
+
+
+
   };
 
   /**
@@ -83,6 +86,15 @@
       if (data.hasOwnProperty('mountPoint')) {
         obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
       }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
+      if (data.hasOwnProperty('rootUid')) {
+        obj['rootUid'] = ApiClient.convertToType(data['rootUid'], 'Number');
+      }
+      if (data.hasOwnProperty('rootGid')) {
+        obj['rootGid'] = ApiClient.convertToType(data['rootGid'], 'Number');
+      }
     }
     return obj;
   }
@@ -100,6 +112,22 @@
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
+   * @member {module:model/PosixCreate.StoragePathTypeEnum} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
+  /**
+   * UID of the user on whose behalf operations in the admin context will be performed on the storage.
+   * @member {Number} rootUid
+   */
+  exports.prototype['rootUid'] = undefined;
+  /**
+   * GID of the group on whose behalf operations in the admin context will be performed on the storage.
+   * @member {Number} rootGid
+   */
+  exports.prototype['rootGid'] = undefined;
 
 
   /**
@@ -113,6 +141,18 @@
      * @const
      */
     "posix": "posix"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical"  };
 
 
   return exports;

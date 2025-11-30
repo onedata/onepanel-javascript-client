@@ -54,6 +54,14 @@
     StorageCreateDetails.call(_this);
     NulldeviceCredentials.call(_this, type);
     _this['type'] = type;
+
+
+
+
+
+
+
+
   };
 
   /**
@@ -81,6 +89,30 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
+      if (data.hasOwnProperty('latencyMin')) {
+        obj['latencyMin'] = ApiClient.convertToType(data['latencyMin'], 'Number');
+      }
+      if (data.hasOwnProperty('latencyMax')) {
+        obj['latencyMax'] = ApiClient.convertToType(data['latencyMax'], 'Number');
+      }
+      if (data.hasOwnProperty('timeoutProbability')) {
+        obj['timeoutProbability'] = ApiClient.convertToType(data['timeoutProbability'], 'Number');
+      }
+      if (data.hasOwnProperty('filter')) {
+        obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
+      if (data.hasOwnProperty('simulatedFilesystemParameters')) {
+        obj['simulatedFilesystemParameters'] = ApiClient.convertToType(data['simulatedFilesystemParameters'], 'String');
+      }
+      if (data.hasOwnProperty('simulatedFilesystemGrowSpeed')) {
+        obj['simulatedFilesystemGrowSpeed'] = ApiClient.convertToType(data['simulatedFilesystemGrowSpeed'], 'Number');
+      }
+      if (data.hasOwnProperty('enableDataVerification')) {
+        obj['enableDataVerification'] = ApiClient.convertToType(data['enableDataVerification'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -93,6 +125,52 @@
    * @member {module:model/NulldeviceCreate.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
+  /**
+   * Minimum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMin
+   */
+  exports.prototype['latencyMin'] = undefined;
+  /**
+   * Maximum latency in milliseconds, which should be simulated for selected operations. 
+   * @member {Number} latencyMax
+   */
+  exports.prototype['latencyMax'] = undefined;
+  /**
+   * Probability (0.0, 1.0), with which an operation should return a timeout error. 
+   * @member {Number} timeoutProbability
+   * @default 0.0
+   */
+  exports.prototype['timeoutProbability'] = 0.0;
+  /**
+   * Comma-separated list of filesystem operations, for which latency and timeout should be simulated. Empty or '*' mean all operations will be affected. 
+   * @member {String} filter
+   * @default '*'
+   */
+  exports.prototype['filter'] = '*';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
+  /**
+   * Specifies the parameters for a simulated null device filesystem. For example `2-2:2-2:0-1` will generate a filesystem tree which has 2 directories (`0` and `1`) and 2 files (`2` and `3`) in the root of the filesystem, each of these directories will have 2 subdirectories (`0` and `1`) and 2 files (`2` and `3`) and each of these subdirectories has only a single file (`0`). In order to specify the size of generated files, a size in bytes needs to be added as the last component of the parameter specification, for example `2-2:2-2:0-1:1048576`. Default empty string disables the simulated filesystem feature. 
+   * @member {String} simulatedFilesystemParameters
+   * @default ''
+   */
+  exports.prototype['simulatedFilesystemParameters'] = '';
+  /**
+   * Determines the simulated filesystem grow rate. Default 0.0 value will cause all the files and directories defined by the `simulatedFilesystemParameters` specification to be visible immediately. For example value of 0.01 will increase the number of the visible filesystem entries by 1 file per 100 seconds, while 100.0 will increase it by 100 files per second. 
+   * @member {Number} simulatedFilesystemGrowSpeed
+   * @default 0.0
+   */
+  exports.prototype['simulatedFilesystemGrowSpeed'] = 0.0;
+  /**
+   * Enables data verification for `read` and `write` operations. Read operations will always return a predictable pattern of characters based on `offset` and `size`, and `write` operations will fail with I/O error, if the input data does not match the pattern at a given `offset`. 
+   * @member {Boolean} enableDataVerification
+   * @default false
+   */
+  exports.prototype['enableDataVerification'] = false;
 
   // Implement NulldeviceCredentials interface:
   /**

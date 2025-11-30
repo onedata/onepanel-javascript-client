@@ -50,9 +50,8 @@
    * @param type {module:model/GlusterfsGet.TypeEnum} The type of storage.  `type = \"glusterfs\"`  [GlusterFS](https://www.gluster.org/) volume directly attached to the Oneprovider. 
    * @param volume {String} The name of the volume to use as a storage backend.
    * @param hostname {String} The hostname (IP address or FQDN) of GlusterFS volume server.
-   * @param storagePathType {module:model/GlusterfsGet.StoragePathTypeEnum} Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
    */
-  var exports = function(type, volume, hostname, storagePathType) {
+  var exports = function(type, volume, hostname) {
     var _this = this;
     StorageGetDetails.call(_this);
     GlusterfsCredentials.call(_this, type);
@@ -63,7 +62,7 @@
 
 
 
-    _this['storagePathType'] = storagePathType;
+
   };
 
   /**

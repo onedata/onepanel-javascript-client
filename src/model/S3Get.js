@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>S3Get</code>.
-   * The Simple Storage Service configuration.
+   * The Simple Storage Service (S3) configuration.
    * @alias module:model/S3Get
    * @class
    * @extends module:model/StorageGetDetails
@@ -161,7 +161,7 @@
    */
   exports.prototype['region'] = undefined;
   /**
-   * Storage block size in bytes i.e. the maximum object size. Files larger than one block will stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an S3 storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
+   * Storage block size in bytes i.e. the maximum object size. Files larger than one block will be stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an S3 storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
@@ -192,6 +192,20 @@
    * @member {module:model/S3Credentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
+
+  /**
+   * The access key to the S3 storage.
+   * @member {String} accessKey
+   * @default ''
+   */
+exports.prototype['accessKey'] = '';
+
+  /**
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
+   * @default ''
+   */
+exports.prototype['secretKey'] = '';
 
 
   /**

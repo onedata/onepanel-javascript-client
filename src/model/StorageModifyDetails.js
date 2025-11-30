@@ -134,7 +134,7 @@
    */
   exports.prototype['lumaFeedApiKey'] = undefined;
   /**
-   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters.
+   * Map with key-value pairs used for describing storage QoS parameters. Overrides all previously set parameters. 
    * @member {Object.<String, String>} qosParameters
    */
   exports.prototype['qosParameters'] = undefined;

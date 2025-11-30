@@ -58,6 +58,14 @@
     _this['type'] = type;
     _this['hostname'] = hostname;
     _this['bucketName'] = bucketName;
+
+
+
+
+
+
+
+
   };
 
   /**
@@ -91,6 +99,30 @@
       if (data.hasOwnProperty('bucketName')) {
         obj['bucketName'] = ApiClient.convertToType(data['bucketName'], 'String');
       }
+      if (data.hasOwnProperty('signatureVersion')) {
+        obj['signatureVersion'] = ApiClient.convertToType(data['signatureVersion'], 'Number');
+      }
+      if (data.hasOwnProperty('verifyServerCertificate')) {
+        obj['verifyServerCertificate'] = ApiClient.convertToType(data['verifyServerCertificate'], 'Boolean');
+      }
+      if (data.hasOwnProperty('region')) {
+        obj['region'] = ApiClient.convertToType(data['region'], 'String');
+      }
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
+        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
+      }
+      if (data.hasOwnProperty('fileMode')) {
+        obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
+      }
+      if (data.hasOwnProperty('dirMode')) {
+        obj['dirMode'] = ApiClient.convertToType(data['dirMode'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -113,6 +145,51 @@
    * @member {String} bucketName
    */
   exports.prototype['bucketName'] = undefined;
+  /**
+   * The version of signature used to sign requests. Only version 4 is supported. 
+   * @member {Number} signatureVersion
+   */
+  exports.prototype['signatureVersion'] = undefined;
+  /**
+   * Enables or disables verification of the S3 server SSL certificate. 
+   * @member {Boolean} verifyServerCertificate
+   * @default true
+   */
+  exports.prototype['verifyServerCertificate'] = true;
+  /**
+   * Allows to specify a custom S3 region, which will be send with each request to the S3 server. 
+   * @member {String} region
+   * @default 'us-east-1'
+   */
+  exports.prototype['region'] = 'us-east-1';
+  /**
+   * Storage block size in bytes i.e. the maximum object size. Files larger than one block will be stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an S3 storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
+  /**
+   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
+   * @member {Number} maximumCanonicalObjectSize
+   */
+  exports.prototype['maximumCanonicalObjectSize'] = undefined;
+  /**
+   * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
+   * @member {String} fileMode
+   * @default '0664'
+   */
+  exports.prototype['fileMode'] = '0664';
+  /**
+   * Defines the directory mode which directories imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0775`. 
+   * @member {String} dirMode
+   * @default '0775'
+   */
+  exports.prototype['dirMode'] = '0775';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
   // Implement S3Credentials interface:
   /**
@@ -120,6 +197,20 @@
    * @member {module:model/S3Credentials.TypeEnum} type
    */
 exports.prototype['type'] = undefined;
+
+  /**
+   * The access key to the S3 storage.
+   * @member {String} accessKey
+   * @default ''
+   */
+exports.prototype['accessKey'] = '';
+
+  /**
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
+   * @default ''
+   */
+exports.prototype['secretKey'] = '';
 
 
   /**

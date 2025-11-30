@@ -69,6 +69,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rangeWriteSupport (base name: "rangeWriteSupport")', function() {
+      // uncomment below and update the code to test the property rangeWriteSupport
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maximumUploadSize (base name: "maximumUploadSize")', function() {
+      // uncomment below and update the code to test the property maximumUploadSize
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirMode (base name: "dirMode")', function() {
+      // uncomment below and update the code to test the property dirMode
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.WebdavCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

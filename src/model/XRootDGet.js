@@ -139,6 +139,13 @@
 exports.prototype['type'] = undefined;
 
   /**
+   * Determines the types of credentials provided in the credentials field. 
+   * @member {module:model/XRootDCredentials.CredentialsTypeEnum} credentialsType
+   * @default 'none'
+   */
+exports.prototype['credentialsType'] = 'none';
+
+  /**
    * The credentials to authenticate with the XRootD server. For `pwd` credentials type, this field should contain simply user and password, e.g. `admin:password`. For `none` this field is ignored. 
    * @member {String} credentials
    */

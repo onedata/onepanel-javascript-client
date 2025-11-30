@@ -58,6 +58,11 @@
     _this['type'] = type;
     _this['volume'] = volume;
     _this['hostname'] = hostname;
+
+
+
+
+
   };
 
   /**
@@ -91,6 +96,21 @@
       if (data.hasOwnProperty('hostname')) {
         obj['hostname'] = ApiClient.convertToType(data['hostname'], 'String');
       }
+      if (data.hasOwnProperty('port')) {
+        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      }
+      if (data.hasOwnProperty('transport')) {
+        obj['transport'] = ApiClient.convertToType(data['transport'], 'String');
+      }
+      if (data.hasOwnProperty('mountPoint')) {
+        obj['mountPoint'] = ApiClient.convertToType(data['mountPoint'], 'String');
+      }
+      if (data.hasOwnProperty('xlatorOptions')) {
+        obj['xlatorOptions'] = ApiClient.convertToType(data['xlatorOptions'], 'String');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -113,6 +133,35 @@
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
+  /**
+   * The GlusterFS port on volume server.
+   * @member {Number} port
+   */
+  exports.prototype['port'] = undefined;
+  /**
+   * The transport protocol to use to connect to the volume server.
+   * @member {module:model/GlusterfsCreate.TransportEnum} transport
+   * @default 'tcp'
+   */
+  exports.prototype['transport'] = 'tcp';
+  /**
+   * Relative mountpoint within the volume which should be used by Oneprovider.
+   * @member {String} mountPoint
+   * @default ''
+   */
+  exports.prototype['mountPoint'] = '';
+  /**
+   * Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1=VALUE1;TRANSLATOR2.OPTION2=VALUE2;... 
+   * @member {String} xlatorOptions
+   * @default ''
+   */
+  exports.prototype['xlatorOptions'] = '';
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. **Note that 'flat' paths are not allowed on this type of storage.** 
+   * @member {module:model/GlusterfsCreate.StoragePathTypeEnum} storagePathType
+   * @default 'canonical'
+   */
+  exports.prototype['storagePathType'] = 'canonical';
 
   // Implement GlusterfsCredentials interface:
   /**
@@ -145,6 +194,40 @@ exports.prototype['type'] = undefined;
      * @const
      */
     "glusterfs": "glusterfs"  };
+
+  /**
+   * Allowed values for the <code>transport</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TransportEnum = {
+    /**
+     * value: "tcp"
+     * @const
+     */
+    "tcp": "tcp",
+    /**
+     * value: "rdma"
+     * @const
+     */
+    "rdma": "rdma",
+    /**
+     * value: "socket"
+     * @const
+     */
+    "socket": "socket"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical"  };
 
 
   return exports;

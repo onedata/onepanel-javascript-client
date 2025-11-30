@@ -58,6 +58,8 @@
     _this['username'] = username;
     _this['password'] = password;
     _this['projectName'] = projectName;
+
+
   };
 
   /**
@@ -93,6 +95,12 @@
       if (data.hasOwnProperty('projectName')) {
         obj['projectName'] = ApiClient.convertToType(data['projectName'], 'String');
       }
+      if (data.hasOwnProperty('userDomainName')) {
+        obj['userDomainName'] = ApiClient.convertToType(data['userDomainName'], 'String');
+      }
+      if (data.hasOwnProperty('projectDomainName')) {
+        obj['projectDomainName'] = ApiClient.convertToType(data['projectDomainName'], 'String');
+      }
     }
     return obj;
   }
@@ -120,6 +128,18 @@
    * @member {String} projectName
    */
   exports.prototype['projectName'] = undefined;
+  /**
+   * The Keystone user domain name.
+   * @member {String} userDomainName
+   * @default 'Default'
+   */
+  exports.prototype['userDomainName'] = 'Default';
+  /**
+   * The Keystone project domain name.
+   * @member {String} projectDomainName
+   * @default 'Default'
+   */
+  exports.prototype['projectDomainName'] = 'Default';
 
 
   /**

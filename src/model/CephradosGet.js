@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephradosGet</code>.
-   * The Ceph storage configuration (uses librados).
+   * The Ceph RADOS storage configuration (uses librados).
    * @alias module:model/CephradosGet
    * @class
    * @extends module:model/StorageGetDetails
@@ -53,9 +53,8 @@
    * @param monitorHostname {String} The hostname (IP address or FQDN) of the Ceph monitor service. 
    * @param clusterName {String} The name of the Ceph storage cluster.
    * @param poolName {String} The name of the Ceph pool – the logical partition for object storage. 
-   * @param storagePathType {module:model/CephradosGet.StoragePathTypeEnum} Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
    */
-  var exports = function(type, username, key, monitorHostname, clusterName, poolName, storagePathType) {
+  var exports = function(type, username, key, monitorHostname, clusterName, poolName) {
     var _this = this;
     StorageGetDetails.call(_this);
     CephradosCredentials.call(_this, type, username, key);
@@ -64,7 +63,7 @@
     _this['clusterName'] = clusterName;
     _this['poolName'] = poolName;
 
-    _this['storagePathType'] = storagePathType;
+
   };
 
   /**

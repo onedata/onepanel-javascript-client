@@ -160,6 +160,20 @@ exports.prototype['password'] = undefined;
    */
 exports.prototype['projectName'] = undefined;
 
+  /**
+   * The Keystone user domain name.
+   * @member {String} userDomainName
+   * @default 'Default'
+   */
+exports.prototype['userDomainName'] = 'Default';
+
+  /**
+   * The Keystone project domain name.
+   * @member {String} projectDomainName
+   * @default 'Default'
+   */
+exports.prototype['projectDomainName'] = 'Default';
+
 
   /**
    * Allowed values for the <code>type</code> property.

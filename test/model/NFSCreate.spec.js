@@ -69,8 +69,44 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property version (base name: "version")', function() {
+      // uncomment below and update the code to test the property version
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
     it('should have the property volume (base name: "volume")', function() {
       // uncomment below and update the code to test the property volume
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirCache (base name: "dirCache")', function() {
+      // uncomment below and update the code to test the property dirCache
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property readAhead (base name: "readAhead")', function() {
+      // uncomment below and update the code to test the property readAhead
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property autoReconnect (base name: "autoReconnect")', function() {
+      // uncomment below and update the code to test the property autoReconnect
+      //var instane = new Onepanel.NFSCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
       //var instane = new Onepanel.NFSCreate();
       //expect(instance).to.be();
     });

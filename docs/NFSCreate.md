@@ -5,7 +5,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;nfs\&quot;&#x60;  NFS storage.  | 
 **host** | **String** | The hostname (IP address or FQDN) of NFS server. | 
+**version** | **Number** | The NFS protocol version. Allowed values are 3 (default) and 4 (experimental). | [optional] 
 **volume** | **String** | The name (path) of the NFS export. | 
+**connectionPoolSize** | **Number** | Number of simultaneous network connections that can be maintained with the NFS server.  | [optional] 
+**dirCache** | **Boolean** | Enables caching of directory metadata on the client side to improve performance by reducing requests to the NFS server. May cause temporary inconsistencies if the directory content changes on the server.  | [optional] [default to true]
+**readAhead** | **Number** | The amount of data that the system preloads into cache ahead of client requests.  | [optional] 
+**autoReconnect** | **Number** | The number of automatic reconnect attempts to the server. Setting &#x60;-1&#x60; enables infinite number of reconnects. | [optional] 
+**storagePathType** | **String** | Determines how the logical file paths will be mapped on the storage. &#39;canonical&#39; paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. &#39;flat&#39; paths are based on unique file UUID&#39;s and do not require on-storage rename when logical file name is changed. **Note that &#39;flat&#39; paths are not allowed on this type of storage.**  | [optional] [default to &#39;canonical&#39;]
 
 
 <a name="TypeEnum"></a>
@@ -13,6 +19,15 @@ Name | Type | Description | Notes
 
 
 * `nfs` (value: `"nfs"`)
+
+
+
+
+<a name="StoragePathTypeEnum"></a>
+## Enum: StoragePathTypeEnum
+
+
+* `canonical` (value: `"canonical"`)
 
 
 

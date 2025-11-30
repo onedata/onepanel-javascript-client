@@ -42,7 +42,7 @@
 
   /**
    * Constructs a new <code>CephradosCreate</code>.
-   * The Ceph storage configuration (uses librados).
+   * The Ceph RADOS storage configuration (uses librados).
    * @alias module:model/CephradosCreate
    * @class
    * @extends module:model/StorageCreateDetails
@@ -62,6 +62,8 @@
     _this['monitorHostname'] = monitorHostname;
     _this['clusterName'] = clusterName;
     _this['poolName'] = poolName;
+
+
   };
 
   /**
@@ -98,6 +100,12 @@
       if (data.hasOwnProperty('poolName')) {
         obj['poolName'] = ApiClient.convertToType(data['poolName'], 'String');
       }
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -125,6 +133,17 @@
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;
+  /**
+   * Each file will be split across a number of Ceph RADOS objects of the specified size. For optimal performance, this value should be equal to the object size configured in a given Ceph Storage Cluster (default 4M). 
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {module:model/CephradosCreate.StoragePathTypeEnum} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
   // Implement CephradosCredentials interface:
   /**
@@ -157,6 +176,18 @@ exports.prototype['key'] = undefined;
      * @const
      */
     "cephrados": "cephrados"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "flat"
+     * @const
+     */
+    "flat": "flat"  };
 
 
   return exports;

@@ -63,6 +63,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property latencyMin (base name: "latencyMin")', function() {
+      // uncomment below and update the code to test the property latencyMin
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property latencyMax (base name: "latencyMax")', function() {
+      // uncomment below and update the code to test the property latencyMax
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property timeoutProbability (base name: "timeoutProbability")', function() {
+      // uncomment below and update the code to test the property timeoutProbability
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property filter (base name: "filter")', function() {
+      // uncomment below and update the code to test the property filter
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property simulatedFilesystemParameters (base name: "simulatedFilesystemParameters")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemParameters
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property simulatedFilesystemGrowSpeed (base name: "simulatedFilesystemGrowSpeed")', function() {
+      // uncomment below and update the code to test the property simulatedFilesystemGrowSpeed
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property enableDataVerification (base name: "enableDataVerification")', function() {
+      // uncomment below and update the code to test the property enableDataVerification
+      //var instane = new Onepanel.NulldeviceCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

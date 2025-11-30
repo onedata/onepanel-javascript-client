@@ -69,6 +69,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fileModeMask (base name: "fileModeMask")', function() {
+      // uncomment below and update the code to test the property fileModeMask
+      //var instane = new Onepanel.XRootDCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property dirModeMask (base name: "dirModeMask")', function() {
+      // uncomment below and update the code to test the property dirModeMask
+      //var instane = new Onepanel.XRootDCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.XRootDCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

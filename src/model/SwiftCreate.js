@@ -61,6 +61,8 @@
     _this['type'] = type;
     _this['authUrl'] = authUrl;
     _this['containerName'] = containerName;
+
+
   };
 
   /**
@@ -94,6 +96,12 @@
       if (data.hasOwnProperty('containerName')) {
         obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
       }
+      if (data.hasOwnProperty('blockSize')) {
+        obj['blockSize'] = ApiClient.convertToType(data['blockSize'], 'Number');
+      }
+      if (data.hasOwnProperty('storagePathType')) {
+        obj['storagePathType'] = ApiClient.convertToType(data['storagePathType'], 'String');
+      }
     }
     return obj;
   }
@@ -116,6 +124,17 @@
    * @member {String} containerName
    */
   exports.prototype['containerName'] = undefined;
+  /**
+   * Storage block size in bytes.
+   * @member {Number} blockSize
+   */
+  exports.prototype['blockSize'] = undefined;
+  /**
+   * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
+   * @member {String} storagePathType
+   * @default 'flat'
+   */
+  exports.prototype['storagePathType'] = 'flat';
 
   // Implement SwiftCredentials interface:
   /**
@@ -141,6 +160,20 @@ exports.prototype['password'] = undefined;
    * @member {String} projectName
    */
 exports.prototype['projectName'] = undefined;
+
+  /**
+   * The Keystone user domain name.
+   * @member {String} userDomainName
+   * @default 'Default'
+   */
+exports.prototype['userDomainName'] = 'Default';
+
+  /**
+   * The Keystone project domain name.
+   * @member {String} projectDomainName
+   * @default 'Default'
+   */
+exports.prototype['projectDomainName'] = 'Default';
 
 
   /**

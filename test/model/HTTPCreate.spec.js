@@ -69,6 +69,42 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property verifyServerCertificate (base name: "verifyServerCertificate")', function() {
+      // uncomment below and update the code to test the property verifyServerCertificate
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authorizationHeader (base name: "authorizationHeader")', function() {
+      // uncomment below and update the code to test the property authorizationHeader
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property connectionPoolSize (base name: "connectionPoolSize")', function() {
+      // uncomment below and update the code to test the property connectionPoolSize
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxRequestsPerSession (base name: "maxRequestsPerSession")', function() {
+      // uncomment below and update the code to test the property maxRequestsPerSession
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fileMode (base name: "fileMode")', function() {
+      // uncomment below and update the code to test the property fileMode
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.HTTPCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

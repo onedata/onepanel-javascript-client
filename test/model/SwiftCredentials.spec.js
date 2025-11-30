@@ -81,6 +81,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property userDomainName (base name: "userDomainName")', function() {
+      // uncomment below and update the code to test the property userDomainName
+      //var instane = new Onepanel.SwiftCredentials();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property projectDomainName (base name: "projectDomainName")', function() {
+      // uncomment below and update the code to test the property projectDomainName
+      //var instane = new Onepanel.SwiftCredentials();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

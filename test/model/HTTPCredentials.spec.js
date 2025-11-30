@@ -63,6 +63,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property credentialsType (base name: "credentialsType")', function() {
+      // uncomment below and update the code to test the property credentialsType
+      //var instane = new Onepanel.HTTPCredentials();
+      //expect(instance).to.be();
+    });
+
     it('should have the property credentials (base name: "credentials")', function() {
       // uncomment below and update the code to test the property credentials
       //var instane = new Onepanel.HTTPCredentials();

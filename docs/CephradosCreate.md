@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **monitorHostname** | **String** | The hostname (IP address or FQDN) of the Ceph monitor service.  | 
 **clusterName** | **String** | The name of the Ceph storage cluster. | 
 **poolName** | **String** | The name of the Ceph pool – the logical partition for object storage.  | 
+**blockSize** | **Number** | Each file will be split across a number of Ceph RADOS objects of the specified size. For optimal performance, this value should be equal to the object size configured in a given Ceph Storage Cluster (default 4M).  | [optional] 
+**storagePathType** | **String** | Determines how the logical file paths will be mapped on the storage. &#39;canonical&#39; paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. &#39;flat&#39; paths are based on unique file UUID&#39;s and do not require on-storage rename when logical file name is changed.  | [optional] [default to &#39;flat&#39;]
 
 
 <a name="TypeEnum"></a>
@@ -14,6 +16,15 @@ Name | Type | Description | Notes
 
 
 * `cephrados` (value: `"cephrados"`)
+
+
+
+
+<a name="StoragePathTypeEnum"></a>
+## Enum: StoragePathTypeEnum
+
+
+* `flat` (value: `"flat"`)
 
 
 

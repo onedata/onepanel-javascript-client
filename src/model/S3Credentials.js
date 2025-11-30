@@ -52,6 +52,8 @@
     var _this = this;
     LumaStorageCredentials.call(_this);
     _this['type'] = type;
+
+
   };
 
   /**
@@ -78,6 +80,12 @@
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
+      if (data.hasOwnProperty('accessKey')) {
+        obj['accessKey'] = ApiClient.convertToType(data['accessKey'], 'String');
+      }
+      if (data.hasOwnProperty('secretKey')) {
+        obj['secretKey'] = ApiClient.convertToType(data['secretKey'], 'String');
+      }
     }
     return obj;
   }
@@ -90,6 +98,18 @@
    * @member {module:model/S3Credentials.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
+  /**
+   * The access key to the S3 storage.
+   * @member {String} accessKey
+   * @default ''
+   */
+  exports.prototype['accessKey'] = '';
+  /**
+   * The secret key to the S3 storage.
+   * @member {String} secretKey
+   * @default ''
+   */
+  exports.prototype['secretKey'] = '';
 
 
   /**

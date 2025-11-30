@@ -75,6 +75,36 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instane = new Onepanel.GlusterfsCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property transport (base name: "transport")', function() {
+      // uncomment below and update the code to test the property transport
+      //var instane = new Onepanel.GlusterfsCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property mountPoint (base name: "mountPoint")', function() {
+      // uncomment below and update the code to test the property mountPoint
+      //var instane = new Onepanel.GlusterfsCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property xlatorOptions (base name: "xlatorOptions")', function() {
+      // uncomment below and update the code to test the property xlatorOptions
+      //var instane = new Onepanel.GlusterfsCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property storagePathType (base name: "storagePathType")', function() {
+      // uncomment below and update the code to test the property storagePathType
+      //var instane = new Onepanel.GlusterfsCreate();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

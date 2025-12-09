@@ -56,8 +56,8 @@
    * @param providerDomain {String} The domain of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
    * @param oneS3Enabled {Boolean} True if the OneS3 service is deployed (provides an S3-compliant data access endpoint). 
-   * @param oneS3Domain {String} The domain at which the S3 endpoint is available, or `null` if `oneS3Enabled == false`. 
-   * @param oneS3Port {Number} The port at which the S3 endpoint is available, or `null` if `oneS3Enabled == false`. 
+   * @param oneS3Domain {String} The domain at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
+   * @param oneS3Port {Number} The port at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
    */
   var exports = function(clusterId, version, build, deployed, serviceType, providerId, providerName, providerDomain, zoneDomain, oneS3Enabled, oneS3Domain, oneS3Port) {
     var _this = this;
@@ -164,12 +164,12 @@
    */
   exports.prototype['oneS3Enabled'] = undefined;
   /**
-   * The domain at which the S3 endpoint is available, or `null` if `oneS3Enabled == false`. 
+   * The domain at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
    * @member {String} oneS3Domain
    */
   exports.prototype['oneS3Domain'] = undefined;
   /**
-   * The port at which the S3 endpoint is available, or `null` if `oneS3Enabled == false`. 
+   * The port at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
    * @member {Number} oneS3Port
    */
   exports.prototype['oneS3Port'] = undefined;

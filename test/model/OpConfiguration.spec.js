@@ -93,6 +93,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property oneS3Enabled (base name: "oneS3Enabled")', function() {
+      // uncomment below and update the code to test the property oneS3Enabled
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property oneS3Domain (base name: "oneS3Domain")', function() {
+      // uncomment below and update the code to test the property oneS3Domain
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property oneS3Port (base name: "oneS3Port")', function() {
+      // uncomment below and update the code to test the property oneS3Port
+      //var instane = new Onepanel.OpConfiguration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

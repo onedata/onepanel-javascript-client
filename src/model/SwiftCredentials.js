@@ -49,17 +49,13 @@
    * @param type {module:model/SwiftCredentials.TypeEnum} Type of the storage. Must be given explicitly and must match the actual type of subject storage - this redundancy is needed due to limitations of OpenAPI polymorphism. 
    * @param username {String} The Keystone authentication username.
    * @param password {String} The Keystone authentication password.
-   * @param projectName {String} The Keystone project name.
    */
-  var exports = function(type, username, password, projectName) {
+  var exports = function(type, username, password) {
     var _this = this;
     LumaStorageCredentials.call(_this);
     _this['type'] = type;
     _this['username'] = username;
     _this['password'] = password;
-    _this['projectName'] = projectName;
-
-
   };
 
   /**
@@ -92,15 +88,6 @@
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
-      if (data.hasOwnProperty('projectName')) {
-        obj['projectName'] = ApiClient.convertToType(data['projectName'], 'String');
-      }
-      if (data.hasOwnProperty('userDomainName')) {
-        obj['userDomainName'] = ApiClient.convertToType(data['userDomainName'], 'String');
-      }
-      if (data.hasOwnProperty('projectDomainName')) {
-        obj['projectDomainName'] = ApiClient.convertToType(data['projectDomainName'], 'String');
-      }
     }
     return obj;
   }
@@ -123,23 +110,6 @@
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
-  /**
-   * The Keystone project name.
-   * @member {String} projectName
-   */
-  exports.prototype['projectName'] = undefined;
-  /**
-   * The Keystone user domain name.
-   * @member {String} userDomainName
-   * @default 'Default'
-   */
-  exports.prototype['userDomainName'] = 'Default';
-  /**
-   * The Keystone project domain name.
-   * @member {String} projectDomainName
-   * @default 'Default'
-   */
-  exports.prototype['projectDomainName'] = 'Default';
 
 
   /**

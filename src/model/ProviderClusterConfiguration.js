@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterOneS3', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
+    define(['ApiClient', 'model/ClusterDatabases', 'model/ClusterManagers', 'model/ClusterWorkers', 'model/StorageCreateRequest', 'model/ZoneClusterConfigurationNodes'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterOneS3'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterDatabases'), require('./ClusterManagers'), require('./ClusterWorkers'), require('./StorageCreateRequest'), require('./ZoneClusterConfigurationNodes'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterOneS3, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
+    root.Onepanel.ProviderClusterConfiguration = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterDatabases, root.Onepanel.ClusterManagers, root.Onepanel.ClusterWorkers, root.Onepanel.StorageCreateRequest, root.Onepanel.ZoneClusterConfigurationNodes);
   }
-}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterOneS3, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
+}(this, function(ApiClient, ClusterDatabases, ClusterManagers, ClusterWorkers, StorageCreateRequest, ZoneClusterConfigurationNodes) {
   'use strict';
 
 
@@ -57,7 +57,6 @@
     _this['nodes'] = nodes;
     _this['databases'] = databases;
     _this['managers'] = managers;
-
     _this['workers'] = workers;
 
   };
@@ -95,9 +94,6 @@
       if (data.hasOwnProperty('managers')) {
         obj['managers'] = ClusterManagers.constructFromObject(data['managers']);
       }
-      if (data.hasOwnProperty('oneS3')) {
-        obj['oneS3'] = ClusterOneS3.constructFromObject(data['oneS3']);
-      }
       if (data.hasOwnProperty('workers')) {
         obj['workers'] = ClusterWorkers.constructFromObject(data['workers']);
       }
@@ -127,10 +123,6 @@
    * @member {module:model/ClusterManagers} managers
    */
   exports.prototype['managers'] = undefined;
-  /**
-   * @member {module:model/ClusterOneS3} oneS3
-   */
-  exports.prototype['oneS3'] = undefined;
   /**
    * @member {module:model/ClusterWorkers} workers
    */

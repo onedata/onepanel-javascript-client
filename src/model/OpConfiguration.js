@@ -55,11 +55,8 @@
    * @param providerName {String} The name of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @param providerDomain {String} The domain of this Oneprovider. If the cluster is not configured or malfunctioning (e.g. the op-worker service is down), the value may be `null`. 
    * @param zoneDomain {String} The domain of the Onezone where this Oneprovider is registered. `null` if the Oneprovider is not registered. 
-   * @param oneS3Enabled {Boolean} True if the OneS3 service is deployed (provides an S3-compliant data access endpoint). 
-   * @param oneS3Domain {String} The domain at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
-   * @param oneS3Port {Number} The port at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
    */
-  var exports = function(clusterId, version, build, deployed, serviceType, providerId, providerName, providerDomain, zoneDomain, oneS3Enabled, oneS3Domain, oneS3Port) {
+  var exports = function(clusterId, version, build, deployed, serviceType, providerId, providerName, providerDomain, zoneDomain) {
     var _this = this;
     Configuration.call(_this, clusterId, version, build, deployed);
     _this['serviceType'] = serviceType;
@@ -68,9 +65,6 @@
     _this['providerDomain'] = providerDomain;
     _this['zoneDomain'] = zoneDomain;
 
-    _this['oneS3Enabled'] = oneS3Enabled;
-    _this['oneS3Domain'] = oneS3Domain;
-    _this['oneS3Port'] = oneS3Port;
   };
 
   /**
@@ -112,15 +106,6 @@
       if (data.hasOwnProperty('isRegistered')) {
         obj['isRegistered'] = ApiClient.convertToType(data['isRegistered'], 'Boolean');
       }
-      if (data.hasOwnProperty('oneS3Enabled')) {
-        obj['oneS3Enabled'] = ApiClient.convertToType(data['oneS3Enabled'], 'Boolean');
-      }
-      if (data.hasOwnProperty('oneS3Domain')) {
-        obj['oneS3Domain'] = ApiClient.convertToType(data['oneS3Domain'], 'String');
-      }
-      if (data.hasOwnProperty('oneS3Port')) {
-        obj['oneS3Port'] = ApiClient.convertToType(data['oneS3Port'], 'Number');
-      }
     }
     return obj;
   }
@@ -158,21 +143,6 @@
    * @member {Boolean} isRegistered
    */
   exports.prototype['isRegistered'] = undefined;
-  /**
-   * True if the OneS3 service is deployed (provides an S3-compliant data access endpoint). 
-   * @member {Boolean} oneS3Enabled
-   */
-  exports.prototype['oneS3Enabled'] = undefined;
-  /**
-   * The domain at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
-   * @member {String} oneS3Domain
-   */
-  exports.prototype['oneS3Domain'] = undefined;
-  /**
-   * The port at which the S3 endpoint is available, or `null` if the OneS3 service is not deployed. 
-   * @member {Number} oneS3Port
-   */
-  exports.prototype['oneS3Port'] = undefined;
 
 
   /**

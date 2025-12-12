@@ -17,18 +17,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ZoneClusterConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone'], factory);
+    define(['ApiClient', 'model/ClusterConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./ZoneClusterConfigurationDetails'), require('./ZoneConfigurationDetailsOnezone'));
+    module.exports = factory(require('../ApiClient'), require('./ClusterConfigurationDetails'), require('./ZoneConfigurationDetailsOnezone'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ZoneConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.ZoneClusterConfigurationDetails, root.Onepanel.ZoneConfigurationDetailsOnezone);
+    root.Onepanel.ZoneConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.ClusterConfigurationDetails, root.Onepanel.ZoneConfigurationDetailsOnezone);
   }
-}(this, function(ApiClient, ZoneClusterConfigurationDetails, ZoneConfigurationDetailsOnezone) {
+}(this, function(ApiClient, ClusterConfigurationDetails, ZoneConfigurationDetailsOnezone) {
   'use strict';
 
 
@@ -45,7 +45,7 @@
    * The zone cluster configuration.
    * @alias module:model/ZoneConfigurationDetails
    * @class
-   * @param cluster {module:model/ZoneClusterConfigurationDetails} 
+   * @param cluster {module:model/ClusterConfigurationDetails} 
    */
   var exports = function(cluster) {
     var _this = this;
@@ -76,7 +76,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('cluster')) {
-        obj['cluster'] = ZoneClusterConfigurationDetails.constructFromObject(data['cluster']);
+        obj['cluster'] = ClusterConfigurationDetails.constructFromObject(data['cluster']);
       }
       if (data.hasOwnProperty('onezone')) {
         obj['onezone'] = ZoneConfigurationDetailsOnezone.constructFromObject(data['onezone']);
@@ -86,7 +86,7 @@
   }
 
   /**
-   * @member {module:model/ZoneClusterConfigurationDetails} cluster
+   * @member {module:model/ClusterConfigurationDetails} cluster
    */
   exports.prototype['cluster'] = undefined;
   /**

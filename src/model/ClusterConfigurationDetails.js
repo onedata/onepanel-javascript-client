@@ -17,84 +17,112 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/DatabaseHosts', 'model/ManagerHosts', 'model/WorkerHosts'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./DatabaseHosts'), require('./ManagerHosts'), require('./WorkerHosts'));
   } else {
     // Browser globals (root is window)
     if (!root.Onepanel) {
       root.Onepanel = {};
     }
-    root.Onepanel.ClusterOneS3 = factory(root.Onepanel.ApiClient);
+    root.Onepanel.ClusterConfigurationDetails = factory(root.Onepanel.ApiClient, root.Onepanel.DatabaseHosts, root.Onepanel.ManagerHosts, root.Onepanel.WorkerHosts);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, DatabaseHosts, ManagerHosts, WorkerHosts) {
   'use strict';
 
 
 
 
   /**
-   * The ClusterOneS3 model module.
-   * @module model/ClusterOneS3
+   * The ClusterConfigurationDetails model module.
+   * @module model/ClusterConfigurationDetails
    * @version 21.02.8
    */
 
   /**
-   * Constructs a new <code>ClusterOneS3</code>.
-   * The OneS3 service configuration.
-   * @alias module:model/ClusterOneS3
+   * Constructs a new <code>ClusterConfigurationDetails</code>.
+   * The cluster configuration.
+   * @alias module:model/ClusterConfigurationDetails
    * @class
-   * @param nodes {Array.<String>} The list of aliases of OneS3 nodes.
+   * @param master {String} Host responsible for deploying cluster and coordinating cluster restarts.
+   * @param hosts {Array.<String>} List of hosts belonging to the Onepanel cluster.
+   * @param databases {module:model/DatabaseHosts} 
+   * @param managers {module:model/ManagerHosts} 
+   * @param workers {module:model/WorkerHosts} 
    */
-  var exports = function(nodes) {
+  var exports = function(master, hosts, databases, managers, workers) {
     var _this = this;
 
-    _this['nodes'] = nodes;
-
+    _this['master'] = master;
+    _this['hosts'] = hosts;
+    _this['databases'] = databases;
+    _this['managers'] = managers;
+    _this['workers'] = workers;
   };
 
   /**
    * Provides basic polymorphism support by returning discriminator type for
    * Swagger base classes. If type is not polymorphic returns 'undefined'.
    *
-   * @return {module:model/ClusterOneS3} The value of 'discriminator' field or undefined.
+   * @return {module:model/ClusterConfigurationDetails} The value of 'discriminator' field or undefined.
    */
   exports.__swaggerDiscriminator = function() {
     ;
   };
 
   /**
-   * Constructs a <code>ClusterOneS3</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ClusterConfigurationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ClusterOneS3} obj Optional instance to populate.
-   * @return {module:model/ClusterOneS3} The populated <code>ClusterOneS3</code> instance.
+   * @param {module:model/ClusterConfigurationDetails} obj Optional instance to populate.
+   * @return {module:model/ClusterConfigurationDetails} The populated <code>ClusterConfigurationDetails</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('nodes')) {
-        obj['nodes'] = ApiClient.convertToType(data['nodes'], ['String']);
+      if (data.hasOwnProperty('master')) {
+        obj['master'] = ApiClient.convertToType(data['master'], 'String');
       }
-      if (data.hasOwnProperty('port')) {
-        obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+      if (data.hasOwnProperty('hosts')) {
+        obj['hosts'] = ApiClient.convertToType(data['hosts'], ['String']);
+      }
+      if (data.hasOwnProperty('databases')) {
+        obj['databases'] = DatabaseHosts.constructFromObject(data['databases']);
+      }
+      if (data.hasOwnProperty('managers')) {
+        obj['managers'] = ManagerHosts.constructFromObject(data['managers']);
+      }
+      if (data.hasOwnProperty('workers')) {
+        obj['workers'] = WorkerHosts.constructFromObject(data['workers']);
       }
     }
     return obj;
   }
 
   /**
-   * The list of aliases of OneS3 nodes.
-   * @member {Array.<String>} nodes
+   * Host responsible for deploying cluster and coordinating cluster restarts.
+   * @member {String} master
    */
-  exports.prototype['nodes'] = undefined;
+  exports.prototype['master'] = undefined;
   /**
-   * The port on which the OneS3 service will be available.
-   * @member {Number} port
+   * List of hosts belonging to the Onepanel cluster.
+   * @member {Array.<String>} hosts
    */
-  exports.prototype['port'] = undefined;
+  exports.prototype['hosts'] = undefined;
+  /**
+   * @member {module:model/DatabaseHosts} databases
+   */
+  exports.prototype['databases'] = undefined;
+  /**
+   * @member {module:model/ManagerHosts} managers
+   */
+  exports.prototype['managers'] = undefined;
+  /**
+   * @member {module:model/WorkerHosts} workers
+   */
+  exports.prototype['workers'] = undefined;
 
 
 

@@ -57,8 +57,6 @@
 
 
 
-
-
   };
 
   /**
@@ -88,6 +86,9 @@
       if (data.hasOwnProperty('authUrl')) {
         obj['authUrl'] = ApiClient.convertToType(data['authUrl'], 'String');
       }
+      if (data.hasOwnProperty('tenantName')) {
+        obj['tenantName'] = ApiClient.convertToType(data['tenantName'], 'String');
+      }
       if (data.hasOwnProperty('containerName')) {
         obj['containerName'] = ApiClient.convertToType(data['containerName'], 'String');
       }
@@ -96,15 +97,6 @@
       }
       if (data.hasOwnProperty('password')) {
         obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
-      if (data.hasOwnProperty('projectName')) {
-        obj['projectName'] = ApiClient.convertToType(data['projectName'], 'String');
-      }
-      if (data.hasOwnProperty('userDomainName')) {
-        obj['userDomainName'] = ApiClient.convertToType(data['userDomainName'], 'String');
-      }
-      if (data.hasOwnProperty('projectDomainName')) {
-        obj['projectDomainName'] = ApiClient.convertToType(data['projectDomainName'], 'String');
       }
     }
     return obj;
@@ -124,6 +116,11 @@
    */
   exports.prototype['authUrl'] = undefined;
   /**
+   * The name of the tenant to which the user belongs.
+   * @member {String} tenantName
+   */
+  exports.prototype['tenantName'] = undefined;
+  /**
    * The name of the Swift storage container.
    * @member {String} containerName
    */
@@ -138,21 +135,6 @@
    * @member {String} password
    */
   exports.prototype['password'] = undefined;
-  /**
-   * The Keystone project name.
-   * @member {String} projectName
-   */
-  exports.prototype['projectName'] = undefined;
-  /**
-   * The Keystone user domain name.
-   * @member {String} userDomainName
-   */
-  exports.prototype['userDomainName'] = undefined;
-  /**
-   * The Keystone project domain name.
-   * @member {String} projectDomainName
-   */
-  exports.prototype['projectDomainName'] = undefined;
 
 
   /**

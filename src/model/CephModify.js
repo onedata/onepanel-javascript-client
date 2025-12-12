@@ -121,17 +121,17 @@
    */
   exports.prototype['key'] = undefined;
   /**
-   * The hostname (IP address or FQDN) of the Ceph monitor service.
+   * The monitor hostname.
    * @member {String} monitorHostname
    */
   exports.prototype['monitorHostname'] = undefined;
   /**
-   * The name of the Ceph storage cluster.
+   * The Ceph cluster name.
    * @member {String} clusterName
    */
   exports.prototype['clusterName'] = undefined;
   /**
-   * The name of the Ceph pool – the logical partition for object storage. 
+   * The Ceph pool name.
    * @member {String} poolName
    */
   exports.prototype['poolName'] = undefined;

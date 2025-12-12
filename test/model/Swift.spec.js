@@ -69,6 +69,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tenantName (base name: "tenantName")', function() {
+      // uncomment below and update the code to test the property tenantName
+      //var instane = new Onepanel.Swift();
+      //expect(instance).to.be();
+    });
+
     it('should have the property containerName (base name: "containerName")', function() {
       // uncomment below and update the code to test the property containerName
       //var instane = new Onepanel.Swift();

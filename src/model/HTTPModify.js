@@ -60,6 +60,8 @@
 
 
 
+
+
   };
 
   /**
@@ -106,6 +108,12 @@
       }
       if (data.hasOwnProperty('maxRequestsPerSession')) {
         obj['maxRequestsPerSession'] = ApiClient.convertToType(data['maxRequestsPerSession'], 'Number');
+      }
+      if (data.hasOwnProperty('emulateRangeRead')) {
+        obj['emulateRangeRead'] = ApiClient.convertToType(data['emulateRangeRead'], 'Boolean');
+      }
+      if (data.hasOwnProperty('maxEmulatedRangeReadFileSize')) {
+        obj['maxEmulatedRangeReadFileSize'] = ApiClient.convertToType(data['maxEmulatedRangeReadFileSize'], 'Number');
       }
       if (data.hasOwnProperty('fileMode')) {
         obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
@@ -157,6 +165,16 @@
    * @member {Number} maxRequestsPerSession
    */
   exports.prototype['maxRequestsPerSession'] = undefined;
+  /**
+   * Allows to access files from HTTP servers without range read support. This can significantly degrade performance, as in order to read a subset of a file entire file has to be downloaded. 
+   * @member {Boolean} emulateRangeRead
+   */
+  exports.prototype['emulateRangeRead'] = undefined;
+  /**
+   * Defines the maximum size in bytes of files that can be accessed from servers without range read support. This option is only active, when `emulateReadRange` option is true. 
+   * @member {Number} maxEmulatedRangeReadFileSize
+   */
+  exports.prototype['maxEmulatedRangeReadFileSize'] = undefined;
   /**
    * Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. `0664`. 
    * @member {String} fileMode

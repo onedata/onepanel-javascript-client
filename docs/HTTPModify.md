@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **authorizationHeader** | **String** | The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is &#x60;Authorization: Bearer {}&#x60;. The token will placed where &#x60;{}&#x60; is provided.  | [optional] 
 **connectionPoolSize** | **Number** | Defines the maximum number of parallel connections for a single HTTP storage.  | [optional] 
 **maxRequestsPerSession** | **Number** | Defines the maximum number of requests performed in a single HTTP session. After the limit is reached, &#39;Connection: close&#39; header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server.  | [optional] 
+**emulateRangeRead** | **Boolean** | Allows to access files from HTTP servers without range read support. This can significantly degrade performance, as in order to read a subset of a file entire file has to be downloaded.  | [optional] 
+**maxEmulatedRangeReadFileSize** | **Number** | Defines the maximum size in bytes of files that can be accessed from servers without range read support. This option is only active, when &#x60;emulateReadRange&#x60; option is true.  | [optional] 
 **fileMode** | **String** | Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. &#x60;0664&#x60;.  | [optional] 
 
 

@@ -93,6 +93,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property emulateRangeRead (base name: "emulateRangeRead")', function() {
+      // uncomment below and update the code to test the property emulateRangeRead
+      //var instane = new Onepanel.HTTP();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxEmulatedRangeReadFileSize (base name: "maxEmulatedRangeReadFileSize")', function() {
+      // uncomment below and update the code to test the property maxEmulatedRangeReadFileSize
+      //var instane = new Onepanel.HTTP();
+      //expect(instance).to.be();
+    });
+
     it('should have the property fileMode (base name: "fileMode")', function() {
       // uncomment below and update the code to test the property fileMode
       //var instane = new Onepanel.HTTP();

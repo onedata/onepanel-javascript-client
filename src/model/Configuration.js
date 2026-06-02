@@ -57,6 +57,8 @@
     _this['version'] = version;
     _this['build'] = build;
     _this['deployed'] = deployed;
+
+
   };
 
   /**
@@ -92,6 +94,12 @@
       if (data.hasOwnProperty('deployed')) {
         obj['deployed'] = ApiClient.convertToType(data['deployed'], 'Boolean');
       }
+      if (data.hasOwnProperty('termsOfUseExternalUrl')) {
+        obj['termsOfUseExternalUrl'] = ApiClient.convertToType(data['termsOfUseExternalUrl'], 'String');
+      }
+      if (data.hasOwnProperty('privacyPolicyExternalUrl')) {
+        obj['privacyPolicyExternalUrl'] = ApiClient.convertToType(data['privacyPolicyExternalUrl'], 'String');
+      }
     }
     return obj;
   }
@@ -117,6 +125,16 @@
    * @default true
    */
   exports.prototype['deployed'] = true;
+  /**
+   * If defined, the Terms of Use GUI message configured in Onepanel is ignored and the user is redirected to an external URL for the ToU document.
+   * @member {String} termsOfUseExternalUrl
+   */
+  exports.prototype['termsOfUseExternalUrl'] = undefined;
+  /**
+   * If defined, the Privacy Policy GUI message configured in Onepanel is ignored and the user is redirected to an external URL for the PP document.
+   * @member {String} privacyPolicyExternalUrl
+   */
+  exports.prototype['privacyPolicyExternalUrl'] = undefined;
 
 
 

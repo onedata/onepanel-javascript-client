@@ -51,7 +51,6 @@
 
 
 
-
   };
 
   /**
@@ -81,9 +80,6 @@
       if (data.hasOwnProperty('body')) {
         obj['body'] = ApiClient.convertToType(data['body'], 'String');
       }
-      if (data.hasOwnProperty('externalUrl')) {
-        obj['externalUrl'] = ApiClient.convertToType(data['externalUrl'], 'String');
-      }
     }
     return obj;
   }
@@ -98,11 +94,6 @@
    * @member {String} body
    */
   exports.prototype['body'] = undefined;
-  /**
-   * If specified, GUI will link to this page instead of presenting the message body itself. The body will be ignored in this case.
-   * @member {String} externalUrl
-   */
-  exports.prototype['externalUrl'] = undefined;
 
 
 

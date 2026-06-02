@@ -69,12 +69,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property externalUrl (base name: "externalUrl")', function() {
-      // uncomment below and update the code to test the property externalUrl
-      //var instane = new Onepanel.GuiMessage();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

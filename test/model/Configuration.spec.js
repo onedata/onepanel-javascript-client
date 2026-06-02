@@ -81,6 +81,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property termsOfUseExternalUrl (base name: "termsOfUseExternalUrl")', function() {
+      // uncomment below and update the code to test the property termsOfUseExternalUrl
+      //var instane = new Onepanel.Configuration();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property privacyPolicyExternalUrl (base name: "privacyPolicyExternalUrl")', function() {
+      // uncomment below and update the code to test the property privacyPolicyExternalUrl
+      //var instane = new Onepanel.Configuration();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

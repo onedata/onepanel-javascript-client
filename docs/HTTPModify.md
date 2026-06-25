@@ -4,15 +4,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of storage.  &#x60;type &#x3D; \&quot;http\&quot;&#x60;  Any [HTTP](https://tools.ietf.org/html/rfc7231) or HTTPS compatible server. Supported only with Readonly option enabled and in manual import mode.  | 
-**endpoint** | **String** | Full URL of the HTTP server, including scheme (http or https) and path.  | [optional] 
+**endpoint** | **String** | Base URL of the HTTP server, including scheme (&#x60;http&#x60; or &#x60;https&#x60;) and optional path prefix. When registering files by relative path in &#x60;storageFileId&#x60;, that path is appended to this URL. **Note:** A full URI supplied as &#x60;storageFileId&#x60; always takes precedence and bypasses this endpoint, allowing files from any HTTP server reachable by the Oneprovider to be registered.  | [optional] 
 **verifyServerCertificate** | **Boolean** | Determines whether Oneprovider should verify the certificate of the HTTP server.  | [optional] 
 **credentialsType** | **String** | Determines the types of credentials provided in the credentials field.  | [optional] 
 **credentials** | **String** | The credentials to authenticate with the HTTP server. &#x60;basic&#x60; credentials should be provided in the form &#x60;username:password&#x60;, for &#x60;token&#x60; just the token. For &#x60;none&#x60; this field is ignored.  | [optional] 
 **authorizationHeader** | **String** | The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is &#x60;Authorization: Bearer {}&#x60;. The token will placed where &#x60;{}&#x60; is provided.  | [optional] 
 **connectionPoolSize** | **Number** | Defines the maximum number of parallel connections for a single HTTP storage.  | [optional] 
 **maxRequestsPerSession** | **Number** | Defines the maximum number of requests performed in a single HTTP session. After the limit is reached, &#39;Connection: close&#39; header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server.  | [optional] 
-**emulateRangeRead** | **Boolean** | Allows to access files from HTTP servers without range read support. This can significantly degrade performance, as in order to read a subset of a file entire file has to be downloaded.  | [optional] 
-**maxEmulatedRangeReadFileSize** | **Number** | Defines the maximum size in bytes of files that can be accessed from servers without range read support. This option is only active, when &#x60;emulateReadRange&#x60; option is true.  | [optional] 
+**emulateRangeRead** | **Boolean** | Enables fallback emulation of range reads for HTTP servers that do not support the &#x60;Range&#x60; header. When active, the full file content is downloaded and only the requested byte range is returned to the caller. Has no effect on servers that support range reads natively. **Warning:** Emulation causes significant performance degradation and increased memory usage; enable only as a last resort.  | [optional] 
+**maxEmulatedRangeReadFileSize** | **Number** | Maximum file size in bytes eligible for emulated range reads. Files exceeding this limit cannot be accessed from servers that lack native range read support. Has no effect unless &#x60;emulateRangeRead&#x60; is &#x60;true&#x60;.  | [optional] 
 **fileMode** | **String** | Defines the file permissions, which files imported from HTTP storage will have in Onedata. Values should be provided in octal format e.g. &#x60;0664&#x60;.  | [optional] 
 
 

@@ -131,7 +131,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Full URL of the HTTP server, including scheme (http or https) and path. 
+   * Base URL of the HTTP server, including scheme (`http` or `https`) and optional path prefix. When registering files by relative path in `storageFileId`, that path is appended to this URL. **Note:** A full URI supplied as `storageFileId` always takes precedence and bypasses this endpoint, allowing files from any HTTP server reachable by the Oneprovider to be registered. 
    * @member {String} endpoint
    */
   exports.prototype['endpoint'] = undefined;
@@ -166,12 +166,12 @@
    */
   exports.prototype['maxRequestsPerSession'] = undefined;
   /**
-   * Allows to access files from HTTP servers without range read support. This can significantly degrade performance, as in order to read a subset of a file entire file has to be downloaded. 
+   * Enables fallback emulation of range reads for HTTP servers that do not support the `Range` header. When active, the full file content is downloaded and only the requested byte range is returned to the caller. Has no effect on servers that support range reads natively. **Warning:** Emulation causes significant performance degradation and increased memory usage; enable only as a last resort. 
    * @member {Boolean} emulateRangeRead
    */
   exports.prototype['emulateRangeRead'] = undefined;
   /**
-   * Defines the maximum size in bytes of files that can be accessed from servers without range read support. This option is only active, when `emulateReadRange` option is true. 
+   * Maximum file size in bytes eligible for emulated range reads. Files exceeding this limit cannot be accessed from servers that lack native range read support. Has no effect unless `emulateRangeRead` is `true`. 
    * @member {Number} maxEmulatedRangeReadFileSize
    */
   exports.prototype['maxEmulatedRangeReadFileSize'] = undefined;

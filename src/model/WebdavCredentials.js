@@ -107,7 +107,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Determines the types of credentials provided in the credentials field. 
+   * Determines what credentials will be used to authorize access to the WebDAV storage backend. For public endpoints, select \"none\". 
    * @member {module:model/WebdavCredentials.CredentialsTypeEnum} credentialsType
    * @default 'none'
    */
@@ -123,7 +123,7 @@
    */
   exports.prototype['oauth2IdP'] = undefined;
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * A token specific for this storage backend that will be used to authorize data access operations. 
    * @member {String} onedataAccessToken
    */
   exports.prototype['onedataAccessToken'] = undefined;

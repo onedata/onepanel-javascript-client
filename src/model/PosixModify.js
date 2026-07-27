@@ -103,7 +103,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * Absolute path to the root directory of the storage file system. The directory must exist and be accessible. In containerized deployments, this path refers to a location inside the container (Docker/pod) and must be mounted referencing an external persistent storage (e.g., host file system or network storage), except for non-persistent (testing) deployments. 
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;

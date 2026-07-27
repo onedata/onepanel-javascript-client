@@ -118,7 +118,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Storage operation timeout in milliseconds.
+   * Maximum time to wait for a response from the storage service before the request is aborted. 
    * @member {Number} timeout
    */
   exports.prototype['timeout'] = undefined;

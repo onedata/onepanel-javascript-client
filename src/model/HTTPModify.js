@@ -151,7 +151,7 @@
    */
   exports.prototype['credentials'] = undefined;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
+   * Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \"{}\". Use a colon to separate the header name and value, e.g. \"X-API-Token: {}\". 
    * @member {String} authorizationHeader
    */
   exports.prototype['authorizationHeader'] = undefined;

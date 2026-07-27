@@ -145,13 +145,13 @@
    */
   exports.prototype['verifyServerCertificate'] = true;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
+   * Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \"{}\". Use a colon to separate the header name and value, e.g. \"X-API-Token: {}\". 
    * @member {String} authorizationHeader
    * @default 'Authorization: Bearer {}'
    */
   exports.prototype['authorizationHeader'] = 'Authorization: Bearer {}';
   /**
-   * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
+   * Select the mechanism used for range writes (partial/random-access writes). Since the Onedata filesystem permits partial file modifications, writable supports require a storage backend that implements the selected method. Standard WebDAV does not support range writes and only provides write-once semantics. 
    * @member {module:model/Webdav.RangeWriteSupportEnum} rangeWriteSupport
    * @default 'none'
    */
@@ -192,7 +192,7 @@
 exports.prototype['type'] = undefined;
 
   /**
-   * Storage operation timeout in milliseconds.
+   * Maximum time to wait for a response from the storage service before the request is aborted. 
    * @member {Number} timeout
    */
 exports.prototype['timeout'] = undefined;
@@ -251,7 +251,7 @@ exports.prototype['readonly'] = false;
 exports.prototype['type'] = undefined;
 
   /**
-   * Determines the types of credentials provided in the credentials field. 
+   * Determines what credentials will be used to authorize access to the WebDAV storage backend. For public endpoints, select \"none\". 
    * @member {module:model/WebdavCredentials.CredentialsTypeEnum} credentialsType
    * @default 'none'
    */
@@ -270,7 +270,7 @@ exports.prototype['credentials'] = undefined;
 exports.prototype['oauth2IdP'] = undefined;
 
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the WebDAV storage will be accessed by all users with access to any space supported by this storage. 
+   * A token specific for this storage backend that will be used to authorize data access operations. 
    * @member {String} onedataAccessToken
    */
 exports.prototype['onedataAccessToken'] = undefined;

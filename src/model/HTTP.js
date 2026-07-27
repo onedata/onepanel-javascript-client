@@ -145,7 +145,7 @@
    */
   exports.prototype['verifyServerCertificate'] = true;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
+   * Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \"{}\". Use a colon to separate the header name and value, e.g. \"X-API-Token: {}\". 
    * @member {String} authorizationHeader
    * @default 'Authorization: Bearer {}'
    */
@@ -191,7 +191,7 @@
 exports.prototype['type'] = undefined;
 
   /**
-   * Storage operation timeout in milliseconds.
+   * Maximum time to wait for a response from the storage service before the request is aborted. 
    * @member {Number} timeout
    */
 exports.prototype['timeout'] = undefined;
@@ -269,7 +269,7 @@ exports.prototype['credentials'] = undefined;
 exports.prototype['oauth2IdP'] = undefined;
 
   /**
-   * When registering storage with feed of LUMA DB set to`auto` and with `oauth2` external IdP, this field must contain a valid Onedata access token of the user on whose behalf the HTTP storage will be accessed by all users with access to any space supported by this storage. 
+   * A token specific for this storage backend that will be used to authorize data access operations. 
    * @member {String} onedataAccessToken
    */
 exports.prototype['onedataAccessToken'] = undefined;

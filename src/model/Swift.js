@@ -128,7 +128,7 @@
    */
   exports.prototype['containerName'] = undefined;
   /**
-   * Storage block size in bytes.
+   * Storage block size in bytes i.e. the maximum object size. Files larger than one block will be stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an Swift storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
    * @member {Number} blockSize
    */
   exports.prototype['blockSize'] = undefined;
@@ -146,7 +146,7 @@
 exports.prototype['type'] = undefined;
 
   /**
-   * Storage operation timeout in milliseconds.
+   * Maximum time to wait for a response from the storage service before the request is aborted. 
    * @member {Number} timeout
    */
 exports.prototype['timeout'] = undefined;

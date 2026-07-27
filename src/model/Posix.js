@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/StorageCreateDetails
    * @param type {module:model/Posix.TypeEnum} The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
-   * @param mountPoint {String} The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * @param mountPoint {String} Absolute path to the root directory of the storage file system. The directory must exist and be accessible. In containerized deployments, this path refers to a location inside the container (Docker/pod) and must be mounted referencing an external persistent storage (e.g., host file system or network storage), except for non-persistent (testing) deployments. 
    */
   var exports = function(type, mountPoint) {
     var _this = this;
@@ -111,7 +111,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The absolute path to the directory where the POSIX storage is mounted on the cluster nodes. 
+   * Absolute path to the root directory of the storage file system. The directory must exist and be accessible. In containerized deployments, this path refers to a location inside the container (Docker/pod) and must be mounted referencing an external persistent storage (e.g., host file system or network storage), except for non-persistent (testing) deployments. 
    * @member {String} mountPoint
    */
   exports.prototype['mountPoint'] = undefined;
@@ -139,7 +139,7 @@
 exports.prototype['type'] = undefined;
 
   /**
-   * Storage operation timeout in milliseconds.
+   * Maximum time to wait for a response from the storage service before the request is aborted. 
    * @member {Number} timeout
    */
 exports.prototype['timeout'] = undefined;

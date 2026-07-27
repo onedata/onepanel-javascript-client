@@ -141,7 +141,7 @@
    */
   exports.prototype['verifyServerCertificate'] = undefined;
   /**
-   * Determines the types of credentials provided in the credentials field. 
+   * Determines what credentials will be used to authorize access to the WebDAV storage backend. For public endpoints, select \"none\". 
    * @member {module:model/WebdavModify.CredentialsTypeEnum} credentialsType
    */
   exports.prototype['credentialsType'] = undefined;
@@ -151,12 +151,12 @@
    */
   exports.prototype['credentials'] = undefined;
   /**
-   * The authorization header to be used for passing the access token. This field can contain any prefix that should be added to the header value. Default is `Authorization: Bearer {}`. The token will placed where `{}` is provided. 
+   * Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \"{}\". Use a colon to separate the header name and value, e.g. \"X-API-Token: {}\". 
    * @member {String} authorizationHeader
    */
   exports.prototype['authorizationHeader'] = undefined;
   /**
-   * The type of partial write support enabled in the WebDAV server. Currently 2 types are supported `sabredav` which assumes the server supports the SabreDAV PartialUpdate extension via `PATCH` method, and `moddav` which assumes server supports partial `PUT` requests with `Content-Range` header. If `none` is selected no write support is available for this WebDAV storage. 
+   * Select the mechanism used for range writes (partial/random-access writes). Since the Onedata filesystem permits partial file modifications, writable supports require a storage backend that implements the selected method. Standard WebDAV does not support range writes and only provides write-once semantics. 
    * @member {module:model/WebdavModify.RangeWriteSupportEnum} rangeWriteSupport
    */
   exports.prototype['rangeWriteSupport'] = undefined;

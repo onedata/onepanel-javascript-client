@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** | The Id of storage. | [optional] 
 **name** | **String** | The name of storage. | [optional] 
 **verificationPassed** | **Boolean** | Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages. | [optional] 
-**timeout** | **Number** | Storage operation timeout in milliseconds. | [optional] 
+**timeout** | **Number** | Maximum time to wait for a response from the storage service before the request is aborted.  | [optional] 
 **lumaFeed** | **String** | Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html  | [optional] 
 **lumaFeedUrl** | **String** | URL of external feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;. | [optional] 
 **lumaFeedApiKey** | **String** | API key checked by external service used as feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;.  | [optional] 

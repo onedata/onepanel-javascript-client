@@ -176,7 +176,7 @@
   exports.prototype['fileMode'] = '0664';
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
+   * @member {module:model/HTTPCreate.StoragePathTypeEnum} storagePathType
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
@@ -225,6 +225,23 @@ exports.prototype['onedataAccessToken'] = undefined;
      * @const
      */
     "http": "http"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical",
+    /**
+     * value: "flat"
+     * @const
+     */
+    "flat": "flat"  };
 
 
   return exports;

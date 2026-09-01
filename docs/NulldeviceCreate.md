@@ -23,3 +23,14 @@ Name | Type | Description | Notes
 
 
 
+<a name="StoragePathTypeEnum"></a>
+## Enum: StoragePathTypeEnum
+
+
+* `canonical` (value: `"canonical"`)
+
+* `flat` (value: `"flat"`)
+
+
+
+

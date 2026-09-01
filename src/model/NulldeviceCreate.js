@@ -149,7 +149,7 @@
   exports.prototype['filter'] = '*';
   /**
    * Determines how the logical file paths will be mapped on the storage. 'canonical' paths reflect the logical file names and directory structure, however each rename operation will require renaming the files on the storage. 'flat' paths are based on unique file UUID's and do not require on-storage rename when logical file name is changed. 
-   * @member {String} storagePathType
+   * @member {module:model/NulldeviceCreate.StoragePathTypeEnum} storagePathType
    * @default 'canonical'
    */
   exports.prototype['storagePathType'] = 'canonical';
@@ -203,6 +203,23 @@ exports.prototype['type'] = undefined;
      * @const
      */
     "nulldevice": "nulldevice"  };
+
+  /**
+   * Allowed values for the <code>storagePathType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.StoragePathTypeEnum = {
+    /**
+     * value: "canonical"
+     * @const
+     */
+    "canonical": "canonical",
+    /**
+     * value: "flat"
+     * @const
+     */
+    "flat": "flat"  };
 
 
   return exports;

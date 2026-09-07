@@ -208,7 +208,7 @@ exports.prototype['credentials'] = undefined;
 exports.prototype['oauth2IdP'] = undefined;
 
   /**
-   * A token specific for this storage backend that will be used to authorize data access operations. 
+   * An access token of the Onedata user in whose name IdP access tokens will be acquired. Used only with the `oauth2` credentials type, where it is effectively required - Oneprovider verifies it when the storage is created or modified and then spends it to obtain and refresh access tokens of the IdP indicated by `oauth2IdP`. It is never passed to the HTTP server. 
    * @member {String} onedataAccessToken
    */
 exports.prototype['onedataAccessToken'] = undefined;

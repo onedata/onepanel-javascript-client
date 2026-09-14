@@ -61,7 +61,6 @@
 
 
 
-
   };
 
   /**
@@ -108,9 +107,6 @@
       }
       if (data.hasOwnProperty('region')) {
         obj['region'] = ApiClient.convertToType(data['region'], 'String');
-      }
-      if (data.hasOwnProperty('maximumCanonicalObjectSize')) {
-        obj['maximumCanonicalObjectSize'] = ApiClient.convertToType(data['maximumCanonicalObjectSize'], 'Number');
       }
       if (data.hasOwnProperty('fileMode')) {
         obj['fileMode'] = ApiClient.convertToType(data['fileMode'], 'String');
@@ -165,11 +161,6 @@
    * @member {String} region
    */
   exports.prototype['region'] = undefined;
-  /**
-   * Defines the maximum size for objects, which can be modified on the S3 storage in `canonical` path mode. In this mode, entire file needs to be downloaded to memory, modified and uploaded back, which is impractical for large files (default 64 MiB). 
-   * @member {Number} maximumCanonicalObjectSize
-   */
-  exports.prototype['maximumCanonicalObjectSize'] = undefined;
   /**
    * Defines the file permissions, which files imported from S3 storage will have in Onedata. Values should be provided in octal format e.g. `0644`. 
    * @member {String} fileMode

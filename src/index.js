@@ -17,12 +17,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AutoStorageImportConfig', 'model/AutoStorageImportInfo', 'model/AutoStorageImportStats', 'model/BlockDevices', 'model/BlockDevicesBlockDevices', 'model/ClusterDatabases', 'model/ClusterDetails', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterMembersSummary', 'model/ClusterOneS3', 'model/ClusterWorkers', 'model/Configuration', 'model/CurrentUser', 'model/DataUsage', 'model/DatabaseHosts', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/DnsCheckSummary', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/ErrorDetails', 'model/GuiMessage', 'model/Host', 'model/HostAddRequest', 'model/Id', 'model/Ids', 'model/InlineResponse202', 'model/InviteToken', 'model/LumaConfig', 'model/LumaOnedataGroup', 'model/LumaOnedataUser', 'model/LumaStorageCredentials', 'model/LumaStorageUser', 'model/LumaUserMapping', 'model/ManagerHosts', 'model/ManualStorageImportExample', 'model/ModifyClusterIps', 'model/Node', 'model/OneS3Hosts', 'model/OnezoneInfo', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PanelConfiguration', 'model/PasswordChangeRequest', 'model/PosixCompatibleCredentials', 'model/Progress', 'model/ProgressModify', 'model/ProviderClusterConfiguration', 'model/ProviderClusterConfigurationDetails', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/RemoteProviderDetails', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceOnes3', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningRuleSetting', 'model/SpaceAutoCleaningRules', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/StorageCreateDetails', 'model/StorageCreateRequest', 'model/StorageCreateResponse', 'model/StorageGetDetails', 'model/StorageImport', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TaskStatus', 'model/TimeStats', 'model/Token', 'model/TransfersMock', 'model/VersionInfo', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationDetails', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/Ceph', 'model/CephCredentials', 'model/CephModify', 'model/Cephrados', 'model/CephradosCredentials', 'model/CephradosModify', 'model/Glusterfs', 'model/GlusterfsCredentials', 'model/GlusterfsModify', 'model/HTTP', 'model/HTTPCredentials', 'model/HTTPModify', 'model/LumaIdpEntitlementScheme', 'model/LumaIdpUserScheme', 'model/LumaOnedataGroupScheme', 'model/LumaOnedataUserScheme', 'model/NFS', 'model/NFSCredentials', 'model/NFSModify', 'model/Nulldevice', 'model/NulldeviceCredentials', 'model/NulldeviceModify', 'model/OpConfiguration', 'model/OzConfiguration', 'model/Posix', 'model/PosixCredentials', 'model/PosixModify', 'model/S3', 'model/S3Credentials', 'model/S3Modify', 'model/Swift', 'model/SwiftCredentials', 'model/SwiftModify', 'model/Webdav', 'model/WebdavCredentials', 'model/WebdavModify', 'model/XRootD', 'model/XRootDCredentials', 'model/XRootDModify', 'api/AutoCleaningApi', 'api/ClusterApi', 'api/CurrentUserApi', 'api/DNSApi', 'api/DebugApi', 'api/FilePopularityApi', 'api/InternalApi', 'api/LUMADBApi', 'api/LUMADBLocalFeedApi', 'api/OneproviderClusterApi', 'api/OneproviderIdentityApi', 'api/OnezoneClusterApi', 'api/SecurityApi', 'api/ServiceConfigurationApi', 'api/SpaceSupportApi', 'api/StorageImportApi', 'api/StoragesApi', 'api/UserManagementApi'], factory);
+    define(['ApiClient', 'model/AutoStorageImportConfig', 'model/AutoStorageImportInfo', 'model/AutoStorageImportStats', 'model/BlockDevices', 'model/BlockDevicesBlockDevices', 'model/ClusterDatabases', 'model/ClusterDetails', 'model/ClusterIps', 'model/ClusterManagers', 'model/ClusterMembersSummary', 'model/ClusterOneS3', 'model/ClusterWorkers', 'model/Configuration', 'model/CurrentUser', 'model/DataUsage', 'model/DatabaseHosts', 'model/DnsCheckConfiguration', 'model/DnsCheckResult', 'model/DnsCheckSummary', 'model/EmergencyPassphraseChangeRequest', 'model/EmergencyPassphraseStatus', 'model/Error', 'model/ErrorDetails', 'model/GuiMessage', 'model/Host', 'model/HostAddRequest', 'model/Id', 'model/Ids', 'model/InlineResponse202', 'model/InviteToken', 'model/LumaConfig', 'model/LumaOnedataGroup', 'model/LumaOnedataUser', 'model/LumaStorageCredentials', 'model/LumaStorageUser', 'model/LumaUserMapping', 'model/ManagerHosts', 'model/ManualStorageImportExample', 'model/ModifyClusterIps', 'model/Node', 'model/OneS3Hosts', 'model/OnezoneInfo', 'model/OnezoneUser', 'model/OnezoneUserCreateRequest', 'model/PanelConfiguration', 'model/PasswordChangeRequest', 'model/PosixCompatibleCredentials', 'model/Progress', 'model/ProgressModify', 'model/ProviderClusterConfiguration', 'model/ProviderClusterConfigurationDetails', 'model/ProviderConfiguration', 'model/ProviderConfigurationDetails', 'model/ProviderConfigurationDetailsOneprovider', 'model/ProviderConfigurationOneprovider', 'model/ProviderDetails', 'model/ProviderModifyRequest', 'model/ProviderRegisterRequest', 'model/ProviderSpaces', 'model/ProviderStorages', 'model/RemoteProviderDetails', 'model/ServiceDatabases', 'model/ServiceHosts', 'model/ServiceOnes3', 'model/ServiceStatus', 'model/ServiceStatusHost', 'model/SpaceAutoCleaningConfiguration', 'model/SpaceAutoCleaningReport', 'model/SpaceAutoCleaningReports', 'model/SpaceAutoCleaningRuleSetting', 'model/SpaceAutoCleaningRules', 'model/SpaceAutoCleaningStatus', 'model/SpaceDetails', 'model/SpaceFilePopularityConfiguration', 'model/SpaceModifyRequest', 'model/SpaceSupportRequest', 'model/StorageCreateDetails', 'model/StorageCreateRequest', 'model/StorageCreateResponse', 'model/StorageGetDetails', 'model/StorageImport', 'model/StorageModifyDetails', 'model/StorageModifyRequest', 'model/TaskId', 'model/TaskStatus', 'model/TimeStats', 'model/Token', 'model/TransfersMock', 'model/VersionInfo', 'model/WebCert', 'model/WebCertModifyRequest', 'model/WebCertPaths', 'model/WorkerHosts', 'model/ZoneClusterConfiguration', 'model/ZoneClusterConfigurationDetails', 'model/ZoneClusterConfigurationNodes', 'model/ZoneConfiguration', 'model/ZoneConfigurationDetails', 'model/ZoneConfigurationDetailsOnezone', 'model/ZoneConfigurationOnezone', 'model/ZonePolicies', 'model/CephCredentials', 'model/CephGet', 'model/CephModify', 'model/CephradosCreate', 'model/CephradosCredentials', 'model/CephradosGet', 'model/CephradosModify', 'model/GlusterfsCreate', 'model/GlusterfsCredentials', 'model/GlusterfsGet', 'model/GlusterfsModify', 'model/HTTPCreate', 'model/HTTPCredentials', 'model/HTTPGet', 'model/HTTPModify', 'model/LumaIdpEntitlementScheme', 'model/LumaIdpUserScheme', 'model/LumaOnedataGroupScheme', 'model/LumaOnedataUserScheme', 'model/NFSCreate', 'model/NFSCredentials', 'model/NFSGet', 'model/NFSModify', 'model/NulldeviceCreate', 'model/NulldeviceCredentials', 'model/NulldeviceGet', 'model/NulldeviceModify', 'model/OpConfiguration', 'model/OzConfiguration', 'model/PosixCreate', 'model/PosixCredentials', 'model/PosixGet', 'model/PosixModify', 'model/S3Create', 'model/S3Credentials', 'model/S3Get', 'model/S3Modify', 'model/SwiftCreate', 'model/SwiftCredentials', 'model/SwiftGet', 'model/SwiftModify', 'model/WebdavCreate', 'model/WebdavCredentials', 'model/WebdavGet', 'model/WebdavModify', 'model/XRootDCreate', 'model/XRootDCredentials', 'model/XRootDGet', 'model/XRootDModify', 'api/AutoCleaningApi', 'api/ClusterApi', 'api/CurrentUserApi', 'api/DNSApi', 'api/DebugApi', 'api/FilePopularityApi', 'api/InternalApi', 'api/LUMADBApi', 'api/LUMADBLocalFeedApi', 'api/OneproviderClusterApi', 'api/OneproviderIdentityApi', 'api/OnezoneClusterApi', 'api/SecurityApi', 'api/ServiceConfigurationApi', 'api/SpaceSupportApi', 'api/StorageImportApi', 'api/StoragesApi', 'api/UserManagementApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/AutoStorageImportConfig'), require('./model/AutoStorageImportInfo'), require('./model/AutoStorageImportStats'), require('./model/BlockDevices'), require('./model/BlockDevicesBlockDevices'), require('./model/ClusterDatabases'), require('./model/ClusterDetails'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterMembersSummary'), require('./model/ClusterOneS3'), require('./model/ClusterWorkers'), require('./model/Configuration'), require('./model/CurrentUser'), require('./model/DataUsage'), require('./model/DatabaseHosts'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/DnsCheckSummary'), require('./model/EmergencyPassphraseChangeRequest'), require('./model/EmergencyPassphraseStatus'), require('./model/Error'), require('./model/ErrorDetails'), require('./model/GuiMessage'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/Id'), require('./model/Ids'), require('./model/InlineResponse202'), require('./model/InviteToken'), require('./model/LumaConfig'), require('./model/LumaOnedataGroup'), require('./model/LumaOnedataUser'), require('./model/LumaStorageCredentials'), require('./model/LumaStorageUser'), require('./model/LumaUserMapping'), require('./model/ManagerHosts'), require('./model/ManualStorageImportExample'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/OneS3Hosts'), require('./model/OnezoneInfo'), require('./model/OnezoneUser'), require('./model/OnezoneUserCreateRequest'), require('./model/PanelConfiguration'), require('./model/PasswordChangeRequest'), require('./model/PosixCompatibleCredentials'), require('./model/Progress'), require('./model/ProgressModify'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderClusterConfigurationDetails'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/RemoteProviderDetails'), require('./model/ServiceDatabases'), require('./model/ServiceHosts'), require('./model/ServiceOnes3'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SpaceAutoCleaningConfiguration'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReports'), require('./model/SpaceAutoCleaningRuleSetting'), require('./model/SpaceAutoCleaningRules'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilePopularityConfiguration'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/StorageCreateDetails'), require('./model/StorageCreateRequest'), require('./model/StorageCreateResponse'), require('./model/StorageGetDetails'), require('./model/StorageImport'), require('./model/StorageModifyDetails'), require('./model/StorageModifyRequest'), require('./model/TaskId'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/Token'), require('./model/TransfersMock'), require('./model/VersionInfo'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationDetails'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/Ceph'), require('./model/CephCredentials'), require('./model/CephModify'), require('./model/Cephrados'), require('./model/CephradosCredentials'), require('./model/CephradosModify'), require('./model/Glusterfs'), require('./model/GlusterfsCredentials'), require('./model/GlusterfsModify'), require('./model/HTTP'), require('./model/HTTPCredentials'), require('./model/HTTPModify'), require('./model/LumaIdpEntitlementScheme'), require('./model/LumaIdpUserScheme'), require('./model/LumaOnedataGroupScheme'), require('./model/LumaOnedataUserScheme'), require('./model/NFS'), require('./model/NFSCredentials'), require('./model/NFSModify'), require('./model/Nulldevice'), require('./model/NulldeviceCredentials'), require('./model/NulldeviceModify'), require('./model/OpConfiguration'), require('./model/OzConfiguration'), require('./model/Posix'), require('./model/PosixCredentials'), require('./model/PosixModify'), require('./model/S3'), require('./model/S3Credentials'), require('./model/S3Modify'), require('./model/Swift'), require('./model/SwiftCredentials'), require('./model/SwiftModify'), require('./model/Webdav'), require('./model/WebdavCredentials'), require('./model/WebdavModify'), require('./model/XRootD'), require('./model/XRootDCredentials'), require('./model/XRootDModify'), require('./api/AutoCleaningApi'), require('./api/ClusterApi'), require('./api/CurrentUserApi'), require('./api/DNSApi'), require('./api/DebugApi'), require('./api/FilePopularityApi'), require('./api/InternalApi'), require('./api/LUMADBApi'), require('./api/LUMADBLocalFeedApi'), require('./api/OneproviderClusterApi'), require('./api/OneproviderIdentityApi'), require('./api/OnezoneClusterApi'), require('./api/SecurityApi'), require('./api/ServiceConfigurationApi'), require('./api/SpaceSupportApi'), require('./api/StorageImportApi'), require('./api/StoragesApi'), require('./api/UserManagementApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/AutoStorageImportConfig'), require('./model/AutoStorageImportInfo'), require('./model/AutoStorageImportStats'), require('./model/BlockDevices'), require('./model/BlockDevicesBlockDevices'), require('./model/ClusterDatabases'), require('./model/ClusterDetails'), require('./model/ClusterIps'), require('./model/ClusterManagers'), require('./model/ClusterMembersSummary'), require('./model/ClusterOneS3'), require('./model/ClusterWorkers'), require('./model/Configuration'), require('./model/CurrentUser'), require('./model/DataUsage'), require('./model/DatabaseHosts'), require('./model/DnsCheckConfiguration'), require('./model/DnsCheckResult'), require('./model/DnsCheckSummary'), require('./model/EmergencyPassphraseChangeRequest'), require('./model/EmergencyPassphraseStatus'), require('./model/Error'), require('./model/ErrorDetails'), require('./model/GuiMessage'), require('./model/Host'), require('./model/HostAddRequest'), require('./model/Id'), require('./model/Ids'), require('./model/InlineResponse202'), require('./model/InviteToken'), require('./model/LumaConfig'), require('./model/LumaOnedataGroup'), require('./model/LumaOnedataUser'), require('./model/LumaStorageCredentials'), require('./model/LumaStorageUser'), require('./model/LumaUserMapping'), require('./model/ManagerHosts'), require('./model/ManualStorageImportExample'), require('./model/ModifyClusterIps'), require('./model/Node'), require('./model/OneS3Hosts'), require('./model/OnezoneInfo'), require('./model/OnezoneUser'), require('./model/OnezoneUserCreateRequest'), require('./model/PanelConfiguration'), require('./model/PasswordChangeRequest'), require('./model/PosixCompatibleCredentials'), require('./model/Progress'), require('./model/ProgressModify'), require('./model/ProviderClusterConfiguration'), require('./model/ProviderClusterConfigurationDetails'), require('./model/ProviderConfiguration'), require('./model/ProviderConfigurationDetails'), require('./model/ProviderConfigurationDetailsOneprovider'), require('./model/ProviderConfigurationOneprovider'), require('./model/ProviderDetails'), require('./model/ProviderModifyRequest'), require('./model/ProviderRegisterRequest'), require('./model/ProviderSpaces'), require('./model/ProviderStorages'), require('./model/RemoteProviderDetails'), require('./model/ServiceDatabases'), require('./model/ServiceHosts'), require('./model/ServiceOnes3'), require('./model/ServiceStatus'), require('./model/ServiceStatusHost'), require('./model/SpaceAutoCleaningConfiguration'), require('./model/SpaceAutoCleaningReport'), require('./model/SpaceAutoCleaningReports'), require('./model/SpaceAutoCleaningRuleSetting'), require('./model/SpaceAutoCleaningRules'), require('./model/SpaceAutoCleaningStatus'), require('./model/SpaceDetails'), require('./model/SpaceFilePopularityConfiguration'), require('./model/SpaceModifyRequest'), require('./model/SpaceSupportRequest'), require('./model/StorageCreateDetails'), require('./model/StorageCreateRequest'), require('./model/StorageCreateResponse'), require('./model/StorageGetDetails'), require('./model/StorageImport'), require('./model/StorageModifyDetails'), require('./model/StorageModifyRequest'), require('./model/TaskId'), require('./model/TaskStatus'), require('./model/TimeStats'), require('./model/Token'), require('./model/TransfersMock'), require('./model/VersionInfo'), require('./model/WebCert'), require('./model/WebCertModifyRequest'), require('./model/WebCertPaths'), require('./model/WorkerHosts'), require('./model/ZoneClusterConfiguration'), require('./model/ZoneClusterConfigurationDetails'), require('./model/ZoneClusterConfigurationNodes'), require('./model/ZoneConfiguration'), require('./model/ZoneConfigurationDetails'), require('./model/ZoneConfigurationDetailsOnezone'), require('./model/ZoneConfigurationOnezone'), require('./model/ZonePolicies'), require('./model/CephCredentials'), require('./model/CephGet'), require('./model/CephModify'), require('./model/CephradosCreate'), require('./model/CephradosCredentials'), require('./model/CephradosGet'), require('./model/CephradosModify'), require('./model/GlusterfsCreate'), require('./model/GlusterfsCredentials'), require('./model/GlusterfsGet'), require('./model/GlusterfsModify'), require('./model/HTTPCreate'), require('./model/HTTPCredentials'), require('./model/HTTPGet'), require('./model/HTTPModify'), require('./model/LumaIdpEntitlementScheme'), require('./model/LumaIdpUserScheme'), require('./model/LumaOnedataGroupScheme'), require('./model/LumaOnedataUserScheme'), require('./model/NFSCreate'), require('./model/NFSCredentials'), require('./model/NFSGet'), require('./model/NFSModify'), require('./model/NulldeviceCreate'), require('./model/NulldeviceCredentials'), require('./model/NulldeviceGet'), require('./model/NulldeviceModify'), require('./model/OpConfiguration'), require('./model/OzConfiguration'), require('./model/PosixCreate'), require('./model/PosixCredentials'), require('./model/PosixGet'), require('./model/PosixModify'), require('./model/S3Create'), require('./model/S3Credentials'), require('./model/S3Get'), require('./model/S3Modify'), require('./model/SwiftCreate'), require('./model/SwiftCredentials'), require('./model/SwiftGet'), require('./model/SwiftModify'), require('./model/WebdavCreate'), require('./model/WebdavCredentials'), require('./model/WebdavGet'), require('./model/WebdavModify'), require('./model/XRootDCreate'), require('./model/XRootDCredentials'), require('./model/XRootDGet'), require('./model/XRootDModify'), require('./api/AutoCleaningApi'), require('./api/ClusterApi'), require('./api/CurrentUserApi'), require('./api/DNSApi'), require('./api/DebugApi'), require('./api/FilePopularityApi'), require('./api/InternalApi'), require('./api/LUMADBApi'), require('./api/LUMADBLocalFeedApi'), require('./api/OneproviderClusterApi'), require('./api/OneproviderIdentityApi'), require('./api/OnezoneClusterApi'), require('./api/SecurityApi'), require('./api/ServiceConfigurationApi'), require('./api/SpaceSupportApi'), require('./api/StorageImportApi'), require('./api/StoragesApi'), require('./api/UserManagementApi'));
   }
-}(function(ApiClient, AutoStorageImportConfig, AutoStorageImportInfo, AutoStorageImportStats, BlockDevices, BlockDevicesBlockDevices, ClusterDatabases, ClusterDetails, ClusterIps, ClusterManagers, ClusterMembersSummary, ClusterOneS3, ClusterWorkers, Configuration, CurrentUser, DataUsage, DatabaseHosts, DnsCheckConfiguration, DnsCheckResult, DnsCheckSummary, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, ErrorDetails, GuiMessage, Host, HostAddRequest, Id, Ids, InlineResponse202, InviteToken, LumaConfig, LumaOnedataGroup, LumaOnedataUser, LumaStorageCredentials, LumaStorageUser, LumaUserMapping, ManagerHosts, ManualStorageImportExample, ModifyClusterIps, Node, OneS3Hosts, OnezoneInfo, OnezoneUser, OnezoneUserCreateRequest, PanelConfiguration, PasswordChangeRequest, PosixCompatibleCredentials, Progress, ProgressModify, ProviderClusterConfiguration, ProviderClusterConfigurationDetails, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, RemoteProviderDetails, ServiceDatabases, ServiceHosts, ServiceOnes3, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningRuleSetting, SpaceAutoCleaningRules, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, StorageCreateDetails, StorageCreateRequest, StorageCreateResponse, StorageGetDetails, StorageImport, StorageModifyDetails, StorageModifyRequest, TaskId, TaskStatus, TimeStats, Token, TransfersMock, VersionInfo, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationDetails, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, Ceph, CephCredentials, CephModify, Cephrados, CephradosCredentials, CephradosModify, Glusterfs, GlusterfsCredentials, GlusterfsModify, HTTP, HTTPCredentials, HTTPModify, LumaIdpEntitlementScheme, LumaIdpUserScheme, LumaOnedataGroupScheme, LumaOnedataUserScheme, NFS, NFSCredentials, NFSModify, Nulldevice, NulldeviceCredentials, NulldeviceModify, OpConfiguration, OzConfiguration, Posix, PosixCredentials, PosixModify, S3, S3Credentials, S3Modify, Swift, SwiftCredentials, SwiftModify, Webdav, WebdavCredentials, WebdavModify, XRootD, XRootDCredentials, XRootDModify, AutoCleaningApi, ClusterApi, CurrentUserApi, DNSApi, DebugApi, FilePopularityApi, InternalApi, LUMADBApi, LUMADBLocalFeedApi, OneproviderClusterApi, OneproviderIdentityApi, OnezoneClusterApi, SecurityApi, ServiceConfigurationApi, SpaceSupportApi, StorageImportApi, StoragesApi, UserManagementApi) {
+}(function(ApiClient, AutoStorageImportConfig, AutoStorageImportInfo, AutoStorageImportStats, BlockDevices, BlockDevicesBlockDevices, ClusterDatabases, ClusterDetails, ClusterIps, ClusterManagers, ClusterMembersSummary, ClusterOneS3, ClusterWorkers, Configuration, CurrentUser, DataUsage, DatabaseHosts, DnsCheckConfiguration, DnsCheckResult, DnsCheckSummary, EmergencyPassphraseChangeRequest, EmergencyPassphraseStatus, Error, ErrorDetails, GuiMessage, Host, HostAddRequest, Id, Ids, InlineResponse202, InviteToken, LumaConfig, LumaOnedataGroup, LumaOnedataUser, LumaStorageCredentials, LumaStorageUser, LumaUserMapping, ManagerHosts, ManualStorageImportExample, ModifyClusterIps, Node, OneS3Hosts, OnezoneInfo, OnezoneUser, OnezoneUserCreateRequest, PanelConfiguration, PasswordChangeRequest, PosixCompatibleCredentials, Progress, ProgressModify, ProviderClusterConfiguration, ProviderClusterConfigurationDetails, ProviderConfiguration, ProviderConfigurationDetails, ProviderConfigurationDetailsOneprovider, ProviderConfigurationOneprovider, ProviderDetails, ProviderModifyRequest, ProviderRegisterRequest, ProviderSpaces, ProviderStorages, RemoteProviderDetails, ServiceDatabases, ServiceHosts, ServiceOnes3, ServiceStatus, ServiceStatusHost, SpaceAutoCleaningConfiguration, SpaceAutoCleaningReport, SpaceAutoCleaningReports, SpaceAutoCleaningRuleSetting, SpaceAutoCleaningRules, SpaceAutoCleaningStatus, SpaceDetails, SpaceFilePopularityConfiguration, SpaceModifyRequest, SpaceSupportRequest, StorageCreateDetails, StorageCreateRequest, StorageCreateResponse, StorageGetDetails, StorageImport, StorageModifyDetails, StorageModifyRequest, TaskId, TaskStatus, TimeStats, Token, TransfersMock, VersionInfo, WebCert, WebCertModifyRequest, WebCertPaths, WorkerHosts, ZoneClusterConfiguration, ZoneClusterConfigurationDetails, ZoneClusterConfigurationNodes, ZoneConfiguration, ZoneConfigurationDetails, ZoneConfigurationDetailsOnezone, ZoneConfigurationOnezone, ZonePolicies, CephCredentials, CephGet, CephModify, CephradosCreate, CephradosCredentials, CephradosGet, CephradosModify, GlusterfsCreate, GlusterfsCredentials, GlusterfsGet, GlusterfsModify, HTTPCreate, HTTPCredentials, HTTPGet, HTTPModify, LumaIdpEntitlementScheme, LumaIdpUserScheme, LumaOnedataGroupScheme, LumaOnedataUserScheme, NFSCreate, NFSCredentials, NFSGet, NFSModify, NulldeviceCreate, NulldeviceCredentials, NulldeviceGet, NulldeviceModify, OpConfiguration, OzConfiguration, PosixCreate, PosixCredentials, PosixGet, PosixModify, S3Create, S3Credentials, S3Get, S3Modify, SwiftCreate, SwiftCredentials, SwiftGet, SwiftModify, WebdavCreate, WebdavCredentials, WebdavGet, WebdavModify, XRootDCreate, XRootDCredentials, XRootDGet, XRootDModify, AutoCleaningApi, ClusterApi, CurrentUserApi, DNSApi, DebugApi, FilePopularityApi, InternalApi, LUMADBApi, LUMADBLocalFeedApi, OneproviderClusterApi, OneproviderIdentityApi, OnezoneClusterApi, SecurityApi, ServiceConfigurationApi, SpaceSupportApi, StorageImportApi, StoragesApi, UserManagementApi) {
   'use strict';
 
   /**
@@ -568,60 +568,75 @@
      */
     ZonePolicies: ZonePolicies,
     /**
-     * The Ceph model constructor.
-     * @property {module:model/Ceph}
-     */
-    Ceph: Ceph,
-    /**
      * The CephCredentials model constructor.
      * @property {module:model/CephCredentials}
      */
     CephCredentials: CephCredentials,
+    /**
+     * The CephGet model constructor.
+     * @property {module:model/CephGet}
+     */
+    CephGet: CephGet,
     /**
      * The CephModify model constructor.
      * @property {module:model/CephModify}
      */
     CephModify: CephModify,
     /**
-     * The Cephrados model constructor.
-     * @property {module:model/Cephrados}
+     * The CephradosCreate model constructor.
+     * @property {module:model/CephradosCreate}
      */
-    Cephrados: Cephrados,
+    CephradosCreate: CephradosCreate,
     /**
      * The CephradosCredentials model constructor.
      * @property {module:model/CephradosCredentials}
      */
     CephradosCredentials: CephradosCredentials,
     /**
+     * The CephradosGet model constructor.
+     * @property {module:model/CephradosGet}
+     */
+    CephradosGet: CephradosGet,
+    /**
      * The CephradosModify model constructor.
      * @property {module:model/CephradosModify}
      */
     CephradosModify: CephradosModify,
     /**
-     * The Glusterfs model constructor.
-     * @property {module:model/Glusterfs}
+     * The GlusterfsCreate model constructor.
+     * @property {module:model/GlusterfsCreate}
      */
-    Glusterfs: Glusterfs,
+    GlusterfsCreate: GlusterfsCreate,
     /**
      * The GlusterfsCredentials model constructor.
      * @property {module:model/GlusterfsCredentials}
      */
     GlusterfsCredentials: GlusterfsCredentials,
     /**
+     * The GlusterfsGet model constructor.
+     * @property {module:model/GlusterfsGet}
+     */
+    GlusterfsGet: GlusterfsGet,
+    /**
      * The GlusterfsModify model constructor.
      * @property {module:model/GlusterfsModify}
      */
     GlusterfsModify: GlusterfsModify,
     /**
-     * The HTTP model constructor.
-     * @property {module:model/HTTP}
+     * The HTTPCreate model constructor.
+     * @property {module:model/HTTPCreate}
      */
-    HTTP: HTTP,
+    HTTPCreate: HTTPCreate,
     /**
      * The HTTPCredentials model constructor.
      * @property {module:model/HTTPCredentials}
      */
     HTTPCredentials: HTTPCredentials,
+    /**
+     * The HTTPGet model constructor.
+     * @property {module:model/HTTPGet}
+     */
+    HTTPGet: HTTPGet,
     /**
      * The HTTPModify model constructor.
      * @property {module:model/HTTPModify}
@@ -648,30 +663,40 @@
      */
     LumaOnedataUserScheme: LumaOnedataUserScheme,
     /**
-     * The NFS model constructor.
-     * @property {module:model/NFS}
+     * The NFSCreate model constructor.
+     * @property {module:model/NFSCreate}
      */
-    NFS: NFS,
+    NFSCreate: NFSCreate,
     /**
      * The NFSCredentials model constructor.
      * @property {module:model/NFSCredentials}
      */
     NFSCredentials: NFSCredentials,
     /**
+     * The NFSGet model constructor.
+     * @property {module:model/NFSGet}
+     */
+    NFSGet: NFSGet,
+    /**
      * The NFSModify model constructor.
      * @property {module:model/NFSModify}
      */
     NFSModify: NFSModify,
     /**
-     * The Nulldevice model constructor.
-     * @property {module:model/Nulldevice}
+     * The NulldeviceCreate model constructor.
+     * @property {module:model/NulldeviceCreate}
      */
-    Nulldevice: Nulldevice,
+    NulldeviceCreate: NulldeviceCreate,
     /**
      * The NulldeviceCredentials model constructor.
      * @property {module:model/NulldeviceCredentials}
      */
     NulldeviceCredentials: NulldeviceCredentials,
+    /**
+     * The NulldeviceGet model constructor.
+     * @property {module:model/NulldeviceGet}
+     */
+    NulldeviceGet: NulldeviceGet,
     /**
      * The NulldeviceModify model constructor.
      * @property {module:model/NulldeviceModify}
@@ -688,75 +713,100 @@
      */
     OzConfiguration: OzConfiguration,
     /**
-     * The Posix model constructor.
-     * @property {module:model/Posix}
+     * The PosixCreate model constructor.
+     * @property {module:model/PosixCreate}
      */
-    Posix: Posix,
+    PosixCreate: PosixCreate,
     /**
      * The PosixCredentials model constructor.
      * @property {module:model/PosixCredentials}
      */
     PosixCredentials: PosixCredentials,
     /**
+     * The PosixGet model constructor.
+     * @property {module:model/PosixGet}
+     */
+    PosixGet: PosixGet,
+    /**
      * The PosixModify model constructor.
      * @property {module:model/PosixModify}
      */
     PosixModify: PosixModify,
     /**
-     * The S3 model constructor.
-     * @property {module:model/S3}
+     * The S3Create model constructor.
+     * @property {module:model/S3Create}
      */
-    S3: S3,
+    S3Create: S3Create,
     /**
      * The S3Credentials model constructor.
      * @property {module:model/S3Credentials}
      */
     S3Credentials: S3Credentials,
     /**
+     * The S3Get model constructor.
+     * @property {module:model/S3Get}
+     */
+    S3Get: S3Get,
+    /**
      * The S3Modify model constructor.
      * @property {module:model/S3Modify}
      */
     S3Modify: S3Modify,
     /**
-     * The Swift model constructor.
-     * @property {module:model/Swift}
+     * The SwiftCreate model constructor.
+     * @property {module:model/SwiftCreate}
      */
-    Swift: Swift,
+    SwiftCreate: SwiftCreate,
     /**
      * The SwiftCredentials model constructor.
      * @property {module:model/SwiftCredentials}
      */
     SwiftCredentials: SwiftCredentials,
     /**
+     * The SwiftGet model constructor.
+     * @property {module:model/SwiftGet}
+     */
+    SwiftGet: SwiftGet,
+    /**
      * The SwiftModify model constructor.
      * @property {module:model/SwiftModify}
      */
     SwiftModify: SwiftModify,
     /**
-     * The Webdav model constructor.
-     * @property {module:model/Webdav}
+     * The WebdavCreate model constructor.
+     * @property {module:model/WebdavCreate}
      */
-    Webdav: Webdav,
+    WebdavCreate: WebdavCreate,
     /**
      * The WebdavCredentials model constructor.
      * @property {module:model/WebdavCredentials}
      */
     WebdavCredentials: WebdavCredentials,
     /**
+     * The WebdavGet model constructor.
+     * @property {module:model/WebdavGet}
+     */
+    WebdavGet: WebdavGet,
+    /**
      * The WebdavModify model constructor.
      * @property {module:model/WebdavModify}
      */
     WebdavModify: WebdavModify,
     /**
-     * The XRootD model constructor.
-     * @property {module:model/XRootD}
+     * The XRootDCreate model constructor.
+     * @property {module:model/XRootDCreate}
      */
-    XRootD: XRootD,
+    XRootDCreate: XRootDCreate,
     /**
      * The XRootDCredentials model constructor.
      * @property {module:model/XRootDCredentials}
      */
     XRootDCredentials: XRootDCredentials,
+    /**
+     * The XRootDGet model constructor.
+     * @property {module:model/XRootDGet}
+     */
+    XRootDGet: XRootDGet,
     /**
      * The XRootDModify model constructor.
      * @property {module:model/XRootDModify}

@@ -59,6 +59,8 @@
 
 
 
+
+
   };
 
   /**
@@ -106,6 +108,12 @@
       if (data.hasOwnProperty('enableDataVerification')) {
         obj['enableDataVerification'] = ApiClient.convertToType(data['enableDataVerification'], 'Boolean');
       }
+      if (data.hasOwnProperty('uid')) {
+        obj['uid'] = ApiClient.convertToType(data['uid'], 'Number');
+      }
+      if (data.hasOwnProperty('gid')) {
+        obj['gid'] = ApiClient.convertToType(data['gid'], 'Number');
+      }
     }
     return obj;
   }
@@ -151,9 +159,18 @@
   /**
    * Enables data verification for `read` and `write` operations. Read operations will always return a predictable pattern of characters based on `offset` and `size`, and `write` operations will fail with I/O error, if the input data does not match the pattern at a given `offset`. 
    * @member {Boolean} enableDataVerification
-   * @default false
    */
-  exports.prototype['enableDataVerification'] = false;
+  exports.prototype['enableDataVerification'] = undefined;
+  /**
+   * User identifier.
+   * @member {Number} uid
+   */
+  exports.prototype['uid'] = undefined;
+  /**
+   * Group identifier.
+   * @member {Number} gid
+   */
+  exports.prototype['gid'] = undefined;
 
 
   /**

@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **endpoint** | **String** | Base URL of the HTTP server, including scheme (&#x60;http&#x60; or &#x60;https&#x60;) and optional path prefix. When registering files by relative path in &#x60;storageFileId&#x60;, that path is appended to this URL. **Note:** A full URI supplied as &#x60;storageFileId&#x60; always takes precedence and bypasses this endpoint, allowing files from any HTTP server reachable by the Oneprovider to be registered.  | [optional] 
 **verifyServerCertificate** | **Boolean** | Determines whether Oneprovider should verify the certificate of the HTTP server.  | [optional] 
 **credentialsType** | **String** | Determines the types of credentials provided in the credentials field.  | [optional] 
-**credentials** | **String** | The credentials to authenticate with the HTTP server. &#x60;basic&#x60; credentials should be provided in the form &#x60;username:password&#x60;, for &#x60;token&#x60; just the token. For &#x60;none&#x60; this field is ignored.  | [optional] 
+**credentials** | **String** | The credentials to authenticate with the HTTP server. &#x60;basic&#x60; credentials should be provided in the form &#x60;username:password&#x60;, for &#x60;token&#x60; just the token. In case of &#x60;oauth2&#x60;, this field should contain the username for the HTTP, while the token will be obtained and refreshed automatically in the background. For &#x60;none&#x60; this field is ignored.  | [optional] 
+**oauth2IdP** | **String** | In case &#x60;oauth2&#x60; credential type is selected and Onezone is configured with support for multiple external IdP&#39;s, this field must contain the name of the IdP which authenticates requests to the HTTP endpoint. If Onezone has only one external IdP, it will be selected automatically.  | [optional] 
+**onedataAccessToken** | **String** | An access token of the Onedata user in whose name IdP access tokens will be acquired. Used only with the &#x60;oauth2&#x60; credentials type, where it is effectively required - Oneprovider verifies it when the storage is created or modified and then spends it to obtain and refresh access tokens of the IdP indicated by &#x60;oauth2IdP&#x60;. It is never passed to the HTTP server.  | [optional] 
 **authorizationHeader** | **String** | Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \&quot;{}\&quot;. Use a colon to separate the header name and value, e.g. \&quot;X-API-Token: {}\&quot;.  | [optional] 
 **connectionPoolSize** | **Number** | Defines the maximum number of parallel connections for a single HTTP storage.  | [optional] 
 **maxRequestsPerSession** | **Number** | Defines the maximum number of requests performed in a single HTTP session. After the limit is reached, &#39;Connection: close&#39; header is sent to the server. When set to 0 (default), number of requests per session is unlimited, unless imposed by the server.  | [optional] 
@@ -34,6 +36,8 @@ Name | Type | Description | Notes
 * `basic` (value: `"basic"`)
 
 * `token` (value: `"token"`)
+
+* `oauth2` (value: `"oauth2"`)
 
 
 

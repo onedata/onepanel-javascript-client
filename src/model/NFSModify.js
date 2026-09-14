@@ -46,12 +46,14 @@
    * @alias module:model/NFSModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/NFSModify.TypeEnum} The type of storage.  `type = \"nfs\"`    NFS storage. 
+   * @param type {module:model/NFSModify.TypeEnum} The type of storage.  `type = \"nfs\"`  NFS storage. 
    */
   var exports = function(type) {
     var _this = this;
     StorageModifyDetails.call(_this);
     _this['type'] = type;
+
+
 
 
 
@@ -106,6 +108,12 @@
       if (data.hasOwnProperty('autoReconnect')) {
         obj['autoReconnect'] = ApiClient.convertToType(data['autoReconnect'], 'Number');
       }
+      if (data.hasOwnProperty('uid')) {
+        obj['uid'] = ApiClient.convertToType(data['uid'], 'Number');
+      }
+      if (data.hasOwnProperty('gid')) {
+        obj['gid'] = ApiClient.convertToType(data['gid'], 'Number');
+      }
     }
     return obj;
   }
@@ -114,7 +122,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.  `type = \"nfs\"`    NFS storage. 
+   * The type of storage.  `type = \"nfs\"`  NFS storage. 
    * @member {module:model/NFSModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -153,6 +161,16 @@
    * @member {Number} autoReconnect
    */
   exports.prototype['autoReconnect'] = undefined;
+  /**
+   * User identifier.
+   * @member {Number} uid
+   */
+  exports.prototype['uid'] = undefined;
+  /**
+   * Group identifier.
+   * @member {Number} gid
+   */
+  exports.prototype['gid'] = undefined;
 
 
   /**

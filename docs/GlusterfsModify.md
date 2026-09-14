@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **transport** | **String** | The transport protocol to use to connect to the volume server. | [optional] 
 **mountPoint** | **String** | Relative mountpoint within the volume which should be used by Oneprovider. | [optional] 
 **xlatorOptions** | **String** | Volume specific GlusterFS translator options, in the format:   TRANSLATOR1.OPTION1&#x3D;VALUE1;TRANSLATOR2.OPTION2&#x3D;VALUE2;...  | [optional] 
+**uid** | **Number** | User identifier. | [optional] 
+**gid** | **Number** | Group identifier. | [optional] 
 
 
 <a name="TypeEnum"></a>

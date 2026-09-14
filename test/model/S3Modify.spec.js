@@ -105,12 +105,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property maximumCanonicalObjectSize (base name: "maximumCanonicalObjectSize")', function() {
-      // uncomment below and update the code to test the property maximumCanonicalObjectSize
-      //var instane = new Onepanel.S3Modify();
-      //expect(instance).to.be();
-    });
-
     it('should have the property fileMode (base name: "fileMode")', function() {
       // uncomment below and update the code to test the property fileMode
       //var instane = new Onepanel.S3Modify();

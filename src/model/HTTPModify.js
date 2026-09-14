@@ -62,6 +62,8 @@
 
 
 
+
+
   };
 
   /**
@@ -99,6 +101,12 @@
       }
       if (data.hasOwnProperty('credentials')) {
         obj['credentials'] = ApiClient.convertToType(data['credentials'], 'String');
+      }
+      if (data.hasOwnProperty('oauth2IdP')) {
+        obj['oauth2IdP'] = ApiClient.convertToType(data['oauth2IdP'], 'String');
+      }
+      if (data.hasOwnProperty('onedataAccessToken')) {
+        obj['onedataAccessToken'] = ApiClient.convertToType(data['onedataAccessToken'], 'String');
       }
       if (data.hasOwnProperty('authorizationHeader')) {
         obj['authorizationHeader'] = ApiClient.convertToType(data['authorizationHeader'], 'String');
@@ -146,10 +154,20 @@
    */
   exports.prototype['credentialsType'] = undefined;
   /**
-   * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. For `none` this field is ignored. 
+   * The credentials to authenticate with the HTTP server. `basic` credentials should be provided in the form `username:password`, for `token` just the token. In case of `oauth2`, this field should contain the username for the HTTP, while the token will be obtained and refreshed automatically in the background. For `none` this field is ignored. 
    * @member {String} credentials
    */
   exports.prototype['credentials'] = undefined;
+  /**
+   * In case `oauth2` credential type is selected and Onezone is configured with support for multiple external IdP's, this field must contain the name of the IdP which authenticates requests to the HTTP endpoint. If Onezone has only one external IdP, it will be selected automatically. 
+   * @member {String} oauth2IdP
+   */
+  exports.prototype['oauth2IdP'] = undefined;
+  /**
+   * An access token of the Onedata user in whose name IdP access tokens will be acquired. Used only with the `oauth2` credentials type, where it is effectively required - Oneprovider verifies it when the storage is created or modified and then spends it to obtain and refresh access tokens of the IdP indicated by `oauth2IdP`. It is never passed to the HTTP server. 
+   * @member {String} onedataAccessToken
+   */
+  exports.prototype['onedataAccessToken'] = undefined;
   /**
    * Header format for passing the API/access token to the backend storage server. The token will be inserted in place of \"{}\". Use a colon to separate the header name and value, e.g. \"X-API-Token: {}\". 
    * @member {String} authorizationHeader
@@ -214,7 +232,12 @@
      * value: "token"
      * @const
      */
-    "token": "token"  };
+    "token": "token",
+    /**
+     * value: "oauth2"
+     * @const
+     */
+    "oauth2": "oauth2"  };
 
 
   return exports;

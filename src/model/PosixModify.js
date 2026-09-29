@@ -46,7 +46,7 @@
    * @alias module:model/PosixModify
    * @class
    * @extends module:model/StorageModifyDetails
-   * @param type {module:model/PosixModify.TypeEnum} The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
+   * @param type {module:model/PosixModify.TypeEnum} The type of storage.  `type = \"posix\"`  Any storage exposed to Oneprovider as a locally mounted POSIX filesystem, such as a parallel filesystem (Lustre, GPFS, BeeGFS), a local disk or a SAN volume. In multi-node deployments, the storage must be mounted at the same path on every node where Oneprovider runs. 
    */
   var exports = function(type) {
     var _this = this;
@@ -98,7 +98,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
+   * The type of storage.  `type = \"posix\"`  Any storage exposed to Oneprovider as a locally mounted POSIX filesystem, such as a parallel filesystem (Lustre, GPFS, BeeGFS), a local disk or a SAN volume. In multi-node deployments, the storage must be mounted at the same path on every node where Oneprovider runs. 
    * @member {module:model/PosixModify.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

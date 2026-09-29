@@ -46,7 +46,7 @@
    * @alias module:model/PosixCreate
    * @class
    * @extends module:model/StorageCreateDetails
-   * @param type {module:model/PosixCreate.TypeEnum} The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
+   * @param type {module:model/PosixCreate.TypeEnum} The type of storage.  `type = \"posix\"`  Any storage exposed to Oneprovider as a locally mounted POSIX filesystem, such as a parallel filesystem (Lustre, GPFS, BeeGFS), a local disk or a SAN volume. In multi-node deployments, the storage must be mounted at the same path on every node where Oneprovider runs. 
    * @param mountPoint {String} Absolute path to the root directory of the storage file system. The directory must exist and be accessible. In containerized deployments, this path refers to a location inside the container (Docker/pod) and must be mounted referencing an external persistent storage (e.g., host file system or network storage), except for non-persistent (testing) deployments. 
    */
   var exports = function(type, mountPoint) {
@@ -103,7 +103,7 @@
   exports.prototype.constructor = exports;
 
   /**
-   * The type of storage.  `type = \"posix\"`  Any POSIX compatible storage, typically attached over high-throughput local network, such as NFS. 
+   * The type of storage.  `type = \"posix\"`  Any storage exposed to Oneprovider as a locally mounted POSIX filesystem, such as a parallel filesystem (Lustre, GPFS, BeeGFS), a local disk or a SAN volume. In multi-node deployments, the storage must be mounted at the same path on every node where Oneprovider runs. 
    * @member {module:model/PosixCreate.TypeEnum} type
    */
   exports.prototype['type'] = undefined;

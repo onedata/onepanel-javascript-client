@@ -127,7 +127,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint, including the scheme (http or https) and optionally a port (after a colon). 
+   * The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the hostname is s3.amazonaws.com, the \"Region\" field becomes mandatory; the region is then automatically prepended to the hostname (e.g. providing eu-west-3 for https://s3.amazonaws.com results in https://eu-west-3.s3.amazonaws.com). 
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
@@ -157,7 +157,7 @@
    */
   exports.prototype['verifyServerCertificate'] = undefined;
   /**
-   * Allows to specify a custom S3 region, which will be send with each request to the S3 server. 
+   * The S3 region, sent with each request to the S3 server. Required if the endpoint hostname is s3.amazonaws.com, in which case the region is also prepended to the hostname. For other S3 providers it is optional and defaults to us-east-1. 
    * @member {String} region
    */
   exports.prototype['region'] = undefined;

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **type** | **String** |  | [optional] 
 **id** | **String** | The Id of storage. | [optional] 
 **name** | **String** | The name of storage. | [optional] 
-**verificationPassed** | **Boolean** | Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages. | [optional] 
+**verificationPassed** | **Boolean** | Whether the storage passed the test that a modification runs from every node of the cluster before it changes anything: access to the storage and, unless the storage is read-only after the modification or is imported and supports a space, the creation, write, read and removal of a test file. &#x60;false&#x60; means that the storage has not been modified. A modification of only the name or the QoS parameters runs no test, nor does one of an &#x60;http&#x60; or &#x60;nulldevice&#x60; storage. Returned only in a response to a PATCH request.  | [optional] 
 **timeout** | **Number** | Maximum time to wait for a response from the storage service before the request is aborted.  | [optional] 
 **lumaFeed** | **String** | Type of feed for LUMA DB. Feed is a source of user/group mappings used to populate the LUMA DB. For more info please read: https://onedata.org/#/home/documentation/doc/administering_onedata/luma.html  | [optional] 
 **lumaFeedUrl** | **String** | URL of external feed for LUMA DB. Relevant only if lumaFeed equals &#x60;external&#x60;. | [optional] 

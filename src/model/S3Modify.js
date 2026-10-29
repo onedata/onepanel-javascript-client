@@ -127,7 +127,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the hostname is s3.amazonaws.com, the \"Region\" field becomes mandatory; the region is then automatically prepended to the hostname (e.g. providing eu-west-3 for https://s3.amazonaws.com results in https://eu-west-3.s3.amazonaws.com). 
+   * The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the host is s3.amazonaws.com, the global AWS endpoint, `region` is required. 
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
@@ -157,7 +157,7 @@
    */
   exports.prototype['verifyServerCertificate'] = undefined;
   /**
-   * The S3 region, sent with each request to the S3 server. Required if the endpoint hostname is s3.amazonaws.com, in which case the region is also prepended to the hostname. For other S3 providers it is optional and defaults to us-east-1. 
+   * The S3 region, sent with each request to the S3 server. Required if the host of `hostname` is s3.amazonaws.com, the global AWS endpoint, and must then be the region of the bucket: Oneprovider sends its requests straight to that region's endpoint (e.g. s3.eu-west-3.amazonaws.com for eu-west-3) rather than first asking AWS where the bucket is, which it still does for us-east-1. For other S3 providers it is optional and defaults to us-east-1; a region named in the hostname (e.g. s3.eu-west-3.amazonaws.com) takes precedence over this field. 
    * @member {String} region
    */
   exports.prototype['region'] = undefined;

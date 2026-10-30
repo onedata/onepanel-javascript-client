@@ -48,7 +48,7 @@
    * @extends module:model/StorageGetDetails
    * @implements module:model/S3Credentials
    * @param type {module:model/S3Get.TypeEnum} The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
-   * @param hostname {String} The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the host is s3.amazonaws.com, the global AWS endpoint, `region` is required. 
+   * @param hostname {String} URL of the S3 endpoint. It must include the scheme (http or https) and may include a port after a colon. For the global AWS endpoint (s3.amazonaws.com), the `region` field is required, and requests go to that region's endpoint (e.g. for `eu-west-3`, `https://s3.eu-west-3.amazonaws.com`). 
    * @param bucketName {String} The storage bucket name.
    */
   var exports = function(type, hostname, bucketName) {
@@ -132,7 +132,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the host is s3.amazonaws.com, the global AWS endpoint, `region` is required. 
+   * URL of the S3 endpoint. It must include the scheme (http or https) and may include a port after a colon. For the global AWS endpoint (s3.amazonaws.com), the `region` field is required, and requests go to that region's endpoint (e.g. for `eu-west-3`, `https://s3.eu-west-3.amazonaws.com`). 
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
@@ -152,7 +152,7 @@
    */
   exports.prototype['verifyServerCertificate'] = undefined;
   /**
-   * The S3 region, sent with each request to the S3 server. Required if the host of `hostname` is s3.amazonaws.com, the global AWS endpoint, and must then be the region of the bucket: Oneprovider sends its requests straight to that region's endpoint (e.g. s3.eu-west-3.amazonaws.com for eu-west-3) rather than first asking AWS where the bucket is, which it still does for us-east-1. For other S3 providers it is optional and defaults to us-east-1; a region named in the hostname (e.g. s3.eu-west-3.amazonaws.com) takes precedence over this field. 
+   * Region of the bucket. Required for the global AWS endpoint (s3.amazonaws.com), so that requests go straight to the right region without an extra lookup. Optional for other endpoints; defaults to us-east-1. A region in the hostname (e.g. s3.eu-west-3.amazonaws.com) takes precedence over this field. 
    * @member {String} region
    */
   exports.prototype['region'] = undefined;

@@ -51,7 +51,7 @@
    * @param username {String} The Keystone authentication username.
    * @param password {String} The Keystone authentication password.
    * @param projectName {String} The Keystone project name.
-   * @param authUrl {String} The URL to OpenStack Keystone identity service.
+   * @param authUrl {String} The URL of the OpenStack Identity service (Keystone), API version 3, to which `/auth/tokens` is appended to request a token. 
    * @param containerName {String} The name of the Swift storage container.
    */
   var exports = function(type, username, password, projectName, authUrl, containerName) {
@@ -115,7 +115,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL to OpenStack Keystone identity service.
+   * The URL of the OpenStack Identity service (Keystone), API version 3, to which `/auth/tokens` is appended to request a token. 
    * @member {String} authUrl
    */
   exports.prototype['authUrl'] = undefined;

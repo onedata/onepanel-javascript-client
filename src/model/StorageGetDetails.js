@@ -135,7 +135,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * Result of storage verification (reading and writing a file). Returned only on PATCH requests for read-write storages.
+   * Whether the storage passed the test that a PATCH request runs before it modifies the storage. Returned only in a response to a PATCH request.  * `true` - the storage has been modified: it passed the test, or the   request needed none. * `false` - the storage failed the test and has not been modified.  The test depends on the request:  * no test - the request changes nothing but `name` and `qosParameters`,   or the storage is of type `http` or `nulldevice`; * access to the storage from every Oneprovider node - after the   modification, the storage is read-only, or is imported and supports   a space; * access, then the creation, write, read and removal of a test file from   every Oneprovider node - in any other case. 
    * @member {Boolean} verificationPassed
    */
   exports.prototype['verificationPassed'] = undefined;

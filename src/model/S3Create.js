@@ -48,7 +48,7 @@
    * @extends module:model/StorageCreateDetails
    * @implements module:model/S3Credentials
    * @param type {module:model/S3Create.TypeEnum} The type of storage.  `type = \"s3\"`  [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html) compatible storage. 
-   * @param hostname {String} The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the hostname is s3.amazonaws.com, the \"Region\" field becomes mandatory; the region is then automatically prepended to the hostname (e.g. providing eu-west-3 for https://s3.amazonaws.com results in https://eu-west-3.s3.amazonaws.com). 
+   * @param hostname {String} URL of the S3 endpoint. It must include the scheme (http or https) and may include a port after a colon. For the global AWS endpoint (s3.amazonaws.com), the `region` field is required, and requests go to that region's endpoint (e.g. for `eu-west-3`, `https://s3.eu-west-3.amazonaws.com`). 
    * @param bucketName {String} The storage bucket name.
    */
   var exports = function(type, hostname, bucketName) {
@@ -132,7 +132,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL of the S3 service endpoint. It must include the scheme (http or https) and may optionally include a port (after a colon). If the hostname is s3.amazonaws.com, the \"Region\" field becomes mandatory; the region is then automatically prepended to the hostname (e.g. providing eu-west-3 for https://s3.amazonaws.com results in https://eu-west-3.s3.amazonaws.com). 
+   * URL of the S3 endpoint. It must include the scheme (http or https) and may include a port after a colon. For the global AWS endpoint (s3.amazonaws.com), the `region` field is required, and requests go to that region's endpoint (e.g. for `eu-west-3`, `https://s3.eu-west-3.amazonaws.com`). 
    * @member {String} hostname
    */
   exports.prototype['hostname'] = undefined;
@@ -153,11 +153,10 @@
    */
   exports.prototype['verifyServerCertificate'] = true;
   /**
-   * The S3 region, sent with each request to the S3 server. Required if the endpoint hostname is s3.amazonaws.com, in which case the region is also prepended to the hostname. For other S3 providers it is optional and defaults to us-east-1. 
+   * Region of the bucket. Required for the global AWS endpoint (s3.amazonaws.com), so that requests go straight to the right region without an extra lookup. Optional for other endpoints; defaults to us-east-1. A region in the hostname (e.g. s3.eu-west-3.amazonaws.com) takes precedence over this field. 
    * @member {String} region
-   * @default 'us-east-1'
    */
-  exports.prototype['region'] = 'us-east-1';
+  exports.prototype['region'] = undefined;
   /**
    * Storage block size in bytes i.e. the maximum object size. Files larger than one block will be stripped and stored in a series of objects. Must be more than zero for non-imported storage. To enable import from an S3 storage, block size must be set to zero, together with \"canonical\" path type and the read-only mode. 
    * @member {Number} blockSize

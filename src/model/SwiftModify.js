@@ -119,7 +119,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * The URL to OpenStack Keystone identity service.
+   * The URL of the OpenStack Identity service (Keystone), API version 3, to which `/auth/tokens` is appended to request a token. 
    * @member {String} authUrl
    */
   exports.prototype['authUrl'] = undefined;
